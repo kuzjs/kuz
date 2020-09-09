@@ -1,0 +1,51 @@
+{
+	"title": "Kaagazz App",
+
+	"meta": {
+		"name": "Kaagazz",
+		"version": "0.1",
+		"description": "JS app for maintaining Kaagazz websites"
+	},
+
+	"input": {
+		"data": "data",
+		"meta": "meta",
+		"authors": "authors",
+		"categories": "categories",
+		"collections": "collections",
+		"pages": "pages",
+		"tags": "tags",
+		"zzz": false
+	},
+	"output": {
+		"author": "author",
+		"category": "category",
+		"collection": "collection",
+		"root": "docs",
+		"special": "x",
+		"tag": "tag",
+		"zzz": false
+	},
+
+	"extensions": [
+		"article",
+		"page",
+		"pug",
+		"markdown",
+		"mcq",
+		"md",
+		"timeline",
+		"question",
+		"txt"
+	],
+
+	"filenames": {
+		"authors": "authors.txt",
+		"collections": "collections.txt",
+		"config": "config.txt",
+		"categories": "categories.txt",
+		"siteJson": "site.json",
+		"tags": "tags.txt",
+		"zzz": false
+	}
+}
