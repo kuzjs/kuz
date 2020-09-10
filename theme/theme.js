@@ -6,6 +6,10 @@ const JsonFile = require("../utils/jsonfile").JsonFile;
 
 const Template = require("./template").Template;
 
+const CssFile = require("./cssfile").CssFile;
+const JsFile = require("./jsfile").JsFile;
+const ResFile = require("./resfile").ResFile;
+
 const themesDirectory = "kaagazz_themes";
 const templatesDirectory = "templates";
 
@@ -86,7 +90,39 @@ Theme.prototype.SetupPaths = function () {
 		this.templates[this.Name()] = defaultTemplate;
 	}
 
+	this.SetupCssFiles();
+	this.SetupJsFiles();
+	this.SetupResFiles();
+
 	this.is_valid = true;
+}
+
+Theme.prototype.SetupCssFiles = function () {
+	this.cssFiles = [];
+	for (let index in this.meta.json.css) {
+		let fileName = this.meta.json.css[index];
+		let cssFile = new CssFile(this, fileName);
+		log.Red(cssFile);
+		this.cssFiles.push(cssFile);
+	}
+}
+
+Theme.prototype.SetupJsFiles = function () {
+	this.jsFiles = [];
+	for (let index in this.meta.json.js) {
+		let fileName = this.meta.json.js[index];
+		let jsFile = new JsFile(this, fileName);
+		this.jsFiles.push(jsFile);
+	}
+}
+
+Theme.prototype.SetupResFiles = function () {
+	this.resFiles = [];
+	for (let index in this.meta.json.res) {
+		let fileName = this.meta.json.res[index];
+		let resFile = new ResFile(this, fileName);
+		this.resFiles.push(resFile);
+	}
 }
 
 Theme.prototype.DefaultTemplate = function () {
