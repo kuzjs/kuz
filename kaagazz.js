@@ -17,16 +17,33 @@ function Flag (flagObject) {
 	this.code = flagObject.code;
 	this.name = flagObject.name;
 	this.description = flagObject.description;
-	this.status = flagObject.status;
+	this.implemented = flagObject.implemented;
+	this.major = flagObject.major;
 	this.isset = false;
 }
 
+Flag.prototype.Code = function () {
+	return "-" + this.code;
+}
+
+Flag.prototype.Name = function () {
+	return this.major ? this.name : "@" + this.name;
+}
+
+Flag.prototype.Description = function () {
+	return this.description;
+}
+
+Flag.prototype.Status = function () {
+	return (this.implemented) ? "Working" : "Dev";
+}
+
+Flag.prototype.State = function () {
+	return (this.isset) ? "SET" : "---";
+}
+
 Flag.prototype.Row = function () {
-	if (this.isset) {
-		return [this.code, this.name, this.description, this.status, "SET"];
-	} else {
-		return [this.code, this.name, this.description, this.status, ""];
-	}
+	return [this.Code(), this.Name(), this.Description(), this.Status(), this.State()];
 }
 
 

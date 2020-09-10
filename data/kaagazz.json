@@ -55,103 +55,120 @@
 			"code": "a",
 			"name": "authors",
 			"description": "Build authors.",
-			"status": "Dev"
+			"implemented": false,
+			"major": false
 		},
 		{
 			"code": "b",
 			"name": "build",
 			"description": "Build the site.",
-			"status": "Dev"
+			"implemented": false,
+			"major": true
 		},
 		{
 			"code": "c",
 			"name": "categories",
 			"description": "Build categories.",
-			"status": "Dev"
+			"implemented": false,
+			"major": false
 		},
 		{
 			"code": "d",
 			"name": "debug",
 			"description": "Show debug output.",
-			"status": "Working"
+			"implemented": true,
+			"major": true
 		},
 		{
 			"code": "e",
 			"name": "experiment",
 			"description": "Run Experiment().",
-			"status": "Dev"
+			"implemented": false,
+			"major": false
 		},
 		{
 			"code": "f",
 			"name": "fix",
 			"description": "Fix things.",
-			"status": "Dev"
+			"implemented": false,
+			"major": false
 		},
 		{
 			"code": "h",
 			"name": "help",
 			"description": "Show help.",
-			"status": "Working"
+			"implemented": true,
+			"major": true
 		},
 		{
 			"code": "k",
 			"name": "collections",
 			"description": "Build collections.",
-			"status": "Dev"
+			"implemented": false,
+			"major": false
 		},
 		{
 			"code": "l",
 			"name": "list",
 			"description": "List pages.",
-			"status": "Working"
+			"implemented": true,
+			"major": true
 		},
 		{
 			"code": "p",
 			"name": "pages",
 			"description": "Build pages.",
-			"status": "Dev"
+			"implemented": false,
+			"major": false
 		},
 		{
 			"code": "r",
 			"name": "report",
 			"description": "Report problems.",
-			"status": "Dev"
+			"implemented": false,
+			"major": true
 		},
 		{
 			"code": "s",
 			"name": "serve",
 			"description": "Run a live server.",
-			"status": "Working"
+			"implemented": true,
+			"major": true
 		},
 		{
 			"code": "t",
 			"name": "tags",
 			"description": "Build tags.",
-			"status": "Dev"
+			"implemented": false,
+			"major": false
 		},
 		{
 			"code": "u",
 			"name": "update",
 			"description": "Update the app and themes.",
-			"status": "Working"
+			"implemented": true,
+			"major": true
 		},
 		{
 			"code": "v",
 			"name": "version",
 			"description": "Show version.",
-			"status": "Working"
+			"implemented": true,
+			"major": true
 		},
 		{
 			"code": "w",
 			"name": "watch",
 			"description": "Watch the site.",
-			"status": "Working"
+			"implemented": true,
+			"major": true
 		},
 		{
 			"code": "x",
 			"name": "experiment",
 			"description": "Run Experiment()",
-			"status": "Working"
+			"implemented": true,
+			"major": false
 		}
 	]
 }
