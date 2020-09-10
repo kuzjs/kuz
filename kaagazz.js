@@ -146,6 +146,11 @@ KaagazzApp.prototype.toString = function () {
 
 KaagazzApp.prototype.ShowHelp = function () {
 	log.Green("Kaagazz help.");
+	let flags = this.meta.json.flags;
+	for (let index in flags) {
+		let flag = flags[index];
+		log.Green(flag.code + " (" + flag.name + ") " + flag.description);
+	}
 }
 
 KaagazzApp.prototype.ShowVersion = function () {

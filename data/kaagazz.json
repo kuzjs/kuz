@@ -48,5 +48,53 @@
 		"siteJson": "site.json",
 		"tags": "tags.txt",
 		"zzz": false
-	}
+	},
+
+	"flags": [
+		{
+			"code": "b",
+			"name": "build",
+			"description": "Build the site."
+		},
+		{
+			"code": "d",
+			"name": "debug",
+			"description": "Show debug output."
+		},
+		{
+			"code": "h",
+			"name": "help",
+			"description": "Show help."
+		},
+		{
+			"code": "l",
+			"name": "list",
+			"description": "List pages."
+		},
+		{
+			"code": "s",
+			"name": "serve",
+			"description": "Run a live server."
+		},
+		{
+			"code": "u",
+			"name": "update",
+			"description": "Update the app and themes."
+		},
+		{
+			"code": "v",
+			"name": "version",
+			"description": "Show version."
+		},
+		{
+			"code": "w",
+			"name": "watch",
+			"description": "Watch the site."
+		},
+		{
+			"code": "x",
+			"name": "experiment",
+			"description": "Run Experiment()"
+		}
+	]
 }
