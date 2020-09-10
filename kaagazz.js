@@ -17,14 +17,15 @@ function Flag (flagObject) {
 	this.code = flagObject.code;
 	this.name = flagObject.name;
 	this.description = flagObject.description;
+	this.status = flagObject.status;
 	this.isset = false;
 }
 
 Flag.prototype.Row = function () {
 	if (this.isset) {
-		return [this.code, this.name, this.description, "SET"];
+		return [this.code, this.name, this.description, this.status, "SET"];
 	} else {
-		return [this.code, this.name, this.description, ""];
+		return [this.code, this.name, this.description, this.status, ""];
 	}
 }
 
@@ -129,6 +130,7 @@ KaagazzApp.prototype.ShowHelp = function () {
 	table.AddColumn("Code");
 	table.AddColumn("Name", 12);
 	table.AddColumn("Description", 32);
+	table.AddColumn("Status", 8);
 	table.AddColumn("State", 10);
 
 	for (let index in this.flags) {

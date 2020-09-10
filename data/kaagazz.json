@@ -54,72 +54,104 @@
 		{
 			"code": "a",
 			"name": "authors",
-			"description": "Build authors."
+			"description": "Build authors.",
+			"status": "Dev"
 		},
 		{
 			"code": "b",
 			"name": "build",
-			"description": "Build the site."
+			"description": "Build the site.",
+			"status": "Dev"
 		},
 		{
 			"code": "c",
 			"name": "categories",
-			"description": "Build categories."
+			"description": "Build categories.",
+			"status": "Dev"
 		},
 		{
 			"code": "d",
 			"name": "debug",
-			"description": "Show debug output."
+			"description": "Show debug output.",
+			"status": "Working"
+		},
+		{
+			"code": "e",
+			"name": "experiment",
+			"description": "Run Experiment().",
+			"status": "Dev"
+		},
+		{
+			"code": "f",
+			"name": "fix",
+			"description": "Fix things.",
+			"status": "Dev"
 		},
 		{
 			"code": "h",
 			"name": "help",
-			"description": "Show help."
+			"description": "Show help.",
+			"status": "Working"
 		},
 		{
 			"code": "k",
 			"name": "collections",
-			"description": "Build collections."
+			"description": "Build collections.",
+			"status": "Dev"
 		},
 		{
 			"code": "l",
 			"name": "list",
-			"description": "List pages."
+			"description": "List pages.",
+			"status": "Working"
 		},
 		{
 			"code": "p",
 			"name": "pages",
-			"description": "Build pages."
+			"description": "Build pages.",
+			"status": "Dev"
+		},
+		{
+			"code": "r",
+			"name": "report",
+			"description": "Report problems.",
+			"status": "Dev"
 		},
 		{
 			"code": "s",
 			"name": "serve",
-			"description": "Run a live server."
+			"description": "Run a live server.",
+			"status": "Working"
 		},
 		{
 			"code": "t",
 			"name": "tags",
-			"description": "Build tags."
+			"description": "Build tags.",
+			"status": "Dev"
 		},
 		{
 			"code": "u",
 			"name": "update",
-			"description": "Update the app and themes."
+			"description": "Update the app and themes.",
+			"status": "Working"
 		},
 		{
 			"code": "v",
 			"name": "version",
-			"description": "Show version."
+			"description": "Show version.",
+			"status": "Working"
 		},
 		{
 			"code": "w",
 			"name": "watch",
-			"description": "Watch the site."
+			"description": "Watch the site.",
+			"status": "Working"
 		},
 		{
 			"code": "x",
 			"name": "experiment",
-			"description": "Run Experiment()"
+			"description": "Run Experiment()",
+			"status": "Working"
 		}
 	]
 }
