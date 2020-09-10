@@ -29,12 +29,16 @@ Theme.prototype.ThemesInputDirectory = function () {
 	return "kaagazz_themes";
 }
 
+Theme.prototype.ThemesOutputDirectory = function () {
+	return fsutils.JoinPath("docs/x/dist/themes");
+}
+
 Theme.prototype.InputDirectory = function () {
 	return fsutils.JoinPath(this.ThemesInputDirectory(), this.Name());
 }
 
 Theme.prototype.OutputDirectory = function () {
-	return fsutils.JoinPath("x/themes", this.Name());
+	return fsutils.JoinPath(this.ThemesOutputDirectory(), this.Name());
 }
 
 Theme.prototype.TemplatesInputDirectory = function () {
@@ -55,10 +59,6 @@ Theme.prototype.JsonFileName = function () {
 
 Theme.prototype.JsonFilePath = function () {
 	return fsutils.JoinPath(this.InputDirectory(), this.JsonFileName());
-}
-
-Theme.prototype.ThemesOutputDirectory = function () {
-	return "kaagazz_themes";
 }
 
 Theme.prototype.SetupPaths = function () {
