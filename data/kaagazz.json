@@ -52,9 +52,19 @@
 
 	"flags": [
 		{
+			"code": "a",
+			"name": "authors",
+			"description": "Build authors."
+		},
+		{
 			"code": "b",
 			"name": "build",
 			"description": "Build the site."
+		},
+		{
+			"code": "c",
+			"name": "categories",
+			"description": "Build categories."
 		},
 		{
 			"code": "d",
@@ -67,14 +77,29 @@
 			"description": "Show help."
 		},
 		{
+			"code": "k",
+			"name": "collections",
+			"description": "Build collections."
+		},
+		{
 			"code": "l",
 			"name": "list",
 			"description": "List pages."
 		},
 		{
+			"code": "p",
+			"name": "pages",
+			"description": "Build pages."
+		},
+		{
 			"code": "s",
 			"name": "serve",
 			"description": "Run a live server."
+		},
+		{
+			"code": "t",
+			"name": "tags",
+			"description": "Build tags."
 		},
 		{
 			"code": "u",
