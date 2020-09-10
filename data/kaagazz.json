@@ -21,6 +21,7 @@
 		"author": "author",
 		"category": "category",
 		"collection": "collection",
+		"dist": "dist",
 		"root": "docs",
 		"special": "x",
 		"tag": "tag",
