@@ -10,83 +10,13 @@ const kaagazzJsonPath = jsonDirectory + "kaagazz.json";
 const blackadderJsonPath = jsonDirectory + "blackadder.json";
 const loremIpsumJsonPath = jsonDirectory + "lorem-ipsum.json";
 
-function ParseArguments (argv) {
-	let page_name = "";
-	let flags = {
-		categories_only: false,
-		debug: false,
-		experiment: false,
-		force: false,
-		help: false,
-		list: false,
-		pages_only: false,
-		tags_only: false,
-		update: false,
-		version: false,
-		watch: false
-	};
 
-	for (let i=2; i<argv.length; i++) {
-		let argument = argv[i];
-		if (argument[0] == "-") {
-			for (let j=1; j<argument.length; j++) {
-				let character = argument[j];
-				switch(character)
-				{
-					case "c":
-						flags.categories_only = true;
-						break;
-					case "d":
-						flags.debug = true;
-						log.DebugOn();
-						break;
-					case "f":
-						flags.force = true;
-						break;
-					case "h":
-						flags.help = true;
-						break;
-					case "l":
-						flags.list = true;
-						break;
-					case "p":
-						flags.pages_only = true;
-						break;
-					case "t":
-						flags.tags_only = true;
-						break;
-					case "u":
-						flags.update = true;
-						break;
-					case "v":
-						flags.version = true;
-						break;
-					case "w":
-						flags.watch = true;
-						break;
-					case "x":
-						flags.experiment = true;
-						break;
-					default:
-						log.Red("Invalid flag: " + character);
-						break;
-				}
-			}
-		} else {
-			page_name = argument;
-		}
-	}
 
-	log.Yellow("page_name: " + page_name);
-	for(var flag in flags)
-	{
-		log.Yellow(flag + ": " + flags[flag]);
-	}
-
-	return {
-		page_name: page_name,
-		flags: flags
-	};
+function Flag (flagObject) {
+	this.code = flagObject.code;
+	this.name = flagObject.name;
+	this.description = flagObject.description;
+	this.isset = false;
 }
 
 
@@ -96,12 +26,11 @@ function KaagazzApp () {
 	this.blackadder = new JsonFile(blackadderJsonPath);
 	this.ipsum = new JsonFile(loremIpsumJsonPath);
 
+	this.SetupFlags();
+
 	if (this.AllIsWell()) {
 		this.site = new Site(this);
 	}
-
-	this.args = ParseArguments(process.argv);
-	this.flags = this.args.flags;
 }
 
 KaagazzApp.prototype.AllIsWell = function () {
@@ -118,6 +47,47 @@ KaagazzApp.prototype.AllIsWell = function () {
 	}
 
 	return true;
+}
+
+KaagazzApp.prototype.SetupFlags = function () {
+	let flags = this.meta.json.flags;
+	this.flags = [];
+	for (let index in flags) {
+		let flagObject = flags[index];
+		let flag = new Flag(flagObject);
+		this.flags.push(flag);
+	}
+
+	let argv = process.argv;
+	for (let i=2; i<argv.length; i++) {
+		let argument = argv[i];
+		if (argument[0] == "-") {
+			for (let j=1; j<argument.length; j++) {
+				let letter = argument[j];
+				for (let k in this.flags) {
+					let currentFlag = this.flags[k];
+					if (currentFlag.code == letter) {
+						currentFlag.isset = true;
+					}
+				}
+			}
+		}
+	}
+
+	if (this.HasFlag("debug")) {
+		log.DebugOn();
+	}
+}
+
+KaagazzApp.prototype.HasFlag = function (flagName) {
+	for (let k in this.flags) {
+		let currentFlag = this.flags[k];
+		if (currentFlag.name == flagName) {
+			return currentFlag.isset;
+		}
+	}
+
+	return false;
 }
 
 KaagazzApp.prototype.Blackadder = function () {
@@ -147,8 +117,8 @@ KaagazzApp.prototype.toString = function () {
 KaagazzApp.prototype.ShowHelp = function () {
 	log.Green("Kaagazz help.");
 	let flags = this.meta.json.flags;
-	for (let index in flags) {
-		let flag = flags[index];
+	for (let index in this.flags) {
+		let flag = this.flags[index];
 		log.Green(flag.code + " (" + flag.name + ") " + flag.description);
 	}
 }
@@ -191,17 +161,23 @@ KaagazzApp.prototype.Run = function () {
 		return;
 	}
 
-	if (this.flags.help) {
+	if (this.HasFlag("help")) {
 		this.ShowHelp();
-	} else if (this.flags.update) {
-		this.Update();
-	} else if (this.flags.version) {
+	} else if (this.HasFlag("version")) {
 		this.ShowVersion();
-	} else if (this.flags.list) {
+	} else if (this.HasFlag("build")) {
+		//
+	} else if (this.HasFlag("list")) {
 		this.ShowList();
-	} else if (this.flags.experiment) {
+	} else if (this.HasFlag("serve")) {
+		//
+	} else if (this.HasFlag("update")) {
+		this.Update();
+	} else if (this.HasFlag("watch")) {
+		//
+	} else if (this.HasFlag("experiment")) {
 		this.Experiment();
-	} else if (this.args.page_name == "") {
+	} else {
 		//
 	}
 }
