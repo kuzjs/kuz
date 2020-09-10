@@ -2,6 +2,7 @@
 
 const log = require("./utils/log");
 const JsonFile = require("./utils/jsonfile").JsonFile;
+const Table = require("./utils/table").Table;
 const Site = require("./site").Site;
 
 const jsonDirectory = "kaagazz_app/data/";
@@ -17,6 +18,14 @@ function Flag (flagObject) {
 	this.name = flagObject.name;
 	this.description = flagObject.description;
 	this.isset = false;
+}
+
+Flag.prototype.Row = function () {
+	if (this.isset) {
+		return [this.code, this.name, this.description, "SET"];
+	} else {
+		return [this.code, this.name, this.description, ""];
+	}
 }
 
 
@@ -116,11 +125,13 @@ KaagazzApp.prototype.toString = function () {
 
 KaagazzApp.prototype.ShowHelp = function () {
 	log.Green("Kaagazz help.");
-	let flags = this.meta.json.flags;
+	let table = new Table();
 	for (let index in this.flags) {
 		let flag = this.flags[index];
-		log.Green(flag.code + " (" + flag.name + ") " + flag.description);
+		table.Add(flag);
 	}
+
+	table.Print();
 }
 
 KaagazzApp.prototype.ShowVersion = function () {
