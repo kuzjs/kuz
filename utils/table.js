@@ -5,6 +5,10 @@
 function Table () {
 	this.columnObjects = [];
 	this.rowData = [];
+	this.firstColumn = {
+		name: "Id",
+		length: 5
+	};
 }
 
 Table.prototype.AddColumn = function (columnName, columnLength) {
@@ -12,7 +16,7 @@ Table.prototype.AddColumn = function (columnName, columnLength) {
 		columnLength = columnName.length;
 	}
 
-	this.columnNames.push({
+	this.columnObjects.push({
 		name: columnName,
 		length: columnLength
 	});
@@ -27,15 +31,44 @@ Table.prototype.AddRow = function (row) {
 	this.rowData.push(row);
 }
 
-Table.prototype.Print = function (row) {
-	for (let index in this.rowData) {
-		let row = this.rowData[index];
-		let rowString = index + "";
-		for (let j in row) {
-			rowString += " | " + row[j];
-		}
-		console.log(rowString);
+Table.prototype.GetColumnLength = function (columnIndex) {
+	return this.columnObjects[columnIndex].length;
+}
+
+Table.prototype.GetRowLength = function (columnIndex) {
+	let rowLength = 2 + this.firstColumn.length + 3;
+	for (let columnIndex in this.columnObjects) {
+		let columnObject = this.columnObjects[columnIndex];
+		rowLength += columnObject.length + 3;
 	}
+
+	return (rowLength-1);
+}
+
+Table.prototype.GetRowSeparator = function () {
+	let rowLength = this.GetRowLength();
+	let rowSeparator = "";
+	rowSeparator = rowSeparator.padStart(rowLength, "-");
+	return rowSeparator;
+}
+
+Table.prototype.PrintRow = function (rowIndex) {
+	let row = this.rowData[rowIndex];
+	let rowString = "| " + rowIndex.padStart(this.firstColumn.length) + " | ";
+	for (let j in row) {
+		let columnLength = this.GetColumnLength(j);
+		rowString += row[j].padStart(columnLength) + " | ";
+	}
+	console.log(rowString);}
+
+Table.prototype.Print = function () {
+	let rowSeparator = this.GetRowSeparator();
+
+	console.log(rowSeparator);
+	for (let index in this.rowData) {
+		this.PrintRow(index);
+	}
+	console.log(rowSeparator);
 }
 
 

@@ -126,6 +126,11 @@ KaagazzApp.prototype.toString = function () {
 KaagazzApp.prototype.ShowHelp = function () {
 	log.Green("Kaagazz help.");
 	let table = new Table();
+	table.AddColumn("Code");
+	table.AddColumn("Name", 10);
+	table.AddColumn("Description", 32);
+	table.AddColumn("State", 10);
+
 	for (let index in this.flags) {
 		let flag = this.flags[index];
 		table.Add(flag);
