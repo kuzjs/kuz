@@ -101,6 +101,12 @@ KaagazzApp.prototype.SetupFlags = function () {
 		}
 	}
 
+	this.simpleFlags = {};
+	for (let index in this.flags) {
+		let flag = this.flags[index];
+		this.simpleFlags[flag.name] = flag.isset;
+	}
+
 	if (this.HasFlag("debug")) {
 		log.DebugOn();
 	}
@@ -196,21 +202,23 @@ KaagazzApp.prototype.Run = function () {
 		return;
 	}
 
-	if (this.HasFlag("help")) {
+	let flags = this.simpleFlags;
+
+	if (flags.help) {
 		this.ShowHelp();
-	} else if (this.HasFlag("version")) {
+	} else if (flags.version) {
 		this.ShowVersion();
-	} else if (this.HasFlag("build")) {
+	} else if (flags.build) {
 		//
-	} else if (this.HasFlag("list")) {
+	} else if (flags.list) {
 		this.ShowList();
-	} else if (this.HasFlag("serve")) {
+	} else if (flags.serve) {
 		//
-	} else if (this.HasFlag("update")) {
+	} else if (flags.update) {
 		this.Update();
-	} else if (this.HasFlag("watch")) {
+	} else if (flags.watch) {
 		//
-	} else if (this.HasFlag("experiment")) {
+	} else if (flags.experiment) {
 		this.Experiment();
 	} else {
 		//
