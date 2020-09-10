@@ -33,6 +33,10 @@ Theme.prototype.InputDirectory = function () {
 	return fsutils.JoinPath(this.ThemesInputDirectory(), this.Name());
 }
 
+Theme.prototype.OutputDirectory = function () {
+	return fsutils.JoinPath("x/themes", this.Name());
+}
+
 Theme.prototype.TemplatesInputDirectory = function () {
 	return fsutils.JoinPath(this.InputDirectory(), "templates");
 }
