@@ -54,7 +54,7 @@ Theme.prototype.JsInputDirectory = function () {
 }
 
 Theme.prototype.JsonFileName = function () {
-	return this.Name() + ".json";
+	return "theme.json";
 }
 
 Theme.prototype.JsonFilePath = function () {
