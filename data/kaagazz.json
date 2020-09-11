@@ -17,6 +17,7 @@
 		"tags": "tags",
 		"zzz": false
 	},
+
 	"output": {
 		"author": "author",
 		"category": "category",
@@ -94,11 +95,32 @@
 			"major": false
 		},
 		{
+			"code": "g",
+			"name": "green",
+			"description": "Run Green().",
+			"implemented": false,
+			"major": false
+		},
+		{
 			"code": "h",
 			"name": "help",
 			"description": "Show help.",
 			"implemented": true,
 			"major": true
+		},
+		{
+			"code": "i",
+			"name": "install",
+			"description": "Install themes.",
+			"implemented": false,
+			"major": false
+		},
+		{
+			"code": "j",
+			"name": "jingle",
+			"description": "Jingle bells.",
+			"implemented": false,
+			"major": false
 		},
 		{
 			"code": "k",
@@ -166,7 +188,7 @@
 		{
 			"code": "x",
 			"name": "experiment",
-			"description": "Run Experiment()",
+			"description": "Run Experiment().",
 			"implemented": true,
 			"major": false
 		}
