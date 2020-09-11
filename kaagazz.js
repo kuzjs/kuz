@@ -30,6 +30,10 @@ Flag.prototype.Name = function () {
 	return this.major ? this.name : "@" + this.name;
 }
 
+Flag.prototype.FullName = function () {
+	return "--" + this.Name();
+}
+
 Flag.prototype.Description = function () {
 	return this.description;
 }
@@ -43,7 +47,7 @@ Flag.prototype.State = function () {
 }
 
 Flag.prototype.Row = function () {
-	return [this.Code(), this.Name(), this.Description(), this.Status(), this.State()];
+	return [this.Code(), this.FullName(), this.Description(), this.Status(), this.State()];
 }
 
 
@@ -151,7 +155,7 @@ KaagazzApp.prototype.ShowHelp = function () {
 	log.Green("Kaagazz help.");
 	let table = new Table();
 	table.AddColumn("Code");
-	table.AddColumn("Name", 12);
+	table.AddColumn("Name", 16);
 	table.AddColumn("Description", 32);
 	table.AddColumn("Status", 8);
 	table.AddColumn("State", 10);
