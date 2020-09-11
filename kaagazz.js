@@ -17,8 +17,8 @@ function Flag (flagObject) {
 	this.code = flagObject.code;
 	this.name = flagObject.name;
 	this.description = flagObject.description;
-	this.implemented = flagObject.implemented;
-	this.major = flagObject.major;
+	this.implemented = (flagObject.implemented === undefined) ? false : flagObject.implemented;
+	this.major = (flagObject.major === undefined) ? false : flagObject.major;
 	this.isset = false;
 }
 

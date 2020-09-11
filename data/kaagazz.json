@@ -55,23 +55,18 @@
 		{
 			"code": "a",
 			"name": "authors",
-			"description": "Build authors.",
-			"implemented": false,
-			"major": false
+			"description": "Build authors."
 		},
 		{
 			"code": "b",
 			"name": "build",
 			"description": "Build the site.",
-			"implemented": false,
 			"major": true
 		},
 		{
 			"code": "c",
 			"name": "categories",
-			"description": "Build categories.",
-			"implemented": false,
-			"major": false
+			"description": "Build categories."
 		},
 		{
 			"code": "d",
@@ -83,23 +78,17 @@
 		{
 			"code": "e",
 			"name": "experiment",
-			"description": "Run Experiment().",
-			"implemented": false,
-			"major": false
+			"description": "Run Experiment()."
 		},
 		{
 			"code": "f",
 			"name": "fix",
-			"description": "Fix things.",
-			"implemented": false,
-			"major": false
+			"description": "Fix things."
 		},
 		{
 			"code": "g",
 			"name": "green",
-			"description": "Run Green().",
-			"implemented": false,
-			"major": false
+			"description": "Run Green()."
 		},
 		{
 			"code": "h",
@@ -111,23 +100,17 @@
 		{
 			"code": "i",
 			"name": "install",
-			"description": "Install themes.",
-			"implemented": false,
-			"major": false
+			"description": "Install themes."
 		},
 		{
 			"code": "j",
 			"name": "jingle",
-			"description": "Jingle bells.",
-			"implemented": false,
-			"major": false
+			"description": "Jingle bells."
 		},
 		{
 			"code": "k",
 			"name": "collections",
-			"description": "Build collections.",
-			"implemented": false,
-			"major": false
+			"description": "Build collections."
 		},
 		{
 			"code": "l",
@@ -139,15 +122,12 @@
 		{
 			"code": "p",
 			"name": "pages",
-			"description": "Build pages.",
-			"implemented": false,
-			"major": false
+			"description": "Build pages."
 		},
 		{
 			"code": "r",
 			"name": "report",
 			"description": "Report problems.",
-			"implemented": false,
 			"major": true
 		},
 		{
@@ -160,9 +140,7 @@
 		{
 			"code": "t",
 			"name": "tags",
-			"description": "Build tags.",
-			"implemented": false,
-			"major": false
+			"description": "Build tags."
 		},
 		{
 			"code": "u",
@@ -189,8 +167,7 @@
 			"code": "x",
 			"name": "experiment",
 			"description": "Run Experiment().",
-			"implemented": true,
-			"major": false
+			"implemented": true
 		}
 	]
 }
