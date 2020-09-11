@@ -151,22 +151,25 @@ Site.prototype.GetDataFileContents = function (filename) {
 Site.prototype.SetupThemes = function () {
 	this.themes = [];
 
-	if (this.meta.json.themes === undefined) {
-		log.Red("Themes not specified");
+	let themeNames = this.meta.json.themes;
+	if (themeNames === undefined) {
+		log.Red("Themes param not specified.");
+	} else if (themeNames.length == 0) {
+		log.Red("Themes param is empty.");
 	} else {
-		for (let index in this.meta.json.themes) {
-			let themeName = this.meta.json.themes[index];
+		for (let index in themeNames) {
+			let themeName = themeNames[index];
 			let theme = new Theme(themeName);
 			if (theme.IsValid()) {
 				this.themes.push(theme);
+			} else {
+				log.Red("Invalid theme: " + themeName);
 			}
 		}
 	}
 
 	if (this.themes.length == 0) {
-		let defaultTheme = new Theme("default");
-		this.themes.push(defaultTheme);
-		log.Green("Theme set to default: " + defaultTheme);
+		log.Red("App has no themes.");
 	}
 }
 
