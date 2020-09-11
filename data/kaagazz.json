@@ -120,9 +120,21 @@
 			"major": true
 		},
 		{
+			"code": "n",
+			"name": "new",
+			"description": "New site.",
+			"major": true
+		},
+		{
 			"code": "p",
 			"name": "pages",
 			"description": "Build pages."
+		},
+		{
+			"code": "q",
+			"name": "quote",
+			"description": "Display a quote.",
+			"major": true
 		},
 		{
 			"code": "r",
