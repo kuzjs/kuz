@@ -135,20 +135,9 @@ KaagazzApp.prototype.SetupFlags = function () {
 		this.simpleFlags[flag.name] = flag.isset;
 	}
 
-	if (this.HasFlag("debug")) {
+	if (this.simpleFlags.debug) {
 		log.DebugOn();
 	}
-}
-
-KaagazzApp.prototype.HasFlag = function (flagName) {
-	for (let k in this.flags) {
-		let currentFlag = this.flags[k];
-		if (currentFlag.name == flagName) {
-			return currentFlag.isset;
-		}
-	}
-
-	return false;
 }
 
 KaagazzApp.prototype.Blackadder = function () {
