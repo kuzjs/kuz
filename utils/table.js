@@ -20,11 +20,13 @@ Table.prototype.AddColumn = function (columnName, columnLength) {
 		name: columnName,
 		length: columnLength
 	});
+	return this;
 }
 
 Table.prototype.Add = function (obj) {
 	let row = obj["Row"]();
 	this.AddRow(row);
+	return this;
 }
 
 Table.prototype.AddArray = function (arr) {
@@ -32,6 +34,7 @@ Table.prototype.AddArray = function (arr) {
 		let row = arr[index]["Row"]();
 		this.AddRow(row);
 	}
+	return this;
 }
 
 Table.prototype.AddRow = function (row) {
@@ -41,6 +44,7 @@ Table.prototype.AddRow = function (row) {
 		}
 	}
 	this.rowData.push(row);
+	return this;
 }
 
 Table.prototype.GetColumnLength = function (columnIndex) {
@@ -82,10 +86,12 @@ Table.prototype.Print = function () {
 		this.PrintRow(index);
 	}
 	console.log(rowSeparator);
+	return this;
 }
 
 Table.prototype.Clear = function () {
 	this.rowData = [];
+	return this;
 }
 
 
