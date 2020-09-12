@@ -95,7 +95,7 @@ Renderable.prototype.CodeName = function () {
 }
 
 Renderable.prototype.Row = function () {
-	return [this.CodeName(), this.Title()];
+	return [this.CodeName(), this.Name(), this.Title()];
 }
 
 Renderable.prototype.Title = function () {

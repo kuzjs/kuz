@@ -179,6 +179,7 @@ Site.prototype.SetupThemes = function () {
 Site.prototype.SetupTable = function (arr) {
 	this.table = new Table();
 	this.table.AddColumn("Codename", 5);
+	this.table.AddColumn("Name", 10);
 	this.table.AddColumn("Title", 20);
 }
 
