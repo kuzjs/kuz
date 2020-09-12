@@ -155,10 +155,6 @@ KaagazzApp.prototype.GetSiteJsonPath = function () {
 	return this.meta.json.filenames.siteJson;
 }
 
-KaagazzApp.prototype.Update = function () {
-	return this.site.Update();
-}
-
 KaagazzApp.prototype.toString = function () {
 	return this.meta.json.meta.name;
 }
@@ -209,6 +205,22 @@ KaagazzApp.prototype.ListThings = function (flags) {
 	}
 }
 
+KaagazzApp.prototype.UpdateThings = function (flags) {
+	if (flags.authors) {
+		this.site.UpdateAuthors();
+	} else if (flags.categories) {
+		this.site.UpdateCategories();
+	} else if (flags.collections) {
+		this.site.UpdateCollections();
+	} else if (flags.pages) {
+		this.site.UpdatePages();
+	} else if (flags.tags) {
+		this.site.UpdateTags();
+	} else {
+		this.site.Update();
+	}
+}
+
 KaagazzApp.prototype.CheckForModule = function (moduleName) {
 	try {
 		const mod = require(moduleName);
@@ -237,7 +249,7 @@ KaagazzApp.prototype.Run = function () {
 	} else if (flags.serve) {
 		//
 	} else if (flags.update) {
-		this.Update();
+		this.UpdateThings(flags);
 	} else if (flags.watch) {
 		//
 	} else if (flags.experiment) {
