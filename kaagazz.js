@@ -95,6 +95,8 @@ KaagazzApp.prototype.AllIsWell = function () {
 KaagazzApp.prototype.SetupFlags = function () {
 	let flags = this.meta.json.flags;
 	this.flags = [];
+	this.args = [];
+
 	for (let index in flags) {
 		let flagObject = flags[index];
 		let flag = new Flag(flagObject);
@@ -104,7 +106,15 @@ KaagazzApp.prototype.SetupFlags = function () {
 	let argv = process.argv;
 	for (let i=2; i<argv.length; i++) {
 		let argument = argv[i];
-		if (argument[0] == "-") {
+		if (argument.startsWith("--")) {
+			let flagName = argument.slice(2);
+			for (let flagIndex in this.flags) {
+				let currentFlag = this.flags[flagIndex];
+				if (currentFlag.name == flagName) {
+					currentFlag.isset = true;
+				}
+			}
+		} else if (argument.startsWith("-")) {
 			for (let j=1; j<argument.length; j++) {
 				let letter = argument[j];
 				for (let k in this.flags) {
@@ -114,6 +124,8 @@ KaagazzApp.prototype.SetupFlags = function () {
 					}
 				}
 			}
+		} else {
+			this.args.push(argument);
 		}
 	}
 
