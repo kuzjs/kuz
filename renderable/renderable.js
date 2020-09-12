@@ -107,17 +107,11 @@ Renderable.prototype.SetTitle = function (title) {
 }
 
 Renderable.prototype.Next = function () {
-	if (this.next) {
-		return this.next;
-	}
-	return null;
+	return this.next;
 }
 
 Renderable.prototype.Previous = function () {
-	if (this.previous) {
-		return this.previous;
-	}
-	return null;
+	return this.previous;
 }
 
 Renderable.prototype.Theme = function () {

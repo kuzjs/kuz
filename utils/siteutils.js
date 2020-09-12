@@ -20,18 +20,11 @@ function SetSite (mySite) {
 }
 
 function SetupNextPrevious (arr) {
-	for (let index in arr) {
-		if (index > 0) {
-			arr[index].previous = arr[index-1];
-		} else {
-			arr[index].previous = null;
-		}
-
-		if (index < (arr.length-1)) {
-			arr[index].next = arr[index+1];
-		} else {
-			arr[index].next = null;
-		}
+	for (let index=0; index<arr.length; index++) {
+		let nextIndex = index + 1;
+		let prevIndex = index - 1;
+		arr[index].next = arr[nextIndex] ? arr[nextIndex] : null;
+		arr[index].previous = arr[prevIndex] ? arr[prevIndex] : null;
 	}
 }
 
