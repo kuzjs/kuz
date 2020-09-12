@@ -217,7 +217,19 @@ KaagazzApp.prototype.Run = function () {
 	} else if (flags.build) {
 		//
 	} else if (flags.list) {
-		this.ShowList();
+		if (flags.authors) {
+			this.site.PrintAuthors();
+		} else if (flags.categories) {
+			this.site.PrintCategories();
+		} else if (flags.collections) {
+			this.site.PrintCollections();
+		} else if (flags.pages) {
+			this.site.PrintPages();
+		} else if (flags.tags) {
+			this.site.PrintTags();
+		} else {
+			//
+		}
 	} else if (flags.serve) {
 		//
 	} else if (flags.update) {

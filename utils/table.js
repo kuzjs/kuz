@@ -27,6 +27,13 @@ Table.prototype.Add = function (obj) {
 	this.AddRow(row);
 }
 
+Table.prototype.AddArray = function (arr) {
+	for (let index in arr) {
+		let row = arr[index]["Row"]();
+		this.AddRow(row);
+	}
+}
+
 Table.prototype.AddRow = function (row) {
 	this.rowData.push(row);
 }

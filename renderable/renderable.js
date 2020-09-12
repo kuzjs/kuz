@@ -90,6 +90,14 @@ Renderable.prototype.SetName = function (name) {
 	this.name = name.trim().replace(" ", "-").replace("_", "-");
 }
 
+Renderable.prototype.CodeName = function () {
+	return this.typename[0] + this.index;
+}
+
+Renderable.prototype.Row = function () {
+	return [this.CodeName(), this.Title()];
+}
+
 Renderable.prototype.Title = function () {
 	return this.GetTitle();
 }

@@ -6,6 +6,8 @@ const log = require("./utils/log");
 const siteutils = require("./utils/siteutils");
 const fsutils = require("./utils/fsutils");
 
+const Table = require("./utils/table").Table;
+
 const Theme = require("./theme/theme").Theme;
 
 const JsonFile = require("./utils/jsonfile").JsonFile;
@@ -24,6 +26,7 @@ Site.prototype.Setup = function (kaagazz) {
 	this.meta = new JsonFile(this.siteJsonPath);
 	this.SetAllDirectoryPaths();
 	this.SetupThemes();
+	this.SetupTable();
 	this.SetupRenderables();
 }
 
@@ -173,6 +176,12 @@ Site.prototype.SetupThemes = function () {
 	}
 }
 
+Site.prototype.SetupTable = function (arr) {
+	this.table = new Table();
+	this.table.AddColumn("Codename", 5);
+	this.table.AddColumn("Title", 20);
+}
+
 Site.prototype.GetThemeFromName = function (themeName) {
 	for (let index in this.site.themes) {
 		let theme = this.site.themes[index];
@@ -216,34 +225,29 @@ Site.prototype.PrintDirectories = function () {
 	log.SomeNews("Special: " + this.GetSpecialDirectory());
 }
 
+Site.prototype.PrintArrayAsTable = function (arr) {
+	this.table.AddArray(arr);
+	this.table.Print();
+}
+
 Site.prototype.PrintAuthors = function () {
-	for (let index in this.authors) {
-		log.SomeNews(this.authors[index]);
-	}
+	this.PrintArrayAsTable(this.authors);
 }
 
 Site.prototype.PrintCategories = function () {
-	for (let index in this.categories) {
-		log.SomeNews(this.categories[index]);
-	}
+	this.PrintArrayAsTable(this.categories);
 }
 
 Site.prototype.PrintTags = function () {
-	for (let index in this.tags) {
-		log.SomeNews(this.tags[index]);
-	}
+	this.PrintArrayAsTable(this.tags);
 }
 
 Site.prototype.PrintPages = function () {
-	for (let index in this.pages) {
-		log.SomeNews(this.pages[index]);
-	}
+	this.PrintArrayAsTable(this.pages);
 }
 
 Site.prototype.PrintCollections = function () {
-	for (let index in this.collections) {
-		log.SomeNews(this.collections[index]);
-	}
+	this.PrintArrayAsTable(this.collections);
 }
 
 Site.prototype.PrintConfiguration = function () {
