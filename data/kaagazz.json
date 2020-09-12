@@ -8,13 +8,14 @@
 	},
 
 	"input": {
-		"data": "data",
-		"meta": "meta",
 		"authors": "authors",
 		"categories": "categories",
 		"collections": "collections",
+		"data": "data",
+		"meta": "meta",
 		"pages": "pages",
 		"tags": "tags",
+		"themes": "themes",
 		"zzz": false
 	},
 
@@ -26,6 +27,7 @@
 		"root": "docs",
 		"special": "x",
 		"tag": "tag",
+		"themes": "themes",
 		"zzz": false
 	},
 
