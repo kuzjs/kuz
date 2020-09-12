@@ -71,6 +71,11 @@
 			"description": "Build categories."
 		},
 		{
+			"code": "C",
+			"name": "collections",
+			"description": "Build collections."
+		},
+		{
 			"code": "d",
 			"name": "debug",
 			"description": "Show debug output.",
@@ -108,11 +113,6 @@
 			"code": "j",
 			"name": "jingle",
 			"description": "Jingle bells."
-		},
-		{
-			"code": "k",
-			"name": "collections",
-			"description": "Build collections."
 		},
 		{
 			"code": "l",
@@ -155,6 +155,11 @@
 			"code": "t",
 			"name": "tags",
 			"description": "Build tags."
+		},
+		{
+			"code": "T",
+			"name": "themes",
+			"description": "Themes only."
 		},
 		{
 			"code": "u",
