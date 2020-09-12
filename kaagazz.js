@@ -193,6 +193,22 @@ KaagazzApp.prototype.Experiment = function () {
 	log.Green("Kaagazz experiment.");
 }
 
+KaagazzApp.prototype.ListThings = function (flags) {
+	if (flags.authors) {
+		this.site.PrintAuthors();
+	} else if (flags.categories) {
+		this.site.PrintCategories();
+	} else if (flags.collections) {
+		this.site.PrintCollections();
+	} else if (flags.pages) {
+		this.site.PrintPages();
+	} else if (flags.tags) {
+		this.site.PrintTags();
+	} else {
+		//
+	}
+}
+
 KaagazzApp.prototype.CheckForModule = function (moduleName) {
 	try {
 		const mod = require(moduleName);
@@ -217,19 +233,7 @@ KaagazzApp.prototype.Run = function () {
 	} else if (flags.build) {
 		//
 	} else if (flags.list) {
-		if (flags.authors) {
-			this.site.PrintAuthors();
-		} else if (flags.categories) {
-			this.site.PrintCategories();
-		} else if (flags.collections) {
-			this.site.PrintCollections();
-		} else if (flags.pages) {
-			this.site.PrintPages();
-		} else if (flags.tags) {
-			this.site.PrintTags();
-		} else {
-			//
-		}
+		this.ListThings(flags);
 	} else if (flags.serve) {
 		//
 	} else if (flags.update) {
