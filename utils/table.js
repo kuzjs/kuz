@@ -35,6 +35,11 @@ Table.prototype.AddArray = function (arr) {
 }
 
 Table.prototype.AddRow = function (row) {
+	for (let index in row) {
+		if (row[index].length > this.columnObjects[index].length) {
+			this.columnObjects[index].length = row[index].length;
+		}
+	}
 	this.rowData.push(row);
 }
 
