@@ -61,6 +61,8 @@ function KaagazzApp () {
 
 	if (this.AllIsWell()) {
 		this.site = new Site(this);
+	} else {
+		this.site = null;
 	}
 }
 
@@ -74,6 +76,16 @@ KaagazzApp.prototype.AllIsWell = function () {
 	}
 
 	if (!this.ipsum.AllIsWell()) {
+		return false;
+	}
+
+	if (!this.CheckForModule("pug")) {
+		log.Red("Module NOT found: pug");
+		return false;
+	}
+
+	if (!this.CheckForModule("express")) {
+		log.Red("Module NOT found: express");
 		return false;
 	}
 
@@ -191,18 +203,8 @@ KaagazzApp.prototype.CheckForModule = function (moduleName) {
 }
 
 KaagazzApp.prototype.Run = function () {
-	if (!this.AllIsWell()) {
-		log.BadNews("All is not well.");
-		return;
-	}
-
-	if (!this.CheckForModule("pug")) {
-		log.Red("Module NOT found: pug");
-		return;
-	}
-
-	if (!this.CheckForModule("express")) {
-		log.Red("Module NOT found: express");
+	if (this.site == null) {
+		log.BadNews("Site not initialized.");
 		return;
 	}
 
