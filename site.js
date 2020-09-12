@@ -298,6 +298,40 @@ Site.prototype.GetTagsFromNameArray = function (tagNameArray) {
 	return tags;
 }
 
+Site.prototype.ForcedUpdateArray = function (arr) {
+	for (let index in arr) {
+		arr[index].ForcedUpdate();
+	}
+}
+
+Site.prototype.ForcedUpdateAuthors = function () {
+	this.ForcedUpdateArray(this.authors);
+}
+
+Site.prototype.ForcedUpdateCategories = function () {
+	this.ForcedUpdateArray(this.categories);
+}
+
+Site.prototype.ForcedUpdateTags = function () {
+	this.ForcedUpdateArray(this.tags);
+}
+
+Site.prototype.ForcedUpdatePages = function () {
+	this.ForcedUpdateArray(this.pages);
+}
+
+Site.prototype.ForcedUpdateCollections = function () {
+	this.ForcedUpdateArray(this.collections);
+}
+
+Site.prototype.ForcedUpdateAll = function () {
+	this.ForcedUpdateAuthors();
+	this.ForcedUpdateCategories();
+	this.ForcedUpdateTags();
+	this.ForcedUpdatePages();
+	this.ForcedUpdateCollections();
+}
+
 Site.prototype.UpdateAuthors = function () {
 	for (let index in this.authors) {
 		this.authors[index].Update();

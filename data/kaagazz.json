@@ -84,8 +84,8 @@
 		},
 		{
 			"code": "f",
-			"name": "fix",
-			"description": "Fix things."
+			"name": "forced",
+			"description": "Forced-update things."
 		},
 		{
 			"code": "g",

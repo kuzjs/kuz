@@ -221,6 +221,22 @@ KaagazzApp.prototype.UpdateThings = function (flags) {
 	}
 }
 
+KaagazzApp.prototype.ForcedUpdateThings = function (flags) {
+	if (flags.authors) {
+		this.site.ForcedUpdateAuthors();
+	} else if (flags.categories) {
+		this.site.ForcedUpdateCategories();
+	} else if (flags.collections) {
+		this.site.ForcedUpdateCollections();
+	} else if (flags.pages) {
+		this.site.ForcedUpdatePages();
+	} else if (flags.tags) {
+		this.site.ForcedUpdateTags();
+	} else {
+		this.site.ForcedUpdateAll();
+	}
+}
+
 KaagazzApp.prototype.CheckForModule = function (moduleName) {
 	try {
 		const mod = require(moduleName);
@@ -246,6 +262,8 @@ KaagazzApp.prototype.Run = function () {
 		//
 	} else if (flags.list) {
 		this.ListThings(flags);
+	} else if (flags.force) {
+		this.ForcedUpdateThings(flags);
 	} else if (flags.serve) {
 		//
 	} else if (flags.update) {
