@@ -114,6 +114,14 @@ Renderable.prototype.Previous = function () {
 	return this.previous;
 }
 
+Renderable.prototype.Root = function () {
+	if (this.IsEntity()) {
+		return this.site.pages[0];
+	} else {
+		this.configFileObject.root;
+	}
+}
+
 Renderable.prototype.Theme = function () {
 	let themeNameProperty = this.GetPropertyCascaded("theme");
 	if (themeNameProperty.found) {

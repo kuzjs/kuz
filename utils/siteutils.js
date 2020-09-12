@@ -106,6 +106,7 @@ function GetPages (site, dirpath) {
 			if (root === null) {
 				entry = entry.slice(1, -1);
 				root = new Page(site, configFileObject, entry, true);
+				configFileObject.root = root;
 				pages.push(root);
 			} else {
 				site.Error("Multiple roots specified: " + configPath);
