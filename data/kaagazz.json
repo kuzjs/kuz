@@ -57,28 +57,28 @@
 		{
 			"code": "a",
 			"name": "authors",
-			"description": "Build authors."
+			"description": "Authors only modifier."
 		},
 		{
 			"code": "b",
 			"name": "build",
-			"description": "Build the site.",
+			"description": "Build things.",
 			"major": true
 		},
 		{
 			"code": "c",
 			"name": "categories",
-			"description": "Build categories."
+			"description": "Categories only modifier."
 		},
 		{
 			"code": "C",
 			"name": "collections",
-			"description": "Build collections."
+			"description": "Collections only modifier."
 		},
 		{
 			"code": "d",
 			"name": "debug",
-			"description": "Show debug output.",
+			"description": "Show debug messages.",
 			"implemented": true,
 			"major": true
 		},
@@ -117,7 +117,7 @@
 		{
 			"code": "l",
 			"name": "list",
-			"description": "List pages.",
+			"description": "List things.",
 			"implemented": true,
 			"major": true
 		},
@@ -130,7 +130,7 @@
 		{
 			"code": "p",
 			"name": "pages",
-			"description": "Build pages."
+			"description": "Pages only modifier."
 		},
 		{
 			"code": "q",
@@ -154,17 +154,17 @@
 		{
 			"code": "t",
 			"name": "tags",
-			"description": "Build tags."
+			"description": "Tags only modifier."
 		},
 		{
 			"code": "T",
 			"name": "themes",
-			"description": "Themes only."
+			"description": "Themes only modifier."
 		},
 		{
 			"code": "u",
 			"name": "update",
-			"description": "Update the app and themes.",
+			"description": "Update things.",
 			"implemented": true,
 			"major": true
 		},
