@@ -229,6 +229,7 @@ Site.prototype.PrintDirectories = function () {
 Site.prototype.PrintArrayAsTable = function (arr) {
 	this.table.AddArray(arr);
 	this.table.Print();
+	this.table.Clear();
 }
 
 Site.prototype.PrintAuthors = function () {

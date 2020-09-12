@@ -71,7 +71,8 @@ Table.prototype.PrintRow = function (rowIndex) {
 		let columnLength = this.GetColumnLength(j);
 		rowString += row[j].padStart(columnLength) + " | ";
 	}
-	console.log(rowString);}
+	console.log(rowString);
+}
 
 Table.prototype.Print = function () {
 	let rowSeparator = this.GetRowSeparator();
@@ -81,6 +82,10 @@ Table.prototype.Print = function () {
 		this.PrintRow(index);
 	}
 	console.log(rowSeparator);
+}
+
+Table.prototype.Clear = function () {
+	this.rowData = [];
 }
 
 
