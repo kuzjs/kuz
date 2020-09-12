@@ -217,7 +217,7 @@ KaagazzApp.prototype.UpdateThings = function (flags) {
 	} else if (flags.tags) {
 		this.site.UpdateTags();
 	} else {
-		this.site.Update();
+		this.site.UpdateAll();
 	}
 }
 

@@ -332,37 +332,33 @@ Site.prototype.ForcedUpdateAll = function () {
 	this.ForcedUpdateCollections();
 }
 
-Site.prototype.UpdateAuthors = function () {
-	for (let index in this.authors) {
-		this.authors[index].Update();
+Site.prototype.UpdateArray = function (arr) {
+	for (let index in arr) {
+		arr[index].Update();
 	}
+}
+
+Site.prototype.UpdateAuthors = function () {
+	this.UpdateArray(this.authors);
 }
 
 Site.prototype.UpdateCategories = function () {
-	for (let index in this.categories) {
-		this.categories[index].Update();
-	}
+	this.UpdateArray(this.categories);
 }
 
 Site.prototype.UpdateTags = function () {
-	for (let index in this.tags) {
-		this.tags[index].Update();
-	}
+	this.UpdateArray(this.tags);
 }
 
 Site.prototype.UpdatePages = function () {
-	for (let index in this.pages) {
-		this.pages[index].Update();
-	}
+	this.UpdateArray(this.pages);
 }
 
 Site.prototype.UpdateCollections = function () {
-	for (let index in this.collections) {
-		this.collections[index].Update();
-	}
+	this.UpdateArray(this.collections);
 }
 
-Site.prototype.Update = function () {
+Site.prototype.UpdateAll = function () {
 	this.UpdateAuthors();
 	this.UpdateCategories();
 	this.UpdateTags();
