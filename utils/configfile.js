@@ -10,6 +10,7 @@ const fsutils = require("./fsutils");
 function ConfigFile(site, dirpath) {
 	this.site = site;
 	this.dirpath = dirpath;
+	this.pages = [];
 
 	if (this.dirpath === undefined) {
 		this.configDirpath = site.GetInputDirectory();
@@ -44,7 +45,7 @@ ConfigFile.prototype.GetEntries = function () {
 }
 
 ConfigFile.prototype.GetPages = function () {
-	return [];
+	return this.pages;
 }
 
 ConfigFile.prototype.GetStringValue = function (propertyName) {

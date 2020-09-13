@@ -125,6 +125,7 @@ function GetPages (site, dirpath, configFileParentObject) {
 			pages = pages.concat(GetPages(site, entryDirpath, configFileObject));
 		} else {
 			let page = new Page(site, configFileObject, entry);
+			configFileObject.pages.push(pages);
 			pages.push(page);
 		}
 	}
