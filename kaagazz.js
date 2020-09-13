@@ -281,7 +281,7 @@ KaagazzApp.prototype.Run = function () {
 		//
 	} else if (flags.list) {
 		this.ListThings(flags);
-	} else if (flags.force) {
+	} else if (flags.forced) {
 		this.ForcedUpdateThings(flags);
 	} else if (flags.serve) {
 		//
