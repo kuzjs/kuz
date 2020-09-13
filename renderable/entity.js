@@ -10,6 +10,7 @@ function Entity () {
 Entity.prototype = new Renderable();
 Entity.prototype.typename = "entity";
 Entity.prototype.typenamePlural = "entities";
+Entity.prototype.codeLetter = "e";
 
 Entity.prototype.SetupEntity = function () {
 	this.metaData = new MetaData(this.site, this.InputFilePath());

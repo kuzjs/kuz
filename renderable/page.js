@@ -24,6 +24,7 @@ function Page(site, configFileObject, filename, isRoot = false) {
 Page.prototype = new Renderable();
 Page.prototype.typename = "page";
 Page.prototype.typenamePlural = "pages";
+Page.prototype.codeLetter = "p";
 
 Page.prototype.Setup = function () {
 	this.SetupInput();

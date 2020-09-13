@@ -12,6 +12,7 @@ function Author(site, entry) {
 Author.prototype = new Entity();
 Author.prototype.typename = "author";
 Author.prototype.typenamePlural = "authors";
+Author.prototype.codeLetter = "a";
 
 Author.prototype.IsAuthor = function () {
 	return true;

@@ -12,6 +12,7 @@ function Renderable () {
 
 Renderable.prototype.typename = "renderable";
 Renderable.prototype.typenamePlural = "renderables";
+Renderable.prototype.codeLetter = "r";
 
 Renderable.prototype.Setup = function () {
 	//
@@ -91,7 +92,7 @@ Renderable.prototype.SetName = function (name) {
 }
 
 Renderable.prototype.CodeName = function () {
-	return this.typename[0] + this.index;
+	return this.codeLetter + this.index;
 }
 
 Renderable.prototype.Row = function () {
