@@ -365,12 +365,12 @@ Site.prototype.ForcedUpdateCollections = function () {
 	this.ForcedUpdateArray(this.collections);
 }
 
+Site.prototype.ForcedUpdateEntities = function () {
+	this.ForcedUpdateArray(this.Entities());
+}
+
 Site.prototype.ForcedUpdateAll = function () {
-	this.ForcedUpdateAuthors();
-	this.ForcedUpdateCategories();
-	this.ForcedUpdateTags();
-	this.ForcedUpdatePages();
-	this.ForcedUpdateCollections();
+	this.ForcedUpdateArray(this.All());
 }
 
 Site.prototype.UpdateArray = function (arr) {
@@ -399,12 +399,12 @@ Site.prototype.UpdateCollections = function () {
 	this.UpdateArray(this.collections);
 }
 
+Site.prototype.UpdateEntities = function () {
+	this.UpdateArray(this.Entities());
+}
+
 Site.prototype.UpdateAll = function () {
-	this.UpdateAuthors();
-	this.UpdateCategories();
-	this.UpdateTags();
-	this.UpdatePages();
-	this.UpdateCollections();
+	this.UpdateArray(this.All());
 }
 
 module.exports = {

@@ -217,7 +217,11 @@ KaagazzApp.prototype.ListThings = function (flags) {
 }
 
 KaagazzApp.prototype.UpdateThings = function (flags) {
-	if (flags.authors) {
+	if (flags.all) {
+		this.site.UpdateAll();
+	} else if (flags.entities) {
+		this.site.UpdateEntities();
+	} else if (flags.authors) {
 		this.site.UpdateAuthors();
 	} else if (flags.categories) {
 		this.site.UpdateCategories();
@@ -228,12 +232,16 @@ KaagazzApp.prototype.UpdateThings = function (flags) {
 	} else if (flags.tags) {
 		this.site.UpdateTags();
 	} else {
-		this.site.UpdateAll();
+		//this.site.UpdateAll();
 	}
 }
 
 KaagazzApp.prototype.ForcedUpdateThings = function (flags) {
-	if (flags.authors) {
+	if (flags.all) {
+		this.site.ForcedUpdateAll();
+	} else if (flags.entities) {
+		this.site.ForcedUpdateEntities();
+	} else if (flags.authors) {
 		this.site.ForcedUpdateAuthors();
 	} else if (flags.categories) {
 		this.site.ForcedUpdateCategories();
@@ -244,7 +252,7 @@ KaagazzApp.prototype.ForcedUpdateThings = function (flags) {
 	} else if (flags.tags) {
 		this.site.ForcedUpdateTags();
 	} else {
-		this.site.ForcedUpdateAll();
+		//this.site.ForcedUpdateAll();
 	}
 }
 
