@@ -194,6 +194,8 @@ KaagazzApp.prototype.Experiment = function () {
 KaagazzApp.prototype.ListThings = function (flags) {
 	if (flags.all) {
 		this.site.PrintAll();
+	} else if (flags.entities) {
+		this.site.PrintEntities();
 	} else if (flags.authors) {
 		this.site.PrintAuthors();
 	} else if (flags.categories) {

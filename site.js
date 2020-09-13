@@ -283,6 +283,10 @@ Site.prototype.PrintCollections = function () {
 	this.PrintArrayAsTable(this.collections);
 }
 
+Site.prototype.PrintEntities = function () {
+	this.PrintArrayAsTable(this.Entities());
+}
+
 Site.prototype.PrintAll = function () {
 	this.PrintArrayAsTable(this.All());
 }
