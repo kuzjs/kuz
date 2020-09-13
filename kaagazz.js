@@ -201,6 +201,32 @@ KaagazzApp.prototype.ShowFullHelp = function () {
 	table.Print();
 }
 
+KaagazzApp.prototype.ShowModifierFlags = function () {
+	let table = this.flags[0].GetTable();
+
+	for (let index in this.flags) {
+		let flag = this.flags[index];
+		if (flag.modifier) {
+			table.Add(flag);
+		}
+	}
+
+	table.Print();
+}
+
+KaagazzApp.prototype.ShowMajorFlags = function () {
+	let table = this.flags[0].GetTable();
+
+	for (let index in this.flags) {
+		let flag = this.flags[index];
+		if (flag.major) {
+			table.Add(flag);
+		}
+	}
+
+	table.Print();
+}
+
 KaagazzApp.prototype.ShowVersion = function () {
 	log.Green("Kaagazz version.");
 }
@@ -295,6 +321,10 @@ KaagazzApp.prototype.Run = function () {
 		this.ShowSomeHelp();
 	} else if (flags.helpfull) {
 		this.ShowFullHelp();
+	} else if (flags.modifier) {
+		this.ShowModifierFlags();
+	} else if (flags.major) {
+		this.ShowMajorFlags();
 	} else if (flags.version) {
 		this.ShowVersion();
 	} else if (flags.build) {
