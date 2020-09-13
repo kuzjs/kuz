@@ -260,6 +260,30 @@ Site.prototype.All = function () {
 	return this.Entities().concat(this.pages);
 }
 
+Site.prototype.CssFilesArray = function () {
+	let cssFiles = [];
+	for (let index in this.themes) {
+		cssFiles = cssFiles.concat(this.themes[index].cssFiles);
+	}
+	return cssFiles;
+}
+
+Site.prototype.JsFilesArray = function () {
+	let jsFiles = [];
+	for (let index in this.themes) {
+		jsFiles = jsFiles.concat(this.themes[index].jsFiles);
+	}
+	return jsFiles;
+}
+
+Site.prototype.ResFilesArray = function () {
+	let resFiles = [];
+	for (let index in this.themes) {
+		resFiles = resFiles.concat(this.themes[index].resFiles);
+	}
+	return resFiles;
+}
+
 Site.prototype.PrintArrayAsTable = function (arr) {
 	this.table.AddArray(arr).Print().Clear();
 }
@@ -298,6 +322,41 @@ Site.prototype.PrintThemes = function () {
 		table.Add(this.themes[index]);
 	}
 	table.Print();
+}
+
+Site.prototype.PrintFilesArray = function (arr) {
+	let table = arr[0].GetTable();
+	for (let index in arr) {
+		table.Add(arr[index]);
+	}
+	table.Print();
+}
+
+Site.prototype.PrintCssFiles = function () {
+	let arr = this.CssFilesArray();
+	if (arr.length == 0) {
+		log.Red("No CSS files found.");
+		return;
+	}
+	this.PrintFilesArray(arr);
+}
+
+Site.prototype.PrintJsFiles = function () {
+	let arr = this.JsFilesArray();
+	if (arr.length == 0) {
+		log.Red("No JS files found.");
+		return;
+	}
+	this.PrintFilesArray(arr);
+}
+
+Site.prototype.PrintResFiles = function () {
+	let arr = this.ResFilesArray();
+	if (arr.length == 0) {
+		log.Red("No Res files found.");
+		return;
+	}
+	this.PrintFilesArray(arr);
 }
 
 Site.prototype.PrintConfiguration = function () {
