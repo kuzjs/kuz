@@ -8,6 +8,7 @@ function Table () {
 
 Table.prototype.Reset = function () {
 	this.columnObjects = [];
+	this.paddingLength = 1;
 	this.rowData = [];
 	this.firstColumn = {
 		name: "Id",
@@ -19,6 +20,20 @@ Table.prototype.Reset = function () {
 Table.prototype.Clear = function () {
 	this.rowData = [];
 	return this;
+}
+
+Table.prototype.SetPadding = function (paddingLength) {
+	this.paddingLength = paddingLength;
+	return this;
+}
+
+Table.prototype.Padding = function () {
+	let padding = "";
+	return padding.padStart(this.paddingLength);
+}
+
+Table.prototype.Separator = function () {
+	return this.Padding() + "|" + this.Padding();
 }
 
 Table.prototype.AddColumn = function (columnName, columnLength) {
@@ -61,14 +76,15 @@ Table.prototype.GetColumnLength = function (columnIndex) {
 	return this.columnObjects[columnIndex].length;
 }
 
-Table.prototype.GetRowLength = function (columnIndex) {
-	let rowLength = 2 + this.firstColumn.length + 3;
+Table.prototype.GetRowLength = function () {
+	let rowLength = this.firstColumn.length + (2 * this.Separator().length) - this.paddingLength;
 	for (let columnIndex in this.columnObjects) {
 		let columnObject = this.columnObjects[columnIndex];
-		rowLength += columnObject.length + 3;
+		rowLength += columnObject.length + this.Separator().length;
 	}
 
-	return (rowLength-1);
+	rowLength -= this.paddingLength;
+	return (rowLength);
 }
 
 Table.prototype.GetNDashes = function (n) {
@@ -77,7 +93,7 @@ Table.prototype.GetNDashes = function (n) {
 }
 
 Table.prototype.GetColumnDashes = function (columnLength) {
-	return this.GetNDashes(1 + columnLength + 1);
+	return this.GetNDashes(this.paddingLength + columnLength + this.paddingLength);
 }
 
 Table.prototype.GetRowSeparator = function () {
@@ -91,10 +107,10 @@ Table.prototype.GetRowSeparator = function () {
 }
 
 Table.prototype.GetRowString = function (rowId, row) {
-	let rowString = "| " + rowId.padStart(this.firstColumn.length) + " | ";
+	let rowString = "|" + this.Padding() + rowId.padStart(this.firstColumn.length) + this.Separator();
 	for (let j in row) {
 		let columnLength = this.GetColumnLength(j);
-		rowString += row[j].padStart(columnLength) + " | ";
+		rowString += row[j].padStart(columnLength) + this.Separator();
 	}
 	return rowString;
 }
