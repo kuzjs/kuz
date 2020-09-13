@@ -71,10 +71,22 @@ Table.prototype.GetRowLength = function (columnIndex) {
 	return (rowLength-1);
 }
 
+Table.prototype.GetNDashes = function (n) {
+	let dashes = "";
+	return dashes.padStart(n, "-");
+}
+
+Table.prototype.GetColumnDashes = function (columnLength) {
+	return this.GetNDashes(1 + columnLength + 1);
+}
+
 Table.prototype.GetRowSeparator = function () {
-	let rowLength = this.GetRowLength();
-	let rowSeparator = "";
-	rowSeparator = rowSeparator.padStart(rowLength, "-");
+	let separator = "+";
+	let rowSeparator = separator + this.GetColumnDashes(this.firstColumn.length) + separator;
+	for (let columnIndex in this.columnObjects) {
+		let columnLength = this.columnObjects[columnIndex].length;
+		rowSeparator += this.GetColumnDashes(columnLength) + separator;
+	}
 	return rowSeparator;
 }
 
