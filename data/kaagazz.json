@@ -88,8 +88,7 @@
 			"code": "d",
 			"name": "debug",
 			"description": "Show debug messages.",
-			"implemented": true,
-			"major": true
+			"implemented": true
 		},
 		{
 			"code": "e",
@@ -100,7 +99,8 @@
 		{
 			"code": "f",
 			"name": "forced",
-			"description": "Forced-update things."
+			"description": "Forced-update things.",
+			"major": true
 		},
 		{
 			"code": "g",
@@ -112,15 +112,13 @@
 			"code": "h",
 			"name": "help",
 			"description": "Show some help.",
-			"implemented": true,
-			"major": true
+			"implemented": true
 		},
 		{
 			"code": "H",
 			"name": "helpfull",
 			"description": "Show full help.",
-			"implemented": true,
-			"major": true
+			"implemented": true
 		},
 		{
 			"code": "i",
@@ -155,20 +153,17 @@
 		{
 			"code": "m",
 			"name": "modifier",
-			"description": "List modifier flags.",
-			"major": true
+			"description": "List modifier flags."
 		},
 		{
 			"code": "M",
 			"name": "major",
-			"description": "List major flags.",
-			"major": true
+			"description": "List major flags."
 		},
 		{
 			"code": "n",
 			"name": "new",
-			"description": "New site.",
-			"major": true
+			"description": "New site."
 		},
 		{
 			"code": "p",
@@ -179,7 +174,8 @@
 		{
 			"code": "q",
 			"name": "search",
-			"description": "Search for a page."
+			"description": "Search for a page.",
+			"major": true
 		},
 		{
 			"code": "Q",
@@ -202,8 +198,7 @@
 			"code": "s",
 			"name": "serve",
 			"description": "Run a live server.",
-			"implemented": true,
-			"major": true
+			"implemented": true
 		},
 		{
 			"code": "S",
@@ -234,13 +229,13 @@
 			"code": "v",
 			"name": "version",
 			"description": "Show version.",
-			"implemented": true,
-			"major": true
+			"implemented": true
 		},
 		{
 			"code": "V",
 			"name": "verify",
-			"description": "Verify things."
+			"description": "Verify things.",
+			"major": true
 		},
 		{
 			"code": "w",
@@ -252,12 +247,14 @@
 		{
 			"code": "x",
 			"name": "deletable",
-			"description": "Find extra files."
+			"description": "Find extra files.",
+			"major": true
 		},
 		{
 			"code": "X",
 			"name": "delete",
-			"description": "Delete extra files."
+			"description": "Delete extra files.",
+			"major": true
 		}
 	]
 }
