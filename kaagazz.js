@@ -43,12 +43,16 @@ Flag.prototype.Status = function () {
 	return (this.implemented) ? "Working" : "Dev";
 }
 
+Flag.prototype.Type = function () {
+	return (this.modifier) ? "Mod" : "";
+}
+
 Flag.prototype.State = function () {
 	return (this.isset) ? "SET" : "---";
 }
 
 Flag.prototype.Row = function () {
-	return [this.Code(), this.FullName(), this.Description(), this.Status(), this.State()];
+	return [this.Code(), this.FullName(), this.Description(), this.Status(), this.Type(), this.State()];
 }
 
 
@@ -168,6 +172,7 @@ KaagazzApp.prototype.ShowHelp = function () {
 	table.AddColumn("Name", 16);
 	table.AddColumn("Description", 32);
 	table.AddColumn("Status", 8);
+	table.AddColumn("Type", 8);
 	table.AddColumn("State", 10);
 
 	for (let index in this.flags) {
