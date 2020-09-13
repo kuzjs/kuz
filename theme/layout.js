@@ -59,6 +59,9 @@ Layout.prototype.Update = function () {
 Layout.prototype.GetTable = function () {
 	let table = new Table();
 	table.AddColumn("Name");
+	table.AddColumn("Theme");
+	table.AddColumn("Title");
+	table.AddColumn("Description");
 	table.AddColumn("Path");
 	return table;
 }
@@ -66,7 +69,10 @@ Layout.prototype.GetTable = function () {
 Layout.prototype.Row = function () {
 	return [
 		this.name,
-		this.FullPath()
+		this.theme.themeName,
+		this.title,
+		this.description,
+		this.path
 	];
 }
 
