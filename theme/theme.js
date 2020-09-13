@@ -75,25 +75,16 @@ Theme.prototype.SetupPaths = function () {
 	}
 
 	this.meta = new JsonFile(this.JsonFilePath());
-	this.templateCount = 0;
-	this.templates = {};
-	for (let templateName in this.meta.json.templates) {
-		let templateFileName = this.meta.json.templates[templateName];
-		let templateFilePath = fsutils.JoinPath(this.TemplatesInputDirectory(), templateFileName);
-		if (fsutils.IsFile(templateFilePath)) {
-			let template = new Template(this, templateFilePath);
-			this.templates[templateName] = template;
-			this.templateCount++;
+	this.layouts = [];
+	for (let templateName in this.meta.json.layouts) {
+		let data = this.meta.json.layouts[templateName];
+		let layoutFilePath = fsutils.JoinPath(this.TemplatesInputDirectory(), data.path);
+		if (fsutils.IsFile(layoutFilePath)) {
+			let layout = new Template(this, data);
+			this.layouts.push(layout);
 		} else {
-			log.Red("Template NOT found: " + templateFilePath);
+			log.Red("Layout NOT found: " + layoutFilePath);
 		}
-	}
-
-	if (this.templateCount == 0) {
-		let templateFileName = this.Name() + ".pug";
-		let templateFilePath = fsutils.JoinPath(this.TemplatesInputDirectory(), templateFileName);
-		let defaultTemplate = new Template(this, templateFilePath);
-		this.templates[this.Name()] = defaultTemplate;
 	}
 
 	this.SetupCssFiles();
@@ -131,7 +122,23 @@ Theme.prototype.SetupResFiles = function () {
 }
 
 Theme.prototype.DefaultTemplate = function () {
-	return this.templates[this.Name()];
+	for (let index in this.layouts) {
+		let layout = this.layouts[index];
+		if (layout.default) {
+			return layout;
+		}
+	}
+	return this.layout[0];
+}
+
+Theme.prototype.GetTemplate = function (name) {
+	for (let index in this.layouts) {
+		let layout = this.layouts[index];
+		if (layout.name == name) {
+			return layout;
+		}
+	}
+	return null;
 }
 
 Theme.prototype.IsValid = function () {

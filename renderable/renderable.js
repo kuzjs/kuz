@@ -150,7 +150,7 @@ Renderable.prototype.Template = function () {
 
 Renderable.prototype.GetTemplate = function () {
 	let theme = this.Theme();
-	let template = theme.templates[this.typename];
+	let template = theme.GetTemplate(this.typename);
 
 	if (template === undefined) {
 		log.Red(theme.FullName() + " has no template for: " + this.typename);
