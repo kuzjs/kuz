@@ -350,17 +350,36 @@ KaagazzApp.prototype.CheckForModule = function (moduleName) {
 	}
 }
 
+KaagazzApp.prototype.FlagsAreOK = function () {
+	if (this.numberOfFlags.independent > 0) {
+		if (this.numberOfFlags.total > 1) {
+			log.Red("Independent flags cannot be combined.");
+			return false;
+		}
+	}
+
+	if (this.numberOfFlags.major > 1) {
+		log.Red("Multiple major flags specified.");
+		return false;
+	}
+
+	if (this.numberOfFlags.modifier > 0 && this.numberOfFlags.major == 0) {
+		log.Red("Modifiers specified without a major flag.");
+		return false;
+	}
+
+	return true;
+}
+
 KaagazzApp.prototype.Run = function () {
 	if (this.site == null) {
 		log.BadNews("Site not initialized.");
 		return;
 	}
 
-	if (this.numberOfFlags.total > 1) {
-		if (this.numberOfFlags.independent > 0) {
-			log.Red("Independent flags cannot be combined.");
-			return;
-		}
+	if (!this.FlagsAreOK()) {
+		log.BadNews("Flags are not OK.");
+		return;
 	}
 
 	let flags = this.simpleFlags;
