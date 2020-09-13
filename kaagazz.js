@@ -112,7 +112,7 @@ KaagazzApp.prototype.SetupFlags = function () {
 	for (let i=2; i<argv.length; i++) {
 		let argument = argv[i];
 		if (argument.startsWith("--")) {
-			let flagName = argument.slice(2);
+			let flagName = argument.slice(2).toLowerCase();
 			for (let flagIndex in this.flags) {
 				let currentFlag = this.flags[flagIndex];
 				if (currentFlag.name == flagName) {
