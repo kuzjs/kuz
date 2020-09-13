@@ -4,6 +4,8 @@ const fs = require("fs");
 const log = require("../utils/log");
 const fsutils = require("../utils/fsutils");
 
+const Table = require("../utils/table").Table;
+
 
 
 function Renderable () {
@@ -95,8 +97,22 @@ Renderable.prototype.CodeName = function () {
 	return this.codeLetter + this.index;
 }
 
+Renderable.prototype.GetTable = function () {
+	let table = new Table();
+	table.AddColumn("Codename", 5);
+	table.AddColumn("Name", 10);
+	table.AddColumn("Title", 20);
+	table.AddColumn("Layout");
+	return table;
+}
+
 Renderable.prototype.Row = function () {
-	return [this.CodeName(), this.Name(), this.Title()];
+	return [
+		this.CodeName(),
+		this.Name(),
+		this.Title(),
+		this.Layout().name
+	];
 }
 
 Renderable.prototype.Title = function () {

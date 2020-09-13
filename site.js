@@ -6,8 +6,6 @@ const log = require("./utils/log");
 const siteutils = require("./utils/siteutils");
 const fsutils = require("./utils/fsutils");
 
-const Table = require("./utils/table").Table;
-
 const Theme = require("./theme/theme").Theme;
 
 const JsonFile = require("./utils/jsonfile").JsonFile;
@@ -27,7 +25,6 @@ Site.prototype.Setup = function (kaagazz) {
 	this.configFileObjects = [];
 	this.SetAllDirectoryPaths();
 	this.SetupThemes();
-	this.SetupTable();
 	this.SetupRenderables();
 }
 
@@ -177,13 +174,6 @@ Site.prototype.SetupThemes = function () {
 	}
 }
 
-Site.prototype.SetupTable = function (arr) {
-	this.table = new Table();
-	this.table.AddColumn("Codename", 5);
-	this.table.AddColumn("Name", 10);
-	this.table.AddColumn("Title", 20);
-}
-
 Site.prototype.GetThemeFromName = function (themeName) {
 	for (let index in this.site.themes) {
 		let theme = this.site.themes[index];
@@ -293,7 +283,11 @@ Site.prototype.ResFilesArray = function () {
 }
 
 Site.prototype.PrintArrayAsTable = function (arr) {
-	this.table.AddArray(arr).Print().Clear();
+	let table = arr[0].GetTable();
+	for (let index in arr) {
+		table.Add(arr[index]);
+	}
+	table.Print();
 }
 
 Site.prototype.PrintAuthors = function () {
