@@ -64,13 +64,18 @@ ConfigFile.prototype.NumberOfChildren = function () {
 	return this.children.length;
 }
 
-ConfigFile.prototype.NumberOfPagesString = function () {
+ConfigFile.prototype.NumberOfEntriesString = function () {
+	let noeString;
 	if (this.root) {
-		return "@ + " + this.NumberOfPages() + "p";
+		noeString =  "@ + " + this.NumberOfPages() + "p";
 	} else {
-
-		return this.NumberOfPages() + "p";
+		noeString = this.NumberOfPages() + "p";
 	}
+
+	if (this.NumberOfChildren() > 0) {
+		noeString += " + " + this.NumberOfChildren() + "d";
+	}
+	return noeString;
 }
 
 ConfigFile.prototype.GetStringValue = function (propertyName) {
@@ -82,16 +87,14 @@ ConfigFile.prototype.GetTable = function () {
 	table.AddColumn("Path");
 	table.AddColumn("N");
 	table.AddColumn("Props");
-	table.AddColumn("Child");
 	return table;
 }
 
 ConfigFile.prototype.Row = function () {
 	return [
 		this.configFilePath,
-		this.NumberOfPagesString(),
-		this.metaData.NumberOfProperties(),
-		this.NumberOfChildren()
+		this.NumberOfEntriesString(),
+		this.metaData.NumberOfProperties()
 	];
 }
 
