@@ -3,12 +3,22 @@
 
 
 function Table () {
+	this.Reset();
+}
+
+Table.prototype.Reset = function () {
 	this.columnObjects = [];
 	this.rowData = [];
 	this.firstColumn = {
 		name: "Id",
 		length: 5
 	};
+	return this;
+}
+
+Table.prototype.Clear = function () {
+	this.rowData = [];
+	return this;
 }
 
 Table.prototype.AddColumn = function (columnName, columnLength) {
@@ -87,11 +97,6 @@ Table.prototype.Print = function () {
 		this.PrintRow(i);
 	}
 	console.log(rowSeparator);
-	return this;
-}
-
-Table.prototype.Clear = function () {
-	this.rowData = [];
 	return this;
 }
 
