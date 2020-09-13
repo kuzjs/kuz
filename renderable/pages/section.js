@@ -38,6 +38,10 @@ Section.prototype.Name = function () {
 	return this.name;
 }
 
+Section.prototype.Content = function () {
+	return this.content;
+}
+
 
 
 module.exports = {
