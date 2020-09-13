@@ -111,7 +111,14 @@
 		{
 			"code": "h",
 			"name": "help",
-			"description": "Show help.",
+			"description": "Show some help.",
+			"implemented": true,
+			"major": true
+		},
+		{
+			"code": "H",
+			"name": "helpfull",
+			"description": "Show full help.",
 			"implemented": true,
 			"major": true
 		},
@@ -127,10 +134,34 @@
 			"modifier": true
 		},
 		{
+			"code": "J",
+			"name": "js",
+			"description": "JavaScript files only modifier.",
+			"modifier": true
+		},
+		{
 			"code": "l",
 			"name": "list",
 			"description": "List things.",
 			"implemented": true,
+			"major": true
+		},
+		{
+			"code": "L",
+			"name": "layouts",
+			"description": "Layout files only modifier.",
+			"modifier": true
+		},
+		{
+			"code": "m",
+			"name": "modifier",
+			"description": "List modifier flags.",
+			"major": true
+		},
+		{
+			"code": "M",
+			"name": "major",
+			"description": "List major flags.",
 			"major": true
 		},
 		{
@@ -147,9 +178,13 @@
 		},
 		{
 			"code": "q",
+			"name": "search",
+			"description": "Search for a page."
+		},
+		{
+			"code": "Q",
 			"name": "quote",
-			"description": "Display a quote.",
-			"major": true
+			"description": "Display a quote."
 		},
 		{
 			"code": "r",
@@ -158,11 +193,23 @@
 			"major": true
 		},
 		{
+			"code": "R",
+			"name": "res",
+			"description": "Resource files only modifier.",
+			"modifier": true
+		},
+		{
 			"code": "s",
 			"name": "serve",
 			"description": "Run a live server.",
 			"implemented": true,
 			"major": true
+		},
+		{
+			"code": "S",
+			"name": "css",
+			"description": "CSS stylesheets only modifier.",
+			"modifier": true
 		},
 		{
 			"code": "t",
@@ -191,6 +238,11 @@
 			"major": true
 		},
 		{
+			"code": "V",
+			"name": "verify",
+			"description": "Verify things."
+		},
+		{
 			"code": "w",
 			"name": "watch",
 			"description": "Watch the site.",
@@ -199,9 +251,13 @@
 		},
 		{
 			"code": "x",
-			"name": "experiment",
-			"description": "Run Experiment().",
-			"implemented": true
+			"name": "deletable",
+			"description": "Find extra files."
+		},
+		{
+			"code": "X",
+			"name": "delete",
+			"description": "Delete extra files."
 		}
 	]
 }
