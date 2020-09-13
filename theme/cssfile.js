@@ -4,9 +4,8 @@ const ProtoFile = require("./protofile").ProtoFile;
 
 
 
-function CssFile (theme, fileName) {
-	this.theme = theme;
-	this.fileName = fileName;
+function CssFile (theme, data) {
+	this.SetupProto(theme, data);
 }
 
 CssFile.prototype = new ProtoFile("css");

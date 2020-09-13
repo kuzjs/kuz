@@ -9,12 +9,19 @@ function ProtoFile (dirName) {
 	this.dirName = dirName;
 }
 
+ProtoFile.prototype.SetupProto = function (theme, data) {
+	this.theme = theme;
+	this.path = data.path;
+	this.title = data.title;
+	this.description = data.description;
+}
+
 ProtoFile.prototype.InputDirectory = function () {
 	return fsutils.JoinPath(this.theme.InputDirectory(), this.dirName);
 }
 
 ProtoFile.prototype.InputFilePath = function () {
-	return fsutils.JoinPath(this.InputDirectory(), this.fileName);
+	return fsutils.JoinPath(this.InputDirectory(), this.path);
 }
 
 ProtoFile.prototype.OutputDirectory = function () {
@@ -22,7 +29,7 @@ ProtoFile.prototype.OutputDirectory = function () {
 }
 
 ProtoFile.prototype.OutputFilePath = function () {
-	return fsutils.JoinPath(this.OutputDirectory(), this.fileName);
+	return fsutils.JoinPath(this.OutputDirectory(), this.path);
 }
 
 ProtoFile.prototype.toString = function () {

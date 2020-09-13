@@ -4,9 +4,8 @@ const ProtoFile = require("./protofile").ProtoFile;
 
 
 
-function ResFile (theme, fileName) {
-	this.theme = theme;
-	this.fileName = fileName;
+function ResFile (theme, data) {
+	this.SetupProto(theme, data);
 }
 
 ResFile.prototype = new ProtoFile("res");
