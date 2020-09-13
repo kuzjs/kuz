@@ -308,6 +308,8 @@ KaagazzApp.prototype.ListThings = function (flags) {
 		this.site.PrintJsFiles();
 	} else if (flags.res) {
 		this.site.PrintResFiles();
+	} else if (flags.config) {
+		this.site.PrintConfigFiles();
 	} else {
 		//
 	}

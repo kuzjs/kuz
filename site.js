@@ -348,7 +348,12 @@ Site.prototype.PrintJsFiles = function () {
 
 Site.prototype.PrintResFiles = function () {
 	let arr = this.ResFilesArray();
-	this.PrintFilesArray(arr);
+	this.PrintArrayAsTable(arr);
+}
+
+Site.prototype.PrintConfigFiles = function () {
+	let arr = this.configFileObjects;
+	this.PrintArrayAsTable(arr);
 }
 
 Site.prototype.PrintConfiguration = function () {

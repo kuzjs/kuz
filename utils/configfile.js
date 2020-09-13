@@ -7,6 +7,8 @@ const MetaData = require("../metadata/metadata").MetaData;
 const Nss = require("./nss").Nss;
 const fsutils = require("./fsutils");
 
+const Table = require("./table").Table;
+
 function ConfigFile(site, dirpath) {
 	this.site = site;
 	this.dirpath = dirpath;
@@ -48,8 +50,35 @@ ConfigFile.prototype.GetPages = function () {
 	return this.pages;
 }
 
+ConfigFile.prototype.NumberOfPages = function () {
+	return this.pages.length;
+}
+
+ConfigFile.prototype.NumberOfPagesString = function () {
+	if (this.root) {
+		return "@ + " + this.NumberOfPages() + "p";
+	} else {
+
+		return this.NumberOfPages() + "p";
+	}
+}
+
 ConfigFile.prototype.GetStringValue = function (propertyName) {
 	return this.metaData.GetValue(propertyName);
+}
+
+ConfigFile.prototype.GetTable = function () {
+	let table = new Table();
+	table.AddColumn("Path");
+	table.AddColumn("N");
+	return table;
+}
+
+ConfigFile.prototype.Row = function () {
+	return [
+		this.configFilePath,
+		this.NumberOfPagesString()
+	];
 }
 
 module.exports = {
