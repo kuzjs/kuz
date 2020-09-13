@@ -4,6 +4,8 @@ const fs = require("fs");
 const log = require("../utils/log");
 const fsutils = require("../utils/fsutils");
 
+const Article = require("./pages/article").Article;
+
 const Table = require("../utils/table").Table;
 
 
@@ -186,6 +188,23 @@ Renderable.prototype.GetLayout = function () {
 	return theme.DefaultLayout();
 }
 
+Renderable.prototype.GetContentString = function () {
+	return this.inputNss.GetBodyString();
+}
+
+Renderable.prototype.GetArticle = function () {
+	if (this.IsEntity()) {
+		return null;
+	}
+	let article = new Article(this, this.GetContentString());
+	return article;
+}
+
+Renderable.prototype.GetContentHtml = function () {
+	let article = new Article(this, this.GetContentString());
+	return this.GetArticle().ContentHtml();
+}
+
 Renderable.prototype.Pages = function () {
 	return this.GetPages();
 }
@@ -201,6 +220,7 @@ Renderable.prototype.GetPagesCount = function () {
 Renderable.prototype.GetPageOptions = function () {
 	return {
 		page: this,
+		article: this.GetArticle(),
 		blackadder: this.Blackadder(),
 		ipsum: this.LoremIpsum()
 	};

@@ -3,8 +3,6 @@
 
 const fs = require("fs");
 
-const Article = require("./pages/article").Article;
-
 const fsutils = require("../utils/fsutils");
 const log = require("../utils/log");
 
@@ -38,11 +36,6 @@ Page.prototype.Setup = function () {
 	}
 
 	this.contentString = this.inputNss.GetBodyString();
-}
-
-Page.prototype.ContentHtml = function () {
-	let article = new Article(this, this.contentString);
-	return article.ContentHtml();
 }
 
 Page.prototype.IsPage = function () {
