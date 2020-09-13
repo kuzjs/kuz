@@ -55,6 +55,17 @@ Flag.prototype.Row = function () {
 	return [this.Code(), this.FullName(), this.Description(), this.Status(), this.Type(), this.State()];
 }
 
+Flag.prototype.GetTable = function () {
+	let table = new Table();
+	table.AddColumn("Code");
+	table.AddColumn("Name", 16);
+	table.AddColumn("Description", 32);
+	table.AddColumn("Status", 8);
+	table.AddColumn("Type", 8);
+	table.AddColumn("State", 10);
+	return table;
+}
+
 
 
 function KaagazzApp () {
@@ -167,13 +178,7 @@ KaagazzApp.prototype.toString = function () {
 
 KaagazzApp.prototype.ShowHelp = function () {
 	log.Green("Kaagazz help.");
-	let table = new Table();
-	table.AddColumn("Code");
-	table.AddColumn("Name", 16);
-	table.AddColumn("Description", 32);
-	table.AddColumn("Status", 8);
-	table.AddColumn("Type", 8);
-	table.AddColumn("State", 10);
+	let table = this.flags[0].GetTable();
 
 	for (let index in this.flags) {
 		let flag = this.flags[index];
