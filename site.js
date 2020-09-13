@@ -24,6 +24,7 @@ Site.prototype.Setup = function (kaagazz) {
 	this.errorMessage = null;
 	this.siteJsonPath = this.app.GetSiteJsonPath();
 	this.meta = new JsonFile(this.siteJsonPath);
+	this.configFileObjects = [];
 	this.SetAllDirectoryPaths();
 	this.SetupThemes();
 	this.SetupTable();

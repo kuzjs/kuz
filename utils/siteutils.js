@@ -90,6 +90,7 @@ function GetTags (site) {
 
 function GetPages (site, dirpath) {
 	let configFileObject = new ConfigFile(site, dirpath);
+	site.configFileObjects.push(configFileObject);
 
 	if (!configFileObject.Exists()) {
 		site.Error("Config file NOT found: " + configPath);
