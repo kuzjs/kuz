@@ -283,6 +283,11 @@ Site.prototype.ResFilesArray = function () {
 }
 
 Site.prototype.PrintArrayAsTable = function (arr) {
+	if (arr.length == 0) {
+		log.Red("No elements in array.");
+		return;
+	}
+
 	let table = arr[0].GetTable();
 	for (let index in arr) {
 		table.Add(arr[index]);
@@ -326,47 +331,23 @@ Site.prototype.PrintThemes = function () {
 	table.Print();
 }
 
-Site.prototype.PrintFilesArray = function (arr) {
-	let table = arr[0].GetTable();
-	for (let index in arr) {
-		table.Add(arr[index]);
-	}
-	table.Print();
-}
-
 Site.prototype.PrintLayouts = function () {
 	let arr = this.LayoutsArray();
-	if (arr.length == 0) {
-		log.Red("No layouts files found.");
-		return;
-	}
-	this.PrintFilesArray(arr);
+	this.PrintArrayAsTable(arr);
 }
 
 Site.prototype.PrintCssFiles = function () {
 	let arr = this.CssFilesArray();
-	if (arr.length == 0) {
-		log.Red("No CSS files found.");
-		return;
-	}
-	this.PrintFilesArray(arr);
+	this.PrintArrayAsTable(arr);
 }
 
 Site.prototype.PrintJsFiles = function () {
 	let arr = this.JsFilesArray();
-	if (arr.length == 0) {
-		log.Red("No JS files found.");
-		return;
-	}
-	this.PrintFilesArray(arr);
+	this.PrintArrayAsTable(arr);
 }
 
 Site.prototype.PrintResFiles = function () {
 	let arr = this.ResFilesArray();
-	if (arr.length == 0) {
-		log.Red("No Res files found.");
-		return;
-	}
 	this.PrintFilesArray(arr);
 }
 
