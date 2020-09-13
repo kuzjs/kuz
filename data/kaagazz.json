@@ -61,6 +61,12 @@
 			"modifier": true
 		},
 		{
+			"code": "A",
+			"name": "all",
+			"description": "All renderables modifier.",
+			"modifier": true
+		},
+		{
 			"code": "b",
 			"name": "build",
 			"description": "Build things.",
@@ -89,6 +95,12 @@
 			"code": "e",
 			"name": "experiment",
 			"description": "Run Experiment()."
+		},
+		{
+			"code": "E",
+			"name": "entities",
+			"description": "Entities only modifier.",
+			"modifier": true
 		},
 		{
 			"code": "f",
