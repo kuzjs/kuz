@@ -51,6 +51,10 @@ MetaData.prototype.GetValue = function (propertyName) {
 	};
 }
 
+MetaData.prototype.NumberOfProperties = function () {
+	return this.properties.length;
+}
+
 module.exports = {
 	MetaData: MetaData
 };

@@ -71,13 +71,15 @@ ConfigFile.prototype.GetTable = function () {
 	let table = new Table();
 	table.AddColumn("Path");
 	table.AddColumn("N");
+	table.AddColumn("Props");
 	return table;
 }
 
 ConfigFile.prototype.Row = function () {
 	return [
 		this.configFilePath,
-		this.NumberOfPagesString()
+		this.NumberOfPagesString(),
+		this.metaData.NumberOfProperties()
 	];
 }
 
