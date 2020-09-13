@@ -226,6 +226,39 @@ Site.prototype.PrintDirectories = function () {
 	log.SomeNews("Special: " + this.GetSpecialDirectory());
 }
 
+Site.prototype.Authors = function () {
+	return this.authors;
+}
+
+Site.prototype.Categories = function () {
+	return this.categories;
+}
+
+Site.prototype.Tags = function () {
+	return this.tags;
+}
+
+Site.prototype.Pages = function () {
+	return this.pages;
+}
+
+Site.prototype.Collections = function () {
+	return this.collections;
+}
+
+Site.prototype.Entities = function () {
+	let entities = [];
+	entities = entities.concat(this.authors);
+	entities = entities.concat(this.categories);
+	entities = entities.concat(this.tags);
+	entities = entities.concat(this.collections);
+	return entities;
+}
+
+Site.prototype.All = function () {
+	return this.Entities().concat(this.pages);
+}
+
 Site.prototype.PrintArrayAsTable = function (arr) {
 	this.table.AddArray(arr).Print().Clear();
 }
@@ -251,13 +284,7 @@ Site.prototype.PrintCollections = function () {
 }
 
 Site.prototype.PrintAll = function () {
-	let all = [];
-	all = all.concat(this.authors);
-	all = all.concat(this.categories);
-	all = all.concat(this.tags);
-	all = all.concat(this.pages);
-	all = all.concat(this.collections);
-	this.PrintArrayAsTable(all);
+	this.PrintArrayAsTable(this.All());
 }
 
 Site.prototype.PrintConfiguration = function () {
