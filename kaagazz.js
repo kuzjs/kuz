@@ -300,6 +300,8 @@ KaagazzApp.prototype.ListThings = function (flags) {
 		this.site.PrintTags();
 	} else if (flags.themes) {
 		this.site.PrintThemes();
+	} else if (flags.layouts) {
+		this.site.PrintLayouts();
 	} else if (flags.css) {
 		this.site.PrintCssFiles();
 	} else if (flags.js) {

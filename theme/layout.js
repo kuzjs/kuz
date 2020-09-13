@@ -6,6 +6,8 @@ const pug = require("pug");
 const log = require("../utils/log");
 const fsutils = require("../utils/fsutils");
 
+const Table = require("../utils/table").Table;
+
 function Layout (theme, data) {
 	this.theme = theme;
 	this.name = data.name;
@@ -52,6 +54,20 @@ Layout.prototype.Update = function () {
 	if (this.NeedsUpdate()) {
 		this.ForcedUpdate();
 	}
+}
+
+Layout.prototype.GetTable = function () {
+	let table = new Table();
+	table.AddColumn("Name");
+	table.AddColumn("Path");
+	return table;
+}
+
+Layout.prototype.Row = function () {
+	return [
+		this.name,
+		this.FullPath()
+	];
 }
 
 

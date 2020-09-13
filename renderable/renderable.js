@@ -254,7 +254,7 @@ Renderable.prototype.ForcedUpdate = function () {
 
 Renderable.prototype.Render = function () {
 	let htmlPath = this.OutputFilePath();
-	let layout = this.GetLayout()
+	let layout = this.GetLayout();
 	let html = layout.pug(options = this.GetPageOptions());
 
 	if (!fs.existsSync(this.OutputDirectoryPath())) {

@@ -260,6 +260,14 @@ Site.prototype.All = function () {
 	return this.Entities().concat(this.pages);
 }
 
+Site.prototype.LayoutsArray = function () {
+	let layouts = [];
+	for (let index in this.themes) {
+		layouts = layouts.concat(this.themes[index].layouts);
+	}
+	return layouts;
+}
+
 Site.prototype.CssFilesArray = function () {
 	let cssFiles = [];
 	for (let index in this.themes) {
@@ -330,6 +338,15 @@ Site.prototype.PrintFilesArray = function (arr) {
 		table.Add(arr[index]);
 	}
 	table.Print();
+}
+
+Site.prototype.PrintLayouts = function () {
+	let arr = this.LayoutsArray();
+	if (arr.length == 0) {
+		log.Red("No layouts files found.");
+		return;
+	}
+	this.PrintFilesArray(arr);
 }
 
 Site.prototype.PrintCssFiles = function () {
