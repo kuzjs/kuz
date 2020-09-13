@@ -93,11 +93,6 @@
 		},
 		{
 			"code": "e",
-			"name": "experiment",
-			"description": "Run Experiment()."
-		},
-		{
-			"code": "E",
 			"name": "entities",
 			"description": "Entities only modifier.",
 			"modifier": true
