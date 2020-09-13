@@ -19,6 +19,7 @@ function Flag (flagObject) {
 	this.description = flagObject.description;
 	this.implemented = (flagObject.implemented === undefined) ? false : flagObject.implemented;
 	this.major = (flagObject.major === undefined) ? false : flagObject.major;
+	this.modifier = (flagObject.modifier === undefined) ? false : flagObject.modifier;
 	this.isset = false;
 }
 

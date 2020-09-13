@@ -57,7 +57,8 @@
 		{
 			"code": "a",
 			"name": "authors",
-			"description": "Authors only modifier."
+			"description": "Authors only modifier.",
+			"modifier": true
 		},
 		{
 			"code": "b",
@@ -68,12 +69,14 @@
 		{
 			"code": "c",
 			"name": "categories",
-			"description": "Categories only modifier."
+			"description": "Categories only modifier.",
+			"modifier": true
 		},
 		{
 			"code": "C",
 			"name": "collections",
-			"description": "Collections only modifier."
+			"description": "Collections only modifier.",
+			"modifier": true
 		},
 		{
 			"code": "d",
@@ -130,7 +133,8 @@
 		{
 			"code": "p",
 			"name": "pages",
-			"description": "Pages only modifier."
+			"description": "Pages only modifier.",
+			"modifier": true
 		},
 		{
 			"code": "q",
@@ -154,12 +158,14 @@
 		{
 			"code": "t",
 			"name": "tags",
-			"description": "Tags only modifier."
+			"description": "Tags only modifier.",
+			"modifier": true
 		},
 		{
 			"code": "T",
 			"name": "themes",
-			"description": "Themes only modifier."
+			"description": "Themes only modifier.",
+			"modifier": true
 		},
 		{
 			"code": "u",
