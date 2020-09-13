@@ -356,6 +356,13 @@ KaagazzApp.prototype.Run = function () {
 		return;
 	}
 
+	if (this.numberOfFlags.total > 1) {
+		if (this.numberOfFlags.independent > 0) {
+			log.Red("Independent flags cannot be combined.");
+			return;
+		}
+	}
+
 	let flags = this.simpleFlags;
 
 	if (flags.help) {
