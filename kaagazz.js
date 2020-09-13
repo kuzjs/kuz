@@ -176,8 +176,21 @@ KaagazzApp.prototype.toString = function () {
 	return this.meta.json.meta.name;
 }
 
-KaagazzApp.prototype.ShowHelp = function () {
+KaagazzApp.prototype.ShowSomeHelp = function () {
 	log.Green("Kaagazz help.");
+	let table = this.flags[0].GetTable();
+
+	for (let index in this.flags) {
+		let flag = this.flags[index];
+		if (!flag.modifier) {
+			table.Add(flag);
+		}
+	}
+
+	table.Print();
+}
+
+KaagazzApp.prototype.ShowFullHelp = function () {
 	let table = this.flags[0].GetTable();
 
 	for (let index in this.flags) {
@@ -279,7 +292,9 @@ KaagazzApp.prototype.Run = function () {
 	let flags = this.simpleFlags;
 
 	if (flags.help) {
-		this.ShowHelp();
+		this.ShowSomeHelp();
+	} else if (flags.helpfull) {
+		this.ShowFullHelp();
 	} else if (flags.version) {
 		this.ShowVersion();
 	} else if (flags.build) {
