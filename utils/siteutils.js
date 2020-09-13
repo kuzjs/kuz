@@ -91,7 +91,11 @@ function GetTags (site) {
 function GetPages (site, dirpath, configFileParentObject) {
 	let configFileObject = new ConfigFile(site, dirpath);
 
-	configFileObject.SetParent(configFileParentObject);
+	if (configFileParentObject) {
+		configFileParentObject.AddChild(configFileObject);
+		configFileObject.SetParent(configFileParentObject);
+	}
+
 	site.configFileObjects.push(configFileObject);
 
 	if (!configFileObject.Exists()) {
