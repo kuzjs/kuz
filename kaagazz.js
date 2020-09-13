@@ -268,7 +268,15 @@ KaagazzApp.prototype.ShowMajorFlags = function () {
 }
 
 KaagazzApp.prototype.ShowVersion = function () {
-	log.Green("Kaagazz version.");
+	let table = new Table();
+	table.AddColumn("Key");
+	table.AddColumn("Value");
+
+	let meta = this.meta.json.meta;
+	table.AddRow(["Name", meta.name]);
+	table.AddRow(["Version", meta.version]);
+	table.AddRow(["Description", meta.description]);
+	table.Print();
 }
 
 KaagazzApp.prototype.Experiment = function () {
