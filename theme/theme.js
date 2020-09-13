@@ -164,6 +164,8 @@ Theme.prototype.GetPages = function () {
 Theme.prototype.GetTable = function () {
 	let table = new Table();
 	table.AddColumn("Name");
+	table.AddColumn("Name");
+	table.AddColumn("Description");
 	table.AddColumn("Ls");
 	table.AddColumn("CSS");
 	table.AddColumn("JS");
@@ -172,8 +174,11 @@ Theme.prototype.GetTable = function () {
 }
 
 Theme.prototype.Row = function () {
+	let meta = this.meta.json.meta;
 	return [
 		this.themeName,
+		meta.name,
+		meta.version,
 		this.TemplateCount(),
 		this.cssFiles.length,
 		this.jsFiles.length,
