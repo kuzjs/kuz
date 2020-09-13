@@ -23,6 +23,14 @@ function ConfigFile(site, dirpath) {
 	this.metaData = new MetaData(this.site, this.configFilePath);
 }
 
+ConfigFile.prototype.SetParent = function (configFileParentObject) {
+	if (configFileParentObject) {
+		this.parent = configFileParentObject;
+	} else {
+		this.parent = null;
+	}
+}
+
 ConfigFile.prototype.Exists = function () {
 	if (fsutils.IsFile(this.configFilePath)) {
 		return true;

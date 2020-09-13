@@ -88,8 +88,10 @@ function GetTags (site) {
 	return tags;
 }
 
-function GetPages (site, dirpath) {
+function GetPages (site, dirpath, configFileParentObject) {
 	let configFileObject = new ConfigFile(site, dirpath);
+
+	configFileObject.SetParent(configFileParentObject);
 	site.configFileObjects.push(configFileObject);
 
 	if (!configFileObject.Exists()) {
@@ -120,7 +122,7 @@ function GetPages (site, dirpath) {
 			} else {
 				entryDirpath = dirpath + "/" + entry;
 			}
-			pages = pages.concat(GetPages(site, entryDirpath));
+			pages = pages.concat(GetPages(site, entryDirpath, configFileObject));
 		} else {
 			let page = new Page(site, configFileObject, entry);
 			pages.push(page);
