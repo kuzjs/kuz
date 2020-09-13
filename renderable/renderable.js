@@ -144,18 +144,18 @@ Renderable.prototype.Theme = function () {
 	return this.site.DefaultTheme();
 }
 
-Renderable.prototype.Template = function () {
-	return this.GetTemplate();
+Renderable.prototype.Layout = function () {
+	return this.GetLayout();
 }
 
-Renderable.prototype.GetTemplate = function () {
+Renderable.prototype.GetLayout = function () {
 	let theme = this.Theme();
-	let template = theme.GetLayout(this.typename);
+	let layout = theme.GetLayout(this.typename);
 
-	if (template === undefined) {
-		log.Red(theme.FullName() + " has no template for: " + this.typename);
+	if (layout === null) {
+		log.Red(theme.FullName() + " has no layout for: " + this.typename);
 	} else {
-		return template;
+		return layout;
 	}
 
 	return theme.DefaultLayout();
@@ -254,8 +254,8 @@ Renderable.prototype.ForcedUpdate = function () {
 
 Renderable.prototype.Render = function () {
 	let htmlPath = this.OutputFilePath();
-	let template = this.GetTemplate()
-	let html = template.pug(options = this.GetPageOptions());
+	let layout = this.GetLayout()
+	let html = layout.pug(options = this.GetPageOptions());
 
 	if (!fs.existsSync(this.OutputDirectoryPath())) {
 		fs.mkdirSync(this.OutputDirectoryPath(), {
