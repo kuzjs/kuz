@@ -88,12 +88,12 @@ function GetTags (site) {
 	return tags;
 }
 
-function GetPages (site, dirpath, configFileParentObject) {
+function GetPages (site, dirpath, parentConfig) {
 	let configFileObject = new ConfigFile(site, dirpath);
 
-	if (configFileParentObject) {
-		configFileParentObject.AddChild(configFileObject);
-		configFileObject.SetParent(configFileParentObject);
+	if (parentConfig) {
+		parentConfig.AddChild(configFileObject);
+		configFileObject.SetParent(parentConfig);
 	}
 
 	site.configFileObjects.push(configFileObject);
