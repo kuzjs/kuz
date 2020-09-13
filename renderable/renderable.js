@@ -160,13 +160,22 @@ Renderable.prototype.Theme = function () {
 	return this.site.DefaultTheme();
 }
 
+Renderable.prototype.GetLayoutName = function () {
+	let layout = this.GetPropertyCascaded("layout");
+	if (layout.found) {
+		return layout.value;
+	}
+	return this.typename;
+}
+
 Renderable.prototype.Layout = function () {
 	return this.GetLayout();
 }
 
 Renderable.prototype.GetLayout = function () {
 	let theme = this.Theme();
-	let layout = theme.GetLayout(this.typename);
+	let layoutName = this.GetLayoutName();
+	let layout = theme.GetLayout(layoutName);
 
 	if (layout === null) {
 		log.Red(theme.FullName() + " has no layout for: " + this.typename);
