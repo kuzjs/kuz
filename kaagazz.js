@@ -201,6 +201,19 @@ KaagazzApp.prototype.ShowFullHelp = function () {
 	table.Print();
 }
 
+KaagazzApp.prototype.ShowIndependentFlags = function () {
+	let table = this.flags[0].GetTable();
+
+	for (let index in this.flags) {
+		let flag = this.flags[index];
+		if (!flag.modifier && !flag.major) {
+			table.Add(flag);
+		}
+	}
+
+	table.Print();
+}
+
 KaagazzApp.prototype.ShowModifierFlags = function () {
 	let table = this.flags[0].GetTable();
 
@@ -321,6 +334,8 @@ KaagazzApp.prototype.Run = function () {
 		this.ShowSomeHelp();
 	} else if (flags.helpfull) {
 		this.ShowFullHelp();
+	} else if (flags.independent) {
+		this.ShowIndependentFlags();
 	} else if (flags.modifier) {
 		this.ShowModifierFlags();
 	} else if (flags.major) {

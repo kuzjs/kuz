@@ -126,6 +126,11 @@
 			"description": "Install themes."
 		},
 		{
+			"code": "I",
+			"name": "independent",
+			"description": "List independent flags."
+		},
+		{
 			"code": "j",
 			"name": "json",
 			"description": "JsonFile only modifier.",
