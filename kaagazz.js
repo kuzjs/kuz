@@ -20,6 +20,7 @@ function Flag (flagObject) {
 	this.implemented = (flagObject.implemented === undefined) ? false : flagObject.implemented;
 	this.major = (flagObject.major === undefined) ? false : flagObject.major;
 	this.modifier = (flagObject.modifier === undefined) ? false : flagObject.modifier;
+	this.independent = !this.major && !this.modifier;
 	this.isset = false;
 }
 
@@ -148,6 +149,27 @@ KaagazzApp.prototype.SetupFlags = function () {
 			}
 		} else {
 			this.args.push(argument);
+		}
+	}
+
+	this.numberOfFlags = {
+		independent: 0,
+		major: 0,
+		modifier: 0,
+		total: 0
+	};
+
+	for (let index in this.flags) {
+		let flag = this.flags[index];
+		if (flag.isset) {
+			this.numberOfFlags.total++;
+			if (flag.independent) {
+				this.numberOfFlags.independent++;
+			} else if (flag.major) {
+				this.numberOfFlags.major++;
+			} else if (flag.modifier) {
+				this.numberOfFlags.modifier++;
+			}
 		}
 	}
 
