@@ -298,6 +298,8 @@ KaagazzApp.prototype.ListThings = function (flags) {
 		this.site.PrintPages();
 	} else if (flags.tags) {
 		this.site.PrintTags();
+	} else if (flags.themes) {
+		this.site.PrintThemes();
 	} else {
 		//
 	}

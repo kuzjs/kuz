@@ -292,6 +292,14 @@ Site.prototype.PrintAll = function () {
 	this.PrintArrayAsTable(this.All());
 }
 
+Site.prototype.PrintThemes = function () {
+	let table = this.themes[0].GetTable();
+	for (let index in this.themes) {
+		table.Add(this.themes[index]);
+	}
+	table.Print();
+}
+
 Site.prototype.PrintConfiguration = function () {
 	this.PrintDirectories();
 	this.PrintAuthors();

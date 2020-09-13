@@ -4,6 +4,8 @@ const log = require("../utils/log");
 const fsutils = require("../utils/fsutils");
 const JsonFile = require("../utils/jsonfile").JsonFile;
 
+const Table = require("../utils/table").Table;
+
 const Template = require("./template").Template;
 
 const CssFile = require("./cssfile").CssFile;
@@ -157,6 +159,26 @@ Theme.prototype.toString = function () {
 
 Theme.prototype.GetPages = function () {
 	return [];
+}
+
+Theme.prototype.GetTable = function () {
+	let table = new Table();
+	table.AddColumn("Name");
+	table.AddColumn("Ls");
+	table.AddColumn("CSS");
+	table.AddColumn("JS");
+	table.AddColumn("Res");
+	return table;
+}
+
+Theme.prototype.Row = function () {
+	return [
+		this.themeName,
+		this.TemplateCount(),
+		this.cssFiles.length,
+		this.jsFiles.length,
+		this.resFiles.length
+	];
 }
 
 module.exports = {

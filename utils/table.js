@@ -64,8 +64,9 @@ Table.prototype.AddArray = function (arr) {
 
 Table.prototype.AddRow = function (row) {
 	for (let index in row) {
-		if (row[index].length > this.columnObjects[index].length) {
-			this.columnObjects[index].length = row[index].length;
+		let cell = row[index] + "";
+		if (cell.length > this.columnObjects[index].length) {
+			this.columnObjects[index].length = cell.length;
 		}
 	}
 	this.rowData.push(row);
@@ -110,7 +111,8 @@ Table.prototype.GetRowString = function (rowId, row) {
 	let rowString = "|" + this.Padding() + rowId.padStart(this.firstColumn.length) + this.Separator();
 	for (let j in row) {
 		let columnLength = this.GetColumnLength(j);
-		rowString += row[j].padStart(columnLength) + this.Separator();
+		let cell = row[j] + "";
+		rowString += cell.padStart(columnLength) + this.Separator();
 	}
 	return rowString;
 }
