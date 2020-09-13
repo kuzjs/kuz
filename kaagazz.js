@@ -28,7 +28,7 @@ Flag.prototype.Code = function () {
 }
 
 Flag.prototype.Name = function () {
-	return this.major ? this.name : "@" + this.name;
+	return this.name;
 }
 
 Flag.prototype.FullName = function () {
@@ -44,7 +44,13 @@ Flag.prototype.Status = function () {
 }
 
 Flag.prototype.Type = function () {
-	return (this.modifier) ? "Mod" : "";
+	if (this.major) {
+		return "M";
+	} else if (this.modifier) {
+		return "mod";
+	} else {
+		return "I";
+	}
 }
 
 Flag.prototype.State = function () {
