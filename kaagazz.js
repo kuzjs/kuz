@@ -205,7 +205,6 @@ KaagazzApp.prototype.toString = function () {
 }
 
 KaagazzApp.prototype.ShowSomeHelp = function () {
-	log.Green("Kaagazz help.");
 	let table = this.flags[0].GetTable();
 
 	for (let index in this.flags) {
@@ -270,11 +269,6 @@ KaagazzApp.prototype.ShowMajorFlags = function () {
 
 KaagazzApp.prototype.ShowVersion = function () {
 	log.Green("Kaagazz version.");
-}
-
-KaagazzApp.prototype.ShowList = function () {
-	log.Green("Kaagazz list.");
-	this.site.PrintPages();
 }
 
 KaagazzApp.prototype.Experiment = function () {

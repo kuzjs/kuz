@@ -106,7 +106,6 @@ Theme.prototype.SetupCssFiles = function () {
 	for (let index in this.meta.json.css) {
 		let fileName = this.meta.json.css[index];
 		let cssFile = new CssFile(this, fileName);
-		cssFile.log();
 		this.cssFiles.push(cssFile);
 	}
 }
@@ -116,7 +115,6 @@ Theme.prototype.SetupJsFiles = function () {
 	for (let index in this.meta.json.js) {
 		let fileName = this.meta.json.js[index];
 		let jsFile = new JsFile(this, fileName);
-		jsFile.log();
 		this.jsFiles.push(jsFile);
 	}
 }
@@ -126,7 +124,6 @@ Theme.prototype.SetupResFiles = function () {
 	for (let index in this.meta.json.res) {
 		let fileName = this.meta.json.res[index];
 		let resFile = new ResFile(this, fileName);
-		resFile.log();
 		this.resFiles.push(resFile);
 	}
 }
