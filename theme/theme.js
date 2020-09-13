@@ -128,7 +128,7 @@ Theme.prototype.DefaultLayout = function () {
 			return layout;
 		}
 	}
-	return this.layout[0];
+	return this.layouts[0];
 }
 
 Theme.prototype.GetLayout = function (name) {
