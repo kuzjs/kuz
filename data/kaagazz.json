@@ -104,8 +104,9 @@
 		},
 		{
 			"code": "g",
-			"name": "green",
-			"description": "Run Green()."
+			"name": "config",
+			"description": "ConfigFile only modifier.",
+			"modifier": true
 		},
 		{
 			"code": "h",
@@ -121,8 +122,9 @@
 		},
 		{
 			"code": "j",
-			"name": "jingle",
-			"description": "Jingle bells."
+			"name": "json",
+			"description": "JsonFile only modifier.",
+			"modifier": true
 		},
 		{
 			"code": "l",
