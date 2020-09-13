@@ -70,7 +70,8 @@ Table.prototype.GetRowSeparator = function () {
 
 Table.prototype.PrintRow = function (rowIndex) {
 	let row = this.rowData[rowIndex];
-	let rowString = "| " + rowIndex.padStart(this.firstColumn.length) + " | ";
+	let rowId = (rowIndex+1) + "";
+	let rowString = "| " + rowId.padStart(this.firstColumn.length) + " | ";
 	for (let j in row) {
 		let columnLength = this.GetColumnLength(j);
 		rowString += row[j].padStart(columnLength) + " | ";
@@ -82,8 +83,8 @@ Table.prototype.Print = function () {
 	let rowSeparator = this.GetRowSeparator();
 
 	console.log(rowSeparator);
-	for (let index in this.rowData) {
-		this.PrintRow(index);
+	for (let i=0; i<this.rowData.length; i++) {
+		this.PrintRow(i);
 	}
 	console.log(rowSeparator);
 	return this;
