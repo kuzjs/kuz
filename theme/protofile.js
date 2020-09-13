@@ -2,6 +2,7 @@
 
 const log = require("../utils/log");
 const fsutils = require("../utils/fsutils");
+const Table = require("../utils/table").Table;
 
 
 
@@ -34,6 +35,18 @@ ProtoFile.prototype.OutputFilePath = function () {
 
 ProtoFile.prototype.toString = function () {
 	return "File: " + this.InputFilePath() + " --> " + this.OutputFilePath();
+}
+
+ProtoFile.prototype.GetTable = function () {
+	let table = new Table();
+	table.AddColumn("Path");
+	table.AddColumn("Title");
+	table.AddColumn("Description");
+	return table;
+}
+
+ProtoFile.prototype.Row = function () {
+	return [this.path, this.title, this.description];
 }
 
 ProtoFile.prototype.log = function () {
