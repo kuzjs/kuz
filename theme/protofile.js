@@ -12,9 +12,10 @@ function ProtoFile (dirName) {
 
 ProtoFile.prototype.SetupProto = function (theme, data) {
 	this.theme = theme;
+	this.description = data.description;
+	this.name = data.name;
 	this.path = data.path;
 	this.title = data.title;
-	this.description = data.description;
 }
 
 ProtoFile.prototype.InputDirectory = function () {
@@ -39,6 +40,8 @@ ProtoFile.prototype.toString = function () {
 
 ProtoFile.prototype.GetTable = function () {
 	let table = new Table();
+	table.AddColumn("Name");
+	table.AddColumn("Theme");
 	table.AddColumn("Path");
 	table.AddColumn("Title");
 	table.AddColumn("Description");
@@ -46,7 +49,13 @@ ProtoFile.prototype.GetTable = function () {
 }
 
 ProtoFile.prototype.Row = function () {
-	return [this.path, this.title, this.description];
+	return [
+		this.name,
+		this.theme.themeName,
+		this.path,
+		this.title,
+		this.description
+	];
 }
 
 ProtoFile.prototype.log = function () {
