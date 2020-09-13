@@ -6,14 +6,14 @@ const JsonFile = require("../utils/jsonfile").JsonFile;
 
 const Table = require("../utils/table").Table;
 
-const Template = require("./template").Template;
+const Layout = require("./layout").Layout;
 
 const CssFile = require("./cssfile").CssFile;
 const JsFile = require("./jsfile").JsFile;
 const ResFile = require("./resfile").ResFile;
 
 const themesDirectory = "kaagazz_themes";
-const templatesDirectory = "templates";
+const layoutsDirectory = "layouts";
 
 
 
@@ -43,8 +43,8 @@ Theme.prototype.OutputDirectory = function () {
 	return fsutils.JoinPath(this.ThemesOutputDirectory(), this.Name());
 }
 
-Theme.prototype.TemplatesInputDirectory = function () {
-	return fsutils.JoinPath(this.InputDirectory(), "templates");
+Theme.prototype.LayoutsInputDirectory = function () {
+	return fsutils.JoinPath(this.InputDirectory(), "layouts");
 }
 
 Theme.prototype.CssInputDirectory = function () {
@@ -76,11 +76,11 @@ Theme.prototype.SetupPaths = function () {
 
 	this.meta = new JsonFile(this.JsonFilePath());
 	this.layouts = [];
-	for (let templateName in this.meta.json.layouts) {
-		let data = this.meta.json.layouts[templateName];
-		let layoutFilePath = fsutils.JoinPath(this.TemplatesInputDirectory(), data.path);
+	for (let index in this.meta.json.layouts) {
+		let data = this.meta.json.layouts[index];
+		let layoutFilePath = fsutils.JoinPath(this.LayoutsInputDirectory(), data.path);
 		if (fsutils.IsFile(layoutFilePath)) {
-			let layout = new Template(this, data);
+			let layout = new Layout(this, data);
 			this.layouts.push(layout);
 		} else {
 			log.Red("Layout NOT found: " + layoutFilePath);
@@ -121,7 +121,7 @@ Theme.prototype.SetupResFiles = function () {
 	}
 }
 
-Theme.prototype.DefaultTemplate = function () {
+Theme.prototype.DefaultLayout = function () {
 	for (let index in this.layouts) {
 		let layout = this.layouts[index];
 		if (layout.default) {
@@ -131,7 +131,7 @@ Theme.prototype.DefaultTemplate = function () {
 	return this.layout[0];
 }
 
-Theme.prototype.GetTemplate = function (name) {
+Theme.prototype.GetLayout = function (name) {
 	for (let index in this.layouts) {
 		let layout = this.layouts[index];
 		if (layout.name == name) {
@@ -156,12 +156,12 @@ Theme.prototype.Version = function () {
 	return this.meta.json.meta.version;
 }
 
-Theme.prototype.TemplateCount = function () {
-	return this.templateCount;
+Theme.prototype.LayoutCount = function () {
+	return this.layouts.length;
 }
 
 Theme.prototype.toString = function () {
-	return this.Name() + " (" + this.TemplateCount() + " templates) [v" + this.Version() + "]";
+	return this.Name() + " (" + this.LayoutCount() + " layouts) [v" + this.Version() + "]";
 }
 
 Theme.prototype.GetPages = function () {
@@ -186,7 +186,7 @@ Theme.prototype.Row = function () {
 		this.themeName,
 		meta.name,
 		meta.version,
-		this.TemplateCount(),
+		this.LayoutCount(),
 		this.cssFiles.length,
 		this.jsFiles.length,
 		this.resFiles.length
