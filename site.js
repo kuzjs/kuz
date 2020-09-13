@@ -250,6 +250,16 @@ Site.prototype.PrintCollections = function () {
 	this.PrintArrayAsTable(this.collections);
 }
 
+Site.prototype.PrintAll = function () {
+	let all = [];
+	all = all.concat(this.authors);
+	all = all.concat(this.categories);
+	all = all.concat(this.tags);
+	all = all.concat(this.pages);
+	all = all.concat(this.collections);
+	this.PrintArrayAsTable(all);
+}
+
 Site.prototype.PrintConfiguration = function () {
 	this.PrintDirectories();
 	this.PrintAuthors();
