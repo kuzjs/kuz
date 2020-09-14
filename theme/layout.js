@@ -11,9 +11,10 @@ const Table = require("../utils/table").Table;
 function Layout (theme, data) {
 	this.theme = theme;
 	this.name = data.name;
-	this.description = data.description;
-	this.title = data.title;
 	this.path = data.path;
+	this.description = data.description ? data.description : "";
+	this.documentation = data.documentation ? data.documentation : "";
+	this.title = data.title ? data.title : "";
 	this.default = data.default ? data.default : false;
 	this.Setup();
 }
@@ -62,6 +63,7 @@ Layout.prototype.GetTable = function () {
 	table.AddColumn("Theme");
 	table.AddColumn("Title");
 	table.AddColumn("Description");
+	table.AddColumn("Documentation");
 	table.AddColumn("Path");
 	return table;
 }
@@ -72,6 +74,7 @@ Layout.prototype.Row = function () {
 		this.theme.themeName,
 		this.title,
 		this.description,
+		this.documentation,
 		this.path
 	];
 }
