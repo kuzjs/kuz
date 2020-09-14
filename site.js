@@ -28,6 +28,11 @@ Site.prototype.Setup = function (kaagazz) {
 	this.SetupRenderables();
 }
 
+Site.prototype.AddConfig = function (configFileObject) {
+	configFileObject.SetIndex(this.configFileObjects.length);
+	this.configFileObjects.push(configFileObject);
+}
+
 Site.prototype.Blackadder = function () {
 	return this.app.Blackadder();
 }

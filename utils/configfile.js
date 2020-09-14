@@ -25,7 +25,18 @@ function ConfigFile(site, dirpath) {
 	this.root = null;
 	this.parent = null;
 	this.children = [];
+	this.index = 0;
 	this.metaData = new MetaData(this.site, this.configFilePath);
+}
+
+ConfigFile.prototype.codeLetter = "g";
+
+ConfigFile.prototype.CodeName = function () {
+	return this.codeLetter + this.index;
+}
+
+ConfigFile.prototype.SetIndex = function (index) {
+	this.index = index;
 }
 
 ConfigFile.prototype.SetParent = function (configFileParentObject) {
@@ -84,6 +95,7 @@ ConfigFile.prototype.GetStringValue = function (propertyName) {
 
 ConfigFile.prototype.GetTable = function () {
 	let table = new Table();
+	table.AddColumn("CodeName");
 	table.AddColumn("Path");
 	table.AddColumn("N");
 	table.AddColumn("Props");
@@ -92,6 +104,7 @@ ConfigFile.prototype.GetTable = function () {
 
 ConfigFile.prototype.Row = function () {
 	return [
+		this.CodeName(),
 		this.configFilePath,
 		this.NumberOfEntriesString(),
 		this.metaData.NumberOfProperties()

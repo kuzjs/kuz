@@ -96,7 +96,7 @@ function GetPages (site, dirpath, parentConfig) {
 		configFileObject.SetParent(parentConfig);
 	}
 
-	site.configFileObjects.push(configFileObject);
+	site.AddConfig(configFileObject);
 
 	if (!configFileObject.Exists()) {
 		site.Error("Config file NOT found: " + configPath);
