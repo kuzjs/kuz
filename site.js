@@ -41,6 +41,10 @@ Site.prototype.LoremIpsum = function () {
 	return this.app.LoremIpsum();
 }
 
+Site.prototype.HomeURL = function () {
+	return this.meta.json.meta.SITE_URL;
+}
+
 Site.prototype.HelloWorld = function () {
 	log.Red("Hello, Site!");
 }

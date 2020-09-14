@@ -106,6 +106,7 @@ Renderable.prototype.GetTable = function () {
 	table.AddColumn("Title");
 	table.AddColumn("Theme");
 	table.AddColumn("Layout");
+	table.AddColumn("URL");
 	return table;
 }
 
@@ -115,7 +116,8 @@ Renderable.prototype.Row = function () {
 		this.Name(),
 		this.Title(),
 		this.Theme().Name(),
-		this.Layout().Name()
+		this.Layout().Name(),
+		this.PageURL()
 	];
 }
 
@@ -347,6 +349,10 @@ Renderable.prototype.InputFilePath = function () {
 
 Renderable.prototype.Description = function () {
 	return this.GetDescription();
+}
+
+Renderable.prototype.PageURL = function () {
+	return fsutils.JoinPath(this.site.HomeURL(), this.OutputDirectoryPartialPath());
 }
 
 Renderable.prototype.GetDescription = function () {
