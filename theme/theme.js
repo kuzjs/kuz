@@ -135,10 +135,10 @@ Theme.prototype.DefaultLayout = function () {
 	return this.layouts[0];
 }
 
-Theme.prototype.GetLayout = function (name) {
+Theme.prototype.GetLayout = function (layoutName) {
 	for (let index in this.layouts) {
 		let layout = this.layouts[index];
-		if (layout.name == name) {
+		if (layoutName == layout.Name()) {
 			return layout;
 		}
 	}

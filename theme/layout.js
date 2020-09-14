@@ -14,7 +14,6 @@ const Table = require("../utils/table").Table;
 function Layout (theme, data) {
 	this.theme = theme;
 	this.data = data;
-	this.name = data.name;
 	this.default = data.default ? data.default : false;
 	this.Setup();
 }
