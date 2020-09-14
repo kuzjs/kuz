@@ -101,9 +101,10 @@ Renderable.prototype.CodeName = function () {
 
 Renderable.prototype.GetTable = function () {
 	let table = new Table();
-	table.AddColumn("Codename", 5);
-	table.AddColumn("Name", 10);
-	table.AddColumn("Title", 20);
+	table.AddColumn("Codename");
+	table.AddColumn("Name");
+	table.AddColumn("Title");
+	table.AddColumn("Theme");
 	table.AddColumn("Layout");
 	return table;
 }
@@ -113,7 +114,8 @@ Renderable.prototype.Row = function () {
 		this.CodeName(),
 		this.Name(),
 		this.Title(),
-		this.Layout().name
+		this.Theme().Name(),
+		this.Layout().Name()
 	];
 }
 
