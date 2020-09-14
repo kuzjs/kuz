@@ -219,10 +219,11 @@ Renderable.prototype.GetPagesCount = function () {
 
 Renderable.prototype.GetPageOptions = function () {
 	let article = this.GetArticle();
+	let sections = article ? article.sections : null;
 	return {
 		page: this,
 		article: article,
-		sections: article.sections,
+		sections: sections,
 		blackadder: this.Blackadder(),
 		ipsum: this.LoremIpsum()
 	};
