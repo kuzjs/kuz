@@ -3,6 +3,8 @@
 const pug = require("pug");
 const Section = require("./section").Section;
 
+const log = require("../../utils/log");
+
 function Article(page, content) {
 	this.Init(page, content);
 }
@@ -10,16 +12,16 @@ function Article(page, content) {
 Article.prototype.Init = function (page, content) {
 	this.page = page;
 	this.contentLines = content.split("\n");
-	this.sections = [];
+	this.sections = {};
 
 	let currentSection = new Section(this, "[content]");
-	this.sections.push(currentSection);
+	this.sections[currentSection.Name()] = currentSection;
 
 	for (let index in this.contentLines) {
 		let contentLine = this.contentLines[index];
 		if (contentLine.includes("[") && contentLine.includes("]")) {
 			currentSection = new Section(this, contentLine);
-			this.sections.push(currentSection);
+			this.sections[currentSection.Name()] = currentSection;
 		} else {
 			currentSection.AddLine(contentLine);
 		}
@@ -31,17 +33,16 @@ Article.prototype.IsArticle = function () {
 }
 
 Article.prototype.Section = function (sectionName) {
-	for (let index in this.sections) {
-		let section = this.sections[index];
-		if (section.Name() == sectionName) {
-			return section;
+	for (let key in this.sections) {
+		if (key == sectionName) {
+			return this.sections[key];
 		}
 	}
 	return null;
 }
 
 Article.prototype.GetContentHtml = function () {
-	return pug.render(this.sections[0].content, options=this.page.GetPageOptionsFN());
+	return pug.render(this.sections["content"].content, options=this.page.GetPageOptionsFN());
 }
 
 Article.prototype.Html = function () {
