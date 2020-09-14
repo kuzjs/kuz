@@ -42,7 +42,7 @@ Site.prototype.LoremIpsum = function () {
 }
 
 Site.prototype.HomeURL = function () {
-	return this.meta.json.meta.SITE_URL;
+	return fsutils.RemoveSlashes(this.meta.json.meta.SITE_URL);
 }
 
 Site.prototype.HelloWorld = function () {

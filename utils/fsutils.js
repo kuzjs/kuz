@@ -6,6 +6,26 @@ const log = require("./log");
 
 
 
+function RemoveSlashes (text) {
+	let firstNonSlash = 0;
+	let lastNonSlash = text.length - 1;
+
+	for (let index = 0; index < text.length; index++) {
+		if (text[index] != "/") {
+			firstNonSlash = index;
+			break;
+		}
+	}
+
+	for (let index = 0; index < text.length; index++) {
+		if (text[index] != "/") {
+			lastNonSlash = index;
+		}
+	}
+
+	return text.slice(firstNonSlash, lastNonSlash+1);
+}
+
 function JoinPath () {
 	let path = "";
 
@@ -136,6 +156,7 @@ function DeleteAllButIndexHtml (dirpath) {
 
 
 module.exports = {
+	RemoveSlashes: RemoveSlashes,
 	JoinPath: JoinPath,
 	IsFileOrDirectory: IsFileOrDirectory,
 	IsDirectory: IsDirectory,
