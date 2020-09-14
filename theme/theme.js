@@ -155,8 +155,8 @@ Theme.prototype.Name = function () {
 	return this.themeName;
 }
 
-Theme.prototype.FullName = function () {
-	return this.metaObject.name ? this.metaObject.name : defaultText.title;
+Theme.prototype.Title = function () {
+	return this.metaObject.title ? this.metaObject.title : defaultText.title;
 }
 
 Theme.prototype.Version = function () {
@@ -186,7 +186,7 @@ Theme.prototype.GetPages = function () {
 Theme.prototype.GetTable = function () {
 	let table = new Table();
 	table.AddColumn("Name");
-	table.AddColumn("Name");
+	table.AddColumn("Title");
 	table.AddColumn("Ver");
 	table.AddColumn("Description");
 	table.AddColumn("Documentation");
@@ -201,7 +201,7 @@ Theme.prototype.Row = function () {
 	let meta = this.meta.json.meta;
 	return [
 		this.Name(),
-		this.FullName(),
+		this.Title(),
 		this.Version(),
 		this.Description(),
 		this.Documentation(),
