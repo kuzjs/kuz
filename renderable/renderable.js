@@ -137,6 +137,10 @@ Renderable.prototype.SetTitle = function (title) {
 	this.title = title.trim();
 }
 
+Renderable.prototype.SetConfig = function (configFileObject) {
+	this.configFileObject = configFileObject;
+}
+
 Renderable.prototype.Next = function () {
 	return this.next;
 }

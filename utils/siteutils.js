@@ -47,6 +47,7 @@ function GetEntities (site, configPath, Entity) {
 		let entry = configEntries[index];
 		let entity = new Entity(site, entry);
 		configFileObject.AddPage(entity);
+		entity.SetConfig(configFileObject);
 		entities.push(entity);
 	}
 
