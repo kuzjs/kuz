@@ -9,7 +9,7 @@ const fsutils = require("./fsutils");
 
 const Table = require("./table").Table;
 
-function ConfigFile(site, dirpath) {
+function ConfigFile(site, dirpath, entity=false) {
 	this.site = site;
 	this.dirpath = dirpath;
 	this.pages = [];
@@ -20,8 +20,13 @@ function ConfigFile(site, dirpath) {
 		this.configDirpath = site.GetInputDirectory() + "/" + dirpath;
 	}
 
-	let configFileName = site.GetNestedValueFromCascade("filenames", "config");
-	this.configFilePath = this.configDirpath + "/" + configFileName;
+	if (entity) {
+		this.configFilePath = dirpath;
+	} else {
+		let configFileName = site.GetNestedValueFromCascade("filenames", "config");
+		this.configFilePath = this.configDirpath + "/" + configFileName;
+	}
+
 	this.root = null;
 	this.parent = null;
 	this.children = [];

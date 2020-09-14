@@ -33,18 +33,21 @@ function GetLines (filename) {
 }
 
 function GetAuthors (site) {
-	let filepath = site.GetAuthorFilePath();
+	let configPath = site.GetAuthorConfigPath();
 
-	if (!fs.existsSync(filepath)) {
-		site.Error("Author file NOT found: " + filepath);
+	if (!fs.existsSync(configPath)) {
+		site.Error("Author file NOT found: " + configPath);
 		return [];
 	}
 
+	let authorsConfig = new ConfigFile(site, configPath, true);
+	site.AddConfig(authorsConfig);
+
 	let authors = [];
-	let lines = GetLines(filepath);
-	for (let index in lines) {
-		let line = lines[index];
-		let author = new Author(site, line);
+	let configEntries = authorsConfig.GetEntries();
+	for (let index in configEntries) {
+		let entry = configEntries[index];
+		let author = new Author(site, entry);
 		authors.push(author);
 	}
 
