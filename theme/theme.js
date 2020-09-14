@@ -15,6 +15,8 @@ const ResFile = require("./resfile").ResFile;
 const themesDirectory = "kaagazz_themes";
 const layoutsDirectory = "layouts";
 
+const defaultText = "---";
+
 
 
 function Theme(themeName, site) {
@@ -75,6 +77,7 @@ Theme.prototype.SetupPaths = function () {
 	}
 
 	this.meta = new JsonFile(this.JsonFilePath());
+	this.metaObject = this.meta.json.meta;
 	this.layouts = [];
 	for (let index in this.meta.json.layouts) {
 		let data = this.meta.json.layouts[index];
@@ -148,12 +151,24 @@ Theme.prototype.IsValid = function () {
 	return this.is_valid;
 }
 
+Theme.prototype.Name = function () {
+	return this.themeName;
+}
+
 Theme.prototype.FullName = function () {
-	return this.meta.json.meta.name;
+	return this.metaObject.name ? this.metaObject.name : defaultText;
 }
 
 Theme.prototype.Version = function () {
-	return this.meta.json.meta.version;
+	return this.metaObject.version ? this.metaObject.version : "0.0";
+}
+
+Theme.prototype.Description = function () {
+	return this.metaObject.description ? this.metaObject.description : defaultText;
+}
+
+Theme.prototype.Documentation = function () {
+	return this.metaObject.documentation ? this.metaObject.documentation : defaultText;
 }
 
 Theme.prototype.LayoutCount = function () {
@@ -172,6 +187,7 @@ Theme.prototype.GetTable = function () {
 	let table = new Table();
 	table.AddColumn("Name");
 	table.AddColumn("Name");
+	table.AddColumn("Ver");
 	table.AddColumn("Description");
 	table.AddColumn("Documentation");
 	table.AddColumn("Ls");
@@ -184,10 +200,11 @@ Theme.prototype.GetTable = function () {
 Theme.prototype.Row = function () {
 	let meta = this.meta.json.meta;
 	return [
-		this.themeName,
-		meta.name,
-		meta.version,
-		meta.documentation,
+		this.Name(),
+		this.FullName(),
+		this.Version(),
+		this.Description(),
+		this.Documentation(),
 		this.LayoutCount(),
 		this.cssFiles.length,
 		this.jsFiles.length,
