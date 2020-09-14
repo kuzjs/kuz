@@ -5,7 +5,7 @@ const JsonFile = require("./utils/jsonfile").JsonFile;
 const Table = require("./utils/table").Table;
 const Site = require("./site").Site;
 
-const jsonDirectory = "kaagazz_app/data/";
+const jsonDirectory = "kzapp/data/";
 
 const kaagazzJsonPath = jsonDirectory + "kaagazz.json";
 const blackadderJsonPath = jsonDirectory + "blackadder.json";
