@@ -1,0 +1,10 @@
+{
+	"messages": {
+		"FILE_NOT_FOUND": "File not found: {1}",
+
+		"JSON_FILE_NOT_FOUND": "JSON not found: {1}",
+		"JSON_BAD_INPUT": "JSON not valid: {1}",
+
+		"zzz": false
+	}
+}
