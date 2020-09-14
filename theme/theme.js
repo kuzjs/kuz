@@ -173,6 +173,7 @@ Theme.prototype.GetTable = function () {
 	table.AddColumn("Name");
 	table.AddColumn("Name");
 	table.AddColumn("Description");
+	table.AddColumn("Documentation");
 	table.AddColumn("Ls");
 	table.AddColumn("CSS");
 	table.AddColumn("JS");
@@ -186,6 +187,7 @@ Theme.prototype.Row = function () {
 		this.themeName,
 		meta.name,
 		meta.version,
+		meta.documentation,
 		this.LayoutCount(),
 		this.cssFiles.length,
 		this.jsFiles.length,
