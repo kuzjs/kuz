@@ -6,21 +6,21 @@ const pug = require("pug");
 const log = require("../utils/log");
 const fsutils = require("../utils/fsutils");
 
+const common = require("../utils/common");
+const defaultText = common.defaultText;
+
 const Table = require("../utils/table").Table;
 
 function Layout (theme, data) {
 	this.theme = theme;
+	this.data = data;
 	this.name = data.name;
-	this.path = data.path;
-	this.description = data.description ? data.description : "";
-	this.documentation = data.documentation ? data.documentation : "";
-	this.title = data.title ? data.title : "";
 	this.default = data.default ? data.default : false;
 	this.Setup();
 }
 
 Layout.prototype.FullPath = function () {
-	return fsutils.JoinPath(this.theme.LayoutsInputDirectory(), this.path);
+	return fsutils.JoinPath(this.theme.LayoutsInputDirectory(), this.Path());
 }
 
 Layout.prototype.Setup = function () {
@@ -29,6 +29,26 @@ Layout.prototype.Setup = function () {
 		return;
 	}
 	this.ForcedUpdate();
+}
+
+Layout.prototype.Name = function () {
+	return this.data.name;
+}
+
+Layout.prototype.Path = function () {
+	return this.data.path;
+}
+
+Layout.prototype.Description = function () {
+	return this.data.description ? this.data.description : defaultText.description;
+}
+
+Layout.prototype.Documentation = function () {
+	return this.data.documentation ? this.data.documentation : defaultText.documentation;
+}
+
+Layout.prototype.Title = function () {
+	return this.data.title ? this.data.title : defaultText.title;
 }
 
 Layout.prototype.AllIsWell = function () {
@@ -70,12 +90,12 @@ Layout.prototype.GetTable = function () {
 
 Layout.prototype.Row = function () {
 	return [
-		this.name,
-		this.theme.themeName,
-		this.title,
-		this.description,
-		this.documentation,
-		this.path
+		this.Name(),
+		this.theme.Name(),
+		this.Title(),
+		this.Description(),
+		this.Documentation(),
+		this.Path()
 	];
 }
 
