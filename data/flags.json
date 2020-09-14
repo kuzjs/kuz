@@ -1,0 +1,211 @@
+{
+	"flags": [
+		{
+			"code": "a",
+			"name": "authors",
+			"description": "Authors only modifier.",
+			"modifier": true
+		},
+		{
+			"code": "A",
+			"name": "all",
+			"description": "All renderables modifier.",
+			"modifier": true
+		},
+		{
+			"code": "b",
+			"name": "build",
+			"description": "Build things.",
+			"major": true
+		},
+		{
+			"code": "c",
+			"name": "categories",
+			"description": "Categories only modifier.",
+			"modifier": true
+		},
+		{
+			"code": "C",
+			"name": "collections",
+			"description": "Collections only modifier.",
+			"modifier": true
+		},
+		{
+			"code": "d",
+			"name": "debug",
+			"description": "Show debug messages.",
+			"implemented": true
+		},
+		{
+			"code": "e",
+			"name": "entities",
+			"description": "Entities only modifier.",
+			"modifier": true
+		},
+		{
+			"code": "f",
+			"name": "forced",
+			"description": "Forced-update things.",
+			"major": true
+		},
+		{
+			"code": "g",
+			"name": "config",
+			"description": "ConfigFile only modifier.",
+			"modifier": true
+		},
+		{
+			"code": "h",
+			"name": "help",
+			"description": "Show some help.",
+			"implemented": true
+		},
+		{
+			"code": "H",
+			"name": "helpfull",
+			"description": "Show full help.",
+			"implemented": true
+		},
+		{
+			"code": "i",
+			"name": "install",
+			"description": "Install themes."
+		},
+		{
+			"code": "I",
+			"name": "independent",
+			"description": "List independent flags."
+		},
+		{
+			"code": "j",
+			"name": "json",
+			"description": "JsonFile only modifier.",
+			"modifier": true
+		},
+		{
+			"code": "J",
+			"name": "js",
+			"description": "JavaScript files only modifier.",
+			"modifier": true
+		},
+		{
+			"code": "l",
+			"name": "list",
+			"description": "List things.",
+			"implemented": true,
+			"major": true
+		},
+		{
+			"code": "L",
+			"name": "layouts",
+			"description": "Layout files only modifier.",
+			"modifier": true
+		},
+		{
+			"code": "m",
+			"name": "modifier",
+			"description": "List modifier flags."
+		},
+		{
+			"code": "M",
+			"name": "major",
+			"description": "List major flags."
+		},
+		{
+			"code": "n",
+			"name": "new",
+			"description": "New site."
+		},
+		{
+			"code": "p",
+			"name": "pages",
+			"description": "Pages only modifier.",
+			"modifier": true
+		},
+		{
+			"code": "q",
+			"name": "search",
+			"description": "Search for a page.",
+			"major": true
+		},
+		{
+			"code": "Q",
+			"name": "quote",
+			"description": "Display a quote."
+		},
+		{
+			"code": "r",
+			"name": "report",
+			"description": "Report problems.",
+			"major": true
+		},
+		{
+			"code": "R",
+			"name": "res",
+			"description": "Resource files only modifier.",
+			"modifier": true
+		},
+		{
+			"code": "s",
+			"name": "serve",
+			"description": "Run a live server.",
+			"implemented": true
+		},
+		{
+			"code": "S",
+			"name": "css",
+			"description": "CSS stylesheets only modifier.",
+			"modifier": true
+		},
+		{
+			"code": "t",
+			"name": "tags",
+			"description": "Tags only modifier.",
+			"modifier": true
+		},
+		{
+			"code": "T",
+			"name": "themes",
+			"description": "Themes only modifier.",
+			"modifier": true
+		},
+		{
+			"code": "u",
+			"name": "update",
+			"description": "Update things.",
+			"implemented": true,
+			"major": true
+		},
+		{
+			"code": "v",
+			"name": "version",
+			"description": "Show version.",
+			"implemented": true
+		},
+		{
+			"code": "V",
+			"name": "verify",
+			"description": "Verify things.",
+			"major": true
+		},
+		{
+			"code": "w",
+			"name": "watch",
+			"description": "Watch the site.",
+			"implemented": true,
+			"major": true
+		},
+		{
+			"code": "x",
+			"name": "deletable",
+			"description": "Find extra files.",
+			"major": true
+		},
+		{
+			"code": "X",
+			"name": "delete",
+			"description": "Delete extra files.",
+			"major": true
+		}
+	]
+}

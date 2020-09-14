@@ -8,6 +8,7 @@ const Site = require("./site").Site;
 const jsonDirectory = "kzapp/data/";
 
 const kaagazzJsonPath = jsonDirectory + "kaagazz.json";
+const flagsJsonPath = jsonDirectory + "flags.json";
 const blackadderJsonPath = jsonDirectory + "blackadder.json";
 const loremIpsumJsonPath = jsonDirectory + "lorem-ipsum.json";
 
@@ -77,6 +78,7 @@ Flag.prototype.GetTable = function () {
 
 function KaagazzApp () {
 	this.meta = new JsonFile(kaagazzJsonPath);
+	this.flagsJson = new JsonFile(flagsJsonPath);
 	this.blackadder = new JsonFile(blackadderJsonPath);
 	this.ipsum = new JsonFile(loremIpsumJsonPath);
 
@@ -91,6 +93,10 @@ function KaagazzApp () {
 
 KaagazzApp.prototype.AllIsWell = function () {
 	if (!this.meta.AllIsWell()) {
+		return false;
+	}
+
+	if (!this.flagsJson.AllIsWell()) {
 		return false;
 	}
 
@@ -116,7 +122,7 @@ KaagazzApp.prototype.AllIsWell = function () {
 }
 
 KaagazzApp.prototype.SetupFlags = function () {
-	let flags = this.meta.json.flags;
+	let flags = this.flagsJson.json.flags;
 	this.flags = [];
 	this.args = [];
 
