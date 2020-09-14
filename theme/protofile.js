@@ -4,7 +4,8 @@ const log = require("../utils/log");
 const fsutils = require("../utils/fsutils");
 const Table = require("../utils/table").Table;
 
-const defaultText = "---";
+const common = require("../utils/common");
+const defaultText = common.defaultText;
 
 
 
@@ -26,15 +27,15 @@ ProtoFile.prototype.Path = function () {
 }
 
 ProtoFile.prototype.Description = function () {
-	return this.data.description ? this.data.description : defaultText;
+	return this.data.description ? this.data.description : defaultText.description;
 }
 
 ProtoFile.prototype.Documentation = function () {
-	return this.data.documentation ? this.data.documentation : defaultText;
+	return this.data.documentation ? this.data.documentation : defaultText.documentation;
 }
 
 ProtoFile.prototype.Title = function () {
-	return this.data.title ? this.data.title : defaultText;
+	return this.data.title ? this.data.title : defaultText.title;
 }
 
 ProtoFile.prototype.InputDirectory = function () {

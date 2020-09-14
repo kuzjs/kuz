@@ -6,6 +6,9 @@ const JsonFile = require("../utils/jsonfile").JsonFile;
 
 const Table = require("../utils/table").Table;
 
+const common = require("../utils/common");
+const defaultText = common.defaultText;
+
 const Layout = require("./layout").Layout;
 
 const CssFile = require("./cssfile").CssFile;
@@ -14,8 +17,6 @@ const ResFile = require("./resfile").ResFile;
 
 const themesDirectory = "kaagazz_themes";
 const layoutsDirectory = "layouts";
-
-const defaultText = "---";
 
 
 
@@ -156,7 +157,7 @@ Theme.prototype.Name = function () {
 }
 
 Theme.prototype.FullName = function () {
-	return this.metaObject.name ? this.metaObject.name : defaultText;
+	return this.metaObject.name ? this.metaObject.name : defaultText.title;
 }
 
 Theme.prototype.Version = function () {
@@ -164,11 +165,11 @@ Theme.prototype.Version = function () {
 }
 
 Theme.prototype.Description = function () {
-	return this.metaObject.description ? this.metaObject.description : defaultText;
+	return this.metaObject.description ? this.metaObject.description : defaultText.description;
 }
 
 Theme.prototype.Documentation = function () {
-	return this.metaObject.documentation ? this.metaObject.documentation : defaultText;
+	return this.metaObject.documentation ? this.metaObject.documentation : defaultText.documentation;
 }
 
 Theme.prototype.LayoutCount = function () {
