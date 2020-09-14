@@ -97,6 +97,10 @@ Site.prototype.GetMetaDirectory = function () {
 	return this.GetInputDirectoryFromJson("meta");
 }
 
+Site.prototype.GetThemesDirectory = function () {
+	return this.GetInputDirectoryFromJson("themes");
+}
+
 Site.prototype.GetDataDirectory = function () {
 	return this.GetInputDirectoryFromJson("data");
 }

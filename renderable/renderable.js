@@ -239,7 +239,7 @@ Renderable.prototype.GetPageOptions = function () {
 
 Renderable.prototype.GetPageOptionsFN = function () {
 	let options = this.GetPageOptions();
-	options.filename = "kaagazz_themes/x.pug";
+	options.filename = this.site.GetThemesDirectory() + "/x.pug";
 	return options;
 }
 

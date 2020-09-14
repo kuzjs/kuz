@@ -30,7 +30,7 @@ Theme.prototype.Name = function () {
 }
 
 Theme.prototype.ThemesInputDirectory = function () {
-	return this.site.app.meta.json.input.themes;
+	return this.site.GetThemesDirectory();
 }
 
 Theme.prototype.ThemesOutputDirectory = function () {
