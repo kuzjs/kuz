@@ -32,12 +32,8 @@
 	},
 
 	"filenames": {
-		"authors": "authors.txt",
-		"collections": "collections.txt",
 		"config": "config.txt",
-		"categories": "categories.txt",
 		"siteJson": "site.json",
-		"tags": "tags.txt",
 		"zzz": false
 	}
 }
