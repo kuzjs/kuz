@@ -23,7 +23,6 @@ Site.prototype.Setup = function (kaagazz) {
 	this.siteJsonPath = this.app.GetSiteJsonPath();
 	this.meta = new JsonFile(this.siteJsonPath);
 	this.configFileObjects = [];
-	this.SetAllDirectoryPaths();
 	this.SetupThemes();
 	this.SetupRenderables();
 }
@@ -55,15 +54,6 @@ Site.prototype.Error = function (errorMessage) {
 	log.Red(this.errorMessage);
 }
 
-Site.prototype.SetAllDirectoryPaths = function () {
-	this.SetInputDirectory();
-	this.SetOutputDirectory();
-	this.SetSpecialDirectory();
-	this.SetMetaDirectory();
-	this.SetDataDirectory();
-	this.SetCollectionsDirectory();
-}
-
 Site.prototype.SetupRenderables = function () {
 	this.authors = siteutils.GetAuthors(this);
 	this.defaultAuthor = this.authors[this.authors.length - 1];
@@ -92,51 +82,27 @@ Site.prototype.GetOutputDirectoryFromJson = function (dirName) {
 }
 
 Site.prototype.GetInputDirectory = function () {
-	return this.inputDirectoryPath;
-}
-
-Site.prototype.SetInputDirectory = function () {
-	this.inputDirectoryPath = this.GetInputDirectoryFromJson("pages");
+	return this.GetInputDirectoryFromJson("pages");
 }
 
 Site.prototype.GetOutputDirectory = function () {
-	return this.outputDirectoryPath;
-}
-
-Site.prototype.SetOutputDirectory = function () {
-	this.outputDirectoryPath = this.GetOutputDirectoryFromJson("root");
+	return this.GetOutputDirectoryFromJson("root");
 }
 
 Site.prototype.GetSpecialDirectory = function () {
-	return this.specialDirectoryPath;
-}
-
-Site.prototype.SetSpecialDirectory = function () {
-	this.specialDirectoryPath = this.GetOutputDirectoryFromJson("special");
+	return this.GetOutputDirectoryFromJson("special");
 }
 
 Site.prototype.GetMetaDirectory = function () {
-	return this.metaDirectoryPath;
-}
-
-Site.prototype.SetMetaDirectory = function () {
-	this.metaDirectoryPath = this.GetInputDirectoryFromJson("meta");
+	return this.GetInputDirectoryFromJson("meta");
 }
 
 Site.prototype.GetDataDirectory = function () {
-	return this.dataDirectoryPath;
-}
-
-Site.prototype.SetDataDirectory = function () {
-	this.dataDirectoryPath = this.GetInputDirectoryFromJson("data");
+	return this.GetInputDirectoryFromJson("data");
 }
 
 Site.prototype.GetCollectionsDirectory = function () {
-	return this.collectionsDirectoryPath;
-}
-
-Site.prototype.SetCollectionsDirectory = function () {
-	this.collectionsDirectoryPath = this.GetInputDirectoryFromJson("collections");
+	return this.GetInputDirectoryFromJson("collections");
 }
 
 Site.prototype.GetDataFileContents = function (filename) {
