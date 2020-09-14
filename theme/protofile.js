@@ -4,6 +4,8 @@ const log = require("../utils/log");
 const fsutils = require("../utils/fsutils");
 const Table = require("../utils/table").Table;
 
+const defaultText = "---";
+
 
 
 function ProtoFile (dirName) {
@@ -12,11 +14,27 @@ function ProtoFile (dirName) {
 
 ProtoFile.prototype.SetupProto = function (theme, data) {
 	this.theme = theme;
-	this.name = data.name;
-	this.path = data.path;
-	this.description = data.description ? data.description : "";
-	this.documentation = data.documentation ? data.documentation : "";
-	this.title = data.title ? data.title : "";
+	this.data = data;
+}
+
+ProtoFile.prototype.Name = function () {
+	return this.data.name;
+}
+
+ProtoFile.prototype.Path = function () {
+	return this.data.path;
+}
+
+ProtoFile.prototype.Description = function () {
+	return this.data.description ? this.data.description : defaultText;
+}
+
+ProtoFile.prototype.Documentation = function () {
+	return this.data.documentation ? this.data.documentation : defaultText;
+}
+
+ProtoFile.prototype.Title = function () {
+	return this.data.title ? this.data.title : defaultText;
 }
 
 ProtoFile.prototype.InputDirectory = function () {
@@ -24,7 +42,7 @@ ProtoFile.prototype.InputDirectory = function () {
 }
 
 ProtoFile.prototype.InputFilePath = function () {
-	return fsutils.JoinPath(this.InputDirectory(), this.path);
+	return fsutils.JoinPath(this.InputDirectory(), this.Path());
 }
 
 ProtoFile.prototype.OutputDirectory = function () {
@@ -32,7 +50,7 @@ ProtoFile.prototype.OutputDirectory = function () {
 }
 
 ProtoFile.prototype.OutputFilePath = function () {
-	return fsutils.JoinPath(this.OutputDirectory(), this.path);
+	return fsutils.JoinPath(this.OutputDirectory(), this.Path());
 }
 
 ProtoFile.prototype.toString = function () {
@@ -52,12 +70,12 @@ ProtoFile.prototype.GetTable = function () {
 
 ProtoFile.prototype.Row = function () {
 	return [
-		this.name,
-		this.theme.themeName,
-		this.path,
-		this.title,
-		this.description,
-		this.documentation
+		this.Name(),
+		this.theme.Name(),
+		this.Path(),
+		this.Title(),
+		this.Description(),
+		this.Documentation()
 	];
 }
 

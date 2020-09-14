@@ -100,8 +100,8 @@ Theme.prototype.SetupPaths = function () {
 Theme.prototype.SetupCssFiles = function () {
 	this.cssFiles = [];
 	for (let index in this.meta.json.css) {
-		let fileName = this.meta.json.css[index];
-		let cssFile = new CssFile(this, fileName);
+		let data = this.meta.json.css[index];
+		let cssFile = new CssFile(this, data);
 		this.cssFiles.push(cssFile);
 	}
 }
@@ -109,8 +109,8 @@ Theme.prototype.SetupCssFiles = function () {
 Theme.prototype.SetupJsFiles = function () {
 	this.jsFiles = [];
 	for (let index in this.meta.json.js) {
-		let fileName = this.meta.json.js[index];
-		let jsFile = new JsFile(this, fileName);
+		let data = this.meta.json.js[index];
+		let jsFile = new JsFile(this, data);
 		this.jsFiles.push(jsFile);
 	}
 }
@@ -118,8 +118,8 @@ Theme.prototype.SetupJsFiles = function () {
 Theme.prototype.SetupResFiles = function () {
 	this.resFiles = [];
 	for (let index in this.meta.json.res) {
-		let fileName = this.meta.json.res[index];
-		let resFile = new ResFile(this, fileName);
+		let data = this.meta.json.res[index];
+		let resFile = new ResFile(this, data);
 		this.resFiles.push(resFile);
 	}
 }
