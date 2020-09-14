@@ -46,6 +46,7 @@ function GetEntities (site, configPath, Entity) {
 	for (let index in configEntries) {
 		let entry = configEntries[index];
 		let entity = new Entity(site, entry);
+		configFileObject.AddPage(entity);
 		entities.push(entity);
 	}
 
@@ -109,7 +110,7 @@ function GetPages (site, dirpath, parentConfig) {
 			pages = pages.concat(GetPages(site, entryDirpath, configFileObject));
 		} else {
 			let page = new Page(site, configFileObject, entry);
-			configFileObject.pages.push(pages);
+			configFileObject.AddPage(page);
 			pages.push(page);
 		}
 	}

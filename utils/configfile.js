@@ -56,6 +56,10 @@ ConfigFile.prototype.AddChild = function (configFileChildObject) {
 	this.children.push(configFileChildObject);
 }
 
+ConfigFile.prototype.AddPage = function (page) {
+	this.pages.push(page);
+}
+
 ConfigFile.prototype.Exists = function () {
 	if (fsutils.IsFile(this.configFilePath)) {
 		return true;
