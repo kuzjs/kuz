@@ -56,19 +56,11 @@ Page.prototype.SetupInput = function () {
 		inputFilePathWithoutExtension = this.InputDirectoryPath();
 	}
 
-	let inputFilePath;
-	let extensions = this.site.app.meta.json.extensions;
-	for (let index in extensions) {
-		let extension = extensions[index];
-		inputFilePath = inputFilePathWithoutExtension + "." + extension;
-		if (fsutils.IsFile(inputFilePath)) {
-			this.inputFileFound = true;
-			this.inputFileExtension = extension;
-			break;
-		}
+	this.inputFileExtension = this.typename;
+	this.inputFilePath = inputFilePathWithoutExtension + "." + this.inputFileExtension;
+	if (fsutils.IsFile(this.inputFilePath)) {
+		this.inputFileFound = true;
 	}
-
-	this.inputFilePath = inputFilePath;
 }
 
 Page.prototype.InputDirectoryPath = function () {

@@ -31,18 +31,6 @@
 		"zzz": false
 	},
 
-	"extensions": [
-		"article",
-		"page",
-		"pug",
-		"markdown",
-		"mcq",
-		"md",
-		"timeline",
-		"question",
-		"txt"
-	],
-
 	"filenames": {
 		"authors": "authors.txt",
 		"collections": "collections.txt",
