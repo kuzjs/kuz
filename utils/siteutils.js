@@ -47,6 +47,8 @@ function GetAuthors (site) {
 		let author = new Author(site, line);
 		authors.push(author);
 	}
+
+	SetupNextPrevious(authors);
 	return authors;
 }
 
@@ -66,6 +68,7 @@ function GetCategories (site) {
 		categories.push(category);
 	}
 
+	SetupNextPrevious(categories);
 	return categories;
 }
 
@@ -85,6 +88,7 @@ function GetTags (site) {
 		tags.push(tag);
 	}
 
+	SetupNextPrevious(tags);
 	return tags;
 }
 
@@ -134,6 +138,9 @@ function GetPages (site, dirpath, parentConfig) {
 		}
 	}
 
+	if (dirpath === undefined) {
+		SetupNextPrevious(pages);
+	}
 	return pages;
 }
 
@@ -153,6 +160,7 @@ function GetCollections (site) {
 		collections.push(collection);
 	}
 
+	SetupNextPrevious(collections);
 	return collections;
 }
 
@@ -160,7 +168,6 @@ function GetCollections (site) {
 
 module.exports = {
 	SetSite: SetSite,
-	SetupNextPrevious: SetupNextPrevious,
 	GetAuthors: GetAuthors,
 	GetCategories: GetCategories,
 	GetTags: GetTags,

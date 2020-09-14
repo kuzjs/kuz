@@ -68,15 +68,6 @@ Site.prototype.SetupRenderables = function () {
 	this.tags = siteutils.GetTags(this);
 	this.pages = siteutils.GetPages(this);
 	this.collections = siteutils.GetCollections(this);
-	this.SetupNextPrevious();
-}
-
-Site.prototype.SetupNextPrevious = function () {
-	siteutils.SetupNextPrevious(this.authors);
-	siteutils.SetupNextPrevious(this.categories);
-	siteutils.SetupNextPrevious(this.tags);
-	siteutils.SetupNextPrevious(this.pages);
-	siteutils.SetupNextPrevious(this.collections);
 }
 
 Site.prototype.GetNestedValueFromCascade = function (parent, child) {
