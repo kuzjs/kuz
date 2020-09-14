@@ -189,40 +189,20 @@ Site.prototype.DefaultTheme = function () {
 	return this.themes[0];
 }
 
-Site.prototype.GetEntityFilePath = function (typenamePlural) {
-	return this.GetMetaDirectory() + "/" + this.GetNestedValueFromCascade("filenames", typenamePlural);
-}
-
 Site.prototype.GetEntityConfigPath = function (typenamePlural) {
 	return this.GetMetaDirectory() + "/" + typenamePlural + "/config.txt";
-}
-
-Site.prototype.GetAuthorFilePath = function () {
-	return this.GetEntityFilePath("authors");
 }
 
 Site.prototype.GetAuthorConfigPath = function () {
 	return this.GetEntityConfigPath("authors");
 }
 
-Site.prototype.GetCategoryFilePath = function () {
-	return this.GetEntityFilePath("categories");
-}
-
 Site.prototype.GetCategoryConfigPath = function () {
 	return this.GetEntityConfigPath("categories");
 }
 
-Site.prototype.GetCollectionFilePath = function () {
-	return this.GetEntityFilePath("collections");
-}
-
 Site.prototype.GetCollectionConfigPath = function () {
 	return this.GetEntityConfigPath("collections");
-}
-
-Site.prototype.GetTagFilePath = function () {
-	return this.GetEntityFilePath("tags");
 }
 
 Site.prototype.GetTagConfigPath = function () {
