@@ -40,11 +40,11 @@ function GetAuthors (site) {
 		return [];
 	}
 
-	let authorsConfig = new ConfigFile(site, configPath, true);
-	site.AddConfig(authorsConfig);
+	let configFileObject = new ConfigFile(site, configPath, true);
+	site.AddConfig(configFileObject);
 
 	let authors = [];
-	let configEntries = authorsConfig.GetEntries();
+	let configEntries = configFileObject.GetEntries();
 	for (let index in configEntries) {
 		let entry = configEntries[index];
 		let author = new Author(site, entry);
@@ -63,11 +63,11 @@ function GetCategories (site) {
 		return [];
 	}
 
-	let categoriesConfig = new ConfigFile(site, configPath, true);
-	site.AddConfig(categoriesConfig);
+	let configFileObject = new ConfigFile(site, configPath, true);
+	site.AddConfig(configFileObject);
 
 	let categories = [];
-	let configEntries = categoriesConfig.GetEntries();
+	let configEntries = configFileObject.GetEntries();
 	for (let index in configEntries) {
 		let entry = configEntries[index];
 		let category = new Category(site, entry);
@@ -86,11 +86,11 @@ function GetTags (site) {
 		return [];
 	}
 
-	let tagsConfig = new ConfigFile(site, configPath, true);
-	site.AddConfig(tagsConfig);
+	let configFileObject = new ConfigFile(site, configPath, true);
+	site.AddConfig(configFileObject);
 
 	let tags = [];
-	let configEntries = tagsConfig.GetEntries();
+	let configEntries = configFileObject.GetEntries();
 	for (let index in configEntries) {
 		let entry = configEntries[index];
 		let tag = new Tag(site, entry);
@@ -161,11 +161,11 @@ function GetCollections (site) {
 		return [];
 	}
 
-	let collectionsConfig = new ConfigFile(site, configPath, true);
-	site.AddConfig(collectionsConfig);
+	let configFileObject = new ConfigFile(site, configPath, true);
+	site.AddConfig(configFileObject);
 
 	let collections = [];
-	let configEntries = collectionsConfig.GetEntries();
+	let configEntries = configFileObject.GetEntries();
 	for (let index in configEntries) {
 		let entry = configEntries[index];
 		let collection = new Collection(site, entry);
