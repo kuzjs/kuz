@@ -209,12 +209,24 @@ Site.prototype.GetCategoryFilePath = function () {
 	return this.GetEntityFilePath("categories");
 }
 
+Site.prototype.GetCategoryConfigPath = function () {
+	return this.GetEntityConfigPath("categories");
+}
+
 Site.prototype.GetCollectionFilePath = function () {
 	return this.GetEntityFilePath("collections");
 }
 
+Site.prototype.GetCollectionConfigPath = function () {
+	return this.GetEntityConfigPath("collections");
+}
+
 Site.prototype.GetTagFilePath = function () {
 	return this.GetEntityFilePath("tags");
+}
+
+Site.prototype.GetTagConfigPath = function () {
+	return this.GetEntityConfigPath("tags");
 }
 
 Site.prototype.PrintDirectories = function () {

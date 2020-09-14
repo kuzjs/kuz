@@ -56,18 +56,21 @@ function GetAuthors (site) {
 }
 
 function GetCategories (site) {
-	let filepath = site.GetCategoryFilePath();
+	let configPath = site.GetCategoryConfigPath();
 
-	if (!fs.existsSync(filepath)) {
-		site.Error("Category file NOT found: " + filepath);
+	if (!fs.existsSync(configPath)) {
+		site.Error("Category file NOT found: " + configPath);
 		return [];
 	}
 
+	let categoriesConfig = new ConfigFile(site, configPath, true);
+	site.AddConfig(categoriesConfig);
+
 	let categories = [];
-	let lines = GetLines(filepath);
-	for (let index in lines) {
-		let line = lines[index];
-		let category = new Category(site, line);
+	let configEntries = categoriesConfig.GetEntries();
+	for (let index in configEntries) {
+		let entry = configEntries[index];
+		let category = new Category(site, entry);
 		categories.push(category);
 	}
 
@@ -76,18 +79,21 @@ function GetCategories (site) {
 }
 
 function GetTags (site) {
-	let filepath = site.GetTagFilePath();
+	let configPath = site.GetTagConfigPath();
 
-	if (!fs.existsSync(filepath)) {
-		site.Error("Tag file NOT found: " + filepath);
+	if (!fs.existsSync(configPath)) {
+		site.Error("Tag file NOT found: " + configPath);
 		return [];
 	}
 
+	let tagsConfig = new ConfigFile(site, configPath, true);
+	site.AddConfig(tagsConfig);
+
 	let tags = [];
-	let lines = GetLines(filepath);
-	for (let index in lines) {
-		let line = lines[index];
-		let tag = new Tag(site, line);
+	let configEntries = tagsConfig.GetEntries();
+	for (let index in configEntries) {
+		let entry = configEntries[index];
+		let tag = new Tag(site, entry);
 		tags.push(tag);
 	}
 
@@ -148,18 +154,21 @@ function GetPages (site, dirpath, parentConfig) {
 }
 
 function GetCollections (site) {
-	let filepath = site.GetCollectionFilePath();
+	let configPath = site.GetCollectionConfigPath();
 
-	if (!fs.existsSync(filepath)) {
-		site.Error("Collection file NOT found: " + filepath);
+	if (!fs.existsSync(configPath)) {
+		site.Error("Collection file NOT found: " + configPath);
 		return [];
 	}
 
+	let collectionsConfig = new ConfigFile(site, configPath, true);
+	site.AddConfig(collectionsConfig);
+
 	let collections = [];
-	let lines = GetLines(filepath);
-	for (let index in lines) {
-		let line = lines[index];
-		let collection = new Collection(site, line);
+	let configEntries = collectionsConfig.GetEntries();
+	for (let index in configEntries) {
+		let entry = configEntries[index];
+		let collection = new Collection(site, entry);
 		collections.push(collection);
 	}
 
