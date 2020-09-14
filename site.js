@@ -84,7 +84,7 @@ Site.prototype.GetNestedValueFromCascade = function (parent, child) {
 }
 
 Site.prototype.GetInputDirectoryFromJson = function (dirName) {
-	return this.GetNestedValueFromCascade("input", dirName);
+	return this.app.meta.json.input[dirName];
 }
 
 Site.prototype.GetOutputDirectoryFromJson = function (dirName) {
