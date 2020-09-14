@@ -15,7 +15,6 @@ const CssFile = require("./cssfile").CssFile;
 const JsFile = require("./jsfile").JsFile;
 const ResFile = require("./resfile").ResFile;
 
-const themesDirectory = "kaagazz_themes";
 const layoutsDirectory = "layouts";
 
 
@@ -31,7 +30,7 @@ Theme.prototype.Name = function () {
 }
 
 Theme.prototype.ThemesInputDirectory = function () {
-	return "kaagazz_themes";
+	return this.site.app.meta.json.input.themes;
 }
 
 Theme.prototype.ThemesOutputDirectory = function () {

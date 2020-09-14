@@ -126,7 +126,7 @@ Site.prototype.SetupThemes = function () {
 	} else {
 		for (let index in themeNames) {
 			let themeName = themeNames[index];
-			let theme = new Theme(themeName);
+			let theme = new Theme(themeName, this);
 			if (theme.IsValid()) {
 				this.themes.push(theme);
 			} else {
