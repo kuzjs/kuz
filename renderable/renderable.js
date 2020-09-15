@@ -75,18 +75,6 @@ Renderable.prototype.LoremIpsum = function () {
 	return this.App().LoremIpsum();
 }
 
-Renderable.prototype.Site = function () {
-	return this.GetSite();
-}
-
-Renderable.prototype.GetSite = function () {
-	return this.site;
-}
-
-Renderable.prototype.SetSite = function (site) {
-	this.site = site;
-}
-
 Renderable.prototype.Name = function () {
 	return this.GetName();
 }
