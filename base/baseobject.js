@@ -77,6 +77,16 @@ KZBaseObject.prototype.GetApp = function () {
 
 
 
+KZBaseObject.prototype.Blackadder = function () {
+	return this.GetApp().Blackadder();
+}
+
+KZBaseObject.prototype.LoremIpsum = function () {
+	return this.GetApp().LoremIpsum();
+}
+
+
+
 KZBaseObject.prototype.Index = function (index) {
 	this.SetIndex(index);
 	return this.GetIndex();

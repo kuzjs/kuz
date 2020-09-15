@@ -59,14 +59,6 @@ Renderable.prototype.AddProperty = function (headerLine) {
 	}
 }
 
-Renderable.prototype.Blackadder = function () {
-	return this.App().Blackadder();
-}
-
-Renderable.prototype.LoremIpsum = function () {
-	return this.App().LoremIpsum();
-}
-
 Renderable.prototype.Name = function () {
 	return this.GetName();
 }
