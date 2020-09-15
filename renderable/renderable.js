@@ -203,13 +203,14 @@ Renderable.prototype.IsRenderable = function () {
 }
 
 Renderable.prototype.IsHidden = function () {
-	if (this.hidden === true) {
-		return true;
+	let prop = this.GetPropertyCascaded("hidden");
+	if (prop.found) {
+		return prop.value;
 	}
 	return false;
 }
 
-Renderable.prototype.IsToBeShown = function () {
+Renderable.prototype.IsVisible = function () {
 	return !this.IsHidden();
 }
 
