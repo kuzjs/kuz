@@ -56,6 +56,27 @@ KZBaseObject.prototype.GetSite = function () {
 
 
 
+KZBaseObject.prototype.App = function (app) {
+	this.SetApp(app);
+	return this.GetApp();
+}
+
+KZBaseObject.prototype.SetApp = function (app) {
+	if (app != undefined) {
+		this.app = app;
+	}
+	return this;
+}
+
+KZBaseObject.prototype.GetApp = function () {
+	if (this.app) {
+		return this.app;
+	}
+	return this.GetSite().app;
+}
+
+
+
 KZBaseObject.prototype.Index = function (index) {
 	this.SetIndex(index);
 	return this.GetIndex();
