@@ -7,11 +7,15 @@ const Property = require("./property").Property;
 const Nss = require("../utils/nss").Nss;
 const fsutils = require("../utils/fsutils");
 
-function MetaData(site, path) {
+const KZBaseObject = require("../base/baseobject").KZBaseObject;
+
+function MetaData (site, path) {
 	this.site = site;
 	this.path = path;
 	this.Setup();
 }
+
+MetaData.prototype = new KZBaseObject();
 
 MetaData.prototype.Setup = function () {
 	this.properties = [];
