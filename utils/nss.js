@@ -4,10 +4,6 @@ const fs = require("fs");
 
 function NewlineSeparatedStrings (filename) {
 	this.filename = filename;
-	this.headerLines = [];
-	this.bodyLines = [];
-	this.footerLines = [];
-	this.SetupArrays();
 }
 
 NewlineSeparatedStrings.prototype.GetLinesArray = function (lineText) {
@@ -29,40 +25,28 @@ NewlineSeparatedStrings.prototype.GetLinesArray = function (lineText) {
 	return values;
 }
 
-NewlineSeparatedStrings.prototype.SetupArrays = function () {
-	let regionIndex = 0;
+NewlineSeparatedStrings.prototype.GetLinesByRegionIndex = function (regionIndex) {
+	let currentRegionIndex = 0;
+	let regionLines = [];
 	if (fs.existsSync(this.filename)) {
 		let fileLines = this.GetLinesArray();
 		for (let index in fileLines) {
-			let line = fileLines[index];
-			if (line.startsWith("====") || line.startsWith("----")) {
-				regionIndex++;
-			} else {
-				switch (regionIndex) {
-					case 0:
-						line = line.trim();
-						if (line.length != 0) {
-							this.headerLines.push(line);
-						}
-						break;
-					case 1:
-						this.bodyLines.push(line);
-						break;
-					case 2:
-						line = line.trim();
-						if (line.length != 0) {
-							this.footerLines.push(line);
-						}
-						break;
-					default:
-						break;
+			let currentLine = fileLines[index];
+			if (currentLine.startsWith("====") || currentLine.startsWith("----")) {
+				currentRegionIndex++;
+			} else if (currentRegionIndex == regionIndex) {
+				if (regionIndex % 2 == 0) {
+					regionLines.push(currentLine.trimLeft());
+				} else {
+					regionLines.push(currentLine);
 				}
-			}
-			if (regionIndex > 2) {
+			} else if (currentRegionIndex > regionIndex) {
 				break;
 			}
 		}
 	}
+
+	return regionLines;
 }
 
 NewlineSeparatedStrings.prototype.GetMetaLines = function () {
@@ -70,7 +54,7 @@ NewlineSeparatedStrings.prototype.GetMetaLines = function () {
 }
 
 NewlineSeparatedStrings.prototype.GetHeaderLines = function () {
-	return this.headerLines;
+	return this.GetLinesByRegionIndex(0);
 }
 
 NewlineSeparatedStrings.prototype.GetContentLines = function () {
@@ -78,15 +62,15 @@ NewlineSeparatedStrings.prototype.GetContentLines = function () {
 }
 
 NewlineSeparatedStrings.prototype.GetBodyLines = function () {
-	return this.bodyLines;
+	return this.GetLinesByRegionIndex(1);
 }
 
 NewlineSeparatedStrings.prototype.GetBodyString = function () {
-	return this.bodyLines.join("\n");
+	return this.GetBodyLines().join("\n");
 }
 
 NewlineSeparatedStrings.prototype.GetFooterLines = function () {
-	return this.footerLines;
+	return this.GetLinesByRegionIndex(2);
 }
 
 module.exports = {
