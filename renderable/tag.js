@@ -22,7 +22,7 @@ Tag.prototype.GetPages = function () {
 	let pages = [];
 	for (let index in this.site.pages) {
 		let page = this.site.pages[index];
-		if (page.tags.includes(this.name)) {
+		if (page.TagsArray().includes(this.name)) {
 			pages.push(page);
 		}
 	}

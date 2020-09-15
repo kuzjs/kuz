@@ -153,12 +153,21 @@ Page.prototype.GetCategory = function () {
 	return this.site.defaultCategory;
 }
 
+Page.prototype.TagsArray = function () {
+	let tagsArray = this.GetProperty("tags");
+	if (tagsArray.found) {
+		return tagsArray.value;
+	}
+	return [];
+}
+
 Page.prototype.Tags = function () {
 	return this.GetTags();
 }
 
 Page.prototype.GetTags = function () {
-	return this.site.GetTagsFromNameArray(this.tags);
+	let tagsArray = this.TagsArray();
+	return this.site.GetTagsFromNameArray(tagsArray);
 }
 
 module.exports = {
