@@ -44,6 +44,42 @@ KZBaseObject.prototype.GetIndex = function () {
 
 
 
+KZBaseObject.prototype.Title = function (title) {
+	this.SetTitle(title);
+	return this.GetTitle();
+}
+
+KZBaseObject.prototype.SetTitle = function (title) {
+	if (title != undefined) {
+		this.title = title;
+	}
+	return this;
+}
+
+KZBaseObject.prototype.GetTitle = function () {
+	return this.title;
+}
+
+
+
+KZBaseObject.prototype.Name = function (name) {
+	this.SetName(name);
+	return this.GetName();
+}
+
+KZBaseObject.prototype.SetName = function (name) {
+	if (name != undefined) {
+		this.name = name;
+	}
+	return this;
+}
+
+KZBaseObject.prototype.GetName = function () {
+	return this.name;
+}
+
+
+
 KZBaseObject.prototype.CodeName = function () {
 	return this.codeLetter + this.index;
 }
