@@ -151,6 +151,20 @@ KZBaseObject.prototype.Previous = function () {
 
 
 
+KZBaseObject.prototype.IsApp = function () {
+	return false;
+}
+
+KZBaseObject.prototype.IsSite = function () {
+	return false;
+}
+
+
+
+KZBaseObject.prototype.IsRenderable = function () {
+	return false;
+}
+
 KZBaseObject.prototype.IsEntity = function () {
 	return false;
 }

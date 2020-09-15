@@ -32,16 +32,12 @@ Site.prototype.AddConfig = function (configFileObject) {
 	this.configFileObjects.push(configFileObject);
 }
 
-Site.prototype.Blackadder = function () {
-	return this.app.Blackadder();
-}
-
-Site.prototype.LoremIpsum = function () {
-	return this.app.LoremIpsum();
-}
-
 Site.prototype.HomeURL = function () {
 	return fsutils.RemoveSlashes(this.meta.json.meta.SITE_URL);
+}
+
+Site.prototype.IsSite = function () {
+	return true;
 }
 
 Site.prototype.HelloWorld = function () {

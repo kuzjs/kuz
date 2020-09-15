@@ -190,6 +190,10 @@ KaagazzApp.prototype.SetupFlags = function () {
 	}
 }
 
+KaagazzApp.prototype.IsApp = function () {
+	return true;
+}
+
 KaagazzApp.prototype.Blackadder = function () {
 	return this.blackadder.json["quotes"];
 }
