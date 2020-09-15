@@ -12,6 +12,15 @@ KZBaseObject.prototype = {
 	},
 	get website () {
 		return this.GetSite();
+	},
+	get renderables () {
+		return this.GetSite().All();
+	},
+	get table () {
+		return this.GetTable();
+	},
+	get row () {
+		return this.Row();
 	}
 };
 
