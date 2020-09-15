@@ -6,6 +6,15 @@ function KZBaseObject () {
 	//
 }
 
+KZBaseObject.prototype = {
+	get webapp () {
+		return this.GetApp();
+	},
+	get website () {
+		return this.GetSite();
+	}
+};
+
 KZBaseObject.prototype.typeName = "KZBaseObject";
 
 KZBaseObject.prototype.TypeName = function () {
