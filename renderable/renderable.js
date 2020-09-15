@@ -374,6 +374,53 @@ Renderable.prototype.RelativeURL = function () {
 	return this.OutputDirectoryPartialPath();
 }
 
+Renderable.prototype.Author = function () {
+	return this.GetAuthor();
+}
+
+Renderable.prototype.GetAuthor = function () {
+	let author = this.GetPropertyCascaded("author");
+	if (author.found) {
+		let authorObject = this.site.GetAuthorFromName(author.value);
+		if (authorObject) {
+			return authorObject;
+		}
+	}
+	return this.site.defaultAuthor;
+}
+
+Renderable.prototype.Category = function () {
+	return this.GetCategory();
+}
+
+Renderable.prototype.GetCategory = function () {
+	let category = this.GetPropertyCascaded("category");
+	if (category.found) {
+		let categoryObject = this.site.GetCategoryFromName(category.value);
+		if (categoryObject) {
+			return categoryObject;
+		}
+	}
+	return this.site.defaultCategory;
+}
+
+Renderable.prototype.Tags = function () {
+	let tagsArray = this.GetProperty("tags");
+	if (tagsArray.found) {
+		return tagsArray.value;
+	}
+	return [];
+}
+
+Renderable.prototype.TagObjects = function () {
+	return this.GetTagObjects();
+}
+
+Renderable.prototype.GetTagObjects = function () {
+	let tagsArray = this.Tags();
+	return this.site.GetTagsFromNameArray(tagsArray);
+}
+
 module.exports = {
 	Renderable: Renderable
 };
