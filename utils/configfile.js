@@ -32,6 +32,7 @@ function ConfigFile(site, dirpath, entity=false) {
 	this.children = [];
 	this.index = 0;
 	this.metaData = new MetaData(this.site, this.configFilePath);
+	this.props = this.metaData.Props();
 }
 
 ConfigFile.prototype.codeLetter = "g";
@@ -58,6 +59,10 @@ ConfigFile.prototype.AddChild = function (configFileChildObject) {
 
 ConfigFile.prototype.AddPage = function (page) {
 	this.pages.push(page);
+}
+
+ConfigFile.prototype.Props = function () {
+	return this.props;
 }
 
 ConfigFile.prototype.Exists = function () {
