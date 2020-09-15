@@ -227,6 +227,10 @@ Renderable.prototype.OutputFileExists = function () {
 	}
 }
 
+Renderable.prototype.IsRenderable = function () {
+	return true;
+}
+
 Renderable.prototype.IsHidden = function () {
 	if (this.hidden === true) {
 		return true;
