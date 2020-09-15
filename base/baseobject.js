@@ -13,6 +13,10 @@ KZBaseObject.prototype.Site = function (site) {
 	return this.site;
 }
 
+KZBaseObject.prototype.CodeName = function () {
+	return this.codeLetter + this.index;
+}
+
 
 
 module.exports = {
