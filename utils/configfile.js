@@ -8,6 +8,7 @@ const Nss = require("./nss").Nss;
 const fsutils = require("./fsutils");
 
 const KZTable = require("./table").KZTable;
+const KZBaseObject = require("../base/baseobject").KZBaseObject;
 
 function ConfigFile(site, dirpath, entity=false) {
 	this.site = site;
@@ -35,6 +36,7 @@ function ConfigFile(site, dirpath, entity=false) {
 	this.props = this.metaData.Props();
 }
 
+ConfigFile.prototype = new KZBaseObject();
 ConfigFile.prototype.codeLetter = "g";
 
 ConfigFile.prototype.CodeName = function () {
