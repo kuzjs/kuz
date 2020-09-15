@@ -169,6 +169,8 @@ Renderable.prototype.GetPageOptions = function () {
 		sections: sections,
 		props: this.Props(),
 		cprops: this.configFileObject.props,
+		sprops: this.site.meta.json,
+		kprops: this.site.app.meta.json,
 		blackadder: this.Blackadder(),
 		ipsum: this.LoremIpsum()
 	};
