@@ -90,6 +90,32 @@ KZBaseObject.prototype.Previous = function () {
 
 
 
+KZBaseObject.prototype.IsEntity = function () {
+	return false;
+}
+
+KZBaseObject.prototype.IsAuthor = function () {
+	return false;
+}
+
+KZBaseObject.prototype.IsCategory = function () {
+	return false;
+}
+
+KZBaseObject.prototype.IsTag = function () {
+	return false;
+}
+
+KZBaseObject.prototype.IsPage = function () {
+	return false;
+}
+
+KZBaseObject.prototype.IsCollection = function () {
+	return false;
+}
+
+
+
 KZBaseObject.prototype.CodeName = function () {
 	return this.codeLetter + this.index;
 }

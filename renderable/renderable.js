@@ -414,30 +414,6 @@ Renderable.prototype.RelativeURL = function () {
 	return this.OutputDirectoryPartialPath();
 }
 
-Renderable.prototype.IsEntity = function () {
-	return false;
-}
-
-Renderable.prototype.IsAuthor = function () {
-	return false;
-}
-
-Renderable.prototype.IsCategory = function () {
-	return false;
-}
-
-Renderable.prototype.IsTag = function () {
-	return false;
-}
-
-Renderable.prototype.IsPage = function () {
-	return false;
-}
-
-Renderable.prototype.IsCollection = function () {
-	return false;
-}
-
 module.exports = {
 	Renderable: Renderable
 };
