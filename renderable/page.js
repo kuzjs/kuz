@@ -34,8 +34,6 @@ Page.prototype.Setup = function () {
 		let headerLine = headerLines[index];
 		this.AddProperty(headerLine);
 	}
-
-	this.contentString = this.inputNss.GetBodyString();
 }
 
 Page.prototype.IsPage = function () {
@@ -130,10 +128,11 @@ Page.prototype.Author = function () {
 }
 
 Page.prototype.GetAuthor = function () {
-	if (this.author) {
-		let author = this.site.GetAuthorFromName(this.author);
-		if (author) {
-			return author;
+	let author = this.GetPropertyCascaded("author");
+	if (author.found) {
+		let authorObject = this.site.GetAuthorFromName(author.value);
+		if (authorObject) {
+			return authorObject;
 		}
 	}
 	return this.site.defaultAuthor;
