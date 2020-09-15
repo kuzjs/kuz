@@ -30,35 +30,6 @@ Renderable.prototype.Reset = function () {
 	//
 }
 
-Renderable.prototype.AddProperty = function (headerLine) {
-	if (headerLine.length == 0) {
-		return;
-	}
-	let pair = headerLine.split(":");
-	let name = pair[0].trim();
-	let value = pair[1].trim();
-	switch (name) {
-		case "author":
-		case "category":
-		case "description":
-		case "title":
-			this[name] = value;
-			break;
-		case "hidden":
-		case "published":
-			this[name] = (value == "false") ? false : true;
-			break;
-		case "tags":
-			let tags = value.split(",");
-			for (let index in tags) {
-				this.tags.push(tags[index].trim());
-			}
-			break;
-		default:
-			break;
-	}
-}
-
 Renderable.prototype.Name = function () {
 	return this.GetName();
 }

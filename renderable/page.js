@@ -29,11 +29,6 @@ Page.prototype.Setup = function () {
 	this.tags = [];
 	this.metaData = new MetaData(this.site, this.inputFilePath);
 	this.inputNss = new Nss(this.inputFilePath);
-	let headerLines = this.inputNss.GetHeaderLines();
-	for (let index in headerLines) {
-		let headerLine = headerLines[index];
-		this.AddProperty(headerLine);
-	}
 }
 
 Page.prototype.IsPage = function () {
