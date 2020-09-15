@@ -1,0 +1,67 @@
+{
+	"c": {
+		"comments": [],
+		"keywords": []
+	},
+	"cpp": {
+		"comments": [],
+		"keywords": []
+	},
+	"csharp": {
+		"comments": [],
+		"keywords": []
+	},
+	"css": {
+		"comments": [],
+		"keywords": []
+	},
+	"go": {
+		"comments": [],
+		"keywords": []
+	},
+	"html": {
+		"comments": [],
+		"keywords": []
+	},
+	"java": {
+		"comments": [],
+		"keywords": []
+	},
+	"javascript": {
+		"comments": [],
+		"keywords": []
+	},
+	"lua": {
+		"comments": [],
+		"keywords": []
+	},
+	"perl": {
+		"comments": [],
+		"keywords": []
+	},
+	"php": {
+		"comments": [],
+		"keywords": []
+	},
+	"python": {
+		"comments": [],
+		"keywords": []
+	},
+	"r": {
+		"comments": [],
+		"keywords": []
+	},
+	"ruby": {
+		"comments": [],
+		"keywords": []
+	},
+	"rust": {
+		"comments": [],
+		"keywords": []
+	},
+	"sql": {
+		"comments": [],
+		"keywords": []
+	},
+	"zzz": false
+}
