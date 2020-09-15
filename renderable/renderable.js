@@ -129,14 +129,6 @@ Renderable.prototype.SetConfig = function (configFileObject) {
 	this.configFileObject = configFileObject;
 }
 
-Renderable.prototype.Next = function () {
-	return this.next;
-}
-
-Renderable.prototype.Previous = function () {
-	return this.previous;
-}
-
 Renderable.prototype.Root = function () {
 	if (this.IsEntity()) {
 		return this.site.pages[0];

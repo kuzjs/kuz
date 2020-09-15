@@ -80,6 +80,16 @@ KZBaseObject.prototype.GetName = function () {
 
 
 
+KZBaseObject.prototype.Next = function () {
+	return this.next;
+}
+
+KZBaseObject.prototype.Previous = function () {
+	return this.previous;
+}
+
+
+
 KZBaseObject.prototype.CodeName = function () {
 	return this.codeLetter + this.index;
 }
