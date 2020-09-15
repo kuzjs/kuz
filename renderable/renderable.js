@@ -8,7 +8,7 @@ const KZBaseObject = require("../base/baseobject").KZBaseObject;
 
 const Article = require("./pages/article").Article;
 
-const Table = require("../utils/table").Table;
+const KZTable = require("../utils/table").KZTable;
 
 
 
@@ -72,7 +72,7 @@ Renderable.prototype.SetName = function (name) {
 }
 
 Renderable.prototype.GetTable = function () {
-	let table = new Table();
+	let table = new KZTable();
 	table.AddColumn("Codename");
 	table.AddColumn("Name");
 	table.AddColumn("Title");

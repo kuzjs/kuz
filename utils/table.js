@@ -2,11 +2,11 @@
 
 
 
-function Table () {
+function KZTable () {
 	this.Reset();
 }
 
-Table.prototype.Reset = function () {
+KZTable.prototype.Reset = function () {
 	this.columnObjects = [];
 	this.paddingLength = 1;
 	this.rowData = [];
@@ -17,26 +17,26 @@ Table.prototype.Reset = function () {
 	return this;
 }
 
-Table.prototype.Clear = function () {
+KZTable.prototype.Clear = function () {
 	this.rowData = [];
 	return this;
 }
 
-Table.prototype.SetPadding = function (paddingLength) {
+KZTable.prototype.SetPadding = function (paddingLength) {
 	this.paddingLength = paddingLength;
 	return this;
 }
 
-Table.prototype.Padding = function () {
+KZTable.prototype.Padding = function () {
 	let padding = "";
 	return padding.padStart(this.paddingLength);
 }
 
-Table.prototype.Separator = function () {
+KZTable.prototype.Separator = function () {
 	return this.Padding() + "|" + this.Padding();
 }
 
-Table.prototype.AddColumn = function (columnName, columnLength) {
+KZTable.prototype.AddColumn = function (columnName, columnLength) {
 	if (columnLength === undefined || columnLength < columnName.length) {
 		columnLength = columnName.length;
 	}
@@ -48,13 +48,13 @@ Table.prototype.AddColumn = function (columnName, columnLength) {
 	return this;
 }
 
-Table.prototype.Add = function (obj) {
+KZTable.prototype.Add = function (obj) {
 	let row = obj["Row"]();
 	this.AddRow(row);
 	return this;
 }
 
-Table.prototype.AddArray = function (arr) {
+KZTable.prototype.AddArray = function (arr) {
 	for (let index in arr) {
 		let row = arr[index]["Row"]();
 		this.AddRow(row);
@@ -62,7 +62,7 @@ Table.prototype.AddArray = function (arr) {
 	return this;
 }
 
-Table.prototype.AddRow = function (row) {
+KZTable.prototype.AddRow = function (row) {
 	for (let index in row) {
 		let cell = row[index] + "";
 		if (cell.length > this.columnObjects[index].length) {
@@ -73,11 +73,11 @@ Table.prototype.AddRow = function (row) {
 	return this;
 }
 
-Table.prototype.GetColumnLength = function (columnIndex) {
+KZTable.prototype.GetColumnLength = function (columnIndex) {
 	return this.columnObjects[columnIndex].length;
 }
 
-Table.prototype.GetRowLength = function () {
+KZTable.prototype.GetRowLength = function () {
 	let rowLength = this.firstColumn.length + (2 * this.Separator().length) - this.paddingLength;
 	for (let columnIndex in this.columnObjects) {
 		let columnObject = this.columnObjects[columnIndex];
@@ -88,16 +88,16 @@ Table.prototype.GetRowLength = function () {
 	return (rowLength);
 }
 
-Table.prototype.GetNDashes = function (n) {
+KZTable.prototype.GetNDashes = function (n) {
 	let dashes = "";
 	return dashes.padStart(n, "-");
 }
 
-Table.prototype.GetColumnDashes = function (columnLength) {
+KZTable.prototype.GetColumnDashes = function (columnLength) {
 	return this.GetNDashes(this.paddingLength + columnLength + this.paddingLength);
 }
 
-Table.prototype.GetRowSeparator = function () {
+KZTable.prototype.GetRowSeparator = function () {
 	let separator = "+";
 	let rowSeparator = separator + this.GetColumnDashes(this.firstColumn.length) + separator;
 	for (let columnIndex in this.columnObjects) {
@@ -107,7 +107,7 @@ Table.prototype.GetRowSeparator = function () {
 	return rowSeparator;
 }
 
-Table.prototype.GetRowString = function (rowId, row) {
+KZTable.prototype.GetRowString = function (rowId, row) {
 	let rowString = "|" + this.Padding() + rowId.padStart(this.firstColumn.length) + this.Separator();
 	for (let j in row) {
 		let columnLength = this.GetColumnLength(j);
@@ -117,7 +117,7 @@ Table.prototype.GetRowString = function (rowId, row) {
 	return rowString;
 }
 
-Table.prototype.GetHeaderRowString = function () {
+KZTable.prototype.GetHeaderRowString = function () {
 	let row = [];
 	let rowId = this.firstColumn.name;
 	for (let i=0; i<this.columnObjects.length; i++) {
@@ -126,18 +126,18 @@ Table.prototype.GetHeaderRowString = function () {
 	return this.GetRowString(rowId, row);
 }
 
-Table.prototype.GetDataRowString = function (rowIndex) {
+KZTable.prototype.GetDataRowString = function (rowIndex) {
 	let row = this.rowData[rowIndex];
 	let rowId = (rowIndex+1) + "";
 	return this.GetRowString(rowId, row);
 }
 
-Table.prototype.PrintRow = function (rowIndex) {
+KZTable.prototype.PrintRow = function (rowIndex) {
 	let rowString = this.GetDataRowString(rowIndex);
 	console.log(rowString);
 }
 
-Table.prototype.Print = function () {
+KZTable.prototype.Print = function () {
 	let rowSeparator = this.GetRowSeparator();
 	let headerRowString = this.GetHeaderRowString();
 
@@ -154,7 +154,7 @@ Table.prototype.Print = function () {
 
 
 module.exports = {
-	Table: Table
+	KZTable: KZTable
 };
 
 

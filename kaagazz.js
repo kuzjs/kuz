@@ -2,7 +2,7 @@
 
 const log = require("./utils/log");
 const JsonFile = require("./utils/jsonfile").JsonFile;
-const Table = require("./utils/table").Table;
+const KZTable = require("./utils/table").KZTable;
 const Site = require("./site").Site;
 
 const jsonDirectory = "kzapp/data/";
@@ -64,7 +64,7 @@ Flag.prototype.Row = function () {
 }
 
 Flag.prototype.GetTable = function () {
-	let table = new Table();
+	let table = new KZTable();
 	table.AddColumn("Code");
 	table.AddColumn("Name", 16);
 	table.AddColumn("Description", 32);
@@ -290,7 +290,7 @@ KaagazzApp.prototype.ShowMajorFlags = function () {
 }
 
 KaagazzApp.prototype.ShowVersion = function () {
-	let table = new Table();
+	let table = new KZTable();
 	table.AddColumn("Key");
 	table.AddColumn("Value");
 

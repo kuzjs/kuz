@@ -7,7 +7,7 @@ const MetaData = require("../metadata/metadata").MetaData;
 const Nss = require("./nss").Nss;
 const fsutils = require("./fsutils");
 
-const Table = require("./table").Table;
+const KZTable = require("./table").KZTable;
 
 function ConfigFile(site, dirpath, entity=false) {
 	this.site = site;
@@ -103,7 +103,7 @@ ConfigFile.prototype.GetStringValue = function (propertyName) {
 }
 
 ConfigFile.prototype.GetTable = function () {
-	let table = new Table();
+	let table = new KZTable();
 	table.AddColumn("CodeName");
 	table.AddColumn("Path");
 	table.AddColumn("N");

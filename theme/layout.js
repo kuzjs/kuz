@@ -9,7 +9,7 @@ const fsutils = require("../utils/fsutils");
 const common = require("../utils/common");
 const defaultText = common.defaultText;
 
-const Table = require("../utils/table").Table;
+const KZTable = require("../utils/table").KZTable;
 
 const KZBaseObject = require("../base/baseobject").KZBaseObject;
 
@@ -81,7 +81,7 @@ Layout.prototype.Update = function () {
 }
 
 Layout.prototype.GetTable = function () {
-	let table = new Table();
+	let table = new KZTable();
 	table.AddColumn("Name");
 	table.AddColumn("Theme");
 	table.AddColumn("Title");
