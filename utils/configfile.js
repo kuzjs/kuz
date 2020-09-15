@@ -39,14 +39,6 @@ function ConfigFile(site, dirpath, entity=false) {
 ConfigFile.prototype = new KZBaseObject();
 ConfigFile.prototype.codeLetter = "g";
 
-ConfigFile.prototype.CodeName = function () {
-	return this.codeLetter + this.index;
-}
-
-ConfigFile.prototype.SetIndex = function (index) {
-	this.index = index;
-}
-
 ConfigFile.prototype.SetParent = function (configFileParentObject) {
 	if (configFileParentObject) {
 		this.parent = configFileParentObject;
