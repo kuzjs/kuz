@@ -59,14 +59,6 @@ Renderable.prototype.AddProperty = function (headerLine) {
 	}
 }
 
-Renderable.prototype.App = function () {
-	return this.GetApp();
-}
-
-Renderable.prototype.GetApp = function () {
-	return this.site.app;
-}
-
 Renderable.prototype.Blackadder = function () {
 	return this.App().Blackadder();
 }
