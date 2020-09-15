@@ -167,6 +167,7 @@ Renderable.prototype.GetPageOptions = function () {
 		page: this,
 		article: article,
 		sections: sections,
+		props: this.Props(),
 		blackadder: this.Blackadder(),
 		ipsum: this.LoremIpsum()
 	};
@@ -372,6 +373,10 @@ Renderable.prototype.GetBase = function () {
 
 Renderable.prototype.RelativeURL = function () {
 	return this.OutputDirectoryPartialPath();
+}
+
+Renderable.prototype.Props = function () {
+	return this.metaData.Props();
 }
 
 Renderable.prototype.Author = function () {

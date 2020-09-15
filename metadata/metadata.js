@@ -32,6 +32,15 @@ MetaData.prototype.Setup = function () {
 	}
 }
 
+MetaData.prototype.Props = function () {
+	let props = {};
+	for (let index in this.properties) {
+		let property = this.properties[index];
+		props[property.name] = property.value;
+	}
+	return props;
+}
+
 MetaData.prototype.Exists = function () {
 	if (fsutils.IsFile(this.path)) {
 		return true;
