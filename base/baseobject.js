@@ -6,6 +6,30 @@ function KZBaseObject () {
 	//
 }
 
+KZBaseObject.prototype.typeName = "KZBaseObject";
+
+KZBaseObject.prototype.TypeName = function () {
+	return this.typeName;
+}
+
+KZBaseObject.prototype.TypeNamePlural = function () {
+	if (this.typeNamePlural) {
+		return this.typeNamePlural;
+	}
+	return this.typeName + "s";
+}
+
+KZBaseObject.prototype.CodeLetter = function () {
+	if (this.codeLetter) {
+		return this.codeLetter;
+	}
+	return this.TypeName()[0];
+}
+
+KZBaseObject.prototype.CodeName = function () {
+	return this.CodeLetter() + this.index;
+}
+
 
 
 KZBaseObject.prototype.Site = function (site) {
@@ -142,12 +166,6 @@ KZBaseObject.prototype.IsJsFile = function () {
 
 KZBaseObject.prototype.IsResFile = function () {
 	return false;
-}
-
-
-
-KZBaseObject.prototype.CodeName = function () {
-	return this.codeLetter + this.index;
 }
 
 

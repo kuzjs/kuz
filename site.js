@@ -159,8 +159,8 @@ Site.prototype.DefaultTheme = function () {
 	return this.themes[0];
 }
 
-Site.prototype.GetEntityConfigPath = function (typenamePlural) {
-	return this.GetMetaDirectory() + "/" + typenamePlural + "/config.txt";
+Site.prototype.GetEntityConfigPath = function (typeNamePlural) {
+	return this.GetMetaDirectory() + "/" + typeNamePlural + "/config.txt";
 }
 
 Site.prototype.GetAuthorConfigPath = function () {

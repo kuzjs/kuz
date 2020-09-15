@@ -10,8 +10,8 @@ function Category(site, entry) {
 }
 
 Category.prototype = new Entity();
-Category.prototype.typename = "category";
-Category.prototype.typenamePlural = "categories";
+Category.prototype.typeName = "category";
+Category.prototype.typeNamePlural = "categories";
 Category.prototype.codeLetter = "c";
 
 Category.prototype.IsCategory = function () {

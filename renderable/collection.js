@@ -10,8 +10,8 @@ function Collection(site, entry) {
 }
 
 Collection.prototype = new Entity();
-Collection.prototype.typename = "collection";
-Collection.prototype.typenamePlural = "collections";
+Collection.prototype.typeName = "collection";
+Collection.prototype.typeNamePlural = "collections";
 Collection.prototype.codeLetter = "k";
 
 Collection.prototype.IsCollection = function () {

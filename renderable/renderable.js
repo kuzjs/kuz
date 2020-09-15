@@ -18,8 +18,8 @@ function Renderable () {
 
 Renderable.prototype = new KZBaseObject();
 
-Renderable.prototype.typename = "renderable";
-Renderable.prototype.typenamePlural = "renderables";
+Renderable.prototype.typeName = "renderable";
+Renderable.prototype.typeNamePlural = "renderables";
 Renderable.prototype.codeLetter = "r";
 
 Renderable.prototype.Setup = function () {
@@ -155,7 +155,7 @@ Renderable.prototype.GetLayoutName = function () {
 	if (layout.found) {
 		return layout.value;
 	}
-	return this.typename;
+	return this.typeName;
 }
 
 Renderable.prototype.Layout = function () {
@@ -168,7 +168,7 @@ Renderable.prototype.GetLayout = function () {
 	let layout = theme.GetLayout(layoutName);
 
 	if (layout === null) {
-		log.Red(theme.Name() + " has no layout for: " + this.typename);
+		log.Red(theme.Name() + " has no layout for: " + this.typeName);
 	} else {
 		return layout;
 	}
@@ -224,7 +224,7 @@ Renderable.prototype.GetPageOptionsFN = function () {
 }
 
 Renderable.prototype.toString = function () {
-	return this.typename + ": (" + this.Name() +") [" + this.OutputFilePath() + "]";
+	return this.typeName + ": (" + this.Name() +") [" + this.OutputFilePath() + "]";
 }
 
 Renderable.prototype.OutputFileMTime = function () {
@@ -320,11 +320,11 @@ Renderable.prototype.OutputDirectoryPath = function () {
 }
 
 Renderable.prototype.InputFileName = function () {
-	return this.name + "." + this.typename;
+	return this.name + "." + this.typeName;
 }
 
 Renderable.prototype.InputDirectoryPath = function () {
-	return fsutils.JoinPath(this.site.GetMetaDirectory(), this.typenamePlural);
+	return fsutils.JoinPath(this.site.GetMetaDirectory(), this.typeNamePlural);
 }
 
 Renderable.prototype.InputFilePath = function () {

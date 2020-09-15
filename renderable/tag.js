@@ -10,8 +10,8 @@ function Tag(site, entry) {
 }
 
 Tag.prototype = new Entity();
-Tag.prototype.typename = "tag";
-Tag.prototype.typenamePlural = "tags";
+Tag.prototype.typeName = "tag";
+Tag.prototype.typeNamePlural = "tags";
 Tag.prototype.codeLetter = "t";
 
 Tag.prototype.IsTag = function () {

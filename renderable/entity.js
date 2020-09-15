@@ -8,8 +8,8 @@ function Entity () {
 }
 
 Entity.prototype = new Renderable();
-Entity.prototype.typename = "entity";
-Entity.prototype.typenamePlural = "entities";
+Entity.prototype.typeName = "entity";
+Entity.prototype.typeNamePlural = "entities";
 Entity.prototype.codeLetter = "e";
 
 Entity.prototype.SetupEntity = function () {
@@ -17,7 +17,7 @@ Entity.prototype.SetupEntity = function () {
 }
 
 Entity.prototype.OutputDirectoryPartialPath = function () {
-	return this.site.GetSpecialDirectory() + "/" + this.typename + "/" + this.name;
+	return this.site.GetSpecialDirectory() + "/" + this.typeName + "/" + this.name;
 }
 
 Entity.prototype.IsEntity = function () {
