@@ -206,8 +206,20 @@ KaagazzApp.prototype.GetSiteJsonPath = function () {
 	return this.meta.json.filenames.siteJson;
 }
 
+KaagazzApp.prototype.Title = function () {
+	return this.meta.json.meta.title;
+}
+
+KaagazzApp.prototype.Description = function () {
+	return this.meta.json.meta.description;
+}
+
+KaagazzApp.prototype.Version = function () {
+	return this.meta.json.meta.version;
+}
+
 KaagazzApp.prototype.toString = function () {
-	return this.meta.json.meta.name;
+	return this.Title();
 }
 
 KaagazzApp.prototype.ShowSomeHelp = function () {
@@ -279,9 +291,9 @@ KaagazzApp.prototype.ShowVersion = function () {
 	table.AddColumn("Value");
 
 	let meta = this.meta.json.meta;
-	table.AddRow(["Name", meta.name]);
-	table.AddRow(["Version", meta.version]);
-	table.AddRow(["Description", meta.description]);
+	table.AddRow(["Title", this.Title()]);
+	table.AddRow(["Version", this.Version()]);
+	table.AddRow(["Description", this.Description()]);
 	table.Print();
 }
 
