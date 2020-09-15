@@ -10,6 +10,10 @@ function ResFile (theme, data) {
 
 ResFile.prototype = new ProtoFile("res");
 
+ResFile.prototype.IsResFile = function () {
+	return true;
+}
+
 
 
 module.exports = {

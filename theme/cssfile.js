@@ -10,6 +10,10 @@ function CssFile (theme, data) {
 
 CssFile.prototype = new ProtoFile("css");
 
+CssFile.prototype.IsCssFile = function () {
+	return true;
+}
+
 
 
 module.exports = {
