@@ -3,6 +3,7 @@
 const log = require("./utils/log");
 const JsonFile = require("./utils/jsonfile").JsonFile;
 const KZTable = require("./utils/table").KZTable;
+const KZFlag = require("./utils/flag").KZFlag;
 const Site = require("./site").Site;
 
 const jsonDirectory = "kzapp/data/";
@@ -11,68 +12,6 @@ const kaagazzJsonPath = jsonDirectory + "kaagazz.json";
 const flagsJsonPath = jsonDirectory + "flags.json";
 const blackadderJsonPath = jsonDirectory + "blackadder.json";
 const loremIpsumJsonPath = jsonDirectory + "lorem-ipsum.json";
-
-
-
-function Flag (flagObject) {
-	this.code = flagObject.code;
-	this.name = flagObject.name;
-	this.description = flagObject.description;
-	this.implemented = (flagObject.implemented === undefined) ? false : flagObject.implemented;
-	this.major = (flagObject.major === undefined) ? false : flagObject.major;
-	this.modifier = (flagObject.modifier === undefined) ? false : flagObject.modifier;
-	this.independent = !this.major && !this.modifier;
-	this.isset = false;
-}
-
-Flag.prototype.Code = function () {
-	return "-" + this.code;
-}
-
-Flag.prototype.Name = function () {
-	return this.name;
-}
-
-Flag.prototype.FullName = function () {
-	return "--" + this.Name();
-}
-
-Flag.prototype.Description = function () {
-	return this.description;
-}
-
-Flag.prototype.Status = function () {
-	return (this.implemented) ? "Working" : "Dev";
-}
-
-Flag.prototype.Type = function () {
-	if (this.major) {
-		return "M";
-	} else if (this.modifier) {
-		return "mod";
-	} else {
-		return "I";
-	}
-}
-
-Flag.prototype.State = function () {
-	return (this.isset) ? "SET" : "---";
-}
-
-Flag.prototype.Row = function () {
-	return [this.Code(), this.FullName(), this.Description(), this.Status(), this.Type(), this.State()];
-}
-
-Flag.prototype.GetTable = function () {
-	let table = new KZTable();
-	table.AddColumn("Code");
-	table.AddColumn("Name", 16);
-	table.AddColumn("Description", 32);
-	table.AddColumn("Status", 8);
-	table.AddColumn("Type", 8);
-	table.AddColumn("State", 10);
-	return table;
-}
 
 
 
@@ -128,7 +67,7 @@ KaagazzApp.prototype.SetupFlags = function () {
 
 	for (let index in flags) {
 		let flagObject = flags[index];
-		let flag = new Flag(flagObject);
+		let flag = new KZFlag(flagObject);
 		this.flags.push(flag);
 	}
 
