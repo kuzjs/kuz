@@ -45,7 +45,13 @@ KZBaseObject.prototype.SetSite = function (site) {
 }
 
 KZBaseObject.prototype.GetSite = function () {
-	return this.site;
+	if (this.site) {
+		return this.site;
+	} else if (this.theme) {
+		return this.theme.GetSite();
+	} else {
+		return null;
+	}
 }
 
 

@@ -11,12 +11,16 @@ const defaultText = common.defaultText;
 
 const Table = require("../utils/table").Table;
 
+const KZBaseObject = require("../base/baseobject").KZBaseObject;
+
 function Layout (theme, data) {
 	this.theme = theme;
 	this.data = data;
 	this.default = data.default ? data.default : false;
 	this.Setup();
 }
+
+Layout.prototype = new KZBaseObject();
 
 Layout.prototype.FullPath = function () {
 	return fsutils.JoinPath(this.theme.LayoutsInputDirectory(), this.Path());

@@ -6,6 +6,8 @@ const JsonFile = require("../utils/jsonfile").JsonFile;
 
 const Table = require("../utils/table").Table;
 
+const KZBaseObject = require("../base/baseobject").KZBaseObject;
+
 const common = require("../utils/common");
 const defaultText = common.defaultText;
 
@@ -19,11 +21,13 @@ const layoutsDirectory = "layouts";
 
 
 
-function Theme(themeName, site) {
+function Theme (themeName, site) {
 	this.themeName = themeName;
 	this.site = site;
 	this.SetupPaths();
 }
+
+Theme.prototype = new KZBaseObject();
 
 Theme.prototype.Name = function () {
 	return this.themeName;
