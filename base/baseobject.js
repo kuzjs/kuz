@@ -116,6 +116,36 @@ KZBaseObject.prototype.IsCollection = function () {
 
 
 
+KZBaseObject.prototype.IsTheme = function () {
+	return false;
+}
+
+KZBaseObject.prototype.IsLayout = function () {
+	return false;
+}
+
+KZBaseObject.prototype.IsModule = function () {
+	return false;
+}
+
+KZBaseObject.prototype.IsProtoFile = function () {
+	return false;
+}
+
+KZBaseObject.prototype.IsCssFile = function () {
+	return false;
+}
+
+KZBaseObject.prototype.IsJsFile = function () {
+	return false;
+}
+
+KZBaseObject.prototype.IsResFile = function () {
+	return false;
+}
+
+
+
 KZBaseObject.prototype.CodeName = function () {
 	return this.codeLetter + this.index;
 }
