@@ -33,7 +33,7 @@ Site.prototype.AddConfig = function (configFileObject) {
 }
 
 Site.prototype.HomeURL = function () {
-	return fsutils.RemoveSlashes(this.meta.json.meta.SITE_URL);
+	return fsutils.TrimSlashes(this.meta.json.meta.SITE_URL);
 }
 
 Site.prototype.IsSite = function () {

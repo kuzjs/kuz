@@ -6,7 +6,7 @@ const log = require("./log");
 
 
 
-function RemoveSlashes (text) {
+function TrimSlashes (text) {
 	let firstNonSlash = 0;
 	let lastNonSlash = text.length - 1;
 
@@ -156,7 +156,7 @@ function DeleteAllButIndexHtml (dirpath) {
 
 
 module.exports = {
-	RemoveSlashes: RemoveSlashes,
+	TrimSlashes: TrimSlashes,
 	JoinPath: JoinPath,
 	IsFileOrDirectory: IsFileOrDirectory,
 	IsDirectory: IsDirectory,
