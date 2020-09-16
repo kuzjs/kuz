@@ -3,8 +3,9 @@
 
 const Entity = require("./entity").Entity;
 
-function Author(site, entry) {
+function Author(site, configFileObject, entry) {
 	this.site = site;
+	this.SetConfig(configFileObject);
 	this.name = entry.trim();
 	this.SetupEntity();
 }

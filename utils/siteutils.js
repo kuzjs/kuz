@@ -28,9 +28,8 @@ function GetEntities (site, configDirPath, Entity) {
 	let entities = [];
 	let configEntries = configFileObject.GetEntries();
 	for (let entry of configEntries) {
-		let entity = new Entity(site, entry);
+		let entity = new Entity(site, configFileObject, entry);
 		configFileObject.AddPage(entity);
-		entity.SetConfig(configFileObject);
 		entities.push(entity);
 	}
 

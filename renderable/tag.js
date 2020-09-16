@@ -3,8 +3,9 @@
 
 const Entity = require("./entity").Entity;
 
-function Tag(site, entry) {
+function Tag(site, configFileObject, entry) {
 	this.site = site;
+	this.SetConfig(configFileObject);
 	this.name = entry.trim();
 	this.SetupEntity();
 }
