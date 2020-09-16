@@ -83,8 +83,7 @@ Theme.prototype.SetupPaths = function () {
 	this.meta = new JsonFile(this.JsonFilePath());
 	this.metaObject = this.meta.json.meta;
 	this.layouts = [];
-	for (let index in this.meta.json.layouts) {
-		let data = this.meta.json.layouts[index];
+	for (let data of this.meta.json.layouts) {
 		let layoutFilePath = fsutils.JoinPath(this.LayoutsInputDirectory(), data.path);
 		if (fsutils.IsFile(layoutFilePath)) {
 			let layout = new Layout(this, data);
@@ -103,8 +102,7 @@ Theme.prototype.SetupPaths = function () {
 
 Theme.prototype.SetupCssFiles = function () {
 	this.cssFiles = [];
-	for (let index in this.meta.json.css) {
-		let data = this.meta.json.css[index];
+	for (let data of this.meta.json.css) {
 		let cssFile = new CssFile(this, data);
 		this.cssFiles.push(cssFile);
 	}
@@ -112,8 +110,7 @@ Theme.prototype.SetupCssFiles = function () {
 
 Theme.prototype.SetupJsFiles = function () {
 	this.jsFiles = [];
-	for (let index in this.meta.json.js) {
-		let data = this.meta.json.js[index];
+	for (let data of this.meta.json.js) {
 		let jsFile = new JsFile(this, data);
 		this.jsFiles.push(jsFile);
 	}
@@ -121,16 +118,14 @@ Theme.prototype.SetupJsFiles = function () {
 
 Theme.prototype.SetupResFiles = function () {
 	this.resFiles = [];
-	for (let index in this.meta.json.res) {
-		let data = this.meta.json.res[index];
+	for (let data of this.meta.json.res) {
 		let resFile = new ResFile(this, data);
 		this.resFiles.push(resFile);
 	}
 }
 
 Theme.prototype.DefaultLayout = function () {
-	for (let index in this.layouts) {
-		let layout = this.layouts[index];
+	for (let layout of this.layouts) {
 		if (layout.default) {
 			return layout;
 		}
@@ -139,8 +134,7 @@ Theme.prototype.DefaultLayout = function () {
 }
 
 Theme.prototype.GetLayout = function (layoutName) {
-	for (let index in this.layouts) {
-		let layout = this.layouts[index];
+	for (let layout of this.layouts) {
 		if (layoutName == layout.Name()) {
 			return layout;
 		}
