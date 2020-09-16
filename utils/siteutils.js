@@ -32,13 +32,8 @@ function GetLines (filename) {
 	return fileNss.GetLinesArray();
 }
 
-function GetEntities (site, configPath, Entity) {
-	if (!fs.existsSync(configPath)) {
-		site.Error("Entity config file NOT found: " + configPath);
-		return [];
-	}
-
-	let configFileObject = new ConfigFile(site, configPath, true);
+function GetEntities (site, configDirPath, Entity) {
+	let configFileObject = new ConfigFile(site, configDirPath, true);
 	site.AddConfig(configFileObject);
 
 	let entities = [];
@@ -56,18 +51,23 @@ function GetEntities (site, configPath, Entity) {
 }
 
 function GetAuthors (site) {
-	let configPath = site.GetAuthorConfigPath();
-	return GetEntities(site, configPath, Author);
+	let configDirPath = site.GetEntityConfigDirectory("authors");
+	return GetEntities(site, configDirPath, Author);
 }
 
 function GetCategories (site) {
-	let configPath = site.GetCategoryConfigPath();
-	return GetEntities(site, configPath, Category);
+	let configDirPath = site.GetEntityConfigDirectory("categories");
+	return GetEntities(site, configDirPath, Category);
 }
 
 function GetTags (site) {
-	let configPath = site.GetTagConfigPath();
-	return GetEntities(site, configPath, Tag);
+	let configDirPath = site.GetEntityConfigDirectory("tags");
+	return GetEntities(site, configDirPath, Tag);
+}
+
+function GetCollections (site) {
+	let configDirPath = site.GetEntityConfigDirectory("collections");
+	return GetEntities(site, configDirPath, Collection);
 }
 
 function GetPages (site, dirpath, parentConfig) {
@@ -120,11 +120,6 @@ function GetPages (site, dirpath, parentConfig) {
 		SetupNextPrevious(pages);
 	}
 	return pages;
-}
-
-function GetCollections (site) {
-	let configPath = site.GetCollectionConfigPath();
-	return GetEntities(site, configPath, Collection);
 }
 
 

@@ -4,6 +4,8 @@
 
 const MetaData = require("../metadata/metadata").MetaData;
 
+const log = require("./log");
+
 const Nss = require("./nss").Nss;
 const fsutils = require("./fsutils");
 
@@ -15,25 +17,28 @@ function ConfigFile(site, dirpath, entity=false) {
 	this.dirpath = dirpath;
 	this.pages = [];
 
-	if (this.dirpath === undefined) {
-		this.configDirpath = site.GetInputDirectory();
-	} else {
-		this.configDirpath = site.GetInputDirectory() + "/" + dirpath;
-	}
-
 	if (entity) {
-		this.configFilePath = dirpath;
+		this.configDirpath = dirpath;
 	} else {
-		let configFileName = site.GetNestedValueFromCascade("filenames", "config");
-		this.configFilePath = this.configDirpath + "/" + configFileName;
+		if (this.dirpath === undefined) {
+			this.configDirpath = site.GetInputDirectory();
+		} else {
+			this.configDirpath = site.GetInputDirectory() + "/" + dirpath;
+		}
 	}
+	this.configFilePath = fsutils.JoinPath(this.configDirpath, this.site.filenames.config);
 
 	this.root = null;
 	this.parent = null;
 	this.children = [];
 	this.index = 0;
-	this.metaData = new MetaData(this.site, this.configFilePath);
-	this.props = this.metaData.Props();
+
+	if (this.Exists()) {
+		this.metaData = new MetaData(this.site, this.configFilePath);
+		this.props = this.metaData.Props();
+	} else {
+		log.BadNews("ConfigFile not found: " + this.configFilePath);
+	}
 }
 
 ConfigFile.prototype = new KZBaseObject();

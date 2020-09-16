@@ -14,6 +14,7 @@ const JsonFile = require("./utils/jsonfile").JsonFile;
 
 function Site (kaagazz) {
 	this.app = kaagazz;
+	this.filenames = this.app.meta.json.filenames;
 	this.Setup();
 }
 
@@ -153,24 +154,8 @@ Site.prototype.DefaultTheme = function () {
 	return this.themes[0];
 }
 
-Site.prototype.GetEntityConfigPath = function (typeNamePlural) {
-	return this.GetMetaDirectory() + "/" + typeNamePlural + "/config.txt";
-}
-
-Site.prototype.GetAuthorConfigPath = function () {
-	return this.GetEntityConfigPath("authors");
-}
-
-Site.prototype.GetCategoryConfigPath = function () {
-	return this.GetEntityConfigPath("categories");
-}
-
-Site.prototype.GetCollectionConfigPath = function () {
-	return this.GetEntityConfigPath("collections");
-}
-
-Site.prototype.GetTagConfigPath = function () {
-	return this.GetEntityConfigPath("tags");
+Site.prototype.GetEntityConfigDirectory = function (typeNamePlural) {
+	return this.GetMetaDirectory() + "/" + typeNamePlural;
 }
 
 Site.prototype.PrintDirectories = function () {
