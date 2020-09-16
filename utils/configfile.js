@@ -61,7 +61,7 @@ ConfigFile.prototype.AddPage = function (page) {
 }
 
 ConfigFile.prototype.DirPath = function (page) {
-	return this.configFilePath;
+	return this.configDirpath;
 }
 
 ConfigFile.prototype.Props = function () {
