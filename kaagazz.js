@@ -158,7 +158,7 @@ KaagazzApp.prototype.SetupOperands = function () {
 	}
 
 	if (flags.all) {
-		this.operands = this.operands.concat(this.site.All());
+		this.operands = this.operands.concat(this.site.Renderables());
 	}
 
 	if (flags.layouts) {

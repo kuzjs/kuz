@@ -195,7 +195,7 @@ Site.prototype.Entities = function () {
 	return entities;
 }
 
-Site.prototype.All = function () {
+Site.prototype.Renderables = function () {
 	return this.Entities().concat(this.pages);
 }
 
@@ -229,6 +229,15 @@ Site.prototype.ResFilesArray = function () {
 		resFiles = resFiles.concat(theme.resFiles);
 	}
 	return resFiles;
+}
+
+Site.prototype.EveryThing = function () {
+	let everyThing = this.Renderables();
+	everyThing = everyThing.concat(this.LayoutsArray());
+	everyThing = everyThing.concat(this.CssFilesArray());
+	everyThing = everyThing.concat(this.JsFilesArray());
+	everyThing = everyThing.concat(this.ResFilesArray());
+	return everyThing;
 }
 
 Site.prototype.PrintArrayAsTable = function (arr) {
@@ -269,7 +278,7 @@ Site.prototype.PrintEntities = function () {
 }
 
 Site.prototype.PrintAll = function () {
-	this.PrintArrayAsTable(this.All());
+	this.PrintArrayAsTable(this.Renderables());
 }
 
 Site.prototype.PrintThemes = function () {
@@ -379,7 +388,7 @@ Site.prototype.ForcedUpdateEntities = function () {
 }
 
 Site.prototype.ForcedUpdateAll = function () {
-	this.ForcedUpdateArray(this.All());
+	this.ForcedUpdateArray(this.Renderables());
 }
 
 Site.prototype.UpdateArray = function (arr) {
@@ -413,7 +422,7 @@ Site.prototype.UpdateEntities = function () {
 }
 
 Site.prototype.UpdateAll = function () {
-	this.UpdateArray(this.All());
+	this.UpdateArray(this.Renderables());
 }
 
 module.exports = {
