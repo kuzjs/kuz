@@ -46,6 +46,7 @@ Renderable.prototype.GetTable = function () {
 	let table = new KZTable();
 	table.AddColumn("Codename");
 	table.AddColumn("Name");
+	table.AddColumn("Conf");
 	table.AddColumn("Title");
 	table.AddColumn("Theme");
 	table.AddColumn("Layout");
@@ -57,6 +58,7 @@ Renderable.prototype.Row = function () {
 	return [
 		this.CodeName(),
 		this.Name(),
+		this.configFileObject.CodeName(),
 		this.Title(),
 		this.Theme().Name(),
 		this.Layout().Name(),
