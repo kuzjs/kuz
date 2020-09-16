@@ -286,7 +286,7 @@ Renderable.prototype.OutputDirectoryPath = function () {
 }
 
 Renderable.prototype.InputFileName = function () {
-	return this.name + "." + this.typeName;
+	return this.name + ".page";
 }
 
 Renderable.prototype.InputDirectoryPath = function () {
