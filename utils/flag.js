@@ -33,7 +33,7 @@ KZFlag.prototype.Description = function () {
 }
 
 KZFlag.prototype.Disk = function () {
-	return (this.disk) ? "Disk" : "---";
+	return (this.disk) ? "Disk" : "";
 }
 
 KZFlag.prototype.Status = function () {
@@ -42,16 +42,26 @@ KZFlag.prototype.Status = function () {
 
 KZFlag.prototype.Type = function () {
 	if (this.major) {
-		return "M";
+		return "Major";
 	} else if (this.modifier) {
-		return "mod";
+		return "Modifier";
 	} else {
-		return "I";
+		return "Independent";
 	}
 }
 
+KZFlag.prototype.Attributes = function () {
+	let attributes = [];
+	if (this.Disk() != "") {
+		attributes.push(this.Disk());
+	}
+	attributes.push(this.Status());
+	attributes.push(this.Type());
+	return attributes.join(" | ");
+}
+
 KZFlag.prototype.State = function () {
-	return (this.isset) ? "SET" : "---";
+	return (this.isset) ? "SET" : "";
 }
 
 KZFlag.prototype.Row = function () {
@@ -59,9 +69,7 @@ KZFlag.prototype.Row = function () {
 		this.Code(),
 		this.FullName(),
 		this.Description(),
-		this.Disk(),
-		this.Status(),
-		this.Type(),
+		this.Attributes(),
 		this.State()
 	];
 }
@@ -71,9 +79,7 @@ KZFlag.prototype.GetTable = function () {
 	table.AddColumn("Code");
 	table.AddColumn("Name", 16);
 	table.AddColumn("Description", 32);
-	table.AddColumn("Disk");
-	table.AddColumn("Status", 8);
-	table.AddColumn("Type", 8);
+	table.AddColumn("Attributes");
 	table.AddColumn("State", 10);
 	return table;
 }
