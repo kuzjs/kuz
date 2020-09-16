@@ -129,36 +129,32 @@ KaagazzApp.prototype.SetupFlags = function () {
 KaagazzApp.prototype.SetupOperands = function () {
 	this.operands = [];
 	let flags = this.simpleFlags;
-	if (flags.authors) {
-		this.operands = this.operands.concat(this.site.Authors());
-	}
-
-	if (flags.categories) {
-		this.operands = this.operands.concat(this.site.Categories());
-	}
-
-	if (flags.tags) {
-		this.operands = this.operands.concat(this.site.Tags());
-	}
-
-	if (flags.pages) {
-		this.operands = this.operands.concat(this.site.Pages());
-	}
-
-	if (flags.collections) {
-		this.operands = this.operands.concat(this.site.Collections());
-	}
-
-	if (flags.pages) {
-		this.operands = this.operands.concat(this.site.Pages());
-	}
-
-	if (flags.entities) {
-		this.operands = this.operands.concat(this.site.Entities());
-	}
 
 	if (flags.all) {
 		this.operands = this.operands.concat(this.site.Renderables());
+	} else {
+		if (flags.pages) {
+			this.operands = this.operands.concat(this.site.Pages());
+		}
+		if (flags.entities) {
+			this.operands = this.operands.concat(this.site.Entities());
+		} else {
+			if (flags.authors) {
+				this.operands = this.operands.concat(this.site.Authors());
+			}
+
+			if (flags.categories) {
+				this.operands = this.operands.concat(this.site.Categories());
+			}
+
+			if (flags.tags) {
+				this.operands = this.operands.concat(this.site.Tags());
+			}
+
+			if (flags.collections) {
+				this.operands = this.operands.concat(this.site.Collections());
+			}
+		}
 	}
 
 	if (flags.layouts) {
