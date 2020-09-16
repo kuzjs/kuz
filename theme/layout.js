@@ -19,6 +19,7 @@ function Layout (theme, data) {
 }
 
 Layout.prototype = new KZBaseObject();
+Layout.prototype.typeName = "Layout";
 
 Layout.prototype.FullPath = function () {
 	return fsutils.JoinPath(this.theme.LayoutsInputDirectory(), this.Path());

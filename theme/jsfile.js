@@ -9,6 +9,7 @@ function JsFile (theme, data) {
 }
 
 JsFile.prototype = new ProtoFile("js");
+JsFile.prototype.typeName = "JavaScript";
 
 JsFile.prototype.IsJsFile = function () {
 	return true;

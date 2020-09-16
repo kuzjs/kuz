@@ -15,6 +15,7 @@ function ProtoFile (dirName) {
 }
 
 ProtoFile.prototype = new KZBaseObject();
+ProtoFile.prototype.typeName = "ProtoFile";
 
 ProtoFile.prototype.IsProtoFile = function () {
 	return true;

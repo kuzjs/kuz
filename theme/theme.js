@@ -26,6 +26,7 @@ function Theme (themeName, site) {
 }
 
 Theme.prototype = new KZBaseObject();
+Theme.prototype.typeName = "Theme";
 
 Theme.prototype.Name = function () {
 	return this.themeName;

@@ -9,6 +9,7 @@ function CssFile (theme, data) {
 }
 
 CssFile.prototype = new ProtoFile("css");
+CssFile.prototype.typeName = "CSS";
 
 CssFile.prototype.IsCssFile = function () {
 	return true;

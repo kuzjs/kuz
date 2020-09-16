@@ -9,6 +9,7 @@ function ResFile (theme, data) {
 }
 
 ResFile.prototype = new ProtoFile("res");
+ResFile.prototype.typeName = "Resource";
 
 ResFile.prototype.IsResFile = function () {
 	return true;
