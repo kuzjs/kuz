@@ -13,12 +13,6 @@ const Collection = require("../renderable/collection").Collection;
 const Tag = require("../renderable/tag").Tag;
 const Page = require("../renderable/page").Page;
 
-const site = null;
-
-function SetSite (mySite) {
-	site = mySite;
-}
-
 function SetupNextPrevious (arr) {
 	for (let index=0; index<arr.length; index++) {
 		arr[index].index = index;
@@ -118,7 +112,6 @@ function GetPages (site, dirpath, parentConfig) {
 
 
 module.exports = {
-	SetSite: SetSite,
 	GetAuthors: GetAuthors,
 	GetCategories: GetCategories,
 	GetTags: GetTags,
