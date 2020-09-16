@@ -280,8 +280,8 @@ KaagazzApp.prototype.ShowVersion = function () {
 	table.Print();
 }
 
-KaagazzApp.prototype.Experiment = function () {
-	log.Green("Kaagazz experiment.");
+KaagazzApp.prototype.Nietzsche = function () {
+	log.Green("Kaagazz Nietzschean Experiment.");
 	for (let x of this.operands) {
 		log.Green(x.CodeName());
 	}
@@ -426,8 +426,8 @@ KaagazzApp.prototype.Run = function () {
 		this.Update();
 	} else if (flags.watch) {
 		this.Watch();
-	} else if (flags.experiment) {
-		this.Experiment();
+	} else if (flags.nietzsche) {
+		this.Nietzsche();
 	} else {
 		//
 	}

@@ -33,8 +33,8 @@
 		},
 		{
 			"code": "C",
-			"name": "collections",
-			"description": "Collections only modifier.",
+			"name": "css",
+			"description": "CSS stylesheets only modifier.",
 			"modifier": true
 		},
 		{
@@ -51,8 +51,8 @@
 		},
 		{
 			"code": "E",
-			"name": "experiment",
-			"description": "Experiment.",
+			"name": "everything",
+			"description": "Everything modifier.",
 			"major": true
 		},
 		{
@@ -102,6 +102,12 @@
 			"modifier": true
 		},
 		{
+			"code": "k",
+			"name": "collections",
+			"description": "Collections only modifier.",
+			"modifier": true
+		},
+		{
 			"code": "l",
 			"name": "list",
 			"description": "List things.",
@@ -128,6 +134,11 @@
 			"code": "n",
 			"name": "new",
 			"description": "New site."
+		},
+		{
+			"code": "N",
+			"name": "nietzsche",
+			"description": "Nietzsche."
 		},
 		{
 			"code": "p",
@@ -163,12 +174,6 @@
 			"name": "serve",
 			"description": "Run a live server.",
 			"implemented": true
-		},
-		{
-			"code": "S",
-			"name": "css",
-			"description": "CSS stylesheets only modifier.",
-			"modifier": true
 		},
 		{
 			"code": "t",
