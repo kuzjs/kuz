@@ -50,6 +50,12 @@
 			"modifier": true
 		},
 		{
+			"code": "E",
+			"name": "experiment",
+			"description": "Experiment.",
+			"major": true
+		},
+		{
 			"code": "f",
 			"name": "forced",
 			"description": "Forced-update things.",
