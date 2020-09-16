@@ -18,7 +18,11 @@ function KZFlag (flagObject) {
 	this.major = (flagObject.major === undefined) ? false : flagObject.major;
 	this.modifier = (flagObject.modifier === undefined) ? false : flagObject.modifier;
 	this.independent = !this.major && !this.modifier;
-	this.isset = false;
+	this.count = 0;
+}
+
+KZFlag.prototype.IsSet = function () {
+	return (this.count > 0) ? true : false;
 }
 
 KZFlag.prototype.Code = function () {
@@ -66,7 +70,7 @@ KZFlag.prototype.Attributes = function () {
 }
 
 KZFlag.prototype.State = function () {
-	return (this.isset) ? "SET" : "";
+	return "".padStart(this.count, "+");
 }
 
 KZFlag.prototype.FileName = function () {

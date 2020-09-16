@@ -80,7 +80,7 @@ KaagazzApp.prototype.SetupFlags = function () {
 			for (let flagIndex in this.flags) {
 				let currentFlag = this.flags[flagIndex];
 				if (currentFlag.name == flagName) {
-					currentFlag.isset = true;
+					currentFlag.count++;
 				}
 			}
 		} else if (argument.startsWith("-")) {
@@ -89,7 +89,7 @@ KaagazzApp.prototype.SetupFlags = function () {
 				for (let k in this.flags) {
 					let currentFlag = this.flags[k];
 					if (currentFlag.code == letter) {
-						currentFlag.isset = true;
+						currentFlag.count++;
 					}
 				}
 			}
@@ -107,7 +107,7 @@ KaagazzApp.prototype.SetupFlags = function () {
 
 	for (let index in this.flags) {
 		let flag = this.flags[index];
-		if (flag.isset) {
+		if (flag.IsSet()) {
 			this.numberOfFlags.total++;
 			if (flag.independent) {
 				this.numberOfFlags.independent++;
@@ -122,7 +122,7 @@ KaagazzApp.prototype.SetupFlags = function () {
 	this.simpleFlags = {};
 	for (let index in this.flags) {
 		let flag = this.flags[index];
-		this.simpleFlags[flag.name] = flag.isset;
+		this.simpleFlags[flag.name] = flag.IsSet();
 	}
 
 	if (this.simpleFlags.debug) {
