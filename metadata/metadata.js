@@ -22,8 +22,7 @@ MetaData.prototype.Setup = function () {
 	if (this.Exists()) {
 		let metaNss = new Nss(this.path);
 		let headerLines = metaNss.GetHeaderLines();
-		for (let index in headerLines) {
-			let headerLine = headerLines[index];
+		for (let headerLine of headerLines) {
 			let property = new Property(headerLine);
 			this.properties.push(property);
 		}
@@ -34,8 +33,7 @@ MetaData.prototype.Setup = function () {
 
 MetaData.prototype.Props = function () {
 	let props = {};
-	for (let index in this.properties) {
-		let property = this.properties[index];
+	for (let property of this.properties) {
 		props[property.name] = property.value;
 	}
 	return props;
@@ -49,8 +47,7 @@ MetaData.prototype.Exists = function () {
 }
 
 MetaData.prototype.GetValue = function (propertyName) {
-	for (let index in this.properties) {
-		let property = this.properties[index];
+	for (let property of this.properties) {
 		if (propertyName == property.Name()) {
 			return {
 				found: true,

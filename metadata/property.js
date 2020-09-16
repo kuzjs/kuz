@@ -9,8 +9,8 @@ function GetAppropriateValue (value) {
 
 		let valueArray = [];
 		let arrayItems = value.split(",");
-		for (let index in arrayItems) {
-			valueArray.push(GetAppropriateValue(arrayItems[index]));
+		for (let item of arrayItems) {
+			valueArray.push(GetAppropriateValue(item));
 		}
 		return valueArray;
 	} else if (value.startsWith("{") && value.endsWith("}")) {
@@ -18,8 +18,7 @@ function GetAppropriateValue (value) {
 
 		let valueObject = {};
 		let objectPropertyArray = value.split(",");
-		for (let index in objectPropertyArray) {
-			let objectPropertyText = objectPropertyArray[index];
+		for (let objectPropertyText of objectPropertyArray) {
 			let parts = objectPropertyText.split(":");
 			let propertyName = parts[0].trim();
 			let propertyValue = parts[1].trim();
