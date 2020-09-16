@@ -136,6 +136,10 @@ Theme.prototype.SetupResFiles = function () {
 	}
 }
 
+Theme.prototype.Props = function () {
+	return this.meta.json;
+}
+
 Theme.prototype.DefaultLayout = function () {
 	for (let layout of this.layouts) {
 		if (layout.default) {

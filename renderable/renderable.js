@@ -171,6 +171,7 @@ Renderable.prototype.GetPageOptions = function () {
 		cprops: this.configFileObject.props,
 		sprops: this.site.meta.json,
 		kprops: this.site.app.meta.json,
+		tprops: this.Theme().Props(),
 		blackadder: this.Blackadder(),
 		ipsum: this.LoremIpsum()
 	};
