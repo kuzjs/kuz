@@ -62,12 +62,11 @@ KaagazzApp.prototype.AllIsWell = function () {
 }
 
 KaagazzApp.prototype.SetupFlags = function () {
-	let flags = this.flagsJson.json.flags;
+	let flagObjects = this.flagsJson.json.flags;
 	this.flags = [];
 	this.args = [];
 
-	for (let index in flags) {
-		let flagObject = flags[index];
+	for (let flagObject of flagObjects) {
 		let flag = new KZFlag(flagObject);
 		this.flags.push(flag);
 	}
@@ -77,8 +76,7 @@ KaagazzApp.prototype.SetupFlags = function () {
 		let argument = argv[i];
 		if (argument.startsWith("--")) {
 			let flagName = argument.slice(2).toLowerCase();
-			for (let flagIndex in this.flags) {
-				let currentFlag = this.flags[flagIndex];
+			for (let currentFlag of this.flags) {
 				if (currentFlag.name == flagName) {
 					currentFlag.count++;
 				}
@@ -105,8 +103,7 @@ KaagazzApp.prototype.SetupFlags = function () {
 		total: 0
 	};
 
-	for (let index in this.flags) {
-		let flag = this.flags[index];
+	for (let flag of this.flags) {
 		if (flag.IsSet()) {
 			this.numberOfFlags.total++;
 			if (flag.independent) {
@@ -120,8 +117,7 @@ KaagazzApp.prototype.SetupFlags = function () {
 	}
 
 	this.simpleFlags = {};
-	for (let index in this.flags) {
-		let flag = this.flags[index];
+	for (let flag of this.flags) {
 		this.simpleFlags[flag.name] = flag.IsSet();
 	}
 
@@ -169,8 +165,7 @@ KaagazzApp.prototype.toString = function () {
 KaagazzApp.prototype.ShowSomeHelp = function () {
 	let table = this.flags[0].GetTable();
 
-	for (let index in this.flags) {
-		let flag = this.flags[index];
+	for (let flag of this.flags) {
 		if (!flag.modifier) {
 			table.Add(flag);
 		}
@@ -182,8 +177,7 @@ KaagazzApp.prototype.ShowSomeHelp = function () {
 KaagazzApp.prototype.ShowFullHelp = function () {
 	let table = this.flags[0].GetTable();
 
-	for (let index in this.flags) {
-		let flag = this.flags[index];
+	for (let flag of this.flags) {
 		table.Add(flag);
 	}
 
@@ -193,8 +187,7 @@ KaagazzApp.prototype.ShowFullHelp = function () {
 KaagazzApp.prototype.ShowIndependentFlags = function () {
 	let table = this.flags[0].GetTable();
 
-	for (let index in this.flags) {
-		let flag = this.flags[index];
+	for (let flag of this.flags) {
 		if (!flag.modifier && !flag.major) {
 			table.Add(flag);
 		}
@@ -206,8 +199,7 @@ KaagazzApp.prototype.ShowIndependentFlags = function () {
 KaagazzApp.prototype.ShowModifierFlags = function () {
 	let table = this.flags[0].GetTable();
 
-	for (let index in this.flags) {
-		let flag = this.flags[index];
+	for (let flag of this.flags) {
 		if (flag.modifier) {
 			table.Add(flag);
 		}
@@ -219,8 +211,7 @@ KaagazzApp.prototype.ShowModifierFlags = function () {
 KaagazzApp.prototype.ShowMajorFlags = function () {
 	let table = this.flags[0].GetTable();
 
-	for (let index in this.flags) {
-		let flag = this.flags[index];
+	for (let flag of this.flags) {
 		if (flag.major) {
 			table.Add(flag);
 		}
