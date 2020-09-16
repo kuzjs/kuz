@@ -68,6 +68,14 @@ Property.prototype.GetValue = function () {
 	return this.value;
 }
 
+Property.prototype.IsOn = Property.prototype.IsTrue = function () {
+	return (this.value === true) ? true : false;
+}
+
+Property.prototype.IsOff = Property.prototype.IsFalse = function () {
+	return (this.value === false) ? false : true;
+}
+
 Property.prototype.GetBooleanValue = function () {
 	return (this.value == "false") ? false : true;
 }
