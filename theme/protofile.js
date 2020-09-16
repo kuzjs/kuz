@@ -2,7 +2,6 @@
 
 const log = require("../utils/log");
 const fsutils = require("../utils/fsutils");
-const KZTable = require("../utils/table").KZTable;
 
 const KZBaseObject = require("../base/baseobject").KZBaseObject;
 
@@ -67,6 +66,7 @@ ProtoFile.prototype.toString = function () {
 }
 
 ProtoFile.prototype.GetTable = function () {
+	const KZTable = require("../utils/table").KZTable;
 	let table = new KZTable();
 	table.AddColumn("Name");
 	table.AddColumn("Theme");

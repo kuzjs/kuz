@@ -4,8 +4,6 @@ const log = require("../utils/log");
 const fsutils = require("../utils/fsutils");
 const JsonFile = require("../utils/jsonfile").JsonFile;
 
-const KZTable = require("../utils/table").KZTable;
-
 const KZBaseObject = require("../base/baseobject").KZBaseObject;
 
 const common = require("../base/common");
@@ -207,6 +205,7 @@ Theme.prototype.GetPages = function () {
 }
 
 Theme.prototype.GetTable = function () {
+	const KZTable = require("../utils/table").KZTable;
 	let table = new KZTable();
 	table.AddColumn("Name");
 	table.AddColumn("Title");
