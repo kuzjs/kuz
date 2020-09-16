@@ -5,7 +5,7 @@
 const dataDirectory = "kzapp/data/";
 
 const helpDocDirectory = dataDirectory + "help/";
-const jsonDirectory = dataDirectory;
+const jsonDirectory = dataDirectory + "json/";
 
 const defaultText = {
 	description: "---",
