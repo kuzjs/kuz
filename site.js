@@ -124,8 +124,7 @@ Site.prototype.SetupThemes = function () {
 	} else if (themeNames.length == 0) {
 		log.Red("Themes param is empty.");
 	} else {
-		for (let index in themeNames) {
-			let themeName = themeNames[index];
+		for (let themeName of themeNames) {
 			let theme = new Theme(themeName, this);
 			if (theme.IsValid()) {
 				this.themes.push(theme);
@@ -141,8 +140,7 @@ Site.prototype.SetupThemes = function () {
 }
 
 Site.prototype.GetThemeFromName = function (themeName) {
-	for (let index in this.site.themes) {
-		let theme = this.site.themes[index];
+	for (let theme of this.site.themes) {
 		if (theme.themeName == themeName) {
 			return theme;
 		}
@@ -218,32 +216,32 @@ Site.prototype.All = function () {
 
 Site.prototype.LayoutsArray = function () {
 	let layouts = [];
-	for (let index in this.themes) {
-		layouts = layouts.concat(this.themes[index].layouts);
+	for (let theme of this.themes) {
+		layouts = layouts.concat(theme.layouts);
 	}
 	return layouts;
 }
 
 Site.prototype.CssFilesArray = function () {
 	let cssFiles = [];
-	for (let index in this.themes) {
-		cssFiles = cssFiles.concat(this.themes[index].cssFiles);
+	for (let theme of this.themes) {
+		cssFiles = cssFiles.concat(theme.cssFiles);
 	}
 	return cssFiles;
 }
 
 Site.prototype.JsFilesArray = function () {
 	let jsFiles = [];
-	for (let index in this.themes) {
-		jsFiles = jsFiles.concat(this.themes[index].jsFiles);
+	for (let theme of this.themes) {
+		jsFiles = jsFiles.concat(theme.jsFiles);
 	}
 	return jsFiles;
 }
 
 Site.prototype.ResFilesArray = function () {
 	let resFiles = [];
-	for (let index in this.themes) {
-		resFiles = resFiles.concat(this.themes[index].resFiles);
+	for (let theme of this.themes) {
+		resFiles = resFiles.concat(theme.resFiles);
 	}
 	return resFiles;
 }
@@ -290,11 +288,7 @@ Site.prototype.PrintAll = function () {
 }
 
 Site.prototype.PrintThemes = function () {
-	let table = this.themes[0].GetTable();
-	for (let index in this.themes) {
-		table.Add(this.themes[index]);
-	}
-	table.Print();
+	this.PrintArrayAsTable(this.themes);
 }
 
 Site.prototype.PrintLayouts = function () {
@@ -332,27 +326,27 @@ Site.prototype.PrintConfiguration = function () {
 }
 
 Site.prototype.GetAuthorFromName = function (authorName) {
-	for (let index in this.authors) {
-		if (this.authors[index].name == authorName) {
-			return this.authors[index];
+	for (let author of this.authors) {
+		if (author.name == authorName) {
+			return author;
 		}
 	}
 	return null;
 }
 
 Site.prototype.GetCategoryFromName = function (categoryName) {
-	for (let index in this.categories) {
-		if (this.categories[index].name == categoryName) {
-			return this.categories[index];
+	for (let category of this.categories) {
+		if (category.name == categoryName) {
+			return category;
 		}
 	}
 	return null;
 }
 
 Site.prototype.GetTagFromName = function (tagName) {
-	for (let index in this.tags) {
-		if (this.tags[index].name == tagName) {
-			return this.tags[index];
+	for (let tag of this.tags) {
+		if (tag.name == tagName) {
+			return tag;
 		}
 	}
 	return null;
@@ -360,8 +354,7 @@ Site.prototype.GetTagFromName = function (tagName) {
 
 Site.prototype.GetTagsFromNameArray = function (tagNameArray) {
 	let tags = [];
-	for (let index in tagNameArray) {
-		let tagName = tagNameArray[index];
+	for (let tagName of tagNameArray) {
 		let tag = this.GetTagFromName(tagName);
 		if (tag) {
 			tags.push(tag);
@@ -371,8 +364,8 @@ Site.prototype.GetTagsFromNameArray = function (tagNameArray) {
 }
 
 Site.prototype.ForcedUpdateArray = function (arr) {
-	for (let index in arr) {
-		arr[index].ForcedUpdate();
+	for (let elem of arr) {
+		elem.ForcedUpdate();
 	}
 }
 
@@ -405,8 +398,8 @@ Site.prototype.ForcedUpdateAll = function () {
 }
 
 Site.prototype.UpdateArray = function (arr) {
-	for (let index in arr) {
-		arr[index].Update();
+	for (let elem of arr) {
+		elem.Update();
 	}
 }
 
