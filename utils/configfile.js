@@ -123,8 +123,8 @@ ConfigFile.prototype.GetTable = function () {
 	table.AddColumn("Path");
 	table.AddColumn("Parent");
 	table.AddColumn("@");
-	table.AddColumn("D");
-	table.AddColumn("P");
+	table.AddColumn("Dirs");
+	table.AddColumn("Pages");
 	table.AddColumn("Props");
 	return table;
 }
@@ -135,8 +135,8 @@ ConfigFile.prototype.Row = function () {
 		this.configFilePath,
 		this.ParentString(),
 		this.RootString(),
-		this.NumberOfPages(),
 		this.NumberOfChildren(),
+		this.NumberOfPages(),
 		this.metaData.NumberOfProperties()
 	];
 }
