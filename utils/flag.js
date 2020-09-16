@@ -1,5 +1,7 @@
 // flag.js
 
+const fs = require("fs");
+
 const KZTable = require("./table").KZTable;
 
 
@@ -64,12 +66,25 @@ KZFlag.prototype.State = function () {
 	return (this.isset) ? "SET" : "";
 }
 
+KZFlag.prototype.FileName = function () {
+	return  "kzapp/data/help/" + this.Name() + ".txt";
+}
+
+KZFlag.prototype.GetDoc = function () {
+	return fs.readFileSync(this.FileName(), "utf8");
+}
+
+KZFlag.prototype.PrintDoc = function () {
+	console.log(this.GetDoc());
+}
+
 KZFlag.prototype.Row = function () {
 	return [
 		this.Code(),
 		this.FullName(),
 		this.Description(),
 		this.Attributes(),
+		this.FileName(),
 		this.State()
 	];
 }
@@ -80,6 +95,7 @@ KZFlag.prototype.GetTable = function () {
 	table.AddColumn("Name", 16);
 	table.AddColumn("Description", 32);
 	table.AddColumn("Attributes");
+	table.AddColumn("Path");
 	table.AddColumn("State", 10);
 	return table;
 }
