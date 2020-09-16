@@ -60,6 +60,10 @@ ConfigFile.prototype.AddPage = function (page) {
 	this.pages.push(page);
 }
 
+ConfigFile.prototype.DirPath = function (page) {
+	return this.configFilePath;
+}
+
 ConfigFile.prototype.Props = function () {
 	return this.props;
 }

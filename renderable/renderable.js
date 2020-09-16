@@ -294,7 +294,7 @@ Renderable.prototype.InputFileName = function () {
 }
 
 Renderable.prototype.InputDirectoryPath = function () {
-	return fsutils.JoinPath(this.site.GetMetaDirectory(), this.typeNamePlural);
+	return this.configFileObject.DirPath();
 }
 
 Renderable.prototype.InputFilePath = function () {
