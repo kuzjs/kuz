@@ -4,7 +4,6 @@ const log = require("./utils/log");
 const JsonFile = require("./utils/jsonfile").JsonFile;
 const KZTable = require("./utils/table").KZTable;
 const KZFlag = require("./utils/flag").KZFlag;
-const Site = require("./site").Site;
 
 const fsutils = require("./utils/fsutils");
 const jsonDirectory = require("./base/common").jsonDirectory;
@@ -25,6 +24,7 @@ function KaagazzApp () {
 	this.SetupFlags();
 
 	if (this.AllIsWell()) {
+		const Site = require("./site").Site;
 		this.site = new Site(this);
 		this.SetupOperands();
 	} else {
