@@ -1,11 +1,13 @@
 // common.js
 
+const fsutils = require("./fsutils");
+
 
 
 const dataDirectory = "kzapp/data/";
 
-const helpDocDirectory = dataDirectory + "help/";
-const jsonDirectory = dataDirectory + "json/";
+const helpDocDirectory = fsutils.JoinPath(dataDirectory, "help");
+const jsonDirectory = fsutils.JoinPath(dataDirectory, "json");
 
 const defaultText = {
 	description: "---",

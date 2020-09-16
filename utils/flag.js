@@ -4,6 +4,7 @@ const fs = require("fs");
 
 const KZTable = require("./table").KZTable;
 
+const fsutils = require("./fsutils");
 const helpDocDirectory = require("./common").helpDocDirectory;
 
 
@@ -69,11 +70,15 @@ KZFlag.prototype.State = function () {
 }
 
 KZFlag.prototype.FileName = function () {
-	return helpDocDirectory + this.Name() + ".txt";
+	return this.Name() + ".txt";
+}
+
+KZFlag.prototype.FilePath = function () {
+	return fsutils.JoinPath(helpDocDirectory, this.FileName());
 }
 
 KZFlag.prototype.GetDoc = function () {
-	return fs.readFileSync(this.FileName(), "utf8");
+	return fs.readFileSync(this.FilePath(), "utf8");
 }
 
 KZFlag.prototype.PrintDoc = function () {
@@ -86,7 +91,7 @@ KZFlag.prototype.Row = function () {
 		this.FullName(),
 		this.Description(),
 		this.Attributes(),
-		this.FileName(),
+		this.FilePath(),
 		this.State()
 	];
 }

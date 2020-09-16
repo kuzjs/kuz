@@ -6,12 +6,13 @@ const KZTable = require("./utils/table").KZTable;
 const KZFlag = require("./utils/flag").KZFlag;
 const Site = require("./site").Site;
 
+const fsutils = require("./utils/fsutils");
 const jsonDirectory = require("./utils/common").jsonDirectory;
 
-const kaagazzJsonPath = jsonDirectory + "kaagazz.json";
-const flagsJsonPath = jsonDirectory + "flags.json";
-const blackadderJsonPath = jsonDirectory + "blackadder.json";
-const loremIpsumJsonPath = jsonDirectory + "lorem-ipsum.json";
+const kaagazzJsonPath = fsutils.JoinPath(jsonDirectory, "kaagazz.json");
+const flagsJsonPath = fsutils.JoinPath(jsonDirectory, "flags.json");
+const blackadderJsonPath = fsutils.JoinPath(jsonDirectory, "blackadder.json");
+const loremIpsumJsonPath = fsutils.JoinPath(jsonDirectory, "lorem-ipsum.json");
 
 
 
