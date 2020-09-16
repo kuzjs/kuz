@@ -84,8 +84,7 @@ KaagazzApp.prototype.SetupFlags = function () {
 		} else if (argument.startsWith("-")) {
 			for (let j=1; j<argument.length; j++) {
 				let letter = argument[j];
-				for (let k in this.flags) {
-					let currentFlag = this.flags[k];
+				for (let currentFlag of this.flags) {
 					if (currentFlag.code == letter) {
 						currentFlag.count++;
 					}

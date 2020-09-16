@@ -17,8 +17,7 @@ Article.prototype.Init = function (page, content) {
 	let currentSection = new Section(this, "[content]");
 	this.sections[currentSection.Name()] = currentSection;
 
-	for (let index in this.contentLines) {
-		let contentLine = this.contentLines[index];
+	for (let contentLine of this.contentLines) {
 		if (contentLine.includes("[") && contentLine.includes("]")) {
 			currentSection = new Section(this, contentLine);
 			this.sections[currentSection.Name()] = currentSection;

@@ -33,8 +33,7 @@ function GetEntities (site, configDirPath, Entity) {
 
 	let entities = [];
 	let configEntries = configFileObject.GetEntries();
-	for (let index in configEntries) {
-		let entry = configEntries[index];
+	for (let entry of configEntries) {
 		let entity = new Entity(site, entry);
 		configFileObject.AddPage(entity);
 		entity.SetConfig(configFileObject);
@@ -84,8 +83,7 @@ function GetPages (site, dirpath, parentConfig) {
 	let configEntries = configFileObject.GetEntries();
 
 	let root = null;
-	for (let index in configEntries) {
-		let entry = configEntries[index];
+	for (let entry of configEntries) {
 		if (entry.startsWith("[") && entry.endsWith("]")) {
 			if (root === null) {
 				entry = entry.slice(1, -1);

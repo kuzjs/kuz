@@ -30,8 +30,7 @@ NewlineSeparatedStrings.prototype.GetLinesByRegionIndex = function (regionIndex)
 	let regionLines = [];
 	if (fs.existsSync(this.filename)) {
 		let fileLines = this.GetLinesArray();
-		for (let index in fileLines) {
-			let currentLine = fileLines[index];
+		for (let currentLine of fileLines) {
 			if (currentLine.startsWith("====") || currentLine.startsWith("----")) {
 				currentRegionIndex++;
 			} else if (currentRegionIndex == regionIndex) {

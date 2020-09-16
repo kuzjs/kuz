@@ -20,8 +20,7 @@ Tag.prototype.IsTag = function () {
 
 Tag.prototype.GetPages = function () {
 	let pages = [];
-	for (let index in this.site.pages) {
-		let page = this.site.pages[index];
+	for (let page of this.site.pages) {
 		if (page.Tags().includes(this.name)) {
 			pages.push(page);
 		}
