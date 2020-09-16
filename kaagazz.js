@@ -288,7 +288,7 @@ KaagazzApp.prototype.ShowVersion = function () {
 KaagazzApp.prototype.Nietzsche = function () {
 	log.Green("Kaagazz Nietzschean Experiment.");
 	for (let x of this.operands) {
-		log.Green(x.CodeName());
+		log.Green(x.CodeAndName());
 	}
 }
 

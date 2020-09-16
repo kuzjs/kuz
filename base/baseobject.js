@@ -241,48 +241,54 @@ KZBaseObject.prototype.IsResFile = function () {
 
 
 
+KZBaseObject.prototype.CodeAndName = function () {
+	return this.CodeName() + ": " + this.Name();
+}
+
+
+
 KZBaseObject.prototype.Buildable = function () {
-	log.Green("KZBaseObject Buildable(): " + this.CodeName());
+	log.Green("KZBaseObject Buildable(): " + this.CodeAndName());
 	return this;
 }
 
 KZBaseObject.prototype.Build = function () {
-	log.Green("KZBaseObject Build(): " + this.CodeName());
+	log.Green("KZBaseObject Build(): " + this.CodeAndName());
 	return this;
 }
 
 KZBaseObject.prototype.Updatable = function () {
-	log.Green("KZBaseObject Updatable(): " + this.CodeName());
+	log.Green("KZBaseObject Updatable(): " + this.CodeAndName());
 	return this;
 }
 
 KZBaseObject.prototype.Update = function () {
-	log.Green("KZBaseObject Update(): " + this.CodeName());
+	log.Green("KZBaseObject Update(): " + this.CodeAndName());
 	return this;
 }
 
 KZBaseObject.prototype.ForcedUpdate = function () {
-	log.Green("KZBaseObject ForcedUpdate(): " + this.CodeName());
+	log.Green("KZBaseObject ForcedUpdate(): " + this.CodeAndName());
 	return this;
 }
 
 KZBaseObject.prototype.DeleteOutput = function () {
-	log.Green("KZBaseObject DeleteOutput(): " + this.CodeName());
+	log.Green("KZBaseObject DeleteOutput(): " + this.CodeAndName());
 	return this;
 }
 
 KZBaseObject.prototype.DeleteExtras = function () {
-	log.Green("KZBaseObject DeleteExtras(): " + this.CodeName());
+	log.Green("KZBaseObject DeleteExtras(): " + this.CodeAndName());
 	return this;
 }
 
 KZBaseObject.prototype.Verify = function () {
-	log.Green("KZBaseObject Verify(): " + this.CodeName());
+	log.Green("KZBaseObject Verify(): " + this.CodeAndName());
 	return this;
 }
 
 KZBaseObject.prototype.Watch = function () {
-	log.Green("KZBaseObject Watch(): " + this.CodeName());
+	log.Green("KZBaseObject Watch(): " + this.CodeAndName());
 	return this;
 }
 
