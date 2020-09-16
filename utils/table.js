@@ -15,6 +15,7 @@ KZTable.prototype.Reset = function () {
 	this.paddingLength = 1;
 	this.rowData = [];
 	this.showIndex = true;
+	this.showHeader = true;
 	this.firstColumn = {
 		name: "Id",
 		length: 5
@@ -29,6 +30,16 @@ KZTable.prototype.ShowIndex = function () {
 
 KZTable.prototype.HideIndex = function () {
 	this.showIndex = false;
+	return this;
+}
+
+KZTable.prototype.ShowHeader = function () {
+	this.showHeader = true;
+	return this;
+}
+
+KZTable.prototype.HideHeader = function () {
+	this.showHeader = false;
 	return this;
 }
 
@@ -169,8 +180,10 @@ KZTable.prototype.Print = function () {
 	let headerRowString = this.GetHeaderRowString();
 
 	console.log(rowSeparator);
-	console.log(headerRowString);
-	console.log(rowSeparator);
+	if (this.showHeader) {
+		console.log(headerRowString);
+		console.log(rowSeparator);
+	}
 	for (let i=0; i<this.rowData.length; i++) {
 		this.PrintRow(i);
 	}
