@@ -87,6 +87,7 @@ Theme.prototype.SetupPaths = function () {
 	this.SetupCssFiles();
 	this.SetupJsFiles();
 	this.SetupResFiles();
+	this.SetupNextPrevious();
 
 	this.is_valid = true;
 }
@@ -134,6 +135,14 @@ Theme.prototype.SetupResFiles = function () {
 			this.resFiles.push(resFile);
 		}
 	}
+}
+
+Theme.prototype.SetupNextPrevious = function () {
+	const SetupNextPrevious = require("../utils/siteutils").SetupNextPrevious;
+	SetupNextPrevious(this.layouts);
+	SetupNextPrevious(this.cssFiles);
+	SetupNextPrevious(this.jsFiles);
+	SetupNextPrevious(this.resFiles);
 }
 
 Theme.prototype.Props = function () {

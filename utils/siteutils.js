@@ -117,6 +117,7 @@ function GetPages (site, dirpath, parentConfig) {
 
 
 module.exports = {
+	SetupNextPrevious: SetupNextPrevious,
 	GetAuthors: GetAuthors,
 	GetCategories: GetCategories,
 	GetTags: GetTags,
