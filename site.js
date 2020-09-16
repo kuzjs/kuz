@@ -255,8 +255,8 @@ Site.prototype.PrintArrayAsTable = function (arr) {
 	}
 
 	let table = arr[0].GetTable();
-	for (let index in arr) {
-		table.Add(arr[index]);
+	for (let item of arr) {
+		table.Add(item);
 	}
 	table.Print();
 }
