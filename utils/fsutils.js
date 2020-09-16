@@ -30,13 +30,13 @@ function JoinPath () {
 	let path = "";
 
 	if (arguments.length > 0) {
-		for (let index = 0; index < arguments.length; index++) {
-			let argument = arguments[index];
-			if (argument != undefined && argument.length != "") {
+		for (let argument of arguments) {
+			let arg = TrimSlashes(argument.trim());
+			if (arg != undefined && arg.length != 0) {
 				if (path == "") {
-					path = argument;
+					path = arg;
 				} else {
-					path = path + "/" + argument;
+					path = path + "/" + arg;
 				}
 			}
 		}
