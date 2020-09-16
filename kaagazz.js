@@ -130,6 +130,11 @@ KaagazzApp.prototype.SetupOperands = function () {
 	this.operands = [];
 	let flags = this.simpleFlags;
 
+	if (flags.everything) {
+		this.operands = this.site.EveryThing();
+		return;
+	}
+
 	if (flags.all) {
 		this.operands = this.operands.concat(this.site.Renderables());
 	} else {
