@@ -124,9 +124,7 @@ Renderable.prototype.GetLayout = function () {
 	let layoutName = this.GetLayoutName();
 	let layout = theme.GetLayout(layoutName);
 
-	if (layout === null) {
-		log.Red(theme.Name() + " has no layout for: " + this.typeName);
-	} else {
+	if (layout) {
 		return layout;
 	}
 

@@ -23,6 +23,9 @@ function SetupNextPrevious (arr) {
 
 function GetEntities (site, configDirPath, Entity) {
 	let configFileObject = new ConfigFile(site, configDirPath, true);
+	if (configFileObject.DoesNotExist()) {
+		return [];
+	}
 	site.AddConfig(configFileObject);
 
 	let entities = [];
@@ -59,6 +62,9 @@ function GetCollections (site) {
 
 function GetPages (site, dirpath, parentConfig) {
 	let configFileObject = new ConfigFile(site, dirpath);
+	if (configFileObject.DoesNotExist()) {
+		return [];
+	}
 
 	if (parentConfig) {
 		parentConfig.AddChild(configFileObject);

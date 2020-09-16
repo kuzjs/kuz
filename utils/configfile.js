@@ -75,6 +75,10 @@ ConfigFile.prototype.Exists = function () {
 	return false;
 }
 
+ConfigFile.prototype.DoesNotExist = function () {
+	return !this.Exists();
+}
+
 ConfigFile.prototype.GetEntries = function () {
 	this.nss = new Nss(this.configFilePath);
 	return this.nss.GetBodyLines();
