@@ -79,8 +79,32 @@ ConfigFile.prototype.NumberOfPages = function () {
 	return this.pages.length;
 }
 
+ConfigFile.prototype.NumberOfPagesString = function () {
+	return this.NumberOfPages() ? this.NumberOfPages() : "-";
+}
+
 ConfigFile.prototype.NumberOfChildren = function () {
 	return this.children.length;
+}
+
+ConfigFile.prototype.NumberOfChildrenString = function () {
+	return this.NumberOfChildren() ? this.NumberOfChildren() : "-";
+}
+
+ConfigFile.prototype.ParentString = function () {
+	if (this.parent) {
+		return this.parent.CodeName();
+	} else {
+		return "";
+	}
+}
+
+ConfigFile.prototype.RootString = function () {
+	if (this.root) {
+		return "@";
+	} else {
+		return "";
+	}
 }
 
 ConfigFile.prototype.NumberOfEntriesString = function () {
@@ -105,7 +129,10 @@ ConfigFile.prototype.GetTable = function () {
 	let table = new KZTable();
 	table.AddColumn("CodeName");
 	table.AddColumn("Path");
-	table.AddColumn("N");
+	table.AddColumn("Parent");
+	table.AddColumn("@");
+	table.AddColumn("D");
+	table.AddColumn("P");
 	table.AddColumn("Props");
 	return table;
 }
@@ -114,7 +141,10 @@ ConfigFile.prototype.Row = function () {
 	return [
 		this.CodeName(),
 		this.configFilePath,
-		this.NumberOfEntriesString(),
+		this.ParentString(),
+		this.RootString(),
+		this.NumberOfPagesString(),
+		this.NumberOfChildrenString(),
 		this.metaData.NumberOfProperties()
 	];
 }
