@@ -6,7 +6,7 @@ const KZTable = require("./utils/table").KZTable;
 const KZFlag = require("./utils/flag").KZFlag;
 const Site = require("./site").Site;
 
-const jsonDirectory = "kzapp/data/";
+const jsonDirectory = require("./utils/common").jsonDirectory;
 
 const kaagazzJsonPath = jsonDirectory + "kaagazz.json";
 const flagsJsonPath = jsonDirectory + "flags.json";

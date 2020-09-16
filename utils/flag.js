@@ -4,6 +4,8 @@ const fs = require("fs");
 
 const KZTable = require("./table").KZTable;
 
+const helpDocDirectory = require("./common").helpDocDirectory;
+
 
 
 function KZFlag (flagObject) {
@@ -67,7 +69,7 @@ KZFlag.prototype.State = function () {
 }
 
 KZFlag.prototype.FileName = function () {
-	return  "kzapp/data/help/" + this.Name() + ".txt";
+	return helpDocDirectory + this.Name() + ".txt";
 }
 
 KZFlag.prototype.GetDoc = function () {

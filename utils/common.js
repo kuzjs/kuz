@@ -2,7 +2,12 @@
 
 
 
-let defaultText = {
+const dataDirectory = "kzapp/data/";
+
+const helpDocDirectory = dataDirectory + "help/";
+const jsonDirectory = dataDirectory;
+
+const defaultText = {
 	description: "---",
 	documentation: "----",
 	title: "---",
@@ -12,7 +17,10 @@ let defaultText = {
 
 
 module.exports = {
-	defaultText: defaultText
+	defaultText: defaultText,
+	helpDocDirectory: helpDocDirectory,
+	jsonDirectory: jsonDirectory,
+	zzz: false
 };
 
 
