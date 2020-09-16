@@ -14,8 +14,14 @@
 		},
 		{
 			"code": "b",
+			"name": "buildable",
+			"description": "Show buildable things.",
+			"major": true
+		},
+		{
+			"code": "B",
 			"name": "build",
-			"description": "Build things.",
+			"description": "Build things now.",
 			"major": true
 		},
 		{
@@ -171,8 +177,15 @@
 		},
 		{
 			"code": "u",
+			"name": "updatable",
+			"description": "Show updatable things.",
+			"implemented": true,
+			"major": true
+		},
+		{
+			"code": "U",
 			"name": "update",
-			"description": "Update things.",
+			"description": "Update things now.",
 			"implemented": true,
 			"major": true
 		},
@@ -198,13 +211,13 @@
 		{
 			"code": "x",
 			"name": "deletable",
-			"description": "Find extra files.",
+			"description": "Show deletable things.",
 			"major": true
 		},
 		{
 			"code": "X",
 			"name": "delete",
-			"description": "Delete extra files.",
+			"description": "Delete things now.",
 			"major": true
 		}
 	]
