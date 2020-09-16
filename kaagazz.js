@@ -26,6 +26,7 @@ function KaagazzApp () {
 
 	if (this.AllIsWell()) {
 		this.site = new Site(this);
+		this.SetupOperands();
 	} else {
 		this.site = null;
 	}
@@ -122,6 +123,58 @@ KaagazzApp.prototype.SetupFlags = function () {
 
 	if (this.simpleFlags.debug) {
 		log.DebugOn();
+	}
+}
+
+KaagazzApp.prototype.SetupOperands = function () {
+	this.operands = [];
+	let flags = this.simpleFlags;
+	if (flags.authors) {
+		this.operands = this.operands.concat(this.site.Authors());
+	}
+
+	if (flags.categories) {
+		this.operands = this.operands.concat(this.site.Categories());
+	}
+
+	if (flags.tags) {
+		this.operands = this.operands.concat(this.site.Tags());
+	}
+
+	if (flags.pages) {
+		this.operands = this.operands.concat(this.site.Pages());
+	}
+
+	if (flags.collections) {
+		this.operands = this.operands.concat(this.site.Collections());
+	}
+
+	if (flags.pages) {
+		this.operands = this.operands.concat(this.site.Pages());
+	}
+
+	if (flags.entities) {
+		this.operands = this.operands.concat(this.site.Entities());
+	}
+
+	if (flags.all) {
+		this.operands = this.operands.concat(this.site.All());
+	}
+
+	if (flags.layouts) {
+		this.operands = this.operands.concat(this.site.LayoutsArray());
+	}
+
+	if (flags.css) {
+		this.operands = this.operands.concat(this.site.CssFilesArray());
+	}
+
+	if (flags.js) {
+		this.operands = this.operands.concat(this.site.JsFilesArray());
+	}
+
+	if (flags.res) {
+		this.operands = this.operands.concat(this.site.ResFilesArray());
 	}
 }
 
@@ -233,6 +286,9 @@ KaagazzApp.prototype.ShowVersion = function () {
 
 KaagazzApp.prototype.Experiment = function () {
 	log.Green("Kaagazz experiment.");
+	for (let x of this.operands) {
+		log.Green(x.CodeName());
+	}
 }
 
 KaagazzApp.prototype.ListThings = function (flags) {
