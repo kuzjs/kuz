@@ -79,16 +79,8 @@ ConfigFile.prototype.NumberOfPages = function () {
 	return this.pages.length;
 }
 
-ConfigFile.prototype.NumberOfPagesString = function () {
-	return this.NumberOfPages() ? this.NumberOfPages() : "-";
-}
-
 ConfigFile.prototype.NumberOfChildren = function () {
 	return this.children.length;
-}
-
-ConfigFile.prototype.NumberOfChildrenString = function () {
-	return this.NumberOfChildren() ? this.NumberOfChildren() : "-";
 }
 
 ConfigFile.prototype.ParentString = function () {
@@ -143,8 +135,8 @@ ConfigFile.prototype.Row = function () {
 		this.configFilePath,
 		this.ParentString(),
 		this.RootString(),
-		this.NumberOfPagesString(),
-		this.NumberOfChildrenString(),
+		this.NumberOfPages(),
+		this.NumberOfChildren(),
 		this.metaData.NumberOfProperties()
 	];
 }
