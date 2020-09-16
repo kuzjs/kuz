@@ -82,17 +82,8 @@ Theme.prototype.SetupPaths = function () {
 
 	this.meta = new JsonFile(this.JsonFilePath());
 	this.metaObject = this.meta.json.meta;
-	this.layouts = [];
-	for (let data of this.meta.json.layouts) {
-		let layoutFilePath = fsutils.JoinPath(this.LayoutsInputDirectory(), data.path);
-		if (fsutils.IsFile(layoutFilePath)) {
-			let layout = new Layout(this, data);
-			this.layouts.push(layout);
-		} else {
-			log.Red("Layout NOT found: " + layoutFilePath);
-		}
-	}
 
+	this.SetupLayouts();
 	this.SetupCssFiles();
 	this.SetupJsFiles();
 	this.SetupResFiles();
@@ -100,27 +91,48 @@ Theme.prototype.SetupPaths = function () {
 	this.is_valid = true;
 }
 
+Theme.prototype.SetupLayouts = function () {
+	this.layouts = [];
+	if (this.meta.json.layouts) {
+		for (let data of this.meta.json.layouts) {
+			let layoutFilePath = fsutils.JoinPath(this.LayoutsInputDirectory(), data.path);
+			if (fsutils.IsFile(layoutFilePath)) {
+				let layout = new Layout(this, data);
+				this.layouts.push(layout);
+			} else {
+				log.Red("Layout NOT found: " + layoutFilePath);
+			}
+		}
+	}
+}
+
 Theme.prototype.SetupCssFiles = function () {
 	this.cssFiles = [];
-	for (let data of this.meta.json.css) {
-		let cssFile = new CssFile(this, data);
-		this.cssFiles.push(cssFile);
+	if (this.meta.json.css) {
+		for (let data of this.meta.json.css) {
+			let cssFile = new CssFile(this, data);
+			this.cssFiles.push(cssFile);
+		}
 	}
 }
 
 Theme.prototype.SetupJsFiles = function () {
 	this.jsFiles = [];
-	for (let data of this.meta.json.js) {
-		let jsFile = new JsFile(this, data);
-		this.jsFiles.push(jsFile);
+	if (this.meta.json.js) {
+		for (let data of this.meta.json.js) {
+			let jsFile = new JsFile(this, data);
+			this.jsFiles.push(jsFile);
+		}
 	}
 }
 
 Theme.prototype.SetupResFiles = function () {
 	this.resFiles = [];
-	for (let data of this.meta.json.res) {
-		let resFile = new ResFile(this, data);
-		this.resFiles.push(resFile);
+	if (this.meta.json.res) {
+		for (let data of this.meta.json.res) {
+			let resFile = new ResFile(this, data);
+			this.resFiles.push(resFile);
+		}
 	}
 }
 
