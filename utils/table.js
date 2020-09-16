@@ -111,7 +111,7 @@ KZTable.prototype.GetRowString = function (rowId, row) {
 	let rowString = "|" + this.Padding() + rowId.padStart(this.firstColumn.length) + this.Separator();
 	for (let j in row) {
 		let columnLength = this.GetColumnLength(j);
-		let cell = row[j] + "";
+		let cell = row[j] ? row[j] + "" : "-";
 		rowString += cell.padStart(columnLength) + this.Separator();
 	}
 	return rowString;
