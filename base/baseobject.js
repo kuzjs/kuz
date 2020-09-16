@@ -1,5 +1,7 @@
 // baseobject.js
 
+const log = require("../utils/log");
+
 
 
 function KZBaseObject () {
@@ -235,6 +237,43 @@ KZBaseObject.prototype.IsJsFile = function () {
 
 KZBaseObject.prototype.IsResFile = function () {
 	return false;
+}
+
+
+
+KZBaseObject.prototype.Build = function () {
+	log.Green("KZBaseObject Build(): " + this.CodeName());
+	return this;
+}
+
+KZBaseObject.prototype.Update = function () {
+	log.Green("KZBaseObject Update(): " + this.CodeName());
+	return this;
+}
+
+KZBaseObject.prototype.ForcedUpdate = function () {
+	log.Green("KZBaseObject ForcedUpdate(): " + this.CodeName());
+	return this;
+}
+
+KZBaseObject.prototype.DeleteOutput = function () {
+	log.Green("KZBaseObject DeleteOutput(): " + this.CodeName());
+	return this;
+}
+
+KZBaseObject.prototype.DeleteExtras = function () {
+	log.Green("KZBaseObject DeleteExtras(): " + this.CodeName());
+	return this;
+}
+
+KZBaseObject.prototype.Verify = function () {
+	log.Green("KZBaseObject Verify(): " + this.CodeName());
+	return this;
+}
+
+KZBaseObject.prototype.Watch = function () {
+	log.Green("KZBaseObject Watch(): " + this.CodeName());
+	return this;
 }
 
 
