@@ -20,6 +20,7 @@
 		},
 		{
 			"code": "B",
+			"disk": true,
 			"name": "build",
 			"description": "Build things now.",
 			"major": true
@@ -184,6 +185,7 @@
 		},
 		{
 			"code": "U",
+			"disk": true,
 			"name": "update",
 			"description": "Update things now.",
 			"implemented": true,
@@ -216,6 +218,7 @@
 		},
 		{
 			"code": "X",
+			"disk": true,
 			"name": "delete",
 			"description": "Delete things now.",
 			"major": true

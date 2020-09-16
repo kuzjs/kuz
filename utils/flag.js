@@ -8,6 +8,7 @@ function KZFlag (flagObject) {
 	this.code = flagObject.code;
 	this.name = flagObject.name;
 	this.description = flagObject.description;
+	this.disk = (flagObject.disk === undefined) ? false : flagObject.disk;
 	this.implemented = (flagObject.implemented === undefined) ? false : flagObject.implemented;
 	this.major = (flagObject.major === undefined) ? false : flagObject.major;
 	this.modifier = (flagObject.modifier === undefined) ? false : flagObject.modifier;
@@ -31,6 +32,10 @@ KZFlag.prototype.Description = function () {
 	return this.description;
 }
 
+KZFlag.prototype.Disk = function () {
+	return (this.disk) ? "Disk" : "---";
+}
+
 KZFlag.prototype.Status = function () {
 	return (this.implemented) ? "Working" : "Dev";
 }
@@ -50,7 +55,15 @@ KZFlag.prototype.State = function () {
 }
 
 KZFlag.prototype.Row = function () {
-	return [this.Code(), this.FullName(), this.Description(), this.Status(), this.Type(), this.State()];
+	return [
+		this.Code(),
+		this.FullName(),
+		this.Description(),
+		this.Disk(),
+		this.Status(),
+		this.Type(),
+		this.State()
+	];
 }
 
 KZFlag.prototype.GetTable = function () {
@@ -58,6 +71,7 @@ KZFlag.prototype.GetTable = function () {
 	table.AddColumn("Code");
 	table.AddColumn("Name", 16);
 	table.AddColumn("Description", 32);
+	table.AddColumn("Disk");
 	table.AddColumn("Status", 8);
 	table.AddColumn("Type", 8);
 	table.AddColumn("State", 10);
