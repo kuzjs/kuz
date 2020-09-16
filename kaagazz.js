@@ -7,7 +7,7 @@ const KZFlag = require("./utils/flag").KZFlag;
 const Site = require("./site").Site;
 
 const fsutils = require("./utils/fsutils");
-const jsonDirectory = require("./utils/common").jsonDirectory;
+const jsonDirectory = require("./base/common").jsonDirectory;
 
 const kaagazzJsonPath = fsutils.JoinPath(jsonDirectory, "kaagazz.json");
 const flagsJsonPath = fsutils.JoinPath(jsonDirectory, "flags.json");

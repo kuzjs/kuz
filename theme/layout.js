@@ -6,7 +6,7 @@ const pug = require("pug");
 const log = require("../utils/log");
 const fsutils = require("../utils/fsutils");
 
-const common = require("../utils/common");
+const common = require("../base/common");
 const defaultText = common.defaultText;
 
 const KZTable = require("../utils/table").KZTable;

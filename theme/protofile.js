@@ -6,7 +6,7 @@ const KZTable = require("../utils/table").KZTable;
 
 const KZBaseObject = require("../base/baseobject").KZBaseObject;
 
-const common = require("../utils/common");
+const common = require("../base/common");
 const defaultText = common.defaultText;
 
 
