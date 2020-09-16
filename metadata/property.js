@@ -38,10 +38,19 @@ function GetAppropriateValue (value) {
 
 function Property (textLine) {
 	let colonIndex = textLine.indexOf(":");
-	this.name = textLine.slice(0, colonIndex).trim();
-	this.value = textLine.slice(colonIndex + 1).trim();
-	this.value = GetAppropriateValue(this.value);
+	this.nameX = textLine.slice(0, colonIndex).trim();
+	let value = textLine.slice(colonIndex + 1).trim();
+	this.valueX = GetAppropriateValue(value);
 }
+
+Property.prototype = {
+	get name () {
+		return this.nameX;
+	},
+	get value () {
+		return this.valueX;
+	}
+};
 
 Property.prototype.Name = function () {
 	return this.GetName();
