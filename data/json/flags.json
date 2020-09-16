@@ -53,7 +53,7 @@
 			"code": "E",
 			"name": "everything",
 			"description": "Everything modifier.",
-			"major": true
+			"modifier": true
 		},
 		{
 			"code": "f",
@@ -138,7 +138,8 @@
 		{
 			"code": "N",
 			"name": "nietzsche",
-			"description": "Nietzsche."
+			"description": "Nietzsche.",
+			"major": true
 		},
 		{
 			"code": "p",
