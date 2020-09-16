@@ -27,11 +27,6 @@ function SetupNextPrevious (arr) {
 	}
 }
 
-function GetLines (filename) {
-	let fileNss = new Nss(filename);
-	return fileNss.GetLinesArray();
-}
-
 function GetEntities (site, configDirPath, Entity) {
 	let configFileObject = new ConfigFile(site, configDirPath, true);
 	site.AddConfig(configFileObject);
