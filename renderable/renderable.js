@@ -285,8 +285,12 @@ Renderable.prototype.OutputDirectoryPath = function () {
 	return fsutils.JoinPath(this.site.GetOutputDirectory(), this.OutputDirectoryPartialPath());
 }
 
+Renderable.prototype.InputFileExtension = function () {
+	return "page";
+}
+
 Renderable.prototype.InputFileName = function () {
-	return this.name + ".page";
+	return this.name + "." + this.InputFileExtension();
 }
 
 Renderable.prototype.InputDirectoryPath = function () {
