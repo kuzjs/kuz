@@ -3,11 +3,8 @@
 
 const Entity = require("./entity").Entity;
 
-function Collection(site, configFileObject, entry) {
-	this.site = site;
-	this.SetConfig(configFileObject);
-	this.name = entry.trim();
-	this.SetupEntity();
+function Collection (site, configFileObject, entry) {
+	this.SetupEntity(site, configFileObject, entry);
 }
 
 Collection.prototype = new Entity();

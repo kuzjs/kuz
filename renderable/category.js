@@ -4,10 +4,7 @@
 const Entity = require("./entity").Entity;
 
 function Category(site, configFileObject, entry) {
-	this.site = site;
-	this.SetConfig(configFileObject);
-	this.name = entry.trim();
-	this.SetupEntity();
+	this.SetupEntity(site, configFileObject, entry);
 }
 
 Category.prototype = new Entity();
