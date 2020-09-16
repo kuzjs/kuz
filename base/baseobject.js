@@ -241,8 +241,18 @@ KZBaseObject.prototype.IsResFile = function () {
 
 
 
+KZBaseObject.prototype.Buildable = function () {
+	log.Green("KZBaseObject Buildable(): " + this.CodeName());
+	return this;
+}
+
 KZBaseObject.prototype.Build = function () {
 	log.Green("KZBaseObject Build(): " + this.CodeName());
+	return this;
+}
+
+KZBaseObject.prototype.Updatable = function () {
+	log.Green("KZBaseObject Updatable(): " + this.CodeName());
 	return this;
 }
 

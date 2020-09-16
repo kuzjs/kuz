@@ -319,43 +319,39 @@ KaagazzApp.prototype.ListThings = function (flags) {
 	}
 }
 
-KaagazzApp.prototype.UpdateThings = function (flags) {
-	if (flags.all) {
-		this.site.UpdateAll();
-	} else if (flags.entities) {
-		this.site.UpdateEntities();
-	} else if (flags.authors) {
-		this.site.UpdateAuthors();
-	} else if (flags.categories) {
-		this.site.UpdateCategories();
-	} else if (flags.collections) {
-		this.site.UpdateCollections();
-	} else if (flags.pages) {
-		this.site.UpdatePages();
-	} else if (flags.tags) {
-		this.site.UpdateTags();
-	} else {
-		//this.site.UpdateAll();
+KaagazzApp.prototype.Buildable = function () {
+	for (let thing of this.operands) {
+		thing.Buildable();
 	}
 }
 
-KaagazzApp.prototype.ForcedUpdateThings = function (flags) {
-	if (flags.all) {
-		this.site.ForcedUpdateAll();
-	} else if (flags.entities) {
-		this.site.ForcedUpdateEntities();
-	} else if (flags.authors) {
-		this.site.ForcedUpdateAuthors();
-	} else if (flags.categories) {
-		this.site.ForcedUpdateCategories();
-	} else if (flags.collections) {
-		this.site.ForcedUpdateCollections();
-	} else if (flags.pages) {
-		this.site.ForcedUpdatePages();
-	} else if (flags.tags) {
-		this.site.ForcedUpdateTags();
-	} else {
-		//this.site.ForcedUpdateAll();
+KaagazzApp.prototype.Build = function () {
+	for (let thing of this.operands) {
+		thing.Update();
+	}
+}
+
+KaagazzApp.prototype.Updatable = function () {
+	for (let thing of this.operands) {
+		thing.Updatable();
+	}
+}
+
+KaagazzApp.prototype.Update = function () {
+	for (let thing of this.operands) {
+		thing.Update();
+	}
+}
+
+KaagazzApp.prototype.ForcedUpdate = function () {
+	for (let thing of this.operands) {
+		thing.ForcedUpdate();
+	}
+}
+
+KaagazzApp.prototype.Watch = function () {
+	for (let thing of this.operands) {
+		thing.Watch();
 	}
 }
 
@@ -414,18 +410,22 @@ KaagazzApp.prototype.Run = function () {
 		this.ShowMajorFlags();
 	} else if (flags.version) {
 		this.ShowVersion();
+	} else if (flags.buildable) {
+		this.Buildable();
 	} else if (flags.build) {
-		//
+		this.Build();
 	} else if (flags.list) {
 		this.ListThings(flags);
 	} else if (flags.forced) {
-		this.ForcedUpdateThings(flags);
+		this.ForcedUpdate();
 	} else if (flags.serve) {
 		//
+	} else if (flags.updatable) {
+		this.Updateable();
 	} else if (flags.update) {
-		this.UpdateThings(flags);
+		this.Update();
 	} else if (flags.watch) {
-		//
+		this.Watch();
 	} else if (flags.experiment) {
 		this.Experiment();
 	} else {
