@@ -98,6 +98,7 @@ KZFlag.prototype.Row = function () {
 
 KZFlag.prototype.GetTable = function () {
 	let table = new KZTable();
+	table.HideIndex();
 	table.AddColumn("Code");
 	table.AddColumn("Name", 16);
 	table.AddColumn("Description", 32);

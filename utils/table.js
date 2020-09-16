@@ -14,10 +14,21 @@ KZTable.prototype.Reset = function () {
 	this.columnObjects = [];
 	this.paddingLength = 1;
 	this.rowData = [];
+	this.showIndex = true;
 	this.firstColumn = {
 		name: "Id",
 		length: 5
 	};
+	return this;
+}
+
+KZTable.prototype.ShowIndex = function () {
+	this.showIndex = true;
+	return this;
+}
+
+KZTable.prototype.HideIndex = function () {
+	this.showIndex = false;
 	return this;
 }
 
@@ -102,7 +113,14 @@ KZTable.prototype.GetColumnDashes = function (columnLength) {
 
 KZTable.prototype.GetRowSeparator = function () {
 	let separator = "+";
-	let rowSeparator = separator + this.GetColumnDashes(this.firstColumn.length) + separator;
+
+	let rowSeparator;
+	if (this.showIndex) {
+		rowSeparator = separator + this.GetColumnDashes(this.firstColumn.length) + separator;
+	} else {
+		rowSeparator = separator;
+	}
+
 	for (let columnObject of this.columnObjects) {
 		let columnLength = columnObject.length;
 		rowSeparator += this.GetColumnDashes(columnLength) + separator;
@@ -111,7 +129,13 @@ KZTable.prototype.GetRowSeparator = function () {
 }
 
 KZTable.prototype.GetRowString = function (rowId, row) {
-	let rowString = "|" + this.Padding() + rowId.padStart(this.firstColumn.length) + this.Separator();
+	let rowString;
+	if (this.showIndex) {
+		rowString = "|" + this.Padding() + rowId.padStart(this.firstColumn.length) + this.Separator();
+	} else {
+		rowString = "|" + this.Padding();
+	}
+
 	for (let j in row) {
 		let columnLength = this.GetColumnLength(j);
 		let cell = GetCellString(row[j]);
