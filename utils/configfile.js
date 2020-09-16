@@ -115,7 +115,7 @@ ConfigFile.prototype.RootString = function () {
 ConfigFile.prototype.NumberOfEntriesString = function () {
 	let noeString;
 	if (this.root) {
-		noeString =  "@ + " + this.NumberOfPages() + "p";
+		noeString = "@ + " + this.NumberOfPages() + "p";
 	} else {
 		noeString = this.NumberOfPages() + "p";
 	}
