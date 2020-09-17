@@ -25,7 +25,7 @@ MetaData.prototype = new KZBaseObject();
 MetaData.prototype.Setup = function () {
 	this.properties = [];
 	if (this.Exists()) {
-		const Nss = require("../utils/nss").Nss;
+		const Nss = require("../kznss/nss").Nss;
 		let metaNss = new Nss(this.path);
 		let headerLines = metaNss.GetEvenLines();
 		const Property = require("./property").Property;

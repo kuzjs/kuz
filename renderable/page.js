@@ -28,7 +28,7 @@ Page.prototype.Setup = function () {
 	const MetaData = require("../metadata/metadata").MetaData;
 	this.metaData = new MetaData(this.site, this.inputFilePath);
 
-	const Nss = require("../utils/nss").Nss;
+	const Nss = require("../kznss/nss").Nss;
 	this.inputNss = new Nss(this.inputFilePath);
 }
 

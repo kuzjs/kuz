@@ -6,7 +6,7 @@ const log = require("./log");
 
 const ConfigFile = require("./configfile").ConfigFile;
 
-const Nss = require("./nss").Nss;
+const Nss = require("../kznss/nss").Nss;
 const Author = require("../renderable/author").Author;
 const Category = require("../renderable/category").Category;
 const Collection = require("../renderable/collection").Collection;
