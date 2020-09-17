@@ -149,6 +149,7 @@ KaagazzApp.prototype.SetupOperands = function () {
 		for (let somethimg of everything) {
 			if (somethimg.CodeName() == arg) {
 				this.operands.push(somethimg);
+				break;
 			}
 		}
 	}
