@@ -4,11 +4,7 @@ const fs = require("fs");
 const log = require("../utils/log");
 const fsutils = require("../utils/fsutils");
 
-const KZBaseObject = require("../base/baseobject").KZBaseObject;
-
 const Article = require("./pages/article").Article;
-
-const KZTable = require("../utils/table").KZTable;
 
 
 
@@ -16,6 +12,7 @@ function Renderable () {
 	//
 }
 
+const KZBaseObject = require("../base/baseobject").KZBaseObject;
 Renderable.prototype = new KZBaseObject();
 
 Renderable.prototype.typeName = "renderable";
@@ -43,6 +40,7 @@ Renderable.prototype.SetName = function (name) {
 }
 
 Renderable.prototype.GetTable = function () {
+	const KZTable = require("../utils/table").KZTable;
 	let table = new KZTable();
 	table.AddColumn("Codename");
 	table.AddColumn("Name");

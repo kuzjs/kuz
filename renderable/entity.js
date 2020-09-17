@@ -1,12 +1,12 @@
 // entity.js
 
-const Renderable = require("./renderable").Renderable;
-const MetaData = require("../metadata/metadata").MetaData;
+
 
 function Entity () {
 	//
 }
 
+const Renderable = require("./renderable").Renderable;
 Entity.prototype = new Renderable();
 Entity.prototype.typeName = "entity";
 Entity.prototype.typeNamePlural = "entities";
@@ -16,6 +16,8 @@ Entity.prototype.SetupEntity = function (site, configFileObject, entry) {
 	this.SetSite(site);
 	this.SetConfig(configFileObject);
 	this.name = entry.trim();
+
+	const MetaData = require("../metadata/metadata").MetaData;
 	this.metaData = new MetaData(this.site, this.InputFilePath());
 }
 

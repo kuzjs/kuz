@@ -1,12 +1,12 @@
 // category.js
 
 
-const Entity = require("./entity").Entity;
 
 function Category(site, configFileObject, entry) {
 	this.SetupEntity(site, configFileObject, entry);
 }
 
+const Entity = require("./entity").Entity;
 Category.prototype = new Entity();
 Category.prototype.typeName = "category";
 Category.prototype.typeNamePlural = "categories";

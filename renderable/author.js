@@ -1,12 +1,12 @@
 // author.js
 
 
-const Entity = require("./entity").Entity;
 
 function Author(site, configFileObject, entry) {
 	this.SetupEntity(site, configFileObject, entry);
 }
 
+const Entity = require("./entity").Entity;
 Author.prototype = new Entity();
 Author.prototype.typeName = "author";
 Author.prototype.typeNamePlural = "authors";

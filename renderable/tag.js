@@ -1,12 +1,12 @@
 // tag.js
 
 
-const Entity = require("./entity").Entity;
 
 function Tag(site, configFileObject, entry) {
 	this.SetupEntity(site, configFileObject, entry);
 }
 
+const Entity = require("./entity").Entity;
 Tag.prototype = new Entity();
 Tag.prototype.typeName = "tag";
 Tag.prototype.typeNamePlural = "tags";

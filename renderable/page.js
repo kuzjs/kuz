@@ -6,10 +6,6 @@ const fs = require("fs");
 const fsutils = require("../utils/fsutils");
 const log = require("../utils/log");
 
-const Nss = require("../utils/nss").Nss;
-const Renderable = require("./renderable").Renderable;
-const MetaData = require("../metadata/metadata").MetaData;
-
 function Page(site, configFileObject, filename, isRoot = false) {
 	this.site = site;
 	this.configFileObject = configFileObject;
@@ -19,6 +15,7 @@ function Page(site, configFileObject, filename, isRoot = false) {
 	this.Setup();
 }
 
+const Renderable = require("./renderable").Renderable;
 Page.prototype = new Renderable();
 Page.prototype.typeName = "page";
 Page.prototype.typeNamePlural = "pages";
@@ -27,7 +24,11 @@ Page.prototype.codeLetter = "p";
 Page.prototype.Setup = function () {
 	this.SetupInput();
 	this.tags = [];
+
+	const MetaData = require("../metadata/metadata").MetaData;
 	this.metaData = new MetaData(this.site, this.inputFilePath);
+
+	const Nss = require("../utils/nss").Nss;
 	this.inputNss = new Nss(this.inputFilePath);
 }
 
