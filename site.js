@@ -19,7 +19,7 @@ Site.prototype.Setup = function (kaagazz) {
 	this.errorMessage = null;
 	this.siteJsonPath = this.app.GetSiteJsonPath();
 
-	const JsonFile = require("./utils/jsonfile").JsonFile;
+	const JsonFile = require("./kzjson").JsonFile;
 	this.meta = new JsonFile(this.siteJsonPath);
 
 	this.configFileObjects = [];

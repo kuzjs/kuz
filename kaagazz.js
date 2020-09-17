@@ -13,7 +13,7 @@ const loremIpsumJsonPath = fsutils.JoinPath(jsonDirectory, "lorem-ipsum.json");
 
 
 function KaagazzApp () {
-	const JsonFile = require("./utils/jsonfile").JsonFile;
+	const JsonFile = require("./kzjson").JsonFile;
 	this.meta = new JsonFile(kaagazzJsonPath);
 	this.flagsJson = new JsonFile(flagsJsonPath);
 	this.blackadder = new JsonFile(blackadderJsonPath);
