@@ -4,6 +4,15 @@
 
 const fsutils = require("../utils/fsutils");
 
+const separators = [];
+const commentStarters = [
+	"#",
+	"//",
+	"!",
+	"comment",
+	"="
+];
+
 function MetaData (site, path) {
 	this.site = site;
 	this.path = path;
@@ -21,8 +30,16 @@ MetaData.prototype.Setup = function () {
 		let headerLines = metaNss.GetHeaderLines();
 		const Property = require("./property").Property;
 		for (let headerLine of headerLines) {
-			let property = new Property(headerLine);
-			this.properties.push(property);
+			let comment = false;
+			for (let commentStarter of commentStarters) {
+				if (headerLine.startsWith(commentStarter)) {
+					comment = true;
+				}
+			}
+			if (!comment) {
+				let property = new Property(headerLine);
+				this.properties.push(property);
+			}
 		}
 	} else {
 		//
