@@ -79,7 +79,7 @@ Layout.prototype.Update = function () {
 }
 
 Layout.prototype.GetTable = function () {
-	const KZTable = require("../utils/table").KZTable;
+	const KZTable = require("../kztable/table").KZTable;
 	let table = new KZTable();
 	table.AddColumn("Name");
 	table.AddColumn("Theme");
