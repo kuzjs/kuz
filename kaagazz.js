@@ -316,35 +316,11 @@ KaagazzApp.prototype.Nietzsche = function () {
 }
 
 KaagazzApp.prototype.ListThings = function (flags) {
-	if (flags.all) {
-		this.site.PrintAll();
-	} else if (flags.entities) {
-		this.site.PrintEntities();
-	} else if (flags.authors) {
-		this.site.PrintAuthors();
-	} else if (flags.categories) {
-		this.site.PrintCategories();
-	} else if (flags.collections) {
-		this.site.PrintCollections();
-	} else if (flags.pages) {
-		this.site.PrintPages();
-	} else if (flags.tags) {
-		this.site.PrintTags();
-	} else if (flags.themes) {
-		this.site.PrintThemes();
-	} else if (flags.layouts) {
-		this.site.PrintLayouts();
-	} else if (flags.css) {
-		this.site.PrintCssFiles();
-	} else if (flags.js) {
-		this.site.PrintJsFiles();
-	} else if (flags.res) {
-		this.site.PrintResFiles();
-	} else if (flags.config) {
-		this.site.PrintConfigFiles();
-	} else {
-		//
+	let table = this.operands[0].GetTable();
+	for (let operand of this.operands) {
+		table.Add(operand);
 	}
+	table.Print();
 }
 
 KaagazzApp.prototype.Buildable = function () {
@@ -355,7 +331,7 @@ KaagazzApp.prototype.Buildable = function () {
 
 KaagazzApp.prototype.Build = function () {
 	for (let thing of this.operands) {
-		thing.Update();
+		thing.Build();
 	}
 }
 
