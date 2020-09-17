@@ -86,7 +86,7 @@ NewlineSeparatedStrings.prototype.GetLinesByRegionIndex = function (regionIndex)
 
 NewlineSeparatedStrings.prototype.GetEvenLines = function () {
 	let currentRegionIndex = 0;
-	let regionLines = [];
+	let evenLines = [];
 	if (fs.existsSync(this.filename)) {
 		let fileLines = this.GetLinesArray();
 		for (let currentLine of fileLines) {
@@ -94,13 +94,32 @@ NewlineSeparatedStrings.prototype.GetEvenLines = function () {
 				currentRegionIndex++;
 			} else if (currentRegionIndex % 2 == 0) {
 				if (LineIsImportant(currentLine)) {
-					regionLines.push(currentLine);
+					evenLines.push(currentLine);
 				}
 			}
 		}
 	}
 
-	return regionLines;
+	return evenLines;
+}
+
+NewlineSeparatedStrings.prototype.GetOddLines = function () {
+	let currentRegionIndex = 0;
+	let oddLines = [];
+	if (fs.existsSync(this.filename)) {
+		let fileLines = this.GetLinesArray();
+		for (let currentLine of fileLines) {
+			if (LineIsSeparator(currentLine)) {
+				currentRegionIndex++;
+			} else if (currentRegionIndex % 2 == 0) {
+				if (LineIsImportant(currentLine)) {
+					oddLines.push(currentLine);
+				}
+			}
+		}
+	}
+
+	return oddLines;
 }
 
 NewlineSeparatedStrings.prototype.GetMetaLines = function () {
