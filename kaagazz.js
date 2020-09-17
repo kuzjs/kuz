@@ -1,9 +1,6 @@
 // kaagazz.js
 
 const log = require("./utils/log");
-const JsonFile = require("./utils/jsonfile").JsonFile;
-const KZTable = require("./utils/table").KZTable;
-const KZFlag = require("./utils/flag").KZFlag;
 
 const fsutils = require("./utils/fsutils");
 const jsonDirectory = require("./base/common").jsonDirectory;
@@ -16,6 +13,7 @@ const loremIpsumJsonPath = fsutils.JoinPath(jsonDirectory, "lorem-ipsum.json");
 
 
 function KaagazzApp () {
+	const JsonFile = require("./utils/jsonfile").JsonFile;
 	this.meta = new JsonFile(kaagazzJsonPath);
 	this.flagsJson = new JsonFile(flagsJsonPath);
 	this.blackadder = new JsonFile(blackadderJsonPath);
@@ -67,6 +65,7 @@ KaagazzApp.prototype.SetupFlags = function () {
 	this.flags = [];
 	this.args = [];
 
+	const KZFlag = require("./utils/flag").KZFlag;
 	for (let flagObject of flagObjects) {
 		let flag = new KZFlag(flagObject);
 		this.flags.push(flag);
@@ -274,6 +273,7 @@ KaagazzApp.prototype.ShowMajorFlags = function () {
 }
 
 KaagazzApp.prototype.ShowVersion = function () {
+	const KZTable = require("./utils/table").KZTable;
 	let table = new KZTable();
 	table.AddColumn("Key");
 	table.AddColumn("Value");
