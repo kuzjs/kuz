@@ -1,10 +1,29 @@
 // property.js
 
+const trueStrings = [
+	"true", "on"
+];
+
+const falseStrings = [
+	"false", "off"
+];
+
+const nullStrings = [
+	"null", "none"
+];
+
 
 
 function GetAppropriateValue (value) {
 	value = value.trim();
-	if (value.startsWith("[") && value.endsWith("]")) {
+	lowered = value.toLowerCase();
+	if (trueStrings.includes(lowered)) {
+		return true;
+	} else if (falseStrings.includes(lowered)) {
+		return false;
+	} else if (nullStrings.includes(lowered)) {
+		return null;
+	} else if (value.startsWith("[") && value.endsWith("]")) {
 		value = value.slice(1, -1);
 
 		let valueArray = [];
@@ -25,12 +44,6 @@ function GetAppropriateValue (value) {
 			valueObject[propertyName] = GetAppropriateValue(propertyValue);
 		}
 		return valueObject;
-	} else if (value == "false") {
-		return false;
-	} else if (value == "true") {
-		return true;
-	} else if (value == "null") {
-		return null;
 	} else {
 		return value;
 	}
@@ -86,6 +99,12 @@ Property.prototype.ValueString = function () {
 		}
 		valueString += properties.join("|") + "}";
 		return valueString;
+	} else if (this.value === true) {
+		return "true";
+	} else if (this.value === false) {
+		return "false";
+	} else if (this.value === null) {
+		return "null";
 	}
 	return this.value;
 }
