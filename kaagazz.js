@@ -65,7 +65,7 @@ KaagazzApp.prototype.SetupFlags = function () {
 	this.flags = [];
 	this.args = [];
 
-	const KZFlag = require("./kzflag").KZFlag;
+	const KZFlag = require("./kz-flag").KZFlag;
 	for (let flagObject of flagObjects) {
 		let flag = new KZFlag(flagObject);
 		this.flags.push(flag);
