@@ -3,8 +3,6 @@
 const log = require("../utils/log");
 const fsutils = require("../utils/fsutils");
 
-const KZBaseObject = require("../base/baseobject").KZBaseObject;
-
 const common = require("../base/common");
 const defaultText = common.defaultText;
 
@@ -14,6 +12,7 @@ function ProtoFile (dirName) {
 	this.dirName = dirName;
 }
 
+const KZBaseObject = require("../base/baseobject").KZBaseObject;
 ProtoFile.prototype = new KZBaseObject();
 ProtoFile.prototype.typeName = "ProtoFile";
 

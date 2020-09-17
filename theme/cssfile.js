@@ -1,13 +1,12 @@
 // cssfile.js
 
-const ProtoFile = require("./protofile").ProtoFile;
-
 
 
 function CssFile (theme, data) {
 	this.SetupProto(theme, data);
 }
 
+const ProtoFile = require("./protofile").ProtoFile;
 CssFile.prototype = new ProtoFile("css");
 CssFile.prototype.typeName = "CSS";
 

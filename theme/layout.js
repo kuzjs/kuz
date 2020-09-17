@@ -9,8 +9,6 @@ const fsutils = require("../utils/fsutils");
 const common = require("../base/common");
 const defaultText = common.defaultText;
 
-const KZBaseObject = require("../base/baseobject").KZBaseObject;
-
 function Layout (theme, data) {
 	this.theme = theme;
 	this.data = data;
@@ -18,6 +16,7 @@ function Layout (theme, data) {
 	this.Setup();
 }
 
+const KZBaseObject = require("../base/baseobject").KZBaseObject;
 Layout.prototype = new KZBaseObject();
 Layout.prototype.typeName = "Layout";
 

@@ -2,18 +2,9 @@
 
 const log = require("../utils/log");
 const fsutils = require("../utils/fsutils");
-const JsonFile = require("../utils/jsonfile").JsonFile;
-
-const KZBaseObject = require("../base/baseobject").KZBaseObject;
 
 const common = require("../base/common");
 const defaultText = common.defaultText;
-
-const Layout = require("./layout").Layout;
-
-const CssFile = require("./cssfile").CssFile;
-const JsFile = require("./jsfile").JsFile;
-const ResFile = require("./resfile").ResFile;
 
 const layoutsDirectory = "layouts";
 
@@ -25,6 +16,7 @@ function Theme (themeName, site) {
 	this.SetupPaths();
 }
 
+const KZBaseObject = require("../base/baseobject").KZBaseObject;
 Theme.prototype = new KZBaseObject();
 Theme.prototype.typeName = "Theme";
 
@@ -79,6 +71,7 @@ Theme.prototype.SetupPaths = function () {
 		return;
 	}
 
+	const JsonFile = require("../utils/jsonfile").JsonFile;
 	this.meta = new JsonFile(this.JsonFilePath());
 	this.metaObject = this.meta.json.meta;
 
@@ -94,6 +87,7 @@ Theme.prototype.SetupPaths = function () {
 Theme.prototype.SetupLayouts = function () {
 	this.layouts = [];
 	if (this.meta.json.layouts) {
+		const Layout = require("./layout").Layout;
 		for (let data of this.meta.json.layouts) {
 			let layoutFilePath = fsutils.JoinPath(this.LayoutsInputDirectory(), data.path);
 			if (fsutils.IsFile(layoutFilePath)) {
@@ -109,6 +103,7 @@ Theme.prototype.SetupLayouts = function () {
 Theme.prototype.SetupCssFiles = function () {
 	this.cssFiles = [];
 	if (this.meta.json.css) {
+		const CssFile = require("./cssfile").CssFile;
 		for (let data of this.meta.json.css) {
 			let cssFile = new CssFile(this, data);
 			this.cssFiles.push(cssFile);
@@ -119,6 +114,7 @@ Theme.prototype.SetupCssFiles = function () {
 Theme.prototype.SetupJsFiles = function () {
 	this.jsFiles = [];
 	if (this.meta.json.js) {
+		const JsFile = require("./jsfile").JsFile;
 		for (let data of this.meta.json.js) {
 			let jsFile = new JsFile(this, data);
 			this.jsFiles.push(jsFile);
@@ -129,6 +125,7 @@ Theme.prototype.SetupJsFiles = function () {
 Theme.prototype.SetupResFiles = function () {
 	this.resFiles = [];
 	if (this.meta.json.res) {
+		const ResFile = require("./resfile").ResFile;
 		for (let data of this.meta.json.res) {
 			let resFile = new ResFile(this, data);
 			this.resFiles.push(resFile);
