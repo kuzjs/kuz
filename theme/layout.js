@@ -4,7 +4,7 @@ const fs = require("fs");
 const pug = require("pug");
 
 const log = require("../kz-log/log");
-const fsutils = require("../utils/fsutils");
+const fsutils = require("../kz-fs");
 
 const common = require("../base/common");
 const defaultText = common.defaultText;

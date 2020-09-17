@@ -7,7 +7,7 @@ const MetaData = require("../metadata/metadata").MetaData;
 const log = require("../kz-log/log");
 
 const Nss = require("../kz-nss/nss").Nss;
-const fsutils = require("./fsutils");
+const fsutils = require("../kz-fs");
 
 const KZTable = require("../kz-table/table").KZTable;
 const KZBaseObject = require("../base/baseobject").KZBaseObject;

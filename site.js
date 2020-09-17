@@ -4,7 +4,7 @@ const fs = require("fs");
 
 const log = require("./kz-log/log");
 const siteutils = require("./utils/siteutils");
-const fsutils = require("./utils/fsutils");
+const fsutils = require("./kz-fs");
 
 
 

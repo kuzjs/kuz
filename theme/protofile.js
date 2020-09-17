@@ -1,7 +1,7 @@
 // protofile.js
 
 const log = require("../kz-log/log");
-const fsutils = require("../utils/fsutils");
+const fsutils = require("../kz-fs");
 
 const common = require("../base/common");
 const defaultText = common.defaultText;
