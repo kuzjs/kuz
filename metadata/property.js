@@ -1,15 +1,15 @@
 // property.js
 
 const trueStrings = [
-	"true", "on"
+	"true", "on", "yes", "ofcourse"
 ];
 
 const falseStrings = [
-	"false", "off"
+	"false", "off", "no", "ofcoursenot"
 ];
 
 const nullStrings = [
-	"null", "none"
+	"null", "none", "nocomments"
 ];
 
 
