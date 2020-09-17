@@ -17,8 +17,10 @@ function KZFlag (flagObject) {
 	this.implemented = (flagObject.implemented === undefined) ? false : flagObject.implemented;
 	this.major = (flagObject.major === undefined) ? false : flagObject.major;
 	this.modifier = (flagObject.modifier === undefined) ? false : flagObject.modifier;
+	this.hasParams = (flagObject.params === undefined) ? false : flagObject.params;
 	this.independent = !this.major && !this.modifier;
 	this.count = 0;
+	this.params = [];
 }
 
 KZFlag.prototype.IsSet = function () {
@@ -73,6 +75,30 @@ KZFlag.prototype.State = function () {
 	return "".padStart(this.count, "+");
 }
 
+KZFlag.prototype.HasParams = function () {
+	return this.hasParams;
+}
+
+KZFlag.prototype.AddParam = function (param) {
+	if (this.HasParams()) {
+		this.params.push(param);
+	}
+}
+
+KZFlag.prototype.Params = function () {
+	return this.params;
+}
+
+KZFlag.prototype.ParamsString = function () {
+	if (this.HasParams()) {
+		if (this.params.length == 0) {
+			return "[]"
+		}
+		return "[" + this.params + "]";
+	}
+	return "---";
+}
+
 KZFlag.prototype.FileName = function () {
 	return this.Name() + ".txt";
 }
@@ -96,7 +122,8 @@ KZFlag.prototype.Row = function () {
 		this.Description(),
 		this.Attributes(),
 		this.FilePath(),
-		this.State()
+		this.State(),
+		this.ParamsString()
 	];
 }
 
@@ -109,6 +136,7 @@ KZFlag.prototype.GetTable = function () {
 	table.AddColumn("Attributes");
 	table.AddColumn("Path");
 	table.AddColumn("State");
+	table.AddColumn("Params");
 	return table;
 }
 

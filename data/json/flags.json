@@ -23,7 +23,8 @@
 			"disk": true,
 			"name": "build",
 			"description": "Build things now.",
-			"major": true
+			"major": true,
+			"params": true
 		},
 		{
 			"code": "c",
@@ -59,7 +60,8 @@
 			"code": "f",
 			"name": "forced",
 			"description": "Forced-update things.",
-			"major": true
+			"major": true,
+			"params": true
 		},
 		{
 			"code": "g",
@@ -71,13 +73,15 @@
 			"code": "h",
 			"name": "help",
 			"description": "Show some help.",
-			"implemented": true
+			"implemented": true,
+			"params": true
 		},
 		{
 			"code": "H",
 			"name": "helpfull",
 			"description": "Show full help.",
-			"implemented": true
+			"implemented": true,
+			"params": true
 		},
 		{
 			"code": "i",
@@ -151,7 +155,8 @@
 			"code": "q",
 			"name": "search",
 			"description": "Search for a page.",
-			"major": true
+			"major": true,
+			"params": true
 		},
 		{
 			"code": "Q",
@@ -162,7 +167,8 @@
 			"code": "r",
 			"name": "report",
 			"description": "Report problems.",
-			"major": true
+			"major": true,
+			"params": true
 		},
 		{
 			"code": "R",
@@ -201,7 +207,8 @@
 			"name": "update",
 			"description": "Update things now.",
 			"implemented": true,
-			"major": true
+			"major": true,
+			"params": true
 		},
 		{
 			"code": "v",
@@ -213,14 +220,16 @@
 			"code": "V",
 			"name": "verify",
 			"description": "Verify things.",
-			"major": true
+			"major": true,
+			"params": true
 		},
 		{
 			"code": "w",
 			"name": "watch",
 			"description": "Watch the site.",
 			"implemented": true,
-			"major": true
+			"major": true,
+			"params": true
 		},
 		{
 			"code": "x",
@@ -233,7 +242,8 @@
 			"disk": true,
 			"name": "delete",
 			"description": "Delete things now.",
-			"major": true
+			"major": true,
+			"params": true
 		}
 	]
 }

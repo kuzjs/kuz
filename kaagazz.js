@@ -72,6 +72,7 @@ KaagazzApp.prototype.SetupFlags = function () {
 	}
 
 	let argv = process.argv;
+	let lastFlag = null;
 	for (let i=2; i<argv.length; i++) {
 		let argument = argv[i];
 		if (argument.startsWith("--")) {
@@ -79,6 +80,7 @@ KaagazzApp.prototype.SetupFlags = function () {
 			for (let currentFlag of this.flags) {
 				if (currentFlag.name == flagName) {
 					currentFlag.count++;
+					lastFlag = currentFlag;
 				}
 			}
 		} else if (argument.startsWith("-")) {
@@ -87,11 +89,16 @@ KaagazzApp.prototype.SetupFlags = function () {
 				for (let currentFlag of this.flags) {
 					if (currentFlag.code == letter) {
 						currentFlag.count++;
+						lastFlag = currentFlag;
 					}
 				}
 			}
 		} else {
-			this.args.push(argument);
+			if (lastFlag) {
+				lastFlag.AddParam(argument);
+			} else {
+				this.args.push(argument);
+			}
 		}
 	}
 
