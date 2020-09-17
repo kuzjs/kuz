@@ -27,7 +27,7 @@ MetaData.prototype.Setup = function () {
 	if (this.Exists()) {
 		const Nss = require("../utils/nss").Nss;
 		let metaNss = new Nss(this.path);
-		let headerLines = metaNss.GetHeaderLines();
+		let headerLines = metaNss.GetEvenLines();
 		const Property = require("./property").Property;
 		for (let headerLine of headerLines) {
 			let comment = false;

@@ -48,6 +48,23 @@ NewlineSeparatedStrings.prototype.GetLinesByRegionIndex = function (regionIndex)
 	return regionLines;
 }
 
+NewlineSeparatedStrings.prototype.GetEvenLines = function () {
+	let currentRegionIndex = 0;
+	let regionLines = [];
+	if (fs.existsSync(this.filename)) {
+		let fileLines = this.GetLinesArray();
+		for (let currentLine of fileLines) {
+			if (currentLine.startsWith("====") || currentLine.startsWith("----")) {
+				currentRegionIndex++;
+			} else if (currentRegionIndex % 2 == 0) {
+				regionLines.push(currentLine);
+			}
+		}
+	}
+
+	return regionLines;
+}
+
 NewlineSeparatedStrings.prototype.GetMetaLines = function () {
 	return this.GetHeaderLines();
 }
