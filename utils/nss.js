@@ -38,11 +38,11 @@ function LineIsSeparator (lineText) {
 
 
 
-function NewlineSeparatedStrings (filename) {
+function KZNss (filename) {
 	this.filename = filename;
 }
 
-NewlineSeparatedStrings.prototype.GetLinesArray = function (lineText) {
+KZNss.prototype.GetLinesArray = function (lineText) {
 	let values = [];
 	if (fs.existsSync(this.filename)) {
 		let fileText = fs.readFileSync(this.filename, "utf8").replace("\r", "");
@@ -61,7 +61,7 @@ NewlineSeparatedStrings.prototype.GetLinesArray = function (lineText) {
 	return values;
 }
 
-NewlineSeparatedStrings.prototype.GetLinesByRegionIndex = function (regionIndex) {
+KZNss.prototype.GetLinesByRegionIndex = function (regionIndex) {
 	let currentRegionIndex = 0;
 	let regionLines = [];
 	if (fs.existsSync(this.filename)) {
@@ -84,7 +84,7 @@ NewlineSeparatedStrings.prototype.GetLinesByRegionIndex = function (regionIndex)
 	return regionLines;
 }
 
-NewlineSeparatedStrings.prototype.GetEvenLines = function () {
+KZNss.prototype.GetEvenLines = function () {
 	let currentRegionIndex = 0;
 	let evenLines = [];
 	if (fs.existsSync(this.filename)) {
@@ -103,7 +103,7 @@ NewlineSeparatedStrings.prototype.GetEvenLines = function () {
 	return evenLines;
 }
 
-NewlineSeparatedStrings.prototype.GetOddLines = function () {
+KZNss.prototype.GetOddLines = function () {
 	let currentRegionIndex = 0;
 	let oddLines = [];
 	if (fs.existsSync(this.filename)) {
@@ -122,32 +122,32 @@ NewlineSeparatedStrings.prototype.GetOddLines = function () {
 	return oddLines;
 }
 
-NewlineSeparatedStrings.prototype.GetMetaLines = function () {
+KZNss.prototype.GetMetaLines = function () {
 	return this.GetHeaderLines();
 }
 
-NewlineSeparatedStrings.prototype.GetHeaderLines = function () {
+KZNss.prototype.GetHeaderLines = function () {
 	return this.GetLinesByRegionIndex(0);
 }
 
-NewlineSeparatedStrings.prototype.GetContentLines = function () {
+KZNss.prototype.GetContentLines = function () {
 	return this.GetBodyLines();
 }
 
-NewlineSeparatedStrings.prototype.GetBodyLines = function () {
+KZNss.prototype.GetBodyLines = function () {
 	return this.GetLinesByRegionIndex(1);
 }
 
-NewlineSeparatedStrings.prototype.GetBodyString = function () {
+KZNss.prototype.GetBodyString = function () {
 	return this.GetBodyLines().join("\n");
 }
 
-NewlineSeparatedStrings.prototype.GetFooterLines = function () {
+KZNss.prototype.GetFooterLines = function () {
 	return this.GetLinesByRegionIndex(2);
 }
 
 module.exports = {
-	Nss: NewlineSeparatedStrings
+	Nss: KZNss
 };
 
 
