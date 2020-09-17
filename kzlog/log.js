@@ -33,6 +33,22 @@ const colors = {
 	BgWhite: "\x1b[47m"
 };
 
+
+
+function KZLog () {
+	this.debug = false;
+	this.prefix = "";
+}
+
+KZLog.prototype.Prefix = function (prefix) {
+	if (prefix !== undefined) {
+		this.prefix = prefix;
+	}
+	return this.prefix;
+}
+
+
+
 function Print (message) {
 	process.stdout.write(message);
 }
