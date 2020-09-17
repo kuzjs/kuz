@@ -6,10 +6,6 @@ const log = require("./utils/log");
 const siteutils = require("./utils/siteutils");
 const fsutils = require("./utils/fsutils");
 
-const Theme = require("./theme/theme").Theme;
-
-const JsonFile = require("./utils/jsonfile").JsonFile;
-
 
 
 function Site (kaagazz) {
@@ -22,7 +18,10 @@ Site.prototype.Setup = function (kaagazz) {
 	this.error = false;
 	this.errorMessage = null;
 	this.siteJsonPath = this.app.GetSiteJsonPath();
+
+	const JsonFile = require("./utils/jsonfile").JsonFile;
 	this.meta = new JsonFile(this.siteJsonPath);
+
 	this.configFileObjects = [];
 	this.SetupThemes();
 	this.SetupRenderables();
@@ -125,6 +124,7 @@ Site.prototype.SetupThemes = function () {
 	} else if (themeNames.length == 0) {
 		log.Red("Themes param is empty.");
 	} else {
+		const Theme = require("./theme/theme").Theme;
 		for (let themeName of themeNames) {
 			let theme = new Theme(themeName, this);
 			if (theme.IsValid()) {
