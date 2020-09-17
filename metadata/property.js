@@ -75,6 +75,13 @@ Property.prototype.GetValue = function () {
 	return this.value;
 }
 
+Property.prototype.ValueString = function () {
+	if (this.value.__proto__ === Array.prototype) {
+		return "[" + this.value.join("|") + "]";
+	}
+	return this.value;
+}
+
 Property.prototype.IsOn = Property.prototype.IsTrue = function () {
 	return (this.value === true) ? true : false;
 }
@@ -104,7 +111,7 @@ Property.prototype.GetTable = function () {
 }
 
 Property.prototype.Row = function () {
-	return [this.Name(), this.Value()];
+	return [this.Name(), this.ValueString()];
 }
 
 module.exports = {
