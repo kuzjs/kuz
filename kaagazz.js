@@ -297,6 +297,11 @@ KaagazzApp.prototype.ShowVersion = function () {
 
 KaagazzApp.prototype.Nietzsche = function () {
 	log.Green("Kaagazz Nietzschean Experiment.");
+
+	for (let prop of this.site.pages[0].metaData.properties) {
+		log.Red(prop.Name() + " = " + prop.Value());
+	}
+
 	for (let x of this.operands) {
 		log.Green(x.CodeAndName());
 	}
