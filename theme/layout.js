@@ -3,7 +3,7 @@
 const fs = require("fs");
 const pug = require("pug");
 
-const log = require("../kzlog/log");
+const log = require("../kz-log/log");
 const fsutils = require("../utils/fsutils");
 
 const common = require("../base/common");
@@ -79,7 +79,7 @@ Layout.prototype.Update = function () {
 }
 
 Layout.prototype.GetTable = function () {
-	const KZTable = require("../kztable/table").KZTable;
+	const KZTable = require("../kz-table/table").KZTable;
 	let table = new KZTable();
 	table.AddColumn("Name");
 	table.AddColumn("Theme");

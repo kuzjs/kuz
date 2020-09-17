@@ -145,7 +145,7 @@ Property.prototype.GetStringValue = function () {
 }
 
 Property.prototype.GetTable = function () {
-	const KZTable = require("../kztable/table").KZTable;
+	const KZTable = require("../kz-table/table").KZTable;
 	let table = new KZTable();
 	table.AddColumn("Property");
 	table.AddColumn("Value");

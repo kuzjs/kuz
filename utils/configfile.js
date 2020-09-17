@@ -4,12 +4,12 @@
 
 const MetaData = require("../metadata/metadata").MetaData;
 
-const log = require("../kzlog/log");
+const log = require("../kz-log/log");
 
 const Nss = require("../kz-nss/nss").Nss;
 const fsutils = require("./fsutils");
 
-const KZTable = require("../kztable/table").KZTable;
+const KZTable = require("../kz-table/table").KZTable;
 const KZBaseObject = require("../base/baseobject").KZBaseObject;
 
 function ConfigFile(site, dirpath, entity=false) {

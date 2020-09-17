@@ -1,6 +1,6 @@
 // kaagazz.js
 
-const log = require("./kzlog");
+const log = require("./kz-log");
 
 const fsutils = require("./utils/fsutils");
 const jsonDirectory = require("./base/common").jsonDirectory;
@@ -283,7 +283,7 @@ KaagazzApp.prototype.ShowMajorFlags = function () {
 }
 
 KaagazzApp.prototype.ShowVersion = function () {
-	const KZTable = require("./kztable").KZTable;
+	const KZTable = require("./kz-table").KZTable;
 	let table = new KZTable();
 	table.AddColumn("Key");
 	table.AddColumn("Value");

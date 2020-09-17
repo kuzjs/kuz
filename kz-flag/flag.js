@@ -2,7 +2,7 @@
 
 const fs = require("fs");
 
-const KZTable = require("../kztable/table").KZTable;
+const KZTable = require("../kz-table/table").KZTable;
 
 const fsutils = require("../utils/fsutils");
 const helpDocDirectory = require("../base/common").helpDocDirectory;

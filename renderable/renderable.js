@@ -1,7 +1,7 @@
 // renderable.js
 
 const fs = require("fs");
-const log = require("../kzlog/log");
+const log = require("../kz-log/log");
 const fsutils = require("../utils/fsutils");
 
 const Article = require("./pages/article").Article;
@@ -40,7 +40,7 @@ Renderable.prototype.SetName = function (name) {
 }
 
 Renderable.prototype.GetTable = function () {
-	const KZTable = require("../kztable/table").KZTable;
+	const KZTable = require("../kz-table/table").KZTable;
 	let table = new KZTable();
 	table.AddColumn("Codename");
 	table.AddColumn("Name");

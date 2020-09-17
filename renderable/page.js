@@ -4,7 +4,7 @@
 const fs = require("fs");
 
 const fsutils = require("../utils/fsutils");
-const log = require("../kzlog/log");
+const log = require("../kz-log/log");
 
 function Page(site, configFileObject, filename, isRoot = false) {
 	this.site = site;

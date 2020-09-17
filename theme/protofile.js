@@ -1,6 +1,6 @@
 // protofile.js
 
-const log = require("../kzlog/log");
+const log = require("../kz-log/log");
 const fsutils = require("../utils/fsutils");
 
 const common = require("../base/common");
@@ -66,7 +66,7 @@ ProtoFile.prototype.toString = function () {
 }
 
 ProtoFile.prototype.GetTable = function () {
-	const KZTable = require("../kztable/table").KZTable;
+	const KZTable = require("../kz-table/table").KZTable;
 	let table = new KZTable();
 	table.AddColumn("Name");
 	table.AddColumn("Theme");
