@@ -78,6 +78,14 @@ Property.prototype.GetValue = function () {
 Property.prototype.ValueString = function () {
 	if (this.value.__proto__ === Array.prototype) {
 		return "[" + this.value.join("|") + "]";
+	} else if (this.value.__proto__ === Object.prototype) {
+		let valueString = "{";
+		let properties = [];
+		for (let key in this.value) {
+			properties.push(key + ": " + this.value[key]);
+		}
+		valueString += properties.join("|") + "}";
+		return valueString;
 	}
 	return this.value;
 }
