@@ -1,6 +1,6 @@
 // kaagazz.js
 
-const log = require("./kzlog/log");
+const log = require("./kzlog");
 
 const fsutils = require("./utils/fsutils");
 const jsonDirectory = require("./base/common").jsonDirectory;
@@ -65,7 +65,7 @@ KaagazzApp.prototype.SetupFlags = function () {
 	this.flags = [];
 	this.args = [];
 
-	const KZFlag = require("./kzflag/flag").KZFlag;
+	const KZFlag = require("./kzflag").KZFlag;
 	for (let flagObject of flagObjects) {
 		let flag = new KZFlag(flagObject);
 		this.flags.push(flag);
@@ -283,7 +283,7 @@ KaagazzApp.prototype.ShowMajorFlags = function () {
 }
 
 KaagazzApp.prototype.ShowVersion = function () {
-	const KZTable = require("./kztable/table").KZTable;
+	const KZTable = require("./kztable").KZTable;
 	let table = new KZTable();
 	table.AddColumn("Key");
 	table.AddColumn("Value");
