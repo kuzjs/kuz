@@ -82,6 +82,16 @@ MetaData.prototype.NumberOfProperties = function () {
 	return this.properties.length;
 }
 
+MetaData.prototype.PrintPropertyTable = function () {
+	if (this.properties.length > 0) {
+		let table = this.properties[0].GetTable();
+		for (let property of this.properties) {
+			table.Add(property);
+		}
+		table.Print();
+	}
+}
+
 module.exports = {
 	MetaData: MetaData
 };

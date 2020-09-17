@@ -95,6 +95,18 @@ Property.prototype.GetStringValue = function () {
 	return this.value;
 }
 
+Property.prototype.GetTable = function () {
+	const KZTable = require("../kztable/table").KZTable;
+	let table = new KZTable();
+	table.AddColumn("Property");
+	table.AddColumn("Value");
+	return table;
+}
+
+Property.prototype.Row = function () {
+	return [this.Name(), this.Value()];
+}
+
 module.exports = {
 	Property: Property
 };
