@@ -38,7 +38,9 @@ MetaData.prototype.Setup = function () {
 			}
 			if (!comment) {
 				let property = new Property(headerLine);
-				this.properties.push(property);
+				if (property.IsValid()) {
+					this.properties.push(property);
+				}
 			}
 		}
 	} else {

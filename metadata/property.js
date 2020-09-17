@@ -52,6 +52,13 @@ Property.prototype = {
 	}
 };
 
+Property.prototype.IsValid = function () {
+	if (this.Name().length == 0) {
+		return false;
+	}
+	return true;
+}
+
 Property.prototype.Name = function () {
 	return this.GetName();
 }
