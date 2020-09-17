@@ -6,10 +6,10 @@ const Section = require("./section").Section;
 const log = require("../../utils/log");
 
 function Article(page, content) {
-	this.Init(page, content);
+	this.Setup(page, content);
 }
 
-Article.prototype.Init = function (page, content) {
+Article.prototype.Setup = function (page, content) {
 	this.page = page;
 	this.contentLines = content.split("\n");
 	this.sections = {};
