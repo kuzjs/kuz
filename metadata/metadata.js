@@ -2,12 +2,7 @@
 
 
 
-const Property = require("./property").Property;
-
-const Nss = require("../utils/nss").Nss;
 const fsutils = require("../utils/fsutils");
-
-const KZBaseObject = require("../base/baseobject").KZBaseObject;
 
 function MetaData (site, path) {
 	this.site = site;
@@ -15,13 +10,16 @@ function MetaData (site, path) {
 	this.Setup();
 }
 
+const KZBaseObject = require("../base/baseobject").KZBaseObject;
 MetaData.prototype = new KZBaseObject();
 
 MetaData.prototype.Setup = function () {
 	this.properties = [];
 	if (this.Exists()) {
+		const Nss = require("../utils/nss").Nss;
 		let metaNss = new Nss(this.path);
 		let headerLines = metaNss.GetHeaderLines();
+		const Property = require("./property").Property;
 		for (let headerLine of headerLines) {
 			let property = new Property(headerLine);
 			this.properties.push(property);
