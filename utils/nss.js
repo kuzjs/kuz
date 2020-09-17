@@ -2,6 +2,40 @@
 
 const fs = require("fs");
 
+const nssCommentStarters = [
+	"//"
+];
+
+const nssSeparatorStarters = [
+	"====", "----",
+	"++++", "____",
+	"....", "~~~~"
+];
+
+function LineIsComment (lineText) {
+	for (let nssCommentStarter of nssCommentStarters) {
+		if (lineText.startsWith(nssCommentStarter)) {
+			return true;
+		}
+	}
+	return false;
+}
+
+function LineIsImportant (lineText) {
+	return !LineIsComment(lineText);
+}
+
+function LineIsSeparator (lineText) {
+	for (let nssSeparatorStarter of nssSeparatorStarters) {
+		if (lineText.startsWith(nssSeparatorStarter)) {
+			return true;
+		}
+	}
+	return false;
+}
+
+
+
 function NewlineSeparatedStrings (filename) {
 	this.filename = filename;
 }
@@ -54,10 +88,12 @@ NewlineSeparatedStrings.prototype.GetEvenLines = function () {
 	if (fs.existsSync(this.filename)) {
 		let fileLines = this.GetLinesArray();
 		for (let currentLine of fileLines) {
-			if (currentLine.startsWith("====") || currentLine.startsWith("----")) {
+			if (LineIsSeparator(currentLine)) {
 				currentRegionIndex++;
 			} else if (currentRegionIndex % 2 == 0) {
-				regionLines.push(currentLine);
+				if (LineIsImportant(currentLine)) {
+					regionLines.push(currentLine);
+				}
 			}
 		}
 	}
