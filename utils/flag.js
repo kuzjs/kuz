@@ -17,8 +17,10 @@ function KZFlag (flagObject) {
 	this.implemented = (flagObject.implemented === undefined) ? false : flagObject.implemented;
 	this.major = (flagObject.major === undefined) ? false : flagObject.major;
 	this.modifier = (flagObject.modifier === undefined) ? false : flagObject.modifier;
+	this.touchmenot = (flagObject.touchmenot === undefined) ? false : flagObject.touchmenot;
+	this.independent = !this.major && !this.modifier && !this.touchmenot;
+
 	this.hasParams = (flagObject.params === undefined) ? false : flagObject.params;
-	this.independent = !this.major && !this.modifier;
 	this.count = 0;
 	this.params = [];
 }
