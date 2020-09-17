@@ -181,6 +181,10 @@ KaagazzApp.prototype.SetupOperands = function () {
 		}
 	}
 
+	if (flags.themes) {
+		this.operands = this.operands.concat(this.site.Themes());
+	}
+
 	if (flags.layouts) {
 		this.operands = this.operands.concat(this.site.LayoutsArray());
 	}

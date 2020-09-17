@@ -199,6 +199,10 @@ Site.prototype.Renderables = function () {
 	return this.Entities().concat(this.pages);
 }
 
+Site.prototype.Themes = function () {
+	return this.themes;
+}
+
 Site.prototype.LayoutsArray = function () {
 	let layouts = [];
 	for (let theme of this.themes) {
