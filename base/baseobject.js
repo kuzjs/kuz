@@ -1,6 +1,6 @@
 // baseobject.js
 
-const log = require("../utils/log");
+const log = require("../kzlog/log");
 
 
 

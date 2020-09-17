@@ -3,7 +3,7 @@
 const fs = require("fs");
 const pug = require("pug");
 
-const log = require("../utils/log");
+const log = require("../kzlog/log");
 const fsutils = require("../utils/fsutils");
 
 const common = require("../base/common");

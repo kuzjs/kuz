@@ -2,7 +2,7 @@
 
 const fs = require("fs");
 
-const log = require("./utils/log");
+const log = require("./kzlog/log");
 const siteutils = require("./utils/siteutils");
 const fsutils = require("./utils/fsutils");
 

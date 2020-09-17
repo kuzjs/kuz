@@ -1,6 +1,6 @@
 // protofile.js
 
-const log = require("../utils/log");
+const log = require("../kzlog/log");
 const fsutils = require("../utils/fsutils");
 
 const common = require("../base/common");
