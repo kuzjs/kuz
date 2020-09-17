@@ -23,8 +23,7 @@
 			"disk": true,
 			"name": "build",
 			"description": "Build things now.",
-			"major": true,
-			"params": true
+			"major": true
 		},
 		{
 			"code": "c",
@@ -60,8 +59,7 @@
 			"code": "f",
 			"name": "forced",
 			"description": "Forced-update things.",
-			"major": true,
-			"params": true
+			"major": true
 		},
 		{
 			"code": "g",
@@ -167,8 +165,7 @@
 			"code": "r",
 			"name": "report",
 			"description": "Report problems.",
-			"major": true,
-			"params": true
+			"major": true
 		},
 		{
 			"code": "R",
@@ -207,8 +204,7 @@
 			"name": "update",
 			"description": "Update things now.",
 			"implemented": true,
-			"major": true,
-			"params": true
+			"major": true
 		},
 		{
 			"code": "v",
@@ -221,16 +217,14 @@
 			"code": "V",
 			"name": "verify",
 			"description": "Verify things.",
-			"major": true,
-			"params": true
+			"major": true
 		},
 		{
 			"code": "w",
 			"name": "watch",
 			"description": "Watch the site.",
 			"implemented": true,
-			"major": true,
-			"params": true
+			"major": true
 		},
 		{
 			"code": "x",
@@ -243,8 +237,7 @@
 			"disk": true,
 			"name": "delete",
 			"description": "Delete things now.",
-			"major": true,
-			"params": true
+			"major": true
 		}
 	]
 }
