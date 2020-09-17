@@ -94,7 +94,7 @@ KaagazzApp.prototype.SetupFlags = function () {
 				}
 			}
 		} else {
-			if (lastFlag) {
+			if (lastFlag && lastFlag.HasParams()) {
 				lastFlag.AddParam(argument);
 			} else {
 				this.args.push(argument);
@@ -139,9 +139,18 @@ KaagazzApp.prototype.SetupOperands = function () {
 	this.operands = [];
 	let flags = this.simpleFlags;
 
+	let everything = this.site.EveryThing();
 	if (flags.everything) {
-		this.operands = this.site.EveryThing();
+		this.operands = everything;
 		return;
+	}
+
+	for (let arg of this.args) {
+		for (let somethimg of everything) {
+			if (somethimg.CodeName() == arg) {
+				this.operands.push(somethimg);
+			}
+		}
 	}
 
 	if (flags.all) {
