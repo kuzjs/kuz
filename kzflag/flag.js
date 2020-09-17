@@ -4,7 +4,7 @@ const fs = require("fs");
 
 const KZTable = require("../kztable/table").KZTable;
 
-const fsutils = require("./fsutils");
+const fsutils = require("../utils/fsutils");
 const helpDocDirectory = require("../base/common").helpDocDirectory;
 
 
