@@ -13,6 +13,7 @@ const nssSeparatorStarters = [
 ];
 
 function LineIsComment (lineText) {
+	lineText = lineText.trim();
 	for (let nssCommentStarter of nssCommentStarters) {
 		if (lineText.startsWith(nssCommentStarter)) {
 			return true;
@@ -26,6 +27,7 @@ function LineIsImportant (lineText) {
 }
 
 function LineIsSeparator (lineText) {
+	lineText = lineText.trim();
 	for (let nssSeparatorStarter of nssSeparatorStarters) {
 		if (lineText.startsWith(nssSeparatorStarter)) {
 			return true;
@@ -45,14 +47,14 @@ NewlineSeparatedStrings.prototype.GetLinesArray = function (lineText) {
 	if (fs.existsSync(this.filename)) {
 		let fileText = fs.readFileSync(this.filename, "utf8").replace("\r", "");
 		let fileLines = fileText.split("\n");
-		for (let index in fileLines) {
-			let line = fileLines[index].trimRight();
-			if (line == "") {
+		for (let fileLine of fileLines) {
+			let currentLine = fileLine.trimRight();
+			if (currentLine == "") {
 				continue;
-			} else if (line.startsWith("#") || line.startsWith("//")) {
+			} else if (LineIsComment(currentLine)) {
 				continue;
 			} else {
-				values.push(line);
+				values.push(currentLine);
 			}
 		}
 	}
@@ -65,7 +67,7 @@ NewlineSeparatedStrings.prototype.GetLinesByRegionIndex = function (regionIndex)
 	if (fs.existsSync(this.filename)) {
 		let fileLines = this.GetLinesArray();
 		for (let currentLine of fileLines) {
-			if (currentLine.startsWith("====") || currentLine.startsWith("----")) {
+			if (LineIsSeparator(currentLine)) {
 				currentRegionIndex++;
 			} else if (currentRegionIndex == regionIndex) {
 				if (regionIndex % 2 == 0) {
