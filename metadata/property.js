@@ -14,6 +14,18 @@ const nullStrings = [
 
 
 
+function IsQuoted (text) {
+	let trimmedText = text.trim();
+	if (trimmedText.startsWith('"') && trimmedText.endsWith('"')) {
+		return true;
+	} else if (trimmedText.startsWith("'") && trimmedText.endsWith("'")) {
+		return true;
+	} else if (trimmedText.startsWith("`") && trimmedText.endsWith("`")) {
+		return true;
+	}
+	return false;
+}
+
 function GetAppropriateValue (value) {
 	value = value.trim();
 	lowered = value.toLowerCase();
@@ -44,6 +56,9 @@ function GetAppropriateValue (value) {
 			valueObject[propertyName] = GetAppropriateValue(propertyValue);
 		}
 		return valueObject;
+	} else if (IsQuoted(value)) {
+		value = value.slice(1, -1);
+		return value;
 	} else {
 		return value;
 	}
