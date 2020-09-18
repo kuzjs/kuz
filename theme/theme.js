@@ -76,9 +76,9 @@ Theme.prototype.SetupPaths = function () {
 	this.metaObject = this.meta.json.meta;
 
 	this.SetupLayouts();
-	this.SetupCssFiles();
-	this.SetupJsFiles();
-	this.SetupResFiles();
+	this.SetupCSS();
+	this.SetupJS();
+	this.SetupResources();
 	this.SetupNextPrevious();
 
 	this.is_valid = true;
@@ -100,34 +100,34 @@ Theme.prototype.SetupLayouts = function () {
 	}
 }
 
-Theme.prototype.SetupCssFiles = function () {
+Theme.prototype.SetupCSS = function () {
 	this.cssFiles = [];
 	if (this.meta.json.css) {
-		const CssFile = require("./cssfile").CssFile;
+		const ThemeCSS = require("./css").ThemeCSS;
 		for (let data of this.meta.json.css) {
-			let cssFile = new CssFile(this, data);
+			let cssFile = new ThemeCSS(this, data);
 			this.cssFiles.push(cssFile);
 		}
 	}
 }
 
-Theme.prototype.SetupJsFiles = function () {
+Theme.prototype.SetupJS = function () {
 	this.jsFiles = [];
 	if (this.meta.json.js) {
-		const JsFile = require("./jsfile").JsFile;
+		const ThemeJS = require("./js").ThemeJS;
 		for (let data of this.meta.json.js) {
-			let jsFile = new JsFile(this, data);
+			let jsFile = new ThemeJS(this, data);
 			this.jsFiles.push(jsFile);
 		}
 	}
 }
 
-Theme.prototype.SetupResFiles = function () {
+Theme.prototype.SetupResources = function () {
 	this.resFiles = [];
 	if (this.meta.json.res) {
-		const ResFile = require("./resfile").ResFile;
+		const ThemeResource = require("./resource").ThemeResource;
 		for (let data of this.meta.json.res) {
-			let resFile = new ResFile(this, data);
+			let resFile = new ThemeResource(this, data);
 			this.resFiles.push(resFile);
 		}
 	}
