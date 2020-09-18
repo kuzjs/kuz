@@ -20,7 +20,7 @@ Author.prototype.GetPages = function () {
 	let pages = [];
 	for (let page of this.site.pages) {
 		let author = page.GetPropertyCascaded("author");
-		if (author.found && author.value == this.name) {
+		if (author.found && author.value == this.Name()) {
 			pages.push(page);
 		}
 	}

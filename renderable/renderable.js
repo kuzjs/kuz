@@ -296,7 +296,7 @@ Renderable.prototype.InputFileExtension = function () {
 }
 
 Renderable.prototype.InputFileName = function () {
-	return this.name + "." + this.InputFileExtension();
+	return this.Name() + "." + this.InputFileExtension();
 }
 
 Renderable.prototype.InputDirectoryPath = function () {

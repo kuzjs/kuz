@@ -17,11 +17,15 @@ Entity.prototype.SetupEntity = function (site, configFileObject, entry) {
 }
 
 Entity.prototype.OutputDirectoryPartialPath = function () {
-	return this.site.GetSpecialDirectory() + "/" + this.typeName + "/" + this.name;
+	return this.site.GetSpecialDirectory() + "/" + this.typeName + "/" + this.Name();
 }
 
 Entity.prototype.IsEntity = function () {
 	return true;
+}
+
+Entity.prototype.GetName = function () {
+	return this.entry;
 }
 
 module.exports = {

@@ -20,7 +20,7 @@ Category.prototype.GetPages = function () {
 	let pages = [];
 	for (let page of this.site.pages) {
 		let category = page.GetPropertyCascaded("category");
-		if (category.found && category.value == this.name) {
+		if (category.found && category.value == this.Name()) {
 			pages.push(page);
 		}
 	}
