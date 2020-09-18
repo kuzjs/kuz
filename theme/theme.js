@@ -44,6 +44,10 @@ Theme.prototype.LayoutsInputDirectory = function () {
 	return fsutils.JoinPath(this.InputDirectory(), "layouts");
 }
 
+Theme.prototype.ThemeModulesInputDirectory = function () {
+	return fsutils.JoinPath(this.InputDirectory(), "modules");
+}
+
 Theme.prototype.CssInputDirectory = function () {
 	return fsutils.JoinPath(this.InputDirectory(), "css");
 }
@@ -76,6 +80,7 @@ Theme.prototype.SetupPaths = function () {
 	this.metaObject = this.meta.json.meta;
 
 	this.SetupLayouts();
+	this.SetupModules();
 	this.SetupCSS();
 	this.SetupJS();
 	this.SetupResources();
@@ -96,6 +101,17 @@ Theme.prototype.SetupLayouts = function () {
 			} else {
 				log.Red("Layout NOT found: " + layoutFilePath);
 			}
+		}
+	}
+}
+
+Theme.prototype.SetupModules = function () {
+	this.modules = [];
+	if (this.meta.json.modules) {
+		const ThemeModule = require("./module").ThemeModule;
+		for (let data of this.meta.json.modules) {
+			let mod = new ThemeModule(this, data);
+			this.modules.push(mod);
 		}
 	}
 }
@@ -136,6 +152,7 @@ Theme.prototype.SetupResources = function () {
 Theme.prototype.SetupNextPrevious = function () {
 	const SetupNextPrevious = require("../utils/siteutils").SetupNextPrevious;
 	SetupNextPrevious(this.layouts);
+	SetupNextPrevious(this.modules);
 	SetupNextPrevious(this.cssArray);
 	SetupNextPrevious(this.jsArray);
 	SetupNextPrevious(this.resourceArray);

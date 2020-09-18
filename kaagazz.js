@@ -189,6 +189,10 @@ KaagazzApp.prototype.SetupOperands = function () {
 		this.operands = this.operands.concat(this.site.LayoutsArray());
 	}
 
+	if (flags.modules) {
+		this.operands = this.operands.concat(this.site.ModulesArray());
+	}
+
 	if (flags.css) {
 		this.operands = this.operands.concat(this.site.CSSArray());
 	}
@@ -418,8 +422,6 @@ KaagazzApp.prototype.Run = function () {
 		this.ShowIndependentFlags();
 	} else if (flags.modifier) {
 		this.ShowModifierFlags();
-	} else if (flags.major) {
-		this.ShowMajorFlags();
 	} else if (flags.version) {
 		this.ShowVersion();
 	} else if (flags.buildable) {

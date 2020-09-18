@@ -211,6 +211,14 @@ Site.prototype.LayoutsArray = function () {
 	return layouts;
 }
 
+Site.prototype.ModulesArray = function () {
+	let modules = [];
+	for (let theme of this.themes) {
+		modules = modules.concat(theme.modules);
+	}
+	return modules;
+}
+
 Site.prototype.CSSArray = function () {
 	let cssArray = [];
 	for (let theme of this.themes) {
@@ -238,6 +246,7 @@ Site.prototype.ResourceArray = function () {
 Site.prototype.EveryThing = function () {
 	let everyThing = this.Renderables();
 	everyThing = everyThing.concat(this.LayoutsArray());
+	everyThing = everyThing.concat(this.ModulesArray());
 	everyThing = everyThing.concat(this.CSSArray());
 	everyThing = everyThing.concat(this.JsArray());
 	everyThing = everyThing.concat(this.ResourceArray());

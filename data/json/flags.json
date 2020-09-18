@@ -129,8 +129,8 @@
 		},
 		{
 			"code": "M",
-			"name": "major",
-			"description": "List major flags."
+			"name": "modules",
+			"description": "Modules files only modifier."
 		},
 		{
 			"code": "n",
