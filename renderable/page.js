@@ -115,10 +115,6 @@ Page.prototype.NeedsUpdate = function () {
 	}
 }
 
-Page.prototype.RenderLog = function () {
-	log.Green("Page updated: (" + this.inputFilePath + ") --> [" + this.OutputFilePath() + "]");
-}
-
 module.exports = {
 	Page: Page
 };

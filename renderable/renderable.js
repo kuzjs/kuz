@@ -277,7 +277,7 @@ Renderable.prototype.Render = function () {
 }
 
 Renderable.prototype.RenderLog = function () {
-	log.Green("Rendered: (" + this.InputFilePath() + ") --> [" + this.OutputFilePath() + "]");
+	log.Green(this.TypeName() + " rendered: (" + this.InputFilePath() + ") --> [" + this.OutputFilePath() + "]");
 }
 
 Renderable.prototype.InputFileExtension = function () {
