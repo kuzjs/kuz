@@ -211,36 +211,36 @@ Site.prototype.LayoutsArray = function () {
 	return layouts;
 }
 
-Site.prototype.CssFilesArray = function () {
-	let cssFiles = [];
+Site.prototype.CSSArray = function () {
+	let cssArray = [];
 	for (let theme of this.themes) {
-		cssFiles = cssFiles.concat(theme.cssFiles);
+		cssArray = cssArray.concat(theme.cssArray);
 	}
-	return cssFiles;
+	return cssArray;
 }
 
-Site.prototype.JsFilesArray = function () {
-	let jsFiles = [];
+Site.prototype.JsArray = function () {
+	let jsArray = [];
 	for (let theme of this.themes) {
-		jsFiles = jsFiles.concat(theme.jsFiles);
+		jsArray = jsArray.concat(theme.jsArray);
 	}
-	return jsFiles;
+	return jsArray;
 }
 
-Site.prototype.ResFilesArray = function () {
-	let resFiles = [];
+Site.prototype.ResourceArray = function () {
+	let resourceArray = [];
 	for (let theme of this.themes) {
-		resFiles = resFiles.concat(theme.resFiles);
+		resourceArray = resourceArray.concat(theme.resourceArray);
 	}
-	return resFiles;
+	return resourceArray;
 }
 
 Site.prototype.EveryThing = function () {
 	let everyThing = this.Renderables();
 	everyThing = everyThing.concat(this.LayoutsArray());
-	everyThing = everyThing.concat(this.CssFilesArray());
-	everyThing = everyThing.concat(this.JsFilesArray());
-	everyThing = everyThing.concat(this.ResFilesArray());
+	everyThing = everyThing.concat(this.CSSArray());
+	everyThing = everyThing.concat(this.JsArray());
+	everyThing = everyThing.concat(this.ResourceArray());
 	return everyThing;
 }
 

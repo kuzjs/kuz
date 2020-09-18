@@ -190,15 +190,15 @@ KaagazzApp.prototype.SetupOperands = function () {
 	}
 
 	if (flags.css) {
-		this.operands = this.operands.concat(this.site.CssFilesArray());
+		this.operands = this.operands.concat(this.site.CSSArray());
 	}
 
 	if (flags.js) {
-		this.operands = this.operands.concat(this.site.JsFilesArray());
+		this.operands = this.operands.concat(this.site.JsArray());
 	}
 
 	if (flags.res) {
-		this.operands = this.operands.concat(this.site.ResFilesArray());
+		this.operands = this.operands.concat(this.site.ResourceArray());
 	}
 }
 

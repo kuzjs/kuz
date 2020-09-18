@@ -101,34 +101,34 @@ Theme.prototype.SetupLayouts = function () {
 }
 
 Theme.prototype.SetupCSS = function () {
-	this.cssFiles = [];
+	this.cssArray = [];
 	if (this.meta.json.css) {
 		const ThemeCSS = require("./css").ThemeCSS;
 		for (let data of this.meta.json.css) {
 			let cssFile = new ThemeCSS(this, data);
-			this.cssFiles.push(cssFile);
+			this.cssArray.push(cssFile);
 		}
 	}
 }
 
 Theme.prototype.SetupJS = function () {
-	this.jsFiles = [];
+	this.jsArray = [];
 	if (this.meta.json.js) {
 		const ThemeJS = require("./js").ThemeJS;
 		for (let data of this.meta.json.js) {
 			let jsFile = new ThemeJS(this, data);
-			this.jsFiles.push(jsFile);
+			this.jsArray.push(jsFile);
 		}
 	}
 }
 
 Theme.prototype.SetupResources = function () {
-	this.resFiles = [];
+	this.resourceArray = [];
 	if (this.meta.json.res) {
 		const ThemeResource = require("./resource").ThemeResource;
 		for (let data of this.meta.json.res) {
 			let resFile = new ThemeResource(this, data);
-			this.resFiles.push(resFile);
+			this.resourceArray.push(resFile);
 		}
 	}
 }
@@ -136,9 +136,9 @@ Theme.prototype.SetupResources = function () {
 Theme.prototype.SetupNextPrevious = function () {
 	const SetupNextPrevious = require("../utils/siteutils").SetupNextPrevious;
 	SetupNextPrevious(this.layouts);
-	SetupNextPrevious(this.cssFiles);
-	SetupNextPrevious(this.jsFiles);
-	SetupNextPrevious(this.resFiles);
+	SetupNextPrevious(this.cssArray);
+	SetupNextPrevious(this.jsArray);
+	SetupNextPrevious(this.resourceArray);
 }
 
 Theme.prototype.Props = function () {
@@ -226,9 +226,9 @@ Theme.prototype.Row = function () {
 		this.Description(),
 		this.Documentation(),
 		this.LayoutCount(),
-		this.cssFiles.length,
-		this.jsFiles.length,
-		this.resFiles.length
+		this.css.length,
+		this.js.length,
+		this.resources.length
 	];
 }
 
