@@ -262,10 +262,7 @@ KZBaseObject.prototype.InputFileExists = function () {
 }
 
 KZBaseObject.prototype.InputFileMTime = function () {
-	if (this.InputFileExists()) {
-		return fs.statSync(this.InputFilePath()).mtimeMs;
-	}
-	return 0;
+	fsutils.GetFileMTime(this.InputFilePath());
 }
 
 KZBaseObject.prototype.OutputFilePath = function () {
@@ -281,10 +278,7 @@ KZBaseObject.prototype.OutputFileExists = function () {
 }
 
 KZBaseObject.prototype.OutputFileMTime = function () {
-	if (this.OutputFileExists()) {
-		return fs.statSync(this.OutputFilePath()).mtimeMs;
-	}
-	return 0;
+	fsutils.GetFileMTime(this.OutputFilePath());
 }
 
 

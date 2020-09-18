@@ -34,6 +34,13 @@ function CreateDirectory (path) {
 	}
 }
 
+function GetFileMTime (path) {
+	if (fs.existsSync(path)) {
+		return fs.statSync(path).mtimeMs;
+	}
+	return 0;
+}
+
 function JoinPath () {
 	let path = "";
 
@@ -166,6 +173,7 @@ function DeleteAllButIndexHtml (dirpath) {
 module.exports = {
 	TrimSlashes: TrimSlashes,
 	CreateDirectory: CreateDirectory,
+	GetFileMTime: GetFileMTime,
 	JoinPath: JoinPath,
 	IsFileOrDirectory: IsFileOrDirectory,
 	IsDirectory: IsDirectory,
