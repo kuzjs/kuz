@@ -22,8 +22,9 @@ Renderable.prototype.codeLetter = "r";
 Renderable.prototype.SetupRenderable = function (site, configFileObject, entry) {
 	this.SetSite(site);
 	this.SetConfig(configFileObject);
+	this.entry = entry.trim();
+	this.name = this.entry;
 	if (this.IsEntity()) {
-		this.name = entry.trim();
 		const MetaData = require("../metadata/metadata").MetaData;
 		this.metaData = new MetaData(this.site, this.InputFilePath());
 	}

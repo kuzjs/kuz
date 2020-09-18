@@ -6,10 +6,9 @@ const fs = require("fs");
 const fsutils = require("../kz-fs");
 const log = require("../kz-log/log");
 
-function Page (site, configFileObject, filename, isRoot = false) {
-	this.SetupRenderable(site, configFileObject);
+function Page (site, configFileObject, entry, isRoot = false) {
+	this.SetupRenderable(site, configFileObject, entry);
 	this.configDirpath = (configFileObject.dirpath === undefined) ? "" : configFileObject.dirpath;
-	this.filename = filename;
 	this.isRoot = isRoot;
 	this.SetupPage();
 }
@@ -57,14 +56,14 @@ Page.prototype.SetupInput = function () {
 }
 
 Page.prototype.InputDirectoryPath = function () {
-	return fsutils.JoinPath(this.site.GetInputDirectory(), this.configDirpath, this.filename);
+	return fsutils.JoinPath(this.site.GetInputDirectory(), this.configDirpath, this.entry);
 }
 
 Page.prototype.OutputDirectoryPartialPath = function () {
 	if (this.isRoot) {
 		return this.configDirpath;
 	} else {
-		return fsutils.JoinPath(this.configDirpath, this.filename);
+		return fsutils.JoinPath(this.configDirpath, this.entry);
 	}
 }
 
