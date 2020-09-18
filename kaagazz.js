@@ -320,11 +320,15 @@ KaagazzApp.prototype.Nietzsche = function () {
 }
 
 KaagazzApp.prototype.ListThings = function (flags) {
-	let table = this.operands[0].GetTable();
-	for (let operand of this.operands) {
-		table.Add(operand);
+	if (this.operands.length == 0) {
+		log.Red("Zero operands to list.");
+	} else {
+		let table = this.operands[0].GetTable();
+		for (let operand of this.operands) {
+			table.Add(operand);
+		}
+		table.Print();
 	}
-	table.Print();
 }
 
 KaagazzApp.prototype.Buildable = function () {
