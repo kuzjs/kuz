@@ -13,12 +13,7 @@ Entity.prototype.typeNamePlural = "entities";
 Entity.prototype.codeLetter = "e";
 
 Entity.prototype.SetupEntity = function (site, configFileObject, entry) {
-	this.SetSite(site);
-	this.SetConfig(configFileObject);
-	this.name = entry.trim();
-
-	const MetaData = require("../metadata/metadata").MetaData;
-	this.metaData = new MetaData(this.site, this.InputFilePath());
+	this.SetupRenderable(site, configFileObject, entry);
 }
 
 Entity.prototype.OutputDirectoryPartialPath = function () {
