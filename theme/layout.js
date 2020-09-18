@@ -14,16 +14,12 @@ function ThemeLayout (theme, data) {
 }
 
 const ThemeElement = require("./element").ThemeElement;
-ThemeLayout.prototype = new ThemeElement();
+ThemeLayout.prototype = new ThemeElement("layouts");
 ThemeLayout.prototype.typeName = "Layout";
 
-ThemeLayout.prototype.FullPath = function () {
-	return fsutils.JoinPath(this.theme.LayoutsInputDirectory(), this.Path());
-}
-
 ThemeLayout.prototype.Setup = function () {
-	if (!fs.existsSync(this.FullPath())) {
-		this.theme.site.Error("Layout not found: " + this.FullPath());
+	if (!fs.existsSync(this.InputFilePath())) {
+		this.theme.site.Error("Layout not found: " + this.InputFilePath());
 		return;
 	}
 	this.ForcedUpdate();
@@ -37,13 +33,13 @@ ThemeLayout.prototype.AllIsWell = function () {
 }
 
 ThemeLayout.prototype.ForcedUpdate = function () {
-	this.pug = pug.compileFile(this.FullPath());
-	this.mtimeMs = fs.statSync(this.FullPath()).mtimeMs;
+	this.pug = pug.compileFile(this.InputFilePath());
+	this.mtimeMs = fs.statSync(this.InputFilePath()).mtimeMs;
 	this.allIsWell = true;
 }
 
 ThemeLayout.prototype.NeedsUpdate = function () {
-	if (this.mtimeMs == fs.statSync(this.FullPath()).mtimeMs) {
+	if (this.mtimeMs == fs.statSync(this.InputFilePath()).mtimeMs) {
 		return false;
 	}
 	return true;
@@ -53,6 +49,10 @@ ThemeLayout.prototype.Update = function () {
 	if (this.NeedsUpdate()) {
 		this.ForcedUpdate();
 	}
+}
+
+ThemeLayout.prototype.Updatable = function () {
+	this.PrintInputFilePath();
 }
 
 

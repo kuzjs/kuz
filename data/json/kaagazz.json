@@ -16,6 +16,8 @@
 		"pages": "pages",
 		"tags": "tags",
 		"themes": "themes",
+		"layouts": "layouts",
+		"modules": "modules",
 		"css": "css",
 		"js": "js",
 		"resources": "resources",

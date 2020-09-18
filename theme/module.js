@@ -13,16 +13,12 @@ function ThemeModule (theme, data) {
 }
 
 const ThemeElement = require("./element").ThemeElement;
-ThemeModule.prototype = new ThemeElement();
+ThemeModule.prototype = new ThemeElement("modules");
 ThemeModule.prototype.typeName = "Module";
 
-ThemeModule.prototype.FullPath = function () {
-	return fsutils.JoinPath(this.theme.ThemeModulesInputDirectory(), this.Path());
-}
-
 ThemeModule.prototype.Setup = function () {
-	if (!fs.existsSync(this.FullPath())) {
-		this.theme.site.Error("Module not found: " + this.FullPath());
+	if (!fs.existsSync(this.InputFilePath())) {
+		this.theme.site.Error("Module not found: " + this.InputFilePath());
 		return;
 	}
 	this.ForcedUpdate();
@@ -40,7 +36,7 @@ ThemeModule.prototype.ForcedUpdate = function () {
 }
 
 ThemeModule.prototype.NeedsUpdate = function () {
-	if (this.mtimeMs == fs.statSync(this.FullPath()).mtimeMs) {
+	if (this.mtimeMs == fs.statSync(this.InputFilePath()).mtimeMs) {
 		return false;
 	}
 	return true;
@@ -50,6 +46,10 @@ ThemeModule.prototype.Update = function () {
 	if (this.NeedsUpdate()) {
 		this.ForcedUpdate();
 	}
+}
+
+ThemeModule.prototype.Updatable = function () {
+	this.PrintInputFilePath();
 }
 
 

@@ -1,12 +1,14 @@
 // element.js
 
+const log = require("../kz-log/log");
+
 const common = require("../base/common");
 const defaultText = common.defaultText;
 
 
 
-function ThemeElement () {
-	//
+function ThemeElement (dirName) {
+	this.dirName = dirName;
 }
 
 const KZBaseObject = require("../base/baseobject").KZBaseObject;
@@ -52,6 +54,10 @@ ThemeElement.prototype.InputDirectoryPath = function () {
 
 ThemeElement.prototype.InputFilePath = function () {
 	return this.InputDirectoryPath() + "/" + this.InputFileName();
+}
+
+ThemeElement.prototype.PrintInputFilePath = function () {
+	log.Green("Input file path: " + this.InputFilePath());
 }
 
 ThemeElement.prototype.GetTable = function () {

@@ -34,11 +34,11 @@ ProtoFile.prototype.toString = function () {
 }
 
 ProtoFile.prototype.Updatable = function () {
-	log.Green("File updatable: " + this.InputFilePath() + " --> " + this.OutputFilePath());
+	this.PrintInputFilePath();
 }
 
 ProtoFile.prototype.Update = function () {
-	log.Green("File updated: " + this.InputFilePath() + " --> " + this.OutputFilePath());
+	this.PrintInputFilePath();
 }
 
 ProtoFile.prototype.log = function () {
