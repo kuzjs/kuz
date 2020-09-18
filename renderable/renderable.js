@@ -163,13 +163,18 @@ Renderable.prototype.GetPageOptions = function () {
 	let sections = article ? article.sections : null;
 	return {
 		page: this,
-		article: article,
-		sections: sections,
-		props: this.Props(),
-		cprops: this.configFileObject.props,
-		sprops: this.site.meta.json,
-		kprops: this.site.app.meta.json,
-		tprops: this.Theme().Props(),
+		kuz: {
+			page: this,
+			article: article,
+			sections: sections,
+			app: this.site.app,
+			site: this.site,
+			props: this.Props(),
+			cprops: this.configFileObject.props,
+			sprops: this.site.meta.json,
+			kprops: this.site.app.meta.json,
+			tprops: this.Theme().Props()
+		},
 		blackadder: this.Blackadder(),
 		ipsum: this.LoremIpsum()
 	};
