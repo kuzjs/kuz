@@ -3,17 +3,14 @@
 const log = require("../kz-log/log");
 const fsutils = require("../kz-fs");
 
-const common = require("../base/common");
-const defaultText = common.defaultText;
-
 
 
 function ProtoFile (dirName) {
 	this.dirName = dirName;
 }
 
-const KZBaseObject = require("../base/baseobject").KZBaseObject;
-ProtoFile.prototype = new KZBaseObject();
+const ThemeElement = require("./element").ThemeElement;
+ProtoFile.prototype = new ThemeElement();
 ProtoFile.prototype.typeName = "ProtoFile";
 
 ProtoFile.prototype.IsProtoFile = function () {
@@ -21,28 +18,7 @@ ProtoFile.prototype.IsProtoFile = function () {
 }
 
 ProtoFile.prototype.SetupProto = function (theme, data) {
-	this.theme = theme;
-	this.data = data;
-}
-
-ProtoFile.prototype.Name = function () {
-	return this.data.name;
-}
-
-ProtoFile.prototype.Path = function () {
-	return this.data.path;
-}
-
-ProtoFile.prototype.Description = function () {
-	return this.data.description ? this.data.description : defaultText.description;
-}
-
-ProtoFile.prototype.Documentation = function () {
-	return this.data.documentation ? this.data.documentation : defaultText.documentation;
-}
-
-ProtoFile.prototype.Title = function () {
-	return this.data.title ? this.data.title : defaultText.title;
+	this.SetupThemeElement(theme, data);
 }
 
 ProtoFile.prototype.InputDirectory = function () {

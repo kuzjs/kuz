@@ -6,9 +6,6 @@ const pug = require("pug");
 const log = require("../kz-log/log");
 const fsutils = require("../kz-fs");
 
-const common = require("../base/common");
-const defaultText = common.defaultText;
-
 function Layout (theme, data) {
 	this.theme = theme;
 	this.data = data;
@@ -16,8 +13,8 @@ function Layout (theme, data) {
 	this.Setup();
 }
 
-const KZBaseObject = require("../base/baseobject").KZBaseObject;
-Layout.prototype = new KZBaseObject();
+const ThemeElement = require("./element").ThemeElement;
+Layout.prototype = new ThemeElement();
 Layout.prototype.typeName = "Layout";
 
 Layout.prototype.FullPath = function () {
@@ -30,26 +27,6 @@ Layout.prototype.Setup = function () {
 		return;
 	}
 	this.ForcedUpdate();
-}
-
-Layout.prototype.Name = function () {
-	return this.data.name;
-}
-
-Layout.prototype.Path = function () {
-	return this.data.path;
-}
-
-Layout.prototype.Description = function () {
-	return this.data.description ? this.data.description : defaultText.description;
-}
-
-Layout.prototype.Documentation = function () {
-	return this.data.documentation ? this.data.documentation : defaultText.documentation;
-}
-
-Layout.prototype.Title = function () {
-	return this.data.title ? this.data.title : defaultText.title;
 }
 
 Layout.prototype.AllIsWell = function () {
