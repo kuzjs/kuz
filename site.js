@@ -11,6 +11,8 @@ const fsutils = require("./kz-fs");
 function Site (kaagazz) {
 	this.app = kaagazz;
 	this.filenames = this.app.meta.json.filenames;
+	this.input_dirs = this.app.meta.json.input;
+	this.output_dirs = this.app.meta.json.output;
 	this.Setup();
 }
 

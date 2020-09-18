@@ -16,6 +16,9 @@
 		"pages": "pages",
 		"tags": "tags",
 		"themes": "themes",
+		"css": "css",
+		"js": "js",
+		"resources": "resources",
 		"zzz": false
 	},
 

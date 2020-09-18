@@ -7,7 +7,7 @@ function ThemeResource (theme, data) {
 }
 
 const ProtoFile = require("./protofile").ProtoFile;
-ThemeResource.prototype = new ProtoFile("res");
+ThemeResource.prototype = new ProtoFile("resources");
 ThemeResource.prototype.typeName = "Resource";
 
 ThemeResource.prototype.IsResFile = function () {

@@ -21,14 +21,6 @@ ProtoFile.prototype.SetupProto = function (theme, data) {
 	this.SetupThemeElement(theme, data);
 }
 
-ProtoFile.prototype.InputDirectory = function () {
-	return fsutils.JoinPath(this.theme.InputDirectory(), this.dirName);
-}
-
-ProtoFile.prototype.InputFilePath = function () {
-	return fsutils.JoinPath(this.InputDirectory(), this.Path());
-}
-
 ProtoFile.prototype.OutputDirectory = function () {
 	return fsutils.JoinPath(this.theme.OutputDirectory(), this.dirName);
 }

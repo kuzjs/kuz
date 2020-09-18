@@ -38,6 +38,22 @@ ThemeElement.prototype.Title = function () {
 	return this.data.title ? this.data.title : defaultText.title;
 }
 
+ThemeElement.prototype.InputFileName = function () {
+	return this.Path();
+}
+
+ThemeElement.prototype.InputDirectoryName = function () {
+	return this.theme.site.input_dirs[this.dirName];
+}
+
+ThemeElement.prototype.InputDirectoryPath = function () {
+	return this.theme.InputDirectory() + "/" + this.InputDirectoryName();
+}
+
+ThemeElement.prototype.InputFilePath = function () {
+	return this.InputDirectoryPath() + "/" + this.InputFileName();
+}
+
 ThemeElement.prototype.GetTable = function () {
 	const KZTable = require("../kz-table/table").KZTable;
 	let table = new KZTable();
