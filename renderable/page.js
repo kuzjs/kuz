@@ -50,7 +50,7 @@ Page.prototype.SetupInput = function () {
 		inputFilePathWithoutExtension = this.InputDirectoryPath();
 	}
 
-	this.inputFileExtension = this.typeName;
+	this.inputFileExtension = this.InputFileExtension();
 	this.inputFilePath = inputFilePathWithoutExtension + "." + this.inputFileExtension;
 	if (fsutils.IsFile(this.inputFilePath)) {
 		this.inputFileFound = true;

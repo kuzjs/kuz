@@ -283,7 +283,7 @@ Renderable.prototype.OutputDirectoryPath = function () {
 }
 
 Renderable.prototype.InputFileExtension = function () {
-	return "page";
+	return "kuz";
 }
 
 Renderable.prototype.InputFileName = function () {
