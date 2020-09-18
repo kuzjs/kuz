@@ -1,4 +1,4 @@
-// ThemeModule.js
+// module.js
 
 const fs = require("fs");
 
@@ -14,7 +14,7 @@ function ThemeModule (theme, data) {
 
 const ThemeElement = require("./element").ThemeElement;
 ThemeModule.prototype = new ThemeElement();
-ThemeModule.prototype.typeName = "ThemeModule";
+ThemeModule.prototype.typeName = "Module";
 
 ThemeModule.prototype.FullPath = function () {
 	return fsutils.JoinPath(this.theme.ThemeModulesInputDirectory(), this.Path());
@@ -22,7 +22,7 @@ ThemeModule.prototype.FullPath = function () {
 
 ThemeModule.prototype.Setup = function () {
 	if (!fs.existsSync(this.FullPath())) {
-		this.theme.site.Error("ThemeModule not found: " + this.FullPath());
+		this.theme.site.Error("Module not found: " + this.FullPath());
 		return;
 	}
 	this.ForcedUpdate();

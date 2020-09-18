@@ -87,11 +87,11 @@ Theme.prototype.SetupPaths = function () {
 Theme.prototype.SetupLayouts = function () {
 	this.layouts = [];
 	if (this.meta.json.layouts) {
-		const Layout = require("./layout").Layout;
+		const ThemeLayout = require("./layout").ThemeLayout;
 		for (let data of this.meta.json.layouts) {
 			let layoutFilePath = fsutils.JoinPath(this.LayoutsInputDirectory(), data.path);
 			if (fsutils.IsFile(layoutFilePath)) {
-				let layout = new Layout(this, data);
+				let layout = new ThemeLayout(this, data);
 				this.layouts.push(layout);
 			} else {
 				log.Red("Layout NOT found: " + layoutFilePath);

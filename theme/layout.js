@@ -1,4 +1,4 @@
-// Layout.js
+// layout.js
 
 const fs = require("fs");
 const pug = require("pug");
@@ -6,7 +6,7 @@ const pug = require("pug");
 const log = require("../kz-log/log");
 const fsutils = require("../kz-fs");
 
-function Layout (theme, data) {
+function ThemeLayout (theme, data) {
 	this.theme = theme;
 	this.data = data;
 	this.default = data.default ? data.default : false;
@@ -14,14 +14,14 @@ function Layout (theme, data) {
 }
 
 const ThemeElement = require("./element").ThemeElement;
-Layout.prototype = new ThemeElement();
-Layout.prototype.typeName = "Layout";
+ThemeLayout.prototype = new ThemeElement();
+ThemeLayout.prototype.typeName = "Layout";
 
-Layout.prototype.FullPath = function () {
+ThemeLayout.prototype.FullPath = function () {
 	return fsutils.JoinPath(this.theme.LayoutsInputDirectory(), this.Path());
 }
 
-Layout.prototype.Setup = function () {
+ThemeLayout.prototype.Setup = function () {
 	if (!fs.existsSync(this.FullPath())) {
 		this.theme.site.Error("Layout not found: " + this.FullPath());
 		return;
@@ -29,27 +29,27 @@ Layout.prototype.Setup = function () {
 	this.ForcedUpdate();
 }
 
-Layout.prototype.AllIsWell = function () {
+ThemeLayout.prototype.AllIsWell = function () {
 	if (this.allIsWell === undefined) {
 		return false;
 	}
 	return this.allIsWell;
 }
 
-Layout.prototype.ForcedUpdate = function () {
+ThemeLayout.prototype.ForcedUpdate = function () {
 	this.pug = pug.compileFile(this.FullPath());
 	this.mtimeMs = fs.statSync(this.FullPath()).mtimeMs;
 	this.allIsWell = true;
 }
 
-Layout.prototype.NeedsUpdate = function () {
+ThemeLayout.prototype.NeedsUpdate = function () {
 	if (this.mtimeMs == fs.statSync(this.FullPath()).mtimeMs) {
 		return false;
 	}
 	return true;
 }
 
-Layout.prototype.Update = function () {
+ThemeLayout.prototype.Update = function () {
 	if (this.NeedsUpdate()) {
 		this.ForcedUpdate();
 	}
@@ -58,7 +58,7 @@ Layout.prototype.Update = function () {
 
 
 module.exports = {
-	Layout: Layout
+	ThemeLayout: ThemeLayout
 };
 
 
