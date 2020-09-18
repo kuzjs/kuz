@@ -167,7 +167,8 @@ Renderable.prototype.GetKuz = function () {
 		cprops: this.configFileObject.props,
 		sprops: this.site.meta.json,
 		kprops: this.site.app.meta.json,
-		tprops: this.Theme().Props()
+		tprops: this.Theme().Props(),
+		ipsum: this.LoremIpsum()
 	};
 }
 
@@ -179,8 +180,7 @@ Renderable.prototype.GetPageOptions = function () {
 	return {
 		page: this,
 		kuz: this.GetKuz(),
-		blackadder: this.Blackadder(),
-		ipsum: this.LoremIpsum()
+		blackadder: this.Blackadder()
 	};
 }
 
