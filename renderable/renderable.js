@@ -274,8 +274,8 @@ Renderable.prototype.OutputFileNesting = function () {
 	return (this.OutputFilePath().split("/").length - 2);
 }
 
-Renderable.prototype.OutputFilePath = function () {
-	return this.OutputDirectoryPath() + "/index.html";
+Renderable.prototype.OutputFileName = function () {
+	return "index.html";
 }
 
 Renderable.prototype.OutputDirectoryPath = function () {
@@ -292,10 +292,6 @@ Renderable.prototype.InputFileName = function () {
 
 Renderable.prototype.InputDirectoryPath = function () {
 	return this.configFileObject.DirPath();
-}
-
-Renderable.prototype.InputFilePath = function () {
-	return fsutils.JoinPath(this.InputDirectoryPath(), this.InputFileName());
 }
 
 Renderable.prototype.Description = function () {

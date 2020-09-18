@@ -269,7 +269,7 @@ KZBaseObject.prototype.InputFileMTime = function () {
 }
 
 KZBaseObject.prototype.OutputFilePath = function () {
-	return fsutils.JoinPath(this.OutputDirectory(), this.Path());
+	return fsutils.JoinPath(this.OutputDirectoryPath(), this.OutputFileName());
 }
 
 KZBaseObject.prototype.OutputFileExists = function () {
