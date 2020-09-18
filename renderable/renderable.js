@@ -168,7 +168,12 @@ Renderable.prototype.GetKuz = function () {
 		sprops: this.site.meta.json,
 		kprops: this.site.app.meta.json,
 		tprops: this.Theme().Props(),
-		ipsum: this.LoremIpsum()
+		ipsum: this.LoremIpsum(),
+		kuz: {
+			kuz: {
+				//
+			}
+		}
 	};
 }
 
