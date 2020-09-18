@@ -18,6 +18,7 @@ ThemeElement.prototype.typeName = "ThemeElement";
 ThemeElement.prototype.SetupThemeElement = function (theme, data) {
 	this.theme = theme;
 	this.data = data;
+	this.default = data.default ? data.default : false;
 }
 
 ThemeElement.prototype.ElementIsValid = function () {

@@ -7,9 +7,7 @@ const log = require("../kz-log/log");
 const fsutils = require("../kz-fs");
 
 function ThemeLayout (theme, data) {
-	this.theme = theme;
-	this.data = data;
-	this.default = data.default ? data.default : false;
+	this.SetupThemeElement(theme, data);
 	this.Setup();
 }
 
