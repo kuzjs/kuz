@@ -109,7 +109,7 @@ Theme.prototype.SetupJS = function () {
 
 Theme.prototype.SetupResources = function () {
 	const ThemeResource = require("./resource").ThemeResource;
-	this.resourceArray = this.SetupElements(this.meta.json.res, ThemeResource);
+	this.resourceArray = this.SetupElements(this.meta.json.resources, ThemeResource);
 }
 
 Theme.prototype.SetupNextPrevious = function () {
