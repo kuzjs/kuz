@@ -20,6 +20,10 @@ ThemeElement.prototype.SetupThemeElement = function (theme, data) {
 	this.data = data;
 }
 
+ThemeElement.prototype.ElementIsValid = function () {
+	return this.InputFileExists();
+}
+
 ThemeElement.prototype.Name = function () {
 	return this.data.name;
 }

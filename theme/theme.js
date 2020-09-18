@@ -111,7 +111,9 @@ Theme.prototype.SetupModules = function () {
 		const ThemeModule = require("./module").ThemeModule;
 		for (let data of this.meta.json.modules) {
 			let mod = new ThemeModule(this, data);
-			this.modules.push(mod);
+			if (mod.ElementIsValid()) {
+				this.modules.push(mod);
+			}
 		}
 	}
 }
@@ -121,8 +123,10 @@ Theme.prototype.SetupCSS = function () {
 	if (this.meta.json.css) {
 		const ThemeCSS = require("./css").ThemeCSS;
 		for (let data of this.meta.json.css) {
-			let cssFile = new ThemeCSS(this, data);
-			this.cssArray.push(cssFile);
+			let element = new ThemeCSS(this, data);
+			if (element.ElementIsValid()) {
+				this.cssArray.push(element);
+			}
 		}
 	}
 }
@@ -132,8 +136,10 @@ Theme.prototype.SetupJS = function () {
 	if (this.meta.json.js) {
 		const ThemeJS = require("./js").ThemeJS;
 		for (let data of this.meta.json.js) {
-			let jsFile = new ThemeJS(this, data);
-			this.jsArray.push(jsFile);
+			let element = new ThemeJS(this, data);
+			if (element.ElementIsValid()) {
+				this.jsArray.push(element);
+			}
 		}
 	}
 }
@@ -143,8 +149,10 @@ Theme.prototype.SetupResources = function () {
 	if (this.meta.json.res) {
 		const ThemeResource = require("./resource").ThemeResource;
 		for (let data of this.meta.json.res) {
-			let resFile = new ThemeResource(this, data);
-			this.resourceArray.push(resFile);
+			let resource = new ThemeResource(this, data);
+			if (resource.ElementIsValid()) {
+				this.resourceArray.push(resource);
+			}
 		}
 	}
 }

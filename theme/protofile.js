@@ -1,5 +1,7 @@
 // protofile.js
 
+const fs = require("fs");
+
 const log = require("../kz-log/log");
 const fsutils = require("../kz-fs");
 
@@ -21,8 +23,12 @@ ProtoFile.prototype.SetupProto = function (theme, data) {
 	this.SetupThemeElement(theme, data);
 }
 
-ProtoFile.prototype.OutputDirectory = function () {
+ProtoFile.prototype.OutputDirectoryPath = function () {
 	return fsutils.JoinPath(this.theme.OutputDirectory(), this.dirName);
+}
+
+ProtoFile.prototype.OutputFileName = function () {
+	return this.Path();
 }
 
 ProtoFile.prototype.toString = function () {
@@ -34,7 +40,14 @@ ProtoFile.prototype.Updatable = function () {
 }
 
 ProtoFile.prototype.Update = function () {
-	this.PrintInputFilePath();
+	this.ForcedUpdate();
+}
+
+ProtoFile.prototype.ForcedUpdate = function () {
+	let contents = fs.readFileSync(this.InputFilePath());
+	fsutils.CreateDirectory(this.OutputDirectoryPath());
+	fs.writeFileSync(this.OutputFilePath(), contents);
+	log.Green("Updated: " + this.OutputFilePath());
 }
 
 ProtoFile.prototype.log = function () {
