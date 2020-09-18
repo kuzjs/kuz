@@ -254,11 +254,7 @@ KZBaseObject.prototype.InputFilePath = function () {
 }
 
 KZBaseObject.prototype.InputFileExists = function () {
-	let path = this.InputFilePath();
-	if (fs.existsSync(path)) {
-		return true;
-	}
-	return false;
+	return fsutils.FileExists(this.InputFilePath());
 }
 
 KZBaseObject.prototype.InputFileMTime = function () {
@@ -270,11 +266,7 @@ KZBaseObject.prototype.OutputFilePath = function () {
 }
 
 KZBaseObject.prototype.OutputFileExists = function () {
-	let path = this.OutputFilePath();
-	if (fs.existsSync(path)) {
-		return true;
-	}
-	return false;
+	return fsutils.FileExists(this.OutputFilePath());
 }
 
 KZBaseObject.prototype.OutputFileMTime = function () {

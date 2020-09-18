@@ -26,6 +26,17 @@ function TrimSlashes (text) {
 	return text.slice(firstNonSlash, lastNonSlash+1);
 }
 
+function FileExists (path) {
+	if (fs.existsSync(path)) {
+		return true;
+	}
+	return false;
+}
+
+function FileDoesNotExist (path) {
+	return !FileExists(path);
+}
+
 function CreateDirectory (path) {
 	if (!fs.existsSync(path)) {
 		fs.mkdirSync(path, {
@@ -173,6 +184,8 @@ function DeleteAllButIndexHtml (dirpath) {
 module.exports = {
 	TrimSlashes: TrimSlashes,
 	CreateDirectory: CreateDirectory,
+	FileExists: FileExists,
+	FileDoesNotExist: FileDoesNotExist,
 	GetFileMTime: GetFileMTime,
 	JoinPath: JoinPath,
 	IsFileOrDirectory: IsFileOrDirectory,
