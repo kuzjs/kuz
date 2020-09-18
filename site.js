@@ -38,6 +38,10 @@ Site.prototype.HomeURL = function () {
 	return fsutils.TrimSlashes(this.meta.json.meta.SITE_URL);
 }
 
+Site.prototype.Props = function () {
+	return this.meta.json;
+}
+
 Site.prototype.IsSite = function () {
 	return true;
 }

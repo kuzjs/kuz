@@ -164,9 +164,9 @@ Renderable.prototype.GetKuz = function () {
 		app: this.site.app,
 		site: this.site,
 		props: this.Props(),
-		cprops: this.configFileObject.props,
-		sprops: this.site.meta.json,
-		kprops: this.site.app.meta.json,
+		cprops: this.configFileObject.Props(),
+		sprops: this.site.Props(),
+		kprops: this.site.app.Props(),
 		tprops: this.Theme().Props(),
 		ipsum: this.LoremIpsum(),
 		kuz: {

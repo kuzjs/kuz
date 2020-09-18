@@ -30,6 +30,10 @@ function KaagazzApp () {
 	}
 }
 
+KaagazzApp.prototype.Props = function () {
+	return this.meta.json;
+}
+
 KaagazzApp.prototype.AllIsWell = function () {
 	if (!this.meta.AllIsWell()) {
 		return false;
