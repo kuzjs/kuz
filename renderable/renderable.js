@@ -168,6 +168,7 @@ Renderable.prototype.GetKuz = function () {
 		sprops: this.site.Props(),
 		kprops: this.site.app.Props(),
 		tprops: this.Theme().Props(),
+		lprops: this.GetLayout().Props(),
 		ipsum: this.LoremIpsum(),
 		kuz: {
 			kuz: {

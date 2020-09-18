@@ -25,6 +25,10 @@ ThemeElement.prototype.ElementIsValid = function () {
 	return this.InputFileExists();
 }
 
+ThemeElement.prototype.Props = function () {
+	return this.data;
+}
+
 ThemeElement.prototype.Name = function () {
 	return this.data.name;
 }
