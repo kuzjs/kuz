@@ -25,10 +25,6 @@ ProtoFile.prototype.OutputDirectory = function () {
 	return fsutils.JoinPath(this.theme.OutputDirectory(), this.dirName);
 }
 
-ProtoFile.prototype.OutputFilePath = function () {
-	return fsutils.JoinPath(this.OutputDirectory(), this.Path());
-}
-
 ProtoFile.prototype.toString = function () {
 	return "File: " + this.InputFilePath() + " --> " + this.OutputFilePath();
 }

@@ -52,10 +52,6 @@ ThemeElement.prototype.InputDirectoryPath = function () {
 	return this.theme.InputDirectory() + "/" + this.InputDirectoryName();
 }
 
-ThemeElement.prototype.InputFilePath = function () {
-	return this.InputDirectoryPath() + "/" + this.InputFileName();
-}
-
 ThemeElement.prototype.PrintInputFilePath = function () {
 	log.Green("Input file path: " + this.InputFilePath());
 }

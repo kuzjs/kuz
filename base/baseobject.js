@@ -1,6 +1,8 @@
 // baseobject.js
 
 const log = require("../kz-log/log");
+const fsutils = require("../kz-fs");
+const fs = require("fs");
 
 
 
@@ -243,6 +245,46 @@ KZBaseObject.prototype.IsResFile = function () {
 
 KZBaseObject.prototype.CodeAndName = function () {
 	return this.CodeName() + ": " + this.Name();
+}
+
+
+
+KZBaseObject.prototype.InputFilePath = function () {
+	return fsutils.JoinPath(this.InputDirectoryPath(), this.InputFileName());
+}
+
+KZBaseObject.prototype.InputFileExists = function () {
+	let path = this.InputFilePath();
+	if (fs.existsSync(path)) {
+		return true;
+	}
+	return false;
+}
+
+KZBaseObject.prototype.InputFileMTime = function () {
+	if (this.InputFileExists()) {
+		return fs.statSync(this.InputFilePath()).mtimeMs;
+	}
+	return 0;
+}
+
+KZBaseObject.prototype.OutputFilePath = function () {
+	return fsutils.JoinPath(this.OutputDirectory(), this.Path());
+}
+
+KZBaseObject.prototype.OutputFileExists = function () {
+	let path = this.OutputFilePath();
+	if (fs.existsSync(path)) {
+		return true;
+	}
+	return false;
+}
+
+KZBaseObject.prototype.OutputFileMTime = function () {
+	if (this.OutputFileExists()) {
+		return fs.statSync(this.OutputFilePath()).mtimeMs;
+	}
+	return 0;
 }
 
 
