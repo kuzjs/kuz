@@ -313,10 +313,22 @@ KaagazzApp.prototype.ShowVersion = function () {
 	table.Print();
 }
 
+KaagazzApp.prototype.BenchMark = function () {
+	let rendered = 0;
+	for (let index=0; index<20; index++) {
+		for (let x of this.site.Renderables()) {
+			x.ForcedUpdate();
+			rendered++;
+		}
+	}
+	log.Red("Rendered: " + rendered + " pages.");
+}
+
 KaagazzApp.prototype.Nietzsche = function () {
 	log.Green("Kaagazz Nietzschean Experiment.");
 
-	this.site.pages[0].metaData.PrintPropertyTable();
+	//this.site.pages[0].metaData.PrintPropertyTable();
+	this.BenchMark();
 
 	for (let x of this.operands) {
 		log.Green(x.CodeAndName());
