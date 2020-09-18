@@ -8,31 +8,36 @@
 	},
 
 	"input": {
+		"data": "data",
+		"pages": "pages",
+		"meta": "meta",
+
 		"authors": "authors",
 		"categories": "categories",
-		"collections": "collections",
-		"data": "data",
-		"meta": "meta",
-		"pages": "pages",
 		"tags": "tags",
+		"collections": "collections",
+
 		"themes": "themes",
 		"layouts": "layouts",
 		"modules": "modules",
 		"css": "css",
 		"js": "js",
 		"resources": "resources",
+
 		"zzz": false
 	},
 
 	"output": {
-		"author": "author",
-		"category": "category",
-		"collection": "collection",
-		"dist": "dist",
 		"root": "docs",
 		"special": "x",
-		"tag": "tag",
+		"dist": "dist",
 		"themes": "themes",
+
+		"author": "author",
+		"category": "category",
+		"tag": "tag",
+		"collection": "collection",
+
 		"zzz": false
 	},
 
