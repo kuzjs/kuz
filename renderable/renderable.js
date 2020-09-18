@@ -270,18 +270,6 @@ Renderable.prototype.RenderLog = function () {
 	log.Green("Rendered: (" + this.InputFilePath() + ") --> [" + this.OutputFilePath() + "]");
 }
 
-Renderable.prototype.OutputFileNesting = function () {
-	return (this.OutputFilePath().split("/").length - 2);
-}
-
-Renderable.prototype.OutputFileName = function () {
-	return "index.html";
-}
-
-Renderable.prototype.OutputDirectoryPath = function () {
-	return fsutils.JoinPath(this.site.GetOutputDirectory(), this.OutputDirectoryPartialPath());
-}
-
 Renderable.prototype.InputFileExtension = function () {
 	return "kuz";
 }
@@ -292,6 +280,18 @@ Renderable.prototype.InputFileName = function () {
 
 Renderable.prototype.InputDirectoryPath = function () {
 	return this.configFileObject.DirPath();
+}
+
+Renderable.prototype.OutputFileNesting = function () {
+	return (this.OutputFilePath().split("/").length - 2);
+}
+
+Renderable.prototype.OutputFileName = function () {
+	return "index.html";
+}
+
+Renderable.prototype.OutputDirectoryPath = function () {
+	return fsutils.JoinPath(this.site.GetOutputDirectory(), this.OutputDirectoryPartialPath());
 }
 
 Renderable.prototype.Description = function () {
