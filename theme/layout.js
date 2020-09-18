@@ -55,29 +55,6 @@ Layout.prototype.Update = function () {
 	}
 }
 
-Layout.prototype.GetTable = function () {
-	const KZTable = require("../kz-table/table").KZTable;
-	let table = new KZTable();
-	table.AddColumn("Name");
-	table.AddColumn("Theme");
-	table.AddColumn("Title");
-	table.AddColumn("Description");
-	table.AddColumn("Documentation");
-	table.AddColumn("Path");
-	return table;
-}
-
-Layout.prototype.Row = function () {
-	return [
-		this.Name(),
-		this.theme.Name(),
-		this.Title(),
-		this.Description(),
-		this.Documentation(),
-		this.Path()
-	];
-}
-
 
 
 module.exports = {

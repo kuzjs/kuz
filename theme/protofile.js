@@ -41,29 +41,6 @@ ProtoFile.prototype.toString = function () {
 	return "File: " + this.InputFilePath() + " --> " + this.OutputFilePath();
 }
 
-ProtoFile.prototype.GetTable = function () {
-	const KZTable = require("../kz-table/table").KZTable;
-	let table = new KZTable();
-	table.AddColumn("Name");
-	table.AddColumn("Theme");
-	table.AddColumn("Path");
-	table.AddColumn("Title");
-	table.AddColumn("Description");
-	table.AddColumn("Documentation");
-	return table;
-}
-
-ProtoFile.prototype.Row = function () {
-	return [
-		this.Name(),
-		this.theme.Name(),
-		this.Path(),
-		this.Title(),
-		this.Description(),
-		this.Documentation()
-	];
-}
-
 ProtoFile.prototype.log = function () {
 	log.SomeNews(this);
 }
