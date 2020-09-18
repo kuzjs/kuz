@@ -256,12 +256,7 @@ Renderable.prototype.Render = function () {
 	let layout = this.GetLayout();
 	let html = layout.pug(options = this.GetPageOptions());
 
-	if (!fs.existsSync(this.OutputDirectoryPath())) {
-		fs.mkdirSync(this.OutputDirectoryPath(), {
-			recursive: true
-		});
-	}
-
+	fsutils.CreateDirectory(this.OutputDirectoryPath());
 	fs.writeFileSync(htmlPath, html);
 	this.RenderLog();
 }

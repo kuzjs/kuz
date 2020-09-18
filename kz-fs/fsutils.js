@@ -26,6 +26,14 @@ function TrimSlashes (text) {
 	return text.slice(firstNonSlash, lastNonSlash+1);
 }
 
+function CreateDirectory (path) {
+	if (!fs.existsSync(path)) {
+		fs.mkdirSync(path, {
+			recursive: true
+		});
+	}
+}
+
 function JoinPath () {
 	let path = "";
 
@@ -157,6 +165,7 @@ function DeleteAllButIndexHtml (dirpath) {
 
 module.exports = {
 	TrimSlashes: TrimSlashes,
+	CreateDirectory: CreateDirectory,
 	JoinPath: JoinPath,
 	IsFileOrDirectory: IsFileOrDirectory,
 	IsDirectory: IsDirectory,
