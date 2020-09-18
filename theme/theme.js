@@ -73,69 +73,43 @@ Theme.prototype.SetupPaths = function () {
 	this.is_valid = true;
 }
 
-Theme.prototype.SetupLayouts = function () {
-	this.layouts = [];
-	if (this.meta.json.layouts) {
-		const ThemeLayout = require("./layout").ThemeLayout;
-		for (let data of this.meta.json.layouts) {
-			let layout = new ThemeLayout(this, data);
-			if (layout.ElementIsValid()) {
-				this.layouts.push(layout);
+Theme.prototype.SetupElements = function (dataArray, ElementClass) {
+	let elements = [];
+	if (dataArray) {
+		for (let data of dataArray) {
+			let element = new ElementClass(this, data);
+			if (element.ElementIsValid()) {
+				elements.push(element);
 			}
 		}
 	}
+
+	return elements;
+}
+
+Theme.prototype.SetupLayouts = function () {
+	const ThemeLayout = require("./layout").ThemeLayout;
+	this.layouts = this.SetupElements(this.meta.json.layouts, ThemeLayout);
 }
 
 Theme.prototype.SetupModules = function () {
-	this.modules = [];
-	if (this.meta.json.modules) {
-		const ThemeModule = require("./module").ThemeModule;
-		for (let data of this.meta.json.modules) {
-			let mod = new ThemeModule(this, data);
-			if (mod.ElementIsValid()) {
-				this.modules.push(mod);
-			}
-		}
-	}
+	const ThemeModule = require("./module").ThemeModule;
+	this.modules = this.SetupElements(this.meta.json.modules, ThemeModule);
 }
 
 Theme.prototype.SetupCSS = function () {
-	this.cssArray = [];
-	if (this.meta.json.css) {
-		const ThemeCSS = require("./css").ThemeCSS;
-		for (let data of this.meta.json.css) {
-			let element = new ThemeCSS(this, data);
-			if (element.ElementIsValid()) {
-				this.cssArray.push(element);
-			}
-		}
-	}
+	const ThemeCSS = require("./css").ThemeCSS;
+	this.cssArray = this.SetupElements(this.meta.json.css, ThemeCSS);
 }
 
 Theme.prototype.SetupJS = function () {
-	this.jsArray = [];
-	if (this.meta.json.js) {
-		const ThemeJS = require("./js").ThemeJS;
-		for (let data of this.meta.json.js) {
-			let element = new ThemeJS(this, data);
-			if (element.ElementIsValid()) {
-				this.jsArray.push(element);
-			}
-		}
-	}
+	const ThemeJS = require("./js").ThemeJS;
+	this.jsArray = this.SetupElements(this.meta.json.js, ThemeJS);
 }
 
 Theme.prototype.SetupResources = function () {
-	this.resourceArray = [];
-	if (this.meta.json.res) {
-		const ThemeResource = require("./resource").ThemeResource;
-		for (let data of this.meta.json.res) {
-			let resource = new ThemeResource(this, data);
-			if (resource.ElementIsValid()) {
-				this.resourceArray.push(resource);
-			}
-		}
-	}
+	const ThemeResource = require("./resource").ThemeResource;
+	this.resourceArray = this.SetupElements(this.meta.json.res, ThemeResource);
 }
 
 Theme.prototype.SetupNextPrevious = function () {
