@@ -24,7 +24,7 @@ Entity.prototype.IsEntity = function () {
 	return true;
 }
 
-Entity.prototype.GetName = function () {
+Entity.prototype.Name = function () {
 	return this.entry;
 }
 

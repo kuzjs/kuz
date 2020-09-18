@@ -39,15 +39,7 @@ Renderable.prototype.Reset = function () {
 }
 
 Renderable.prototype.Name = function () {
-	return this.GetName();
-}
-
-Renderable.prototype.GetName = function () {
-	return this.name;
-}
-
-Renderable.prototype.SetName = function (name) {
-	this.name = name.trim().replace(" ", "-").replace("_", "-");
+	return this.entry;
 }
 
 Renderable.prototype.GetTable = function () {
