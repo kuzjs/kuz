@@ -447,7 +447,7 @@ KaagazzApp.prototype.Run = function () {
 	} else if (flags.serve) {
 		//
 	} else if (flags.updatable) {
-		this.Updateable();
+		this.Updatable();
 	} else if (flags.update) {
 		this.Update();
 	} else if (flags.watch) {

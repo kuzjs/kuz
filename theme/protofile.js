@@ -41,6 +41,14 @@ ProtoFile.prototype.toString = function () {
 	return "File: " + this.InputFilePath() + " --> " + this.OutputFilePath();
 }
 
+ProtoFile.prototype.Updatable = function () {
+	log.Green("File updatable: " + this.InputFilePath() + " --> " + this.OutputFilePath());
+}
+
+ProtoFile.prototype.Update = function () {
+	log.Green("File updated: " + this.InputFilePath() + " --> " + this.OutputFilePath());
+}
+
 ProtoFile.prototype.log = function () {
 	log.SomeNews(this);
 }
