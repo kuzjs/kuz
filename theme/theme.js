@@ -40,22 +40,6 @@ Theme.prototype.OutputDirectory = function () {
 	return fsutils.JoinPath(this.ThemesOutputDirectory(), this.Name());
 }
 
-Theme.prototype.LayoutsInputDirectory = function () {
-	return fsutils.JoinPath(this.InputDirectory(), "layouts");
-}
-
-Theme.prototype.ThemeModulesInputDirectory = function () {
-	return fsutils.JoinPath(this.InputDirectory(), "modules");
-}
-
-Theme.prototype.CssInputDirectory = function () {
-	return fsutils.JoinPath(this.InputDirectory(), "css");
-}
-
-Theme.prototype.JsInputDirectory = function () {
-	return fsutils.JoinPath(this.InputDirectory(), "js");
-}
-
 Theme.prototype.JsonFileName = function () {
 	return "theme.json";
 }
@@ -94,12 +78,9 @@ Theme.prototype.SetupLayouts = function () {
 	if (this.meta.json.layouts) {
 		const ThemeLayout = require("./layout").ThemeLayout;
 		for (let data of this.meta.json.layouts) {
-			let layoutFilePath = fsutils.JoinPath(this.LayoutsInputDirectory(), data.path);
-			if (fsutils.IsFile(layoutFilePath)) {
-				let layout = new ThemeLayout(this, data);
+			let layout = new ThemeLayout(this, data);
+			if (layout.ElementIsValid()) {
 				this.layouts.push(layout);
-			} else {
-				log.Red("Layout NOT found: " + layoutFilePath);
 			}
 		}
 	}
