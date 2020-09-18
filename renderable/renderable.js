@@ -154,27 +154,31 @@ Renderable.prototype.GetPages = function () {
 	return this.site.pages;
 }
 
+Renderable.prototype.GetKuz = function () {
+	let article = this.GetArticle();
+	let sections = article ? article.sections : null;
+	return {
+		page: this,
+		article: article,
+		sections: sections,
+		app: this.site.app,
+		site: this.site,
+		props: this.Props(),
+		cprops: this.configFileObject.props,
+		sprops: this.site.meta.json,
+		kprops: this.site.app.meta.json,
+		tprops: this.Theme().Props()
+	};
+}
+
 Renderable.prototype.GetPagesCount = function () {
 	return this.GetPages().length;
 }
 
 Renderable.prototype.GetPageOptions = function () {
-	let article = this.GetArticle();
-	let sections = article ? article.sections : null;
 	return {
 		page: this,
-		kuz: {
-			page: this,
-			article: article,
-			sections: sections,
-			app: this.site.app,
-			site: this.site,
-			props: this.Props(),
-			cprops: this.configFileObject.props,
-			sprops: this.site.meta.json,
-			kprops: this.site.app.meta.json,
-			tprops: this.Theme().Props()
-		},
+		kuz: this.GetKuz(),
 		blackadder: this.Blackadder(),
 		ipsum: this.LoremIpsum()
 	};
