@@ -23,7 +23,6 @@ Renderable.prototype.SetupRenderable = function (site, configFileObject, entry) 
 	this.SetSite(site);
 	this.SetConfig(configFileObject);
 	this.entry = entry.trim();
-	this.name = this.entry;
 	if (this.IsEntity()) {
 		const MetaData = require("../metadata/metadata").MetaData;
 		this.metaData = new MetaData(this.site, this.InputFilePath());

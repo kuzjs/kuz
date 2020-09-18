@@ -349,7 +349,7 @@ Site.prototype.GetAuthorFromName = function (authorName) {
 
 Site.prototype.GetCategoryFromName = function (categoryName) {
 	for (let category of this.categories) {
-		if (category.name == categoryName) {
+		if (category.Name() == categoryName) {
 			return category;
 		}
 	}
@@ -358,7 +358,7 @@ Site.prototype.GetCategoryFromName = function (categoryName) {
 
 Site.prototype.GetTagFromName = function (tagName) {
 	for (let tag of this.tags) {
-		if (tag.name == tagName) {
+		if (tag.Name() == tagName) {
 			return tag;
 		}
 	}
