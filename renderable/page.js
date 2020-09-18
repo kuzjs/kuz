@@ -6,13 +6,12 @@ const fs = require("fs");
 const fsutils = require("../kz-fs");
 const log = require("../kz-log/log");
 
-function Page(site, configFileObject, filename, isRoot = false) {
-	this.site = site;
-	this.configFileObject = configFileObject;
+function Page (site, configFileObject, filename, isRoot = false) {
+	this.SetupRenderable(site, configFileObject);
 	this.configDirpath = (configFileObject.dirpath === undefined) ? "" : configFileObject.dirpath;
 	this.filename = filename;
 	this.isRoot = isRoot;
-	this.Setup();
+	this.SetupPage();
 }
 
 const Renderable = require("./renderable").Renderable;
@@ -21,7 +20,7 @@ Page.prototype.typeName = "page";
 Page.prototype.typeNamePlural = "pages";
 Page.prototype.codeLetter = "p";
 
-Page.prototype.Setup = function () {
+Page.prototype.SetupPage = function () {
 	this.SetupInput();
 	this.tags = [];
 
