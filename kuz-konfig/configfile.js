@@ -2,8 +2,6 @@
 
 
 
-const MetaData = require("../kuz-metadata").MetaData;
-
 const log = require("../kuz-log/log");
 
 const Nss = require("../kuz-nss/nss").Nss;
@@ -34,7 +32,8 @@ function ConfigFile(site, dirpath, entity=false) {
 	this.index = 0;
 
 	if (this.Exists()) {
-		this.metaData = new MetaData(this.site, this.configFilePath);
+		const KuzMetaData = require("../kuz-metadata").KuzMetaData;
+		this.metaData = new KuzMetaData(this.site, this.configFilePath);
 		this.props = this.metaData.Props();
 	} else {
 		log.BadNews("ConfigFile not found: " + this.configFilePath);

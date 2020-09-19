@@ -6,16 +6,16 @@ const fsutils = require("../kuz-fs");
 
 const separators = [];
 
-function MetaData (site, path) {
+function KuzMetaData (site, path) {
 	this.site = site;
 	this.path = path;
 	this.Setup();
 }
 
 const KZBaseObject = require("../base/baseobject").KZBaseObject;
-MetaData.prototype = new KZBaseObject();
+KuzMetaData.prototype = new KZBaseObject();
 
-MetaData.prototype.Setup = function () {
+KuzMetaData.prototype.Setup = function () {
 	this.properties = [];
 	if (this.Exists()) {
 		const Nss = require("../kuz-nss/nss").Nss;
@@ -33,7 +33,7 @@ MetaData.prototype.Setup = function () {
 	}
 }
 
-MetaData.prototype.Props = function () {
+KuzMetaData.prototype.Props = function () {
 	let props = {};
 	for (let property of this.properties) {
 		props[property.name] = property.value;
@@ -41,14 +41,14 @@ MetaData.prototype.Props = function () {
 	return props;
 }
 
-MetaData.prototype.Exists = function () {
+KuzMetaData.prototype.Exists = function () {
 	if (fsutils.IsFile(this.path)) {
 		return true;
 	}
 	return false;
 }
 
-MetaData.prototype.GetValue = function (propertyName) {
+KuzMetaData.prototype.GetValue = function (propertyName) {
 	for (let property of this.properties) {
 		if (propertyName == property.Name()) {
 			return {
@@ -63,11 +63,11 @@ MetaData.prototype.GetValue = function (propertyName) {
 	};
 }
 
-MetaData.prototype.NumberOfProperties = function () {
+KuzMetaData.prototype.NumberOfProperties = function () {
 	return this.properties.length;
 }
 
-MetaData.prototype.PrintPropertyTable = function () {
+KuzMetaData.prototype.PrintPropertyTable = function () {
 	if (this.properties.length > 0) {
 		let table = this.properties[0].GetTable();
 		for (let property of this.properties) {
@@ -78,7 +78,7 @@ MetaData.prototype.PrintPropertyTable = function () {
 }
 
 module.exports = {
-	MetaData: MetaData
+	KuzMetaData: KuzMetaData
 };
 
 

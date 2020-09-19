@@ -31,8 +31,8 @@ Page.prototype.SetupPage = function (site, configFileObject, entry) {
 	this.SetupInput();
 	this.tags = [];
 
-	const MetaData = require("../kuz-metadata").MetaData;
-	this.metaData = new MetaData(this.site, this.inputFilePath);
+	const KuzMetaData = require("../kuz-metadata").KuzMetaData;
+	this.metaData = new KuzMetaData(this.site, this.inputFilePath);
 
 	const Nss = require("../kuz-nss/nss").Nss;
 	this.inputNss = new Nss(this.inputFilePath);
