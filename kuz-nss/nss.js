@@ -135,16 +135,20 @@ KuZNss.prototype.GetOddRegionLines = function () {
 	return oddLines;
 }
 
-KuZNss.prototype.GetMetaLines = function () {
-	return this.GetHeaderLines();
-}
 
-KuZNss.prototype.GetHeaderLines = function () {
-	return this.GetLinesByRegionIndex(0);
+
+KuZNss.prototype.GetMetaLines = function () {
+	return this.GetEvenRegionLines();
 }
 
 KuZNss.prototype.GetContentLines = function () {
-	return this.GetBodyLines();
+	return this.GetOddRegionLines();
+}
+
+
+
+KuZNss.prototype.GetHeaderLines = function () {
+	return this.GetLinesByRegionIndex(0);
 }
 
 KuZNss.prototype.GetBodyLines = function () {
