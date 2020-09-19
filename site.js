@@ -60,6 +60,31 @@ Site.prototype.SetupPages = function () {
 	this.pages = siteutils.GetPages(this);
 }
 
+Site.prototype.SetupThemes = function () {
+	this.themes = [];
+
+	let themeNames = this.meta.json.themes;
+	if (themeNames === undefined) {
+		log.Red("Themes param not specified.");
+	} else if (themeNames.length == 0) {
+		log.Red("Themes param is empty.");
+	} else {
+		const Theme = require("./theme/theme").Theme;
+		for (let themeName of themeNames) {
+			let theme = new Theme(themeName, this);
+			if (theme.IsValid()) {
+				this.themes.push(theme);
+			} else {
+				log.Red("Invalid theme: " + themeName);
+			}
+		}
+	}
+
+	if (this.themes.length == 0) {
+		log.Red("App has no themes.");
+	}
+}
+
 Site.prototype.GetNestedValueFromCascade = function (parent, child) {
 	let retVal = this.meta.GetNestedValueFromName(parent, child);
 	if (retVal.found) {
@@ -112,31 +137,6 @@ Site.prototype.GetDataFileContents = function (filename) {
 	} else {
 		log.BadNews("File Not Found: " + filepath);
 		return "";
-	}
-}
-
-Site.prototype.SetupThemes = function () {
-	this.themes = [];
-
-	let themeNames = this.meta.json.themes;
-	if (themeNames === undefined) {
-		log.Red("Themes param not specified.");
-	} else if (themeNames.length == 0) {
-		log.Red("Themes param is empty.");
-	} else {
-		const Theme = require("./theme/theme").Theme;
-		for (let themeName of themeNames) {
-			let theme = new Theme(themeName, this);
-			if (theme.IsValid()) {
-				this.themes.push(theme);
-			} else {
-				log.Red("Invalid theme: " + themeName);
-			}
-		}
-	}
-
-	if (this.themes.length == 0) {
-		log.Red("App has no themes.");
 	}
 }
 
