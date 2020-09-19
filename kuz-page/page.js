@@ -65,6 +65,13 @@ Page.prototype.SetupInput = function () {
 	}
 }
 
+Page.prototype.IsValid = function () {
+	if (this.inputFileFound) {
+		return true;
+	}
+	return false;
+}
+
 
 
 Page.prototype.IsPage = function () {

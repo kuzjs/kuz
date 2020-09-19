@@ -60,8 +60,10 @@ function GetPages (site, dirpath, parentConfig) {
 			pages = pages.concat(GetPages(site, entryDirpath, configFileObject));
 		} else {
 			let page = new Page(site, configFileObject, entry);
-			configFileObject.AddPage(page);
-			pages.push(page);
+			if (page.IsValid()) {
+				configFileObject.AddPage(page);
+				pages.push(page);
+			}
 		}
 	}
 
