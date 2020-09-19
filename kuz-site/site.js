@@ -2,9 +2,9 @@
 
 const fs = require("fs");
 
-const log = require("./kz-log/log");
-const siteutils = require("./utils/siteutils");
-const fsutils = require("./kz-fs");
+const log = require("../kz-log/log");
+const siteutils = require("./siteutils");
+const fsutils = require("../kz-fs");
 
 
 
@@ -21,7 +21,7 @@ Site.prototype.Setup = function (kaagazz) {
 	this.errorMessage = null;
 	this.siteJsonPath = this.app.GetSiteJsonPath();
 
-	const JsonFile = require("./kz-json").JsonFile;
+	const JsonFile = require("../kz-json").JsonFile;
 	this.meta = new JsonFile(this.siteJsonPath);
 
 	this.configFileObjects = [];
@@ -69,7 +69,7 @@ Site.prototype.SetupThemes = function () {
 	} else if (themeNames.length == 0) {
 		log.Red("Themes param is empty.");
 	} else {
-		const Theme = require("./theme/theme").Theme;
+		const Theme = require("../theme/theme").Theme;
 		for (let themeName of themeNames) {
 			let theme = new Theme(themeName, this);
 			if (theme.IsValid()) {

@@ -4,7 +4,7 @@ const fs = require("fs");
 
 const log = require("../kz-log/log");
 
-const ConfigFile = require("./configfile").ConfigFile;
+const ConfigFile = require("../utils/configfile").ConfigFile;
 
 const Nss = require("../kz-nss/nss").Nss;
 const Author = require("../renderable/author").Author;

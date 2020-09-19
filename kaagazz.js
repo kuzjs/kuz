@@ -22,7 +22,7 @@ function KaagazzApp () {
 	this.SetupFlags();
 
 	if (this.AllIsWell()) {
-		const Site = require("./site").Site;
+		const Site = require("./kuz-site").Site;
 		this.site = new Site(this);
 		this.SetupOperands();
 	} else {

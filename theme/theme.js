@@ -113,7 +113,7 @@ Theme.prototype.SetupResources = function () {
 }
 
 Theme.prototype.SetupNextPrevious = function () {
-	const SetupNextPrevious = require("../utils/siteutils").SetupNextPrevious;
+	const SetupNextPrevious = require("../kuz-site/siteutils").SetupNextPrevious;
 	SetupNextPrevious(this.layouts);
 	SetupNextPrevious(this.modules);
 	SetupNextPrevious(this.cssArray);
