@@ -2,7 +2,7 @@
 
 const log = require("./kuz-log");
 
-const fsutils = require("./kz-fs");
+const fsutils = require("./kuz-fs");
 const jsonDirectory = require("./base/common").jsonDirectory;
 
 const kaagazzJsonPath = fsutils.JoinPath(jsonDirectory, "kaagazz.json");

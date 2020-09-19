@@ -1,6 +1,6 @@
 // common.js
 
-const fsutils = require("../kz-fs");
+const fsutils = require("../kuz-fs");
 
 
 

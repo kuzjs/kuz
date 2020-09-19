@@ -4,7 +4,7 @@ const fs = require("fs");
 const pug = require("pug");
 
 const log = require("../kuz-log/log");
-const fsutils = require("../kz-fs");
+const fsutils = require("../kuz-fs");
 
 function ThemeLayout (theme, data) {
 	this.SetupThemeElement(theme, data);

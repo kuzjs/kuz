@@ -3,7 +3,7 @@
 
 const fs = require("fs");
 
-const fsutils = require("../kz-fs");
+const fsutils = require("../kuz-fs");
 const log = require("../kuz-log/log");
 
 function Page (site, configFileObject, entry, isRoot = false) {

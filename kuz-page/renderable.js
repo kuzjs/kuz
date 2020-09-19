@@ -2,7 +2,7 @@
 
 const fs = require("fs");
 const log = require("../kuz-log/log");
-const fsutils = require("../kz-fs");
+const fsutils = require("../kuz-fs");
 
 const Article = require("./pages/article").Article;
 

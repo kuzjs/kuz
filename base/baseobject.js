@@ -1,7 +1,7 @@
 // baseobject.js
 
 const log = require("../kuz-log/log");
-const fsutils = require("../kz-fs");
+const fsutils = require("../kuz-fs");
 const fs = require("fs");
 
 

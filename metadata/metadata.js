@@ -2,7 +2,7 @@
 
 
 
-const fsutils = require("../kz-fs");
+const fsutils = require("../kuz-fs");
 
 const separators = [];
 const commentStarters = [

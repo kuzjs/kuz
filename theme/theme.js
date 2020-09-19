@@ -1,7 +1,7 @@
 // theme.js
 
 const log = require("../kuz-log/log");
-const fsutils = require("../kz-fs");
+const fsutils = require("../kuz-fs");
 
 const common = require("../base/common");
 const defaultText = common.defaultText;
