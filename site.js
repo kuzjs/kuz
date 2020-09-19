@@ -26,7 +26,7 @@ Site.prototype.Setup = function (kaagazz) {
 
 	this.configFileObjects = [];
 	this.SetupThemes();
-	this.SetupRenderables();
+	this.SetupPages();
 }
 
 Site.prototype.AddConfig = function (configFileObject) {
@@ -56,14 +56,8 @@ Site.prototype.Error = function (errorMessage) {
 	log.Red(this.errorMessage);
 }
 
-Site.prototype.SetupRenderables = function () {
-	this.authors = siteutils.GetAuthors(this);
-	this.defaultAuthor = this.authors[this.authors.length - 1];
-	this.categories = siteutils.GetCategories(this);
-	this.defaultCategory = this.categories[this.categories.length - 1];
-	this.tags = siteutils.GetTags(this);
+Site.prototype.SetupPages = function () {
 	this.pages = siteutils.GetPages(this);
-	this.collections = siteutils.GetCollections(this);
 }
 
 Site.prototype.GetNestedValueFromCascade = function (parent, child) {
