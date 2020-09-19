@@ -131,10 +131,6 @@ Page.prototype.GetContentString = function () {
 }
 
 Page.prototype.GetArticle = function () {
-	if (this.IsEntity()) {
-		return null;
-	}
-
 	const Article = require("./pages/article").Article;
 	let article = new Article(this, this.GetContentString());
 	return article;
@@ -366,11 +362,7 @@ Page.prototype.HasPrettyURL = function () {
 
 
 Page.prototype.Root = function () {
-	if (this.IsEntity()) {
-		return this.site.pages[0];
-	} else {
-		this.configFileObject.root;
-	}
+	return this.configFileObject.root;
 }
 
 Page.prototype.Theme = function () {
