@@ -40,22 +40,22 @@ function LineIsSeparator (lineText) {
 
 
 
-function KZNss (filename) {
+function KuZNss (filename) {
 	this.filename = filename;
 }
 
-KZNss.prototype.IsValid = function () {
+KuZNss.prototype.IsValid = function () {
 	return this.Exists();
 }
 
-KZNss.prototype.Exists = function () {
+KuZNss.prototype.Exists = function () {
 	if (fsutils.IsFile(this.filename)) {
 		return true;
 	}
 	return false;
 }
 
-KZNss.prototype.GetLinesArray = function (lineText) {
+KuZNss.prototype.GetLinesArray = function (lineText) {
 	let values = [];
 	if (fs.existsSync(this.filename)) {
 		let fileText = fs.readFileSync(this.filename, "utf8").replace("\r", "");
@@ -74,7 +74,7 @@ KZNss.prototype.GetLinesArray = function (lineText) {
 	return values;
 }
 
-KZNss.prototype.GetLinesByRegionIndex = function (regionIndex) {
+KuZNss.prototype.GetLinesByRegionIndex = function (regionIndex) {
 	let currentRegionIndex = 0;
 	let regionLines = [];
 	if (fs.existsSync(this.filename)) {
@@ -97,7 +97,7 @@ KZNss.prototype.GetLinesByRegionIndex = function (regionIndex) {
 	return regionLines;
 }
 
-KZNss.prototype.GetEvenRegionLines = function () {
+KuZNss.prototype.GetEvenRegionLines = function () {
 	let currentRegionIndex = 0;
 	let evenLines = [];
 	if (fs.existsSync(this.filename)) {
@@ -116,7 +116,7 @@ KZNss.prototype.GetEvenRegionLines = function () {
 	return evenLines;
 }
 
-KZNss.prototype.GetOddRegionLines = function () {
+KuZNss.prototype.GetOddRegionLines = function () {
 	let currentRegionIndex = 0;
 	let oddLines = [];
 	if (fs.existsSync(this.filename)) {
@@ -135,32 +135,32 @@ KZNss.prototype.GetOddRegionLines = function () {
 	return oddLines;
 }
 
-KZNss.prototype.GetMetaLines = function () {
+KuZNss.prototype.GetMetaLines = function () {
 	return this.GetHeaderLines();
 }
 
-KZNss.prototype.GetHeaderLines = function () {
+KuZNss.prototype.GetHeaderLines = function () {
 	return this.GetLinesByRegionIndex(0);
 }
 
-KZNss.prototype.GetContentLines = function () {
+KuZNss.prototype.GetContentLines = function () {
 	return this.GetBodyLines();
 }
 
-KZNss.prototype.GetBodyLines = function () {
+KuZNss.prototype.GetBodyLines = function () {
 	return this.GetLinesByRegionIndex(1);
 }
 
-KZNss.prototype.GetBodyString = function () {
+KuZNss.prototype.GetBodyString = function () {
 	return this.GetBodyLines().join("\n");
 }
 
-KZNss.prototype.GetFooterLines = function () {
+KuZNss.prototype.GetFooterLines = function () {
 	return this.GetLinesByRegionIndex(2);
 }
 
 module.exports = {
-	Nss: KZNss
+	Nss: KuZNss
 };
 
 
