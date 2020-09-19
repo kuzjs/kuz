@@ -41,6 +41,14 @@ Renderable.prototype.Name = function () {
 	return this.entry;
 }
 
+Renderable.prototype.GetType = function () {
+	let type = this.GetPropertyCascaded("type");
+	if (type.found) {
+		return type.value;
+	}
+	return "page";
+}
+
 Renderable.prototype.GetTable = function () {
 	const KZTable = require("../kz-table/table").KZTable;
 	let table = new KZTable();
@@ -48,7 +56,8 @@ Renderable.prototype.GetTable = function () {
 	//table.AddColumn("Name");
 	table.AddColumn("Conf");
 	//table.AddColumn("Title");
-	table.AddColumn("Theme");
+	//table.AddColumn("Theme");
+	table.AddColumn("Type");
 	table.AddColumn("Layout");
 	//table.AddColumn("URL");
 	table.AddColumn("In");
@@ -62,7 +71,8 @@ Renderable.prototype.Row = function () {
 		//this.Name(),
 		this.configFileObject.CodeName(),
 		//this.Title(),
-		this.Theme().Name(),
+		//this.Theme().Name(),
+		this.GetType(),
 		this.Layout().Name(),
 		//this.PageURL(),
 		this.InputFilePath(),
