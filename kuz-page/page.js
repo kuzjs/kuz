@@ -24,7 +24,7 @@ Page.prototype.codeLetter = "p";
 
 Page.prototype.SetupPage = function (site, konfig, entry) {
 	this.SetSite(site);
-	this.SetConfig(konfig);
+	this.SetKonfig(konfig);
 	this.entry = entry.trim();
 	this.configDirpath = (konfig.dirpath === undefined) ? "" : konfig.dirpath;
 
@@ -258,7 +258,7 @@ Page.prototype.GetDescription = function () {
 
 
 
-Page.prototype.SetConfig = function (konfig) {
+Page.prototype.SetKonfig = function (konfig) {
 	this.konfig = konfig;
 }
 
