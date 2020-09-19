@@ -126,7 +126,7 @@ Renderable.prototype.GetLayoutName = function () {
 	if (layout.found) {
 		return layout.value;
 	}
-	return this.typeName;
+	return this.GetType();
 }
 
 Renderable.prototype.Layout = function () {
@@ -167,6 +167,15 @@ Renderable.prototype.Pages = function () {
 }
 
 Renderable.prototype.GetPages = function () {
+	if (this.GetType() == "author") {
+		return this.site.GetPagesByAuthor(this);
+	} else if (this.GetType() == "category") {
+		return this.site.GetPagesInCategory(this);
+	} else if (this.GetType() == "tag") {
+		return this.site.GetPagesWithTag(this);
+	} else if (this.GetType() == "collection") {
+		return this.site.Pages();
+	}
 	return this.site.pages;
 }
 
@@ -419,7 +428,7 @@ Renderable.prototype.GetAuthor = function () {
 			return authorObject;
 		}
 	}
-	return this.site.defaultAuthor;
+	return this.site.DefaultAuthor();
 }
 
 Renderable.prototype.Category = function () {
@@ -434,7 +443,7 @@ Renderable.prototype.GetCategory = function () {
 			return categoryObject;
 		}
 	}
-	return this.site.defaultCategory;
+	return this.site.DefaultCategory();
 }
 
 Renderable.prototype.Tags = function () {

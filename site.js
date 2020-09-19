@@ -182,6 +182,11 @@ Site.prototype.Authors = function () {
 	return authors;
 }
 
+Site.prototype.DefaultAuthor = function () {
+	let authors = this.Authors();
+	return authors[authors.length-1];
+}
+
 Site.prototype.Categories = function () {
 	let categories = [];
 	for (let page of this.pages) {
@@ -190,6 +195,11 @@ Site.prototype.Categories = function () {
 		}
 	}
 	return categories;
+}
+
+Site.prototype.DefaultCategory = function () {
+	let categories = this.Categories();
+	return categories[categories.length-1];
 }
 
 Site.prototype.Tags = function () {
@@ -368,6 +378,42 @@ Site.prototype.PrintConfiguration = function () {
 	this.PrintCollections();
 }
 
+Site.prototype.GetPagesByAuthor = function (author) {
+	let pages = [];
+	for (let page of this.pages) {
+		let pageAuthor = page.GetPropertyCascaded("author");
+		if (pageAuthor.found) {
+			if (pageAuthor.value == author.entry) {
+				pages.push(page);
+			}
+		}
+	}
+	return pages;
+}
+
+Site.prototype.GetPagesInCategory = function (category) {
+	let pages = [];
+	for (let page of this.pages) {
+		let pageCategory = page.GetPropertyCascaded("category");
+		if (pageCategory.found) {
+			if (pageCategory.value == category.entry) {
+				pages.push(page);
+			}
+		}
+	}
+	return pages;
+}
+
+Site.prototype.GetPagesWithTag = function (tag) {
+	let pages = [];
+	for (let page of this.pages) {
+		if (page.Tags().includes(tag.entry)) {
+			pages.push(page);
+		}
+	}
+	return pages;
+}
+
 Site.prototype.GetAuthorFromName = function (authorName) {
 	for (let author of this.authors) {
 		if (author.name == authorName) {
@@ -378,8 +424,8 @@ Site.prototype.GetAuthorFromName = function (authorName) {
 }
 
 Site.prototype.GetCategoryFromName = function (categoryName) {
-	for (let category of this.categories) {
-		if (category.Name() == categoryName) {
+	for (let category of this.Categories()) {
+		if (category.entry == categoryName) {
 			return category;
 		}
 	}
@@ -387,8 +433,8 @@ Site.prototype.GetCategoryFromName = function (categoryName) {
 }
 
 Site.prototype.GetTagFromName = function (tagName) {
-	for (let tag of this.tags) {
-		if (tag.Name() == tagName) {
+	for (let tag of this.Tags()) {
+		if (tag.entry == tagName) {
 			return tag;
 		}
 	}

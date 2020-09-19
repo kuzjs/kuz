@@ -31,7 +31,10 @@ Page.prototype.SetupPage = function () {
 }
 
 Page.prototype.IsPage = function () {
-	return true;
+	if (this.GetType() == "page") {
+		return true;
+	}
+	return false;
 }
 
 Page.prototype.SetupInput = function () {
