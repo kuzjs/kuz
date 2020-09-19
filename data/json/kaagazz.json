@@ -10,7 +10,6 @@
 	"input": {
 		"data": "data",
 		"pages": "pages",
-		"meta": "meta",
 
 		"authors": "authors",
 		"categories": "categories",

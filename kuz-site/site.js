@@ -114,10 +114,6 @@ Site.prototype.GetSpecialDirectory = function () {
 	return this.GetOutputDirectoryFromJson("special");
 }
 
-Site.prototype.GetMetaDirectory = function () {
-	return this.GetInputDirectoryFromJson("meta");
-}
-
 Site.prototype.GetThemesDirectory = function () {
 	return this.GetInputDirectoryFromJson("themes");
 }
@@ -154,14 +150,9 @@ Site.prototype.DefaultTheme = function () {
 	return this.themes[0];
 }
 
-Site.prototype.GetEntityConfigDirectory = function (typeNamePlural) {
-	return this.GetMetaDirectory() + "/" + typeNamePlural;
-}
-
 Site.prototype.PrintDirectories = function () {
 	log.SomeNews("  Input: " + this.GetInputDirectory());
 	log.SomeNews(" Output: " + this.GetOutputDirectory());
-	log.SomeNews("   Meta: " + this.GetMetaDirectory());
 	log.SomeNews("  Colls: " + this.GetCollectionsDirectory());
 	log.SomeNews("Special: " + this.GetSpecialDirectory());
 }
