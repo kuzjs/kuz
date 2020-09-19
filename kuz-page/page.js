@@ -7,9 +7,9 @@ const log = require("../kuz-log");
 
 
 
-function Page (site, configFileObject, entry, isRoot = false) {
+function Page (site, konfig, entry, isRoot = false) {
 	this.isRoot = isRoot;
-	this.SetupPage(site, configFileObject, entry);
+	this.SetupPage(site, konfig, entry);
 }
 
 
@@ -22,11 +22,11 @@ Page.prototype.codeLetter = "p";
 
 
 
-Page.prototype.SetupPage = function (site, configFileObject, entry) {
+Page.prototype.SetupPage = function (site, konfig, entry) {
 	this.SetSite(site);
-	this.SetConfig(configFileObject);
+	this.SetConfig(konfig);
 	this.entry = entry.trim();
-	this.configDirpath = (configFileObject.dirpath === undefined) ? "" : configFileObject.dirpath;
+	this.configDirpath = (konfig.dirpath === undefined) ? "" : konfig.dirpath;
 
 	this.SetupInput();
 	this.tags = [];
@@ -258,8 +258,8 @@ Page.prototype.GetDescription = function () {
 
 
 
-Page.prototype.SetConfig = function (configFileObject) {
-	this.configFileObject = configFileObject;
+Page.prototype.SetConfig = function (konfig) {
+	this.konfig = konfig;
 }
 
 Page.prototype.Props = function () {
@@ -332,8 +332,8 @@ Page.prototype.GetPropertyCascaded = function (propertyName) {
 		return property;
 	}
 
-	if (this.configFileObject && this.configFileObject.metaData) {
-		return this.configFileObject.metaData.GetValue(propertyName);
+	if (this.konfig && this.konfig.metaData) {
+		return this.konfig.metaData.GetValue(propertyName);
 	}
 
 	return {
@@ -380,7 +380,7 @@ Page.prototype.Root = function () {
 }
 
 Page.prototype.GetRoot = function () {
-	return this.configFileObject.root;
+	return this.konfig.root;
 }
 
 Page.prototype.Theme = function () {
@@ -455,7 +455,7 @@ Page.prototype.GetKuz = function () {
 		app: this.site.app,
 		site: this.site,
 		props: this.Props(),
-		cprops: this.configFileObject.Props(),
+		cprops: this.konfig.Props(),
 		sprops: this.site.Props(),
 		kprops: this.site.app.Props(),
 		tprops: this.Theme().Props(),
@@ -575,7 +575,7 @@ Page.prototype.Row = function () {
 	return [
 		this.CodeName(),
 		//this.Name(),
-		this.configFileObject.CodeName(),
+		this.konfig.CodeName(),
 		//this.Title(),
 		//this.Theme().Name(),
 		this.GetType(),

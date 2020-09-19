@@ -15,35 +15,35 @@ function SetupNextPrevious (arr) {
 	}
 }
 
-function GetPages (site, dirpath, parentConfig) {
+function GetPages (site, dirpath, parentKonfig) {
 	const KuzKonfig = require("../kuz-konfig").KuzKonfig;
-	let configFileObject = new KuzKonfig(site, dirpath);
-	if (configFileObject.DoesNotExist()) {
+	let konfig = new KuzKonfig(site, dirpath);
+	if (konfig.DoesNotExist()) {
 		return [];
 	}
 
-	if (parentConfig) {
-		parentConfig.AddChild(configFileObject);
-		configFileObject.SetParent(parentConfig);
+	if (parentKonfig) {
+		parentKonfig.AddChild(konfig);
+		konfig.SetParent(parentKonfig);
 	}
 
-	site.AddConfig(configFileObject);
+	site.AddKonfig(konfig);
 
-	if (!configFileObject.Exists()) {
+	if (!konfig.Exists()) {
 		site.Error("Config file NOT found: " + configPath);
 		return [];
 	}
 
 	let pages = [];
-	let configEntries = configFileObject.GetEntries();
+	let configEntries = konfig.GetEntries();
 
 	let root = null;
 	for (let entry of configEntries) {
 		if (entry.startsWith("[") && entry.endsWith("]")) {
 			if (root === null) {
 				entry = entry.slice(1, -1);
-				root = new Page(site, configFileObject, entry, true);
-				configFileObject.root = root;
+				root = new Page(site, konfig, entry, true);
+				konfig.root = root;
 				pages.push(root);
 			} else {
 				site.Error("Multiple roots specified: " + configPath);
@@ -56,11 +56,11 @@ function GetPages (site, dirpath, parentConfig) {
 			} else {
 				entryDirpath = dirpath + "/" + entry;
 			}
-			pages = pages.concat(GetPages(site, entryDirpath, configFileObject));
+			pages = pages.concat(GetPages(site, entryDirpath, konfig));
 		} else {
-			let page = new Page(site, configFileObject, entry);
+			let page = new Page(site, konfig, entry);
 			if (page.IsValid()) {
-				configFileObject.AddPage(page);
+				konfig.AddPage(page);
 				pages.push(page);
 			}
 		}

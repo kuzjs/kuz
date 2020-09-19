@@ -23,14 +23,14 @@ Site.prototype.Setup = function (kaagazz) {
 	const JsonFile = require("../kuz-json").JsonFile;
 	this.meta = new JsonFile(this.siteJsonPath);
 
-	this.configFileObjects = [];
+	this.konfigs = [];
 	this.SetupThemes();
 	this.SetupPages();
 }
 
-Site.prototype.AddConfig = function (configFileObject) {
-	configFileObject.SetIndex(this.configFileObjects.length);
-	this.configFileObjects.push(configFileObject);
+Site.prototype.AddKonfig = function (konfig) {
+	konfig.SetIndex(this.konfigs.length);
+	this.konfigs.push(konfig);
 }
 
 Site.prototype.HomeURL = function () {
@@ -359,7 +359,7 @@ Site.prototype.PrintResFiles = function () {
 }
 
 Site.prototype.PrintKuzKonfigs = function () {
-	let arr = this.configFileObjects;
+	let arr = this.konfigs;
 	this.PrintArrayAsTable(arr);
 }
 
