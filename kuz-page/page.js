@@ -362,6 +362,10 @@ Page.prototype.HasPrettyURL = function () {
 
 
 Page.prototype.Root = function () {
+	return this.GetRoot();
+}
+
+Page.prototype.GetRoot = function () {
 	return this.configFileObject.root;
 }
 
