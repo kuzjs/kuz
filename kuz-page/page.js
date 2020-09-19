@@ -454,12 +454,18 @@ Page.prototype.GetKuz = function () {
 		sections: sections,
 		app: this.site.app,
 		site: this.site,
+
 		props: this.Props(),
 		cprops: this.konfig.Props(),
 		sprops: this.site.Props(),
 		kprops: this.site.app.Props(),
 		tprops: this.Theme().Props(),
 		lprops: this.GetLayout().Props(),
+
+		code: this.metaData.Code(),
+		json: this.metaData.Json(),
+		kuz: this.metaData.Kuz(),
+
 		ipsum: this.LoremIpsum(),
 		kuz: {
 			kuz: {
