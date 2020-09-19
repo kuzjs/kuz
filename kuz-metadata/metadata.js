@@ -51,11 +51,10 @@ KuzMetaData.prototype.Setup = function () {
 }
 
 KuzMetaData.prototype.Props = function () {
-	let props = {};
-	for (let property of this.properties) {
-		props[property.name] = property.value;
+	if (this.sections.main) {
+		return this.sections.main;
 	}
-	return props;
+	return {};
 }
 
 KuzMetaData.prototype.Exists = function () {
