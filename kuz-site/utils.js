@@ -17,25 +17,6 @@ function SetupNextPrevious (arr) {
 	}
 }
 
-function GetEntities (site, configDirPath, Entity) {
-	let configFileObject = new ConfigFile(site, configDirPath, true);
-	if (configFileObject.DoesNotExist()) {
-		return [];
-	}
-	site.AddConfig(configFileObject);
-
-	let entities = [];
-	let configEntries = configFileObject.GetEntries();
-	for (let entry of configEntries) {
-		let entity = new Entity(site, configFileObject, entry);
-		configFileObject.AddPage(entity);
-		entities.push(entity);
-	}
-
-	SetupNextPrevious(entities);
-	return entities;
-}
-
 function GetPages (site, dirpath, parentConfig) {
 	let configFileObject = new ConfigFile(site, dirpath);
 	if (configFileObject.DoesNotExist()) {
