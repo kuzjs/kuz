@@ -55,8 +55,11 @@ KuzSections.prototype.Setup = function () {
 	for (let sectionLine of sectionLines) {
 		let currentLabel = GetLabel(sectionLine);
 		if (currentLabel.found) {
-			currentSection = new Section(currentLabel);
-			this.sections.push(currentSection);
+			currentSection = this.GetSectionByName(currentLabel.name);
+			if (!currentSection) {
+				currentSection = new Section(currentLabel);
+				this.sections.push(currentSection);
+			}
 		} else {
 			currentSection.AddLine(sectionLine);
 		}
@@ -73,6 +76,15 @@ KuzSections.prototype.SectionsObject = function () {
 		sections[section.name] = section;
 	}
 	return sections;
+}
+
+KuzSections.prototype.GetSectionByName = function (name) {
+	for (let section of this.sections) {
+		if (section.name == name) {
+			return section;
+		}
+	}
+	return null;
 }
 
 
