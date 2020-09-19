@@ -2,6 +2,7 @@
 
 
 
+const log = require("../kuz-log");
 const fsutils = require("../kuz-fs");
 
 const separators = [];
@@ -17,11 +18,27 @@ KuzMetaData.prototype = new KZBaseObject();
 
 KuzMetaData.prototype.Setup = function () {
 	this.properties = [];
+	this.sections = {};
 	if (this.Exists()) {
 		const Nss = require("../kuz-nss/nss").Nss;
 		let metaNss = new Nss(this.path);
 		let headerLines = metaNss.GetMetaLines();
+
+		const KuzSections = require("../kuz-sections").KuzSections;
+		let kuzSections = new KuzSections(headerLines);
+
 		const Property = require("./property").Property;
+		for (let section of kuzSections.sections) {
+			this.sections[section.name] = {};
+			this.sections[section.name].mods = section.mods;
+			for (let line of section.lines) {
+				let property = new Property(line);
+				if (property.IsValid()) {
+					this.sections[section.name][property.name] = property.value;
+				}
+			}
+		}
+
 		for (let headerLine of headerLines) {
 			let property = new Property(headerLine);
 			if (property.IsValid()) {

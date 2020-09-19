@@ -46,7 +46,7 @@ function KuzSections (sectionLines) {
 
 
 
-KuzSections.prototype.Setup = function () {
+KuzSections.prototype.Setup = function (sectionLines) {
 	this.sections = [];
 	let mainLabel = GetLabel("[main]");
 	let currentSection = new Section(mainLabel);
