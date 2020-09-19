@@ -2,6 +2,8 @@
 
 const fs = require("fs");
 
+const fsutils = require("../kuz-fs");
+
 const nssCommentStarters = [
 	"/", "'", '"', "#"
 ];
@@ -40,6 +42,17 @@ function LineIsSeparator (lineText) {
 
 function KZNss (filename) {
 	this.filename = filename;
+}
+
+KZNss.prototype.IsValid = function () {
+	return this.Exists();
+}
+
+KZNss.prototype.Exists = function () {
+	if (fsutils.IsFile(this.filename)) {
+		return true;
+	}
+	return false;
 }
 
 KZNss.prototype.GetLinesArray = function (lineText) {
