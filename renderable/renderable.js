@@ -45,24 +45,28 @@ Renderable.prototype.GetTable = function () {
 	const KZTable = require("../kz-table/table").KZTable;
 	let table = new KZTable();
 	table.AddColumn("Codename");
-	table.AddColumn("Name");
+	//table.AddColumn("Name");
 	table.AddColumn("Conf");
-	table.AddColumn("Title");
+	//table.AddColumn("Title");
 	table.AddColumn("Theme");
 	table.AddColumn("Layout");
-	table.AddColumn("URL");
+	//table.AddColumn("URL");
+	table.AddColumn("In");
+	table.AddColumn("Out");
 	return table;
 }
 
 Renderable.prototype.Row = function () {
 	return [
 		this.CodeName(),
-		this.Name(),
+		//this.Name(),
 		this.configFileObject.CodeName(),
-		this.Title(),
+		//this.Title(),
 		this.Theme().Name(),
 		this.Layout().Name(),
-		this.PageURL()
+		//this.PageURL(),
+		this.InputFilePath(),
+		this.OutputFilePath()
 	];
 }
 
