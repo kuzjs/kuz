@@ -1,10 +1,11 @@
 // page.js
 
-
 const fs = require("fs");
 
 const fsutils = require("../kuz-fs");
-const log = require("../kuz-log/log");
+const log = require("../kuz-log");
+
+
 
 function Page (site, configFileObject, entry, isRoot = false) {
 	this.SetupRenderable(site, configFileObject, entry);
@@ -13,8 +14,8 @@ function Page (site, configFileObject, entry, isRoot = false) {
 	this.SetupPage();
 }
 
-const Renderable = require("./renderable").Renderable;
-Page.prototype = new Renderable();
+const KZBaseObject = require("../base/baseobject").KZBaseObject;
+Page.prototype = new KZBaseObject();
 Page.prototype.typeName = "page";
 Page.prototype.typeNamePlural = "pages";
 Page.prototype.codeLetter = "p";
@@ -36,6 +37,16 @@ Page.prototype.Setup = function () {
 
 Page.prototype.Reset = function () {
 	//
+}
+
+Page.prototype.SetupRenderable = function (site, configFileObject, entry) {
+	this.SetSite(site);
+	this.SetConfig(configFileObject);
+	this.entry = entry.trim();
+	if (this.IsEntity()) {
+		const MetaData = require("../kuz-metadata").MetaData;
+		this.metaData = new MetaData(this.site, this.InputFilePath());
+	}
 }
 
 Page.prototype.SetupInput = function () {
