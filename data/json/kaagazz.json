@@ -42,7 +42,7 @@
 	},
 
 	"filenames": {
-		"config": "config.txt",
+		"konfig": "konfig.kuz",
 		"siteJson": "site.json",
 		"zzz": false
 	}

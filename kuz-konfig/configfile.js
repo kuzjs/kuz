@@ -26,7 +26,7 @@ function ConfigFile(site, dirpath, entity=false) {
 			this.configDirpath = site.GetInputDirectory() + "/" + dirpath;
 		}
 	}
-	this.configFilePath = fsutils.JoinPath(this.configDirpath, this.site.filenames.config);
+	this.configFilePath = fsutils.JoinPath(this.configDirpath, this.site.filenames.konfig);
 
 	this.root = null;
 	this.parent = null;
