@@ -70,6 +70,10 @@ Page.prototype.SetupInput = function () {
 	}
 }
 
+
+
+
+
 Page.prototype.IsRenderable = function () {
 	return true;
 }
@@ -93,8 +97,20 @@ Page.prototype.IsVisible = function () {
 	return !this.IsHidden();
 }
 
+
+
+
+
 Page.prototype.InputDirectoryPath = function () {
 	return fsutils.JoinPath(this.site.GetInputDirectory(), this.configDirpath, this.entry);
+}
+
+Page.prototype.InputFileExtension = function () {
+	return "kuz";
+}
+
+Page.prototype.InputFileName = function () {
+	return this.Name() + "." + this.InputFileExtension();
 }
 
 Page.prototype.OutputDirectoryPartialPath = function () {
@@ -158,10 +174,6 @@ Page.prototype.OutputFileIsOlderThanMeta = function () {
 	return false;
 }
 
-Page.prototype.InputFileName = function () {
-	return this.Name() + "." + this.InputFileExtension();
-}
-
 Page.prototype.OutputFileNesting = function () {
 	return (this.OutputFilePath().split("/").length - 2);
 }
@@ -192,16 +204,16 @@ Page.prototype.GetBase = function () {
 }
 
 Page.prototype.RelativeURL = function () {
-	return this.OutputDirectoryPartialPath();
-}
-
-Page.prototype.RelativeURL = function () {
 	if (this.HasPrettyURL()) {
 		return this.OutputDirectoryPartialPath();
 	} else {
 		return this.OutputDirectoryPartialPath() + ".html";
 	}
 }
+
+
+
+
 
 Page.prototype.Name = function () {
 	if (this.isRoot) {
@@ -234,6 +246,10 @@ Page.prototype.GetDescription = function () {
 	}
 	return "";
 }
+
+
+
+
 
 Page.prototype.SetConfig = function (configFileObject) {
 	this.configFileObject = configFileObject;
@@ -290,6 +306,10 @@ Page.prototype.GetTagObjects = function () {
 	return this.site.GetTagsFromNameArray(tagsArray);
 }
 
+
+
+
+
 Page.prototype.GetProperty = function (propertyName) {
 	if (this.metaData) {
 		return this.metaData.GetValue(propertyName);
@@ -322,6 +342,10 @@ Page.prototype.GetBooleanValueCascaded = function (name) {
 	return true;
 }
 
+
+
+
+
 Page.prototype.Show = function (name) {
 	let propertyName = "show_" + name;
 	return this.GetBooleanValueCascaded(propertyName);
@@ -339,6 +363,10 @@ Page.prototype.HasRelativeBase = function () {
 Page.prototype.HasPrettyURL = function () {
 	return this.GetBooleanValueCascaded("pretty_url");
 }
+
+
+
+
 
 Page.prototype.Root = function () {
 	if (this.IsEntity()) {
@@ -406,6 +434,10 @@ Page.prototype.GetPages = function () {
 	return this.site.pages;
 }
 
+
+
+
+
 Page.prototype.GetKuz = function () {
 	let article = this.GetArticle();
 	let sections = article ? article.sections : null;
@@ -451,6 +483,10 @@ Page.prototype.GetPageOptionsFN = function () {
 Page.prototype.toString = function () {
 	return this.typeName + ": (" + this.Name() +") [" + this.OutputFilePath() + "]";
 }
+
+
+
+
 
 Page.prototype.NeedsUpdate = function () {
 	if (this.OutputFileIsOlderThanMeta()) {
@@ -500,9 +536,9 @@ Page.prototype.RenderLog = function () {
 	log.Green(this.TypeName() + " rendered: (" + this.InputFilePath() + ") --> [" + this.OutputFilePath() + "]");
 }
 
-Page.prototype.InputFileExtension = function () {
-	return "kuz";
-}
+
+
+
 
 Page.prototype.GetType = function () {
 	let type = this.GetPropertyCascaded("type");
