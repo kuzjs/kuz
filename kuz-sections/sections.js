@@ -25,13 +25,42 @@ function GetLabel (sectionLine) {
 
 
 function Section (label) {
-	//
+	this.name = label.name;
+	this.mods = label.mods;
+	this.lines = [];
+}
+
+Section.prototype.AddLine = function (sectionLine) {
+	this.lines.push(sectionLine);
+}
+
+Section.prototype.NumberOfLines = function () {
+	return this.lines.length;
 }
 
 
 
 function KuzSections (sectionLines) {
-	//this.Setup(sectionLines);
+	this.Setup(sectionLines);
+}
+
+
+
+KuzSections.prototype.Setup = function () {
+	this.sections = [];
+	let mainLabel = GetLabel("[main]");
+	let currentSection = new Section(mainLabel);
+	this.sections.push(currentSection);
+
+	for (let sectionLine of sectionLines) {
+		let currentLabel = GetLabel(sectionLine);
+		if (currentLabel.found) {
+			currentSection = new Section(currentLabel);
+			this.sections.push(currentSection);
+		} else {
+			currentSection.AddLine(sectionLine);
+		}
+	}
 }
 
 KuzSections.prototype.IsValid = function () {
