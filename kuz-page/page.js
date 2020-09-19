@@ -23,7 +23,7 @@ Page.prototype.SetupPage = function () {
 	this.SetupInput();
 	this.tags = [];
 
-	const MetaData = require("../metadata/metadata").MetaData;
+	const MetaData = require("../kuz-metadata").MetaData;
 	this.metaData = new MetaData(this.site, this.inputFilePath);
 
 	const Nss = require("../kuz-nss/nss").Nss;

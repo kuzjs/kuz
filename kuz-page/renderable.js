@@ -24,7 +24,7 @@ Renderable.prototype.SetupRenderable = function (site, configFileObject, entry) 
 	this.SetConfig(configFileObject);
 	this.entry = entry.trim();
 	if (this.IsEntity()) {
-		const MetaData = require("../metadata/metadata").MetaData;
+		const MetaData = require("../kuz-metadata").MetaData;
 		this.metaData = new MetaData(this.site, this.InputFilePath());
 	}
 }

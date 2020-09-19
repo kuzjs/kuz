@@ -2,7 +2,7 @@
 
 
 
-const MetaData = require("../metadata/metadata").MetaData;
+const MetaData = require("../kuz-metadata").MetaData;
 
 const log = require("../kuz-log/log");
 
