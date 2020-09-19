@@ -183,7 +183,7 @@ Theme.prototype.GetPages = function () {
 }
 
 Theme.prototype.GetTable = function () {
-	const KZTable = require("../kz-table/table").KZTable;
+	const KZTable = require("../kuz-table/table").KZTable;
 	let table = new KZTable();
 	table.AddColumn("Name");
 	table.AddColumn("Title");

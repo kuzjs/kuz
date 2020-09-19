@@ -305,7 +305,7 @@ KaagazzApp.prototype.ShowMajorFlags = function () {
 }
 
 KaagazzApp.prototype.ShowVersion = function () {
-	const KZTable = require("./kz-table").KZTable;
+	const KZTable = require("./kuz-table").KZTable;
 	let table = new KZTable();
 	table.AddColumn("Key");
 	table.AddColumn("Value");

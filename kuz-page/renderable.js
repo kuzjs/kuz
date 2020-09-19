@@ -50,7 +50,7 @@ Renderable.prototype.GetType = function () {
 }
 
 Renderable.prototype.GetTable = function () {
-	const KZTable = require("../kz-table/table").KZTable;
+	const KZTable = require("../kuz-table/table").KZTable;
 	let table = new KZTable();
 	table.AddColumn("Codename");
 	//table.AddColumn("Name");

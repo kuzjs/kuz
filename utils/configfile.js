@@ -9,7 +9,7 @@ const log = require("../kuz-log/log");
 const Nss = require("../kuz-nss/nss").Nss;
 const fsutils = require("../kuz-fs");
 
-const KZTable = require("../kz-table/table").KZTable;
+const KZTable = require("../kuz-table/table").KZTable;
 const KZBaseObject = require("../base/baseobject").KZBaseObject;
 
 function ConfigFile(site, dirpath, entity=false) {
