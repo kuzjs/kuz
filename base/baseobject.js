@@ -183,14 +183,6 @@ KZBaseObject.prototype.IsSite = function () {
 
 
 
-KZBaseObject.prototype.IsRenderable = function () {
-	return false;
-}
-
-KZBaseObject.prototype.IsEntity = function () {
-	return false;
-}
-
 KZBaseObject.prototype.IsAuthor = function () {
 	return false;
 }
@@ -199,15 +191,15 @@ KZBaseObject.prototype.IsCategory = function () {
 	return false;
 }
 
+KZBaseObject.prototype.IsCollection = function () {
+	return false;
+}
+
 KZBaseObject.prototype.IsTag = function () {
 	return false;
 }
 
 KZBaseObject.prototype.IsPage = function () {
-	return false;
-}
-
-KZBaseObject.prototype.IsCollection = function () {
 	return false;
 }
 

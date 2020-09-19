@@ -69,12 +69,6 @@ Page.prototype.SetupInput = function () {
 
 
 
-
-
-Page.prototype.IsRenderable = function () {
-	return true;
-}
-
 Page.prototype.IsPage = function () {
 	return (this.GetType() == "page") ? true : false;
 }
