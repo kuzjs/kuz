@@ -48,7 +48,6 @@ Page.prototype.Reset = function () {
 
 Page.prototype.SetupInput = function () {
 	this.inputFileFound = false;
-	this.inputFileExtension = null;
 	this.inputFilePath = null;
 
 	let inputFilePathWithoutExtension;
@@ -60,8 +59,7 @@ Page.prototype.SetupInput = function () {
 		inputFilePathWithoutExtension = this.InputDirectoryPath();
 	}
 
-	this.inputFileExtension = this.InputFileExtension();
-	this.inputFilePath = inputFilePathWithoutExtension + "." + this.inputFileExtension;
+	this.inputFilePath = inputFilePathWithoutExtension + "." + this.InputFileExtension();
 	if (fsutils.IsFile(this.inputFilePath)) {
 		this.inputFileFound = true;
 	}
