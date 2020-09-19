@@ -7,10 +7,6 @@ const log = require("../kz-log/log");
 const ConfigFile = require("../utils/configfile").ConfigFile;
 
 const Nss = require("../kz-nss/nss").Nss;
-const Author = require("../renderable/author").Author;
-const Category = require("../renderable/category").Category;
-const Collection = require("../renderable/collection").Collection;
-const Tag = require("../renderable/tag").Tag;
 const Page = require("../renderable/page").Page;
 
 function SetupNextPrevious (arr) {
@@ -38,26 +34,6 @@ function GetEntities (site, configDirPath, Entity) {
 
 	SetupNextPrevious(entities);
 	return entities;
-}
-
-function GetAuthors (site) {
-	let configDirPath = site.GetEntityConfigDirectory("authors");
-	return GetEntities(site, configDirPath, Author);
-}
-
-function GetCategories (site) {
-	let configDirPath = site.GetEntityConfigDirectory("categories");
-	return GetEntities(site, configDirPath, Category);
-}
-
-function GetTags (site) {
-	let configDirPath = site.GetEntityConfigDirectory("tags");
-	return GetEntities(site, configDirPath, Tag);
-}
-
-function GetCollections (site) {
-	let configDirPath = site.GetEntityConfigDirectory("collections");
-	return GetEntities(site, configDirPath, Collection);
 }
 
 function GetPages (site, dirpath, parentConfig) {
@@ -118,11 +94,7 @@ function GetPages (site, dirpath, parentConfig) {
 
 module.exports = {
 	SetupNextPrevious: SetupNextPrevious,
-	GetAuthors: GetAuthors,
-	GetCategories: GetCategories,
-	GetTags: GetTags,
 	GetPages: GetPages,
-	GetCollections: GetCollections,
 	zzz: false
 };
 
