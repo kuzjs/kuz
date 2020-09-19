@@ -27,7 +27,7 @@ MetaData.prototype.Setup = function () {
 	if (this.Exists()) {
 		const Nss = require("../kuz-nss/nss").Nss;
 		let metaNss = new Nss(this.path);
-		let headerLines = metaNss.GetEvenLines();
+		let headerLines = metaNss.GetEvenRegionLines();
 		const Property = require("./property").Property;
 		for (let headerLine of headerLines) {
 			let comment = false;

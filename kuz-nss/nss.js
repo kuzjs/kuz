@@ -84,7 +84,7 @@ KZNss.prototype.GetLinesByRegionIndex = function (regionIndex) {
 	return regionLines;
 }
 
-KZNss.prototype.GetEvenLines = function () {
+KZNss.prototype.GetEvenRegionLines = function () {
 	let currentRegionIndex = 0;
 	let evenLines = [];
 	if (fs.existsSync(this.filename)) {
@@ -103,7 +103,7 @@ KZNss.prototype.GetEvenLines = function () {
 	return evenLines;
 }
 
-KZNss.prototype.GetOddLines = function () {
+KZNss.prototype.GetOddRegionLines = function () {
 	let currentRegionIndex = 0;
 	let oddLines = [];
 	if (fs.existsSync(this.filename)) {
