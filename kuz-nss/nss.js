@@ -3,7 +3,7 @@
 const fs = require("fs");
 
 const nssCommentStarters = [
-	"//"
+	"/", "'", '"', "#"
 ];
 
 const nssSeparatorStarters = [
