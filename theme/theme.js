@@ -59,7 +59,7 @@ Theme.prototype.SetupPaths = function () {
 		return;
 	}
 
-	const JsonFile = require("../kz-json").JsonFile;
+	const JsonFile = require("../kuz-json").JsonFile;
 	this.meta = new JsonFile(this.JsonFilePath());
 	this.metaObject = this.meta.json.meta;
 
