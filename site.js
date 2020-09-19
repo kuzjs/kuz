@@ -228,15 +228,15 @@ Site.prototype.Collections = function () {
 
 Site.prototype.Entities = function () {
 	let entities = [];
-	entities = entities.concat(this.authors);
-	entities = entities.concat(this.categories);
-	entities = entities.concat(this.tags);
-	entities = entities.concat(this.collections);
+	entities = entities.concat(this.Authors());
+	entities = entities.concat(this.Categories());
+	entities = entities.concat(this.Tags());
+	entities = entities.concat(this.Collections());
 	return entities;
 }
 
 Site.prototype.Renderables = function () {
-	return this.Entities().concat(this.pages);
+	return this.pages;
 }
 
 Site.prototype.Themes = function () {
