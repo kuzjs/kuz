@@ -23,29 +23,28 @@ function GetPages (site, dirpath, parentKonfig) {
 		return [];
 	}
 
+	let root = null;
 	if (parentKonfig) {
 		parentKonfig.AddChild(konfig);
 		konfig.SetParent(parentKonfig);
+		root = parentKonfig.root;
 	}
 
 	site.AddKonfig(konfig);
 
 	let pages = [];
-	let configEntries = konfig.GetEntries();
+	let entries = konfig.GetEntriesObject();
 
-	let root = null;
-	for (let entry of configEntries) {
-		if (entry.startsWith("[") && entry.endsWith("]")) {
-			if (root === null) {
-				entry = entry.slice(1, -1);
-				root = new Page(site, konfig, entry, true);
-				konfig.root = root;
-				pages.push(root);
-			} else {
-				site.Error("Multiple roots specified: " + configPath);
-				return [];
-			}
-		} else if (entry.endsWith("/")) {
+	if (entries.root) {
+		root = new Page(site, konfig, entries.root, true);
+		if (root.IsValid()) {
+			konfig.root = root;
+			pages.push(root);
+		}
+	}
+
+	for (let entry of entries.nonroot) {
+		if (entry.endsWith("/")) {
 			entry = entry.slice(0, -1);
 			if (dirpath === undefined) {
 				entryDirpath = entry;
