@@ -3,7 +3,6 @@
 const fs = require("fs");
 
 const log = require("../kz-log/log");
-const siteutils = require("./siteutils");
 const fsutils = require("../kz-fs");
 
 
@@ -57,7 +56,8 @@ Site.prototype.Error = function (errorMessage) {
 }
 
 Site.prototype.SetupPages = function () {
-	this.pages = siteutils.GetPages(this);
+	const utils = require("./utils");
+	this.pages = utils.GetPages(this);
 }
 
 Site.prototype.SetupThemes = function () {
