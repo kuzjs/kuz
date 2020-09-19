@@ -124,7 +124,7 @@ KuZNss.prototype.GetOddRegionLines = function () {
 		for (let currentLine of fileLines) {
 			if (LineIsSeparator(currentLine)) {
 				currentRegionIndex++;
-			} else if (currentRegionIndex % 2 == 0) {
+			} else if (currentRegionIndex % 2 == 1) {
 				if (LineIsImportant(currentLine)) {
 					oddLines.push(currentLine);
 				}
