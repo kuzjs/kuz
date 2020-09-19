@@ -76,11 +76,26 @@ Page.prototype.IsRenderable = function () {
 }
 
 Page.prototype.IsPage = function () {
-	if (this.GetType() == "page") {
-		return true;
-	}
-	return false;
+	return (this.GetType() == "page") ? true : false;
 }
+
+Page.prototype.IsAuthor = function () {
+	return (this.GetType() == "author") ? true : false;
+}
+
+Page.prototype.IsCategory = function () {
+	return (this.GetType() == "category") ? true : false;
+}
+
+Page.prototype.IsCollection = function () {
+	return (this.GetType() == "collection") ? true : false;
+}
+
+Page.prototype.IsTag = function () {
+	return (this.GetType() == "tag") ? true : false;
+}
+
+
 
 Page.prototype.IsHidden = function () {
 	let prop = this.GetPropertyCascaded("hidden");
