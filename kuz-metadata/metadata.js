@@ -5,13 +5,6 @@
 const fsutils = require("../kuz-fs");
 
 const separators = [];
-const commentStarters = [
-	"#",
-	"//",
-	"!",
-	"comment",
-	"="
-];
 
 function MetaData (site, path) {
 	this.site = site;
@@ -27,20 +20,12 @@ MetaData.prototype.Setup = function () {
 	if (this.Exists()) {
 		const Nss = require("../kuz-nss/nss").Nss;
 		let metaNss = new Nss(this.path);
-		let headerLines = metaNss.GetEvenRegionLines();
+		let headerLines = metaNss.GetMetaLines();
 		const Property = require("./property").Property;
 		for (let headerLine of headerLines) {
-			let comment = false;
-			for (let commentStarter of commentStarters) {
-				if (headerLine.startsWith(commentStarter)) {
-					comment = true;
-				}
-			}
-			if (!comment) {
-				let property = new Property(headerLine);
-				if (property.IsValid()) {
-					this.properties.push(property);
-				}
+			let property = new Property(headerLine);
+			if (property.IsValid()) {
+				this.properties.push(property);
 			}
 		}
 	} else {
