@@ -7,7 +7,7 @@ const log = require("../kz-log/log");
 const ConfigFile = require("../utils/configfile").ConfigFile;
 
 const Nss = require("../kz-nss/nss").Nss;
-const Page = require("../renderable/page").Page;
+const Page = require("../kuz-page").Page;
 
 function SetupNextPrevious (arr) {
 	for (let index=0; index<arr.length; index++) {
