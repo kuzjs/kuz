@@ -4,7 +4,6 @@
 
 const log = require("../kuz-log/log");
 
-const Nss = require("../kuz-nss/nss").Nss;
 const fsutils = require("../kuz-fs");
 
 const KZTable = require("../kuz-table/table").KZTable;
@@ -35,6 +34,9 @@ function KuzKonfig (site, dirpath, entity=false) {
 		const KuzMetaData = require("../kuz-metadata").KuzMetaData;
 		this.metaData = new KuzMetaData(this.site, this.configFilePath);
 		this.props = this.metaData.Props();
+
+		const Nss = require("../kuz-nss/nss").Nss;
+		this.nss = new Nss(this.configFilePath);
 	} else {
 		log.BadNews("KuzKonfig not found: " + this.configFilePath);
 	}
@@ -79,8 +81,24 @@ KuzKonfig.prototype.DoesNotExist = function () {
 }
 
 KuzKonfig.prototype.GetEntries = function () {
-	this.nss = new Nss(this.configFilePath);
 	return this.nss.GetBodyLines();
+}
+
+KuzKonfig.prototype.GetEntriesObject = function () {
+	let lines = this.nss.GetBodyLines();
+	let entries = {
+		root: false,
+		nonroot: []
+	};
+	for (let line of lines) {
+		trimmedLine = line.trim();
+		if (trimmedLine.startsWith("[") && trimmedLine.endsWith("]")) {
+			entries.root = trimmedLine.slice(1, -1);
+		} else {
+			entries.nonroot.push(trimmedLine);
+		}
+	}
+	return entries;
 }
 
 KuzKonfig.prototype.GetPages = function () {
