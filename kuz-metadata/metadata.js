@@ -50,12 +50,39 @@ KuzMetaData.prototype.Setup = function () {
 	}
 }
 
+
+
 KuzMetaData.prototype.Props = function () {
 	if (this.sections.main) {
 		return this.sections.main;
 	}
 	return {};
 }
+
+
+
+KuzMetaData.prototype.Code = function () {
+	if (this.sections.code) {
+		return this.sections.code;
+	}
+	return {};
+}
+
+KuzMetaData.prototype.Json = function () {
+	if (this.sections.json) {
+		return this.sections.json;
+	}
+	return {};
+}
+
+KuzMetaData.prototype.Kuz = function () {
+	if (this.sections.kuz) {
+		return this.sections.kuz;
+	}
+	return {};
+}
+
+
 
 KuzMetaData.prototype.Exists = function () {
 	if (fsutils.IsFile(this.path)) {
