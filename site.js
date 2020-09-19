@@ -173,23 +173,53 @@ Site.prototype.PrintDirectories = function () {
 }
 
 Site.prototype.Authors = function () {
-	return this.authors;
+	let authors = [];
+	for (let page of this.pages) {
+		if (page.GetType() == "author") {
+			authors.push(page);
+		}
+	}
+	return authors;
 }
 
 Site.prototype.Categories = function () {
-	return this.categories;
+	let categories = [];
+	for (let page of this.pages) {
+		if (page.GetType() == "category") {
+			categories.push(page);
+		}
+	}
+	return categories;
 }
 
 Site.prototype.Tags = function () {
-	return this.tags;
+	let tags = [];
+	for (let page of this.pages) {
+		if (page.GetType() == "tag") {
+			tags.push(page);
+		}
+	}
+	return tags;
 }
 
 Site.prototype.Pages = function () {
-	return this.pages;
+	let pages = [];
+	for (let page of this.pages) {
+		if (page.GetType() == "page") {
+			pages.push(page);
+		}
+	}
+	return pages;
 }
 
 Site.prototype.Collections = function () {
-	return this.collections;
+	let collections = [];
+	for (let page of this.pages) {
+		if (page.GetType() == "collection") {
+			collections.push(page);
+		}
+	}
+	return collections;
 }
 
 Site.prototype.Entities = function () {
