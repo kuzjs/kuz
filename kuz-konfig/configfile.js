@@ -10,7 +10,7 @@ const fsutils = require("../kuz-fs");
 const KZTable = require("../kuz-table/table").KZTable;
 const KZBaseObject = require("../base/baseobject").KZBaseObject;
 
-function ConfigFile(site, dirpath, entity=false) {
+function KuzKonfig (site, dirpath, entity=false) {
 	this.site = site;
 	this.dirpath = dirpath;
 	this.pages = [];
@@ -36,14 +36,14 @@ function ConfigFile(site, dirpath, entity=false) {
 		this.metaData = new KuzMetaData(this.site, this.configFilePath);
 		this.props = this.metaData.Props();
 	} else {
-		log.BadNews("ConfigFile not found: " + this.configFilePath);
+		log.BadNews("KuzKonfig not found: " + this.configFilePath);
 	}
 }
 
-ConfigFile.prototype = new KZBaseObject();
-ConfigFile.prototype.codeLetter = "g";
+KuzKonfig.prototype = new KZBaseObject();
+KuzKonfig.prototype.codeLetter = "g";
 
-ConfigFile.prototype.SetParent = function (configFileParentObject) {
+KuzKonfig.prototype.SetParent = function (configFileParentObject) {
 	if (configFileParentObject) {
 		this.parent = configFileParentObject;
 	} else {
@@ -51,51 +51,51 @@ ConfigFile.prototype.SetParent = function (configFileParentObject) {
 	}
 }
 
-ConfigFile.prototype.AddChild = function (configFileChildObject) {
+KuzKonfig.prototype.AddChild = function (configFileChildObject) {
 	this.children.push(configFileChildObject);
 }
 
-ConfigFile.prototype.AddPage = function (page) {
+KuzKonfig.prototype.AddPage = function (page) {
 	this.pages.push(page);
 }
 
-ConfigFile.prototype.DirPath = function () {
+KuzKonfig.prototype.DirPath = function () {
 	return this.configDirpath;
 }
 
-ConfigFile.prototype.Props = function () {
+KuzKonfig.prototype.Props = function () {
 	return this.props;
 }
 
-ConfigFile.prototype.Exists = function () {
+KuzKonfig.prototype.Exists = function () {
 	if (fsutils.IsFile(this.configFilePath)) {
 		return true;
 	}
 	return false;
 }
 
-ConfigFile.prototype.DoesNotExist = function () {
+KuzKonfig.prototype.DoesNotExist = function () {
 	return !this.Exists();
 }
 
-ConfigFile.prototype.GetEntries = function () {
+KuzKonfig.prototype.GetEntries = function () {
 	this.nss = new Nss(this.configFilePath);
 	return this.nss.GetBodyLines();
 }
 
-ConfigFile.prototype.GetPages = function () {
+KuzKonfig.prototype.GetPages = function () {
 	return this.pages;
 }
 
-ConfigFile.prototype.NumberOfPages = function () {
+KuzKonfig.prototype.NumberOfPages = function () {
 	return this.pages.length;
 }
 
-ConfigFile.prototype.NumberOfChildren = function () {
+KuzKonfig.prototype.NumberOfChildren = function () {
 	return this.children.length;
 }
 
-ConfigFile.prototype.ParentString = function () {
+KuzKonfig.prototype.ParentString = function () {
 	if (this.parent) {
 		return this.parent.CodeName();
 	} else {
@@ -103,7 +103,7 @@ ConfigFile.prototype.ParentString = function () {
 	}
 }
 
-ConfigFile.prototype.RootString = function () {
+KuzKonfig.prototype.RootString = function () {
 	if (this.root) {
 		return "@";
 	} else {
@@ -111,7 +111,7 @@ ConfigFile.prototype.RootString = function () {
 	}
 }
 
-ConfigFile.prototype.NumberOfEntriesString = function () {
+KuzKonfig.prototype.NumberOfEntriesString = function () {
 	let noeString;
 	if (this.root) {
 		noeString = "@ + " + this.NumberOfPages() + "p";
@@ -125,11 +125,11 @@ ConfigFile.prototype.NumberOfEntriesString = function () {
 	return noeString;
 }
 
-ConfigFile.prototype.GetStringValue = function (propertyName) {
+KuzKonfig.prototype.GetStringValue = function (propertyName) {
 	return this.metaData.GetValue(propertyName);
 }
 
-ConfigFile.prototype.GetTable = function () {
+KuzKonfig.prototype.GetTable = function () {
 	let table = new KZTable();
 	table.AddColumn("CodeName");
 	table.AddColumn("Path");
@@ -141,7 +141,7 @@ ConfigFile.prototype.GetTable = function () {
 	return table;
 }
 
-ConfigFile.prototype.Row = function () {
+KuzKonfig.prototype.Row = function () {
 	return [
 		this.CodeName(),
 		this.configFilePath,
@@ -154,7 +154,7 @@ ConfigFile.prototype.Row = function () {
 }
 
 module.exports = {
-	ConfigFile: ConfigFile
+	KuzKonfig: KuzKonfig
 };
 
 

@@ -358,7 +358,7 @@ Site.prototype.PrintResFiles = function () {
 	this.PrintArrayAsTable(arr);
 }
 
-Site.prototype.PrintConfigFiles = function () {
+Site.prototype.PrintKuzKonfigs = function () {
 	let arr = this.configFileObjects;
 	this.PrintArrayAsTable(arr);
 }

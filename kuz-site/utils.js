@@ -4,8 +4,6 @@ const fs = require("fs");
 
 const log = require("../kuz-log/log");
 
-const ConfigFile = require("../kuz-konfig").ConfigFile;
-
 const Nss = require("../kuz-nss/nss").Nss;
 const Page = require("../kuz-page").Page;
 
@@ -18,7 +16,8 @@ function SetupNextPrevious (arr) {
 }
 
 function GetPages (site, dirpath, parentConfig) {
-	let configFileObject = new ConfigFile(site, dirpath);
+	const KuzKonfig = require("../kuz-konfig").KuzKonfig;
+	let configFileObject = new KuzKonfig(site, dirpath);
 	if (configFileObject.DoesNotExist()) {
 		return [];
 	}

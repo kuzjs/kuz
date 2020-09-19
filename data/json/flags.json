@@ -64,7 +64,7 @@
 		{
 			"code": "g",
 			"name": "config",
-			"description": "ConfigFile only modifier.",
+			"description": "KuzKonfig only modifier.",
 			"modifier": true
 		},
 		{
