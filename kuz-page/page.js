@@ -8,11 +8,11 @@ const log = require("../kuz-log");
 
 
 function Page (site, configFileObject, entry, isRoot = false) {
-	this.SetupRenderable(site, configFileObject, entry);
-	this.configDirpath = (configFileObject.dirpath === undefined) ? "" : configFileObject.dirpath;
 	this.isRoot = isRoot;
-	this.SetupPage();
+	this.SetupPage(site, configFileObject, entry);
 }
+
+
 
 const KZBaseObject = require("../base/baseobject").KZBaseObject;
 Page.prototype = new KZBaseObject();
@@ -20,7 +20,14 @@ Page.prototype.typeName = "page";
 Page.prototype.typeNamePlural = "pages";
 Page.prototype.codeLetter = "p";
 
-Page.prototype.SetupPage = function () {
+
+
+Page.prototype.SetupPage = function (site, configFileObject, entry) {
+	this.SetSite(site);
+	this.SetConfig(configFileObject);
+	this.entry = entry.trim();
+	this.configDirpath = (configFileObject.dirpath === undefined) ? "" : configFileObject.dirpath;
+
 	this.SetupInput();
 	this.tags = [];
 
@@ -37,16 +44,6 @@ Page.prototype.Setup = function () {
 
 Page.prototype.Reset = function () {
 	//
-}
-
-Page.prototype.SetupRenderable = function (site, configFileObject, entry) {
-	this.SetSite(site);
-	this.SetConfig(configFileObject);
-	this.entry = entry.trim();
-	if (this.IsEntity()) {
-		const MetaData = require("../kuz-metadata").MetaData;
-		this.metaData = new MetaData(this.site, this.InputFilePath());
-	}
 }
 
 Page.prototype.SetupInput = function () {
