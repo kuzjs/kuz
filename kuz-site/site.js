@@ -69,7 +69,7 @@ Site.prototype.SetupThemes = function () {
 	} else if (themeNames.length == 0) {
 		log.Red("Themes param is empty.");
 	} else {
-		const Theme = require("../theme/theme").Theme;
+		const Theme = require("../kuz-theme").Theme;
 		for (let themeName of themeNames) {
 			let theme = new Theme(themeName, this);
 			if (theme.IsValid()) {
