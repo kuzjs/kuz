@@ -4,7 +4,7 @@
 
 const MetaData = require("../metadata/metadata").MetaData;
 
-const log = require("../kz-log/log");
+const log = require("../kuz-log/log");
 
 const Nss = require("../kuz-nss/nss").Nss;
 const fsutils = require("../kz-fs");

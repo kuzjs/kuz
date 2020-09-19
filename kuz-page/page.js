@@ -4,7 +4,7 @@
 const fs = require("fs");
 
 const fsutils = require("../kz-fs");
-const log = require("../kz-log/log");
+const log = require("../kuz-log/log");
 
 function Page (site, configFileObject, entry, isRoot = false) {
 	this.SetupRenderable(site, configFileObject, entry);

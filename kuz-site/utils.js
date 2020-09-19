@@ -2,7 +2,7 @@
 
 const fs = require("fs");
 
-const log = require("../kz-log/log");
+const log = require("../kuz-log/log");
 
 const ConfigFile = require("../utils/configfile").ConfigFile;
 

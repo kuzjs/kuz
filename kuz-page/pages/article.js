@@ -3,7 +3,7 @@
 const pug = require("pug");
 const Section = require("./section").Section;
 
-const log = require("../../kz-log/log");
+const log = require("../../kuz-log/log");
 
 function Article(page, content) {
 	this.Setup(page, content);

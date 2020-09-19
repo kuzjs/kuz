@@ -1,7 +1,7 @@
 // renderable.js
 
 const fs = require("fs");
-const log = require("../kz-log/log");
+const log = require("../kuz-log/log");
 const fsutils = require("../kz-fs");
 
 const Article = require("./pages/article").Article;

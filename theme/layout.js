@@ -3,7 +3,7 @@
 const fs = require("fs");
 const pug = require("pug");
 
-const log = require("../kz-log/log");
+const log = require("../kuz-log/log");
 const fsutils = require("../kz-fs");
 
 function ThemeLayout (theme, data) {

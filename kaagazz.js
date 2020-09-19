@@ -1,6 +1,6 @@
 // kaagazz.js
 
-const log = require("./kz-log");
+const log = require("./kuz-log");
 
 const fsutils = require("./kz-fs");
 const jsonDirectory = require("./base/common").jsonDirectory;

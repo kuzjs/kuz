@@ -1,6 +1,6 @@
 // element.js
 
-const log = require("../kz-log/log");
+const log = require("../kuz-log/log");
 
 const common = require("../base/common");
 const defaultText = common.defaultText;

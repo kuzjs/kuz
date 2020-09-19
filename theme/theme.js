@@ -1,6 +1,6 @@
 // theme.js
 
-const log = require("../kz-log/log");
+const log = require("../kuz-log/log");
 const fsutils = require("../kz-fs");
 
 const common = require("../base/common");
