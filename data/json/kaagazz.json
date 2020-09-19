@@ -11,11 +11,6 @@
 		"data": "data",
 		"pages": "pages",
 
-		"authors": "authors",
-		"categories": "categories",
-		"tags": "tags",
-		"collections": "collections",
-
 		"themes": "themes",
 		"layouts": "layouts",
 		"modules": "modules",
@@ -31,11 +26,6 @@
 		"special": "x",
 		"dist": "dist",
 		"themes": "themes",
-
-		"author": "author",
-		"category": "category",
-		"tag": "tag",
-		"collection": "collection",
 
 		"zzz": false
 	},
