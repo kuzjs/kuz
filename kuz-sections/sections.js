@@ -67,6 +67,14 @@ KuzSections.prototype.IsValid = function () {
 	return true;
 }
 
+KuzSections.prototype.SectionsObject = function () {
+	let sections = {};
+	for (let section of this.sections) {
+		sections[section.name] = section;
+	}
+	return sections;
+}
+
 
 
 module.exports = {
