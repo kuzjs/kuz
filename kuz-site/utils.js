@@ -4,7 +4,7 @@ const fs = require("fs");
 
 const log = require("../kuz-log/log");
 
-const ConfigFile = require("../utils/configfile").ConfigFile;
+const ConfigFile = require("../kuz-konfig").ConfigFile;
 
 const Nss = require("../kuz-nss/nss").Nss;
 const Page = require("../kuz-page").Page;
