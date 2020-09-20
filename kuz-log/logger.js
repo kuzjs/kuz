@@ -51,17 +51,17 @@ const colors = {
 
 
 
-function GetDateString () {
+function GetDateString (separator = ".") {
 	let now = new Date();
 
 	let date = (now.getDate() + "").padStart(2, "0");
 	let month = (now.getMonth() + "").padStart(2, "0");
 	let year = (now.getFullYear() + "").padStart(4, "0");
 
-	return `${date}_${month}_${year}`;
+	return `${date}${separator}${month}${separator}${year}`;
 }
 
-function GetTimeString () {
+function GetTimeString (separator = ":") {
 	let now = new Date();
 
 	let hours = (now.getHours() + "h").padStart(3, "0");
@@ -69,14 +69,14 @@ function GetTimeString () {
 	let seconds = (now.getSeconds() + "s").padStart(3, "0");
 	let milliseconds = (now.getMilliseconds() + "ms").padStart(5, "0");
 
-	return `${hours}_${minutes}_${seconds}`;
+	return `${hours}${separator}${minutes}${separator}${seconds}`;
 }
 
 
 
 function GetLogFileName () {
-	let date = GetDateString();
-	let time = GetTimeString();
+	let date = GetDateString("_");
+	let time = GetTimeString("_");
 
 	return `log_on_${date}_at_${time}.txt`;
 }
@@ -229,11 +229,11 @@ KuzLogger.prototype.GetChild = function (name) {
 
 
 
-KuzLogger.prototype.GetFullMessage = function (keyword, name, prefix, message) {
+KuzLogger.prototype.GetFullMessage = function (keyword, timeStampPrefix, name, prefix, message) {
 	if (message) {
-		return `[ ${keyword} ] (${name}) ${prefix} [${message}]\n`;
+		return `[ ${keyword} ] ${timeStampPrefix} (${name}) ${prefix} [${message}]\n`;
 	} else {
-		return `[ ${keyword} ] (${name}) ${prefix}\n`;
+		return `[ ${keyword} ] ${timeStampPrefix} (${name}) ${prefix}\n`;
 	}
 }
 
@@ -241,19 +241,27 @@ KuzLogger.prototype.Log = function (keyword, prefix, message, c1, c2, c3) {
 	c2 = c2 ? c2 : c1;
 	c3 = c3 ? c3 : c2;
 
+	let dataString = `${GetDateString()}`;
+	let timeString = `${GetTimeString()}`;
+	let timeStampPrefix = `on ${dataString} at ${timeString}`;
+
 	let name = this.name;
 	let messageNoColor = null;
 	if (this.DiskIsOn()) {
-		messageNoColor = `[ ${keyword} ] (${this.name}) ${message}\n`;
+		messageNoColor = this.GetFullMessage(keyword, timeStampPrefix, name, prefix, message);
 		fs.appendFileSync(this.path, messageNoColor);
 	}
 
 	if (this.ColorIsOn()) {
+		dataString = `${colors.FgYellow}${dataString}${colors.Reset}`;
+		timeString = `${colors.FgCyan}${timeString}${colors.Reset}`;
+		timeStampPrefix = `on ${dataString} at ${timeString}`;
+
 		keyword = `${c1}${keyword}${colors.Reset}`;
 		name = `${c2}${name}${colors.Reset}`;
 		message = message ? `${c3}${message}${colors.Reset}` : message;
 
-		let messageString = this.GetFullMessage(keyword, name, prefix, message);
+		let messageString = this.GetFullMessage(keyword, timeStampPrefix, name, prefix, message);
 		process.stdout.write(messageString);
 	} else {
 		process.stdout.write(messageNoColor);
