@@ -127,19 +127,23 @@ Page.prototype.InputFileName = function () {
 	}
 }
 
+Page.prototype.OutputDirectoryPath = function () {
+	return fsutils.JoinPath(this.site.GetOutputDirectory(), this.OutputDirectoryPartialPath());
+}
+
 Page.prototype.OutputDirectoryPartialPath = function () {
-	if (this.isRoot) {
+	if (this.isRoot || !this.HasPrettyURL()) {
 		return this.configDirpath;
 	} else {
 		return fsutils.JoinPath(this.configDirpath, this.entry);
 	}
 }
 
-Page.prototype.OutputFilePath = function () {
+Page.prototype.OutputFileName = function () {
 	if (this.HasPrettyURL()) {
-		return this.OutputDirectoryPath() + "/index.html";
+		return "index.html";
 	} else {
-		return this.OutputDirectoryPath() + ".html";
+		return this.entry + ".html";
 	}
 }
 
@@ -188,14 +192,6 @@ Page.prototype.OutputFileNesting = function () {
 	return (this.OutputFilePath().split("/").length - 2);
 }
 
-Page.prototype.OutputFileName = function () {
-	return "index.html";
-}
-
-Page.prototype.OutputDirectoryPath = function () {
-	return fsutils.JoinPath(this.site.GetOutputDirectory(), this.OutputDirectoryPartialPath());
-}
-
 Page.prototype.PageURL = function () {
 	return fsutils.JoinPath(this.site.HomeURL(), this.OutputDirectoryPartialPath());
 }
@@ -217,7 +213,7 @@ Page.prototype.RelativeURL = function () {
 	if (this.HasPrettyURL()) {
 		return this.OutputDirectoryPartialPath();
 	} else {
-		return this.OutputDirectoryPartialPath() + ".html";
+		return fsutils.JoinPath(this.OutputDirectoryPartialPath(), this.OutputFileName());
 	}
 }
 
