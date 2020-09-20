@@ -47,6 +47,10 @@ KuzCodeFile.prototype.GetLines = function () {
 	return this.GetLinesXtoY();
 }
 
+KuzCodeFile.prototype.GetNLinesFromX = function (x, n) {
+	return this.GetLinesXtoY(x, x+n-1);
+}
+
 
 
 module.exports = {
