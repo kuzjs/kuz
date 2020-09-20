@@ -93,18 +93,35 @@ function KuzLogger (name) {
 	this.debug = false;
 	this.disk = false;
 	this.parent = null;
+	this.locked = false;
 	this.children = [];
 	this.path = GetLogFilePath();
 }
 
 
 
+KuzLogger.prototype.Lock = function () {
+	this.locked = true;
+}
+
+KuzLogger.prototype.Unlock = function () {
+	if (this.parent === null) {
+		this.locked = false;
+	}
+}
+
+
+
 KuzLogger.prototype.TurnOffColor = function () {
-	this.color = false;
+	if (!this.locked) {
+		this.color = false;
+	}
 }
 
 KuzLogger.prototype.TurnOnColor = function () {
-	this.color = true;
+	if (!this.locked) {
+		this.color = true;
+	}
 }
 
 
@@ -123,11 +140,15 @@ KuzLogger.prototype.ColorIsOff = function () {
 
 
 KuzLogger.prototype.TurnOffDebug = function () {
-	this.debug = false;
+	if (!this.locked) {
+		this.debug = false;
+	}
 }
 
 KuzLogger.prototype.TurnOnDebug = function () {
-	this.debug = true;
+	if (!this.locked) {
+		this.debug = true;
+	}
 }
 
 
@@ -194,6 +215,7 @@ KuzLogger.prototype.GetChild = function (name) {
 	let child = new KuzLogger(name);
 
 	child.SetParent(this);
+	child.Lock();
 	this.children.push(child);
 
 	return child;
