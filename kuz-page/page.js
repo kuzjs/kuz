@@ -544,11 +544,11 @@ KuzPage.prototype.Render = function () {
 
 	fsutils.CreateDirectory(this.OutputDirectoryPath());
 	fs.writeFileSync(htmlPath, html);
-	this.RenderLog();
 
 	let t2 = Date.now();
 	this.totalRenderTime += (t2-t1);
 	this.totalRenders++;
+	this.RenderLog();
 }
 
 KuzPage.prototype.AverageRenderTime = function () {
