@@ -229,23 +229,30 @@ KuzLogger.prototype.GetChild = function (name) {
 
 
 
+KuzLogger.prototype.GetFullMessage = function (keyword, name, prefix, message) {
+	return `[ ${keyword} ] (${name}) ${prefix} [${message}]\n`;
+}
+
 KuzLogger.prototype.Log = function (keyword, prefix, message, c1, c2, c3) {
 	c2 = c2 ? c2 : c1;
 	c3 = c3 ? c3 : c2;
 
 	let name = this.name;
+	let messageNoColor = null;
+	if (this.DiskIsOn()) {
+		messageNoColor = `[ ${keyword} ] (${this.name}) ${message}\n`;
+		fs.appendFileSync(this.path, messageNoColor);
+	}
+
 	if (this.ColorIsOn()) {
 		keyword = `${c1}${keyword}${colors.Reset}`;
 		name = `${c2}${name}${colors.Reset}`;
 		message = `${c3}${message}${colors.Reset}`;
-	}
 
-	let messageString = `[ ${keyword} ] (${name}) ${prefix} [${message}]\n`;
-	process.stdout.write(messageString);
-
-	if (this.DiskIsOn()) {
-		let messageNoColor = `[ ${keyword} ] (${this.name}) ${message}\n`;
-		fs.appendFileSync(this.path, messageNoColor);
+		let messageString = this.GetFullMessage(keyword, name, prefix, message);
+		process.stdout.write(messageString);
+	} else {
+		process.stdout.write(messageNoColor);
 	}
 }
 
