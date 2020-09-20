@@ -61,7 +61,7 @@ function GetDateString (separator = ".") {
 	return `${date}${separator}${month}${separator}${year}`;
 }
 
-function GetTimeString (separator = ":") {
+function GetTimeString (separator = ":", septwo = "|") {
 	let now = new Date();
 
 	let hours = (now.getHours() + "").padStart(2, "0");
@@ -69,7 +69,7 @@ function GetTimeString (separator = ":") {
 	let seconds = (now.getSeconds() + "").padStart(2, "0");
 	let milliseconds = (now.getMilliseconds() + "ms").padStart(5, "0");
 
-	return `${hours}${separator}${minutes}${separator}${seconds}${separator}${separator}${milliseconds}`;
+	return `${hours}${separator}${minutes}${separator}${seconds}${septwo}${milliseconds}`;
 }
 
 
