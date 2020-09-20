@@ -543,7 +543,7 @@ KuzPage.prototype.Render = function () {
 }
 
 KuzPage.prototype.RenderLog = function () {
-	this.log.Green("Rendered:", this.OutputFilePath());
+	this.log.GreenYellow("Rendered:", this.OutputFilePath());
 }
 
 

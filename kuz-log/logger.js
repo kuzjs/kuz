@@ -232,7 +232,7 @@ KuzLogger.prototype.GetChild = function (name) {
 KuzLogger.prototype.Log = function (keyword, prefix, message, c1, c2, c3) {
 	c2 = c2 ? c2 : c1;
 	c3 = c3 ? c3 : c2;
-	let messageString = `[ ${c1}${keyword}${colors.Reset} ] (${c2}${this.name}${colors.Reset}) ${prefix} [${c2}${message}${colors.Reset}]\n`;
+	let messageString = `[ ${c1}${keyword}${colors.Reset} ] (${c2}${this.name}${colors.Reset}) ${prefix} [${c3}${message}${colors.Reset}]\n`;
 	process.stdout.write(messageString);
 
 	if (this.DiskIsOn()) {
@@ -269,6 +269,10 @@ KuzLogger.prototype.NotFound = function (prefix, message) {
 
 KuzLogger.prototype.Green = function (prefix, message) {
 	this.Log("  OK  ", prefix, message, colors.FgGreen);
+}
+
+KuzLogger.prototype.GreenYellow = function (prefix, message) {
+	this.Log("  OK  ", prefix, message, colors.FgGreen, colors.FgGreen, colors.FgYellow);
 }
 
 KuzLogger.prototype.Red = function (prefix, message) {
