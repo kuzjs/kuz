@@ -11,17 +11,18 @@ const loremIpsumJsonPath = fsutils.JoinPath(jsonDirectory, "lorem-ipsum.json");
 
 
 function KaagazzApp () {
+	const KuzLogger = require("./kuz-log").KuzLogger;
+	this.log = new KuzLogger("KaagazzApp");
+	//this.log.TurnOnDisk();
+
 	const JsonFile = require("./kuz-json").JsonFile;
 	this.meta = new JsonFile(kaagazzJsonPath);
 	this.flagsJson = new JsonFile(flagsJsonPath);
 	this.blackadder = new JsonFile(blackadderJsonPath);
 	this.ipsum = new JsonFile(loremIpsumJsonPath);
 
+	this.log.SetName(this.GetTitle());
 	this.SetupFlags();
-
-	const KuzLogger = require("./kuz-log").KuzLogger;
-	this.log = new KuzLogger(this.GetTitle());
-	//this.log.TurnOnDisk();
 
 	if (this.AllIsWell()) {
 		const KuzSite = require("./kuz-site").KuzSite;
