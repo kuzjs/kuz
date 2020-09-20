@@ -20,7 +20,7 @@ function KaagazzApp () {
 	this.SetupFlags();
 
 	const KuzLogger = require("./kuz-log").KuzLogger;
-	this.log = new KuzLogger("App");
+	this.log = new KuzLogger(this.GetTitle());
 	//this.log.TurnOnDisk();
 
 	if (this.AllIsWell()) {
@@ -171,15 +171,15 @@ KaagazzApp.prototype.GetSiteJsonPath = function () {
 	return this.meta.json.filenames.siteJson;
 }
 
-KaagazzApp.prototype.Title = function () {
+KaagazzApp.prototype.GetTitle = function () {
 	return this.meta.json.meta.title;
 }
 
-KaagazzApp.prototype.Description = function () {
+KaagazzApp.prototype.GetDescription = function () {
 	return this.meta.json.meta.description;
 }
 
-KaagazzApp.prototype.Version = function () {
+KaagazzApp.prototype.GetVersion = function () {
 	return this.meta.json.meta.version;
 }
 
@@ -253,8 +253,8 @@ KaagazzApp.prototype.ShowVersion = function () {
 
 	let meta = this.meta.json.meta;
 	table.AddRow(["Title", this.Title()]);
-	table.AddRow(["Version", this.Version()]);
-	table.AddRow(["Description", this.Description()]);
+	table.AddRow(["Version", this.GetVersion()]);
+	table.AddRow(["Description", this.GetDescription()]);
 	table.Print();
 }
 

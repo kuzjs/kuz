@@ -8,7 +8,7 @@ const fsutils = require("../kuz-fs");
 
 function Site (kaagazz) {
 	this.app = kaagazz;
-	this.log = this.app.log.GetChild("Site");
+	this.log = this.app.log.GetChild();
 	this.Setup();
 }
 
@@ -23,6 +23,7 @@ Site.prototype.Setup = function () {
 
 	const JsonFile = require("../kuz-json").JsonFile;
 	this.meta = new JsonFile(this.siteJsonPath);
+	this.log.SetName(this.HomeURL());
 
 	this.konfigs = [];
 	this.SetupThemes();

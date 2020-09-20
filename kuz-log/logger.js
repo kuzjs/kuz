@@ -112,6 +112,12 @@ KuzLogger.prototype.Unlock = function () {
 
 
 
+KuzLogger.prototype.SetName = function (name) {
+	this.name = name;
+}
+
+
+
 KuzLogger.prototype.TurnOffColor = function () {
 	if (!this.locked) {
 		this.color = false;
