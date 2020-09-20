@@ -82,6 +82,21 @@ KuzMetaData.prototype.Kuz = function () {
 	return {};
 }
 
+KuzMetaData.prototype.Reqs = function () {
+	let reqs = {};
+	if (this.sections.reqs) {
+		for (let key in this.sections.reqs) {
+			try {
+				let modName = this.sections.reqs[key];
+				reqs[key] = require(modName);
+			} catch (c) {
+				reqs[key] = null;
+			}
+		}
+	}
+	return reqs;
+}
+
 
 
 KuzMetaData.prototype.Exists = function () {

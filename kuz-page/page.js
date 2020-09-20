@@ -465,6 +465,7 @@ Page.prototype.GetKuz = function () {
 		code: this.metaData.Code(),
 		json: this.metaData.Json(),
 		kuz: this.metaData.Kuz(),
+		reqs: this.metaData.Reqs(),
 
 		ipsum: this.LoremIpsum(),
 		kuzz: {
