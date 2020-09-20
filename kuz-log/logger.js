@@ -55,7 +55,7 @@ function GetDateString (separator = ".") {
 	let now = new Date();
 
 	let date = (now.getDate() + "").padStart(2, "0");
-	let month = (now.getMonth() + "").padStart(2, "0");
+	let month = (now.getMonth() + 1 + "").padStart(2, "0");
 	let year = (now.getFullYear() + "").padStart(4, "0");
 
 	return `${date}${separator}${month}${separator}${year}`;
