@@ -4,8 +4,7 @@
 
 const fsutils = require("../kuz-fs");
 
-const KZTable = require("../kuz-table/table").KZTable;
-const KZBaseObject = require("../base/baseobject").KZBaseObject;
+
 
 function KuzKonfig (site, dirpath, entity=false) {
 	this.site = site;
@@ -42,6 +41,7 @@ function KuzKonfig (site, dirpath, entity=false) {
 	}
 }
 
+const KZBaseObject = require("../base/baseobject").KZBaseObject;
 KuzKonfig.prototype = new KZBaseObject();
 KuzKonfig.prototype.codeLetter = "g";
 
@@ -148,6 +148,7 @@ KuzKonfig.prototype.GetStringValue = function (propertyName) {
 }
 
 KuzKonfig.prototype.GetTable = function () {
+	const KZTable = require("../kuz-table/table").KZTable;
 	let table = new KZTable();
 	table.AddColumn("CodeName");
 	table.AddColumn("Path");
