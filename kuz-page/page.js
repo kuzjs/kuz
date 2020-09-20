@@ -95,11 +95,14 @@ Page.prototype.IsVisible = function () {
 
 
 Page.prototype.HasInputDirectory = function () {
-	let inputDirectoryPath = fsutils.JoinPath(this.site.GetInputDirectory(), this.configDirpath, this.entry);
-	if (fsutils.IsDirectory(inputDirectoryPath)) {
-		return true;
+	if (this.hasInputDirectory === undefined) {
+		let inputDirectoryPath = fsutils.JoinPath(this.site.GetInputDirectory(), this.configDirpath, this.entry);
+		if (fsutils.IsDirectory(inputDirectoryPath)) {
+			this.hasInputDirectory = true;
+		}
+		this.hasInputDirectory = false;
 	}
-	return false;
+	return this.hasInputDirectory;
 }
 
 Page.prototype.InputDirectoryPath = function () {
@@ -505,16 +508,14 @@ Page.prototype.NeedsUpdate = function () {
 		return true;
 	}
 
-	let outputFilePath = this.OutputFilePath();
-	if (this.hasInputDirectory) {
-		let inputDirectoryPath = this.InputDirectoryPath();
-		if (fsutils.DirectoryHasNewerFiles(inputDirectoryPath, outputFilePath)) {
+	if (this.HasInputDirectory()) {
+		if (fsutils.DirectoryHasNewerFiles(this.InputDirectoryPath(), this.OutputFilePath())) {
 			return true;
 		} else {
 			return false;
 		}
 	} else {
-		if (fsutils.IsNewerThan(outputFilePath, this.inputFilePath)) {
+		if (fsutils.IsNewerThan(this.OutputFilePath(), this.InputFilePath())) {
 			return false;
 		} else {
 			return true;
