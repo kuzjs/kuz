@@ -60,7 +60,7 @@ KZBaseObject.prototype.Site = function (site) {
 }
 
 KZBaseObject.prototype.SetSite = function (site) {
-	if (site != undefined) {
+	if (site != undefined && this.site === undefined) {
 		this.site = site;
 	}
 	return this;
@@ -84,7 +84,7 @@ KZBaseObject.prototype.App = function (app) {
 }
 
 KZBaseObject.prototype.SetApp = function (app) {
-	if (app != undefined) {
+	if (app != undefined && this.app === undefined) {
 		this.app = app;
 	}
 	return this;
