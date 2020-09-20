@@ -121,6 +121,18 @@ KuzLogger.prototype.DiskIsOff = function () {
 
 
 
+KuzLogger.prototype.SetPath = function (path) {
+	if (path != undefined) {
+		this.path = path;
+	}
+}
+
+KuzLogger.prototype.GetPath = function () {
+	return this.path;
+}
+
+
+
 KuzLogger.prototype.SetParent = function (parent) {
 	this.parent = parent;
 }
