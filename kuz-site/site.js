@@ -6,13 +6,13 @@ const fsutils = require("../kuz-fs");
 
 
 
-function Site (kaagazz) {
+function KuzSite (kaagazz) {
 	this.app = kaagazz;
 	this.log = this.app.log.GetChild();
 	this.Setup();
 }
 
-Site.prototype.Setup = function () {
+KuzSite.prototype.Setup = function () {
 	this.filenames = this.app.meta.json.filenames;
 	this.input_dirs = this.app.meta.json.input;
 	this.output_dirs = this.app.meta.json.output;
@@ -30,39 +30,39 @@ Site.prototype.Setup = function () {
 	this.SetupPages();
 }
 
-Site.prototype.AddKonfig = function (konfig) {
+KuzSite.prototype.AddKonfig = function (konfig) {
 	konfig.SetIndex(this.konfigs.length);
 	this.konfigs.push(konfig);
 }
 
-Site.prototype.HomeURL = function () {
+KuzSite.prototype.HomeURL = function () {
 	return fsutils.TrimSlashes(this.meta.json.meta.SITE_URL);
 }
 
-Site.prototype.Props = function () {
+KuzSite.prototype.Props = function () {
 	return this.meta.json;
 }
 
-Site.prototype.IsSite = function () {
+KuzSite.prototype.IsSite = function () {
 	return true;
 }
 
-Site.prototype.HelloWorld = function () {
-	this.log.Red("Hello, Site!");
+KuzSite.prototype.HelloWorld = function () {
+	this.log.Red("Hello, KuzSite!");
 }
 
-Site.prototype.Error = function (errorMessage) {
+KuzSite.prototype.Error = function (errorMessage) {
 	this.error = true;
 	this.errorMessage = errorMessage;
 	this.log.Red(this.errorMessage);
 }
 
-Site.prototype.SetupPages = function () {
+KuzSite.prototype.SetupPages = function () {
 	const utils = require("./utils");
 	this.pages = utils.GetPages(this);
 }
 
-Site.prototype.SetupThemes = function () {
+KuzSite.prototype.SetupThemes = function () {
 	this.themes = [];
 
 	let themeNames = this.meta.json.themes;
@@ -87,7 +87,7 @@ Site.prototype.SetupThemes = function () {
 	}
 }
 
-Site.prototype.GetNestedValueFromCascade = function (parent, child) {
+KuzSite.prototype.GetNestedValueFromCascade = function (parent, child) {
 	let retVal = this.meta.GetNestedValueFromName(parent, child);
 	if (retVal.found) {
 		return retVal.value;
@@ -96,39 +96,39 @@ Site.prototype.GetNestedValueFromCascade = function (parent, child) {
 	}
 }
 
-Site.prototype.GetInputDirectoryFromJson = function (dirName) {
+KuzSite.prototype.GetInputDirectoryFromJson = function (dirName) {
 	return this.app.meta.json.input[dirName];
 }
 
-Site.prototype.GetOutputDirectoryFromJson = function (dirName) {
+KuzSite.prototype.GetOutputDirectoryFromJson = function (dirName) {
 	return this.GetNestedValueFromCascade("output", dirName);
 }
 
-Site.prototype.GetInputDirectory = function () {
+KuzSite.prototype.GetInputDirectory = function () {
 	return this.GetInputDirectoryFromJson("pages");
 }
 
-Site.prototype.GetOutputDirectory = function () {
+KuzSite.prototype.GetOutputDirectory = function () {
 	return this.GetOutputDirectoryFromJson("root");
 }
 
-Site.prototype.GetSpecialDirectory = function () {
+KuzSite.prototype.GetSpecialDirectory = function () {
 	return this.GetOutputDirectoryFromJson("special");
 }
 
-Site.prototype.GetThemesDirectory = function () {
+KuzSite.prototype.GetThemesDirectory = function () {
 	return this.GetInputDirectoryFromJson("themes");
 }
 
-Site.prototype.GetDataDirectory = function () {
+KuzSite.prototype.GetDataDirectory = function () {
 	return this.GetInputDirectoryFromJson("data");
 }
 
-Site.prototype.GetCollectionsDirectory = function () {
+KuzSite.prototype.GetCollectionsDirectory = function () {
 	return this.GetInputDirectoryFromJson("collections");
 }
 
-Site.prototype.GetDataFileContents = function (filename) {
+KuzSite.prototype.GetDataFileContents = function (filename) {
 	let filepath = fsutils.JoinPath(this.GetDataDirectory(), filename);
 	if (fsutils.IsFile(filepath)) {
 		return fs.readFileSync(filepath, "utf8");
@@ -138,7 +138,7 @@ Site.prototype.GetDataFileContents = function (filename) {
 	}
 }
 
-Site.prototype.GetThemeFromName = function (themeName) {
+KuzSite.prototype.GetThemeFromName = function (themeName) {
 	for (let theme of this.site.themes) {
 		if (theme.themeName == themeName) {
 			return theme;
@@ -148,18 +148,18 @@ Site.prototype.GetThemeFromName = function (themeName) {
 	return null;
 }
 
-Site.prototype.DefaultTheme = function () {
+KuzSite.prototype.DefaultTheme = function () {
 	return this.themes[0];
 }
 
-Site.prototype.PrintDirectories = function () {
+KuzSite.prototype.PrintDirectories = function () {
 	this.log.SomeNews("  Input: " + this.GetInputDirectory());
 	this.log.SomeNews(" Output: " + this.GetOutputDirectory());
 	this.log.SomeNews("  Colls: " + this.GetCollectionsDirectory());
 	this.log.SomeNews("Special: " + this.GetSpecialDirectory());
 }
 
-Site.prototype.Authors = function () {
+KuzSite.prototype.Authors = function () {
 	let authors = [];
 	for (let page of this.pages) {
 		if (page.GetType() == "author") {
@@ -169,12 +169,12 @@ Site.prototype.Authors = function () {
 	return authors;
 }
 
-Site.prototype.DefaultAuthor = function () {
+KuzSite.prototype.DefaultAuthor = function () {
 	let authors = this.Authors();
 	return authors[authors.length-1];
 }
 
-Site.prototype.Categories = function () {
+KuzSite.prototype.Categories = function () {
 	let categories = [];
 	for (let page of this.pages) {
 		if (page.GetType() == "category") {
@@ -184,12 +184,12 @@ Site.prototype.Categories = function () {
 	return categories;
 }
 
-Site.prototype.DefaultCategory = function () {
+KuzSite.prototype.DefaultCategory = function () {
 	let categories = this.Categories();
 	return categories[categories.length-1];
 }
 
-Site.prototype.Tags = function () {
+KuzSite.prototype.Tags = function () {
 	let tags = [];
 	for (let page of this.pages) {
 		if (page.GetType() == "tag") {
@@ -199,7 +199,7 @@ Site.prototype.Tags = function () {
 	return tags;
 }
 
-Site.prototype.Pages = function () {
+KuzSite.prototype.Pages = function () {
 	let pages = [];
 	for (let page of this.pages) {
 		if (page.GetType() == "page") {
@@ -209,7 +209,7 @@ Site.prototype.Pages = function () {
 	return pages;
 }
 
-Site.prototype.Collections = function () {
+KuzSite.prototype.Collections = function () {
 	let collections = [];
 	for (let page of this.pages) {
 		if (page.GetType() == "collection") {
@@ -219,7 +219,7 @@ Site.prototype.Collections = function () {
 	return collections;
 }
 
-Site.prototype.Entities = function () {
+KuzSite.prototype.Entities = function () {
 	let entities = [];
 	entities = entities.concat(this.Authors());
 	entities = entities.concat(this.Categories());
@@ -228,15 +228,15 @@ Site.prototype.Entities = function () {
 	return entities;
 }
 
-Site.prototype.Renderables = function () {
+KuzSite.prototype.Renderables = function () {
 	return this.pages;
 }
 
-Site.prototype.Themes = function () {
+KuzSite.prototype.Themes = function () {
 	return this.themes;
 }
 
-Site.prototype.LayoutsArray = function () {
+KuzSite.prototype.LayoutsArray = function () {
 	let layouts = [];
 	for (let theme of this.themes) {
 		layouts = layouts.concat(theme.layouts);
@@ -244,7 +244,7 @@ Site.prototype.LayoutsArray = function () {
 	return layouts;
 }
 
-Site.prototype.ModulesArray = function () {
+KuzSite.prototype.ModulesArray = function () {
 	let modules = [];
 	for (let theme of this.themes) {
 		modules = modules.concat(theme.modules);
@@ -252,7 +252,7 @@ Site.prototype.ModulesArray = function () {
 	return modules;
 }
 
-Site.prototype.CSSArray = function () {
+KuzSite.prototype.CSSArray = function () {
 	let cssArray = [];
 	for (let theme of this.themes) {
 		cssArray = cssArray.concat(theme.cssArray);
@@ -260,7 +260,7 @@ Site.prototype.CSSArray = function () {
 	return cssArray;
 }
 
-Site.prototype.JsArray = function () {
+KuzSite.prototype.JsArray = function () {
 	let jsArray = [];
 	for (let theme of this.themes) {
 		jsArray = jsArray.concat(theme.jsArray);
@@ -268,7 +268,7 @@ Site.prototype.JsArray = function () {
 	return jsArray;
 }
 
-Site.prototype.ResourceArray = function () {
+KuzSite.prototype.ResourceArray = function () {
 	let resourceArray = [];
 	for (let theme of this.themes) {
 		resourceArray = resourceArray.concat(theme.resourceArray);
@@ -276,7 +276,7 @@ Site.prototype.ResourceArray = function () {
 	return resourceArray;
 }
 
-Site.prototype.EveryThing = function () {
+KuzSite.prototype.EveryThing = function () {
 	let everyThing = this.Renderables();
 	everyThing = everyThing.concat(this.LayoutsArray());
 	everyThing = everyThing.concat(this.ModulesArray());
@@ -286,7 +286,7 @@ Site.prototype.EveryThing = function () {
 	return everyThing;
 }
 
-Site.prototype.PrintArrayAsTable = function (arr) {
+KuzSite.prototype.PrintArrayAsTable = function (arr) {
 	if (arr.length == 0) {
 		this.log.Red("No elements in array.");
 		return;
@@ -299,64 +299,64 @@ Site.prototype.PrintArrayAsTable = function (arr) {
 	table.Print();
 }
 
-Site.prototype.PrintAuthors = function () {
+KuzSite.prototype.PrintAuthors = function () {
 	this.PrintArrayAsTable(this.authors);
 }
 
-Site.prototype.PrintCategories = function () {
+KuzSite.prototype.PrintCategories = function () {
 	this.PrintArrayAsTable(this.categories);
 }
 
-Site.prototype.PrintTags = function () {
+KuzSite.prototype.PrintTags = function () {
 	this.PrintArrayAsTable(this.tags);
 }
 
-Site.prototype.PrintPages = function () {
+KuzSite.prototype.PrintPages = function () {
 	this.PrintArrayAsTable(this.pages);
 }
 
-Site.prototype.PrintCollections = function () {
+KuzSite.prototype.PrintCollections = function () {
 	this.PrintArrayAsTable(this.collections);
 }
 
-Site.prototype.PrintEntities = function () {
+KuzSite.prototype.PrintEntities = function () {
 	this.PrintArrayAsTable(this.Entities());
 }
 
-Site.prototype.PrintAll = function () {
+KuzSite.prototype.PrintAll = function () {
 	this.PrintArrayAsTable(this.Renderables());
 }
 
-Site.prototype.PrintThemes = function () {
+KuzSite.prototype.PrintThemes = function () {
 	this.PrintArrayAsTable(this.themes);
 }
 
-Site.prototype.PrintLayouts = function () {
+KuzSite.prototype.PrintLayouts = function () {
 	let arr = this.LayoutsArray();
 	this.PrintArrayAsTable(arr);
 }
 
-Site.prototype.PrintCssFiles = function () {
+KuzSite.prototype.PrintCssFiles = function () {
 	let arr = this.CssFilesArray();
 	this.PrintArrayAsTable(arr);
 }
 
-Site.prototype.PrintJsFiles = function () {
+KuzSite.prototype.PrintJsFiles = function () {
 	let arr = this.JsFilesArray();
 	this.PrintArrayAsTable(arr);
 }
 
-Site.prototype.PrintResFiles = function () {
+KuzSite.prototype.PrintResFiles = function () {
 	let arr = this.ResFilesArray();
 	this.PrintArrayAsTable(arr);
 }
 
-Site.prototype.PrintKuzKonfigs = function () {
+KuzSite.prototype.PrintKuzKonfigs = function () {
 	let arr = this.konfigs;
 	this.PrintArrayAsTable(arr);
 }
 
-Site.prototype.PrintConfiguration = function () {
+KuzSite.prototype.PrintConfiguration = function () {
 	this.PrintDirectories();
 	this.PrintAuthors();
 	this.PrintCategories();
@@ -365,7 +365,7 @@ Site.prototype.PrintConfiguration = function () {
 	this.PrintCollections();
 }
 
-Site.prototype.GetPagesByAuthor = function (author) {
+KuzSite.prototype.GetPagesByAuthor = function (author) {
 	let pages = [];
 	for (let page of this.pages) {
 		let pageAuthor = page.GetPropertyCascaded("author");
@@ -378,7 +378,7 @@ Site.prototype.GetPagesByAuthor = function (author) {
 	return pages;
 }
 
-Site.prototype.GetPagesInCategory = function (category) {
+KuzSite.prototype.GetPagesInCategory = function (category) {
 	let pages = [];
 	for (let page of this.pages) {
 		let pageCategory = page.GetPropertyCascaded("category");
@@ -391,7 +391,7 @@ Site.prototype.GetPagesInCategory = function (category) {
 	return pages;
 }
 
-Site.prototype.GetPagesWithTag = function (tag) {
+KuzSite.prototype.GetPagesWithTag = function (tag) {
 	let pages = [];
 	for (let page of this.pages) {
 		if (page.Tags().includes(tag.entry)) {
@@ -401,7 +401,7 @@ Site.prototype.GetPagesWithTag = function (tag) {
 	return pages;
 }
 
-Site.prototype.GetAuthorFromName = function (authorName) {
+KuzSite.prototype.GetAuthorFromName = function (authorName) {
 	for (let author of this.authors) {
 		if (author.name == authorName) {
 			return author;
@@ -410,7 +410,7 @@ Site.prototype.GetAuthorFromName = function (authorName) {
 	return null;
 }
 
-Site.prototype.GetCategoryFromName = function (categoryName) {
+KuzSite.prototype.GetCategoryFromName = function (categoryName) {
 	for (let category of this.Categories()) {
 		if (category.entry == categoryName) {
 			return category;
@@ -419,7 +419,7 @@ Site.prototype.GetCategoryFromName = function (categoryName) {
 	return null;
 }
 
-Site.prototype.GetTagFromName = function (tagName) {
+KuzSite.prototype.GetTagFromName = function (tagName) {
 	for (let tag of this.Tags()) {
 		if (tag.entry == tagName) {
 			return tag;
@@ -428,7 +428,7 @@ Site.prototype.GetTagFromName = function (tagName) {
 	return null;
 }
 
-Site.prototype.GetTagsFromNameArray = function (tagNameArray) {
+KuzSite.prototype.GetTagsFromNameArray = function (tagNameArray) {
 	let tags = [];
 	for (let tagName of tagNameArray) {
 		let tag = this.GetTagFromName(tagName);
@@ -439,76 +439,76 @@ Site.prototype.GetTagsFromNameArray = function (tagNameArray) {
 	return tags;
 }
 
-Site.prototype.ForcedUpdateArray = function (arr) {
+KuzSite.prototype.ForcedUpdateArray = function (arr) {
 	for (let elem of arr) {
 		elem.ForcedUpdate();
 	}
 }
 
-Site.prototype.ForcedUpdateAuthors = function () {
+KuzSite.prototype.ForcedUpdateAuthors = function () {
 	this.ForcedUpdateArray(this.authors);
 }
 
-Site.prototype.ForcedUpdateCategories = function () {
+KuzSite.prototype.ForcedUpdateCategories = function () {
 	this.ForcedUpdateArray(this.categories);
 }
 
-Site.prototype.ForcedUpdateTags = function () {
+KuzSite.prototype.ForcedUpdateTags = function () {
 	this.ForcedUpdateArray(this.tags);
 }
 
-Site.prototype.ForcedUpdatePages = function () {
+KuzSite.prototype.ForcedUpdatePages = function () {
 	this.ForcedUpdateArray(this.pages);
 }
 
-Site.prototype.ForcedUpdateCollections = function () {
+KuzSite.prototype.ForcedUpdateCollections = function () {
 	this.ForcedUpdateArray(this.collections);
 }
 
-Site.prototype.ForcedUpdateEntities = function () {
+KuzSite.prototype.ForcedUpdateEntities = function () {
 	this.ForcedUpdateArray(this.Entities());
 }
 
-Site.prototype.ForcedUpdateAll = function () {
+KuzSite.prototype.ForcedUpdateAll = function () {
 	this.ForcedUpdateArray(this.Renderables());
 }
 
-Site.prototype.UpdateArray = function (arr) {
+KuzSite.prototype.UpdateArray = function (arr) {
 	for (let elem of arr) {
 		elem.Update();
 	}
 }
 
-Site.prototype.UpdateAuthors = function () {
+KuzSite.prototype.UpdateAuthors = function () {
 	this.UpdateArray(this.authors);
 }
 
-Site.prototype.UpdateCategories = function () {
+KuzSite.prototype.UpdateCategories = function () {
 	this.UpdateArray(this.categories);
 }
 
-Site.prototype.UpdateTags = function () {
+KuzSite.prototype.UpdateTags = function () {
 	this.UpdateArray(this.tags);
 }
 
-Site.prototype.UpdatePages = function () {
+KuzSite.prototype.UpdatePages = function () {
 	this.UpdateArray(this.pages);
 }
 
-Site.prototype.UpdateCollections = function () {
+KuzSite.prototype.UpdateCollections = function () {
 	this.UpdateArray(this.collections);
 }
 
-Site.prototype.UpdateEntities = function () {
+KuzSite.prototype.UpdateEntities = function () {
 	this.UpdateArray(this.Entities());
 }
 
-Site.prototype.UpdateAll = function () {
+KuzSite.prototype.UpdateAll = function () {
 	this.UpdateArray(this.Renderables());
 }
 
 module.exports = {
-	Site: Site
+	KuzSite: KuzSite
 };
 
 

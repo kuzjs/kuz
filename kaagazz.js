@@ -24,8 +24,8 @@ function KaagazzApp () {
 	//this.log.TurnOnDisk();
 
 	if (this.AllIsWell()) {
-		const Site = require("./kuz-site").Site;
-		this.site = new Site(this);
+		const KuzSite = require("./kuz-site").KuzSite;
+		this.site = new KuzSite(this);
 		this.SetupOperands();
 	} else {
 		this.site = null;
