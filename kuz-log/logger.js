@@ -89,7 +89,7 @@ function GetLogFilePath () {
 
 function KuzLogger (name) {
 	this.name = name ? name : "Anonymous";
-	this.color = false;
+	this.color = true;
 	this.debug = false;
 	this.disk = false;
 	this.parent = null;
@@ -232,7 +232,15 @@ KuzLogger.prototype.GetChild = function (name) {
 KuzLogger.prototype.Log = function (keyword, prefix, message, c1, c2, c3) {
 	c2 = c2 ? c2 : c1;
 	c3 = c3 ? c3 : c2;
-	let messageString = `[ ${c1}${keyword}${colors.Reset} ] (${c2}${this.name}${colors.Reset}) ${prefix} [${c3}${message}${colors.Reset}]\n`;
+
+	let name = this.name;
+	if (this.ColorIsOn()) {
+		keyword = `${c1}${keyword}${colors.Reset}`;
+		name = `${c2}${name}${colors.Reset}`;
+		message = `${c3}${message}${colors.Reset}`;
+	}
+
+	let messageString = `[ ${keyword} ] (${name}) ${prefix} [${message}]\n`;
 	process.stdout.write(messageString);
 
 	if (this.DiskIsOn()) {
