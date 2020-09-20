@@ -6,7 +6,7 @@ const fsutils = require("../kuz-fs");
 
 
 
-function Page (site, konfig, entry, isRoot = false) {
+function KuzPage (site, konfig, entry, isRoot = false) {
 	this.isRoot = isRoot;
 	this.SetupPage(site, konfig, entry);
 }
@@ -14,14 +14,14 @@ function Page (site, konfig, entry, isRoot = false) {
 
 
 const KZBaseObject = require("../base/baseobject").KZBaseObject;
-Page.prototype = new KZBaseObject();
-Page.prototype.typeName = "page";
-Page.prototype.typeNamePlural = "pages";
-Page.prototype.codeLetter = "p";
+KuzPage.prototype = new KZBaseObject();
+KuzPage.prototype.typeName = "page";
+KuzPage.prototype.typeNamePlural = "pages";
+KuzPage.prototype.codeLetter = "p";
 
 
 
-Page.prototype.SetupPage = function (site, konfig, entry) {
+KuzPage.prototype.SetupPage = function (site, konfig, entry) {
 	this.SetSite(site);
 	this.SetKonfig(konfig);
 	this.entry = entry.trim();
@@ -40,15 +40,15 @@ Page.prototype.SetupPage = function (site, konfig, entry) {
 	}
 }
 
-Page.prototype.Setup = function () {
+KuzPage.prototype.Setup = function () {
 	//
 }
 
-Page.prototype.Reset = function () {
+KuzPage.prototype.Reset = function () {
 	//
 }
 
-Page.prototype.IsValid = function () {
+KuzPage.prototype.IsValid = function () {
 	if (fsutils.IsFile(this.InputFilePath())) {
 		return true;
 	}
@@ -57,29 +57,29 @@ Page.prototype.IsValid = function () {
 
 
 
-Page.prototype.IsPage = function () {
+KuzPage.prototype.IsPage = function () {
 	return (this.GetType() == "page") ? true : false;
 }
 
-Page.prototype.IsAuthor = function () {
+KuzPage.prototype.IsAuthor = function () {
 	return (this.GetType() == "author") ? true : false;
 }
 
-Page.prototype.IsCategory = function () {
+KuzPage.prototype.IsCategory = function () {
 	return (this.GetType() == "category") ? true : false;
 }
 
-Page.prototype.IsCollection = function () {
+KuzPage.prototype.IsCollection = function () {
 	return (this.GetType() == "collection") ? true : false;
 }
 
-Page.prototype.IsTag = function () {
+KuzPage.prototype.IsTag = function () {
 	return (this.GetType() == "tag") ? true : false;
 }
 
 
 
-Page.prototype.IsHidden = function () {
+KuzPage.prototype.IsHidden = function () {
 	let prop = this.GetPropertyCascaded("hidden");
 	if (prop.found) {
 		return prop.value;
@@ -87,7 +87,7 @@ Page.prototype.IsHidden = function () {
 	return false;
 }
 
-Page.prototype.IsVisible = function () {
+KuzPage.prototype.IsVisible = function () {
 	return !this.IsHidden();
 }
 
@@ -95,7 +95,7 @@ Page.prototype.IsVisible = function () {
 
 
 
-Page.prototype.HasInputDirectory = function () {
+KuzPage.prototype.HasInputDirectory = function () {
 	if (this.hasInputDirectory === undefined) {
 		let inputDirectoryPath = fsutils.JoinPath(this.site.GetInputDirectory(), this.configDirpath, this.entry);
 		if (fsutils.IsDirectory(inputDirectoryPath)) {
@@ -106,7 +106,7 @@ Page.prototype.HasInputDirectory = function () {
 	return this.hasInputDirectory;
 }
 
-Page.prototype.InputDirectoryPath = function () {
+KuzPage.prototype.InputDirectoryPath = function () {
 	let path;
 	if (this.HasInputDirectory()) {
 		path = fsutils.JoinPath(this.site.GetInputDirectory(), this.configDirpath, this.entry);
@@ -116,11 +116,11 @@ Page.prototype.InputDirectoryPath = function () {
 	return path;
 }
 
-Page.prototype.InputFileExtension = function () {
+KuzPage.prototype.InputFileExtension = function () {
 	return "kuz";
 }
 
-Page.prototype.InputFileName = function () {
+KuzPage.prototype.InputFileName = function () {
 	if (this.HasInputDirectory()) {
 		return "index.kuz";
 	} else {
@@ -128,11 +128,11 @@ Page.prototype.InputFileName = function () {
 	}
 }
 
-Page.prototype.OutputDirectoryPath = function () {
+KuzPage.prototype.OutputDirectoryPath = function () {
 	return fsutils.JoinPath(this.site.GetOutputDirectory(), this.OutputDirectoryPartialPath());
 }
 
-Page.prototype.OutputDirectoryPartialPath = function () {
+KuzPage.prototype.OutputDirectoryPartialPath = function () {
 	if (this.isRoot || !this.HasPrettyURL()) {
 		return this.configDirpath;
 	} else {
@@ -140,7 +140,7 @@ Page.prototype.OutputDirectoryPartialPath = function () {
 	}
 }
 
-Page.prototype.OutputFileName = function () {
+KuzPage.prototype.OutputFileName = function () {
 	if (this.HasPrettyURL()) {
 		return "index.html";
 	} else {
@@ -148,29 +148,29 @@ Page.prototype.OutputFileName = function () {
 	}
 }
 
-Page.prototype.GetContentString = function () {
+KuzPage.prototype.GetContentString = function () {
 	return this.inputNss.GetBodyString();
 }
 
-Page.prototype.GetArticle = function () {
+KuzPage.prototype.GetArticle = function () {
 	const Article = require("./pages/article").Article;
 	let article = new Article(this, this.GetContentString());
 	return article;
 }
 
-Page.prototype.GetContentHtml = function () {
+KuzPage.prototype.GetContentHtml = function () {
 	let article = new Article(this, this.GetContentString());
 	return this.GetArticle().ContentHtml();
 }
 
-Page.prototype.OutputFileMTime = function () {
+KuzPage.prototype.OutputFileMTime = function () {
 	if (fsutils.IsFile(this.OutputFilePath())) {
 		return fs.statSync(this.OutputFilePath()).mtimeMs;
 	}
 	return 0;
 }
 
-Page.prototype.OutputFileExists = function () {
+KuzPage.prototype.OutputFileExists = function () {
 	let mTime = this.OutputFileMTime();
 	if (mTime == 0) {
 		return false;
@@ -179,7 +179,7 @@ Page.prototype.OutputFileExists = function () {
 	}
 }
 
-Page.prototype.OutputFileIsOlderThanMeta = function () {
+KuzPage.prototype.OutputFileIsOlderThanMeta = function () {
 	let outputFileMTime = this.OutputFileMTime();
 	if (outputFileMTime < this.site.meta.mtimeMs) {
 		return true;
@@ -189,19 +189,19 @@ Page.prototype.OutputFileIsOlderThanMeta = function () {
 	return false;
 }
 
-Page.prototype.OutputFileNesting = function () {
+KuzPage.prototype.OutputFileNesting = function () {
 	return (this.OutputFilePath().split("/").length - 2);
 }
 
-Page.prototype.PageURL = function () {
+KuzPage.prototype.PageURL = function () {
 	return fsutils.JoinPath(this.site.HomeURL(), this.OutputDirectoryPartialPath());
 }
 
-Page.prototype.Base = function () {
+KuzPage.prototype.Base = function () {
 	return this.GetBase();
 }
 
-Page.prototype.GetBase = function () {
+KuzPage.prototype.GetBase = function () {
 	let outputFileNesting = this.OutputFileNesting();
 	let base = "";
 	for (let index = 0; index < outputFileNesting; index++) {
@@ -210,7 +210,7 @@ Page.prototype.GetBase = function () {
 	return base;
 }
 
-Page.prototype.RelativeURL = function () {
+KuzPage.prototype.RelativeURL = function () {
 	if (this.HasPrettyURL()) {
 		return this.OutputDirectoryPartialPath();
 	} else {
@@ -222,7 +222,7 @@ Page.prototype.RelativeURL = function () {
 
 
 
-Page.prototype.Name = function () {
+KuzPage.prototype.Name = function () {
 	if (this.isRoot) {
 		return this.OutputDirectoryPartialPath() + "@root";
 	} else {
@@ -230,11 +230,11 @@ Page.prototype.Name = function () {
 	}
 }
 
-Page.prototype.Title = function () {
+KuzPage.prototype.Title = function () {
 	return this.GetTitle();
 }
 
-Page.prototype.GetTitle = function () {
+KuzPage.prototype.GetTitle = function () {
 	let property = this.GetProperty("title");
 	if (property.found) {
 		return property.value;
@@ -242,11 +242,11 @@ Page.prototype.GetTitle = function () {
 	return "Not Found";
 }
 
-Page.prototype.Description = function () {
+KuzPage.prototype.Description = function () {
 	return this.GetDescription();
 }
 
-Page.prototype.GetDescription = function () {
+KuzPage.prototype.GetDescription = function () {
 	let property = this.GetProperty("description");
 	if (property.found) {
 		return property.value;
@@ -258,19 +258,19 @@ Page.prototype.GetDescription = function () {
 
 
 
-Page.prototype.SetKonfig = function (konfig) {
+KuzPage.prototype.SetKonfig = function (konfig) {
 	this.konfig = konfig;
 }
 
-Page.prototype.Props = function () {
+KuzPage.prototype.Props = function () {
 	return this.metaData.Props();
 }
 
-Page.prototype.Author = function () {
+KuzPage.prototype.Author = function () {
 	return this.GetAuthor();
 }
 
-Page.prototype.GetAuthor = function () {
+KuzPage.prototype.GetAuthor = function () {
 	let author = this.GetPropertyCascaded("author");
 	if (author.found) {
 		let authorObject = this.site.GetAuthorFromName(author.value);
@@ -281,11 +281,11 @@ Page.prototype.GetAuthor = function () {
 	return this.site.DefaultAuthor();
 }
 
-Page.prototype.Category = function () {
+KuzPage.prototype.Category = function () {
 	return this.GetCategory();
 }
 
-Page.prototype.GetCategory = function () {
+KuzPage.prototype.GetCategory = function () {
 	let category = this.GetPropertyCascaded("category");
 	if (category.found) {
 		let categoryObject = this.site.GetCategoryFromName(category.value);
@@ -296,7 +296,7 @@ Page.prototype.GetCategory = function () {
 	return this.site.DefaultCategory();
 }
 
-Page.prototype.Tags = function () {
+KuzPage.prototype.Tags = function () {
 	let tagsArray = this.GetProperty("tags");
 	if (tagsArray.found) {
 		return tagsArray.value;
@@ -304,11 +304,11 @@ Page.prototype.Tags = function () {
 	return [];
 }
 
-Page.prototype.TagObjects = function () {
+KuzPage.prototype.TagObjects = function () {
 	return this.GetTagObjects();
 }
 
-Page.prototype.GetTagObjects = function () {
+KuzPage.prototype.GetTagObjects = function () {
 	let tagsArray = this.Tags();
 	return this.site.GetTagsFromNameArray(tagsArray);
 }
@@ -317,7 +317,7 @@ Page.prototype.GetTagObjects = function () {
 
 
 
-Page.prototype.GetProperty = function (propertyName) {
+KuzPage.prototype.GetProperty = function (propertyName) {
 	if (this.metaData) {
 		return this.metaData.GetValue(propertyName);
 	}
@@ -326,7 +326,7 @@ Page.prototype.GetProperty = function (propertyName) {
 	};
 }
 
-Page.prototype.GetPropertyCascaded = function (propertyName) {
+KuzPage.prototype.GetPropertyCascaded = function (propertyName) {
 	let property = this.GetProperty(propertyName);
 	if (property.found) {
 		return property;
@@ -341,7 +341,7 @@ Page.prototype.GetPropertyCascaded = function (propertyName) {
 	};
 }
 
-Page.prototype.GetBooleanValueCascaded = function (name) {
+KuzPage.prototype.GetBooleanValueCascaded = function (name) {
 	let property = this.GetPropertyCascaded(name);
 	if (property.found) {
 		return property.value;
@@ -353,21 +353,21 @@ Page.prototype.GetBooleanValueCascaded = function (name) {
 
 
 
-Page.prototype.Show = function (name) {
+KuzPage.prototype.Show = function (name) {
 	let propertyName = "show_" + name;
 	return this.GetBooleanValueCascaded(propertyName);
 }
 
-Page.prototype.Hide = function (name) {
+KuzPage.prototype.Hide = function (name) {
 	let propertyName = "hide_" + name;
 	return this.GetBooleanValueCascaded(propertyName);
 }
 
-Page.prototype.HasRelativeBase = function () {
+KuzPage.prototype.HasRelativeBase = function () {
 	return this.GetBooleanValueCascaded("relative_base");
 }
 
-Page.prototype.HasPrettyURL = function () {
+KuzPage.prototype.HasPrettyURL = function () {
 	return this.GetBooleanValueCascaded("pretty_url");
 }
 
@@ -375,19 +375,19 @@ Page.prototype.HasPrettyURL = function () {
 
 
 
-Page.prototype.Root = function () {
+KuzPage.prototype.Root = function () {
 	return this.GetRoot();
 }
 
-Page.prototype.GetRoot = function () {
+KuzPage.prototype.GetRoot = function () {
 	return this.konfig.root;
 }
 
-Page.prototype.Theme = function () {
+KuzPage.prototype.Theme = function () {
 	return this.GetTheme();
 }
 
-Page.prototype.GetTheme = function () {
+KuzPage.prototype.GetTheme = function () {
 	let themeNameProperty = this.GetPropertyCascaded("theme");
 	if (themeNameProperty.found) {
 		let themeName = themeNameProperty.value;
@@ -400,7 +400,7 @@ Page.prototype.GetTheme = function () {
 	return this.site.DefaultTheme();
 }
 
-Page.prototype.GetLayoutName = function () {
+KuzPage.prototype.GetLayoutName = function () {
 	let layout = this.GetPropertyCascaded("layout");
 	if (layout.found) {
 		return layout.value;
@@ -408,11 +408,11 @@ Page.prototype.GetLayoutName = function () {
 	return this.GetType();
 }
 
-Page.prototype.Layout = function () {
+KuzPage.prototype.Layout = function () {
 	return this.GetLayout();
 }
 
-Page.prototype.GetLayout = function () {
+KuzPage.prototype.GetLayout = function () {
 	let theme = this.Theme();
 	let layoutName = this.GetLayoutName();
 	let layout = theme.GetLayout(layoutName);
@@ -424,11 +424,11 @@ Page.prototype.GetLayout = function () {
 	return theme.DefaultLayout();
 }
 
-Page.prototype.Pages = function () {
+KuzPage.prototype.Pages = function () {
 	return this.GetPages();
 }
 
-Page.prototype.GetPages = function () {
+KuzPage.prototype.GetPages = function () {
 	if (this.GetType() == "author") {
 		return this.site.GetPagesByAuthor(this);
 	} else if (this.GetType() == "category") {
@@ -445,7 +445,7 @@ Page.prototype.GetPages = function () {
 
 
 
-Page.prototype.GetKuz = function () {
+KuzPage.prototype.GetKuz = function () {
 	let article = this.GetArticle();
 	let sections = article ? article.sections : null;
 	return {
@@ -474,11 +474,11 @@ Page.prototype.GetKuz = function () {
 	};
 }
 
-Page.prototype.GetPagesCount = function () {
+KuzPage.prototype.GetPagesCount = function () {
 	return this.GetPages().length;
 }
 
-Page.prototype.GetPageOptions = function () {
+KuzPage.prototype.GetPageOptions = function () {
 	return {
 		page: this,
 		kuz: this.GetKuz(),
@@ -486,13 +486,13 @@ Page.prototype.GetPageOptions = function () {
 	};
 }
 
-Page.prototype.GetPageOptionsFN = function () {
+KuzPage.prototype.GetPageOptionsFN = function () {
 	let options = this.GetPageOptions();
 	options.filename = this.site.GetThemesDirectory() + "/x.pug";
 	return options;
 }
 
-Page.prototype.toString = function () {
+KuzPage.prototype.toString = function () {
 	return this.typeName + ": (" + this.Name() +") [" + this.OutputFilePath() + "]";
 }
 
@@ -500,7 +500,7 @@ Page.prototype.toString = function () {
 
 
 
-Page.prototype.NeedsUpdate = function () {
+KuzPage.prototype.NeedsUpdate = function () {
 	if (this.OutputFileIsOlderThanMeta()) {
 		return true;
 	}
@@ -520,7 +520,7 @@ Page.prototype.NeedsUpdate = function () {
 	}
 }
 
-Page.prototype.Update = function () {
+KuzPage.prototype.Update = function () {
 	if (this.NeedsUpdate()) {
 		this.Reset();
 		this.Setup();
@@ -528,11 +528,11 @@ Page.prototype.Update = function () {
 	}
 }
 
-Page.prototype.ForcedUpdate = function () {
+KuzPage.prototype.ForcedUpdate = function () {
 	this.Render();
 }
 
-Page.prototype.Render = function () {
+KuzPage.prototype.Render = function () {
 	let htmlPath = this.OutputFilePath();
 	let layout = this.GetLayout();
 	let html = layout.pug(options = this.GetPageOptions());
@@ -542,7 +542,7 @@ Page.prototype.Render = function () {
 	this.RenderLog();
 }
 
-Page.prototype.RenderLog = function () {
+KuzPage.prototype.RenderLog = function () {
 	this.log.Green("Rendered: " + this.OutputFilePath());
 }
 
@@ -550,7 +550,7 @@ Page.prototype.RenderLog = function () {
 
 
 
-Page.prototype.GetType = function () {
+KuzPage.prototype.GetType = function () {
 	let type = this.GetPropertyCascaded("type");
 	if (type.found) {
 		return type.value;
@@ -558,7 +558,7 @@ Page.prototype.GetType = function () {
 	return "page";
 }
 
-Page.prototype.GetTable = function () {
+KuzPage.prototype.GetTable = function () {
 	const KZTable = require("../kuz-table/table").KZTable;
 	let table = new KZTable();
 	table.AddColumn("Codename");
@@ -574,7 +574,7 @@ Page.prototype.GetTable = function () {
 	return table;
 }
 
-Page.prototype.GetRow = function () {
+KuzPage.prototype.GetRow = function () {
 	return [
 		this.CodeName(),
 		//this.Name(),
@@ -590,7 +590,7 @@ Page.prototype.GetRow = function () {
 }
 
 module.exports = {
-	Page: Page
+	KuzPage: KuzPage
 };
 
 

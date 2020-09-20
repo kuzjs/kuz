@@ -3,7 +3,7 @@
 const fs = require("fs");
 
 const Nss = require("../kuz-nss/nss").Nss;
-const Page = require("../kuz-page").Page;
+const KuzPage = require("../kuz-page").KuzPage;
 
 function SetupNextPrevious (arr) {
 	for (let index=0; index<arr.length; index++) {
@@ -34,7 +34,7 @@ function GetPages (site, dirpath, parentKonfig) {
 	let entries = konfig.GetEntriesObject();
 
 	if (entries.root) {
-		root = new Page(site, konfig, entries.root, true);
+		root = new KuzPage(site, konfig, entries.root, true);
 		if (root.IsValid()) {
 			konfig.root = root;
 			pages.push(root);
@@ -51,7 +51,7 @@ function GetPages (site, dirpath, parentKonfig) {
 			}
 			pages = pages.concat(GetPages(site, entryDirpath, konfig));
 		} else {
-			let page = new Page(site, konfig, entry);
+			let page = new KuzPage(site, konfig, entry);
 			if (page.IsValid()) {
 				konfig.AddPage(page);
 				pages.push(page);
