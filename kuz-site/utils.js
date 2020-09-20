@@ -2,8 +2,6 @@
 
 const fs = require("fs");
 
-const log = require("../kuz-log/log");
-
 const Nss = require("../kuz-nss/nss").Nss;
 const Page = require("../kuz-page").Page;
 
