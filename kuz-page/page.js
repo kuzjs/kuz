@@ -467,10 +467,8 @@ Page.prototype.GetKuz = function () {
 		kuz: this.metaData.Kuz(),
 
 		ipsum: this.LoremIpsum(),
-		kuz: {
-			kuz: {
-				//
-			}
+		kuzz: {
+			//
 		}
 	};
 }
