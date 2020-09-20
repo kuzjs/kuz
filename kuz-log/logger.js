@@ -1,5 +1,9 @@
 // logger.js
 
+const fs = require("fs");
+
+
+
 const months = [
 	"January", "February", "March",
 	"April", "May", "June",
@@ -47,7 +51,17 @@ const colors = {
 
 
 
-function GetLogFileName () {
+function GetDateString () {
+	let now = new Date();
+
+	let date = (now.getDate() + "").padStart(2, "0");
+	let month = (now.getMonth() + "").padStart(2, "0");
+	let year = (now.getFullYear() + "").padStart(4, "0");
+
+	return `${date}_${month}_${year}`;
+}
+
+function GetTimeString () {
 	let now = new Date();
 
 	let hours = (now.getHours() + "h").padStart(3, "0");
@@ -55,12 +69,16 @@ function GetLogFileName () {
 	let seconds = (now.getSeconds() + "s").padStart(3, "0");
 	let milliseconds = (now.getMilliseconds() + "ms").padStart(5, "0");
 
-	let date = (now.getDate() + "").padStart(2, "0");
-	let month = (now.getMonth() + "").padStart(2, "0");
-	let year = (now.getFullYear() + "").padStart(4, "0");
+	return `${hours}_${minutes}_${seconds}`;
+}
 
-	let fileName = `log_on_${year}_${month}_${date}_at_${hours}_${minutes}_${seconds}.txt`;
-	return fileName;
+
+
+function GetLogFileName () {
+	let date = GetDateString();
+	let time = GetTimeString();
+
+	return `log_on_${date}_at_${time}.txt`;
 }
 
 function GetLogFilePath () {
@@ -187,6 +205,11 @@ KuzLogger.prototype.Log = function (keyword, message, color) {
 	let messageString = `[ ${color}${keyword.padStart(5)}${colors.Reset} ] (${this.name}) ${message}`;
 	process.stdout.write(messageString);
 	console.log();
+
+	if (this.DiskIsOn()) {
+		let messageNoColor = `[ ${keyword.padStart(5)} ] (${this.name}) ${message}\n`;
+		fs.appendFileSync(this.path, messageNoColor);
+	}
 }
 
 

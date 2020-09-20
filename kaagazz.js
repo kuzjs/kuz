@@ -21,6 +21,7 @@ function KaagazzApp () {
 
 	const KuzLogger = require("./kuz-log").KuzLogger;
 	this.log = new KuzLogger("App");
+	//this.log.TurnOnDisk();
 
 	if (this.AllIsWell()) {
 		const Site = require("./kuz-site").Site;
