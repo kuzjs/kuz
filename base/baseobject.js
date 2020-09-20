@@ -241,8 +241,12 @@ KZBaseObject.prototype.CodeAndName = function () {
 
 
 
-KZBaseObject.prototype.InputFilePath = function () {
-	return fsutils.JoinPath(this.InputDirectoryPath(), this.InputFileName());
+KZBaseObject.prototype.InputFilePath = function (fileName) {
+	if (fileName === undefined) {
+		return fsutils.JoinPath(this.InputDirectoryPath(), this.InputFileName());
+	} else {
+		return fsutils.JoinPath(this.InputDirectoryPath(), fileName);
+	}
 }
 
 KZBaseObject.prototype.InputFileExists = function () {
@@ -253,8 +257,12 @@ KZBaseObject.prototype.InputFileMTime = function () {
 	fsutils.GetFileMTime(this.InputFilePath());
 }
 
-KZBaseObject.prototype.OutputFilePath = function () {
-	return fsutils.JoinPath(this.OutputDirectoryPath(), this.OutputFileName());
+KZBaseObject.prototype.OutputFilePath = function (fileName) {
+	if (fileName === undefined) {
+		return fsutils.JoinPath(this.OutputDirectoryPath(), this.OutputFileName());
+	} else {
+		return fsutils.JoinPath(this.OutputDirectoryPath(), fileName);
+	}
 }
 
 KZBaseObject.prototype.OutputFileExists = function () {
