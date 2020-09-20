@@ -21,12 +21,38 @@ KuzLogger.prototype.TurnOnDebug = function () {
 
 
 
+KuzLogger.prototype.DebugIsOn = function () {
+	if (this.parent) {
+		return this.parent.DebugIsOn();
+	}
+	return this.debug;
+}
+
+KuzLogger.prototype.DebugIsOff = function () {
+	return !this.DebugIsOn();
+}
+
+
+
 KuzLogger.prototype.TurnOffDisk = function () {
 	this.disk = false;
 }
 
 KuzLogger.prototype.TurnOnDisk = function () {
 	this.disk = true;
+}
+
+
+
+KuzLogger.prototype.DiskIsOn = function () {
+	if (this.parent) {
+		return this.parent.DiskIsOn();
+	}
+	return this.disk;
+}
+
+KuzLogger.prototype.DiskIsOff = function () {
+	return !this.DiskIsOn();
 }
 
 
