@@ -62,12 +62,6 @@
 			"major": true
 		},
 		{
-			"code": "g",
-			"name": "config",
-			"description": "KuzKonfig only modifier.",
-			"modifier": true
-		},
-		{
 			"code": "h",
 			"name": "help",
 			"description": "Show some help.",
@@ -107,6 +101,12 @@
 			"code": "k",
 			"name": "collections",
 			"description": "Collections only modifier.",
+			"modifier": true
+		},
+		{
+			"code": "K",
+			"name": "konfig",
+			"description": "KuzKonfig only modifier.",
 			"modifier": true
 		},
 		{
