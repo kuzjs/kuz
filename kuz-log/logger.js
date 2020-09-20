@@ -224,9 +224,8 @@ KuzLogger.prototype.GetChild = function (name) {
 
 
 KuzLogger.prototype.Log = function (keyword, message, color) {
-	let messageString = `[ ${color}${keyword.padStart(5)}${colors.Reset} ] (${color}${this.name}${colors.Reset}) ${message}`;
+	let messageString = `[ ${color}${keyword.padStart(5)}${colors.Reset} ] (${color}${this.name}${colors.Reset}) ${message}\n`;
 	process.stdout.write(messageString);
-	console.log();
 
 	if (this.DiskIsOn()) {
 		let messageNoColor = `[ ${keyword.padStart(5)} ] (${this.name}) ${message}\n`;
