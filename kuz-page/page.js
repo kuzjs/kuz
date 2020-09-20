@@ -32,7 +32,7 @@ Page.prototype.SetupPage = function (site, konfig, entry) {
 	this.tags = [];
 
 	const KuzMetaData = require("../kuz-metadata").KuzMetaData;
-	this.metaData = new KuzMetaData(this.site, this.inputFilePath);
+	this.metaData = new KuzMetaData(this, this.inputFilePath);
 
 	const Nss = require("../kuz-nss/nss").Nss;
 	this.inputNss = new Nss(this.inputFilePath);

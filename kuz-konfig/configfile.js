@@ -32,7 +32,7 @@ function KuzKonfig (site, dirpath, entity=false) {
 
 	if (this.Exists()) {
 		const KuzMetaData = require("../kuz-metadata").KuzMetaData;
-		this.metaData = new KuzMetaData(this.site, this.configFilePath);
+		this.metaData = new KuzMetaData(this, this.configFilePath);
 		this.props = this.metaData.Props();
 
 		const Nss = require("../kuz-nss/nss").Nss;
