@@ -17,6 +17,34 @@ const days = [
 	"Saturday"
 ];
 
+const colors = {
+	Reset: "\x1b[0m",
+	Bright: "\x1b[1m",
+	Dim: "\x1b[2m",
+	Underscore: "\x1b[4m",
+	Blink: "\x1b[5m",
+	Reverse: "\x1b[7m",
+	Hidden: "\x1b[8m",
+
+	FgBlack: "\x1b[30m",
+	FgRed: "\x1b[31m",
+	FgGreen: "\x1b[32m",
+	FgYellow: "\x1b[33m",
+	FgBlue: "\x1b[34m",
+	FgMagenta: "\x1b[35m",
+	FgCyan: "\x1b[36m",
+	FgWhite: "\x1b[37m",
+
+	BgBlack: "\x1b[40m",
+	BgRed: "\x1b[41m",
+	BgGreen: "\x1b[42m",
+	BgYellow: "\x1b[43m",
+	BgBlue: "\x1b[44m",
+	BgMagenta: "\x1b[45m",
+	BgCyan: "\x1b[46m",
+	BgWhite: "\x1b[47m"
+};
+
 
 
 function GetLogFileName () {
@@ -41,7 +69,8 @@ function GetLogFilePath () {
 
 
 
-function KuzLogger () {
+function KuzLogger (name) {
+	this.name = name ? name : "Anonymous";
 	this.color = false;
 	this.debug = false;
 	this.disk = false;
@@ -143,13 +172,27 @@ KuzLogger.prototype.GetParent = function () {
 
 
 
-KuzLogger.prototype.GetChild = function () {
-	let child = new KuzLogger();
+KuzLogger.prototype.GetChild = function (name) {
+	let child = new KuzLogger(name);
 
 	child.SetParent(this);
 	this.children.push(child);
 
 	return child;
+}
+
+
+
+KuzLogger.prototype.Log = function (keyword, message, color) {
+	let messageString = `[${color}${keyword.padStart(8).padEnd(10)}${colors.Reset}] (${this.name}) ${message}`;
+	process.stdout.write(messageString);
+	console.log();
+}
+
+
+
+KuzLogger.prototype.JustLogIt = function (message) {
+	this.Log("Just", message, colors.FgGreen);
 }
 
 
