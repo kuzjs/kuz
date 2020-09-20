@@ -65,74 +65,13 @@ KaagazzApp.prototype.AllIsWell = function () {
 }
 
 KaagazzApp.prototype.SetupFlags = function () {
-	let flagObjects = this.flagsJson.json.flags;
-	this.flags = [];
-	this.args = [];
+	const KuzFlagManager = require("./kuz-flag").KuzFlagManager;
+	const flagManager = new KuzFlagManager(this.flagsJson.json.flags);
 
-	const KZFlag = require("./kuz-flag").KZFlag;
-	for (let flagObject of flagObjects) {
-		let flag = new KZFlag(flagObject);
-		this.flags.push(flag);
-	}
-
-	let argv = process.argv;
-	let lastFlag = null;
-	for (let i=2; i<argv.length; i++) {
-		let argument = argv[i];
-		if (argument.startsWith("--")) {
-			let flagName = argument.slice(2).toLowerCase();
-			for (let currentFlag of this.flags) {
-				if (currentFlag.name == flagName) {
-					currentFlag.count++;
-					lastFlag = currentFlag;
-				}
-			}
-		} else if (argument.startsWith("-")) {
-			for (let j=1; j<argument.length; j++) {
-				let letter = argument[j];
-				for (let currentFlag of this.flags) {
-					if (currentFlag.code == letter) {
-						currentFlag.count++;
-						lastFlag = currentFlag;
-					}
-				}
-			}
-		} else {
-			if (lastFlag && lastFlag.HasParams()) {
-				lastFlag.AddParam(argument);
-			} else {
-				this.args.push(argument);
-			}
-		}
-	}
-
-	this.numberOfFlags = {
-		independent: 0,
-		major: 0,
-		modifier: 0,
-		touchmenot: 0,
-		total: 0
-	};
-
-	for (let flag of this.flags) {
-		if (flag.IsSet()) {
-			this.numberOfFlags.total++;
-			if (flag.independent) {
-				this.numberOfFlags.independent++;
-			} else if (flag.major) {
-				this.numberOfFlags.major++;
-			} else if (flag.modifier) {
-				this.numberOfFlags.modifier++;
-			} else if (flag.touchmenot) {
-				this.numberOfFlags.touchmenot++;
-			}
-		}
-	}
-
-	this.simpleFlags = {};
-	for (let flag of this.flags) {
-		this.simpleFlags[flag.name] = flag.IsSet();
-	}
+	this.flags = flagManager.GetFlags();
+	this.simpleFlags = flagManager.GetSimpleFlags();
+	this.args = flagManager.GetArgs();
+	this.numberOfFlags = flagManager.GetCounter();
 
 	if (this.simpleFlags.debug) {
 		log.DebugOn();

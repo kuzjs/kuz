@@ -1,6 +1,6 @@
 
 
 
-module.exports = require("./flag");
+module.exports = require("./flagmanager");
 
 
