@@ -23,18 +23,28 @@ KuzCodeFile.prototype.IsValid = function () {
 	return this.Exists();
 }
 
-KuzCodeFile.prototype.GetLines = function () {
+KuzCodeFile.prototype.GetLinesXtoY = function (x, y) {
 	let linesObject = {};
 	if (this.Exists()) {
 		let text = fs.readFileSync(this.path, "utf8").replace("\r", "");
 		let linesArray = text.split("\n");
-		for (let index=0; index<linesArray.length; index++) {
-			let lineText = linesArray[index];
-			let lineNumber = index + 1;
+
+		x = (x === undefined) ? 1 : x;
+		y = (y === undefined) ? linesArray.length : y;
+		if (x > y) {
+			return {};
+		}
+
+		for (let lineNumber = x; lineNumber <= y; lineNumber++) {
+			let lineText = linesArray[lineNumber-1];
 			linesObject[lineNumber] = lineText;
 		}
 	}
 	return linesObject;
+}
+
+KuzCodeFile.prototype.GetLines = function () {
+	return this.GetLinesXtoY();
 }
 
 
