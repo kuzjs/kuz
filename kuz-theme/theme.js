@@ -1,6 +1,5 @@
 // theme.js
 
-const log = require("../kuz-log/log");
 const fsutils = require("../kuz-fs");
 
 const common = require("../base/common");
@@ -13,6 +12,7 @@ const layoutsDirectory = "layouts";
 function Theme (themeName, site) {
 	this.themeName = themeName;
 	this.site = site;
+	this.log = this.site.log.GetChild("theme/" + this.themeName);
 	this.SetupPaths();
 }
 
@@ -50,12 +50,12 @@ Theme.prototype.JsonFilePath = function () {
 
 Theme.prototype.SetupPaths = function () {
 	if (!fsutils.IsDirectory(this.InputDirectory())) {
-		log.Red("Theme NOT Found: " + this.InputDirectory());
+		this.log.Red("Theme NOT Found: " + this.InputDirectory());
 		return;
 	}
 
 	if (!fsutils.IsFile(this.JsonFilePath())) {
-		log.Red("Theme JSON NOT Found: " + this.JsonFilePath());
+		this.log.Red("Theme JSON NOT Found: " + this.JsonFilePath());
 		return;
 	}
 

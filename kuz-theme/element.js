@@ -1,7 +1,5 @@
 // element.js
 
-const log = require("../kuz-log/log");
-
 const common = require("../base/common");
 const defaultText = common.defaultText;
 
@@ -18,6 +16,7 @@ ThemeElement.prototype.typeName = "ThemeElement";
 ThemeElement.prototype.SetupThemeElement = function (theme, data) {
 	this.theme = theme;
 	this.data = data;
+	this.log = this.theme.log;
 	this.default = data.default ? data.default : false;
 }
 
@@ -62,7 +61,7 @@ ThemeElement.prototype.InputDirectoryPath = function () {
 }
 
 ThemeElement.prototype.PrintInputFilePath = function () {
-	log.Green("Input file path: " + this.InputFilePath());
+	this.log.Green("Input file path: " + this.InputFilePath());
 }
 
 ThemeElement.prototype.GetTable = function () {

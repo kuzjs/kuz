@@ -2,7 +2,6 @@
 
 const fs = require("fs");
 
-const log = require("../kuz-log/log");
 const fsutils = require("../kuz-fs");
 
 
@@ -47,11 +46,11 @@ ProtoFile.prototype.ForcedUpdate = function () {
 	let contents = fs.readFileSync(this.InputFilePath());
 	fsutils.CreateDirectory(this.OutputDirectoryPath());
 	fs.writeFileSync(this.OutputFilePath(), contents);
-	log.Green("Updated: " + this.OutputFilePath());
+	this.log.Green("Updated: " + this.OutputFilePath());
 }
 
 ProtoFile.prototype.log = function () {
-	log.SomeNews(this);
+	this.log.SomeNews(this);
 }
 
 

@@ -2,7 +2,6 @@
 
 const fs = require("fs");
 
-const log = require("../kuz-log/log");
 const fsutils = require("../kuz-fs");
 
 function ThemeModule (theme, data) {
