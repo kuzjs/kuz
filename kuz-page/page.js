@@ -29,6 +29,9 @@ KuzPage.prototype.SetupPage = function (site, konfig, entry) {
 
 	this.log = this.site.log.GetChild(this.InputFilePath());
 
+	this.totalRenderTime = 0;
+	this.totalRenders = 0;
+
 	this.tags = [];
 
 	if (this.InputFileExists()) {
@@ -533,6 +536,8 @@ KuzPage.prototype.ForcedUpdate = function () {
 }
 
 KuzPage.prototype.Render = function () {
+	let t1 = Date.now();
+
 	let htmlPath = this.OutputFilePath();
 	let layout = this.GetLayout();
 	let html = layout.pug(options = this.GetPageOptions());
@@ -540,10 +545,25 @@ KuzPage.prototype.Render = function () {
 	fsutils.CreateDirectory(this.OutputDirectoryPath());
 	fs.writeFileSync(htmlPath, html);
 	this.RenderLog();
+
+	let t2 = Date.now();
+	this.totalRenderTime += (t2-t1);
+	this.totalRenders++;
+}
+
+KuzPage.prototype.AverageRenderTime = function () {
+	if (this.totalRenders) {
+		return this.totalRenderTime / this.totalRenders;
+	}
+	return 0;
+}
+
+KuzPage.prototype.AverageRenderTimeString = function () {
+	return this.AverageRenderTime().toPrecision(4) + "ms";
 }
 
 KuzPage.prototype.RenderLog = function () {
-	this.log.GreenYellow("Rendered:", this.OutputFilePath());
+	this.log.GreenYellow(`Rendered ${this.AverageRenderTimeString()}:`, this.OutputFilePath());
 }
 
 
