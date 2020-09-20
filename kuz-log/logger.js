@@ -2,11 +2,41 @@
 
 
 
+function GetLogFileName () {
+	return "log.txt";
+}
+
+
+
 function KuzLogger () {
+	this.color = false;
 	this.debug = false;
 	this.disk = false;
 	this.parent = null;
 	this.children = [];
+}
+
+
+
+KuzLogger.prototype.TurnOffColor = function () {
+	this.color = false;
+}
+
+KuzLogger.prototype.TurnOnColor = function () {
+	this.color = true;
+}
+
+
+
+KuzLogger.prototype.ColorIsOn = function () {
+	if (this.parent) {
+		return this.parent.ColorIsOn();
+	}
+	return this.color;
+}
+
+KuzLogger.prototype.ColorIsOff = function () {
+	return !this.DebugIsOn();
 }
 
 
@@ -79,6 +109,7 @@ KuzLogger.prototype.GetChild = function () {
 
 
 module.exports = {
+	GetLogFileName: GetLogFileName,
 	KuzLogger: KuzLogger
 };
 
