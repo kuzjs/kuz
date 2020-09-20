@@ -96,6 +96,8 @@ function KuzLogger (name) {
 	this.locked = false;
 	this.children = [];
 	this.path = GetLogFilePath();
+	this.createdTime = Date.now();
+	this.lastLogTime = Date.now();
 }
 
 
@@ -232,11 +234,11 @@ KuzLogger.prototype.GetChild = function (name) {
 
 
 
-KuzLogger.prototype.GetFullMessage = function (keyword, timeStampPrefix, name, prefix, message) {
+KuzLogger.prototype.GetFullMessage = function (keyword, timeStampPrefix, name, prefix, message, duration) {
 	if (message) {
-		return `[ ${keyword} ] ${timeStampPrefix} (${name}) ${prefix} [${message}]\n`;
+		return `[ ${keyword} ] ${timeStampPrefix} (${name}) ${prefix} [${message}] ${duration}ms\n`;
 	} else {
-		return `[ ${keyword} ] ${timeStampPrefix} (${name}) ${prefix}\n`;
+		return `[ ${keyword} ] ${timeStampPrefix} (${name}) ${prefix} ${duration}ms\n`;
 	}
 }
 
@@ -248,10 +250,14 @@ KuzLogger.prototype.Log = function (keyword, prefix, message, c1, c2, c3) {
 	let timeString = `${GetTimeString()}`;
 	let timeStampPrefix = `on ${dataString} at ${timeString}`;
 
+	let newLogTime = Date.now();
+	let duration = newLogTime - this.createdTime;
+	this.lastLogTime = newLogTime;
+
 	let name = this.name;
 	let messageNoColor = null;
 	if (this.DiskIsOn()) {
-		messageNoColor = this.GetFullMessage(keyword, timeStampPrefix, name, prefix, message);
+		messageNoColor = this.GetFullMessage(keyword, timeStampPrefix, name, prefix, message, duration);
 		fs.appendFileSync(this.GetPath(), messageNoColor);
 	}
 
@@ -264,7 +270,7 @@ KuzLogger.prototype.Log = function (keyword, prefix, message, c1, c2, c3) {
 		name = `${c2}${name}${colors.Reset}`;
 		message = message ? `${c3}${message}${colors.Reset}` : message;
 
-		let messageString = this.GetFullMessage(keyword, timeStampPrefix, name, prefix, message);
+		let messageString = this.GetFullMessage(keyword, timeStampPrefix, name, prefix, message, duration);
 		process.stdout.write(messageString);
 	} else {
 		process.stdout.write(messageNoColor);
