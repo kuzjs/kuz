@@ -263,7 +263,9 @@ KaagazzApp.prototype.ShowVersion = function () {
 }
 
 KaagazzApp.prototype.BenchMark = function () {
-	let startTime = Date.now();
+	const KuzStopWatch = require("./kuz-stopwatch").KuzStopWatch;
+	const sw = new KuzStopWatch("KaagazzApp.BenchMark()");
+
 	let rendered = 0;
 	for (let index=0; index<20; index++) {
 		for (let x of this.site.Renderables()) {
@@ -271,9 +273,8 @@ KaagazzApp.prototype.BenchMark = function () {
 			rendered++;
 		}
 	}
-	let endTime = Date.now();
 
-	let duration = endTime - startTime;
+	let duration = sw.GetTimePassed();
 	this.log.Red("Rendered: " + rendered + " pages in " + duration + "ms.");
 }
 
