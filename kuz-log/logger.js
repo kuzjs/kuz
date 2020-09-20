@@ -192,7 +192,57 @@ KuzLogger.prototype.Log = function (keyword, message, color) {
 
 
 KuzLogger.prototype.JustLogIt = function (message) {
-	this.Log("Just", message, colors.FgGreen);
+	this.Log("JUST", message, colors.FgMagenta);
+}
+
+KuzLogger.prototype.Mundane = function (message) {
+	if (this.DebugIsOn()) {
+		this.Log("....", message, colors.FgGreen);
+	}
+}
+
+KuzLogger.prototype.AsExpected = function (message) {
+	this.Log("EXP", message, colors.FgGreen);
+}
+
+KuzLogger.prototype.Unexpected = function (message) {
+	this.Log("UNEXP", message, colors.FgRed);
+}
+
+KuzLogger.prototype.NotFound = function (message) {
+	this.Log("!FOUND", message, colors.FgRed);
+}
+
+
+
+KuzLogger.prototype.Green = function (message) {
+	this.Log("OK", message, colors.FgGreen);
+}
+
+KuzLogger.prototype.Red = function (message) {
+	this.Log("ERROR", message, colors.FgRed);
+}
+
+KuzLogger.prototype.Yellow = function (message) {
+	if (this.DebugIsOn()) {
+		this.Log("....", message, colors.FgYellow);
+	}
+}
+
+
+
+KuzLogger.prototype.GoodNews = function (message) {
+	this.Log("GOOD", message, colors.FgGreen);
+}
+
+KuzLogger.prototype.BadNews = function (message) {
+	this.Log("BAD", message, colors.FgRed);
+}
+
+KuzLogger.prototype.SomeNews = function (message) {
+	if (this.DebugIsOn()) {
+		this.Log("SOME", message, colors.FgYellow);
+	}
 }
 
 
