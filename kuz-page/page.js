@@ -3,7 +3,6 @@
 const fs = require("fs");
 
 const fsutils = require("../kuz-fs");
-const log = require("../kuz-log");
 
 
 
@@ -27,6 +26,8 @@ Page.prototype.SetupPage = function (site, konfig, entry) {
 	this.SetKonfig(konfig);
 	this.entry = entry.trim();
 	this.configDirpath = (konfig.dirpath === undefined) ? "" : konfig.dirpath;
+
+	this.log = this.site.log.GetChild("Page");
 
 	this.tags = [];
 
@@ -542,7 +543,7 @@ Page.prototype.Render = function () {
 }
 
 Page.prototype.RenderLog = function () {
-	log.Green(this.TypeName() + " rendered: (" + this.InputFilePath() + ") --> [" + this.OutputFilePath() + "]");
+	this.log.Green(this.TypeName() + " rendered: (" + this.InputFilePath() + ") --> [" + this.OutputFilePath() + "]");
 }
 
 

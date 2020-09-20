@@ -8,6 +8,7 @@ const fsutils = require("../kuz-fs");
 
 function Site (kaagazz) {
 	this.app = kaagazz;
+	this.log = this.app.log.GetChild("Site");
 	this.Setup();
 }
 
@@ -15,8 +16,6 @@ Site.prototype.Setup = function () {
 	this.filenames = this.app.meta.json.filenames;
 	this.input_dirs = this.app.meta.json.input;
 	this.output_dirs = this.app.meta.json.output;
-
-	this.log = this.app.log.GetChild("Site");
 
 	this.error = false;
 	this.errorMessage = null;
