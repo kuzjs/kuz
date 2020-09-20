@@ -2,8 +2,6 @@
 
 const fs = require('fs');
 
-const log = require("../kuz-log/log");
-
 
 
 let numberOfJsonFiles = 0;
@@ -52,7 +50,6 @@ JsonFile.prototype.ForcedUpdateJson = function () {
 		this.allIsWell = true;
 		return this.json;
 	} catch {
-		log.BadNews("JSON NOT found: " + this.filepath);
 		this.allIsWell = false;
 		return null;
 	}

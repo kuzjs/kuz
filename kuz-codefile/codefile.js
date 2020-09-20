@@ -2,7 +2,6 @@
 
 const fs = require('fs');
 
-const log = require("../kuz-log/log");
 const fsutils = require("../kuz-fs");
 
 
@@ -10,6 +9,8 @@ const fsutils = require("../kuz-fs");
 function KuzCodeFile (kuz, path) {
 	this.kuz = kuz;
 	this.path = path;
+
+	this.log = this.kuz.log.GetChild(this.path);
 }
 
 KuzCodeFile.prototype.Exists = function () {

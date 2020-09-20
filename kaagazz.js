@@ -19,7 +19,7 @@ function KaagazzApp () {
 
 	this.SetupFlags();
 
-	const KuzLogger = require("./kuz-log/logger").KuzLogger;
+	const KuzLogger = require("./kuz-log").KuzLogger;
 	this.log = new KuzLogger("App");
 
 	if (this.AllIsWell()) {
