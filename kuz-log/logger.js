@@ -224,11 +224,11 @@ KuzLogger.prototype.GetChild = function (name) {
 
 
 KuzLogger.prototype.Log = function (keyword, message, color) {
-	let messageString = `[ ${color}${keyword.padStart(5)}${colors.Reset} ] (${color}${this.name}${colors.Reset}) ${message}\n`;
+	let messageString = `[ ${color}${keyword}${colors.Reset} ] (${color}${this.name}${colors.Reset}) ${message}\n`;
 	process.stdout.write(messageString);
 
 	if (this.DiskIsOn()) {
-		let messageNoColor = `[ ${keyword.padStart(5)} ] (${this.name}) ${message}\n`;
+		let messageNoColor = `[ ${keyword} ] (${this.name}) ${message}\n`;
 		fs.appendFileSync(this.path, messageNoColor);
 	}
 }
@@ -236,21 +236,21 @@ KuzLogger.prototype.Log = function (keyword, message, color) {
 
 
 KuzLogger.prototype.JustLogIt = function (message) {
-	this.Log("JUST", message, colors.FgMagenta);
+	this.Log(" JUST ", message, colors.FgMagenta);
 }
 
 KuzLogger.prototype.Mundane = function (message) {
 	if (this.DebugIsOn()) {
-		this.Log("....", message, colors.FgGreen);
+		this.Log(" .... ", message, colors.FgGreen);
 	}
 }
 
 KuzLogger.prototype.AsExpected = function (message) {
-	this.Log("EXP", message, colors.FgGreen);
+	this.Log("  EXP ", message, colors.FgGreen);
 }
 
 KuzLogger.prototype.Unexpected = function (message) {
-	this.Log("UNEXP", message, colors.FgRed);
+	this.Log(" UNEXP", message, colors.FgRed);
 }
 
 KuzLogger.prototype.NotFound = function (message) {
@@ -260,32 +260,32 @@ KuzLogger.prototype.NotFound = function (message) {
 
 
 KuzLogger.prototype.Green = function (message) {
-	this.Log("OK", message, colors.FgGreen);
+	this.Log("  OK  ", message, colors.FgGreen);
 }
 
 KuzLogger.prototype.Red = function (message) {
-	this.Log("ERROR", message, colors.FgRed);
+	this.Log(" ERROR", message, colors.FgRed);
 }
 
 KuzLogger.prototype.Yellow = function (message) {
 	if (this.DebugIsOn()) {
-		this.Log("....", message, colors.FgYellow);
+		this.Log(" .... ", message, colors.FgYellow);
 	}
 }
 
 
 
 KuzLogger.prototype.GoodNews = function (message) {
-	this.Log("GOOD", message, colors.FgGreen);
+	this.Log(" GOOD ", message, colors.FgGreen);
 }
 
 KuzLogger.prototype.BadNews = function (message) {
-	this.Log("BAD", message, colors.FgRed);
+	this.Log("  BAD ", message, colors.FgRed);
 }
 
 KuzLogger.prototype.SomeNews = function (message) {
 	if (this.DebugIsOn()) {
-		this.Log("SOME", message, colors.FgYellow);
+		this.Log(" SOME ", message, colors.FgYellow);
 	}
 }
 
