@@ -2,7 +2,6 @@
 
 const fs = require("fs");
 
-const log = require("../kuz-log/log");
 const fsutils = require("../kuz-fs");
 
 
@@ -49,13 +48,13 @@ Site.prototype.IsSite = function () {
 }
 
 Site.prototype.HelloWorld = function () {
-	log.Red("Hello, Site!");
+	this.log.Red("Hello, Site!");
 }
 
 Site.prototype.Error = function (errorMessage) {
 	this.error = true;
 	this.errorMessage = errorMessage;
-	log.Red(this.errorMessage);
+	this.log.Red(this.errorMessage);
 }
 
 Site.prototype.SetupPages = function () {
@@ -68,9 +67,9 @@ Site.prototype.SetupThemes = function () {
 
 	let themeNames = this.meta.json.themes;
 	if (themeNames === undefined) {
-		log.Red("Themes param not specified.");
+		this.log.Red("Themes param not specified.");
 	} else if (themeNames.length == 0) {
-		log.Red("Themes param is empty.");
+		this.log.Red("Themes param is empty.");
 	} else {
 		const Theme = require("../kuz-theme").Theme;
 		for (let themeName of themeNames) {
@@ -78,13 +77,13 @@ Site.prototype.SetupThemes = function () {
 			if (theme.IsValid()) {
 				this.themes.push(theme);
 			} else {
-				log.Red("Invalid theme: " + themeName);
+				this.log.Red("Invalid theme: " + themeName);
 			}
 		}
 	}
 
 	if (this.themes.length == 0) {
-		log.Red("App has no themes.");
+		this.log.Red("App has no themes.");
 	}
 }
 
@@ -134,7 +133,7 @@ Site.prototype.GetDataFileContents = function (filename) {
 	if (fsutils.IsFile(filepath)) {
 		return fs.readFileSync(filepath, "utf8");
 	} else {
-		log.BadNews("File Not Found: " + filepath);
+		this.log.BadNews("File Not Found: " + filepath);
 		return "";
 	}
 }
@@ -154,10 +153,10 @@ Site.prototype.DefaultTheme = function () {
 }
 
 Site.prototype.PrintDirectories = function () {
-	log.SomeNews("  Input: " + this.GetInputDirectory());
-	log.SomeNews(" Output: " + this.GetOutputDirectory());
-	log.SomeNews("  Colls: " + this.GetCollectionsDirectory());
-	log.SomeNews("Special: " + this.GetSpecialDirectory());
+	this.log.SomeNews("  Input: " + this.GetInputDirectory());
+	this.log.SomeNews(" Output: " + this.GetOutputDirectory());
+	this.log.SomeNews("  Colls: " + this.GetCollectionsDirectory());
+	this.log.SomeNews("Special: " + this.GetSpecialDirectory());
 }
 
 Site.prototype.Authors = function () {
@@ -289,7 +288,7 @@ Site.prototype.EveryThing = function () {
 
 Site.prototype.PrintArrayAsTable = function (arr) {
 	if (arr.length == 0) {
-		log.Red("No elements in array.");
+		this.log.Red("No elements in array.");
 		return;
 	}
 
