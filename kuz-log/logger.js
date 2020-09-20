@@ -202,6 +202,9 @@ KuzLogger.prototype.SetPath = function (path) {
 }
 
 KuzLogger.prototype.GetPath = function () {
+	if (this.parent) {
+		return this.parent.GetPath();
+	}
 	return this.path;
 }
 
@@ -249,7 +252,7 @@ KuzLogger.prototype.Log = function (keyword, prefix, message, c1, c2, c3) {
 	let messageNoColor = null;
 	if (this.DiskIsOn()) {
 		messageNoColor = this.GetFullMessage(keyword, timeStampPrefix, name, prefix, message);
-		fs.appendFileSync(this.path, messageNoColor);
+		fs.appendFileSync(this.GetPath(), messageNoColor);
 	}
 
 	if (this.ColorIsOn()) {
