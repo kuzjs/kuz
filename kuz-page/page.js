@@ -28,14 +28,15 @@ Page.prototype.SetupPage = function (site, konfig, entry) {
 	this.entry = entry.trim();
 	this.configDirpath = (konfig.dirpath === undefined) ? "" : konfig.dirpath;
 
-	this.SetupInput();
 	this.tags = [];
 
-	const KuzMetaData = require("../kuz-metadata").KuzMetaData;
-	this.metaData = new KuzMetaData(this, this.inputFilePath);
+	if (this.InputFileExists()) {
+		const KuzMetaData = require("../kuz-metadata").KuzMetaData;
+		this.metaData = new KuzMetaData(this, this.InputFilePath());
 
-	const Nss = require("../kuz-nss/nss").Nss;
-	this.inputNss = new Nss(this.inputFilePath);
+		const Nss = require("../kuz-nss/nss").Nss;
+		this.inputNss = new Nss(this.InputFilePath());
+	}
 }
 
 Page.prototype.Setup = function () {
@@ -46,27 +47,8 @@ Page.prototype.Reset = function () {
 	//
 }
 
-Page.prototype.SetupInput = function () {
-	this.inputFileFound = false;
-	this.inputFilePath = null;
-
-	let inputFilePathWithoutExtension;
-	if (fsutils.IsDirectory(this.InputDirectoryPath())) {
-		this.hasInputDirectory = true;
-		inputFilePathWithoutExtension = fsutils.JoinPath(this.InputDirectoryPath(), "index");
-	} else {
-		this.hasInputDirectory = false;
-		inputFilePathWithoutExtension = this.InputDirectoryPath();
-	}
-
-	this.inputFilePath = inputFilePathWithoutExtension + "." + this.InputFileExtension();
-	if (fsutils.IsFile(this.inputFilePath)) {
-		this.inputFileFound = true;
-	}
-}
-
 Page.prototype.IsValid = function () {
-	if (this.inputFileFound) {
+	if (fsutils.IsFile(this.InputFilePath())) {
 		return true;
 	}
 	return false;
@@ -112,8 +94,22 @@ Page.prototype.IsVisible = function () {
 
 
 
+Page.prototype.HasInputDirectory = function () {
+	let inputDirectoryPath = fsutils.JoinPath(this.site.GetInputDirectory(), this.configDirpath, this.entry);
+	if (fsutils.IsDirectory(inputDirectoryPath)) {
+		return true;
+	}
+	return false;
+}
+
 Page.prototype.InputDirectoryPath = function () {
-	return fsutils.JoinPath(this.site.GetInputDirectory(), this.configDirpath, this.entry);
+	let path;
+	if (this.HasInputDirectory()) {
+		path = fsutils.JoinPath(this.site.GetInputDirectory(), this.configDirpath, this.entry);
+	} else {
+		path = fsutils.JoinPath(this.site.GetInputDirectory(), this.configDirpath);
+	}
+	return path;
 }
 
 Page.prototype.InputFileExtension = function () {
@@ -121,7 +117,11 @@ Page.prototype.InputFileExtension = function () {
 }
 
 Page.prototype.InputFileName = function () {
-	return this.Name() + "." + this.InputFileExtension();
+	if (this.HasInputDirectory()) {
+		return "index.kuz";
+	} else {
+		return this.entry + "." + this.InputFileExtension();
+	}
 }
 
 Page.prototype.OutputDirectoryPartialPath = function () {
