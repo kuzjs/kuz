@@ -9,7 +9,7 @@ const helpDocDirectory = require("../base/common").helpDocDirectory;
 
 
 
-function KZFlag (flagObject) {
+function KuzFlag (flagObject) {
 	this.code = flagObject.code;
 	this.name = flagObject.name;
 	this.description = flagObject.description;
@@ -25,35 +25,35 @@ function KZFlag (flagObject) {
 	this.params = [];
 }
 
-KZFlag.prototype.IsSet = function () {
+KuzFlag.prototype.IsSet = function () {
 	return (this.count > 0) ? true : false;
 }
 
-KZFlag.prototype.Code = function () {
+KuzFlag.prototype.Code = function () {
 	return "-" + this.code;
 }
 
-KZFlag.prototype.Name = function () {
+KuzFlag.prototype.Name = function () {
 	return this.name;
 }
 
-KZFlag.prototype.FullName = function () {
+KuzFlag.prototype.FullName = function () {
 	return "--" + this.Name();
 }
 
-KZFlag.prototype.Description = function () {
+KuzFlag.prototype.Description = function () {
 	return this.description;
 }
 
-KZFlag.prototype.Disk = function () {
+KuzFlag.prototype.Disk = function () {
 	return (this.disk) ? "Disk" : "";
 }
 
-KZFlag.prototype.Status = function () {
+KuzFlag.prototype.Status = function () {
 	return (this.implemented) ? "Working" : "Dev";
 }
 
-KZFlag.prototype.Type = function () {
+KuzFlag.prototype.Type = function () {
 	if (this.major) {
 		return "Major";
 	} else if (this.modifier) {
@@ -63,7 +63,7 @@ KZFlag.prototype.Type = function () {
 	}
 }
 
-KZFlag.prototype.Attributes = function () {
+KuzFlag.prototype.Attributes = function () {
 	let attributes = [];
 	if (this.Disk() != "") {
 		attributes.push(this.Disk());
@@ -73,25 +73,25 @@ KZFlag.prototype.Attributes = function () {
 	return attributes.join(" | ");
 }
 
-KZFlag.prototype.State = function () {
+KuzFlag.prototype.State = function () {
 	return "".padStart(this.count, "+");
 }
 
-KZFlag.prototype.HasParams = function () {
+KuzFlag.prototype.HasParams = function () {
 	return this.hasParams;
 }
 
-KZFlag.prototype.AddParam = function (param) {
+KuzFlag.prototype.AddParam = function (param) {
 	if (this.HasParams()) {
 		this.params.push(param);
 	}
 }
 
-KZFlag.prototype.Params = function () {
+KuzFlag.prototype.Params = function () {
 	return this.params;
 }
 
-KZFlag.prototype.ParamsString = function () {
+KuzFlag.prototype.ParamsString = function () {
 	if (this.HasParams()) {
 		if (this.params.length == 0) {
 			return "[]"
@@ -101,23 +101,23 @@ KZFlag.prototype.ParamsString = function () {
 	return "---";
 }
 
-KZFlag.prototype.FileName = function () {
+KuzFlag.prototype.FileName = function () {
 	return this.Name() + ".txt";
 }
 
-KZFlag.prototype.FilePath = function () {
+KuzFlag.prototype.FilePath = function () {
 	return fsutils.JoinPath(helpDocDirectory, this.FileName());
 }
 
-KZFlag.prototype.GetDoc = function () {
+KuzFlag.prototype.GetDoc = function () {
 	return fs.readFileSync(this.FilePath(), "utf8");
 }
 
-KZFlag.prototype.PrintDoc = function () {
+KuzFlag.prototype.PrintDoc = function () {
 	console.log(this.GetDoc());
 }
 
-KZFlag.prototype.Row = function () {
+KuzFlag.prototype.Row = function () {
 	return [
 		this.Code(),
 		this.FullName(),
@@ -129,7 +129,7 @@ KZFlag.prototype.Row = function () {
 	];
 }
 
-KZFlag.prototype.GetTable = function () {
+KuzFlag.prototype.GetTable = function () {
 	let table = new KZTable();
 	table.HideIndex().HideHeader();
 	table.AddColumn("Code");
@@ -145,7 +145,7 @@ KZFlag.prototype.GetTable = function () {
 
 
 module.exports = {
-	KZFlag: KZFlag
+	KuzFlag: KuzFlag
 };
 
 
