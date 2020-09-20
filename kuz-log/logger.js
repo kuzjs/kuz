@@ -64,12 +64,12 @@ function GetDateString (separator = ".") {
 function GetTimeString (separator = ":") {
 	let now = new Date();
 
-	let hours = (now.getHours() + "h").padStart(3, "0");
-	let minutes = (now.getMinutes() + "m").padStart(3, "0");
-	let seconds = (now.getSeconds() + "s").padStart(3, "0");
+	let hours = (now.getHours() + "").padStart(2, "0");
+	let minutes = (now.getMinutes() + "").padStart(2, "0");
+	let seconds = (now.getSeconds() + "").padStart(2, "0");
 	let milliseconds = (now.getMilliseconds() + "ms").padStart(5, "0");
 
-	return `${hours}${separator}${minutes}${separator}${seconds}`;
+	return `${hours}${separator}${minutes}${separator}${seconds}${separator}${separator}${milliseconds}`;
 }
 
 
