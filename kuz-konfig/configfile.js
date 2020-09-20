@@ -2,8 +2,6 @@
 
 
 
-const log = require("../kuz-log/log");
-
 const fsutils = require("../kuz-fs");
 
 const KZTable = require("../kuz-table/table").KZTable;
@@ -25,6 +23,8 @@ function KuzKonfig (site, dirpath, entity=false) {
 	}
 	this.configFilePath = fsutils.JoinPath(this.configDirpath, this.site.filenames.konfig);
 
+	this.log = this.site.log.GetChild(this.configFilePath);
+
 	this.root = null;
 	this.parent = null;
 	this.children = [];
@@ -38,7 +38,7 @@ function KuzKonfig (site, dirpath, entity=false) {
 		const Nss = require("../kuz-nss/nss").Nss;
 		this.nss = new Nss(this.configFilePath);
 	} else {
-		log.BadNews("KuzKonfig not found: " + this.configFilePath);
+		this.log.BadNews("KuzKonfig not found: " + this.configFilePath);
 	}
 }
 

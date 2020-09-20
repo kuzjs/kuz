@@ -2,7 +2,6 @@
 
 
 
-const log = require("../kuz-log");
 const fsutils = require("../kuz-fs");
 
 const separators = [];
@@ -10,6 +9,7 @@ const separators = [];
 function KuzMetaData (kuz, path) {
 	this.kuz = kuz;
 	this.path = path;
+	this.log = this.kuz.log.GetChild(this.path);
 	this.Setup();
 }
 

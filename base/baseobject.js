@@ -1,6 +1,5 @@
 // baseobject.js
 
-const log = require("../kuz-log/log");
 const fsutils = require("../kuz-fs");
 const fs = require("fs");
 
@@ -276,47 +275,47 @@ KZBaseObject.prototype.OutputFileMTime = function () {
 
 
 KZBaseObject.prototype.Buildable = function () {
-	log.Green("KZBaseObject Buildable(): " + this.CodeAndName());
+	this.log.Green("KZBaseObject Buildable(): " + this.CodeAndName());
 	return this;
 }
 
 KZBaseObject.prototype.Build = function () {
-	log.Green("KZBaseObject Build(): " + this.CodeAndName());
+	this.log.Green("KZBaseObject Build(): " + this.CodeAndName());
 	return this;
 }
 
 KZBaseObject.prototype.Updatable = function () {
-	log.Green("KZBaseObject Updatable(): " + this.CodeAndName());
+	this.log.Green("KZBaseObject Updatable(): " + this.CodeAndName());
 	return this;
 }
 
 KZBaseObject.prototype.Update = function () {
-	log.Green("KZBaseObject Update(): " + this.CodeAndName());
+	this.log.Green("KZBaseObject Update(): " + this.CodeAndName());
 	return this;
 }
 
 KZBaseObject.prototype.ForcedUpdate = function () {
-	log.Green("KZBaseObject ForcedUpdate(): " + this.CodeAndName());
+	this.log.Green("KZBaseObject ForcedUpdate(): " + this.CodeAndName());
 	return this;
 }
 
 KZBaseObject.prototype.DeleteOutput = function () {
-	log.Green("KZBaseObject DeleteOutput(): " + this.CodeAndName());
+	this.log.Green("KZBaseObject DeleteOutput(): " + this.CodeAndName());
 	return this;
 }
 
 KZBaseObject.prototype.DeleteExtras = function () {
-	log.Green("KZBaseObject DeleteExtras(): " + this.CodeAndName());
+	this.log.Green("KZBaseObject DeleteExtras(): " + this.CodeAndName());
 	return this;
 }
 
 KZBaseObject.prototype.Verify = function () {
-	log.Green("KZBaseObject Verify(): " + this.CodeAndName());
+	this.log.Green("KZBaseObject Verify(): " + this.CodeAndName());
 	return this;
 }
 
 KZBaseObject.prototype.Watch = function () {
-	log.Green("KZBaseObject Watch(): " + this.CodeAndName());
+	this.log.Green("KZBaseObject Watch(): " + this.CodeAndName());
 	return this;
 }
 
