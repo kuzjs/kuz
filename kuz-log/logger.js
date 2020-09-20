@@ -202,7 +202,7 @@ KuzLogger.prototype.GetChild = function (name) {
 
 
 KuzLogger.prototype.Log = function (keyword, message, color) {
-	let messageString = `[ ${color}${keyword.padStart(5)}${colors.Reset} ] (${this.name}) ${message}`;
+	let messageString = `[ ${color}${keyword.padStart(5)}${colors.Reset} ] (${color}${this.name}${colors.Reset}) ${message}`;
 	process.stdout.write(messageString);
 	console.log();
 
