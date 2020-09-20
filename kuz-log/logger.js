@@ -229,9 +229,10 @@ KuzLogger.prototype.GetChild = function (name) {
 
 
 
-KuzLogger.prototype.Log = function (keyword, message, c1, c2) {
+KuzLogger.prototype.Log = function (keyword, prefix, message, c1, c2, c3) {
 	c2 = c2 ? c2 : c1;
-	let messageString = `[ ${c1}${keyword}${colors.Reset} ] (${c2}${this.name}${colors.Reset}) ${message}\n`;
+	c3 = c3 ? c3 : c2;
+	let messageString = `[ ${c1}${keyword}${colors.Reset} ] (${c2}${this.name}${colors.Reset}) ${prefix} [${c2}${message}${colors.Reset}]\n`;
 	process.stdout.write(messageString);
 
 	if (this.DiskIsOn()) {
@@ -242,41 +243,41 @@ KuzLogger.prototype.Log = function (keyword, message, c1, c2) {
 
 
 
-KuzLogger.prototype.JustLogIt = function (message) {
-	this.Log(" JUST ", message, colors.FgMagenta);
+KuzLogger.prototype.JustLogIt = function (prefix, message) {
+	this.Log(" JUST ", prefix, message, colors.FgMagenta);
 }
 
-KuzLogger.prototype.Mundane = function (message) {
+KuzLogger.prototype.Mundane = function (prefix, message) {
 	if (this.DebugIsOn()) {
-		this.Log(" .... ", message, colors.FgGreen);
+		this.Log(" .... ", prefix, message, colors.FgGreen);
 	}
 }
 
-KuzLogger.prototype.AsExpected = function (message) {
-	this.Log("  EXP ", message, colors.FgGreen);
+KuzLogger.prototype.AsExpected = function (prefix, message) {
+	this.Log("  EXP ", prefix, message, colors.FgGreen);
 }
 
-KuzLogger.prototype.Unexpected = function (message) {
-	this.Log(" UNEXP", message, colors.FgRed);
+KuzLogger.prototype.Unexpected = function (prefix, message) {
+	this.Log(" UNEXP", prefix, message, colors.FgRed);
 }
 
-KuzLogger.prototype.NotFound = function (message) {
-	this.Log("!FOUND", message, colors.FgRed);
+KuzLogger.prototype.NotFound = function (prefix, message) {
+	this.Log("!FOUND", prefix, message, colors.FgRed);
 }
 
 
 
-KuzLogger.prototype.Green = function (message) {
-	this.Log("  OK  ", message, colors.FgGreen);
+KuzLogger.prototype.Green = function (prefix, message) {
+	this.Log("  OK  ", prefix, message, colors.FgGreen);
 }
 
-KuzLogger.prototype.Red = function (message) {
-	this.Log(" ERROR", message, colors.FgRed);
+KuzLogger.prototype.Red = function (prefix, message) {
+	this.Log(" ERROR", prefix, message, colors.FgRed);
 }
 
-KuzLogger.prototype.Yellow = function (message) {
+KuzLogger.prototype.Yellow = function (prefix, message) {
 	if (this.DebugIsOn()) {
-		this.Log(" .... ", message, colors.FgYellow);
+		this.Log(" .... ", prefix, message, colors.FgYellow);
 	}
 }
 
