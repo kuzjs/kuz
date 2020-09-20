@@ -56,14 +56,6 @@ Article.prototype.App = function () {
 	return this.page.App();
 }
 
-Article.prototype.Blackadder = function () {
-	return this.page.Blackadder();
-}
-
-Article.prototype.LoremIpsum = function () {
-	return this.page.LoremIpsum();
-}
-
 Article.prototype.Html = function () {
 	return "Hello, PageType!";
 }
