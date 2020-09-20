@@ -5,19 +5,21 @@ const KuzFlag = require("./flag").KuzFlag;
 
 
 function KuzFlagManager (flagObjects) {
-	this.Setup(flagObjects);
+	this.flagObjects = flagObjects;
+	this.Setup();
+	this.flagObjects = null;
 }
 
-KuzFlagManager.prototype.Setup = function (flagObjects) {
-	this.SetupFlags(flagObjects);
-	this.SetupSimpleFlags();
+KuzFlagManager.prototype.Setup = function () {
+	this.SetupFlagArray();
+	this.SetupFlagsObject();
 	this.SetupCounters();
 }
 
-KuzFlagManager.prototype.SetupFlags = function (flagObjects) {
+KuzFlagManager.prototype.SetupFlagArray = function () {
 	this.flags = [];
 	this.args = [];
-	for (let flagObject of flagObjects) {
+	for (let flagObject of this.flagObjects) {
 		let flag = new KuzFlag(flagObject);
 		this.flags.push(flag);
 	}
@@ -54,7 +56,7 @@ KuzFlagManager.prototype.SetupFlags = function (flagObjects) {
 	}
 }
 
-KuzFlagManager.prototype.SetupSimpleFlags = function () {
+KuzFlagManager.prototype.SetupFlagsObject = function () {
 	this.simpleFlags = {};
 	for (let flag of this.flags) {
 		this.simpleFlags[flag.name] = flag.IsSet();
