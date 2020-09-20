@@ -9,6 +9,12 @@ function KuzFlagManager (flagObjects) {
 }
 
 KuzFlagManager.prototype.Setup = function (flagObjects) {
+	this.SetupFlags(flagObjects);
+	this.SetupSimpleFlags();
+	this.SetupCounters();
+}
+
+KuzFlagManager.prototype.SetupFlags = function (flagObjects) {
 	this.flags = [];
 	this.args = [];
 	for (let flagObject of flagObjects) {
@@ -16,7 +22,7 @@ KuzFlagManager.prototype.Setup = function (flagObjects) {
 		this.flags.push(flag);
 	}
 
-		let argv = process.argv;
+	let argv = process.argv;
 	let lastFlag = null;
 	for (let i=2; i<argv.length; i++) {
 		let argument = argv[i];
@@ -46,7 +52,16 @@ KuzFlagManager.prototype.Setup = function (flagObjects) {
 			}
 		}
 	}
+}
 
+KuzFlagManager.prototype.SetupSimpleFlags = function () {
+	this.simpleFlags = {};
+	for (let flag of this.flags) {
+		this.simpleFlags[flag.name] = flag.IsSet();
+	}
+}
+
+KuzFlagManager.prototype.SetupCounters = function () {
 	this.counter = {
 		independent: 0,
 		major: 0,
@@ -68,11 +83,6 @@ KuzFlagManager.prototype.Setup = function (flagObjects) {
 				this.counter.touchmenot++;
 			}
 		}
-	}
-
-	this.simpleFlags = {};
-	for (let flag of this.flags) {
-		this.simpleFlags[flag.name] = flag.IsSet();
 	}
 }
 
