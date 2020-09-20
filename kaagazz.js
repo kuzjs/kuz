@@ -275,7 +275,7 @@ KaagazzApp.prototype.BenchMark = function () {
 	}
 
 	let duration = sw.GetTimePassed();
-	this.log.Red("Rendered: " + rendered + " pages in " + duration + "ms.");
+	this.log.Red(`Rendered: ${rendered} pages in ${duration}ms.`);
 }
 
 KaagazzApp.prototype.Nietzsche = function () {
