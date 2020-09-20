@@ -259,6 +259,7 @@ KaagazzApp.prototype.ShowVersion = function () {
 }
 
 KaagazzApp.prototype.BenchMark = function () {
+	let startTime = Date.now();
 	let rendered = 0;
 	for (let index=0; index<20; index++) {
 		for (let x of this.site.Renderables()) {
@@ -266,7 +267,10 @@ KaagazzApp.prototype.BenchMark = function () {
 			rendered++;
 		}
 	}
-	this.log.Red("Rendered: " + rendered + " pages.");
+	let endTime = Date.now();
+
+	let duration = endTime - startTime;
+	this.log.Red("Rendered: " + rendered + " pages in " + duration + "ms.");
 }
 
 KaagazzApp.prototype.Nietzsche = function () {
