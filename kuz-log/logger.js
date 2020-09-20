@@ -229,8 +229,9 @@ KuzLogger.prototype.GetChild = function (name) {
 
 
 
-KuzLogger.prototype.Log = function (keyword, message, color) {
-	let messageString = `[ ${color}${keyword}${colors.Reset} ] (${color}${this.name}${colors.Reset}) ${message}\n`;
+KuzLogger.prototype.Log = function (keyword, message, c1, c2) {
+	c2 = c2 ? c2 : c1;
+	let messageString = `[ ${c1}${keyword}${colors.Reset} ] (${c2}${this.name}${colors.Reset}) ${message}\n`;
 	process.stdout.write(messageString);
 
 	if (this.DiskIsOn()) {
