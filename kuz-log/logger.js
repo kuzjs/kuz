@@ -226,6 +226,8 @@ KuzLogger.prototype.GetChild = function (name) {
 	let child = new KuzLogger(name);
 
 	child.SetParent(this);
+	child.createdTime = this.createdTime;
+	child.lastLogTime = this.lastLogTime;
 	child.Lock();
 	this.children.push(child);
 
