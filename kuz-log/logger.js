@@ -230,7 +230,11 @@ KuzLogger.prototype.GetChild = function (name) {
 
 
 KuzLogger.prototype.GetFullMessage = function (keyword, name, prefix, message) {
-	return `[ ${keyword} ] (${name}) ${prefix} [${message}]\n`;
+	if (message) {
+		return `[ ${keyword} ] (${name}) ${prefix} [${message}]\n`;
+	} else {
+		return `[ ${keyword} ] (${name}) ${prefix}\n`;
+	}
 }
 
 KuzLogger.prototype.Log = function (keyword, prefix, message, c1, c2, c3) {
@@ -247,7 +251,7 @@ KuzLogger.prototype.Log = function (keyword, prefix, message, c1, c2, c3) {
 	if (this.ColorIsOn()) {
 		keyword = `${c1}${keyword}${colors.Reset}`;
 		name = `${c2}${name}${colors.Reset}`;
-		message = `${c3}${message}${colors.Reset}`;
+		message = message ? `${c3}${message}${colors.Reset}` : message;
 
 		let messageString = this.GetFullMessage(keyword, name, prefix, message);
 		process.stdout.write(messageString);
