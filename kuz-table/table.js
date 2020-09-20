@@ -75,15 +75,14 @@ KZTable.prototype.AddColumn = function (columnName, columnLength) {
 }
 
 KZTable.prototype.Add = function (obj) {
-	let row = obj["Row"]();
+	let row = obj["GetRow"]();
 	this.AddRow(row);
 	return this;
 }
 
 KZTable.prototype.AddArray = function (arr) {
 	for (let elem of arr) {
-		let row = elem["Row"]();
-		this.AddRow(row);
+		this.Add(elem);
 	}
 	return this;
 }

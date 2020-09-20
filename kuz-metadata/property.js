@@ -152,7 +152,7 @@ Property.prototype.GetTable = function () {
 	return table;
 }
 
-Property.prototype.Row = function () {
+Property.prototype.GetRow = function () {
 	return [this.Name(), this.ValueString()];
 }
 

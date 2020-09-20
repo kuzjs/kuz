@@ -160,7 +160,7 @@ KuzKonfig.prototype.GetTable = function () {
 	return table;
 }
 
-KuzKonfig.prototype.Row = function () {
+KuzKonfig.prototype.GetRow = function () {
 	return [
 		this.CodeName(),
 		this.configFilePath,

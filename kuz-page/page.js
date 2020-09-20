@@ -574,7 +574,7 @@ Page.prototype.GetTable = function () {
 	return table;
 }
 
-Page.prototype.Row = function () {
+Page.prototype.GetRow = function () {
 	return [
 		this.CodeName(),
 		//this.Name(),

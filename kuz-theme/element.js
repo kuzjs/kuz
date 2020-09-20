@@ -76,7 +76,7 @@ ThemeElement.prototype.GetTable = function () {
 	return table;
 }
 
-ThemeElement.prototype.Row = function () {
+ThemeElement.prototype.GetRow = function () {
 	return [
 		this.Name(),
 		this.theme.Name(),

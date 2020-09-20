@@ -23,7 +23,7 @@ KZBaseObject.prototype = {
 		return this.GetTable();
 	},
 	get row () {
-		return this.Row();
+		return this.GetRow();
 	}
 };
 

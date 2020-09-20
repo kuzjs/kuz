@@ -117,7 +117,7 @@ KuzFlag.prototype.PrintDoc = function () {
 	console.log(this.GetDoc());
 }
 
-KuzFlag.prototype.Row = function () {
+KuzFlag.prototype.GetRow = function () {
 	return [
 		this.Code(),
 		this.FullName(),

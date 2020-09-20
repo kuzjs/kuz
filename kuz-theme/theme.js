@@ -197,7 +197,7 @@ Theme.prototype.GetTable = function () {
 	return table;
 }
 
-Theme.prototype.Row = function () {
+Theme.prototype.GetRow = function () {
 	let meta = this.meta.json.meta;
 	return [
 		this.Name(),
