@@ -66,12 +66,12 @@ KaagazzApp.prototype.AllIsWell = function () {
 
 KaagazzApp.prototype.SetupFlags = function () {
 	const KuzFlagManager = require("./kuz-flag").KuzFlagManager;
-	const flagManager = new KuzFlagManager(this.flagsJson.json.flags);
+	this.flagman = new KuzFlagManager(this.flagsJson.json.flags);
 
-	this.flags = flagManager.GetFlags();
-	this.simpleFlags = flagManager.GetSimpleFlags();
-	this.args = flagManager.GetArgs();
-	this.numberOfFlags = flagManager.GetCounter();
+	this.flags = this.flagman.GetFlags();
+	this.simpleFlags = this.flagman.GetSimpleFlags();
+	this.args = this.flagman.GetArgs();
+	this.numberOfFlags = this.flagman.GetCounter();
 
 	if (this.simpleFlags.debug) {
 		log.DebugOn();
