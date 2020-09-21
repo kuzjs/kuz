@@ -265,7 +265,9 @@ KZBaseObject.prototype.build = function () {
 }
 
 KZBaseObject.prototype.updatable = function () {
-	this.log.green("KZBaseObject Updatable(): " + this.CodeAndName());
+	if (this.needsUpdate()) {
+		this.log.green("Can be updated.");
+	}
 	return this;
 }
 
