@@ -125,7 +125,7 @@ Theme.prototype.Props = function () {
 	return this.meta.json;
 }
 
-Theme.prototype.DefaultLayout = function () {
+Theme.prototype.defaultLayout = function () {
 	for (let layout of this.layouts) {
 		if (layout.default) {
 			return layout;
@@ -134,7 +134,7 @@ Theme.prototype.DefaultLayout = function () {
 	return this.layouts[0];
 }
 
-Theme.prototype.GetLayout = function (layoutName) {
+Theme.prototype.getLayout = function (layoutName) {
 	for (let layout of this.layouts) {
 		if (layoutName == layout.Name()) {
 			return layout;

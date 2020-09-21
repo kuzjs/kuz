@@ -155,15 +155,14 @@ KuzPage.prototype.GetContentString = function () {
 	return this.inputNss.GetBodyString();
 }
 
-KuzPage.prototype.GetArticle = function () {
+KuzPage.prototype.getArticle = function () {
 	const Article = require("./pages/article").Article;
 	let article = new Article(this, this.GetContentString());
 	return article;
 }
 
 KuzPage.prototype.GetContentHtml = function () {
-	let article = new Article(this, this.GetContentString());
-	return this.GetArticle().ContentHtml();
+	return this.getArticle().ContentHtml();
 }
 
 KuzPage.prototype.OutputFileMTime = function () {
@@ -233,11 +232,7 @@ KuzPage.prototype.Name = function () {
 	}
 }
 
-KuzPage.prototype.Title = function () {
-	return this.GetTitle();
-}
-
-KuzPage.prototype.GetTitle = function () {
+KuzPage.prototype.getTitle = function () {
 	let property = this.GetProperty("title");
 	if (property.found) {
 		return property.value;
@@ -245,11 +240,7 @@ KuzPage.prototype.GetTitle = function () {
 	return "Not Found";
 }
 
-KuzPage.prototype.Description = function () {
-	return this.GetDescription();
-}
-
-KuzPage.prototype.GetDescription = function () {
+KuzPage.prototype.getDescription = function () {
 	let property = this.GetProperty("description");
 	if (property.found) {
 		return property.value;
@@ -269,11 +260,7 @@ KuzPage.prototype.Props = function () {
 	return this.metaData.Props();
 }
 
-KuzPage.prototype.Author = function () {
-	return this.GetAuthor();
-}
-
-KuzPage.prototype.GetAuthor = function () {
+KuzPage.prototype.getAuthor = function () {
 	let author = this.GetPropertyCascaded("author");
 	if (author.found) {
 		let authorObject = this.site.GetAuthorFromName(author.value);
@@ -284,11 +271,7 @@ KuzPage.prototype.GetAuthor = function () {
 	return this.site.DefaultAuthor();
 }
 
-KuzPage.prototype.Category = function () {
-	return this.GetCategory();
-}
-
-KuzPage.prototype.GetCategory = function () {
+KuzPage.prototype.getCategory = function () {
 	let category = this.GetPropertyCascaded("category");
 	if (category.found) {
 		let categoryObject = this.site.GetCategoryFromName(category.value);
@@ -307,11 +290,7 @@ KuzPage.prototype.Tags = function () {
 	return [];
 }
 
-KuzPage.prototype.TagObjects = function () {
-	return this.GetTagObjects();
-}
-
-KuzPage.prototype.GetTagObjects = function () {
+KuzPage.prototype.getTagObjects = function () {
 	let tagsArray = this.Tags();
 	return this.site.GetTagsFromNameArray(tagsArray);
 }
@@ -382,15 +361,11 @@ KuzPage.prototype.Root = function () {
 	return this.GetRoot();
 }
 
-KuzPage.prototype.GetRoot = function () {
+KuzPage.prototype.getRoot = function () {
 	return this.konfig.root;
 }
 
-KuzPage.prototype.Theme = function () {
-	return this.GetTheme();
-}
-
-KuzPage.prototype.GetTheme = function () {
+KuzPage.prototype.getTheme = function () {
 	let themeNameProperty = this.GetPropertyCascaded("theme");
 	if (themeNameProperty.found) {
 		let themeName = themeNameProperty.value;
@@ -403,7 +378,7 @@ KuzPage.prototype.GetTheme = function () {
 	return this.site.DefaultTheme();
 }
 
-KuzPage.prototype.GetLayoutName = function () {
+KuzPage.prototype.getLayoutName = function () {
 	let layout = this.GetPropertyCascaded("layout");
 	if (layout.found) {
 		return layout.value;
@@ -411,20 +386,16 @@ KuzPage.prototype.GetLayoutName = function () {
 	return this.GetType();
 }
 
-KuzPage.prototype.Layout = function () {
-	return this.GetLayout();
-}
-
-KuzPage.prototype.GetLayout = function () {
-	let theme = this.Theme();
-	let layoutName = this.GetLayoutName();
-	let layout = theme.GetLayout(layoutName);
+KuzPage.prototype.getLayout = function () {
+	let theme = this.getTheme();
+	let layoutName = this.getLayoutName();
+	let layout = theme.getLayout(layoutName);
 
 	if (layout) {
 		return layout;
 	}
 
-	return theme.DefaultLayout();
+	return theme.defaultLayout();
 }
 
 KuzPage.prototype.Pages = function () {
@@ -448,8 +419,8 @@ KuzPage.prototype.GetPages = function () {
 
 
 
-KuzPage.prototype.GetKuz = function () {
-	let article = this.GetArticle();
+KuzPage.prototype.getKuz = function () {
+	let article = this.getArticle();
 	let sections = article ? article.sections : null;
 	return {
 		page: this,
@@ -462,8 +433,8 @@ KuzPage.prototype.GetKuz = function () {
 		cprops: this.konfig.Props(),
 		sprops: this.site.Props(),
 		kprops: this.site.app.Props(),
-		tprops: this.Theme().Props(),
-		lprops: this.GetLayout().Props(),
+		tprops: this.getTheme().Props(),
+		lprops: this.getLayout().Props(),
 
 		code: this.metaData.Code(),
 		json: this.metaData.Json(),
@@ -484,7 +455,7 @@ KuzPage.prototype.GetPagesCount = function () {
 KuzPage.prototype.GetPageOptions = function () {
 	return {
 		page: this,
-		kuz: this.GetKuz(),
+		kuz: this.getKuz(),
 		blackadder: this.Blackadder()
 	};
 }
@@ -539,7 +510,7 @@ KuzPage.prototype.Render = function () {
 	let t1 = Date.now();
 
 	let htmlPath = this.OutputFilePath();
-	let layout = this.GetLayout();
+	let layout = this.getLayout();
 	let html = layout.pug(options = this.GetPageOptions());
 
 	fsutils.CreateDirectory(this.OutputDirectoryPath());
