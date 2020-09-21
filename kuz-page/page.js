@@ -323,7 +323,7 @@ KuzPage.prototype.getPropertyCascaded = function (propertyName) {
 	};
 }
 
-KuzPage.prototype.GetBooleanValueCascaded = function (name) {
+KuzPage.prototype.getBooleanValueCascaded = function (name) {
 	let property = this.getPropertyCascaded(name);
 	if (property.found) {
 		return property.value;
@@ -337,29 +337,25 @@ KuzPage.prototype.GetBooleanValueCascaded = function (name) {
 
 KuzPage.prototype.Show = function (name) {
 	let propertyName = "show_" + name;
-	return this.GetBooleanValueCascaded(propertyName);
+	return this.getBooleanValueCascaded(propertyName);
 }
 
 KuzPage.prototype.Hide = function (name) {
 	let propertyName = "hide_" + name;
-	return this.GetBooleanValueCascaded(propertyName);
+	return this.getBooleanValueCascaded(propertyName);
 }
 
 KuzPage.prototype.HasRelativeBase = function () {
-	return this.GetBooleanValueCascaded("relative_base");
+	return this.getBooleanValueCascaded("relative_base");
 }
 
 KuzPage.prototype.HasPrettyURL = function () {
-	return this.GetBooleanValueCascaded("pretty_url");
+	return this.getBooleanValueCascaded("pretty_url");
 }
 
 
 
 
-
-KuzPage.prototype.Root = function () {
-	return this.GetRoot();
-}
 
 KuzPage.prototype.getRoot = function () {
 	return this.konfig.root;
