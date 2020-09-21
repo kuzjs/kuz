@@ -29,7 +29,7 @@ function KuzKonfig (site, dirpath, entity=false) {
 	this.children = [];
 	this.index = 0;
 
-	if (this.Exists()) {
+	if (this.exists()) {
 		const KuzMetaData = require("../kuz-metadata").KuzMetaData;
 		this.metaData = new KuzMetaData(this, this.configFilePath);
 		this.props = this.metaData.getProps();
@@ -69,22 +69,22 @@ KuzKonfig.prototype.getProps = function () {
 	return this.props;
 }
 
-KuzKonfig.prototype.Exists = function () {
+KuzKonfig.prototype.exists = function () {
 	if (fsutils.IsFile(this.configFilePath)) {
 		return true;
 	}
 	return false;
 }
 
-KuzKonfig.prototype.DoesNotExist = function () {
-	return !this.Exists();
+KuzKonfig.prototype.doesNotExist = function () {
+	return !this.exists();
 }
 
-KuzKonfig.prototype.GetEntries = function () {
+KuzKonfig.prototype.getEntries = function () {
 	return this.nss.getContentLines();
 }
 
-KuzKonfig.prototype.GetEntriesObject = function () {
+KuzKonfig.prototype.getEntriesObject = function () {
 	let lines = this.nss.getContentLines();
 	let entries = {
 		root: false,
@@ -105,15 +105,15 @@ KuzKonfig.prototype.getPages = function () {
 	return this.pages;
 }
 
-KuzKonfig.prototype.NumberOfPages = function () {
+KuzKonfig.prototype.numberOfPages = function () {
 	return this.pages.length;
 }
 
-KuzKonfig.prototype.NumberOfChildren = function () {
+KuzKonfig.prototype.numberOfChildren = function () {
 	return this.children.length;
 }
 
-KuzKonfig.prototype.ParentString = function () {
+KuzKonfig.prototype.parentString = function () {
 	if (this.parent) {
 		return this.parent.CodeName();
 	} else {
@@ -121,26 +121,12 @@ KuzKonfig.prototype.ParentString = function () {
 	}
 }
 
-KuzKonfig.prototype.RootString = function () {
+KuzKonfig.prototype.rootString = function () {
 	if (this.root) {
 		return "@";
 	} else {
 		return "";
 	}
-}
-
-KuzKonfig.prototype.NumberOfEntriesString = function () {
-	let noeString;
-	if (this.root) {
-		noeString = "@ + " + this.NumberOfPages() + "p";
-	} else {
-		noeString = this.NumberOfPages() + "p";
-	}
-
-	if (this.NumberOfChildren() > 0) {
-		noeString += " + " + this.NumberOfChildren() + "d";
-	}
-	return noeString;
 }
 
 KuzKonfig.prototype.GetStringValue = function (propertyName) {
@@ -164,10 +150,10 @@ KuzKonfig.prototype.getRow = function () {
 	return [
 		this.CodeName(),
 		this.configFilePath,
-		this.ParentString(),
-		this.RootString(),
-		this.NumberOfChildren(),
-		this.NumberOfPages(),
+		this.parentString(),
+		this.rootString(),
+		this.numberOfChildren(),
+		this.numberOfPages(),
 		this.metaData.numberOfProperties()
 	];
 }
