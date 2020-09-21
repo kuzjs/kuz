@@ -29,20 +29,16 @@ KuzMetaData.prototype.Setup = function () {
 
 		const Property = require("./property").Property;
 		for (let section of kuzSections.sections) {
-			this.sections[section.name] = {};
-			this.sections[section.name].mods = section.mods;
+			if (this.sections[section.name] === undefined) {
+				this.sections[section.name] = {};
+				this.sections[section.name].mods = section.mods;
+			}
+
 			for (let line of section.lines) {
 				let property = new Property(line);
 				if (property.IsValid()) {
 					this.sections[section.name][property.name] = property.value;
 				}
-			}
-		}
-
-		for (let headerLine of headerLines) {
-			let property = new Property(headerLine);
-			if (property.IsValid()) {
-				this.properties.push(property);
 			}
 		}
 	} else {
@@ -126,12 +122,12 @@ KuzMetaData.prototype.NumberOfProperties = function () {
 }
 
 KuzMetaData.prototype.PrintPropertyTable = function () {
-	if (this.properties.length > 0) {
-		let table = this.properties[0].getTable();
-		for (let property of this.properties) {
-			table.add(property);
+	for (let sectionName in this.sections) {
+		let section = this.sections[sectionName];
+		console.log(`[${sectionName}]`);
+		for (let key in section) {
+			console.log(`\t${key}: ${section[key]}`);
 		}
-		table.print();
 	}
 }
 
