@@ -451,34 +451,6 @@ KuzSite.prototype.UpdateArray = function (arr) {
 	}
 }
 
-KuzSite.prototype.UpdateAuthors = function () {
-	this.UpdateArray(this.authors);
-}
-
-KuzSite.prototype.UpdateCategories = function () {
-	this.UpdateArray(this.categories);
-}
-
-KuzSite.prototype.UpdateTags = function () {
-	this.UpdateArray(this.tags);
-}
-
-KuzSite.prototype.UpdatePages = function () {
-	this.UpdateArray(this.pages);
-}
-
-KuzSite.prototype.UpdateCollections = function () {
-	this.UpdateArray(this.collections);
-}
-
-KuzSite.prototype.UpdateEntities = function () {
-	this.UpdateArray(this.Entities());
-}
-
-KuzSite.prototype.UpdateAll = function () {
-	this.UpdateArray(this.Renderables());
-}
-
 module.exports = {
 	KuzSite: KuzSite
 };
