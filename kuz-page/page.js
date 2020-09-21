@@ -551,19 +551,19 @@ KuzPage.prototype.Render = function () {
 	this.RenderLog();
 }
 
-KuzPage.prototype.AverageRenderTime = function () {
+KuzPage.prototype.averageRenderTime = function () {
 	if (this.totalRenders) {
 		return this.totalRenderTime / this.totalRenders;
 	}
 	return 0;
 }
 
-KuzPage.prototype.AverageRenderTimeString = function () {
-	return this.AverageRenderTime().toPrecision(4) + "ms";
+KuzPage.prototype.averageRenderTimeString = function () {
+	return this.averageRenderTime().toPrecision(4) + "ms";
 }
 
 KuzPage.prototype.RenderLog = function () {
-	this.log.GreenYellow(`Rendered ${this.AverageRenderTimeString()}:`, this.OutputFilePath());
+	this.log.GreenYellow(`Rendered ${this.averageRenderTimeString()}:`, this.OutputFilePath());
 }
 
 
