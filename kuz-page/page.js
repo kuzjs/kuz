@@ -195,15 +195,11 @@ KuzPage.prototype.OutputFileNesting = function () {
 	return (this.OutputFilePath().split("/").length - 2);
 }
 
-KuzPage.prototype.PageURL = function () {
+KuzPage.prototype.getPageURL = function () {
 	return fsutils.JoinPath(this.site.HomeURL(), this.OutputDirectoryPartialPath());
 }
 
-KuzPage.prototype.Base = function () {
-	return this.GetBase();
-}
-
-KuzPage.prototype.GetBase = function () {
+KuzPage.prototype.getBase = function () {
 	let outputFileNesting = this.OutputFileNesting();
 	let base = "";
 	for (let index = 0; index < outputFileNesting; index++) {
@@ -212,7 +208,7 @@ KuzPage.prototype.GetBase = function () {
 	return base;
 }
 
-KuzPage.prototype.RelativeURL = function () {
+KuzPage.prototype.getRelativeURL = function () {
 	if (this.HasPrettyURL()) {
 		return this.OutputDirectoryPartialPath();
 	} else {
