@@ -37,7 +37,11 @@ KuzMetaData.prototype.setup = function () {
 			for (let line of section.lines) {
 				let property = new Property(line);
 				if (property.ok()) {
-					this.sections[section.name][property.name] = property.value;
+					if (this.sections[section.name][property.name] === undefined) {
+						this.sections[section.name][property.name] = property.value;
+					} else {
+						this.log.red(`Multiple definitions of: [${property.name}]`);
+					}
 				} else {
 					this.log.red(`Bad property: [${line}]`);
 				}
