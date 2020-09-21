@@ -59,8 +59,8 @@ Theme.prototype.setupPaths = function () {
 		return;
 	}
 
-	const JsonFile = require("../kuz-json").JsonFile;
-	this.meta = new JsonFile(this.JsonFilePath());
+	const KuzJson = require("../kuz-json").KuzJson;
+	this.meta = new KuzJson(this.JsonFilePath());
 	this.metaObject = this.meta.json.meta;
 
 	this.setupLayouts();

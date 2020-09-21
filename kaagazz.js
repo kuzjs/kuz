@@ -15,11 +15,11 @@ function KaagazzApp () {
 	this.log = new KuzLogger("KaagazzApp");
 	//this.log.TurnOnDisk();
 
-	const JsonFile = require("./kuz-json").JsonFile;
-	this.meta = new JsonFile(kaagazzJsonPath);
-	this.flagsJson = new JsonFile(flagsJsonPath);
-	this.blackadder = new JsonFile(blackadderJsonPath);
-	this.ipsum = new JsonFile(loremIpsumJsonPath);
+	const KuzJson = require("./kuz-json").KuzJson;
+	this.meta = new KuzJson(kaagazzJsonPath);
+	this.flagsJson = new KuzJson(flagsJsonPath);
+	this.blackadder = new KuzJson(blackadderJsonPath);
+	this.ipsum = new KuzJson(loremIpsumJsonPath);
 
 	this.log.setName(this.getTitle());
 	this.setupFlags();

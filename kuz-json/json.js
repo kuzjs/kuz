@@ -1,26 +1,26 @@
-// jsonfile.js
+// KuzJson.js
 
 const fs = require('fs');
 
 
 
-let numberOfJsonFiles = 0;
+let numberOfKuzJsons = 0;
 
-function JsonFile(filepath) {
+function KuzJson (filepath) {
 	this.filepath = filepath;
-	this.id = numberOfJsonFiles++;
+	this.id = numberOfKuzJsons++;
 	this.forcedUpdateJson();
 }
 
-JsonFile.prototype.GetId = function () {
+KuzJson.prototype.getId = function () {
 	return this.id;
 }
 
-JsonFile.prototype.ok = function () {
+KuzJson.prototype.ok = function () {
 	return this.okay;
 }
 
-JsonFile.prototype.needsUpdate = function () {
+KuzJson.prototype.needsUpdate = function () {
 	let new_mtimeMs = fs.statSync(this.filepath).mtimeMs;
 	if (new_mtimeMs != this.mtimeMs) {
 		return true;
@@ -28,22 +28,22 @@ JsonFile.prototype.needsUpdate = function () {
 	return false;
 }
 
-JsonFile.prototype.IsUpToDate = function () {
+KuzJson.prototype.isUpToDate = function () {
 	return !this.needsUpdate();
 }
 
-JsonFile.prototype.GetUpdatedJson = function () {
+KuzJson.prototype.getUpdatedJson = function () {
 	return this.updateJson();
 }
 
-JsonFile.prototype.updateJson = function () {
+KuzJson.prototype.updateJson = function () {
 	if (this.needsUpdate()) {
 		this.forcedUpdateJson();
 	}
 	return this.json;
 }
 
-JsonFile.prototype.forcedUpdateJson = function () {
+KuzJson.prototype.forcedUpdateJson = function () {
 	try {
 		this.mtimeMs = fs.statSync(this.filepath).mtimeMs;
 		this.json = JSON.parse(fs.readFileSync(this.filepath));
@@ -55,7 +55,7 @@ JsonFile.prototype.forcedUpdateJson = function () {
 	}
 }
 
-JsonFile.prototype.getPropertyValueFromName = function (name) {
+KuzJson.prototype.getPropertyValueFromName = function (name) {
 	if (this.json.hasOwnProperty(name)) {
 		return {
 			found: true,
@@ -68,11 +68,11 @@ JsonFile.prototype.getPropertyValueFromName = function (name) {
 	};
 }
 
-JsonFile.prototype.GetConfigurationValue = function () {
+KuzJson.prototype.getConfigurationValue = function () {
 	return this.getPropertyValueFromName("configuration");
 }
 
-JsonFile.prototype.GetNestedValueFromName = function (parent, child) {
+KuzJson.prototype.getNestedValueFromName = function (parent, child) {
 	if (this.json.hasOwnProperty(parent)) {
 		if (this.json[parent].hasOwnProperty(child)) {
 			return {
@@ -87,18 +87,18 @@ JsonFile.prototype.GetNestedValueFromName = function (parent, child) {
 	};
 }
 
-JsonFile.prototype.GetVisibilityFromName = function (name) {
-	return this.GetNestedValueFromName("visibility", name);
+KuzJson.prototype.getVisibilityFromName = function (name) {
+	return this.getNestedValueFromName("visibility", name);
 }
 
-JsonFile.prototype.GetBackgroundFromName = function (name) {
-	return this.GetNestedValueFromName("backgrounds", name);
+KuzJson.prototype.getBackgroundFromName = function (name) {
+	return this.getNestedValueFromName("backgrounds", name);
 }
 
 
 
 module.exports = {
-	JsonFile: JsonFile
+	KuzJson: KuzJson
 };
 
 

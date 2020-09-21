@@ -21,8 +21,8 @@ KuzSite.prototype.setup = function () {
 	this.errorMessage = null;
 	this.siteJsonPath = this.app.GetSiteJsonPath();
 
-	const JsonFile = require("../kuz-json").JsonFile;
-	this.meta = new JsonFile(this.siteJsonPath);
+	const KuzJson = require("../kuz-json").KuzJson;
+	this.meta = new KuzJson(this.siteJsonPath);
 	this.log.setName(this.getHomeURL());
 
 	this.konfigs = [];
@@ -83,12 +83,12 @@ KuzSite.prototype.setupThemes = function () {
 	}
 }
 
-KuzSite.prototype.GetNestedValueFromCascade = function (parent, child) {
-	let retVal = this.meta.GetNestedValueFromName(parent, child);
+KuzSite.prototype.getNestedValueFromCascade = function (parent, child) {
+	let retVal = this.meta.getNestedValueFromName(parent, child);
 	if (retVal.found) {
 		return retVal.value;
 	} else {
-		return this.app.meta.GetNestedValueFromName(parent, child).value;
+		return this.app.meta.getNestedValueFromName(parent, child).value;
 	}
 }
 
@@ -97,7 +97,7 @@ KuzSite.prototype.GetInputDirectoryFromJson = function (dirName) {
 }
 
 KuzSite.prototype.GetOutputDirectoryFromJson = function (dirName) {
-	return this.GetNestedValueFromCascade("output", dirName);
+	return this.getNestedValueFromCascade("output", dirName);
 }
 
 KuzSite.prototype.GetInputDirectory = function () {

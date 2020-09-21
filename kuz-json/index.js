@@ -1,6 +1,6 @@
 
 
 
-module.exports = require("./jsonfile");
+module.exports = require("./json");
 
 
