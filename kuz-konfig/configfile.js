@@ -69,6 +69,10 @@ KuzKonfig.prototype.getProps = function () {
 	return this.props;
 }
 
+KuzKonfig.prototype.getPath = function () {
+	return this.configFilePath;
+}
+
 KuzKonfig.prototype.exists = function () {
 	if (fsutils.IsFile(this.configFilePath)) {
 		return true;

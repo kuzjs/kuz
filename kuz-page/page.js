@@ -467,19 +467,21 @@ KuzPage.prototype.needsUpdate = function () {
 		return true;
 	}
 
+	if (fsutils.IsNewerThan(this.konfig.getPath(), this.OutputFilePath())) {
+		return true;
+	}
+
 	if (this.HasInputDirectory()) {
 		if (fsutils.DirectoryHasNewerFiles(this.InputDirectoryPath(), this.OutputFilePath())) {
 			return true;
-		} else {
-			return false;
 		}
 	} else {
-		if (fsutils.IsNewerThan(this.OutputFilePath(), this.InputFilePath())) {
-			return false;
-		} else {
+		if (fsutils.IsNewerThan(this.InputFilePath(), this.OutputFilePath())) {
 			return true;
 		}
 	}
+
+	return false;
 }
 
 KuzPage.prototype.build = function () {
