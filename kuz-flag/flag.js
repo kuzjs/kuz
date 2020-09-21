@@ -117,7 +117,7 @@ KuzFlag.prototype.PrintDoc = function () {
 	console.log(this.GetDoc());
 }
 
-KuzFlag.prototype.GetRow = function () {
+KuzFlag.prototype.getRow = function () {
 	return [
 		this.Code(),
 		this.FullName(),
@@ -129,7 +129,7 @@ KuzFlag.prototype.GetRow = function () {
 	];
 }
 
-KuzFlag.prototype.GetTable = function () {
+KuzFlag.prototype.getTable = function () {
 	let table = new KZTable();
 	table.HideIndex().HideHeader();
 	table.AddColumn("Code");

@@ -13,18 +13,18 @@ function KuzCodeFile (kuz, path) {
 	this.log = this.kuz.log.getChild(this.path);
 }
 
-KuzCodeFile.prototype.Exists = function () {
+KuzCodeFile.prototype.exists = function () {
 	if (fsutils.IsFile(this.path)) {
 		return true;
 	}
 	return false;
 }
 
-KuzCodeFile.prototype.IsValid = function () {
+KuzCodeFile.prototype.isValid = function () {
 	return this.Exists();
 }
 
-KuzCodeFile.prototype.GetLinesXtoY = function (x, y) {
+KuzCodeFile.prototype.getLinesXtoY = function (x, y) {
 	let linesObject = {};
 	if (this.Exists()) {
 		let text = fs.readFileSync(this.path, "utf8").replace("\r", "");
@@ -44,11 +44,11 @@ KuzCodeFile.prototype.GetLinesXtoY = function (x, y) {
 	return linesObject;
 }
 
-KuzCodeFile.prototype.GetLines = function () {
+KuzCodeFile.prototype.getLines = function () {
 	return this.GetLinesXtoY();
 }
 
-KuzCodeFile.prototype.GetNLinesFromX = function (x, n) {
+KuzCodeFile.prototype.getNLinesFromX = function (x, n) {
 	return this.GetLinesXtoY(x, x+n-1);
 }
 

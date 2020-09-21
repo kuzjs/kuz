@@ -64,7 +64,7 @@ ThemeElement.prototype.PrintInputFilePath = function () {
 	this.log.green("Input file path: " + this.InputFilePath());
 }
 
-ThemeElement.prototype.GetTable = function () {
+ThemeElement.prototype.getTable = function () {
 	const KZTable = require("../kuz-table/table").KZTable;
 	let table = new KZTable();
 	table.AddColumn("Name");
@@ -76,7 +76,7 @@ ThemeElement.prototype.GetTable = function () {
 	return table;
 }
 
-ThemeElement.prototype.GetRow = function () {
+ThemeElement.prototype.getRow = function () {
 	return [
 		this.Name(),
 		this.theme.Name(),

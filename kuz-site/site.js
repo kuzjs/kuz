@@ -292,7 +292,7 @@ KuzSite.prototype.PrintArrayAsTable = function (arr) {
 		return;
 	}
 
-	let table = arr[0].GetTable();
+	let table = arr[0].getTable();
 	for (let item of arr) {
 		table.Add(item);
 	}

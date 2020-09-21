@@ -127,7 +127,7 @@ KuzMetaData.prototype.NumberOfProperties = function () {
 
 KuzMetaData.prototype.PrintPropertyTable = function () {
 	if (this.properties.length > 0) {
-		let table = this.properties[0].GetTable();
+		let table = this.properties[0].getTable();
 		for (let property of this.properties) {
 			table.Add(property);
 		}

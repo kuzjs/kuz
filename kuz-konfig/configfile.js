@@ -147,7 +147,7 @@ KuzKonfig.prototype.GetStringValue = function (propertyName) {
 	return this.metaData.GetValue(propertyName);
 }
 
-KuzKonfig.prototype.GetTable = function () {
+KuzKonfig.prototype.getTable = function () {
 	const KZTable = require("../kuz-table/table").KZTable;
 	let table = new KZTable();
 	table.AddColumn("CodeName");
@@ -160,7 +160,7 @@ KuzKonfig.prototype.GetTable = function () {
 	return table;
 }
 
-KuzKonfig.prototype.GetRow = function () {
+KuzKonfig.prototype.getRow = function () {
 	return [
 		this.CodeName(),
 		this.configFilePath,

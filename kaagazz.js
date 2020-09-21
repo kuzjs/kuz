@@ -193,7 +193,7 @@ KaagazzApp.prototype.toString = function () {
 }
 
 KaagazzApp.prototype.ShowSomeHelp = function () {
-	let table = this.flags[0].GetTable();
+	let table = this.flags[0].getTable();
 
 	for (let flag of this.flags) {
 		if (!flag.modifier) {
@@ -205,7 +205,7 @@ KaagazzApp.prototype.ShowSomeHelp = function () {
 }
 
 KaagazzApp.prototype.ShowFullHelp = function () {
-	let table = this.flags[0].GetTable();
+	let table = this.flags[0].getTable();
 
 	for (let flag of this.flags) {
 		table.Add(flag);
@@ -215,7 +215,7 @@ KaagazzApp.prototype.ShowFullHelp = function () {
 }
 
 KaagazzApp.prototype.ShowIndependentFlags = function () {
-	let table = this.flags[0].GetTable();
+	let table = this.flags[0].getTable();
 
 	for (let flag of this.flags) {
 		if (!flag.modifier && !flag.major) {
@@ -227,7 +227,7 @@ KaagazzApp.prototype.ShowIndependentFlags = function () {
 }
 
 KaagazzApp.prototype.ShowModifierFlags = function () {
-	let table = this.flags[0].GetTable();
+	let table = this.flags[0].getTable();
 
 	for (let flag of this.flags) {
 		if (flag.modifier) {
@@ -239,7 +239,7 @@ KaagazzApp.prototype.ShowModifierFlags = function () {
 }
 
 KaagazzApp.prototype.ShowMajorFlags = function () {
-	let table = this.flags[0].GetTable();
+	let table = this.flags[0].getTable();
 
 	for (let flag of this.flags) {
 		if (flag.major) {
@@ -275,7 +275,7 @@ KaagazzApp.prototype.BenchMark = function () {
 		}
 	}
 
-	let duration = sw.GetTimePassed();
+	let duration = sw.getTimePassed();
 	this.log.red(`Rendered: ${rendered} pages in ${duration}ms.`);
 }
 
@@ -294,7 +294,7 @@ KaagazzApp.prototype.ListThings = function (flags) {
 	if (this.operands.length == 0) {
 		this.log.red("Zero operands to list.");
 	} else {
-		let table = this.operands[0].GetTable();
+		let table = this.operands[0].getTable();
 		for (let operand of this.operands) {
 			table.Add(operand);
 		}

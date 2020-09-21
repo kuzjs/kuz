@@ -182,7 +182,7 @@ Theme.prototype.GetPages = function () {
 	return [];
 }
 
-Theme.prototype.GetTable = function () {
+Theme.prototype.getTable = function () {
 	const KZTable = require("../kuz-table/table").KZTable;
 	let table = new KZTable();
 	table.AddColumn("Name");
@@ -197,7 +197,7 @@ Theme.prototype.GetTable = function () {
 	return table;
 }
 
-Theme.prototype.GetRow = function () {
+Theme.prototype.getRow = function () {
 	let meta = this.meta.json.meta;
 	return [
 		this.Name(),

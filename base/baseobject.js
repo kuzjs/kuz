@@ -20,10 +20,10 @@ KZBaseObject.prototype = {
 		return this.GetSite().All();
 	},
 	get table () {
-		return this.GetTable();
+		return this.getTable();
 	},
 	get row () {
-		return this.GetRow();
+		return this.getRow();
 	}
 };
 

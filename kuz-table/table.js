@@ -75,7 +75,7 @@ KZTable.prototype.AddColumn = function (columnName, columnLength) {
 }
 
 KZTable.prototype.Add = function (obj) {
-	let row = obj["GetRow"]();
+	let row = obj["getRow"]();
 	this.AddRow(row);
 	return this;
 }
@@ -102,7 +102,7 @@ KZTable.prototype.GetColumnLength = function (columnIndex) {
 	return this.columnObjects[columnIndex].length;
 }
 
-KZTable.prototype.GetRowLength = function () {
+KZTable.prototype.getRowLength = function () {
 	let rowLength = this.firstColumn.length + (2 * this.Separator().length) - this.paddingLength;
 	for (let columnObject of this.columnObjects) {
 		rowLength += columnObject.length + this.Separator().length;
@@ -121,7 +121,7 @@ KZTable.prototype.GetColumnDashes = function (columnLength) {
 	return this.GetNDashes(this.paddingLength + columnLength + this.paddingLength);
 }
 
-KZTable.prototype.GetRowSeparator = function () {
+KZTable.prototype.getRowSeparator = function () {
 	let separator = "+";
 
 	let rowSeparator;
@@ -138,7 +138,7 @@ KZTable.prototype.GetRowSeparator = function () {
 	return rowSeparator;
 }
 
-KZTable.prototype.GetRowString = function (rowId, row) {
+KZTable.prototype.getRowString = function (rowId, row) {
 	let rowString;
 	if (this.showIndex) {
 		rowString = "|" + this.Padding() + rowId.padStart(this.firstColumn.length) + this.Separator();
@@ -160,13 +160,13 @@ KZTable.prototype.GetHeaderRowString = function () {
 	for (let i=0; i<this.columnObjects.length; i++) {
 		row.push(this.columnObjects[i].name);
 	}
-	return this.GetRowString(rowId, row);
+	return this.getRowString(rowId, row);
 }
 
 KZTable.prototype.GetDataRowString = function (rowIndex) {
 	let row = this.rowData[rowIndex];
 	let rowId = (rowIndex+1) + "";
-	return this.GetRowString(rowId, row);
+	return this.getRowString(rowId, row);
 }
 
 KZTable.prototype.PrintRow = function (rowIndex) {
@@ -175,7 +175,7 @@ KZTable.prototype.PrintRow = function (rowIndex) {
 }
 
 KZTable.prototype.Print = function () {
-	let rowSeparator = this.GetRowSeparator();
+	let rowSeparator = this.getRowSeparator();
 	let headerRowString = this.GetHeaderRowString();
 
 	console.log(rowSeparator);

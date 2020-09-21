@@ -144,7 +144,7 @@ Property.prototype.GetStringValue = function () {
 	return this.value;
 }
 
-Property.prototype.GetTable = function () {
+Property.prototype.getTable = function () {
 	const KZTable = require("../kuz-table/table").KZTable;
 	let table = new KZTable();
 	table.AddColumn("Property");
@@ -152,7 +152,7 @@ Property.prototype.GetTable = function () {
 	return table;
 }
 
-Property.prototype.GetRow = function () {
+Property.prototype.getRow = function () {
 	return [this.Name(), this.ValueString()];
 }
 

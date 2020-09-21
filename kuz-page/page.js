@@ -578,7 +578,7 @@ KuzPage.prototype.GetType = function () {
 	return "page";
 }
 
-KuzPage.prototype.GetTable = function () {
+KuzPage.prototype.getTable = function () {
 	const KZTable = require("../kuz-table/table").KZTable;
 	let table = new KZTable();
 	table.AddColumn("Codename");
@@ -594,7 +594,7 @@ KuzPage.prototype.GetTable = function () {
 	return table;
 }
 
-KuzPage.prototype.GetRow = function () {
+KuzPage.prototype.getRow = function () {
 	return [
 		this.CodeName(),
 		//this.Name(),

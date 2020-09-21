@@ -6,7 +6,7 @@ function KuzStopWatch (name) {
 	this.init_time = Date.now();
 }
 
-KuzStopWatch.prototype.GetTimePassed = function () {
+KuzStopWatch.prototype.getTimePassed = function () {
 	let current_time = Date.now();
 	return (current_time - this.init_time);
 }
