@@ -445,34 +445,6 @@ KuzSite.prototype.ForcedUpdateArray = function (arr) {
 	}
 }
 
-KuzSite.prototype.ForcedUpdateAuthors = function () {
-	this.ForcedUpdateArray(this.authors);
-}
-
-KuzSite.prototype.ForcedUpdateCategories = function () {
-	this.ForcedUpdateArray(this.categories);
-}
-
-KuzSite.prototype.ForcedUpdateTags = function () {
-	this.ForcedUpdateArray(this.tags);
-}
-
-KuzSite.prototype.ForcedUpdatePages = function () {
-	this.ForcedUpdateArray(this.pages);
-}
-
-KuzSite.prototype.ForcedUpdateCollections = function () {
-	this.ForcedUpdateArray(this.collections);
-}
-
-KuzSite.prototype.ForcedUpdateEntities = function () {
-	this.ForcedUpdateArray(this.Entities());
-}
-
-KuzSite.prototype.ForcedUpdateAll = function () {
-	this.ForcedUpdateArray(this.Renderables());
-}
-
 KuzSite.prototype.UpdateArray = function (arr) {
 	for (let elem of arr) {
 		elem.Update();
