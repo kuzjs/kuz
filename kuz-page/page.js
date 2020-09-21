@@ -563,7 +563,7 @@ KuzPage.prototype.averageRenderTimeString = function () {
 }
 
 KuzPage.prototype.RenderLog = function () {
-	this.log.GreenYellow(`Rendered ${this.averageRenderTimeString()}:`, this.OutputFilePath());
+	this.log.greenYellow(`Rendered ${this.averageRenderTimeString()}:`, this.OutputFilePath());
 }
 
 

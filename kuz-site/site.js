@@ -48,13 +48,13 @@ KuzSite.prototype.IsSite = function () {
 }
 
 KuzSite.prototype.HelloWorld = function () {
-	this.log.Red("Hello, KuzSite!");
+	this.log.red("Hello, KuzSite!");
 }
 
 KuzSite.prototype.Error = function (errorMessage) {
 	this.error = true;
 	this.errorMessage = errorMessage;
-	this.log.Red(this.errorMessage);
+	this.log.red(this.errorMessage);
 }
 
 KuzSite.prototype.SetupPages = function () {
@@ -67,9 +67,9 @@ KuzSite.prototype.SetupThemes = function () {
 
 	let themeNames = this.meta.json.themes;
 	if (themeNames === undefined) {
-		this.log.Red("Themes param not specified.");
+		this.log.red("Themes param not specified.");
 	} else if (themeNames.length == 0) {
-		this.log.Red("Themes param is empty.");
+		this.log.red("Themes param is empty.");
 	} else {
 		const Theme = require("../kuz-theme").Theme;
 		for (let themeName of themeNames) {
@@ -77,13 +77,13 @@ KuzSite.prototype.SetupThemes = function () {
 			if (theme.IsValid()) {
 				this.themes.push(theme);
 			} else {
-				this.log.Red("Invalid theme: " + themeName);
+				this.log.red("Invalid theme: " + themeName);
 			}
 		}
 	}
 
 	if (this.themes.length == 0) {
-		this.log.Red("App has no themes.");
+		this.log.red("App has no themes.");
 	}
 }
 
@@ -133,7 +133,7 @@ KuzSite.prototype.GetDataFileContents = function (filename) {
 	if (fsutils.IsFile(filepath)) {
 		return fs.readFileSync(filepath, "utf8");
 	} else {
-		this.log.BadNews("File Not Found: " + filepath);
+		this.log.badNews("File Not Found: " + filepath);
 		return "";
 	}
 }
@@ -288,7 +288,7 @@ KuzSite.prototype.EveryThing = function () {
 
 KuzSite.prototype.PrintArrayAsTable = function (arr) {
 	if (arr.length == 0) {
-		this.log.Red("No elements in array.");
+		this.log.red("No elements in array.");
 		return;
 	}
 

@@ -329,19 +329,19 @@ KuzLogger.prototype.NotFound = function (prefix, message) {
 
 
 
-KuzLogger.prototype.Green = function (prefix, message) {
+KuzLogger.prototype.green = function (prefix, message) {
 	this.Log("  OK  ", prefix, message, colors.FgGreen);
 }
 
-KuzLogger.prototype.GreenYellow = function (prefix, message) {
+KuzLogger.prototype.greenYellow = function (prefix, message) {
 	this.Log("  OK  ", prefix, message, colors.FgGreen, colors.FgGreen, colors.FgYellow);
 }
 
-KuzLogger.prototype.Red = function (prefix, message) {
+KuzLogger.prototype.red = function (prefix, message) {
 	this.Log(" ERROR", prefix, message, colors.FgRed);
 }
 
-KuzLogger.prototype.Yellow = function (prefix, message) {
+KuzLogger.prototype.yellow = function (prefix, message) {
 	if (this.DebugIsOn()) {
 		this.Log(" .... ", prefix, message, colors.FgYellow);
 	}
@@ -349,15 +349,15 @@ KuzLogger.prototype.Yellow = function (prefix, message) {
 
 
 
-KuzLogger.prototype.GoodNews = function (message) {
+KuzLogger.prototype.goodNews = function (message) {
 	this.Log(" GOOD ", message, colors.FgGreen);
 }
 
-KuzLogger.prototype.BadNews = function (message) {
+KuzLogger.prototype.badNews = function (message) {
 	this.Log("  BAD ", message, colors.FgRed);
 }
 
-KuzLogger.prototype.SomeNews = function (message) {
+KuzLogger.prototype.someNews = function (message) {
 	if (this.DebugIsOn()) {
 		this.Log(" SOME ", message, colors.FgYellow);
 	}

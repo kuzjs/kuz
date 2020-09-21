@@ -275,47 +275,47 @@ KZBaseObject.prototype.OutputFileMTime = function () {
 
 
 KZBaseObject.prototype.Buildable = function () {
-	this.log.Green("KZBaseObject Buildable(): " + this.CodeAndName());
+	this.log.green("KZBaseObject Buildable(): " + this.CodeAndName());
 	return this;
 }
 
 KZBaseObject.prototype.Build = function () {
-	this.log.Green("KZBaseObject Build(): " + this.CodeAndName());
+	this.log.green("KZBaseObject Build(): " + this.CodeAndName());
 	return this;
 }
 
 KZBaseObject.prototype.Updatable = function () {
-	this.log.Green("KZBaseObject Updatable(): " + this.CodeAndName());
+	this.log.green("KZBaseObject Updatable(): " + this.CodeAndName());
 	return this;
 }
 
 KZBaseObject.prototype.Update = function () {
-	this.log.Green("KZBaseObject Update(): " + this.CodeAndName());
+	this.log.green("KZBaseObject Update(): " + this.CodeAndName());
 	return this;
 }
 
 KZBaseObject.prototype.ForcedUpdate = function () {
-	this.log.Green("KZBaseObject ForcedUpdate(): " + this.CodeAndName());
+	this.log.green("KZBaseObject ForcedUpdate(): " + this.CodeAndName());
 	return this;
 }
 
 KZBaseObject.prototype.DeleteOutput = function () {
-	this.log.Green("KZBaseObject DeleteOutput(): " + this.CodeAndName());
+	this.log.green("KZBaseObject DeleteOutput(): " + this.CodeAndName());
 	return this;
 }
 
 KZBaseObject.prototype.DeleteExtras = function () {
-	this.log.Green("KZBaseObject DeleteExtras(): " + this.CodeAndName());
+	this.log.green("KZBaseObject DeleteExtras(): " + this.CodeAndName());
 	return this;
 }
 
 KZBaseObject.prototype.Verify = function () {
-	this.log.Green("KZBaseObject Verify(): " + this.CodeAndName());
+	this.log.green("KZBaseObject Verify(): " + this.CodeAndName());
 	return this;
 }
 
 KZBaseObject.prototype.Watch = function () {
-	this.log.Green("KZBaseObject Watch(): " + this.CodeAndName());
+	this.log.green("KZBaseObject Watch(): " + this.CodeAndName());
 	return this;
 }
 

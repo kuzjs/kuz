@@ -50,12 +50,12 @@ Theme.prototype.JsonFilePath = function () {
 
 Theme.prototype.SetupPaths = function () {
 	if (!fsutils.IsDirectory(this.InputDirectory())) {
-		this.log.Red("Theme NOT Found: " + this.InputDirectory());
+		this.log.red("Theme NOT Found: " + this.InputDirectory());
 		return;
 	}
 
 	if (!fsutils.IsFile(this.JsonFilePath())) {
-		this.log.Red("Theme JSON NOT Found: " + this.JsonFilePath());
+		this.log.red("Theme JSON NOT Found: " + this.JsonFilePath());
 		return;
 	}
 

@@ -37,7 +37,7 @@ function KuzKonfig (site, dirpath, entity=false) {
 		const Nss = require("../kuz-nss/nss").Nss;
 		this.nss = new Nss(this.configFilePath);
 	} else {
-		this.log.BadNews("KuzKonfig not found: " + this.configFilePath);
+		this.log.badNews("KuzKonfig not found: " + this.configFilePath);
 	}
 }
 

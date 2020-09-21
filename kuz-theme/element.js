@@ -61,7 +61,7 @@ ThemeElement.prototype.InputDirectoryPath = function () {
 }
 
 ThemeElement.prototype.PrintInputFilePath = function () {
-	this.log.Green("Input file path: " + this.InputFilePath());
+	this.log.green("Input file path: " + this.InputFilePath());
 }
 
 ThemeElement.prototype.GetTable = function () {

@@ -55,12 +55,12 @@ KaagazzApp.prototype.AllIsWell = function () {
 	}
 
 	if (!this.CheckForModule("pug")) {
-		this.log.Red("Module NOT found: pug");
+		this.log.red("Module NOT found: pug");
 		return false;
 	}
 
 	if (!this.CheckForModule("express")) {
-		this.log.Red("Module NOT found: express");
+		this.log.red("Module NOT found: express");
 		return false;
 	}
 
@@ -169,7 +169,7 @@ KaagazzApp.prototype.LoremIpsum = function () {
 }
 
 KaagazzApp.prototype.HelloWorld = function () {
-	this.log.Green("Hello, " + this + "!");
+	this.log.green("Hello, " + this + "!");
 }
 
 KaagazzApp.prototype.GetSiteJsonPath = function () {
@@ -276,23 +276,23 @@ KaagazzApp.prototype.BenchMark = function () {
 	}
 
 	let duration = sw.GetTimePassed();
-	this.log.Red(`Rendered: ${rendered} pages in ${duration}ms.`);
+	this.log.red(`Rendered: ${rendered} pages in ${duration}ms.`);
 }
 
 KaagazzApp.prototype.Nietzsche = function () {
-	this.log.Green("Kaagazz Nietzschean Experiment.");
+	this.log.green("Kaagazz Nietzschean Experiment.");
 
 	//this.site.pages[0].metaData.PrintPropertyTable();
 	this.BenchMark();
 
 	for (let x of this.operands) {
-		this.log.Green(x.CodeAndName());
+		this.log.green(x.CodeAndName());
 	}
 }
 
 KaagazzApp.prototype.ListThings = function (flags) {
 	if (this.operands.length == 0) {
-		this.log.Red("Zero operands to list.");
+		this.log.red("Zero operands to list.");
 	} else {
 		let table = this.operands[0].GetTable();
 		for (let operand of this.operands) {
@@ -350,18 +350,18 @@ KaagazzApp.prototype.CheckForModule = function (moduleName) {
 KaagazzApp.prototype.FlagsAreOK = function () {
 	if (this.numberOfFlags.touchmenot > 0) {
 		if (this.numberOfFlags.total > 1) {
-			this.log.Red("Touch-me-not flags cannot be combined.");
+			this.log.red("Touch-me-not flags cannot be combined.");
 			return false;
 		}
 	}
 
 	if (this.numberOfFlags.major > 1) {
-		this.log.Red("Multiple major flags specified.");
+		this.log.red("Multiple major flags specified.");
 		return false;
 	}
 
 	if (this.numberOfFlags.modifier > 0 && this.numberOfFlags.major == 0) {
-		this.log.Red("Modifiers specified without a major flag.");
+		this.log.red("Modifiers specified without a major flag.");
 		return false;
 	}
 
@@ -370,12 +370,12 @@ KaagazzApp.prototype.FlagsAreOK = function () {
 
 KaagazzApp.prototype.Run = function () {
 	if (this.site == null) {
-		this.log.BadNews("Site not initialized.");
+		this.log.badNews("Site not initialized.");
 		return;
 	}
 
 	if (!this.FlagsAreOK()) {
-		this.log.BadNews("Flags are not OK.");
+		this.log.badNews("Flags are not OK.");
 		return;
 	}
 
