@@ -11,13 +11,13 @@ function KZBaseObject () {
 
 KZBaseObject.prototype = {
 	get webapp () {
-		return this.GetApp();
+		return this.getApp();
 	},
 	get website () {
-		return this.GetSite();
+		return this.getSite();
 	},
 	get renderables () {
-		return this.GetSite().All();
+		return this.getSite().All();
 	},
 	get table () {
 		return this.getTable();
@@ -53,23 +53,18 @@ KZBaseObject.prototype.CodeName = function () {
 
 
 
-KZBaseObject.prototype.Site = function (site) {
-	this.SetSite(site);
-	return this.GetSite();
-}
-
-KZBaseObject.prototype.SetSite = function (site) {
+KZBaseObject.prototype.setSite = function (site) {
 	if (site != undefined && this.site === undefined) {
 		this.site = site;
 	}
 	return this;
 }
 
-KZBaseObject.prototype.GetSite = function () {
+KZBaseObject.prototype.getSite = function () {
 	if (this.site) {
 		return this.site;
 	} else if (this.theme) {
-		return this.theme.GetSite();
+		return this.theme.getSite();
 	} else {
 		return null;
 	}
@@ -77,33 +72,28 @@ KZBaseObject.prototype.GetSite = function () {
 
 
 
-KZBaseObject.prototype.App = function (app) {
-	this.SetApp(app);
-	return this.GetApp();
-}
-
-KZBaseObject.prototype.SetApp = function (app) {
+KZBaseObject.prototype.setApp = function (app) {
 	if (app != undefined && this.app === undefined) {
 		this.app = app;
 	}
 	return this;
 }
 
-KZBaseObject.prototype.GetApp = function () {
+KZBaseObject.prototype.getApp = function () {
 	if (this.app) {
 		return this.app;
 	}
-	return this.GetSite().app;
+	return this.getSite().app;
 }
 
 
 
 KZBaseObject.prototype.Blackadder = function () {
-	return this.GetApp().Blackadder();
+	return this.getApp().Blackadder();
 }
 
 KZBaseObject.prototype.LoremIpsum = function () {
-	return this.GetApp().LoremIpsum();
+	return this.getApp().LoremIpsum();
 }
 
 

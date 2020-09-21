@@ -46,14 +46,6 @@ Article.prototype.Html = function () {
 	return pug.render(this.content, options=this.page.GetPageOptionsFN());
 }
 
-Article.prototype.Site = function () {
-	return this.page.Site();
-}
-
-Article.prototype.App = function () {
-	return this.page.App();
-}
-
 Article.prototype.Html = function () {
 	return "Hello, PageType!";
 }

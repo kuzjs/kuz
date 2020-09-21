@@ -22,8 +22,8 @@ KuzPage.prototype.codeLetter = "p";
 
 
 KuzPage.prototype.SetupPage = function (site, konfig, entry) {
-	this.SetSite(site);
-	this.SetKonfig(konfig);
+	this.setSite(site);
+	this.setKonfig(konfig);
 	this.entry = entry.trim();
 	this.configDirpath = (konfig.dirpath === undefined) ? "" : konfig.dirpath;
 
@@ -252,7 +252,7 @@ KuzPage.prototype.getDescription = function () {
 
 
 
-KuzPage.prototype.SetKonfig = function (konfig) {
+KuzPage.prototype.setKonfig = function (konfig) {
 	this.konfig = konfig;
 }
 
