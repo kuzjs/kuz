@@ -33,7 +33,7 @@ function KaagazzApp () {
 	}
 }
 
-KaagazzApp.prototype.Props = function () {
+KaagazzApp.prototype.getProps = function () {
 	return this.meta.json;
 }
 

@@ -121,7 +121,7 @@ Theme.prototype.SetupNextPrevious = function () {
 	SetupNextPrevious(this.resourceArray);
 }
 
-Theme.prototype.Props = function () {
+Theme.prototype.getProps = function () {
 	return this.meta.json;
 }
 

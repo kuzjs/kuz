@@ -256,8 +256,8 @@ KuzPage.prototype.setKonfig = function (konfig) {
 	this.konfig = konfig;
 }
 
-KuzPage.prototype.Props = function () {
-	return this.metaData.Props();
+KuzPage.prototype.getProps = function () {
+	return this.metaData.getProps();
 }
 
 KuzPage.prototype.getAuthor = function () {
@@ -429,12 +429,12 @@ KuzPage.prototype.getKuz = function () {
 		app: this.site.app,
 		site: this.site,
 
-		props: this.Props(),
-		cprops: this.konfig.Props(),
-		sprops: this.site.Props(),
-		kprops: this.site.app.Props(),
-		tprops: this.getTheme().Props(),
-		lprops: this.getLayout().Props(),
+		props: this.getProps(),
+		cprops: this.konfig.getProps(),
+		sprops: this.site.getProps(),
+		kprops: this.site.app.getProps(),
+		tprops: this.getTheme().getProps(),
+		lprops: this.getLayout().getProps(),
 
 		code: this.metaData.Code(),
 		json: this.metaData.Json(),

@@ -32,7 +32,7 @@ function KuzKonfig (site, dirpath, entity=false) {
 	if (this.Exists()) {
 		const KuzMetaData = require("../kuz-metadata").KuzMetaData;
 		this.metaData = new KuzMetaData(this, this.configFilePath);
-		this.props = this.metaData.Props();
+		this.props = this.metaData.getProps();
 
 		const Nss = require("../kuz-nss/nss").Nss;
 		this.nss = new Nss(this.configFilePath);
@@ -65,7 +65,7 @@ KuzKonfig.prototype.DirPath = function () {
 	return this.configDirpath;
 }
 
-KuzKonfig.prototype.Props = function () {
+KuzKonfig.prototype.getProps = function () {
 	return this.props;
 }
 

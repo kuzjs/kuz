@@ -24,7 +24,7 @@ ThemeElement.prototype.ElementIsValid = function () {
 	return this.InputFileExists();
 }
 
-ThemeElement.prototype.Props = function () {
+ThemeElement.prototype.getProps = function () {
 	return this.data;
 }
 

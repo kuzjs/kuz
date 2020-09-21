@@ -39,7 +39,7 @@ KuzSite.prototype.HomeURL = function () {
 	return fsutils.TrimSlashes(this.meta.json.meta.SITE_URL);
 }
 
-KuzSite.prototype.Props = function () {
+KuzSite.prototype.getProps = function () {
 	return this.meta.json;
 }
 

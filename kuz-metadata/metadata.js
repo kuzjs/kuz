@@ -52,7 +52,7 @@ KuzMetaData.prototype.Setup = function () {
 
 
 
-KuzMetaData.prototype.Props = function () {
+KuzMetaData.prototype.getProps = function () {
 	if (this.sections.main) {
 		return this.sections.main;
 	}
