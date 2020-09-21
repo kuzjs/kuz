@@ -482,19 +482,29 @@ KuzPage.prototype.needsUpdate = function () {
 	}
 }
 
+KuzPage.prototype.build = function () {
+	if (!this.OutputFileExists()) {
+		this.render();
+		this.log.greenYellow(`Built in ${this.averageRenderTimeString()}:`, this.OutputFilePath());
+	}
+	return this;
+}
+
 KuzPage.prototype.update = function () {
 	if (this.needsUpdate()) {
 		this.Reset();
 		this.Setup();
-		this.Render();
+		this.render();
+		this.log.greenYellow(`Updated in ${this.averageRenderTimeString()}:`, this.OutputFilePath());
 	}
 }
 
 KuzPage.prototype.forcedUpdate = function () {
-	this.Render();
+	this.render();
+	this.log.greenYellow(`Forced-updated in ${this.averageRenderTimeString()}:`, this.OutputFilePath());
 }
 
-KuzPage.prototype.Render = function () {
+KuzPage.prototype.render = function () {
 	let t1 = Date.now();
 
 	let htmlPath = this.OutputFilePath();
@@ -507,7 +517,6 @@ KuzPage.prototype.Render = function () {
 	let t2 = Date.now();
 	this.totalRenderTime += (t2-t1);
 	this.totalRenders++;
-	this.RenderLog();
 }
 
 KuzPage.prototype.averageRenderTime = function () {
