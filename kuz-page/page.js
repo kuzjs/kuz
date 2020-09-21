@@ -440,7 +440,7 @@ KuzPage.prototype.getPagesCount = function () {
 	return this.getPages().length;
 }
 
-KuzPage.prototype.GetPageOptions = function () {
+KuzPage.prototype.getPageOptions = function () {
 	return {
 		page: this,
 		kuz: this.getKuz(),
@@ -448,8 +448,8 @@ KuzPage.prototype.GetPageOptions = function () {
 	};
 }
 
-KuzPage.prototype.GetPageOptionsFN = function () {
-	let options = this.GetPageOptions();
+KuzPage.prototype.getPageOptionsFN = function () {
+	let options = this.getPageOptions();
 	options.filename = this.site.GetThemesDirectory() + "/x.pug";
 	return options;
 }
@@ -499,7 +499,7 @@ KuzPage.prototype.Render = function () {
 
 	let htmlPath = this.OutputFilePath();
 	let layout = this.getLayout();
-	let html = layout.pug(options = this.GetPageOptions());
+	let html = layout.pug(options = this.getPageOptions());
 
 	fsutils.CreateDirectory(this.OutputDirectoryPath());
 	fs.writeFileSync(htmlPath, html);

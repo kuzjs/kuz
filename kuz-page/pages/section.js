@@ -31,7 +31,7 @@ Section.prototype.AddLine = function (contentLine) {
 }
 
 Section.prototype.Html = function () {
-	return pug.render(this.content, options=this.article.page.GetPageOptionsFN());
+	return pug.render(this.content, options=this.article.page.getPageOptionsFN());
 }
 
 Section.prototype.Name = function () {

@@ -39,11 +39,11 @@ Article.prototype.Section = function (sectionName) {
 }
 
 Article.prototype.getContentHtml = function () {
-	return pug.render(this.sections["content"].content, options=this.page.GetPageOptionsFN());
+	return pug.render(this.sections["content"].content, options=this.page.getPageOptionsFN());
 }
 
 Article.prototype.Html = function () {
-	return pug.render(this.content, options=this.page.GetPageOptionsFN());
+	return pug.render(this.content, options=this.page.getPageOptionsFN());
 }
 
 Article.prototype.Html = function () {
