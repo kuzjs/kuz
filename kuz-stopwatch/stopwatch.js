@@ -4,6 +4,16 @@
 function KuzStopWatch (name) {
 	this.name = name;
 	this.init_time = Date.now();
+	this.records = [this.init_time];
+}
+
+KuzStopWatch.prototype.record = function () {
+	let new_time = Date.now();
+	this.records.push(new_time);
+}
+
+KuzStopWatch.prototype.getRecords = function () {
+	return this.records;
 }
 
 KuzStopWatch.prototype.getTimePassed = function () {
