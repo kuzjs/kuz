@@ -275,7 +275,7 @@ KaagazzApp.prototype.benchMark = function () {
 	this.log.red(`Rendered: ${rendered} pages in ${duration}ms.`);
 }
 
-KaagazzApp.prototype.Nietzsche = function () {
+KaagazzApp.prototype.nietzsche = function () {
 	this.log.green("Kaagazz Nietzschean Experiment.");
 
 	//this.site.pages[0].metaData.PrintPropertyTable();
@@ -286,7 +286,7 @@ KaagazzApp.prototype.Nietzsche = function () {
 	}
 }
 
-KaagazzApp.prototype.listThings = function (flags) {
+KaagazzApp.prototype.listStuff = function (flags) {
 	if (this.operands.length == 0) {
 		this.log.red("Zero operands to list.");
 	} else {
@@ -298,37 +298,37 @@ KaagazzApp.prototype.listThings = function (flags) {
 	}
 }
 
-KaagazzApp.prototype.buildable = function () {
+KaagazzApp.prototype.buildableStuff = function () {
 	for (let thing of this.operands) {
 		thing.buildable();
 	}
 }
 
-KaagazzApp.prototype.build = function () {
+KaagazzApp.prototype.buildStuff = function () {
 	for (let thing of this.operands) {
 		thing.build();
 	}
 }
 
-KaagazzApp.prototype.updatable = function () {
+KaagazzApp.prototype.updatableStuff = function () {
 	for (let thing of this.operands) {
 		thing.updatable();
 	}
 }
 
-KaagazzApp.prototype.update = function () {
+KaagazzApp.prototype.updateStuff = function () {
 	for (let thing of this.operands) {
 		thing.update();
 	}
 }
 
-KaagazzApp.prototype.forcedUpdate = function () {
+KaagazzApp.prototype.forcedUpdateStuff = function () {
 	for (let thing of this.operands) {
 		thing.forcedUpdate();
 	}
 }
 
-KaagazzApp.prototype.watch = function () {
+KaagazzApp.prototype.watchStuff = function () {
 	for (let thing of this.operands) {
 		thing.watch();
 	}
@@ -388,23 +388,23 @@ KaagazzApp.prototype.Run = function () {
 	} else if (flags.version) {
 		this.showVersion();
 	} else if (flags.buildable) {
-		this.buildable();
+		this.buildableStuff();
 	} else if (flags.build) {
-		this.build();
+		this.buildStuff();
 	} else if (flags.list) {
-		this.listThings(flags);
+		this.listStuff(flags);
 	} else if (flags.forced) {
-		this.forcedUpdate();
+		this.forcedUpdateStuff();
 	} else if (flags.serve) {
 		//
 	} else if (flags.updatable) {
-		this.updatable();
+		this.updatableStuff();
 	} else if (flags.update) {
-		this.update();
+		this.updateStuff();
 	} else if (flags.watch) {
-		this.watch();
+		this.watchStuff();
 	} else if (flags.nietzsche) {
-		this.Nietzsche();
+		this.nietzsche();
 	} else {
 		//
 	}
