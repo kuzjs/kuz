@@ -22,12 +22,12 @@ function KaagazzApp () {
 	this.ipsum = new JsonFile(loremIpsumJsonPath);
 
 	this.log.setName(this.getTitle());
-	this.SetupFlags();
+	this.setupFlags();
 
 	if (this.AllIsWell()) {
 		const KuzSite = require("./kuz-site").KuzSite;
 		this.site = new KuzSite(this);
-		this.SetupOperands();
+		this.setupOperands();
 	} else {
 		this.site = null;
 	}
@@ -54,12 +54,12 @@ KaagazzApp.prototype.AllIsWell = function () {
 		return false;
 	}
 
-	if (!this.CheckForModule("pug")) {
+	if (!this.checkForModule("pug")) {
 		this.log.red("Module NOT found: pug");
 		return false;
 	}
 
-	if (!this.CheckForModule("express")) {
+	if (!this.checkForModule("express")) {
 		this.log.red("Module NOT found: express");
 		return false;
 	}
@@ -67,21 +67,21 @@ KaagazzApp.prototype.AllIsWell = function () {
 	return true;
 }
 
-KaagazzApp.prototype.SetupFlags = function () {
+KaagazzApp.prototype.setupFlags = function () {
 	const KuzFlagManager = require("./kuz-flag").KuzFlagManager;
 	this.flagman = new KuzFlagManager(this.flagsJson.json.flags);
 
-	this.flags = this.flagman.GetFlags();
-	this.simpleFlags = this.flagman.GetSimpleFlags();
-	this.args = this.flagman.GetArgs();
-	this.numberOfFlags = this.flagman.GetCounter();
+	this.flags = this.flagman.getFlags();
+	this.simpleFlags = this.flagman.getSimpleFlags();
+	this.args = this.flagman.getArgs();
+	this.numberOfFlags = this.flagman.getCounter();
 
 	if (this.simpleFlags.debug) {
 		this.log.TurnOnDebug();
 	}
 }
 
-KaagazzApp.prototype.SetupOperands = function () {
+KaagazzApp.prototype.setupOperands = function () {
 	this.operands = [];
 	let flags = this.simpleFlags;
 
@@ -168,10 +168,6 @@ KaagazzApp.prototype.LoremIpsum = function () {
 	return this.ipsum.json["lorem-ipsum"];
 }
 
-KaagazzApp.prototype.HelloWorld = function () {
-	this.log.green("Hello, " + this + "!");
-}
-
 KaagazzApp.prototype.GetSiteJsonPath = function () {
 	return this.meta.json.filenames.siteJson;
 }
@@ -180,19 +176,19 @@ KaagazzApp.prototype.getTitle = function () {
 	return this.meta.json.meta.title;
 }
 
-KaagazzApp.prototype.GetDescription = function () {
+KaagazzApp.prototype.getDescription = function () {
 	return this.meta.json.meta.description;
 }
 
-KaagazzApp.prototype.GetVersion = function () {
+KaagazzApp.prototype.getVersion = function () {
 	return this.meta.json.meta.version;
 }
 
 KaagazzApp.prototype.toString = function () {
-	return this.Title();
+	return this.getTitle();
 }
 
-KaagazzApp.prototype.ShowSomeHelp = function () {
+KaagazzApp.prototype.showSomeHelp = function () {
 	let table = this.flags[0].getTable();
 
 	for (let flag of this.flags) {
@@ -204,7 +200,7 @@ KaagazzApp.prototype.ShowSomeHelp = function () {
 	table.Print();
 }
 
-KaagazzApp.prototype.ShowFullHelp = function () {
+KaagazzApp.prototype.showFullHelp = function () {
 	let table = this.flags[0].getTable();
 
 	for (let flag of this.flags) {
@@ -214,7 +210,7 @@ KaagazzApp.prototype.ShowFullHelp = function () {
 	table.Print();
 }
 
-KaagazzApp.prototype.ShowIndependentFlags = function () {
+KaagazzApp.prototype.showIndependentFlags = function () {
 	let table = this.flags[0].getTable();
 
 	for (let flag of this.flags) {
@@ -226,7 +222,7 @@ KaagazzApp.prototype.ShowIndependentFlags = function () {
 	table.Print();
 }
 
-KaagazzApp.prototype.ShowModifierFlags = function () {
+KaagazzApp.prototype.showModifierFlags = function () {
 	let table = this.flags[0].getTable();
 
 	for (let flag of this.flags) {
@@ -238,7 +234,7 @@ KaagazzApp.prototype.ShowModifierFlags = function () {
 	table.Print();
 }
 
-KaagazzApp.prototype.ShowMajorFlags = function () {
+KaagazzApp.prototype.showMajorFlags = function () {
 	let table = this.flags[0].getTable();
 
 	for (let flag of this.flags) {
@@ -250,20 +246,20 @@ KaagazzApp.prototype.ShowMajorFlags = function () {
 	table.Print();
 }
 
-KaagazzApp.prototype.ShowVersion = function () {
+KaagazzApp.prototype.showVersion = function () {
 	const KZTable = require("./kuz-table").KZTable;
 	let table = new KZTable();
 	table.AddColumn("Key");
 	table.AddColumn("Value");
 
 	let meta = this.meta.json.meta;
-	table.AddRow(["Title", this.Title()]);
-	table.AddRow(["Version", this.GetVersion()]);
-	table.AddRow(["Description", this.GetDescription()]);
+	table.AddRow(["Title", this.getTitle()]);
+	table.AddRow(["Version", this.getVersion()]);
+	table.AddRow(["Description", this.getDescription()]);
 	table.Print();
 }
 
-KaagazzApp.prototype.BenchMark = function () {
+KaagazzApp.prototype.benchMark = function () {
 	const KuzStopWatch = require("./kuz-stopwatch").KuzStopWatch;
 	const sw = new KuzStopWatch("KaagazzApp.BenchMark()");
 
@@ -283,14 +279,14 @@ KaagazzApp.prototype.Nietzsche = function () {
 	this.log.green("Kaagazz Nietzschean Experiment.");
 
 	//this.site.pages[0].metaData.PrintPropertyTable();
-	this.BenchMark();
+	this.benchMark();
 
 	for (let x of this.operands) {
 		this.log.green(x.CodeAndName());
 	}
 }
 
-KaagazzApp.prototype.ListThings = function (flags) {
+KaagazzApp.prototype.listThings = function (flags) {
 	if (this.operands.length == 0) {
 		this.log.red("Zero operands to list.");
 	} else {
@@ -338,7 +334,7 @@ KaagazzApp.prototype.watch = function () {
 	}
 }
 
-KaagazzApp.prototype.CheckForModule = function (moduleName) {
+KaagazzApp.prototype.checkForModule = function (moduleName) {
 	try {
 		const mod = require(moduleName);
 		return true;
@@ -382,21 +378,21 @@ KaagazzApp.prototype.Run = function () {
 	let flags = this.simpleFlags;
 
 	if (flags.help) {
-		this.ShowSomeHelp();
+		this.showSomeHelp();
 	} else if (flags.helpfull) {
-		this.ShowFullHelp();
+		this.showFullHelp();
 	} else if (flags.independent) {
-		this.ShowIndependentFlags();
+		this.showIndependentFlags();
 	} else if (flags.modifier) {
-		this.ShowModifierFlags();
+		this.showModifierFlags();
 	} else if (flags.version) {
-		this.ShowVersion();
+		this.showVersion();
 	} else if (flags.buildable) {
 		this.buildable();
 	} else if (flags.build) {
 		this.build();
 	} else if (flags.list) {
-		this.ListThings(flags);
+		this.listThings(flags);
 	} else if (flags.forced) {
 		this.forcedUpdate();
 	} else if (flags.serve) {

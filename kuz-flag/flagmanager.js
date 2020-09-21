@@ -6,17 +6,17 @@ const KuzFlag = require("./flag").KuzFlag;
 
 function KuzFlagManager (flagObjects) {
 	this.flagObjects = flagObjects;
-	this.Setup();
+	this.setup();
 	this.flagObjects = null;
 }
 
-KuzFlagManager.prototype.Setup = function () {
-	this.SetupFlagArray();
-	this.SetupFlagsObject();
-	this.SetupCounters();
+KuzFlagManager.prototype.setup = function () {
+	this.setupFlagArray();
+	this.setupFlagsObject();
+	this.setupCounters();
 }
 
-KuzFlagManager.prototype.SetupFlagArray = function () {
+KuzFlagManager.prototype.setupFlagArray = function () {
 	this.flags = [];
 	this.args = [];
 	for (let flagObject of this.flagObjects) {
@@ -56,14 +56,14 @@ KuzFlagManager.prototype.SetupFlagArray = function () {
 	}
 }
 
-KuzFlagManager.prototype.SetupFlagsObject = function () {
+KuzFlagManager.prototype.setupFlagsObject = function () {
 	this.simpleFlags = {};
 	for (let flag of this.flags) {
 		this.simpleFlags[flag.name] = flag.IsSet();
 	}
 }
 
-KuzFlagManager.prototype.SetupCounters = function () {
+KuzFlagManager.prototype.setupCounters = function () {
 	this.counter = {
 		independent: 0,
 		major: 0,
@@ -88,19 +88,19 @@ KuzFlagManager.prototype.SetupCounters = function () {
 	}
 }
 
-KuzFlagManager.prototype.GetFlags = function () {
+KuzFlagManager.prototype.getFlags = function () {
 	return this.flags;
 }
 
-KuzFlagManager.prototype.GetSimpleFlags = function () {
+KuzFlagManager.prototype.getSimpleFlags = function () {
 	return this.simpleFlags;
 }
 
-KuzFlagManager.prototype.GetCounter = function () {
+KuzFlagManager.prototype.getCounter = function () {
 	return this.counter;
 }
 
-KuzFlagManager.prototype.GetArgs = function () {
+KuzFlagManager.prototype.getArgs = function () {
 	return this.args;
 }
 

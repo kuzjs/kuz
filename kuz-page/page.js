@@ -561,7 +561,7 @@ KuzPage.prototype.getRow = function () {
 		//this.Title(),
 		//this.Theme().Name(),
 		this.GetType(),
-		this.Layout().Name(),
+		this.getLayout().getName(),
 		//this.PageURL(),
 		this.InputFilePath(),
 		this.OutputFilePath()
