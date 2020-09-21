@@ -26,7 +26,7 @@ function IsQuoted (text) {
 	return false;
 }
 
-function GetAppropriateValue (value) {
+function getAppropriateValue (value) {
 	value = value.trim();
 	lowered = value.toLowerCase();
 	if (trueStrings.includes(lowered)) {
@@ -41,7 +41,7 @@ function GetAppropriateValue (value) {
 		let valueArray = [];
 		let arrayItems = value.split(",");
 		for (let item of arrayItems) {
-			valueArray.push(GetAppropriateValue(item));
+			valueArray.push(getAppropriateValue(item));
 		}
 		return valueArray;
 	} else if (value.startsWith("{") && value.endsWith("}")) {
@@ -53,7 +53,7 @@ function GetAppropriateValue (value) {
 			let parts = objectPropertyText.split(":");
 			let propertyName = parts[0].trim();
 			let propertyValue = parts[1].trim();
-			valueObject[propertyName] = GetAppropriateValue(propertyValue);
+			valueObject[propertyName] = getAppropriateValue(propertyValue);
 		}
 		return valueObject;
 	} else if (IsQuoted(value)) {
@@ -68,7 +68,7 @@ function Property (textLine) {
 	let colonIndex = textLine.indexOf(":");
 	this.nameX = textLine.slice(0, colonIndex).trim();
 	let value = textLine.slice(colonIndex + 1).trim();
-	this.valueX = GetAppropriateValue(value);
+	this.valueX = getAppropriateValue(value);
 }
 
 Property.prototype = {
@@ -95,7 +95,7 @@ Property.prototype.getValue = function () {
 	return this.value;
 }
 
-Property.prototype.ValueString = function () {
+Property.prototype.getValueString = function () {
 	if (this.value.__proto__ === Array.prototype) {
 		return "[" + this.value.join("|") + "]";
 	} else if (this.value.__proto__ === Object.prototype) {
@@ -124,15 +124,15 @@ Property.prototype.IsOff = Property.prototype.IsFalse = function () {
 	return (this.value === false) ? false : true;
 }
 
-Property.prototype.GetBooleanValue = function () {
+Property.prototype.getBooleanValue = function () {
 	return (this.value == "false") ? false : true;
 }
 
-Property.prototype.GetIntegerValue = function () {
+Property.prototype.getIntegerValue = function () {
 	return 0;
 }
 
-Property.prototype.GetStringValue = function () {
+Property.prototype.getStringValue = function () {
 	return this.value;
 }
 
@@ -145,7 +145,7 @@ Property.prototype.getTable = function () {
 }
 
 Property.prototype.getRow = function () {
-	return [this.Name(), this.ValueString()];
+	return [this.Name(), this.getValueString()];
 }
 
 module.exports = {
