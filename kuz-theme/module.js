@@ -32,7 +32,7 @@ ThemeModule.prototype.forcedUpdate = function () {
 	//
 }
 
-ThemeModule.prototype.NeedsUpdate = function () {
+ThemeModule.prototype.needsUpdate = function () {
 	if (this.mtimeMs == fs.statSync(this.InputFilePath()).mtimeMs) {
 		return false;
 	}
@@ -40,7 +40,7 @@ ThemeModule.prototype.NeedsUpdate = function () {
 }
 
 ThemeModule.prototype.update = function () {
-	if (this.NeedsUpdate()) {
+	if (this.needsUpdate()) {
 		this.forcedUpdate();
 	}
 }

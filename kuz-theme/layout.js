@@ -35,7 +35,7 @@ ThemeLayout.prototype.forcedUpdate = function () {
 	this.okay = true;
 }
 
-ThemeLayout.prototype.NeedsUpdate = function () {
+ThemeLayout.prototype.needsUpdate = function () {
 	if (this.mtimeMs == fs.statSync(this.InputFilePath()).mtimeMs) {
 		return false;
 	}
@@ -43,7 +43,7 @@ ThemeLayout.prototype.NeedsUpdate = function () {
 }
 
 ThemeLayout.prototype.update = function () {
-	if (this.NeedsUpdate()) {
+	if (this.needsUpdate()) {
 		this.forcedUpdate();
 	}
 }

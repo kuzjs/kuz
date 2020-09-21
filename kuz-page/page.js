@@ -462,7 +462,7 @@ KuzPage.prototype.toString = function () {
 
 
 
-KuzPage.prototype.NeedsUpdate = function () {
+KuzPage.prototype.needsUpdate = function () {
 	if (this.OutputFileIsOlderThanMeta()) {
 		return true;
 	}
@@ -483,7 +483,7 @@ KuzPage.prototype.NeedsUpdate = function () {
 }
 
 KuzPage.prototype.update = function () {
-	if (this.NeedsUpdate()) {
+	if (this.needsUpdate()) {
 		this.Reset();
 		this.Setup();
 		this.Render();

@@ -20,7 +20,7 @@ JsonFile.prototype.ok = function () {
 	return this.okay;
 }
 
-JsonFile.prototype.NeedsUpdate = function () {
+JsonFile.prototype.needsUpdate = function () {
 	let new_mtimeMs = fs.statSync(this.filepath).mtimeMs;
 	if (new_mtimeMs != this.mtimeMs) {
 		return true;
@@ -29,7 +29,7 @@ JsonFile.prototype.NeedsUpdate = function () {
 }
 
 JsonFile.prototype.IsUpToDate = function () {
-	return !this.NeedsUpdate();
+	return !this.needsUpdate();
 }
 
 JsonFile.prototype.GetUpdatedJson = function () {
@@ -37,7 +37,7 @@ JsonFile.prototype.GetUpdatedJson = function () {
 }
 
 JsonFile.prototype.updateJson = function () {
-	if (this.NeedsUpdate()) {
+	if (this.needsUpdate()) {
 		this.forcedUpdateJson();
 	}
 	return this.json;
