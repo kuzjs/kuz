@@ -30,8 +30,8 @@ KuzSite.prototype.setup = function () {
 	this.setupPages();
 }
 
-KuzSite.prototype.AddKonfig = function (konfig) {
-	konfig.SetIndex(this.konfigs.length);
+KuzSite.prototype.addKonfig = function (konfig) {
+	konfig.setIndex(this.konfigs.length);
 	this.konfigs.push(konfig);
 }
 

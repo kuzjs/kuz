@@ -88,30 +88,20 @@ KZBaseObject.prototype.getApp = function () {
 
 
 
-KZBaseObject.prototype.Index = function (index) {
-	this.SetIndex(index);
-	return this.GetIndex();
-}
-
-KZBaseObject.prototype.SetIndex = function (index) {
+KZBaseObject.prototype.setIndex = function (index) {
 	if (index != undefined) {
 		this.index = index;
 	}
 	return this;
 }
 
-KZBaseObject.prototype.GetIndex = function () {
+KZBaseObject.prototype.getIndex = function () {
 	return this.index;
 }
 
 
 
-KZBaseObject.prototype.Title = function (title) {
-	this.SetTitle(title);
-	return this.getTitle();
-}
-
-KZBaseObject.prototype.SetTitle = function (title) {
+KZBaseObject.prototype.setTitle = function (title) {
 	if (title != undefined) {
 		this.title = title;
 	}
@@ -124,29 +114,24 @@ KZBaseObject.prototype.getTitle = function () {
 
 
 
-KZBaseObject.prototype.Name = function (name) {
-	this.SetName(name);
-	return this.GetName();
-}
-
-KZBaseObject.prototype.SetName = function (name) {
+KZBaseObject.prototype.setName = function (name) {
 	if (name != undefined) {
 		this.name = name;
 	}
 	return this;
 }
 
-KZBaseObject.prototype.GetName = function () {
+KZBaseObject.prototype.getName = function () {
 	return this.name;
 }
 
 
 
-KZBaseObject.prototype.Next = function () {
+KZBaseObject.prototype.getNext = function () {
 	return this.next;
 }
 
-KZBaseObject.prototype.Previous = function () {
+KZBaseObject.prototype.getPrevious = function () {
 	return this.previous;
 }
 
@@ -215,7 +200,7 @@ KZBaseObject.prototype.IsResFile = function () {
 
 
 KZBaseObject.prototype.CodeAndName = function () {
-	return this.CodeName() + ": " + this.Name();
+	return this.CodeName() + ": " + this.getName();
 }
 
 

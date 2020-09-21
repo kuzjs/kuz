@@ -28,7 +28,7 @@ function getPages (site, dirpath, parentKonfig) {
 		root = parentKonfig.root;
 	}
 
-	site.AddKonfig(konfig);
+	site.addKonfig(konfig);
 
 	let pages = [];
 	let entries = konfig.GetEntriesObject();
