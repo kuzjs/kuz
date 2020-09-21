@@ -286,85 +286,6 @@ KuzSite.prototype.EveryThing = function () {
 	return everyThing;
 }
 
-KuzSite.prototype.PrintArrayAsTable = function (arr) {
-	if (arr.length == 0) {
-		this.log.red("No elements in array.");
-		return;
-	}
-
-	let table = arr[0].getTable();
-	for (let item of arr) {
-		table.Add(item);
-	}
-	table.Print();
-}
-
-KuzSite.prototype.PrintAuthors = function () {
-	this.PrintArrayAsTable(this.authors);
-}
-
-KuzSite.prototype.PrintCategories = function () {
-	this.PrintArrayAsTable(this.categories);
-}
-
-KuzSite.prototype.PrintTags = function () {
-	this.PrintArrayAsTable(this.tags);
-}
-
-KuzSite.prototype.PrintPages = function () {
-	this.PrintArrayAsTable(this.pages);
-}
-
-KuzSite.prototype.PrintCollections = function () {
-	this.PrintArrayAsTable(this.collections);
-}
-
-KuzSite.prototype.PrintEntities = function () {
-	this.PrintArrayAsTable(this.Entities());
-}
-
-KuzSite.prototype.PrintAll = function () {
-	this.PrintArrayAsTable(this.Renderables());
-}
-
-KuzSite.prototype.PrintThemes = function () {
-	this.PrintArrayAsTable(this.themes);
-}
-
-KuzSite.prototype.PrintLayouts = function () {
-	let arr = this.LayoutsArray();
-	this.PrintArrayAsTable(arr);
-}
-
-KuzSite.prototype.PrintCssFiles = function () {
-	let arr = this.CssFilesArray();
-	this.PrintArrayAsTable(arr);
-}
-
-KuzSite.prototype.PrintJsFiles = function () {
-	let arr = this.JsFilesArray();
-	this.PrintArrayAsTable(arr);
-}
-
-KuzSite.prototype.PrintResFiles = function () {
-	let arr = this.ResFilesArray();
-	this.PrintArrayAsTable(arr);
-}
-
-KuzSite.prototype.PrintKuzKonfigs = function () {
-	let arr = this.konfigs;
-	this.PrintArrayAsTable(arr);
-}
-
-KuzSite.prototype.PrintConfiguration = function () {
-	this.PrintDirectories();
-	this.PrintAuthors();
-	this.PrintCategories();
-	this.PrintTags();
-	this.PrintPages();
-	this.PrintCollections();
-}
-
 KuzSite.prototype.GetPagesByAuthor = function (author) {
 	let pages = [];
 	for (let page of this.pages) {
@@ -437,6 +358,19 @@ KuzSite.prototype.GetTagsFromNameArray = function (tagNameArray) {
 		}
 	}
 	return tags;
+}
+
+KuzSite.prototype.PrintArrayAsTable = function (arr) {
+	if (arr.length == 0) {
+		this.log.red("No elements in array.");
+		return;
+	}
+
+	let table = arr[0].getTable();
+	for (let item of arr) {
+		table.Add(item);
+	}
+	table.Print();
 }
 
 KuzSite.prototype.ForcedUpdateArray = function (arr) {
