@@ -274,13 +274,13 @@ KZBaseObject.prototype.OutputFileMTime = function () {
 
 
 
-KZBaseObject.prototype.Buildable = function () {
-	this.log.green("KZBaseObject Buildable(): " + this.CodeAndName());
+KZBaseObject.prototype.buildable = function () {
+	this.log.green("KZBaseObject buildable(): " + this.CodeAndName());
 	return this;
 }
 
-KZBaseObject.prototype.Build = function () {
-	this.log.green("KZBaseObject Build(): " + this.CodeAndName());
+KZBaseObject.prototype.build = function () {
+	this.log.green("KZBaseObject build(): " + this.CodeAndName());
 	return this;
 }
 
@@ -299,23 +299,23 @@ KZBaseObject.prototype.forcedUpdate = function () {
 	return this;
 }
 
-KZBaseObject.prototype.DeleteOutput = function () {
-	this.log.green("KZBaseObject DeleteOutput(): " + this.CodeAndName());
+KZBaseObject.prototype.deleteOutput = function () {
+	this.log.green("KZBaseObject deleteOutput(): " + this.CodeAndName());
 	return this;
 }
 
-KZBaseObject.prototype.DeleteExtras = function () {
-	this.log.green("KZBaseObject DeleteExtras(): " + this.CodeAndName());
+KZBaseObject.prototype.deleteExtras = function () {
+	this.log.green("KZBaseObject deleteExtras(): " + this.CodeAndName());
 	return this;
 }
 
-KZBaseObject.prototype.Verify = function () {
-	this.log.green("KZBaseObject Verify(): " + this.CodeAndName());
+KZBaseObject.prototype.verify = function () {
+	this.log.green("KZBaseObject verify(): " + this.CodeAndName());
 	return this;
 }
 
-KZBaseObject.prototype.Watch = function () {
-	this.log.green("KZBaseObject Watch(): " + this.CodeAndName());
+KZBaseObject.prototype.watch = function () {
+	this.log.green("KZBaseObject watch(): " + this.CodeAndName());
 	return this;
 }
 

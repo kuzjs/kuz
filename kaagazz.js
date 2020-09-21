@@ -302,15 +302,15 @@ KaagazzApp.prototype.ListThings = function (flags) {
 	}
 }
 
-KaagazzApp.prototype.Buildable = function () {
+KaagazzApp.prototype.buildable = function () {
 	for (let thing of this.operands) {
-		thing.Buildable();
+		thing.buildable();
 	}
 }
 
-KaagazzApp.prototype.Build = function () {
+KaagazzApp.prototype.build = function () {
 	for (let thing of this.operands) {
-		thing.Build();
+		thing.build();
 	}
 }
 
@@ -332,9 +332,9 @@ KaagazzApp.prototype.forcedUpdate = function () {
 	}
 }
 
-KaagazzApp.prototype.Watch = function () {
+KaagazzApp.prototype.watch = function () {
 	for (let thing of this.operands) {
-		thing.Watch();
+		thing.watch();
 	}
 }
 
@@ -392,9 +392,9 @@ KaagazzApp.prototype.Run = function () {
 	} else if (flags.version) {
 		this.ShowVersion();
 	} else if (flags.buildable) {
-		this.Buildable();
+		this.buildable();
 	} else if (flags.build) {
-		this.Build();
+		this.build();
 	} else if (flags.list) {
 		this.ListThings(flags);
 	} else if (flags.forced) {
@@ -406,7 +406,7 @@ KaagazzApp.prototype.Run = function () {
 	} else if (flags.update) {
 		this.update();
 	} else if (flags.watch) {
-		this.Watch();
+		this.watch();
 	} else if (flags.nietzsche) {
 		this.Nietzsche();
 	} else {
