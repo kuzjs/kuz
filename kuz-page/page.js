@@ -264,7 +264,7 @@ KuzPage.prototype.getAuthor = function () {
 			return authorObject;
 		}
 	}
-	return this.site.DefaultAuthor();
+	return this.site.getDefaultAuthor();
 }
 
 KuzPage.prototype.getCategory = function () {
@@ -275,7 +275,7 @@ KuzPage.prototype.getCategory = function () {
 			return categoryObject;
 		}
 	}
-	return this.site.DefaultCategory();
+	return this.site.getDefaultCategory();
 }
 
 KuzPage.prototype.Tags = function () {
@@ -398,7 +398,7 @@ KuzPage.prototype.getPages = function () {
 	} else if (this.GetType() == "tag") {
 		return this.site.getPagesWithTag(this);
 	} else if (this.GetType() == "collection") {
-		return this.site.Pages();
+		return this.site.getPages();
 	}
 	return this.site.pages;
 }

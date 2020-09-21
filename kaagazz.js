@@ -85,7 +85,7 @@ KaagazzApp.prototype.SetupOperands = function () {
 	this.operands = [];
 	let flags = this.simpleFlags;
 
-	let everything = this.site.EveryThing();
+	let everything = this.site.getEveryThing();
 	if (flags.everything) {
 		this.operands = everything;
 		return;
@@ -101,28 +101,28 @@ KaagazzApp.prototype.SetupOperands = function () {
 	}
 
 	if (flags.all) {
-		this.operands = this.operands.concat(this.site.Renderables());
+		this.operands = this.operands.concat(this.site.getRenderables());
 	} else {
 		if (flags.pages) {
-			this.operands = this.operands.concat(this.site.Pages());
+			this.operands = this.operands.concat(this.site.getPages());
 		}
 		if (flags.entities) {
-			this.operands = this.operands.concat(this.site.Entities());
+			this.operands = this.operands.concat(this.site.getEntities());
 		} else {
 			if (flags.authors) {
-				this.operands = this.operands.concat(this.site.Authors());
+				this.operands = this.operands.concat(this.site.getAuthors());
 			}
 
 			if (flags.categories) {
-				this.operands = this.operands.concat(this.site.Categories());
+				this.operands = this.operands.concat(this.site.getCategories());
 			}
 
 			if (flags.tags) {
-				this.operands = this.operands.concat(this.site.Tags());
+				this.operands = this.operands.concat(this.site.getTags());
 			}
 
 			if (flags.collections) {
-				this.operands = this.operands.concat(this.site.Collections());
+				this.operands = this.operands.concat(this.site.getCollections());
 			}
 		}
 	}
@@ -132,27 +132,27 @@ KaagazzApp.prototype.SetupOperands = function () {
 	}
 
 	if (flags.themes) {
-		this.operands = this.operands.concat(this.site.Themes());
+		this.operands = this.operands.concat(this.site.getThemes());
 	}
 
 	if (flags.layouts) {
-		this.operands = this.operands.concat(this.site.LayoutsArray());
+		this.operands = this.operands.concat(this.site.getLayouts());
 	}
 
 	if (flags.modules) {
-		this.operands = this.operands.concat(this.site.ModulesArray());
+		this.operands = this.operands.concat(this.site.getModules());
 	}
 
 	if (flags.css) {
-		this.operands = this.operands.concat(this.site.CSSArray());
+		this.operands = this.operands.concat(this.site.getCSSArray());
 	}
 
 	if (flags.js) {
-		this.operands = this.operands.concat(this.site.JsArray());
+		this.operands = this.operands.concat(this.site.getJsArray());
 	}
 
 	if (flags.res) {
-		this.operands = this.operands.concat(this.site.ResourceArray());
+		this.operands = this.operands.concat(this.site.getResources());
 	}
 }
 

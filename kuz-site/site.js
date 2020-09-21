@@ -155,7 +155,7 @@ KuzSite.prototype.PrintDirectories = function () {
 	this.log.SomeNews("Special: " + this.GetSpecialDirectory());
 }
 
-KuzSite.prototype.Authors = function () {
+KuzSite.prototype.getAuthors = function () {
 	let authors = [];
 	for (let page of this.pages) {
 		if (page.GetType() == "author") {
@@ -165,12 +165,12 @@ KuzSite.prototype.Authors = function () {
 	return authors;
 }
 
-KuzSite.prototype.DefaultAuthor = function () {
-	let authors = this.Authors();
+KuzSite.prototype.getDefaultAuthor = function () {
+	let authors = this.getAuthors();
 	return authors[authors.length-1];
 }
 
-KuzSite.prototype.Categories = function () {
+KuzSite.prototype.getCategories = function () {
 	let categories = [];
 	for (let page of this.pages) {
 		if (page.GetType() == "category") {
@@ -180,12 +180,12 @@ KuzSite.prototype.Categories = function () {
 	return categories;
 }
 
-KuzSite.prototype.DefaultCategory = function () {
-	let categories = this.Categories();
+KuzSite.prototype.getDefaultCategory = function () {
+	let categories = this.getCategories();
 	return categories[categories.length-1];
 }
 
-KuzSite.prototype.Tags = function () {
+KuzSite.prototype.getTags = function () {
 	let tags = [];
 	for (let page of this.pages) {
 		if (page.GetType() == "tag") {
@@ -195,7 +195,7 @@ KuzSite.prototype.Tags = function () {
 	return tags;
 }
 
-KuzSite.prototype.Pages = function () {
+KuzSite.prototype.getPages = function () {
 	let pages = [];
 	for (let page of this.pages) {
 		if (page.GetType() == "page") {
@@ -205,7 +205,7 @@ KuzSite.prototype.Pages = function () {
 	return pages;
 }
 
-KuzSite.prototype.Collections = function () {
+KuzSite.prototype.getCollections = function () {
 	let collections = [];
 	for (let page of this.pages) {
 		if (page.GetType() == "collection") {
@@ -215,24 +215,24 @@ KuzSite.prototype.Collections = function () {
 	return collections;
 }
 
-KuzSite.prototype.Entities = function () {
+KuzSite.prototype.getEntities = function () {
 	let entities = [];
-	entities = entities.concat(this.Authors());
-	entities = entities.concat(this.Categories());
-	entities = entities.concat(this.Tags());
-	entities = entities.concat(this.Collections());
+	entities = entities.concat(this.getAuthors());
+	entities = entities.concat(this.getCategories());
+	entities = entities.concat(this.getTags());
+	entities = entities.concat(this.getCollections());
 	return entities;
 }
 
-KuzSite.prototype.Renderables = function () {
+KuzSite.prototype.getRenderables = function () {
 	return this.pages;
 }
 
-KuzSite.prototype.Themes = function () {
+KuzSite.prototype.getThemes = function () {
 	return this.themes;
 }
 
-KuzSite.prototype.LayoutsArray = function () {
+KuzSite.prototype.getLayouts = function () {
 	let layouts = [];
 	for (let theme of this.themes) {
 		layouts = layouts.concat(theme.layouts);
@@ -240,7 +240,7 @@ KuzSite.prototype.LayoutsArray = function () {
 	return layouts;
 }
 
-KuzSite.prototype.ModulesArray = function () {
+KuzSite.prototype.getModules = function () {
 	let modules = [];
 	for (let theme of this.themes) {
 		modules = modules.concat(theme.modules);
@@ -248,7 +248,7 @@ KuzSite.prototype.ModulesArray = function () {
 	return modules;
 }
 
-KuzSite.prototype.CSSArray = function () {
+KuzSite.prototype.getCSSArray = function () {
 	let cssArray = [];
 	for (let theme of this.themes) {
 		cssArray = cssArray.concat(theme.cssArray);
@@ -256,7 +256,7 @@ KuzSite.prototype.CSSArray = function () {
 	return cssArray;
 }
 
-KuzSite.prototype.JsArray = function () {
+KuzSite.prototype.getJsArray = function () {
 	let jsArray = [];
 	for (let theme of this.themes) {
 		jsArray = jsArray.concat(theme.jsArray);
@@ -264,7 +264,7 @@ KuzSite.prototype.JsArray = function () {
 	return jsArray;
 }
 
-KuzSite.prototype.ResourceArray = function () {
+KuzSite.prototype.getResources = function () {
 	let resourceArray = [];
 	for (let theme of this.themes) {
 		resourceArray = resourceArray.concat(theme.resourceArray);
@@ -272,13 +272,13 @@ KuzSite.prototype.ResourceArray = function () {
 	return resourceArray;
 }
 
-KuzSite.prototype.EveryThing = function () {
-	let everyThing = this.Renderables();
-	everyThing = everyThing.concat(this.LayoutsArray());
-	everyThing = everyThing.concat(this.ModulesArray());
-	everyThing = everyThing.concat(this.CSSArray());
-	everyThing = everyThing.concat(this.JsArray());
-	everyThing = everyThing.concat(this.ResourceArray());
+KuzSite.prototype.getEveryThing = function () {
+	let everyThing = this.getRenderables();
+	everyThing = everyThing.concat(this.getLayouts());
+	everyThing = everyThing.concat(this.getModules());
+	everyThing = everyThing.concat(this.getCSSArray());
+	everyThing = everyThing.concat(this.getJsArray());
+	everyThing = everyThing.concat(this.getResources());
 	return everyThing;
 }
 
@@ -319,7 +319,7 @@ KuzSite.prototype.getPagesWithTag = function (tag) {
 }
 
 KuzSite.prototype.getAuthorFromName = function (authorName) {
-	for (let author of this.authors) {
+	for (let author of this.getAuthors) {
 		if (author.name == authorName) {
 			return author;
 		}
@@ -328,7 +328,7 @@ KuzSite.prototype.getAuthorFromName = function (authorName) {
 }
 
 KuzSite.prototype.getCategoryFromName = function (categoryName) {
-	for (let category of this.Categories()) {
+	for (let category of this.getCategories()) {
 		if (category.entry == categoryName) {
 			return category;
 		}
@@ -337,7 +337,7 @@ KuzSite.prototype.getCategoryFromName = function (categoryName) {
 }
 
 KuzSite.prototype.getTagFromName = function (tagName) {
-	for (let tag of this.Tags()) {
+	for (let tag of this.getTags()) {
 		if (tag.entry == tagName) {
 			return tag;
 		}
