@@ -20,9 +20,9 @@ function KuzKonfig (site, dirpath, entity=false) {
 			this.configDirpath = site.GetInputDirectory() + "/" + dirpath;
 		}
 	}
-	this.configFilePath = fsutils.JoinPath(this.configDirpath, this.site.filenames.konfig);
+	this.path = fsutils.JoinPath(this.configDirpath, this.site.filenames.konfig);
 
-	this.log = this.site.log.getChild(this.configFilePath);
+	this.log = this.site.log.getChild(this.path);
 
 	this.root = null;
 	this.parent = null;
@@ -31,13 +31,13 @@ function KuzKonfig (site, dirpath, entity=false) {
 
 	if (this.exists()) {
 		const KuzMetaData = require("../kuz-metadata").KuzMetaData;
-		this.metaData = new KuzMetaData(this, this.configFilePath);
+		this.metaData = new KuzMetaData(this, this.path);
 		this.props = this.metaData.getProps();
 
 		const Nss = require("../kuz-nss/nss").Nss;
-		this.nss = new Nss(this.configFilePath);
+		this.nss = new Nss(this.path);
 	} else {
-		this.log.badNews("KuzKonfig not found: " + this.configFilePath);
+		this.log.badNews("KuzKonfig not found: " + this.path);
 	}
 }
 
@@ -45,7 +45,7 @@ const KZBaseObject = require("../base/baseobject").KZBaseObject;
 KuzKonfig.prototype = new KZBaseObject();
 KuzKonfig.prototype.codeLetter = "g";
 
-KuzKonfig.prototype.SetParent = function (configFileParentObject) {
+KuzKonfig.prototype.setParent = function (configFileParentObject) {
 	if (configFileParentObject) {
 		this.parent = configFileParentObject;
 	} else {
@@ -53,15 +53,15 @@ KuzKonfig.prototype.SetParent = function (configFileParentObject) {
 	}
 }
 
-KuzKonfig.prototype.AddChild = function (configFileChildObject) {
+KuzKonfig.prototype.addChild = function (configFileChildObject) {
 	this.children.push(configFileChildObject);
 }
 
-KuzKonfig.prototype.AddPage = function (page) {
+KuzKonfig.prototype.addPage = function (page) {
 	this.pages.push(page);
 }
 
-KuzKonfig.prototype.DirPath = function () {
+KuzKonfig.prototype.getDirPath = function () {
 	return this.configDirpath;
 }
 
@@ -70,11 +70,11 @@ KuzKonfig.prototype.getProps = function () {
 }
 
 KuzKonfig.prototype.getPath = function () {
-	return this.configFilePath;
+	return this.path;
 }
 
 KuzKonfig.prototype.exists = function () {
-	if (fsutils.IsFile(this.configFilePath)) {
+	if (fsutils.IsFile(this.path)) {
 		return true;
 	}
 	return false;
@@ -133,7 +133,7 @@ KuzKonfig.prototype.rootString = function () {
 	}
 }
 
-KuzKonfig.prototype.GetStringValue = function (propertyName) {
+KuzKonfig.prototype.getStringValue = function (propertyName) {
 	return this.metaData.getValue(propertyName);
 }
 
@@ -153,7 +153,7 @@ KuzKonfig.prototype.getTable = function () {
 KuzKonfig.prototype.getRow = function () {
 	return [
 		this.CodeName(),
-		this.configFilePath,
+		this.path,
 		this.parentString(),
 		this.rootString(),
 		this.numberOfChildren(),

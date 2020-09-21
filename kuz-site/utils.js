@@ -23,8 +23,8 @@ function getPages (site, dirpath, parentKonfig) {
 
 	let root = null;
 	if (parentKonfig) {
-		parentKonfig.AddChild(konfig);
-		konfig.SetParent(parentKonfig);
+		parentKonfig.addChild(konfig);
+		konfig.setParent(parentKonfig);
 		root = parentKonfig.root;
 	}
 
@@ -53,7 +53,7 @@ function getPages (site, dirpath, parentKonfig) {
 		} else {
 			let page = new KuzPage(site, konfig, entry);
 			if (page.IsValid()) {
-				konfig.AddPage(page);
+				konfig.addPage(page);
 				pages.push(page);
 			}
 		}
