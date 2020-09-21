@@ -22,7 +22,7 @@ KuzMetaData.prototype.Setup = function () {
 	if (this.Exists()) {
 		const Nss = require("../kuz-nss/nss").Nss;
 		let metaNss = new Nss(this.path);
-		let headerLines = metaNss.GetMetaLines();
+		let headerLines = metaNss.getMetaLines();
 
 		const KuzSections = require("../kuz-sections").KuzSections;
 		let kuzSections = new KuzSections(headerLines);

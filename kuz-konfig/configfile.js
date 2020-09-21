@@ -81,11 +81,11 @@ KuzKonfig.prototype.DoesNotExist = function () {
 }
 
 KuzKonfig.prototype.GetEntries = function () {
-	return this.nss.GetContentLines();
+	return this.nss.getContentLines();
 }
 
 KuzKonfig.prototype.GetEntriesObject = function () {
-	let lines = this.nss.GetContentLines();
+	let lines = this.nss.getContentLines();
 	let entries = {
 		root: false,
 		nonroot: []

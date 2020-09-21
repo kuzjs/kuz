@@ -152,7 +152,7 @@ KuzPage.prototype.OutputFileName = function () {
 }
 
 KuzPage.prototype.getContentString = function () {
-	return this.inputNss.GetBodyString();
+	return this.inputNss.getBodyString();
 }
 
 KuzPage.prototype.getArticle = function () {

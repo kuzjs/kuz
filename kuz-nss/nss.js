@@ -55,7 +55,7 @@ KuZNss.prototype.Exists = function () {
 	return false;
 }
 
-KuZNss.prototype.GetLinesArray = function (lineText) {
+KuZNss.prototype.getLinesArray = function (lineText) {
 	let values = [];
 	if (fs.existsSync(this.filename)) {
 		let fileText = fs.readFileSync(this.filename, "utf8").replace("\r", "");
@@ -74,11 +74,11 @@ KuZNss.prototype.GetLinesArray = function (lineText) {
 	return values;
 }
 
-KuZNss.prototype.GetLinesByRegionIndex = function (regionIndex) {
+KuZNss.prototype.getLinesByRegionIndex = function (regionIndex) {
 	let currentRegionIndex = 0;
 	let regionLines = [];
 	if (fs.existsSync(this.filename)) {
-		let fileLines = this.GetLinesArray();
+		let fileLines = this.getLinesArray();
 		for (let currentLine of fileLines) {
 			if (LineIsSeparator(currentLine)) {
 				currentRegionIndex++;
@@ -97,11 +97,11 @@ KuZNss.prototype.GetLinesByRegionIndex = function (regionIndex) {
 	return regionLines;
 }
 
-KuZNss.prototype.GetEvenRegionLines = function () {
+KuZNss.prototype.getEvenRegionLines = function () {
 	let currentRegionIndex = 0;
 	let evenLines = [];
 	if (fs.existsSync(this.filename)) {
-		let fileLines = this.GetLinesArray();
+		let fileLines = this.getLinesArray();
 		for (let currentLine of fileLines) {
 			if (LineIsSeparator(currentLine)) {
 				currentRegionIndex++;
@@ -116,11 +116,11 @@ KuZNss.prototype.GetEvenRegionLines = function () {
 	return evenLines;
 }
 
-KuZNss.prototype.GetOddRegionLines = function () {
+KuZNss.prototype.getOddRegionLines = function () {
 	let currentRegionIndex = 0;
 	let oddLines = [];
 	if (fs.existsSync(this.filename)) {
-		let fileLines = this.GetLinesArray();
+		let fileLines = this.getLinesArray();
 		for (let currentLine of fileLines) {
 			if (LineIsSeparator(currentLine)) {
 				currentRegionIndex++;
@@ -137,30 +137,30 @@ KuZNss.prototype.GetOddRegionLines = function () {
 
 
 
-KuZNss.prototype.GetMetaLines = function () {
-	return this.GetEvenRegionLines();
+KuZNss.prototype.getMetaLines = function () {
+	return this.getEvenRegionLines();
 }
 
-KuZNss.prototype.GetContentLines = function () {
-	return this.GetOddRegionLines();
+KuZNss.prototype.getContentLines = function () {
+	return this.getOddRegionLines();
 }
 
 
 
-KuZNss.prototype.GetHeaderLines = function () {
-	return this.GetLinesByRegionIndex(0);
+KuZNss.prototype.getHeaderLines = function () {
+	return this.getLinesByRegionIndex(0);
 }
 
-KuZNss.prototype.GetBodyLines = function () {
-	return this.GetLinesByRegionIndex(1);
+KuZNss.prototype.getBodyLines = function () {
+	return this.getLinesByRegionIndex(1);
 }
 
-KuZNss.prototype.GetBodyString = function () {
-	return this.GetBodyLines().join("\n");
+KuZNss.prototype.getBodyString = function () {
+	return this.getBodyLines().join("\n");
 }
 
-KuZNss.prototype.GetFooterLines = function () {
-	return this.GetLinesByRegionIndex(2);
+KuZNss.prototype.getFooterLines = function () {
+	return this.getLinesByRegionIndex(2);
 }
 
 module.exports = {
