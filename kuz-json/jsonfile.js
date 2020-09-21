@@ -17,7 +17,7 @@ JsonFile.prototype.GetId = function () {
 }
 
 JsonFile.prototype.ok = function () {
-	return this.allIsWell;
+	return this.okay;
 }
 
 JsonFile.prototype.NeedsUpdate = function () {
@@ -47,10 +47,10 @@ JsonFile.prototype.forcedUpdateJson = function () {
 	try {
 		this.mtimeMs = fs.statSync(this.filepath).mtimeMs;
 		this.json = JSON.parse(fs.readFileSync(this.filepath));
-		this.allIsWell = true;
+		this.okay = true;
 		return this.json;
 	} catch {
-		this.allIsWell = false;
+		this.okay = false;
 		return null;
 	}
 }

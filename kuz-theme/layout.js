@@ -23,16 +23,16 @@ ThemeLayout.prototype.Setup = function () {
 }
 
 ThemeLayout.prototype.ok = function () {
-	if (this.allIsWell === undefined) {
+	if (this.okay === undefined) {
 		return false;
 	}
-	return this.allIsWell;
+	return this.okay;
 }
 
 ThemeLayout.prototype.forcedUpdate = function () {
 	this.pug = pug.compileFile(this.InputFilePath());
 	this.mtimeMs = fs.statSync(this.InputFilePath()).mtimeMs;
-	this.allIsWell = true;
+	this.okay = true;
 }
 
 ThemeLayout.prototype.NeedsUpdate = function () {

@@ -22,10 +22,10 @@ ThemeModule.prototype.Setup = function () {
 }
 
 ThemeModule.prototype.ok = function () {
-	if (this.allIsWell === undefined) {
+	if (this.okay === undefined) {
 		return false;
 	}
-	return this.allIsWell;
+	return this.okay;
 }
 
 ThemeModule.prototype.forcedUpdate = function () {
