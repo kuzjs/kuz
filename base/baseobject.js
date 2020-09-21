@@ -255,18 +255,22 @@ KZBaseObject.prototype.OutputFileMTime = function () {
 
 
 KZBaseObject.prototype.buildable = function () {
-	this.log.green("KZBaseObject buildable(): " + this.CodeAndName());
+	if (!this.OutputFileExists()) {
+		this.log.green("Can be built.", this.CodeName());
+	}
 	return this;
 }
 
 KZBaseObject.prototype.build = function () {
-	this.log.green("KZBaseObject build(): " + this.CodeAndName());
+	if (!this.OutputFileExists()) {
+		this.update();
+	}
 	return this;
 }
 
 KZBaseObject.prototype.updatable = function () {
 	if (this.needsUpdate()) {
-		this.log.green("Can be updated.");
+		this.log.green("Can be updated.", this.CodeName());
 	}
 	return this;
 }
