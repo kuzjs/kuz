@@ -6,7 +6,7 @@ const pug = require("pug");
 const fsutils = require("../kuz-fs");
 
 function ThemeLayout (theme, data) {
-	this.SetupThemeElement(theme, data);
+	this.setupThemeElement(theme, data);
 	this.Setup();
 }
 

@@ -20,7 +20,7 @@ const KZBaseObject = require("../base/baseobject").KZBaseObject;
 Theme.prototype = new KZBaseObject();
 Theme.prototype.typeName = "Theme";
 
-Theme.prototype.Name = function () {
+Theme.prototype.getName = function () {
 	return this.themeName;
 }
 
@@ -33,11 +33,11 @@ Theme.prototype.ThemesOutputDirectory = function () {
 }
 
 Theme.prototype.InputDirectory = function () {
-	return fsutils.JoinPath(this.ThemesInputDirectory(), this.Name());
+	return fsutils.JoinPath(this.ThemesInputDirectory(), this.getName());
 }
 
 Theme.prototype.OutputDirectory = function () {
-	return fsutils.JoinPath(this.ThemesOutputDirectory(), this.Name());
+	return fsutils.JoinPath(this.ThemesOutputDirectory(), this.getName());
 }
 
 Theme.prototype.JsonFileName = function () {
@@ -136,7 +136,7 @@ Theme.prototype.defaultLayout = function () {
 
 Theme.prototype.getLayout = function (layoutName) {
 	for (let layout of this.layouts) {
-		if (layoutName == layout.Name()) {
+		if (layoutName == layout.getName()) {
 			return layout;
 		}
 	}
@@ -150,32 +150,32 @@ Theme.prototype.IsValid = function () {
 	return this.is_valid;
 }
 
-Theme.prototype.Name = function () {
+Theme.prototype.getName = function () {
 	return this.themeName;
 }
 
-Theme.prototype.Title = function () {
+Theme.prototype.getTitle = function () {
 	return this.metaObject.title ? this.metaObject.title : defaultText.title;
 }
 
-Theme.prototype.Version = function () {
+Theme.prototype.getVersion = function () {
 	return this.metaObject.version ? this.metaObject.version : "0.0";
 }
 
-Theme.prototype.Description = function () {
+Theme.prototype.getDescription = function () {
 	return this.metaObject.description ? this.metaObject.description : defaultText.description;
 }
 
-Theme.prototype.Documentation = function () {
+Theme.prototype.getDocumentation = function () {
 	return this.metaObject.documentation ? this.metaObject.documentation : defaultText.documentation;
 }
 
-Theme.prototype.LayoutCount = function () {
+Theme.prototype.getLayoutCount = function () {
 	return this.layouts.length;
 }
 
 Theme.prototype.toString = function () {
-	return this.Name() + " (" + this.LayoutCount() + " layouts) [v" + this.Version() + "]";
+	return this.getName() + " (" + this.LayoutCount() + " layouts) [v" + this.Version() + "]";
 }
 
 Theme.prototype.GetPages = function () {
@@ -200,12 +200,12 @@ Theme.prototype.getTable = function () {
 Theme.prototype.getRow = function () {
 	let meta = this.meta.json.meta;
 	return [
-		this.Name(),
-		this.Title(),
-		this.Version(),
-		this.Description(),
-		this.Documentation(),
-		this.LayoutCount(),
+		this.getName(),
+		this.getTitle(),
+		this.getVersion(),
+		this.getDescription(),
+		this.getDocumentation(),
+		this.getLayoutCount(),
 		this.css.length,
 		this.js.length,
 		this.resources.length

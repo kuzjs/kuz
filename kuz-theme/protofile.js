@@ -18,8 +18,8 @@ ProtoFile.prototype.IsProtoFile = function () {
 	return true;
 }
 
-ProtoFile.prototype.SetupProto = function (theme, data) {
-	this.SetupThemeElement(theme, data);
+ProtoFile.prototype.setupProto = function (theme, data) {
+	this.setupThemeElement(theme, data);
 }
 
 ProtoFile.prototype.OutputDirectoryPath = function () {

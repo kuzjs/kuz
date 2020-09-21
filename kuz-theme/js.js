@@ -3,7 +3,7 @@
 
 
 function ThemeJS (theme, data) {
-	this.SetupProto(theme, data);
+	this.setupProto(theme, data);
 }
 
 const ProtoFile = require("./protofile").ProtoFile;

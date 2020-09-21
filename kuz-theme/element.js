@@ -13,7 +13,7 @@ const KZBaseObject = require("../base/baseobject").KZBaseObject;
 ThemeElement.prototype = new KZBaseObject();
 ThemeElement.prototype.typeName = "ThemeElement";
 
-ThemeElement.prototype.SetupThemeElement = function (theme, data) {
+ThemeElement.prototype.setupThemeElement = function (theme, data) {
 	this.theme = theme;
 	this.data = data;
 	this.log = this.theme.log;
@@ -28,28 +28,28 @@ ThemeElement.prototype.getProps = function () {
 	return this.data;
 }
 
-ThemeElement.prototype.Name = function () {
+ThemeElement.prototype.getName = function () {
 	return this.data.name;
 }
 
-ThemeElement.prototype.Path = function () {
+ThemeElement.prototype.getPath = function () {
 	return this.data.path;
 }
 
-ThemeElement.prototype.Description = function () {
+ThemeElement.prototype.getDescription = function () {
 	return this.data.description ? this.data.description : defaultText.description;
 }
 
-ThemeElement.prototype.Documentation = function () {
+ThemeElement.prototype.getDocumentation = function () {
 	return this.data.documentation ? this.data.documentation : defaultText.documentation;
 }
 
-ThemeElement.prototype.Title = function () {
+ThemeElement.prototype.getTitle = function () {
 	return this.data.title ? this.data.title : defaultText.title;
 }
 
 ThemeElement.prototype.InputFileName = function () {
-	return this.Path();
+	return this.getPath();
 }
 
 ThemeElement.prototype.InputDirectoryName = function () {
@@ -78,12 +78,12 @@ ThemeElement.prototype.getTable = function () {
 
 ThemeElement.prototype.getRow = function () {
 	return [
-		this.Name(),
-		this.theme.Name(),
-		this.Path(),
-		this.Title(),
-		this.Description(),
-		this.Documentation()
+		this.getName(),
+		this.theme.getName(),
+		this.getPath(),
+		this.getTitle(),
+		this.getDescription(),
+		this.getDocumentation()
 	];
 }
 

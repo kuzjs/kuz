@@ -5,7 +5,7 @@ const fs = require("fs");
 const fsutils = require("../kuz-fs");
 
 function ThemeModule (theme, data) {
-	this.SetupThemeElement(theme, data);
+	this.setupThemeElement(theme, data);
 	this.Setup();
 }
 
