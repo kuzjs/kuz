@@ -206,9 +206,9 @@ Theme.prototype.getRow = function () {
 		this.getDescription(),
 		this.getDocumentation(),
 		this.getLayoutCount(),
-		this.css.length,
-		this.js.length,
-		this.resources.length
+		this.cssArray.length,
+		this.jsArray.length,
+		this.resourceArray.length
 	];
 }
 
