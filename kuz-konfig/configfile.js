@@ -101,7 +101,7 @@ KuzKonfig.prototype.GetEntriesObject = function () {
 	return entries;
 }
 
-KuzKonfig.prototype.GetPages = function () {
+KuzKonfig.prototype.getPages = function () {
 	return this.pages;
 }
 

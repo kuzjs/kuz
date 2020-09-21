@@ -398,11 +398,7 @@ KuzPage.prototype.getLayout = function () {
 	return theme.defaultLayout();
 }
 
-KuzPage.prototype.Pages = function () {
-	return this.GetPages();
-}
-
-KuzPage.prototype.GetPages = function () {
+KuzPage.prototype.getPages = function () {
 	if (this.GetType() == "author") {
 		return this.site.getPagesByAuthor(this);
 	} else if (this.GetType() == "category") {
@@ -448,8 +444,8 @@ KuzPage.prototype.getKuz = function () {
 	};
 }
 
-KuzPage.prototype.GetPagesCount = function () {
-	return this.GetPages().length;
+KuzPage.prototype.getPagesCount = function () {
+	return this.getPages().length;
 }
 
 KuzPage.prototype.GetPageOptions = function () {

@@ -178,7 +178,7 @@ Theme.prototype.toString = function () {
 	return this.getName() + " (" + this.LayoutCount() + " layouts) [v" + this.Version() + "]";
 }
 
-Theme.prototype.GetPages = function () {
+Theme.prototype.getPages = function () {
 	return [];
 }
 
