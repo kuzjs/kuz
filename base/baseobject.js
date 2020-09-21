@@ -284,17 +284,17 @@ KZBaseObject.prototype.Build = function () {
 	return this;
 }
 
-KZBaseObject.prototype.Updatable = function () {
+KZBaseObject.prototype.updatable = function () {
 	this.log.green("KZBaseObject Updatable(): " + this.CodeAndName());
 	return this;
 }
 
-KZBaseObject.prototype.Update = function () {
+KZBaseObject.prototype.update = function () {
 	this.log.green("KZBaseObject Update(): " + this.CodeAndName());
 	return this;
 }
 
-KZBaseObject.prototype.ForcedUpdate = function () {
+KZBaseObject.prototype.forcedUpdate = function () {
 	this.log.green("KZBaseObject ForcedUpdate(): " + this.CodeAndName());
 	return this;
 }

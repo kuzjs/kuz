@@ -19,7 +19,7 @@ ThemeLayout.prototype.Setup = function () {
 		this.theme.site.Error("Layout not found: " + this.InputFilePath());
 		return;
 	}
-	this.ForcedUpdate();
+	this.forcedUpdate();
 }
 
 ThemeLayout.prototype.AllIsWell = function () {
@@ -29,7 +29,7 @@ ThemeLayout.prototype.AllIsWell = function () {
 	return this.allIsWell;
 }
 
-ThemeLayout.prototype.ForcedUpdate = function () {
+ThemeLayout.prototype.forcedUpdate = function () {
 	this.pug = pug.compileFile(this.InputFilePath());
 	this.mtimeMs = fs.statSync(this.InputFilePath()).mtimeMs;
 	this.allIsWell = true;
@@ -42,13 +42,13 @@ ThemeLayout.prototype.NeedsUpdate = function () {
 	return true;
 }
 
-ThemeLayout.prototype.Update = function () {
+ThemeLayout.prototype.update = function () {
 	if (this.NeedsUpdate()) {
-		this.ForcedUpdate();
+		this.forcedUpdate();
 	}
 }
 
-ThemeLayout.prototype.Updatable = function () {
+ThemeLayout.prototype.updatable = function () {
 	this.PrintInputFilePath();
 }
 

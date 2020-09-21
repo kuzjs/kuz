@@ -34,15 +34,15 @@ ProtoFile.prototype.toString = function () {
 	return "File: " + this.InputFilePath() + " --> " + this.OutputFilePath();
 }
 
-ProtoFile.prototype.Updatable = function () {
+ProtoFile.prototype.updatable = function () {
 	this.PrintInputFilePath();
 }
 
-ProtoFile.prototype.Update = function () {
-	this.ForcedUpdate();
+ProtoFile.prototype.update = function () {
+	this.forcedUpdate();
 }
 
-ProtoFile.prototype.ForcedUpdate = function () {
+ProtoFile.prototype.forcedUpdate = function () {
 	let contents = fs.readFileSync(this.InputFilePath());
 	fsutils.CreateDirectory(this.OutputDirectoryPath());
 	fs.writeFileSync(this.OutputFilePath(), contents);

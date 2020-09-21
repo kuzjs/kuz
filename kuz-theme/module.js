@@ -18,7 +18,7 @@ ThemeModule.prototype.Setup = function () {
 		this.theme.site.Error("Module not found: " + this.InputFilePath());
 		return;
 	}
-	this.ForcedUpdate();
+	this.forcedUpdate();
 }
 
 ThemeModule.prototype.AllIsWell = function () {
@@ -28,7 +28,7 @@ ThemeModule.prototype.AllIsWell = function () {
 	return this.allIsWell;
 }
 
-ThemeModule.prototype.ForcedUpdate = function () {
+ThemeModule.prototype.forcedUpdate = function () {
 	//
 }
 
@@ -39,13 +39,13 @@ ThemeModule.prototype.NeedsUpdate = function () {
 	return true;
 }
 
-ThemeModule.prototype.Update = function () {
+ThemeModule.prototype.update = function () {
 	if (this.NeedsUpdate()) {
-		this.ForcedUpdate();
+		this.forcedUpdate();
 	}
 }
 
-ThemeModule.prototype.Updatable = function () {
+ThemeModule.prototype.updatable = function () {
 	this.PrintInputFilePath();
 }
 

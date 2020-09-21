@@ -9,7 +9,7 @@ let numberOfJsonFiles = 0;
 function JsonFile(filepath) {
 	this.filepath = filepath;
 	this.id = numberOfJsonFiles++;
-	this.ForcedUpdateJson();
+	this.forcedUpdateJson();
 }
 
 JsonFile.prototype.GetId = function () {
@@ -33,17 +33,17 @@ JsonFile.prototype.IsUpToDate = function () {
 }
 
 JsonFile.prototype.GetUpdatedJson = function () {
-	return this.UpdateJson();
+	return this.updateJson();
 }
 
-JsonFile.prototype.UpdateJson = function () {
+JsonFile.prototype.updateJson = function () {
 	if (this.NeedsUpdate()) {
-		this.ForcedUpdateJson();
+		this.forcedUpdateJson();
 	}
 	return this.json;
 }
 
-JsonFile.prototype.ForcedUpdateJson = function () {
+JsonFile.prototype.forcedUpdateJson = function () {
 	try {
 		this.mtimeMs = fs.statSync(this.filepath).mtimeMs;
 		this.json = JSON.parse(fs.readFileSync(this.filepath));

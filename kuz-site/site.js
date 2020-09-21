@@ -375,13 +375,13 @@ KuzSite.prototype.printArrayAsTable = function (arr) {
 
 KuzSite.prototype.forcedUpdateArray = function (arr) {
 	for (let elem of arr) {
-		elem.ForcedUpdate();
+		elem.forcedUpdate();
 	}
 }
 
 KuzSite.prototype.updateArray = function (arr) {
 	for (let elem of arr) {
-		elem.Update();
+		elem.update();
 	}
 }
 

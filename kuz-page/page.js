@@ -494,7 +494,7 @@ KuzPage.prototype.NeedsUpdate = function () {
 	}
 }
 
-KuzPage.prototype.Update = function () {
+KuzPage.prototype.update = function () {
 	if (this.NeedsUpdate()) {
 		this.Reset();
 		this.Setup();
@@ -502,7 +502,7 @@ KuzPage.prototype.Update = function () {
 	}
 }
 
-KuzPage.prototype.ForcedUpdate = function () {
+KuzPage.prototype.forcedUpdate = function () {
 	this.Render();
 }
 
