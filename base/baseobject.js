@@ -128,7 +128,7 @@ KZBaseObject.prototype.GetIndex = function () {
 
 KZBaseObject.prototype.Title = function (title) {
 	this.SetTitle(title);
-	return this.GetTitle();
+	return this.getTitle();
 }
 
 KZBaseObject.prototype.SetTitle = function (title) {
@@ -138,7 +138,7 @@ KZBaseObject.prototype.SetTitle = function (title) {
 	return this;
 }
 
-KZBaseObject.prototype.GetTitle = function () {
+KZBaseObject.prototype.getTitle = function () {
 	return this.title;
 }
 

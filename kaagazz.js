@@ -21,7 +21,7 @@ function KaagazzApp () {
 	this.blackadder = new JsonFile(blackadderJsonPath);
 	this.ipsum = new JsonFile(loremIpsumJsonPath);
 
-	this.log.SetName(this.GetTitle());
+	this.log.SetName(this.getTitle());
 	this.SetupFlags();
 
 	if (this.AllIsWell()) {
@@ -176,7 +176,7 @@ KaagazzApp.prototype.GetSiteJsonPath = function () {
 	return this.meta.json.filenames.siteJson;
 }
 
-KaagazzApp.prototype.GetTitle = function () {
+KaagazzApp.prototype.getTitle = function () {
 	return this.meta.json.meta.title;
 }
 
