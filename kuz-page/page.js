@@ -429,7 +429,7 @@ KuzPage.prototype.getKuz = function () {
 		kuz: this.metaData.Kuz(),
 		reqs: this.metaData.Reqs(),
 
-		ipsum: this.LoremIpsum(),
+		ipsum: this.getApp().LoremIpsum(),
 		kuzz: {
 			//
 		}
@@ -444,7 +444,7 @@ KuzPage.prototype.GetPageOptions = function () {
 	return {
 		page: this,
 		kuz: this.getKuz(),
-		blackadder: this.Blackadder()
+		blackadder: this.getApp().Blackadder()
 	};
 }
 
