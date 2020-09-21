@@ -65,10 +65,7 @@ function getAppropriateValue (value) {
 }
 
 function Property (textLine) {
-	let colonIndex = textLine.indexOf(":");
-	this.nameX = textLine.slice(0, colonIndex).trim();
-	let value = textLine.slice(colonIndex + 1).trim();
-	this.valueX = getAppropriateValue(value);
+	this.setup(textLine);
 }
 
 Property.prototype = {
@@ -79,6 +76,23 @@ Property.prototype = {
 		return this.valueX;
 	}
 };
+
+Property.prototype.setup = function (textLine) {
+	let separatorIndex = textLine.length;
+	let colonIndex = textLine.indexOf(":");
+	if (colonIndex > 0) {
+		separatorIndex = colonIndex;
+	}
+
+	let equalsIndex = textLine.indexOf("=");
+	if (equalsIndex > 0 && equalsIndex < separatorIndex) {
+		separatorIndex = equalsIndex;
+	}
+
+	this.nameX = textLine.slice(0, separatorIndex).trim();
+	let value = textLine.slice(separatorIndex + 1).trim();
+	this.valueX = getAppropriateValue(value);
+}
 
 Property.prototype.IsValid = function () {
 	if (this.getName().length == 0) {
