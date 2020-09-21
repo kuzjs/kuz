@@ -103,18 +103,16 @@ KuzMetaData.prototype.Exists = function () {
 }
 
 KuzMetaData.prototype.GetValue = function (propertyName) {
-	for (let property of this.properties) {
-		if (propertyName == property.Name()) {
-			return {
-				found: true,
-				value: property.Value()
-			}
-		}
+	if (this.sections.main[propertyName] === undefined) {
+		return {
+			found: false
+		};
+	} else {
+		return {
+			found: true,
+			value: this.sections.main[propertyName]
+		};
 	}
-
-	return {
-		found: false
-	};
 }
 
 KuzMetaData.prototype.NumberOfProperties = function () {
