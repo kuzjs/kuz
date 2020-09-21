@@ -265,7 +265,7 @@ KaagazzApp.prototype.benchMark = function () {
 
 	let rendered = 0;
 	for (let index=0; index<20; index++) {
-		for (let x of this.site.Renderables()) {
+		for (let x of this.site.getRenderables()) {
 			x.forcedUpdate();
 			rendered++;
 		}
