@@ -83,7 +83,7 @@ KuzPage.prototype.IsTag = function () {
 
 
 KuzPage.prototype.IsHidden = function () {
-	let prop = this.GetPropertyCascaded("hidden");
+	let prop = this.getPropertyCascaded("hidden");
 	if (prop.found) {
 		return prop.value;
 	}
@@ -233,7 +233,7 @@ KuzPage.prototype.Name = function () {
 }
 
 KuzPage.prototype.getTitle = function () {
-	let property = this.GetProperty("title");
+	let property = this.getProperty("title");
 	if (property.found) {
 		return property.value;
 	}
@@ -241,7 +241,7 @@ KuzPage.prototype.getTitle = function () {
 }
 
 KuzPage.prototype.getDescription = function () {
-	let property = this.GetProperty("description");
+	let property = this.getProperty("description");
 	if (property.found) {
 		return property.value;
 	}
@@ -261,7 +261,7 @@ KuzPage.prototype.Props = function () {
 }
 
 KuzPage.prototype.getAuthor = function () {
-	let author = this.GetPropertyCascaded("author");
+	let author = this.getPropertyCascaded("author");
 	if (author.found) {
 		let authorObject = this.site.getAuthorFromName(author.value);
 		if (authorObject) {
@@ -272,7 +272,7 @@ KuzPage.prototype.getAuthor = function () {
 }
 
 KuzPage.prototype.getCategory = function () {
-	let category = this.GetPropertyCascaded("category");
+	let category = this.getPropertyCascaded("category");
 	if (category.found) {
 		let categoryObject = this.site.getCategoryFromName(category.value);
 		if (categoryObject) {
@@ -283,7 +283,7 @@ KuzPage.prototype.getCategory = function () {
 }
 
 KuzPage.prototype.Tags = function () {
-	let tagsArray = this.GetProperty("tags");
+	let tagsArray = this.getProperty("tags");
 	if (tagsArray.found) {
 		return tagsArray.value;
 	}
@@ -299,7 +299,7 @@ KuzPage.prototype.getTagObjects = function () {
 
 
 
-KuzPage.prototype.GetProperty = function (propertyName) {
+KuzPage.prototype.getProperty = function (propertyName) {
 	if (this.metaData) {
 		return this.metaData.GetValue(propertyName);
 	}
@@ -308,8 +308,8 @@ KuzPage.prototype.GetProperty = function (propertyName) {
 	};
 }
 
-KuzPage.prototype.GetPropertyCascaded = function (propertyName) {
-	let property = this.GetProperty(propertyName);
+KuzPage.prototype.getPropertyCascaded = function (propertyName) {
+	let property = this.getProperty(propertyName);
 	if (property.found) {
 		return property;
 	}
@@ -324,7 +324,7 @@ KuzPage.prototype.GetPropertyCascaded = function (propertyName) {
 }
 
 KuzPage.prototype.GetBooleanValueCascaded = function (name) {
-	let property = this.GetPropertyCascaded(name);
+	let property = this.getPropertyCascaded(name);
 	if (property.found) {
 		return property.value;
 	}
@@ -366,7 +366,7 @@ KuzPage.prototype.getRoot = function () {
 }
 
 KuzPage.prototype.getTheme = function () {
-	let themeNameProperty = this.GetPropertyCascaded("theme");
+	let themeNameProperty = this.getPropertyCascaded("theme");
 	if (themeNameProperty.found) {
 		let themeName = themeNameProperty.value;
 		let theme = this.site.GetThemeFromName(themeName);
@@ -379,7 +379,7 @@ KuzPage.prototype.getTheme = function () {
 }
 
 KuzPage.prototype.getLayoutName = function () {
-	let layout = this.GetPropertyCascaded("layout");
+	let layout = this.getPropertyCascaded("layout");
 	if (layout.found) {
 		return layout.value;
 	}
@@ -542,7 +542,7 @@ KuzPage.prototype.RenderLog = function () {
 
 
 KuzPage.prototype.GetType = function () {
-	let type = this.GetPropertyCascaded("type");
+	let type = this.getPropertyCascaded("type");
 	if (type.found) {
 		return type.value;
 	}

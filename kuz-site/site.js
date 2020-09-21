@@ -289,7 +289,7 @@ KuzSite.prototype.EveryThing = function () {
 KuzSite.prototype.getPagesByAuthor = function (author) {
 	let pages = [];
 	for (let page of this.pages) {
-		let pageAuthor = page.GetPropertyCascaded("author");
+		let pageAuthor = page.getPropertyCascaded("author");
 		if (pageAuthor.found) {
 			if (pageAuthor.value == author.entry) {
 				pages.push(page);
@@ -302,7 +302,7 @@ KuzSite.prototype.getPagesByAuthor = function (author) {
 KuzSite.prototype.getPagesInCategory = function (category) {
 	let pages = [];
 	for (let page of this.pages) {
-		let pageCategory = page.GetPropertyCascaded("category");
+		let pageCategory = page.getPropertyCascaded("category");
 		if (pageCategory.found) {
 			if (pageCategory.value == category.entry) {
 				pages.push(page);

@@ -55,7 +55,7 @@ JsonFile.prototype.ForcedUpdateJson = function () {
 	}
 }
 
-JsonFile.prototype.GetPropertyValueFromName = function (name) {
+JsonFile.prototype.getPropertyValueFromName = function (name) {
 	if (this.json.hasOwnProperty(name)) {
 		return {
 			found: true,
@@ -69,7 +69,7 @@ JsonFile.prototype.GetPropertyValueFromName = function (name) {
 }
 
 JsonFile.prototype.GetConfigurationValue = function () {
-	return this.GetPropertyValueFromName("configuration");
+	return this.getPropertyValueFromName("configuration");
 }
 
 JsonFile.prototype.GetNestedValueFromName = function (parent, child) {
