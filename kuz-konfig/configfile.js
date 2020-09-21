@@ -150,13 +150,13 @@ KuzKonfig.prototype.GetStringValue = function (propertyName) {
 KuzKonfig.prototype.getTable = function () {
 	const KZTable = require("../kuz-table/table").KZTable;
 	let table = new KZTable();
-	table.AddColumn("CodeName");
-	table.AddColumn("Path");
-	table.AddColumn("Parent");
-	table.AddColumn("@");
-	table.AddColumn("Dirs");
-	table.AddColumn("Pages");
-	table.AddColumn("Props");
+	table.addColumn("CodeName");
+	table.addColumn("Path");
+	table.addColumn("Parent");
+	table.addColumn("@");
+	table.addColumn("Dirs");
+	table.addColumn("Pages");
+	table.addColumn("Props");
 	return table;
 }
 

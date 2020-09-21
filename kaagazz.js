@@ -193,7 +193,7 @@ KaagazzApp.prototype.showSomeHelp = function () {
 
 	for (let flag of this.flags) {
 		if (!flag.modifier) {
-			table.Add(flag);
+			table.add(flag);
 		}
 	}
 
@@ -204,7 +204,7 @@ KaagazzApp.prototype.showFullHelp = function () {
 	let table = this.flags[0].getTable();
 
 	for (let flag of this.flags) {
-		table.Add(flag);
+		table.add(flag);
 	}
 
 	table.Print();
@@ -215,7 +215,7 @@ KaagazzApp.prototype.showIndependentFlags = function () {
 
 	for (let flag of this.flags) {
 		if (!flag.modifier && !flag.major) {
-			table.Add(flag);
+			table.add(flag);
 		}
 	}
 
@@ -227,7 +227,7 @@ KaagazzApp.prototype.showModifierFlags = function () {
 
 	for (let flag of this.flags) {
 		if (flag.modifier) {
-			table.Add(flag);
+			table.add(flag);
 		}
 	}
 
@@ -239,7 +239,7 @@ KaagazzApp.prototype.showMajorFlags = function () {
 
 	for (let flag of this.flags) {
 		if (flag.major) {
-			table.Add(flag);
+			table.add(flag);
 		}
 	}
 
@@ -249,13 +249,13 @@ KaagazzApp.prototype.showMajorFlags = function () {
 KaagazzApp.prototype.showVersion = function () {
 	const KZTable = require("./kuz-table").KZTable;
 	let table = new KZTable();
-	table.AddColumn("Key");
-	table.AddColumn("Value");
+	table.addColumn("Key");
+	table.addColumn("Value");
 
 	let meta = this.meta.json.meta;
-	table.AddRow(["Title", this.getTitle()]);
-	table.AddRow(["Version", this.getVersion()]);
-	table.AddRow(["Description", this.getDescription()]);
+	table.addRow(["Title", this.getTitle()]);
+	table.addRow(["Version", this.getVersion()]);
+	table.addRow(["Description", this.getDescription()]);
 	table.Print();
 }
 
@@ -292,7 +292,7 @@ KaagazzApp.prototype.listStuff = function (flags) {
 	} else {
 		let table = this.operands[0].getTable();
 		for (let operand of this.operands) {
-			table.Add(operand);
+			table.add(operand);
 		}
 		table.Print();
 	}

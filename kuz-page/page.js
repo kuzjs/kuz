@@ -540,16 +540,16 @@ KuzPage.prototype.GetType = function () {
 KuzPage.prototype.getTable = function () {
 	const KZTable = require("../kuz-table/table").KZTable;
 	let table = new KZTable();
-	table.AddColumn("Codename");
-	//table.AddColumn("Name");
-	table.AddColumn("Conf");
-	//table.AddColumn("Title");
-	//table.AddColumn("Theme");
-	table.AddColumn("Type");
-	table.AddColumn("Layout");
-	//table.AddColumn("URL");
-	table.AddColumn("In");
-	table.AddColumn("Out");
+	table.addColumn("Codename");
+	//table.addColumn("Name");
+	table.addColumn("Conf");
+	//table.addColumn("Title");
+	//table.addColumn("Theme");
+	table.addColumn("Type");
+	table.addColumn("Layout");
+	//table.addColumn("URL");
+	table.addColumn("In");
+	table.addColumn("Out");
 	return table;
 }
 

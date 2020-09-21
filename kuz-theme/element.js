@@ -67,12 +67,12 @@ ThemeElement.prototype.PrintInputFilePath = function () {
 ThemeElement.prototype.getTable = function () {
 	const KZTable = require("../kuz-table/table").KZTable;
 	let table = new KZTable();
-	table.AddColumn("Name");
-	table.AddColumn("Theme");
-	table.AddColumn("Path");
-	table.AddColumn("Title");
-	table.AddColumn("Description");
-	table.AddColumn("Documentation");
+	table.addColumn("Name");
+	table.addColumn("Theme");
+	table.addColumn("Path");
+	table.addColumn("Title");
+	table.addColumn("Description");
+	table.addColumn("Documentation");
 	return table;
 }
 

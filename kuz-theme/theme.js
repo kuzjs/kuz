@@ -185,15 +185,15 @@ Theme.prototype.getPages = function () {
 Theme.prototype.getTable = function () {
 	const KZTable = require("../kuz-table/table").KZTable;
 	let table = new KZTable();
-	table.AddColumn("Name");
-	table.AddColumn("Title");
-	table.AddColumn("Ver");
-	table.AddColumn("Description");
-	table.AddColumn("Documentation");
-	table.AddColumn("Ls");
-	table.AddColumn("CSS");
-	table.AddColumn("JS");
-	table.AddColumn("Res");
+	table.addColumn("Name");
+	table.addColumn("Title");
+	table.addColumn("Ver");
+	table.addColumn("Description");
+	table.addColumn("Documentation");
+	table.addColumn("Ls");
+	table.addColumn("CSS");
+	table.addColumn("JS");
+	table.addColumn("Res");
 	return table;
 }
 

@@ -62,7 +62,7 @@ KZTable.prototype.Separator = function () {
 	return this.Padding() + "|" + this.Padding();
 }
 
-KZTable.prototype.AddColumn = function (columnName, columnLength) {
+KZTable.prototype.addColumn = function (columnName, columnLength) {
 	if (columnLength === undefined || columnLength < columnName.length) {
 		columnLength = columnName.length;
 	}
@@ -74,20 +74,20 @@ KZTable.prototype.AddColumn = function (columnName, columnLength) {
 	return this;
 }
 
-KZTable.prototype.Add = function (obj) {
+KZTable.prototype.add = function (obj) {
 	let row = obj["getRow"]();
-	this.AddRow(row);
+	this.addRow(row);
 	return this;
 }
 
-KZTable.prototype.AddArray = function (arr) {
+KZTable.prototype.addArray = function (arr) {
 	for (let elem of arr) {
-		this.Add(elem);
+		this.add(elem);
 	}
 	return this;
 }
 
-KZTable.prototype.AddRow = function (row) {
+KZTable.prototype.addRow = function (row) {
 	for (let index in row) {
 		let cell = row[index] + "";
 		if (cell.length > this.columnObjects[index].length) {

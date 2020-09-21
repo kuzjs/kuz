@@ -129,7 +129,7 @@ KuzMetaData.prototype.PrintPropertyTable = function () {
 	if (this.properties.length > 0) {
 		let table = this.properties[0].getTable();
 		for (let property of this.properties) {
-			table.Add(property);
+			table.add(property);
 		}
 		table.Print();
 	}

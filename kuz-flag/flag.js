@@ -132,13 +132,13 @@ KuzFlag.prototype.getRow = function () {
 KuzFlag.prototype.getTable = function () {
 	let table = new KZTable();
 	table.HideIndex().HideHeader();
-	table.AddColumn("Code");
-	table.AddColumn("Name");
-	table.AddColumn("Description");
-	table.AddColumn("Attributes");
-	table.AddColumn("Path");
-	table.AddColumn("State");
-	table.AddColumn("Params");
+	table.addColumn("Code");
+	table.addColumn("Name");
+	table.addColumn("Description");
+	table.addColumn("Attributes");
+	table.addColumn("Path");
+	table.addColumn("State");
+	table.addColumn("Params");
 	return table;
 }
 
