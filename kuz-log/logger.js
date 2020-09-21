@@ -106,11 +106,11 @@ function KuzLogger (name) {
 
 
 
-KuzLogger.prototype.Lock = function () {
+KuzLogger.prototype.lock = function () {
 	this.locked = true;
 }
 
-KuzLogger.prototype.Unlock = function () {
+KuzLogger.prototype.unlock = function () {
 	if (this.parent === null) {
 		this.locked = false;
 	}
@@ -218,38 +218,38 @@ KuzLogger.prototype.DiskIsOff = function () {
 
 
 
-KuzLogger.prototype.SetPath = function (path) {
+KuzLogger.prototype.setPath = function (path) {
 	if (path != undefined) {
 		this.path = path;
 	}
 }
 
-KuzLogger.prototype.GetPath = function () {
+KuzLogger.prototype.getPath = function () {
 	if (this.parent) {
-		return this.parent.GetPath();
+		return this.parent.getPath();
 	}
 	return this.path;
 }
 
 
 
-KuzLogger.prototype.SetParent = function (parent) {
+KuzLogger.prototype.setParent = function (parent) {
 	this.parent = parent;
 }
 
-KuzLogger.prototype.GetParent = function () {
+KuzLogger.prototype.getParent = function () {
 	return this.parent;
 }
 
 
 
-KuzLogger.prototype.GetChild = function (name) {
+KuzLogger.prototype.getChild = function (name) {
 	let child = new KuzLogger(name);
 
-	child.SetParent(this);
+	child.setParent(this);
 	child.createdTime = this.createdTime;
 	child.lastLogTime = this.lastLogTime;
-	child.Lock();
+	child.lock();
 	this.children.push(child);
 
 	return child;
@@ -257,7 +257,7 @@ KuzLogger.prototype.GetChild = function (name) {
 
 
 
-KuzLogger.prototype.GetFullMessage = function (keyword, index, timeStampPrefix, name, prefix, message, duration) {
+KuzLogger.prototype.getFullMessage = function (keyword, index, timeStampPrefix, name, prefix, message, duration) {
 	if (message) {
 		return `[ ${keyword} ] ${index}. ${timeStampPrefix} (${name}) ${prefix} [${message}] ${duration}ms\n`;
 	} else {
@@ -265,7 +265,7 @@ KuzLogger.prototype.GetFullMessage = function (keyword, index, timeStampPrefix, 
 	}
 }
 
-KuzLogger.prototype.Log = function (keyword, prefix, message, c1, c2, c3) {
+KuzLogger.prototype.logInternal = function (keyword, prefix, message, c1, c2, c3) {
 	c2 = c2 ? c2 : c1;
 	c3 = c3 ? c3 : c2;
 
@@ -283,8 +283,8 @@ KuzLogger.prototype.Log = function (keyword, prefix, message, c1, c2, c3) {
 	let name = this.name;
 	let messageNoColor = null;
 	if (this.DiskIsOn()) {
-		messageNoColor = this.GetFullMessage(keyword, index, timeStampPrefix, name, prefix, message, duration);
-		fs.appendFileSync(this.GetPath(), messageNoColor);
+		messageNoColor = this.getFullMessage(keyword, index, timeStampPrefix, name, prefix, message, duration);
+		fs.appendFileSync(this.getPath(), messageNoColor);
 	}
 
 	if (this.ColorIsOn()) {
@@ -296,7 +296,7 @@ KuzLogger.prototype.Log = function (keyword, prefix, message, c1, c2, c3) {
 		name = `${c2}${name}${colors.Reset}`;
 		message = message ? `${c3}${message}${colors.Reset}` : message;
 
-		let messageString = this.GetFullMessage(keyword, index, timeStampPrefix, name, prefix, message, duration);
+		let messageString = this.getFullMessage(keyword, index, timeStampPrefix, name, prefix, message, duration);
 		process.stdout.write(messageString);
 	} else {
 		process.stdout.write(messageNoColor);
@@ -305,61 +305,61 @@ KuzLogger.prototype.Log = function (keyword, prefix, message, c1, c2, c3) {
 
 
 
-KuzLogger.prototype.JustLogIt = function (prefix, message) {
-	this.Log(" JUST ", prefix, message, colors.FgMagenta);
+KuzLogger.prototype.justLogIt = function (prefix, message) {
+	this.logInternal(" JUST ", prefix, message, colors.FgMagenta);
 }
 
-KuzLogger.prototype.Mundane = function (prefix, message) {
+KuzLogger.prototype.mundane = function (prefix, message) {
 	if (this.DebugIsOn()) {
-		this.Log(" .... ", prefix, message, colors.FgGreen);
+		this.logInternal(" .... ", prefix, message, colors.FgGreen);
 	}
 }
 
-KuzLogger.prototype.AsExpected = function (prefix, message) {
-	this.Log("  EXP ", prefix, message, colors.FgGreen);
+KuzLogger.prototype.asExpected = function (prefix, message) {
+	this.logInternal("  EXP ", prefix, message, colors.FgGreen);
 }
 
-KuzLogger.prototype.Unexpected = function (prefix, message) {
-	this.Log(" UNEXP", prefix, message, colors.FgRed);
+KuzLogger.prototype.unexpected = function (prefix, message) {
+	this.logInternal(" UNEXP", prefix, message, colors.FgRed);
 }
 
-KuzLogger.prototype.NotFound = function (prefix, message) {
-	this.Log("!FOUND", prefix, message, colors.FgRed);
+KuzLogger.prototype.notFound = function (prefix, message) {
+	this.logInternal("!FOUND", prefix, message, colors.FgRed);
 }
 
 
 
 KuzLogger.prototype.green = function (prefix, message) {
-	this.Log("  OK  ", prefix, message, colors.FgGreen);
+	this.logInternal("  OK  ", prefix, message, colors.FgGreen);
 }
 
 KuzLogger.prototype.greenYellow = function (prefix, message) {
-	this.Log("  OK  ", prefix, message, colors.FgGreen, colors.FgGreen, colors.FgYellow);
+	this.logInternal("  OK  ", prefix, message, colors.FgGreen, colors.FgGreen, colors.FgYellow);
 }
 
 KuzLogger.prototype.red = function (prefix, message) {
-	this.Log(" ERROR", prefix, message, colors.FgRed);
+	this.logInternal(" ERROR", prefix, message, colors.FgRed);
 }
 
 KuzLogger.prototype.yellow = function (prefix, message) {
 	if (this.DebugIsOn()) {
-		this.Log(" .... ", prefix, message, colors.FgYellow);
+		this.logInternal(" .... ", prefix, message, colors.FgYellow);
 	}
 }
 
 
 
 KuzLogger.prototype.goodNews = function (message) {
-	this.Log(" GOOD ", message, colors.FgGreen);
+	this.logInternal(" GOOD ", message, colors.FgGreen);
 }
 
 KuzLogger.prototype.badNews = function (message) {
-	this.Log("  BAD ", message, colors.FgRed);
+	this.logInternal("  BAD ", message, colors.FgRed);
 }
 
 KuzLogger.prototype.someNews = function (message) {
 	if (this.DebugIsOn()) {
-		this.Log(" SOME ", message, colors.FgYellow);
+		this.logInternal(" SOME ", message, colors.FgYellow);
 	}
 }
 

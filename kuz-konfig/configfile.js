@@ -22,7 +22,7 @@ function KuzKonfig (site, dirpath, entity=false) {
 	}
 	this.configFilePath = fsutils.JoinPath(this.configDirpath, this.site.filenames.konfig);
 
-	this.log = this.site.log.GetChild(this.configFilePath);
+	this.log = this.site.log.getChild(this.configFilePath);
 
 	this.root = null;
 	this.parent = null;

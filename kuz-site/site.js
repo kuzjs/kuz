@@ -8,7 +8,7 @@ const fsutils = require("../kuz-fs");
 
 function KuzSite (kaagazz) {
 	this.app = kaagazz;
-	this.log = this.app.log.GetChild();
+	this.log = this.app.log.getChild();
 	this.Setup();
 }
 

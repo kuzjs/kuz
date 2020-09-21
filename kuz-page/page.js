@@ -27,7 +27,7 @@ KuzPage.prototype.SetupPage = function (site, konfig, entry) {
 	this.entry = entry.trim();
 	this.configDirpath = (konfig.dirpath === undefined) ? "" : konfig.dirpath;
 
-	this.log = this.site.log.GetChild(this.InputFilePath());
+	this.log = this.site.log.getChild(this.InputFilePath());
 
 	this.totalRenderTime = 0;
 	this.totalRenders = 0;

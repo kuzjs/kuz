@@ -12,7 +12,7 @@ const layoutsDirectory = "layouts";
 function Theme (themeName, site) {
 	this.themeName = themeName;
 	this.site = site;
-	this.log = this.site.log.GetChild("theme/" + this.themeName);
+	this.log = this.site.log.getChild("theme/" + this.themeName);
 	this.SetupPaths();
 }
 

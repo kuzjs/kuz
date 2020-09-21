@@ -9,7 +9,7 @@ const separators = [];
 function KuzMetaData (kuz, path) {
 	this.kuz = kuz;
 	this.path = path;
-	this.log = this.kuz.log.GetChild(this.path);
+	this.log = this.kuz.log.getChild(this.path);
 	this.Setup();
 }
 
