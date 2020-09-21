@@ -286,7 +286,7 @@ KuzSite.prototype.EveryThing = function () {
 	return everyThing;
 }
 
-KuzSite.prototype.GetPagesByAuthor = function (author) {
+KuzSite.prototype.getPagesByAuthor = function (author) {
 	let pages = [];
 	for (let page of this.pages) {
 		let pageAuthor = page.GetPropertyCascaded("author");
@@ -299,7 +299,7 @@ KuzSite.prototype.GetPagesByAuthor = function (author) {
 	return pages;
 }
 
-KuzSite.prototype.GetPagesInCategory = function (category) {
+KuzSite.prototype.getPagesInCategory = function (category) {
 	let pages = [];
 	for (let page of this.pages) {
 		let pageCategory = page.GetPropertyCascaded("category");
@@ -312,7 +312,7 @@ KuzSite.prototype.GetPagesInCategory = function (category) {
 	return pages;
 }
 
-KuzSite.prototype.GetPagesWithTag = function (tag) {
+KuzSite.prototype.getPagesWithTag = function (tag) {
 	let pages = [];
 	for (let page of this.pages) {
 		if (page.Tags().includes(tag.entry)) {
@@ -322,7 +322,7 @@ KuzSite.prototype.GetPagesWithTag = function (tag) {
 	return pages;
 }
 
-KuzSite.prototype.GetAuthorFromName = function (authorName) {
+KuzSite.prototype.getAuthorFromName = function (authorName) {
 	for (let author of this.authors) {
 		if (author.name == authorName) {
 			return author;
@@ -331,7 +331,7 @@ KuzSite.prototype.GetAuthorFromName = function (authorName) {
 	return null;
 }
 
-KuzSite.prototype.GetCategoryFromName = function (categoryName) {
+KuzSite.prototype.getCategoryFromName = function (categoryName) {
 	for (let category of this.Categories()) {
 		if (category.entry == categoryName) {
 			return category;
@@ -340,7 +340,7 @@ KuzSite.prototype.GetCategoryFromName = function (categoryName) {
 	return null;
 }
 
-KuzSite.prototype.GetTagFromName = function (tagName) {
+KuzSite.prototype.getTagFromName = function (tagName) {
 	for (let tag of this.Tags()) {
 		if (tag.entry == tagName) {
 			return tag;
@@ -349,10 +349,10 @@ KuzSite.prototype.GetTagFromName = function (tagName) {
 	return null;
 }
 
-KuzSite.prototype.GetTagsFromNameArray = function (tagNameArray) {
+KuzSite.prototype.getTagsFromNameArray = function (tagNameArray) {
 	let tags = [];
 	for (let tagName of tagNameArray) {
-		let tag = this.GetTagFromName(tagName);
+		let tag = this.getTagFromName(tagName);
 		if (tag) {
 			tags.push(tag);
 		}
@@ -360,7 +360,7 @@ KuzSite.prototype.GetTagsFromNameArray = function (tagNameArray) {
 	return tags;
 }
 
-KuzSite.prototype.PrintArrayAsTable = function (arr) {
+KuzSite.prototype.printArrayAsTable = function (arr) {
 	if (arr.length == 0) {
 		this.log.red("No elements in array.");
 		return;
@@ -373,13 +373,13 @@ KuzSite.prototype.PrintArrayAsTable = function (arr) {
 	table.Print();
 }
 
-KuzSite.prototype.ForcedUpdateArray = function (arr) {
+KuzSite.prototype.forcedUpdateArray = function (arr) {
 	for (let elem of arr) {
 		elem.ForcedUpdate();
 	}
 }
 
-KuzSite.prototype.UpdateArray = function (arr) {
+KuzSite.prototype.updateArray = function (arr) {
 	for (let elem of arr) {
 		elem.Update();
 	}

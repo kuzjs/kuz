@@ -263,7 +263,7 @@ KuzPage.prototype.Props = function () {
 KuzPage.prototype.getAuthor = function () {
 	let author = this.GetPropertyCascaded("author");
 	if (author.found) {
-		let authorObject = this.site.GetAuthorFromName(author.value);
+		let authorObject = this.site.getAuthorFromName(author.value);
 		if (authorObject) {
 			return authorObject;
 		}
@@ -274,7 +274,7 @@ KuzPage.prototype.getAuthor = function () {
 KuzPage.prototype.getCategory = function () {
 	let category = this.GetPropertyCascaded("category");
 	if (category.found) {
-		let categoryObject = this.site.GetCategoryFromName(category.value);
+		let categoryObject = this.site.getCategoryFromName(category.value);
 		if (categoryObject) {
 			return categoryObject;
 		}
@@ -292,7 +292,7 @@ KuzPage.prototype.Tags = function () {
 
 KuzPage.prototype.getTagObjects = function () {
 	let tagsArray = this.Tags();
-	return this.site.GetTagsFromNameArray(tagsArray);
+	return this.site.getTagsFromNameArray(tagsArray);
 }
 
 
@@ -404,11 +404,11 @@ KuzPage.prototype.Pages = function () {
 
 KuzPage.prototype.GetPages = function () {
 	if (this.GetType() == "author") {
-		return this.site.GetPagesByAuthor(this);
+		return this.site.getPagesByAuthor(this);
 	} else if (this.GetType() == "category") {
-		return this.site.GetPagesInCategory(this);
+		return this.site.getPagesInCategory(this);
 	} else if (this.GetType() == "tag") {
-		return this.site.GetPagesWithTag(this);
+		return this.site.getPagesWithTag(this);
 	} else if (this.GetType() == "collection") {
 		return this.site.Pages();
 	}
