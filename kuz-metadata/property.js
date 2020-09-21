@@ -81,25 +81,17 @@ Property.prototype = {
 };
 
 Property.prototype.IsValid = function () {
-	if (this.Name().length == 0) {
+	if (this.getName().length == 0) {
 		return false;
 	}
 	return true;
 }
 
-Property.prototype.Name = function () {
-	return this.GetName();
-}
-
-Property.prototype.GetName = function () {
+Property.prototype.getName = function () {
 	return this.name;
 }
 
-Property.prototype.Value = function () {
-	return this.GetValue();
-}
-
-Property.prototype.GetValue = function () {
+Property.prototype.getValue = function () {
 	return this.value;
 }
 

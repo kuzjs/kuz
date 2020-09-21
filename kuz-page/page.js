@@ -297,7 +297,7 @@ KuzPage.prototype.getTagObjects = function () {
 
 KuzPage.prototype.getProperty = function (propertyName) {
 	if (this.metaData) {
-		return this.metaData.GetValue(propertyName);
+		return this.metaData.getValue(propertyName);
 	}
 	return {
 		found: false
@@ -311,7 +311,7 @@ KuzPage.prototype.getPropertyCascaded = function (propertyName) {
 	}
 
 	if (this.konfig && this.konfig.metaData) {
-		return this.konfig.metaData.GetValue(propertyName);
+		return this.konfig.metaData.getValue(propertyName);
 	}
 
 	return {
@@ -424,10 +424,10 @@ KuzPage.prototype.getKuz = function () {
 		tprops: this.getTheme().getProps(),
 		lprops: this.getLayout().getProps(),
 
-		code: this.metaData.Code(),
-		json: this.metaData.Json(),
-		kuz: this.metaData.Kuz(),
-		reqs: this.metaData.Reqs(),
+		code: this.metaData.getCodeFiles(),
+		json: this.metaData.getJsons(),
+		kuz: this.metaData.getKuzs(),
+		reqs: this.metaData.getReqs(),
 
 		ipsum: this.getApp().LoremIpsum(),
 		kuzz: {

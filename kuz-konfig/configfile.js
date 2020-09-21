@@ -144,7 +144,7 @@ KuzKonfig.prototype.NumberOfEntriesString = function () {
 }
 
 KuzKonfig.prototype.GetStringValue = function (propertyName) {
-	return this.metaData.GetValue(propertyName);
+	return this.metaData.getValue(propertyName);
 }
 
 KuzKonfig.prototype.getTable = function () {
@@ -168,7 +168,7 @@ KuzKonfig.prototype.getRow = function () {
 		this.RootString(),
 		this.NumberOfChildren(),
 		this.NumberOfPages(),
-		this.metaData.NumberOfProperties()
+		this.metaData.numberOfProperties()
 	];
 }
 

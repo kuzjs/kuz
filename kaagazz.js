@@ -278,7 +278,7 @@ KaagazzApp.prototype.benchMark = function () {
 KaagazzApp.prototype.nietzsche = function () {
 	this.log.green("Kaagazz Nietzschean Experiment.");
 
-	this.site.pages[0].metaData.PrintPropertyTable();
+	this.site.pages[0].metaData.printPropertyTable();
 	//this.benchMark();
 
 	for (let x of this.operands) {

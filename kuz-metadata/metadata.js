@@ -10,16 +10,16 @@ function KuzMetaData (kuz, path) {
 	this.kuz = kuz;
 	this.path = path;
 	this.log = this.kuz.log.getChild(this.path);
-	this.Setup();
+	this.setup();
 }
 
 const KZBaseObject = require("../base/baseobject").KZBaseObject;
 KuzMetaData.prototype = new KZBaseObject();
 
-KuzMetaData.prototype.Setup = function () {
+KuzMetaData.prototype.setup = function () {
 	this.properties = [];
 	this.sections = {};
-	if (this.Exists()) {
+	if (this.exists()) {
 		const Nss = require("../kuz-nss/nss").Nss;
 		let metaNss = new Nss(this.path);
 		let headerLines = metaNss.getMetaLines();
@@ -57,28 +57,28 @@ KuzMetaData.prototype.getProps = function () {
 
 
 
-KuzMetaData.prototype.Code = function () {
+KuzMetaData.prototype.getCodeFiles = function () {
 	if (this.sections.code) {
 		return this.sections.code;
 	}
 	return {};
 }
 
-KuzMetaData.prototype.Json = function () {
+KuzMetaData.prototype.getJsons = function () {
 	if (this.sections.json) {
 		return this.sections.json;
 	}
 	return {};
 }
 
-KuzMetaData.prototype.Kuz = function () {
+KuzMetaData.prototype.getKuzs = function () {
 	if (this.sections.kuz) {
 		return this.sections.kuz;
 	}
 	return {};
 }
 
-KuzMetaData.prototype.Reqs = function () {
+KuzMetaData.prototype.getReqs = function () {
 	let reqs = {};
 	if (this.sections.reqs) {
 		for (let key in this.sections.reqs) {
@@ -95,14 +95,14 @@ KuzMetaData.prototype.Reqs = function () {
 
 
 
-KuzMetaData.prototype.Exists = function () {
+KuzMetaData.prototype.exists = function () {
 	if (fsutils.IsFile(this.path)) {
 		return true;
 	}
 	return false;
 }
 
-KuzMetaData.prototype.GetValue = function (propertyName) {
+KuzMetaData.prototype.getValue = function (propertyName) {
 	if (this.sections.main[propertyName] === undefined) {
 		return {
 			found: false
@@ -115,11 +115,11 @@ KuzMetaData.prototype.GetValue = function (propertyName) {
 	}
 }
 
-KuzMetaData.prototype.NumberOfProperties = function () {
+KuzMetaData.prototype.numberOfProperties = function () {
 	return this.properties.length;
 }
 
-KuzMetaData.prototype.PrintPropertyTable = function () {
+KuzMetaData.prototype.printPropertyTable = function () {
 	for (let sectionName in this.sections) {
 		let section = this.sections[sectionName];
 		console.log(`[${sectionName}]`);
