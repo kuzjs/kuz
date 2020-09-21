@@ -160,11 +160,11 @@ KaagazzApp.prototype.IsApp = function () {
 	return true;
 }
 
-KaagazzApp.prototype.Blackadder = function () {
+KaagazzApp.prototype.getBlackadder = function () {
 	return this.blackadder.json["quotes"];
 }
 
-KaagazzApp.prototype.LoremIpsum = function () {
+KaagazzApp.prototype.getIpsum = function () {
 	return this.ipsum.json["lorem-ipsum"];
 }
 
