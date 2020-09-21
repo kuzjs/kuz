@@ -15,15 +15,6 @@ KZBaseObject.prototype = {
 	},
 	get website () {
 		return this.getSite();
-	},
-	get renderables () {
-		return this.getSite().All();
-	},
-	get table () {
-		return this.getTable();
-	},
-	get row () {
-		return this.getRow();
 	}
 };
 
