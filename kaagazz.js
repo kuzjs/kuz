@@ -343,7 +343,7 @@ KaagazzApp.prototype.checkForModule = function (moduleName) {
 	}
 }
 
-KaagazzApp.prototype.FlagsAreOK = function () {
+KaagazzApp.prototype.flagsAreOK = function () {
 	if (this.numberOfFlags.touchmenot > 0) {
 		if (this.numberOfFlags.total > 1) {
 			this.log.red("Touch-me-not flags cannot be combined.");
@@ -364,13 +364,13 @@ KaagazzApp.prototype.FlagsAreOK = function () {
 	return true;
 }
 
-KaagazzApp.prototype.Run = function () {
+KaagazzApp.prototype.run = function () {
 	if (this.site == null) {
 		this.log.badNews("Site not initialized.");
 		return;
 	}
 
-	if (!this.FlagsAreOK()) {
+	if (!this.flagsAreOK()) {
 		this.log.badNews("Flags are not OK.");
 		return;
 	}
