@@ -5,7 +5,7 @@ const fs = require("fs");
 const Nss = require("../kuz-nss/nss").Nss;
 const KuzPage = require("../kuz-page").KuzPage;
 
-function SetupNextPrevious (arr) {
+function setupNextPrevious (arr) {
 	for (let index=0; index<arr.length; index++) {
 		arr[index].index = index;
 		arr[index].next = arr[index + 1] ? arr[index + 1] : null;
@@ -13,7 +13,7 @@ function SetupNextPrevious (arr) {
 	}
 }
 
-function GetPages (site, dirpath, parentKonfig) {
+function getPages (site, dirpath, parentKonfig) {
 	const KuzKonfig = require("../kuz-konfig").KuzKonfig;
 	let konfig = new KuzKonfig(site, dirpath);
 	if (konfig.DoesNotExist()) {
@@ -49,7 +49,7 @@ function GetPages (site, dirpath, parentKonfig) {
 			} else {
 				entryDirpath = dirpath + "/" + entry;
 			}
-			pages = pages.concat(GetPages(site, entryDirpath, konfig));
+			pages = pages.concat(getPages(site, entryDirpath, konfig));
 		} else {
 			let page = new KuzPage(site, konfig, entry);
 			if (page.IsValid()) {
@@ -60,7 +60,7 @@ function GetPages (site, dirpath, parentKonfig) {
 	}
 
 	if (dirpath === undefined) {
-		SetupNextPrevious(pages);
+		setupNextPrevious(pages);
 	}
 	return pages;
 }
@@ -68,8 +68,8 @@ function GetPages (site, dirpath, parentKonfig) {
 
 
 module.exports = {
-	SetupNextPrevious: SetupNextPrevious,
-	GetPages: GetPages,
+	setupNextPrevious: setupNextPrevious,
+	getPages: getPages,
 	zzz: false
 };
 

@@ -13,7 +13,7 @@ function Theme (themeName, site) {
 	this.themeName = themeName;
 	this.site = site;
 	this.log = this.site.log.getChild("theme/" + this.themeName);
-	this.SetupPaths();
+	this.setupPaths();
 }
 
 const KZBaseObject = require("../base/baseobject").KZBaseObject;
@@ -48,7 +48,7 @@ Theme.prototype.JsonFilePath = function () {
 	return fsutils.JoinPath(this.InputDirectory(), this.JsonFileName());
 }
 
-Theme.prototype.SetupPaths = function () {
+Theme.prototype.setupPaths = function () {
 	if (!fsutils.IsDirectory(this.InputDirectory())) {
 		this.log.red("Theme NOT Found: " + this.InputDirectory());
 		return;
@@ -63,17 +63,17 @@ Theme.prototype.SetupPaths = function () {
 	this.meta = new JsonFile(this.JsonFilePath());
 	this.metaObject = this.meta.json.meta;
 
-	this.SetupLayouts();
-	this.SetupModules();
-	this.SetupCSS();
-	this.SetupJS();
-	this.SetupResources();
-	this.SetupNextPrevious();
+	this.setupLayouts();
+	this.setupModules();
+	this.setupCSS();
+	this.setupJS();
+	this.setupResources();
+	this.setupNextPrevious();
 
 	this.is_valid = true;
 }
 
-Theme.prototype.SetupElements = function (dataArray, ElementClass) {
+Theme.prototype.setupElements = function (dataArray, ElementClass) {
 	let elements = [];
 	if (dataArray) {
 		for (let data of dataArray) {
@@ -87,38 +87,38 @@ Theme.prototype.SetupElements = function (dataArray, ElementClass) {
 	return elements;
 }
 
-Theme.prototype.SetupLayouts = function () {
+Theme.prototype.setupLayouts = function () {
 	const ThemeLayout = require("./layout").ThemeLayout;
-	this.layouts = this.SetupElements(this.meta.json.layouts, ThemeLayout);
+	this.layouts = this.setupElements(this.meta.json.layouts, ThemeLayout);
 }
 
-Theme.prototype.SetupModules = function () {
+Theme.prototype.setupModules = function () {
 	const ThemeModule = require("./module").ThemeModule;
-	this.modules = this.SetupElements(this.meta.json.modules, ThemeModule);
+	this.modules = this.setupElements(this.meta.json.modules, ThemeModule);
 }
 
-Theme.prototype.SetupCSS = function () {
+Theme.prototype.setupCSS = function () {
 	const ThemeCSS = require("./css").ThemeCSS;
-	this.cssArray = this.SetupElements(this.meta.json.css, ThemeCSS);
+	this.cssArray = this.setupElements(this.meta.json.css, ThemeCSS);
 }
 
-Theme.prototype.SetupJS = function () {
+Theme.prototype.setupJS = function () {
 	const ThemeJS = require("./js").ThemeJS;
-	this.jsArray = this.SetupElements(this.meta.json.js, ThemeJS);
+	this.jsArray = this.setupElements(this.meta.json.js, ThemeJS);
 }
 
-Theme.prototype.SetupResources = function () {
+Theme.prototype.setupResources = function () {
 	const ThemeResource = require("./resource").ThemeResource;
-	this.resourceArray = this.SetupElements(this.meta.json.resources, ThemeResource);
+	this.resourceArray = this.setupElements(this.meta.json.resources, ThemeResource);
 }
 
-Theme.prototype.SetupNextPrevious = function () {
-	const SetupNextPrevious = require("../kuz-site/utils").SetupNextPrevious;
-	SetupNextPrevious(this.layouts);
-	SetupNextPrevious(this.modules);
-	SetupNextPrevious(this.cssArray);
-	SetupNextPrevious(this.jsArray);
-	SetupNextPrevious(this.resourceArray);
+Theme.prototype.setupNextPrevious = function () {
+	const setupNextPrevious = require("../kuz-site/utils").setupNextPrevious;
+	setupNextPrevious(this.layouts);
+	setupNextPrevious(this.modules);
+	setupNextPrevious(this.cssArray);
+	setupNextPrevious(this.jsArray);
+	setupNextPrevious(this.resourceArray);
 }
 
 Theme.prototype.getProps = function () {

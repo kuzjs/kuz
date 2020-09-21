@@ -59,7 +59,7 @@ KuzSite.prototype.Error = function (errorMessage) {
 
 KuzSite.prototype.SetupPages = function () {
 	const utils = require("./utils");
-	this.pages = utils.GetPages(this);
+	this.pages = utils.getPages(this);
 }
 
 KuzSite.prototype.SetupThemes = function () {
