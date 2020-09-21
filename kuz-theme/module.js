@@ -21,7 +21,7 @@ ThemeModule.prototype.Setup = function () {
 	this.forcedUpdate();
 }
 
-ThemeModule.prototype.AllIsWell = function () {
+ThemeModule.prototype.ok = function () {
 	if (this.allIsWell === undefined) {
 		return false;
 	}

@@ -16,7 +16,7 @@ JsonFile.prototype.GetId = function () {
 	return this.id;
 }
 
-JsonFile.prototype.AllIsWell = function () {
+JsonFile.prototype.ok = function () {
 	return this.allIsWell;
 }
 

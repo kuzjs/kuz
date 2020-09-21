@@ -24,7 +24,7 @@ function KaagazzApp () {
 	this.log.setName(this.getTitle());
 	this.setupFlags();
 
-	if (this.AllIsWell()) {
+	if (this.ok()) {
 		const KuzSite = require("./kuz-site").KuzSite;
 		this.site = new KuzSite(this);
 		this.setupOperands();
@@ -37,20 +37,20 @@ KaagazzApp.prototype.getProps = function () {
 	return this.meta.json;
 }
 
-KaagazzApp.prototype.AllIsWell = function () {
-	if (!this.meta.AllIsWell()) {
+KaagazzApp.prototype.ok = function () {
+	if (!this.meta.ok()) {
 		return false;
 	}
 
-	if (!this.flagsJson.AllIsWell()) {
+	if (!this.flagsJson.ok()) {
 		return false;
 	}
 
-	if (!this.blackadder.AllIsWell()) {
+	if (!this.blackadder.ok()) {
 		return false;
 	}
 
-	if (!this.ipsum.AllIsWell()) {
+	if (!this.ipsum.ok()) {
 		return false;
 	}
 

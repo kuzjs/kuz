@@ -22,7 +22,7 @@ ThemeLayout.prototype.Setup = function () {
 	this.forcedUpdate();
 }
 
-ThemeLayout.prototype.AllIsWell = function () {
+ThemeLayout.prototype.ok = function () {
 	if (this.allIsWell === undefined) {
 		return false;
 	}
