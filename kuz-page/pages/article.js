@@ -38,7 +38,7 @@ Article.prototype.Section = function (sectionName) {
 	return null;
 }
 
-Article.prototype.GetContentHtml = function () {
+Article.prototype.getContentHtml = function () {
 	return pug.render(this.sections["content"].content, options=this.page.GetPageOptionsFN());
 }
 

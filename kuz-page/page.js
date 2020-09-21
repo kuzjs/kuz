@@ -151,18 +151,18 @@ KuzPage.prototype.OutputFileName = function () {
 	}
 }
 
-KuzPage.prototype.GetContentString = function () {
+KuzPage.prototype.getContentString = function () {
 	return this.inputNss.GetBodyString();
 }
 
 KuzPage.prototype.getArticle = function () {
 	const Article = require("./pages/article").Article;
-	let article = new Article(this, this.GetContentString());
+	let article = new Article(this, this.getContentString());
 	return article;
 }
 
-KuzPage.prototype.GetContentHtml = function () {
-	return this.getArticle().ContentHtml();
+KuzPage.prototype.getContentHtml = function () {
+	return this.getArticle().getContentHtml();
 }
 
 KuzPage.prototype.OutputFileMTime = function () {
@@ -196,7 +196,7 @@ KuzPage.prototype.OutputFileNesting = function () {
 }
 
 KuzPage.prototype.getPageURL = function () {
-	return fsutils.JoinPath(this.site.HomeURL(), this.OutputDirectoryPartialPath());
+	return fsutils.JoinPath(this.site.getHomeURL(), this.OutputDirectoryPartialPath());
 }
 
 KuzPage.prototype.getBase = function () {
@@ -220,7 +220,7 @@ KuzPage.prototype.getRelativeURL = function () {
 
 
 
-KuzPage.prototype.Name = function () {
+KuzPage.prototype.getName = function () {
 	if (this.isRoot) {
 		return this.OutputDirectoryPartialPath() + "@root";
 	} else {

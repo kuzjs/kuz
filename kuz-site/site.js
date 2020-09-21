@@ -9,10 +9,10 @@ const fsutils = require("../kuz-fs");
 function KuzSite (kaagazz) {
 	this.app = kaagazz;
 	this.log = this.app.log.getChild();
-	this.Setup();
+	this.setup();
 }
 
-KuzSite.prototype.Setup = function () {
+KuzSite.prototype.setup = function () {
 	this.filenames = this.app.meta.json.filenames;
 	this.input_dirs = this.app.meta.json.input;
 	this.output_dirs = this.app.meta.json.output;
@@ -23,11 +23,11 @@ KuzSite.prototype.Setup = function () {
 
 	const JsonFile = require("../kuz-json").JsonFile;
 	this.meta = new JsonFile(this.siteJsonPath);
-	this.log.SetName(this.HomeURL());
+	this.log.setName(this.getHomeURL());
 
 	this.konfigs = [];
-	this.SetupThemes();
-	this.SetupPages();
+	this.setupThemes();
+	this.setupPages();
 }
 
 KuzSite.prototype.AddKonfig = function (konfig) {
@@ -35,7 +35,7 @@ KuzSite.prototype.AddKonfig = function (konfig) {
 	this.konfigs.push(konfig);
 }
 
-KuzSite.prototype.HomeURL = function () {
+KuzSite.prototype.getHomeURL = function () {
 	return fsutils.TrimSlashes(this.meta.json.meta.SITE_URL);
 }
 
@@ -47,22 +47,18 @@ KuzSite.prototype.IsSite = function () {
 	return true;
 }
 
-KuzSite.prototype.HelloWorld = function () {
-	this.log.red("Hello, KuzSite!");
-}
-
 KuzSite.prototype.Error = function (errorMessage) {
 	this.error = true;
 	this.errorMessage = errorMessage;
 	this.log.red(this.errorMessage);
 }
 
-KuzSite.prototype.SetupPages = function () {
+KuzSite.prototype.setupPages = function () {
 	const utils = require("./utils");
 	this.pages = utils.getPages(this);
 }
 
-KuzSite.prototype.SetupThemes = function () {
+KuzSite.prototype.setupThemes = function () {
 	this.themes = [];
 
 	let themeNames = this.meta.json.themes;

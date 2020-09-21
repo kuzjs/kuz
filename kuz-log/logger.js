@@ -118,15 +118,15 @@ KuzLogger.prototype.unlock = function () {
 
 
 
-KuzLogger.prototype.SetName = function (name) {
+KuzLogger.prototype.setName = function (name) {
 	this.name = name;
 }
 
 
 
-KuzLogger.prototype.GetIndex = function () {
+KuzLogger.prototype.getIndex = function () {
 	if (this.parent) {
-		return this.parent.GetIndex();
+		return this.parent.getIndex();
 	}
 	return this.index;
 }
@@ -270,7 +270,7 @@ KuzLogger.prototype.logInternal = function (keyword, prefix, message, c1, c2, c3
 	c3 = c3 ? c3 : c2;
 
 	this.IncrementIndex();
-	let index = (this.GetIndex() + "").padStart(3);
+	let index = (this.getIndex() + "").padStart(3);
 
 	let dataString = `${GetDateString()}`;
 	let timeString = `${GetTimeString()}`;

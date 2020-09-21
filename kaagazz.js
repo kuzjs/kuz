@@ -21,7 +21,7 @@ function KaagazzApp () {
 	this.blackadder = new JsonFile(blackadderJsonPath);
 	this.ipsum = new JsonFile(loremIpsumJsonPath);
 
-	this.log.SetName(this.getTitle());
+	this.log.setName(this.getTitle());
 	this.SetupFlags();
 
 	if (this.AllIsWell()) {
