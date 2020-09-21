@@ -197,7 +197,7 @@ KaagazzApp.prototype.showSomeHelp = function () {
 		}
 	}
 
-	table.Print();
+	table.print();
 }
 
 KaagazzApp.prototype.showFullHelp = function () {
@@ -207,7 +207,7 @@ KaagazzApp.prototype.showFullHelp = function () {
 		table.add(flag);
 	}
 
-	table.Print();
+	table.print();
 }
 
 KaagazzApp.prototype.showIndependentFlags = function () {
@@ -219,7 +219,7 @@ KaagazzApp.prototype.showIndependentFlags = function () {
 		}
 	}
 
-	table.Print();
+	table.print();
 }
 
 KaagazzApp.prototype.showModifierFlags = function () {
@@ -231,7 +231,7 @@ KaagazzApp.prototype.showModifierFlags = function () {
 		}
 	}
 
-	table.Print();
+	table.print();
 }
 
 KaagazzApp.prototype.showMajorFlags = function () {
@@ -243,7 +243,7 @@ KaagazzApp.prototype.showMajorFlags = function () {
 		}
 	}
 
-	table.Print();
+	table.print();
 }
 
 KaagazzApp.prototype.showVersion = function () {
@@ -256,7 +256,7 @@ KaagazzApp.prototype.showVersion = function () {
 	table.addRow(["Title", this.getTitle()]);
 	table.addRow(["Version", this.getVersion()]);
 	table.addRow(["Description", this.getDescription()]);
-	table.Print();
+	table.print();
 }
 
 KaagazzApp.prototype.benchMark = function () {
@@ -294,7 +294,7 @@ KaagazzApp.prototype.listStuff = function (flags) {
 		for (let operand of this.operands) {
 			table.add(operand);
 		}
-		table.Print();
+		table.print();
 	}
 }
 

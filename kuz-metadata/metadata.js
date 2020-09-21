@@ -131,7 +131,7 @@ KuzMetaData.prototype.PrintPropertyTable = function () {
 		for (let property of this.properties) {
 			table.add(property);
 		}
-		table.Print();
+		table.print();
 	}
 }
 

@@ -366,7 +366,7 @@ KuzSite.prototype.printArrayAsTable = function (arr) {
 	for (let item of arr) {
 		table.add(item);
 	}
-	table.Print();
+	table.print();
 }
 
 KuzSite.prototype.forcedUpdateArray = function (arr) {

@@ -169,12 +169,12 @@ KZTable.prototype.GetDataRowString = function (rowIndex) {
 	return this.getRowString(rowId, row);
 }
 
-KZTable.prototype.PrintRow = function (rowIndex) {
+KZTable.prototype.printRow = function (rowIndex) {
 	let rowString = this.GetDataRowString(rowIndex);
 	console.log(rowString);
 }
 
-KZTable.prototype.Print = function () {
+KZTable.prototype.print = function () {
 	let rowSeparator = this.getRowSeparator();
 	let headerRowString = this.GetHeaderRowString();
 
@@ -184,7 +184,7 @@ KZTable.prototype.Print = function () {
 		console.log(rowSeparator);
 	}
 	for (let i=0; i<this.rowData.length; i++) {
-		this.PrintRow(i);
+		this.printRow(i);
 	}
 	console.log(rowSeparator);
 	return this;
