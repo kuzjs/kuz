@@ -78,6 +78,7 @@ Property.prototype = {
 };
 
 Property.prototype.setup = function (textLine) {
+	textLine = textLine.trim();
 	let separatorIndex = textLine.length;
 	let colonIndex = textLine.indexOf(":");
 	if (colonIndex > 0) {
@@ -89,12 +90,20 @@ Property.prototype.setup = function (textLine) {
 		separatorIndex = equalsIndex;
 	}
 
-	this.nameX = textLine.slice(0, separatorIndex).trim();
-	let value = textLine.slice(separatorIndex + 1).trim();
-	this.valueX = getAppropriateValue(value);
+	if (separatorIndex > 0 && separatorIndex < textLine.length) {
+		this.nameX = textLine.slice(0, separatorIndex).trim();
+		let value = textLine.slice(separatorIndex + 1).trim();
+		this.valueX = getAppropriateValue(value);
+		this.badInput = false;
+	} else {
+		this.badInput = true;
+	}
 }
 
-Property.prototype.IsValid = function () {
+Property.prototype.ok = function () {
+	if (this.badInput) {
+		return false;
+	}
 	if (this.getName().length == 0) {
 		return false;
 	}
