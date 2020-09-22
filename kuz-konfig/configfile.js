@@ -40,8 +40,8 @@ function KuzKonfig (site, dirpath, entity=false) {
 	}
 }
 
-const KuZBaseObject = require("../kuz-baseobject").KuZBaseObject;
-KuzKonfig.prototype = new KuZBaseObject();
+const KuzBaseObject = require("../kuz-baseobject").KuzBaseObject;
+KuzKonfig.prototype = new KuzBaseObject();
 KuzKonfig.prototype.codeLetter = "g";
 
 KuzKonfig.prototype.setParent = function (configFileParentObject) {

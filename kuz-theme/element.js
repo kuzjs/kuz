@@ -9,8 +9,8 @@ function ThemeElement (dirName) {
 	this.dirName = dirName;
 }
 
-const KuZBaseObject = require("../kuz-baseobject").KuZBaseObject;
-ThemeElement.prototype = new KuZBaseObject();
+const KuzBaseObject = require("../kuz-baseobject").KuzBaseObject;
+ThemeElement.prototype = new KuzBaseObject();
 ThemeElement.prototype.typeName = "ThemeElement";
 
 ThemeElement.prototype.setupThemeElement = function (theme, data) {

@@ -18,8 +18,8 @@ function Theme (themeName, site) {
 	this.getApp().themeSetupActon.record();
 }
 
-const KuZBaseObject = require("../kuz-baseobject").KuZBaseObject;
-Theme.prototype = new KuZBaseObject();
+const KuzBaseObject = require("../kuz-baseobject").KuzBaseObject;
+Theme.prototype = new KuzBaseObject();
 Theme.prototype.typeName = "Theme";
 
 Theme.prototype.getName = function () {
