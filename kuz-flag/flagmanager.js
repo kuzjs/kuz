@@ -47,8 +47,8 @@ KuzFlagManager.prototype.setupFlagArray = function () {
 				}
 			}
 		} else {
-			if (lastFlag && lastFlag.HasParams()) {
-				lastFlag.AddParam(argument);
+			if (lastFlag && lastFlag.hasParams()) {
+				lastFlag.addParam(argument);
 			} else {
 				this.args.push(argument);
 			}

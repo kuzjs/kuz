@@ -20,7 +20,7 @@ function KuzFlag (flagObject) {
 	this.touchmenot = (flagObject.touchmenot === undefined) ? false : flagObject.touchmenot;
 	this.independent = !this.major && !this.modifier && !this.touchmenot;
 
-	this.hasParams = (flagObject.params === undefined) ? false : flagObject.params;
+	this.has_params = (flagObject.params === undefined) ? false : flagObject.params;
 	this.count = 0;
 	this.params = [];
 }
@@ -29,31 +29,31 @@ KuzFlag.prototype.IsSet = function () {
 	return (this.count > 0) ? true : false;
 }
 
-KuzFlag.prototype.Code = function () {
+KuzFlag.prototype.getCode = function () {
 	return "-" + this.code;
 }
 
-KuzFlag.prototype.Name = function () {
+KuzFlag.prototype.getName = function () {
 	return this.name;
 }
 
-KuzFlag.prototype.FullName = function () {
-	return "--" + this.Name();
+KuzFlag.prototype.getFullName = function () {
+	return "--" + this.getName();
 }
 
-KuzFlag.prototype.Description = function () {
+KuzFlag.prototype.getDescription = function () {
 	return this.description;
 }
 
-KuzFlag.prototype.Disk = function () {
+KuzFlag.prototype.getDisk = function () {
 	return (this.disk) ? "Disk" : "";
 }
 
-KuzFlag.prototype.Status = function () {
+KuzFlag.prototype.getStatus = function () {
 	return (this.implemented) ? "Working" : "Dev";
 }
 
-KuzFlag.prototype.Type = function () {
+KuzFlag.prototype.getType = function () {
 	if (this.major) {
 		return "Major";
 	} else if (this.modifier) {
@@ -63,36 +63,36 @@ KuzFlag.prototype.Type = function () {
 	}
 }
 
-KuzFlag.prototype.Attributes = function () {
+KuzFlag.prototype.getAttributes = function () {
 	let attributes = [];
-	if (this.Disk() != "") {
-		attributes.push(this.Disk());
+	if (this.getDisk() != "") {
+		attributes.push(this.getDisk());
 	}
 	attributes.push(this.Status());
 	attributes.push(this.Type());
 	return attributes.join(" | ");
 }
 
-KuzFlag.prototype.State = function () {
+KuzFlag.prototype.getState = function () {
 	return "".padStart(this.count, "+");
 }
 
-KuzFlag.prototype.HasParams = function () {
-	return this.hasParams;
+KuzFlag.prototype.hasParams = function () {
+	return this.has_params;
 }
 
-KuzFlag.prototype.AddParam = function (param) {
-	if (this.HasParams()) {
+KuzFlag.prototype.addParam = function (param) {
+	if (this.hasParams()) {
 		this.params.push(param);
 	}
 }
 
-KuzFlag.prototype.Params = function () {
+KuzFlag.prototype.getParams = function () {
 	return this.params;
 }
 
-KuzFlag.prototype.ParamsString = function () {
-	if (this.HasParams()) {
+KuzFlag.prototype.getParamsString = function () {
+	if (this.hasParams()) {
 		if (this.params.length == 0) {
 			return "[]"
 		}
@@ -101,32 +101,20 @@ KuzFlag.prototype.ParamsString = function () {
 	return "---";
 }
 
-KuzFlag.prototype.FileName = function () {
-	return this.Name() + ".txt";
+KuzFlag.prototype.getFileName = function () {
+	return this.getName() + ".txt";
 }
 
-KuzFlag.prototype.FilePath = function () {
+KuzFlag.prototype.getFilePath = function () {
 	return fsutils.JoinPath(helpDocDirectory, this.FileName());
 }
 
-KuzFlag.prototype.GetDoc = function () {
+KuzFlag.prototype.getDoc = function () {
 	return fs.readFileSync(this.FilePath(), "utf8");
 }
 
-KuzFlag.prototype.PrintDoc = function () {
-	console.log(this.GetDoc());
-}
-
-KuzFlag.prototype.getRow = function () {
-	return [
-		this.Code(),
-		this.FullName(),
-		this.Description(),
-		this.Attributes(),
-		this.FilePath(),
-		this.State(),
-		this.ParamsString()
-	];
+KuzFlag.prototype.printDoc = function () {
+	console.log(this.getDoc());
 }
 
 KuzFlag.prototype.getTable = function () {
@@ -140,6 +128,18 @@ KuzFlag.prototype.getTable = function () {
 	table.addColumn("State");
 	table.addColumn("Params");
 	return table;
+}
+
+KuzFlag.prototype.getRow = function () {
+	return [
+		this.getCode(),
+		this.getFullName(),
+		this.getDescription(),
+		this.getAttributes(),
+		this.getFilePath(),
+		this.getState(),
+		this.getParamsString()
+	];
 }
 
 
