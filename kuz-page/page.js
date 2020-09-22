@@ -8,7 +8,7 @@ const fsutils = require("../kuz-fs");
 
 function KuzPage (site, konfig, entry, isRoot = false) {
 	this.isRoot = isRoot;
-	this.SetupPage(site, konfig, entry);
+	this.setupPage(site, konfig, entry);
 }
 
 
@@ -21,7 +21,7 @@ KuzPage.prototype.codeLetter = "p";
 
 
 
-KuzPage.prototype.SetupPage = function (site, konfig, entry) {
+KuzPage.prototype.setupPage = function (site, konfig, entry) {
 	this.setSite(site);
 	this.setKonfig(konfig);
 	this.entry = entry.trim();
@@ -35,11 +35,13 @@ KuzPage.prototype.SetupPage = function (site, konfig, entry) {
 	this.tags = [];
 
 	if (this.InputFileExists()) {
-		const KuzMetaData = require("../kuz-metadata").KuzMetaData;
-		this.metaData = new KuzMetaData(this, this.InputFilePath());
-
 		const Nss = require("../kuz-nss/nss").Nss;
 		this.inputNss = new Nss(this.InputFilePath());
+
+		const KuzFile = require("../kuz-kuzfile").KuzFile;
+		this.kuzFile = new KuzFile(this, this.InputFilePath());
+
+		this.metaData = this.kuzFile.getMetaData();
 	}
 }
 
