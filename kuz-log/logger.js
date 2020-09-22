@@ -359,6 +359,10 @@ KuzLogger.prototype.notFound = function (prefix, message) {
 	this.logInternal("!FOUND", prefix, message, colors.FgRed);
 }
 
+KuzLogger.prototype.makeSuggestion = function (prefix, message) {
+	this.logInternal("  SUG ", prefix, message, colors.FgYellow);
+}
+
 
 
 KuzLogger.prototype.green = function (prefix, message) {
