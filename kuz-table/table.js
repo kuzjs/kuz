@@ -105,6 +105,8 @@ KuZTable.prototype.addColumn = function (columnName, columnLength, columnColor=f
 	return this;
 }
 
+
+
 KuZTable.prototype.add = function (obj) {
 	let row = obj["getRow"]();
 	this.addRow(row);
@@ -128,6 +130,13 @@ KuZTable.prototype.addRow = function (row) {
 	this.rowData.push(row);
 	return this;
 }
+
+KuZTable.prototype.addSeparatorRow = function () {
+	this.rowData.push(false);
+	return this;
+}
+
+
 
 KuZTable.prototype.getColumnLength = function (columnIndex) {
 	return this.columnObjects[columnIndex].length;
@@ -215,7 +224,11 @@ KuZTable.prototype.print = function () {
 		console.log(rowSeparator);
 	}
 	for (let i=0; i<this.rowData.length; i++) {
-		this.printRow(i);
+		if (this.rowData[i] === false) {
+			console.log(rowSeparator);
+		} else {
+			this.printRow(i);
+		}
 	}
 	console.log(rowSeparator);
 	return this;

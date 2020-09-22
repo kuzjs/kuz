@@ -27,6 +27,7 @@ KuzBenchMark.prototype.print = function () {
 	for (let action of this.actions) {
 		table.add(action);
 	}
+	table.addSeparatorRow();
 	table.addRow(["Total", "", "", this.getTimePassed(), ""]);
 	table.print();
 }
