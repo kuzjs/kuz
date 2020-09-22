@@ -16,12 +16,45 @@ KuZTable.prototype.reset = function () {
 	this.rowData = [];
 	this.show_index = true;
 	this.show_header = true;
+
+	this.color = false;
+	this.headerColor = false;
+	this.frameColor = false;
+
 	this.firstColumn = {
 		name: "Id",
-		length: 5
+		length: 5,
+		color: false
 	};
 	return this;
 }
+
+KuZTable.prototype.clear = function () {
+	this.rowData = [];
+	return this;
+}
+
+
+
+KuZTable.prototype.colorIsOn = function () {
+	return this.color;
+}
+
+KuZTable.prototype.colorIsOff = function () {
+	return !this.colorIsOn();
+}
+
+
+
+KuZTable.prototype.setHeaderColor = function (headerColor) {
+	this.headerColor = headerColor;
+}
+
+KuZTable.prototype.setFrameColor = function (frameColor) {
+	this.frameColor = frameColor;
+}
+
+
 
 KuZTable.prototype.showIndex = function () {
 	this.show_index = true;
@@ -43,10 +76,7 @@ KuZTable.prototype.hideHeader = function () {
 	return this;
 }
 
-KuZTable.prototype.clear = function () {
-	this.rowData = [];
-	return this;
-}
+
 
 KuZTable.prototype.setPadding = function (paddingLength) {
 	this.paddingLength = paddingLength;
@@ -62,14 +92,15 @@ KuZTable.prototype.getSeparator = function () {
 	return this.getPaddingString() + "|" + this.getPaddingString();
 }
 
-KuZTable.prototype.addColumn = function (columnName, columnLength) {
+KuZTable.prototype.addColumn = function (columnName, columnLength, columnColor=false) {
 	if (columnLength === undefined || columnLength < columnName.length) {
 		columnLength = columnName.length;
 	}
 
 	this.columnObjects.push({
 		name: columnName,
-		length: columnLength
+		length: columnLength,
+		color: columnColor
 	});
 	return this;
 }
