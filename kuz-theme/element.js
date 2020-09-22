@@ -48,7 +48,7 @@ ThemeElement.prototype.getTitle = function () {
 	return this.data.title ? this.data.title : defaultText.title;
 }
 
-ThemeElement.prototype.InputFileName = function () {
+ThemeElement.prototype.getInputFileName = function () {
 	return this.getPath();
 }
 

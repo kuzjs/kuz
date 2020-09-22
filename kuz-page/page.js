@@ -121,15 +121,15 @@ KuzPage.prototype.InputDirectoryPath = function () {
 	return path;
 }
 
-KuzPage.prototype.InputFileExtension = function () {
+KuzPage.prototype.getInputFileExtension = function () {
 	return "kuz";
 }
 
-KuzPage.prototype.InputFileName = function () {
+KuzPage.prototype.getInputFileName = function () {
 	if (this.HasInputDirectory()) {
 		return "index.kuz";
 	} else {
-		return this.entry + "." + this.InputFileExtension();
+		return this.entry + "." + this.getInputFileExtension();
 	}
 }
 
@@ -145,7 +145,7 @@ KuzPage.prototype.OutputDirectoryPartialPath = function () {
 	}
 }
 
-KuzPage.prototype.OutputFileName = function () {
+KuzPage.prototype.getOutputFileName = function () {
 	if (this.HasPrettyURL()) {
 		return "index.html";
 	} else {
@@ -214,7 +214,7 @@ KuzPage.prototype.getRelativeURL = function () {
 	if (this.HasPrettyURL()) {
 		return this.OutputDirectoryPartialPath();
 	} else {
-		return fsutils.JoinPath(this.OutputDirectoryPartialPath(), this.OutputFileName());
+		return fsutils.JoinPath(this.OutputDirectoryPartialPath(), this.getOutputFileName());
 	}
 }
 

@@ -198,7 +198,7 @@ KuZBaseObject.prototype.getCodeAndName = function () {
 
 KuZBaseObject.prototype.InputFilePath = function (fileName) {
 	if (fileName === undefined) {
-		return fsutils.JoinPath(this.InputDirectoryPath(), this.InputFileName());
+		return fsutils.JoinPath(this.InputDirectoryPath(), this.getInputFileName());
 	} else {
 		return fsutils.JoinPath(this.InputDirectoryPath(), fileName);
 	}
@@ -214,7 +214,7 @@ KuZBaseObject.prototype.InputFileMTime = function () {
 
 KuZBaseObject.prototype.OutputFilePath = function (fileName) {
 	if (fileName === undefined) {
-		return fsutils.JoinPath(this.OutputDirectoryPath(), this.OutputFileName());
+		return fsutils.JoinPath(this.OutputDirectoryPath(), this.getOutputFileName());
 	} else {
 		return fsutils.JoinPath(this.OutputDirectoryPath(), fileName);
 	}
