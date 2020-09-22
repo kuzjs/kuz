@@ -112,7 +112,7 @@ KuzSite.prototype.getSpecialDirectory = function () {
 	return this.getOutputDirectoryFromJson("special");
 }
 
-KuzSite.prototype.getThemesDirectory = function () {
+KuzSite.prototype.getThemesInputDirectory = function () {
 	return this.getInputDirectoryFromJson("themes");
 }
 

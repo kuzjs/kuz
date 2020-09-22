@@ -26,28 +26,28 @@ Theme.prototype.getName = function () {
 	return this.themeName;
 }
 
-Theme.prototype.ThemesInputDirectory = function () {
-	return this.site.getThemesDirectory();
+Theme.prototype.getThemesInputDirectory = function () {
+	return this.site.getThemesInputDirectory();
 }
 
-Theme.prototype.ThemesOutputDirectory = function () {
+Theme.prototype.getThemesOutputDirectory = function () {
 	return fsutils.JoinPath("docs/x/dist/themes");
 }
 
 Theme.prototype.InputDirectory = function () {
-	return fsutils.JoinPath(this.ThemesInputDirectory(), this.getName());
+	return fsutils.JoinPath(this.getThemesInputDirectory(), this.getName());
 }
 
 Theme.prototype.OutputDirectory = function () {
-	return fsutils.JoinPath(this.ThemesOutputDirectory(), this.getName());
+	return fsutils.JoinPath(this.getThemesOutputDirectory(), this.getName());
 }
 
-Theme.prototype.JsonFileName = function () {
+Theme.prototype.getJsonFileName = function () {
 	return "theme.json";
 }
 
-Theme.prototype.JsonFilePath = function () {
-	return fsutils.JoinPath(this.InputDirectory(), this.JsonFileName());
+Theme.prototype.getJsonFilePath = function () {
+	return fsutils.JoinPath(this.InputDirectory(), this.getJsonFileName());
 }
 
 Theme.prototype.setupTheme = function () {
@@ -56,13 +56,13 @@ Theme.prototype.setupTheme = function () {
 		return;
 	}
 
-	if (!fsutils.IsFile(this.JsonFilePath())) {
-		this.log.red("Theme JSON NOT Found: " + this.JsonFilePath());
+	if (!fsutils.IsFile(this.getJsonFilePath())) {
+		this.log.red("Theme JSON NOT Found: " + this.getJsonFilePath());
 		return;
 	}
 
 	const KuzJson = require("../kuz-json").KuzJson;
-	this.meta = new KuzJson(this.JsonFilePath());
+	this.meta = new KuzJson(this.getJsonFilePath());
 	this.metaObject = this.meta.json.meta;
 
 	this.setupLayouts();

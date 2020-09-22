@@ -452,7 +452,7 @@ KuzPage.prototype.getPageOptions = function () {
 
 KuzPage.prototype.getPageOptionsFN = function () {
 	let options = this.getPageOptions();
-	options.filename = this.site.getThemesDirectory() + "/x.pug";
+	options.filename = this.site.getThemesInputDirectory() + "/x.pug";
 	return options;
 }
 
