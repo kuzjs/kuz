@@ -20,26 +20,26 @@ KuZBaseObject.prototype = {
 
 KuZBaseObject.prototype.typeName = "KuZBaseObject";
 
-KuZBaseObject.prototype.TypeName = function () {
+KuZBaseObject.prototype.getTypeName = function () {
 	return this.typeName;
 }
 
-KuZBaseObject.prototype.TypeNamePlural = function () {
+KuZBaseObject.prototype.getTypeNamePlural = function () {
 	if (this.typeNamePlural) {
 		return this.typeNamePlural;
 	}
 	return this.typeName + "s";
 }
 
-KuZBaseObject.prototype.CodeLetter = function () {
+KuZBaseObject.prototype.getCodeLetter = function () {
 	if (this.codeLetter) {
 		return this.codeLetter;
 	}
-	return this.TypeName()[0];
+	return this.getTypeName()[0];
 }
 
 KuZBaseObject.prototype.getCodeName = function () {
-	return this.CodeLetter() + this.index;
+	return this.getCodeLetter() + this.index;
 }
 
 
