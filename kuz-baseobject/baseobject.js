@@ -196,7 +196,7 @@ KuzBaseObject.prototype.getCodeAndName = function () {
 
 
 
-KuzBaseObject.prototype.InputFilePath = function (fileName) {
+KuzBaseObject.prototype.getInputFilePath = function (fileName) {
 	if (fileName === undefined) {
 		return fsutils.JoinPath(this.getInputDirectoryPath(), this.getInputFileName());
 	} else {
@@ -204,15 +204,15 @@ KuzBaseObject.prototype.InputFilePath = function (fileName) {
 	}
 }
 
-KuzBaseObject.prototype.InputFileExists = function () {
-	return fsutils.FileExists(this.InputFilePath());
+KuzBaseObject.prototype.inputFileExists = function () {
+	return fsutils.FileExists(this.getInputFilePath());
 }
 
 KuzBaseObject.prototype.getInputFileMTime = function () {
-	fsutils.GetFileMTime(this.InputFilePath());
+	fsutils.GetFileMTime(this.getInputFilePath());
 }
 
-KuzBaseObject.prototype.OutputFilePath = function (fileName) {
+KuzBaseObject.prototype.getOutputFilePath = function (fileName) {
 	if (fileName === undefined) {
 		return fsutils.JoinPath(this.getOutputDirectoryPath(), this.getOutputFileName());
 	} else {
@@ -220,25 +220,25 @@ KuzBaseObject.prototype.OutputFilePath = function (fileName) {
 	}
 }
 
-KuzBaseObject.prototype.OutputFileExists = function () {
-	return fsutils.FileExists(this.OutputFilePath());
+KuzBaseObject.prototype.outputFileExists = function () {
+	return fsutils.FileExists(this.getOutputFilePath());
 }
 
 KuzBaseObject.prototype.getOutputFileMTime = function () {
-	fsutils.GetFileMTime(this.OutputFilePath());
+	fsutils.GetFileMTime(this.getOutputFilePath());
 }
 
 
 
 KuzBaseObject.prototype.buildable = function () {
-	if (!this.OutputFileExists()) {
+	if (!this.outputFileExists()) {
 		this.log.green("Can be built.", this.getCodeName());
 	}
 	return this;
 }
 
 KuzBaseObject.prototype.build = function () {
-	if (!this.OutputFileExists()) {
+	if (!this.outputFileExists()) {
 		this.update();
 	}
 	return this;

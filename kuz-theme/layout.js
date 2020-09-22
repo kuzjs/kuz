@@ -17,8 +17,8 @@ ThemeLayout.prototype = new ThemeElement("layouts");
 ThemeLayout.prototype.typeName = "Layout";
 
 ThemeLayout.prototype.setupLayout = function () {
-	if (!fs.existsSync(this.InputFilePath())) {
-		this.theme.site.error("Layout not found: " + this.InputFilePath());
+	if (!fs.existsSync(this.getInputFilePath())) {
+		this.theme.site.error("Layout not found: " + this.getInputFilePath());
 		return;
 	}
 	this.forcedUpdate();
@@ -32,13 +32,13 @@ ThemeLayout.prototype.ok = function () {
 }
 
 ThemeLayout.prototype.forcedUpdate = function () {
-	this.pug = pug.compileFile(this.InputFilePath());
-	this.mtimeMs = fs.statSync(this.InputFilePath()).mtimeMs;
+	this.pug = pug.compileFile(this.getInputFilePath());
+	this.mtimeMs = fs.statSync(this.getInputFilePath()).mtimeMs;
 	this.okay = true;
 }
 
 ThemeLayout.prototype.needsUpdate = function () {
-	if (this.mtimeMs == fs.statSync(this.InputFilePath()).mtimeMs) {
+	if (this.mtimeMs == fs.statSync(this.getInputFilePath()).mtimeMs) {
 		return false;
 	}
 	return true;
@@ -51,7 +51,7 @@ ThemeLayout.prototype.update = function () {
 }
 
 ThemeLayout.prototype.updatable = function () {
-	this.PrintInputFilePath();
+	this.printInputFilePath();
 }
 
 

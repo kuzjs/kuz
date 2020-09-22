@@ -29,17 +29,17 @@ KuzPage.prototype.setupPage = function (site, konfig, entry) {
 	this.entry = entry.trim();
 	this.configDirpath = (konfig.dirpath === undefined) ? "" : konfig.dirpath;
 
-	this.log = this.site.log.getChild(this.InputFilePath());
+	this.log = this.site.log.getChild(this.getInputFilePath());
 
 	this.totalRenderTime = 0;
 	this.totalRenders = 0;
 
 	this.tags = [];
 
-	if (this.InputFileExists()) {
+	if (this.inputFileExists()) {
 
 		const KuzFile = require("../kuz-kuzfile").KuzFile;
-		this.kuzFile = new KuzFile(this, this.InputFilePath());
+		this.kuzFile = new KuzFile(this, this.getInputFilePath());
 
 		this.metaData = this.kuzFile.getMetaData();
 	}
@@ -54,7 +54,7 @@ KuzPage.prototype.Reset = function () {
 }
 
 KuzPage.prototype.ok = function () {
-	if (fsutils.IsFile(this.InputFilePath())) {
+	if (fsutils.IsFile(this.getInputFilePath())) {
 		return true;
 	}
 	return false;
@@ -168,13 +168,13 @@ KuzPage.prototype.getContentHtml = function () {
 }
 
 KuzPage.prototype.getOutputFileMTime = function () {
-	if (fsutils.IsFile(this.OutputFilePath())) {
-		return fs.statSync(this.OutputFilePath()).mtimeMs;
+	if (fsutils.IsFile(this.getOutputFilePath())) {
+		return fs.statSync(this.getOutputFilePath()).mtimeMs;
 	}
 	return 0;
 }
 
-KuzPage.prototype.OutputFileExists = function () {
+KuzPage.prototype.outputFileExists = function () {
 	let mTime = this.getOutputFileMTime();
 	if (mTime == 0) {
 		return false;
@@ -183,7 +183,7 @@ KuzPage.prototype.OutputFileExists = function () {
 	}
 }
 
-KuzPage.prototype.OutputFileIsOlderThanMeta = function () {
+KuzPage.prototype.outputFileIsOlderThanMeta = function () {
 	let outputFileMTime = this.getOutputFileMTime();
 	if (outputFileMTime < this.site.meta.mtimeMs) {
 		return true;
@@ -194,7 +194,7 @@ KuzPage.prototype.OutputFileIsOlderThanMeta = function () {
 }
 
 KuzPage.prototype.getOutputFileNesting = function () {
-	return (this.OutputFilePath().split("/").length - 2);
+	return (this.getOutputFilePath().split("/").length - 2);
 }
 
 KuzPage.prototype.getPageURL = function () {
@@ -280,7 +280,7 @@ KuzPage.prototype.getCategory = function () {
 	return this.site.getDefaultCategory();
 }
 
-KuzPage.prototype.Tags = function () {
+KuzPage.prototype.getTagNames = function () {
 	let tagsArray = this.getProperty("tags");
 	if (tagsArray.found) {
 		return tagsArray.value;
@@ -288,8 +288,8 @@ KuzPage.prototype.Tags = function () {
 	return [];
 }
 
-KuzPage.prototype.getTagObjects = function () {
-	let tagsArray = this.Tags();
+KuzPage.prototype.getTags = function () {
+	let tagsArray = this.getTagNames();
 	return this.site.getTagsFromNameArray(tagsArray);
 }
 
@@ -457,7 +457,7 @@ KuzPage.prototype.getPageOptionsFN = function () {
 }
 
 KuzPage.prototype.toString = function () {
-	return this.typeName + ": (" + this.Name() +") [" + this.OutputFilePath() + "]";
+	return this.typeName + ": (" + this.Name() +") [" + this.getOutputFilePath() + "]";
 }
 
 
@@ -465,20 +465,20 @@ KuzPage.prototype.toString = function () {
 
 
 KuzPage.prototype.needsUpdate = function () {
-	if (this.OutputFileIsOlderThanMeta()) {
+	if (this.outputFileIsOlderThanMeta()) {
 		return true;
 	}
 
-	if (fsutils.IsNewerThan(this.konfig.getPath(), this.OutputFilePath())) {
+	if (fsutils.IsNewerThan(this.konfig.getPath(), this.getOutputFilePath())) {
 		return true;
 	}
 
 	if (this.HasInputDirectory()) {
-		if (fsutils.DirectoryHasNewerFiles(this.getInputDirectoryPath(), this.OutputFilePath())) {
+		if (fsutils.DirectoryHasNewerFiles(this.getInputDirectoryPath(), this.getOutputFilePath())) {
 			return true;
 		}
 	} else {
-		if (fsutils.IsNewerThan(this.InputFilePath(), this.OutputFilePath())) {
+		if (fsutils.IsNewerThan(this.getInputFilePath(), this.getOutputFilePath())) {
 			return true;
 		}
 	}
@@ -487,9 +487,9 @@ KuzPage.prototype.needsUpdate = function () {
 }
 
 KuzPage.prototype.build = function () {
-	if (!this.OutputFileExists()) {
+	if (!this.outputFileExists()) {
 		this.render();
-		this.log.greenYellow(`Built in ${this.averageRenderTimeString()}:`, this.OutputFilePath());
+		this.log.greenYellow(`Built in ${this.averageRenderTimeString()}:`, this.getOutputFilePath());
 	}
 	return this;
 }
@@ -499,20 +499,20 @@ KuzPage.prototype.update = function () {
 		this.Reset();
 		this.Setup();
 		this.render();
-		this.log.greenYellow(`Updated in ${this.averageRenderTimeString()}:`, this.OutputFilePath());
+		this.log.greenYellow(`Updated in ${this.averageRenderTimeString()}:`, this.getOutputFilePath());
 	}
 }
 
 KuzPage.prototype.forcedUpdate = function () {
 	this.render();
-	this.log.greenYellow(`Forced-updated in ${this.averageRenderTimeString()}:`, this.OutputFilePath());
+	this.log.greenYellow(`Forced-updated in ${this.averageRenderTimeString()}:`, this.getOutputFilePath());
 }
 
 KuzPage.prototype.render = function () {
 	this.site.app.pageRenderActon.resetClock();
 	let t1 = Date.now();
 
-	let htmlPath = this.OutputFilePath();
+	let htmlPath = this.getOutputFilePath();
 	let layout = this.getLayout();
 	let html = layout.pug(options = this.getPageOptions());
 
@@ -537,7 +537,7 @@ KuzPage.prototype.averageRenderTimeString = function () {
 }
 
 KuzPage.prototype.RenderLog = function () {
-	this.log.greenYellow(`Rendered ${this.averageRenderTimeString()}:`, this.OutputFilePath());
+	this.log.greenYellow(`Rendered ${this.averageRenderTimeString()}:`, this.getOutputFilePath());
 }
 
 
@@ -578,8 +578,8 @@ KuzPage.prototype.getRow = function () {
 		this.GetType(),
 		this.getLayout().getName(),
 		//this.PageURL(),
-		this.InputFilePath(),
-		this.OutputFilePath()
+		this.getInputFilePath(),
+		this.getOutputFilePath()
 	];
 }
 

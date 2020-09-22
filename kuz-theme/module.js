@@ -14,8 +14,8 @@ ThemeModule.prototype = new ThemeElement("modules");
 ThemeModule.prototype.typeName = "Module";
 
 ThemeModule.prototype.setupModule = function () {
-	if (!fs.existsSync(this.InputFilePath())) {
-		this.theme.site.error("Module not found: " + this.InputFilePath());
+	if (!fs.existsSync(this.getInputFilePath())) {
+		this.theme.site.error("Module not found: " + this.getInputFilePath());
 		return;
 	}
 	this.forcedUpdate();
@@ -33,7 +33,7 @@ ThemeModule.prototype.forcedUpdate = function () {
 }
 
 ThemeModule.prototype.needsUpdate = function () {
-	if (this.mtimeMs == fs.statSync(this.InputFilePath()).mtimeMs) {
+	if (this.mtimeMs == fs.statSync(this.getInputFilePath()).mtimeMs) {
 		return false;
 	}
 	return true;
@@ -46,7 +46,7 @@ ThemeModule.prototype.update = function () {
 }
 
 ThemeModule.prototype.updatable = function () {
-	this.PrintInputFilePath();
+	this.printInputFilePath();
 }
 
 

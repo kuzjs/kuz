@@ -31,11 +31,11 @@ ProtoFile.prototype.getOutputFileName = function () {
 }
 
 ProtoFile.prototype.toString = function () {
-	return "File: " + this.InputFilePath() + " --> " + this.OutputFilePath();
+	return "File: " + this.getInputFilePath() + " --> " + this.getOutputFilePath();
 }
 
 ProtoFile.prototype.updatable = function () {
-	this.PrintInputFilePath();
+	this.printInputFilePath();
 }
 
 ProtoFile.prototype.update = function () {
@@ -43,10 +43,10 @@ ProtoFile.prototype.update = function () {
 }
 
 ProtoFile.prototype.forcedUpdate = function () {
-	let contents = fs.readFileSync(this.InputFilePath());
+	let contents = fs.readFileSync(this.getInputFilePath());
 	fsutils.CreateDirectory(this.getOutputDirectoryPath());
-	fs.writeFileSync(this.OutputFilePath(), contents);
-	this.log.green("Updated: " + this.OutputFilePath());
+	fs.writeFileSync(this.getOutputFilePath(), contents);
+	this.log.green("Updated: " + this.getOutputFilePath());
 }
 
 ProtoFile.prototype.log = function () {

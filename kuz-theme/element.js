@@ -21,7 +21,7 @@ ThemeElement.prototype.setupThemeElement = function (theme, data) {
 }
 
 ThemeElement.prototype.elementIsValid = function () {
-	return this.InputFileExists();
+	return this.inputFileExists();
 }
 
 ThemeElement.prototype.getProps = function () {
@@ -61,7 +61,7 @@ ThemeElement.prototype.getInputDirectoryPath = function () {
 }
 
 ThemeElement.prototype.printInputFilePath = function () {
-	this.log.green("Input file path: " + this.InputFilePath());
+	this.log.green("Input file path: " + this.getInputFilePath());
 }
 
 ThemeElement.prototype.getTable = function () {

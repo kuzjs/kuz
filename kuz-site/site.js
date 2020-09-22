@@ -306,7 +306,7 @@ KuzSite.prototype.getPagesInCategory = function (category) {
 KuzSite.prototype.getPagesWithTag = function (tag) {
 	let pages = [];
 	for (let page of this.pages) {
-		if (page.Tags().includes(tag.entry)) {
+		if (page.getTagNames().includes(tag.entry)) {
 			pages.push(page);
 		}
 	}
