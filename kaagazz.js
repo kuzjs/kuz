@@ -23,11 +23,7 @@ function KaagazzApp () {
 
 	this.log.setName(this.getTitle());
 
-	const KuzBenchMark = require("./kuz-benchmark").KuzBenchMark;
-	this.benchMark = new KuzBenchMark("KaagazzApp.BenchMark()");
-	this.pageSetupActon = this.benchMark.getNewAction("Page setup");
-	this.pageRenderActon = this.benchMark.getNewAction("Page render");
-
+	this.setupBenchMark();
 	this.setupFlags();
 
 	if (this.ok()) {
@@ -71,6 +67,13 @@ KaagazzApp.prototype.ok = function () {
 	}
 
 	return true;
+}
+
+KaagazzApp.prototype.setupBenchMark = function () {
+	const KuzBenchMark = require("./kuz-benchmark").KuzBenchMark;
+	this.benchMark = new KuzBenchMark("KaagazzApp.BenchMark()");
+	this.pageSetupActon = this.benchMark.getNewAction("Page setup");
+	this.pageRenderActon = this.benchMark.getNewAction("Page render");
 }
 
 KaagazzApp.prototype.setupFlags = function () {
