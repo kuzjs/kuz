@@ -16,8 +16,8 @@ function Theme (themeName, site) {
 	this.setupPaths();
 }
 
-const KZBaseObject = require("../base/baseobject").KZBaseObject;
-Theme.prototype = new KZBaseObject();
+const KuZBaseObject = require("../kuz-baseobject").KuZBaseObject;
+Theme.prototype = new KuZBaseObject();
 Theme.prototype.typeName = "Theme";
 
 Theme.prototype.getName = function () {
