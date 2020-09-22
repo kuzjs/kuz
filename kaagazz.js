@@ -15,10 +15,10 @@ function KaagazzApp () {
 	this.log = new KuzLogger("KaagazzApp");
 	//this.log.TurnOnDisk();
 
+	this.setupBenchMark();
 	this.setupJsons();
 	this.log.setName(this.getTitle());
 
-	this.setupBenchMark();
 	this.setupFlags();
 
 	if (this.ok()) {
@@ -64,21 +64,28 @@ KaagazzApp.prototype.ok = function () {
 	return true;
 }
 
-KaagazzApp.prototype.setupJsons = function () {
-	const KuzJson = require("./kuz-json").KuzJson;
-	this.meta = new KuzJson(kaagazzJsonPath);
-	this.flagsJson = new KuzJson(flagsJsonPath);
-	this.blackadder = new KuzJson(blackadderJsonPath);
-	this.ipsum = new KuzJson(loremIpsumJsonPath);
-}
-
 KaagazzApp.prototype.setupBenchMark = function () {
 	const KuzBenchMark = require("./kuz-benchmark").KuzBenchMark;
 	this.benchMark = new KuzBenchMark("KaagazzApp.BenchMark()");
+	this.jsonParseActon = this.benchMark.getNewAction("JSON parsing");
 	this.pageSetupActon = this.benchMark.getNewAction("Page setup");
 	this.themeSetupActon = this.benchMark.getNewAction("Theme setup");
 	this.layoutSetupActon = this.benchMark.getNewAction("Layout setup");
 	this.pageRenderActon = this.benchMark.getNewAction("Page render");
+}
+
+KaagazzApp.prototype.setupJsons = function () {
+	const KuzJson = require("./kuz-json").KuzJson;
+	this.jsonParseActon.resetClock();
+	this.meta = new KuzJson(kaagazzJsonPath);
+	this.jsonParseActon.record();
+	this.flagsJson = new KuzJson(flagsJsonPath);
+	this.jsonParseActon.record();
+	this.blackadder = new KuzJson(blackadderJsonPath);
+	this.jsonParseActon.record();
+	this.ipsum = new KuzJson(loremIpsumJsonPath);
+	this.jsonParseActon.record();
+	this.jsonParseActon.record();
 }
 
 KaagazzApp.prototype.setupFlags = function () {
