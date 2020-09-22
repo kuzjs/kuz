@@ -20,7 +20,7 @@ KuzMetaData.prototype.setup = function () {
 		let metaNss = this.kuz.getNss();
 		let headerLines = metaNss.getMetaLines();
 
-		const KuzSections = require("../../kuz-sections").KuzSections;
+		const KuzSections = require("../kuz-sections").KuzSections;
 		let kuzSections = new KuzSections(headerLines);
 
 		const Property = require("./property").Property;
