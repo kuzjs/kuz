@@ -21,6 +21,10 @@ KuzFile.prototype.getNss = function () {
 	return this.regions;
 }
 
+KuzFile.prototype.getContentLines = function () {
+	return this.regions.getContentLines();
+}
+
 
 
 module.exports = {

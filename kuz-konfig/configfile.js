@@ -35,8 +35,6 @@ function KuzKonfig (site, dirpath, entity=false) {
 
 		this.metaData = this.kuzFile.getMetaData();
 		this.props = this.metaData.getProps();
-
-		this.nss = this.kuzFile.getNss();
 	} else {
 		this.log.badNews("KuzKonfig not found: " + this.path);
 	}
@@ -86,11 +84,11 @@ KuzKonfig.prototype.doesNotExist = function () {
 }
 
 KuzKonfig.prototype.getEntries = function () {
-	return this.nss.getContentLines();
+	return this.kuzFile.getContentLines();
 }
 
 KuzKonfig.prototype.getEntriesObject = function () {
-	let lines = this.nss.getContentLines();
+	let lines = this.kuzFile.getContentLines();
 	let entries = {
 		root: false,
 		nonroot: []
