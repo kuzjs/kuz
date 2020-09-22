@@ -338,48 +338,52 @@ KuzLogger.prototype.logInternal = function (keyword, prefix, message, c1, c2, c3
 
 
 KuzLogger.prototype.justLogIt = function (prefix, message) {
-	this.logInternal(" JUST ", prefix, message, colors.FgMagenta);
+	this.logInternal("  JUST ", prefix, message, colors.FgMagenta);
 }
 
 KuzLogger.prototype.mundane = function (prefix, message) {
 	if (this.debugIsOn()) {
-		this.logInternal(" .... ", prefix, message, colors.FgGreen);
+		this.logInternal("  .... ", prefix, message, colors.FgGreen);
 	}
 }
 
 KuzLogger.prototype.asExpected = function (prefix, message) {
-	this.logInternal("  EXP ", prefix, message, colors.FgGreen);
+	this.logInternal("  EXP  ", prefix, message, colors.FgGreen);
 }
 
 KuzLogger.prototype.unexpected = function (prefix, message) {
-	this.logInternal(" UNEXP", prefix, message, colors.FgRed);
+	this.logInternal(" UNEXP ", prefix, message, colors.FgRed);
 }
 
 KuzLogger.prototype.notFound = function (prefix, message) {
-	this.logInternal("!FOUND", prefix, message, colors.FgRed);
+	this.logInternal(" !FOUND", prefix, message, colors.FgRed);
 }
 
 KuzLogger.prototype.makeSuggestion = function (prefix, message) {
-	this.logInternal("  SUG ", prefix, message, colors.FgYellow);
+	this.logInternal("  SUG  ", prefix, message, colors.FgYellow);
+}
+
+KuzLogger.prototype.warn = function (prefix, message) {
+	this.logInternal("WARNING", prefix, message, colors.FgYellow);
 }
 
 
 
 KuzLogger.prototype.green = function (prefix, message) {
-	this.logInternal("  OK  ", prefix, message, colors.FgGreen);
+	this.logInternal("   OK  ", prefix, message, colors.FgGreen);
 }
 
 KuzLogger.prototype.greenYellow = function (prefix, message) {
-	this.logInternal("  OK  ", prefix, message, colors.FgGreen, colors.FgGreen, colors.FgYellow);
+	this.logInternal("   OK  ", prefix, message, colors.FgGreen, colors.FgGreen, colors.FgYellow);
 }
 
 KuzLogger.prototype.red = function (prefix, message) {
-	this.logInternal(" ERROR", prefix, message, colors.FgRed);
+	this.logInternal(" ERROR ", prefix, message, colors.FgRed);
 }
 
 KuzLogger.prototype.yellow = function (prefix, message) {
 	if (this.DebugIsOn()) {
-		this.logInternal(" .... ", prefix, message, colors.FgYellow);
+		this.logInternal("  .... ", prefix, message, colors.FgYellow);
 	}
 }
 
