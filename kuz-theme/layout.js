@@ -7,7 +7,9 @@ const fsutils = require("../kuz-fs");
 
 function ThemeLayout (theme, data) {
 	this.setupThemeElement(theme, data);
+	this.getApp().layoutSetupActon.resetClock();
 	this.setupLayout();
+	this.getApp().layoutSetupActon.record();
 }
 
 const ThemeElement = require("./element").ThemeElement;
