@@ -9,7 +9,7 @@ function KuzFile (owner, path) {
 	const KuzRegions = require("./regions").KuzRegions;
 	this.regions = new KuzRegions(this.path);
 
-	const KuzMetaData = require("../kuz-metadata").KuzMetaData;
+	const KuzMetaData = require("./kuz-metadata").KuzMetaData;
 	this.metaData = new KuzMetaData(this, this.path);
 }
 

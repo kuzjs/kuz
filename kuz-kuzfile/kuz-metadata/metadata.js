@@ -2,19 +2,16 @@
 
 
 
-const fsutils = require("../kuz-fs");
+const fsutils = require("../../kuz-fs");
 
 const separators = [];
 
 function KuzMetaData (kuz, path) {
 	this.kuz = kuz;
 	this.path = path;
-	this.log = this.kuz.log.getChild(this.path);
+	this.log = this.kuz.log;
 	this.setup();
 }
-
-const KZBaseObject = require("../base/baseobject").KZBaseObject;
-KuzMetaData.prototype = new KZBaseObject();
 
 KuzMetaData.prototype.setup = function () {
 	this.properties = [];
@@ -23,7 +20,7 @@ KuzMetaData.prototype.setup = function () {
 		let metaNss = this.kuz.getNss();
 		let headerLines = metaNss.getMetaLines();
 
-		const KuzSections = require("../kuz-sections").KuzSections;
+		const KuzSections = require("../../kuz-sections").KuzSections;
 		let kuzSections = new KuzSections(headerLines);
 
 		const Property = require("./property").Property;
