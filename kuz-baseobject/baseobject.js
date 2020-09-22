@@ -38,7 +38,7 @@ KuZBaseObject.prototype.CodeLetter = function () {
 	return this.TypeName()[0];
 }
 
-KuZBaseObject.prototype.CodeName = function () {
+KuZBaseObject.prototype.getCodeName = function () {
 	return this.CodeLetter() + this.index;
 }
 
@@ -191,7 +191,7 @@ KuZBaseObject.prototype.isResFile = function () {
 
 
 KuZBaseObject.prototype.CodeAndName = function () {
-	return this.CodeName() + ": " + this.getName();
+	return this.getCodeName() + ": " + this.getName();
 }
 
 
@@ -232,7 +232,7 @@ KuZBaseObject.prototype.OutputFileMTime = function () {
 
 KuZBaseObject.prototype.buildable = function () {
 	if (!this.OutputFileExists()) {
-		this.log.green("Can be built.", this.CodeName());
+		this.log.green("Can be built.", this.getCodeName());
 	}
 	return this;
 }
@@ -246,7 +246,7 @@ KuZBaseObject.prototype.build = function () {
 
 KuZBaseObject.prototype.updatable = function () {
 	if (this.needsUpdate()) {
-		this.log.green("Can be updated.", this.CodeName());
+		this.log.green("Can be updated.", this.getCodeName());
 	}
 	return this;
 }

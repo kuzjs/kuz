@@ -119,7 +119,7 @@ KuzKonfig.prototype.numberOfChildren = function () {
 
 KuzKonfig.prototype.parentString = function () {
 	if (this.parent) {
-		return this.parent.CodeName();
+		return this.parent.getCodeName();
 	} else {
 		return "";
 	}
@@ -152,7 +152,7 @@ KuzKonfig.prototype.getTable = function () {
 
 KuzKonfig.prototype.getRow = function () {
 	return [
-		this.CodeName(),
+		this.getCodeName(),
 		this.path,
 		this.parentString(),
 		this.rootString(),

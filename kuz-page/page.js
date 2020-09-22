@@ -570,9 +570,9 @@ KuzPage.prototype.getTable = function () {
 
 KuzPage.prototype.getRow = function () {
 	return [
-		this.CodeName(),
+		this.getCodeName(),
 		//this.Name(),
-		this.konfig.CodeName(),
+		this.konfig.getCodeName(),
 		//this.Title(),
 		//this.Theme().Name(),
 		this.GetType(),
