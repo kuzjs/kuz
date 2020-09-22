@@ -22,8 +22,10 @@ function KaagazzApp () {
 	this.setupFlags();
 
 	if (this.ok()) {
+		const siteSetupAction = this.benchMark.getNewAction("Site setup");
 		const KuzSite = require("./kuz-site").KuzSite;
 		this.site = new KuzSite(this);
+		siteSetupAction.record();
 		this.setupOperands();
 	} else {
 		this.site = null;
@@ -32,7 +34,7 @@ function KaagazzApp () {
 
 KaagazzApp.prototype.setupBenchMark = function () {
 	const KuzBenchMark = require("./kuz-benchmark").KuzBenchMark;
-	this.benchMark = new KuzBenchMark("KaagazzApp.BenchMark()");
+	this.benchMark = new KuzBenchMark("Kuz BenchMark");
 	this.jsonParseActon = this.benchMark.getNewAction("JSON parsing");
 	this.pageSetupActon = this.benchMark.getNewAction("Page setup");
 	this.themeSetupActon = this.benchMark.getNewAction("Theme setup");
