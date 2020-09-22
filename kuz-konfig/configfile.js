@@ -36,8 +36,7 @@ function KuzKonfig (site, dirpath, entity=false) {
 		this.metaData = this.kuzFile.getMetaData();
 		this.props = this.metaData.getProps();
 
-		const Nss = require("../kuz-nss/nss").Nss;
-		this.nss = new Nss(this.path);
+		this.nss = this.kuzFile.getNss();
 	} else {
 		this.log.badNews("KuzKonfig not found: " + this.path);
 	}

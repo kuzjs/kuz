@@ -2,7 +2,6 @@
 
 const fs = require("fs");
 
-const Nss = require("../kuz-nss/nss").Nss;
 const KuzPage = require("../kuz-page").KuzPage;
 
 function setupNextPrevious (arr) {

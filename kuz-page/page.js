@@ -35,13 +35,12 @@ KuzPage.prototype.setupPage = function (site, konfig, entry) {
 	this.tags = [];
 
 	if (this.InputFileExists()) {
-		const Nss = require("../kuz-nss/nss").Nss;
-		this.inputNss = new Nss(this.InputFilePath());
 
 		const KuzFile = require("../kuz-kuzfile").KuzFile;
 		this.kuzFile = new KuzFile(this, this.InputFilePath());
 
 		this.metaData = this.kuzFile.getMetaData();
+		this.inputNss = this.kuzFile.getNss();
 	}
 }
 
