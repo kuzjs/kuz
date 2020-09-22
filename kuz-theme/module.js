@@ -15,7 +15,7 @@ ThemeModule.prototype.typeName = "Module";
 
 ThemeModule.prototype.setupModule = function () {
 	if (!fs.existsSync(this.InputFilePath())) {
-		this.theme.site.Error("Module not found: " + this.InputFilePath());
+		this.theme.site.error("Module not found: " + this.InputFilePath());
 		return;
 	}
 	this.forcedUpdate();

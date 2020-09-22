@@ -16,7 +16,7 @@ function getPages (site, dirpath, parentKonfig) {
 	const KuzKonfig = require("../kuz-konfig").KuzKonfig;
 	let konfig = new KuzKonfig(site, dirpath);
 	if (konfig.doesNotExist()) {
-		site.Error("Config file NOT found: " + configPath);
+		site.error("Config file NOT found: " + configPath);
 		return [];
 	}
 

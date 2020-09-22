@@ -43,11 +43,11 @@ KuzSite.prototype.getProps = function () {
 	return this.meta.json;
 }
 
-KuzSite.prototype.IsSite = function () {
+KuzSite.prototype.isSite = function () {
 	return true;
 }
 
-KuzSite.prototype.Error = function (errorMessage) {
+KuzSite.prototype.error = function (errorMessage) {
 	this.error = true;
 	this.errorMessage = errorMessage;
 	this.log.red(this.errorMessage);
@@ -92,40 +92,36 @@ KuzSite.prototype.getNestedValueFromCascade = function (parent, child) {
 	}
 }
 
-KuzSite.prototype.GetInputDirectoryFromJson = function (dirName) {
+KuzSite.prototype.getInputDirectoryFromJson = function (dirName) {
 	return this.app.meta.json.input[dirName];
 }
 
-KuzSite.prototype.GetOutputDirectoryFromJson = function (dirName) {
+KuzSite.prototype.getOutputDirectoryFromJson = function (dirName) {
 	return this.getNestedValueFromCascade("output", dirName);
 }
 
-KuzSite.prototype.GetInputDirectory = function () {
-	return this.GetInputDirectoryFromJson("pages");
+KuzSite.prototype.getInputDirectory = function () {
+	return this.getInputDirectoryFromJson("pages");
 }
 
-KuzSite.prototype.GetOutputDirectory = function () {
-	return this.GetOutputDirectoryFromJson("root");
+KuzSite.prototype.getOutputDirectory = function () {
+	return this.getOutputDirectoryFromJson("root");
 }
 
-KuzSite.prototype.GetSpecialDirectory = function () {
-	return this.GetOutputDirectoryFromJson("special");
+KuzSite.prototype.getSpecialDirectory = function () {
+	return this.getOutputDirectoryFromJson("special");
 }
 
-KuzSite.prototype.GetThemesDirectory = function () {
-	return this.GetInputDirectoryFromJson("themes");
+KuzSite.prototype.getThemesDirectory = function () {
+	return this.getInputDirectoryFromJson("themes");
 }
 
-KuzSite.prototype.GetDataDirectory = function () {
-	return this.GetInputDirectoryFromJson("data");
-}
-
-KuzSite.prototype.GetCollectionsDirectory = function () {
-	return this.GetInputDirectoryFromJson("collections");
+KuzSite.prototype.getDataDirectory = function () {
+	return this.getInputDirectoryFromJson("data");
 }
 
 KuzSite.prototype.GetDataFileContents = function (filename) {
-	let filepath = fsutils.JoinPath(this.GetDataDirectory(), filename);
+	let filepath = fsutils.JoinPath(this.getDataDirectory(), filename);
 	if (fsutils.IsFile(filepath)) {
 		return fs.readFileSync(filepath, "utf8");
 	} else {
@@ -134,7 +130,7 @@ KuzSite.prototype.GetDataFileContents = function (filename) {
 	}
 }
 
-KuzSite.prototype.GetThemeFromName = function (themeName) {
+KuzSite.prototype.getThemeFromName = function (themeName) {
 	for (let theme of this.site.themes) {
 		if (theme.themeName == themeName) {
 			return theme;
@@ -144,15 +140,14 @@ KuzSite.prototype.GetThemeFromName = function (themeName) {
 	return null;
 }
 
-KuzSite.prototype.DefaultTheme = function () {
+KuzSite.prototype.getDefaultTheme = function () {
 	return this.themes[0];
 }
 
-KuzSite.prototype.PrintDirectories = function () {
-	this.log.SomeNews("  Input: " + this.GetInputDirectory());
-	this.log.SomeNews(" Output: " + this.GetOutputDirectory());
-	this.log.SomeNews("  Colls: " + this.GetCollectionsDirectory());
-	this.log.SomeNews("Special: " + this.GetSpecialDirectory());
+KuzSite.prototype.printDirectories = function () {
+	this.log.SomeNews("  Input: " + this.getInputDirectory());
+	this.log.SomeNews(" Output: " + this.getOutputDirectory());
+	this.log.SomeNews("Special: " + this.getSpecialDirectory());
 }
 
 KuzSite.prototype.getAuthors = function () {

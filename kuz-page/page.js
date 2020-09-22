@@ -102,7 +102,7 @@ KuzPage.prototype.IsVisible = function () {
 
 KuzPage.prototype.HasInputDirectory = function () {
 	if (this.hasInputDirectory === undefined) {
-		let inputDirectoryPath = fsutils.JoinPath(this.site.GetInputDirectory(), this.configDirpath, this.entry);
+		let inputDirectoryPath = fsutils.JoinPath(this.site.getInputDirectory(), this.configDirpath, this.entry);
 		if (fsutils.IsDirectory(inputDirectoryPath)) {
 			this.hasInputDirectory = true;
 		}
@@ -114,9 +114,9 @@ KuzPage.prototype.HasInputDirectory = function () {
 KuzPage.prototype.InputDirectoryPath = function () {
 	let path;
 	if (this.HasInputDirectory()) {
-		path = fsutils.JoinPath(this.site.GetInputDirectory(), this.configDirpath, this.entry);
+		path = fsutils.JoinPath(this.site.getInputDirectory(), this.configDirpath, this.entry);
 	} else {
-		path = fsutils.JoinPath(this.site.GetInputDirectory(), this.configDirpath);
+		path = fsutils.JoinPath(this.site.getInputDirectory(), this.configDirpath);
 	}
 	return path;
 }
@@ -134,7 +134,7 @@ KuzPage.prototype.InputFileName = function () {
 }
 
 KuzPage.prototype.OutputDirectoryPath = function () {
-	return fsutils.JoinPath(this.site.GetOutputDirectory(), this.OutputDirectoryPartialPath());
+	return fsutils.JoinPath(this.site.getOutputDirectory(), this.OutputDirectoryPartialPath());
 }
 
 KuzPage.prototype.OutputDirectoryPartialPath = function () {
@@ -363,13 +363,13 @@ KuzPage.prototype.getTheme = function () {
 	let themeNameProperty = this.getPropertyCascaded("theme");
 	if (themeNameProperty.found) {
 		let themeName = themeNameProperty.value;
-		let theme = this.site.GetThemeFromName(themeName);
+		let theme = this.site.getThemeFromName(themeName);
 		if (theme) {
 			return theme;
 		}
 	}
 
-	return this.site.DefaultTheme();
+	return this.site.getDefaultTheme();
 }
 
 KuzPage.prototype.getLayoutName = function () {
@@ -452,7 +452,7 @@ KuzPage.prototype.getPageOptions = function () {
 
 KuzPage.prototype.getPageOptionsFN = function () {
 	let options = this.getPageOptions();
-	options.filename = this.site.GetThemesDirectory() + "/x.pug";
+	options.filename = this.site.getThemesDirectory() + "/x.pug";
 	return options;
 }
 

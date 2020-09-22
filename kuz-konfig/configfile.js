@@ -15,9 +15,9 @@ function KuzKonfig (site, dirpath, entity=false) {
 		this.configDirpath = dirpath;
 	} else {
 		if (this.dirpath === undefined) {
-			this.configDirpath = site.GetInputDirectory();
+			this.configDirpath = site.getInputDirectory();
 		} else {
-			this.configDirpath = site.GetInputDirectory() + "/" + dirpath;
+			this.configDirpath = site.getInputDirectory() + "/" + dirpath;
 		}
 	}
 	this.path = fsutils.JoinPath(this.configDirpath, this.site.filenames.konfig);

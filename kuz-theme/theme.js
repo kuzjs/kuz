@@ -27,7 +27,7 @@ Theme.prototype.getName = function () {
 }
 
 Theme.prototype.ThemesInputDirectory = function () {
-	return this.site.GetThemesDirectory();
+	return this.site.getThemesDirectory();
 }
 
 Theme.prototype.ThemesOutputDirectory = function () {
