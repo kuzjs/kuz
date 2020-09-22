@@ -4,10 +4,15 @@
 function KuzBenchMark (name) {
 	this.name = name;
 	this.actions = [];
+	this.init_time = Date.now();
 }
 
 KuzBenchMark.prototype.getName = function () {
 	return this.name;
+}
+
+KuzBenchMark.prototype.getTimePassed = function () {
+	return (Date.now() - this.init_time);
 }
 
 KuzBenchMark.prototype.getNewAction = function (name) {
@@ -22,6 +27,7 @@ KuzBenchMark.prototype.print = function () {
 	for (let action of this.actions) {
 		table.add(action);
 	}
+	table.addRow(["Total", "", "", this.getTimePassed(), ""]);
 	table.print();
 }
 
