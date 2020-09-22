@@ -30,8 +30,10 @@ function KuzKonfig (site, dirpath, entity=false) {
 	this.index = 0;
 
 	if (this.exists()) {
-		const KuzMetaData = require("../kuz-metadata").KuzMetaData;
-		this.metaData = new KuzMetaData(this, this.path);
+		const KuzFile = require("../kuz-kuzfile").KuzFile;
+		this.kuzFile = new KuzFile(this, this.path);
+
+		this.metaData = this.kuzFile.getMetaData();
 		this.props = this.metaData.getProps();
 
 		const Nss = require("../kuz-nss/nss").Nss;
