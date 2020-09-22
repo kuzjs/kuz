@@ -83,10 +83,6 @@ KuzKonfig.prototype.doesNotExist = function () {
 	return !this.exists();
 }
 
-KuzKonfig.prototype.getEntries = function () {
-	return this.kuzFile.getContentLines();
-}
-
 KuzKonfig.prototype.getEntriesObject = function () {
 	let lines = this.kuzFile.getContentLines();
 	let entries = {
@@ -94,11 +90,16 @@ KuzKonfig.prototype.getEntriesObject = function () {
 		nonroot: []
 	};
 	for (let line of lines) {
-		trimmedLine = line.trim();
-		if (trimmedLine.startsWith("[") && trimmedLine.endsWith("]")) {
-			entries.root = trimmedLine.slice(1, -1);
+		let lineNumber = line[0];
+		let lineText = line[1].trim();
+		if (lineText.startsWith("[") && lineText.endsWith("]")) {
+			if (entries.root) {
+				this.log.red(`Multiple roots specified on L${lineNumber}: ${lineText}`);
+			} else {
+				entries.root = lineText.slice(1, -1);
+			}
 		} else {
-			entries.nonroot.push(trimmedLine);
+			entries.nonroot.push(lineText);
 		}
 	}
 	return entries;

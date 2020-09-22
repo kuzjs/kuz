@@ -130,7 +130,7 @@ KuzRegions.prototype.getOddRegionLines = function () {
 				currentRegionIndex++;
 			} else if (currentRegionIndex % 2 == 1) {
 				if (LineIsImportant(currentLineText)) {
-					oddLines.push(currentLineText);
+					oddLines.push(currentLine);
 				}
 			}
 		}
