@@ -119,7 +119,7 @@ KuzFlag.prototype.printDoc = function () {
 
 KuzFlag.prototype.getTable = function () {
 	let table = new KuZTable();
-	table.HideIndex().HideHeader();
+	table.hideIndex().hideHeader();
 	table.addColumn("Code");
 	table.addColumn("Name");
 	table.addColumn("Description");

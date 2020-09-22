@@ -7,15 +7,15 @@ function GetCellString (cellString) {
 }
 
 function KuZTable () {
-	this.Reset();
+	this.reset();
 }
 
-KuZTable.prototype.Reset = function () {
+KuZTable.prototype.reset = function () {
 	this.columnObjects = [];
 	this.paddingLength = 1;
 	this.rowData = [];
-	this.showIndex = true;
-	this.showHeader = true;
+	this.show_index = true;
+	this.show_header = true;
 	this.firstColumn = {
 		name: "Id",
 		length: 5
@@ -23,43 +23,43 @@ KuZTable.prototype.Reset = function () {
 	return this;
 }
 
-KuZTable.prototype.ShowIndex = function () {
-	this.showIndex = true;
+KuZTable.prototype.showIndex = function () {
+	this.show_index = true;
 	return this;
 }
 
-KuZTable.prototype.HideIndex = function () {
-	this.showIndex = false;
+KuZTable.prototype.hideIndex = function () {
+	this.show_index = false;
 	return this;
 }
 
-KuZTable.prototype.ShowHeader = function () {
-	this.showHeader = true;
+KuZTable.prototype.showHeader = function () {
+	this.show_header = true;
 	return this;
 }
 
-KuZTable.prototype.HideHeader = function () {
-	this.showHeader = false;
+KuZTable.prototype.hideHeader = function () {
+	this.show_header = false;
 	return this;
 }
 
-KuZTable.prototype.Clear = function () {
+KuZTable.prototype.clear = function () {
 	this.rowData = [];
 	return this;
 }
 
-KuZTable.prototype.SetPadding = function (paddingLength) {
+KuZTable.prototype.setPadding = function (paddingLength) {
 	this.paddingLength = paddingLength;
 	return this;
 }
 
-KuZTable.prototype.Padding = function () {
+KuZTable.prototype.getPaddingString = function () {
 	let padding = "";
 	return padding.padStart(this.paddingLength);
 }
 
-KuZTable.prototype.Separator = function () {
-	return this.Padding() + "|" + this.Padding();
+KuZTable.prototype.getSeparator = function () {
+	return this.getPaddingString() + "|" + this.getPaddingString();
 }
 
 KuZTable.prototype.addColumn = function (columnName, columnLength) {
@@ -98,63 +98,63 @@ KuZTable.prototype.addRow = function (row) {
 	return this;
 }
 
-KuZTable.prototype.GetColumnLength = function (columnIndex) {
+KuZTable.prototype.getColumnLength = function (columnIndex) {
 	return this.columnObjects[columnIndex].length;
 }
 
 KuZTable.prototype.getRowLength = function () {
-	let rowLength = this.firstColumn.length + (2 * this.Separator().length) - this.paddingLength;
+	let rowLength = this.firstColumn.length + (2 * this.getSeparator().length) - this.paddingLength;
 	for (let columnObject of this.columnObjects) {
-		rowLength += columnObject.length + this.Separator().length;
+		rowLength += columnObject.length + this.getSeparator().length;
 	}
 
 	rowLength -= this.paddingLength;
 	return (rowLength);
 }
 
-KuZTable.prototype.GetNDashes = function (n) {
+KuZTable.prototype.getNDashes = function (n) {
 	let dashes = "";
 	return dashes.padStart(n, "-");
 }
 
-KuZTable.prototype.GetColumnDashes = function (columnLength) {
-	return this.GetNDashes(this.paddingLength + columnLength + this.paddingLength);
+KuZTable.prototype.getColumnDashes = function (columnLength) {
+	return this.getNDashes(this.paddingLength + columnLength + this.paddingLength);
 }
 
 KuZTable.prototype.getRowSeparator = function () {
 	let separator = "+";
 
 	let rowSeparator;
-	if (this.showIndex) {
-		rowSeparator = separator + this.GetColumnDashes(this.firstColumn.length) + separator;
+	if (this.show_index) {
+		rowSeparator = separator + this.getColumnDashes(this.firstColumn.length) + separator;
 	} else {
 		rowSeparator = separator;
 	}
 
 	for (let columnObject of this.columnObjects) {
 		let columnLength = columnObject.length;
-		rowSeparator += this.GetColumnDashes(columnLength) + separator;
+		rowSeparator += this.getColumnDashes(columnLength) + separator;
 	}
 	return rowSeparator;
 }
 
 KuZTable.prototype.getRowString = function (rowId, row) {
 	let rowString;
-	if (this.showIndex) {
-		rowString = "|" + this.Padding() + rowId.padStart(this.firstColumn.length) + this.Separator();
+	if (this.show_index) {
+		rowString = "|" + this.getPaddingString() + rowId.padStart(this.firstColumn.length) + this.getSeparator();
 	} else {
-		rowString = "|" + this.Padding();
+		rowString = "|" + this.getPaddingString();
 	}
 
 	for (let j in row) {
-		let columnLength = this.GetColumnLength(j);
+		let columnLength = this.getColumnLength(j);
 		let cell = GetCellString(row[j]);
-		rowString += cell.padStart(columnLength) + this.Separator();
+		rowString += cell.padStart(columnLength) + this.getSeparator();
 	}
 	return rowString;
 }
 
-KuZTable.prototype.GetHeaderRowString = function () {
+KuZTable.prototype.getHeaderRowString = function () {
 	let row = [];
 	let rowId = this.firstColumn.name;
 	for (let i=0; i<this.columnObjects.length; i++) {
@@ -163,23 +163,23 @@ KuZTable.prototype.GetHeaderRowString = function () {
 	return this.getRowString(rowId, row);
 }
 
-KuZTable.prototype.GetDataRowString = function (rowIndex) {
+KuZTable.prototype.getDataRowString = function (rowIndex) {
 	let row = this.rowData[rowIndex];
 	let rowId = (rowIndex+1) + "";
 	return this.getRowString(rowId, row);
 }
 
 KuZTable.prototype.printRow = function (rowIndex) {
-	let rowString = this.GetDataRowString(rowIndex);
+	let rowString = this.getDataRowString(rowIndex);
 	console.log(rowString);
 }
 
 KuZTable.prototype.print = function () {
 	let rowSeparator = this.getRowSeparator();
-	let headerRowString = this.GetHeaderRowString();
+	let headerRowString = this.getHeaderRowString();
 
 	console.log(rowSeparator);
-	if (this.showHeader) {
+	if (this.show_header) {
 		console.log(headerRowString);
 		console.log(rowSeparator);
 	}
