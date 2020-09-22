@@ -78,7 +78,7 @@ Theme.prototype.setupElements = function (dataArray, ElementClass) {
 	if (dataArray) {
 		for (let data of dataArray) {
 			let element = new ElementClass(this, data);
-			if (element.ElementIsValid()) {
+			if (element.elementIsValid()) {
 				elements.push(element);
 			}
 		}
@@ -143,7 +143,7 @@ Theme.prototype.getLayout = function (layoutName) {
 	return null;
 }
 
-Theme.prototype.IsValid = function () {
+Theme.prototype.ok = function () {
 	if (this.is_valid === undefined) {
 		return false;
 	}

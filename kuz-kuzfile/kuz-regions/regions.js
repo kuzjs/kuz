@@ -44,7 +44,7 @@ function KuzRegions (filename) {
 	this.filename = filename;
 }
 
-KuzRegions.prototype.IsValid = function () {
+KuzRegions.prototype.ok = function () {
 	return this.exists();
 }
 

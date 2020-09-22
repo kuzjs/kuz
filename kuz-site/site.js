@@ -70,7 +70,7 @@ KuzSite.prototype.setupThemes = function () {
 		const Theme = require("../kuz-theme").Theme;
 		for (let themeName of themeNames) {
 			let theme = new Theme(themeName, this);
-			if (theme.IsValid()) {
+			if (theme.ok()) {
 				this.themes.push(theme);
 			} else {
 				this.log.red("Invalid theme: " + themeName);

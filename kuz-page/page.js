@@ -51,7 +51,7 @@ KuzPage.prototype.Reset = function () {
 	//
 }
 
-KuzPage.prototype.IsValid = function () {
+KuzPage.prototype.ok = function () {
 	if (fsutils.IsFile(this.InputFilePath())) {
 		return true;
 	}

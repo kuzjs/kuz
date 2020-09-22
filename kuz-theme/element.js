@@ -20,7 +20,7 @@ ThemeElement.prototype.setupThemeElement = function (theme, data) {
 	this.default = data.default ? data.default : false;
 }
 
-ThemeElement.prototype.ElementIsValid = function () {
+ThemeElement.prototype.elementIsValid = function () {
 	return this.InputFileExists();
 }
 

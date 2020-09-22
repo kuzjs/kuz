@@ -66,7 +66,7 @@ KuzSections.prototype.Setup = function (sectionLines) {
 	}
 }
 
-KuzSections.prototype.IsValid = function () {
+KuzSections.prototype.ok = function () {
 	return true;
 }
 

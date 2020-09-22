@@ -34,7 +34,7 @@ function getPages (site, dirpath, parentKonfig) {
 
 	if (entries.root) {
 		root = new KuzPage(site, konfig, entries.root, true);
-		if (root.IsValid()) {
+		if (root.ok()) {
 			konfig.root = root;
 			pages.push(root);
 		}
@@ -51,7 +51,7 @@ function getPages (site, dirpath, parentKonfig) {
 			pages = pages.concat(getPages(site, entryDirpath, konfig));
 		} else {
 			let page = new KuzPage(site, konfig, entry);
-			if (page.IsValid()) {
+			if (page.ok()) {
 				konfig.addPage(page);
 				pages.push(page);
 			}
