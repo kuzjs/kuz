@@ -10,7 +10,7 @@ const ProtoFile = require("./protofile").ProtoFile;
 ThemeJS.prototype = new ProtoFile("js");
 ThemeJS.prototype.typeName = "JavaScript";
 
-ThemeJS.prototype.IsJsFile = function () {
+ThemeJS.prototype.isJsFile = function () {
 	return true;
 }
 

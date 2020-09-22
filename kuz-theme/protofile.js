@@ -14,7 +14,7 @@ const ThemeElement = require("./element").ThemeElement;
 ProtoFile.prototype = new ThemeElement();
 ProtoFile.prototype.typeName = "ProtoFile";
 
-ProtoFile.prototype.IsProtoFile = function () {
+ProtoFile.prototype.isProtoFile = function () {
 	return true;
 }
 

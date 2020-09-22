@@ -7,14 +7,14 @@ const fsutils = require("../kuz-fs");
 
 function ThemeLayout (theme, data) {
 	this.setupThemeElement(theme, data);
-	this.Setup();
+	this.setupLayout();
 }
 
 const ThemeElement = require("./element").ThemeElement;
 ThemeLayout.prototype = new ThemeElement("layouts");
 ThemeLayout.prototype.typeName = "Layout";
 
-ThemeLayout.prototype.Setup = function () {
+ThemeLayout.prototype.setupLayout = function () {
 	if (!fs.existsSync(this.InputFilePath())) {
 		this.theme.site.Error("Layout not found: " + this.InputFilePath());
 		return;

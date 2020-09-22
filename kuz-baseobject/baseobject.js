@@ -128,63 +128,63 @@ KuZBaseObject.prototype.getPrevious = function () {
 
 
 
-KuZBaseObject.prototype.IsApp = function () {
+KuZBaseObject.prototype.isApp = function () {
 	return false;
 }
 
-KuZBaseObject.prototype.IsSite = function () {
-	return false;
-}
-
-
-
-KuZBaseObject.prototype.IsAuthor = function () {
-	return false;
-}
-
-KuZBaseObject.prototype.IsCategory = function () {
-	return false;
-}
-
-KuZBaseObject.prototype.IsCollection = function () {
-	return false;
-}
-
-KuZBaseObject.prototype.IsTag = function () {
-	return false;
-}
-
-KuZBaseObject.prototype.IsPage = function () {
+KuZBaseObject.prototype.isSite = function () {
 	return false;
 }
 
 
 
-KuZBaseObject.prototype.IsTheme = function () {
+KuZBaseObject.prototype.isAuthor = function () {
 	return false;
 }
 
-KuZBaseObject.prototype.IsLayout = function () {
+KuZBaseObject.prototype.isCategory = function () {
 	return false;
 }
 
-KuZBaseObject.prototype.IsModule = function () {
+KuZBaseObject.prototype.isCollection = function () {
 	return false;
 }
 
-KuZBaseObject.prototype.IsProtoFile = function () {
+KuZBaseObject.prototype.isTag = function () {
 	return false;
 }
 
-KuZBaseObject.prototype.IsCssFile = function () {
+KuZBaseObject.prototype.isPage = function () {
 	return false;
 }
 
-KuZBaseObject.prototype.IsJsFile = function () {
+
+
+KuZBaseObject.prototype.isTheme = function () {
 	return false;
 }
 
-KuZBaseObject.prototype.IsResFile = function () {
+KuZBaseObject.prototype.isLayout = function () {
+	return false;
+}
+
+KuZBaseObject.prototype.isModule = function () {
+	return false;
+}
+
+KuZBaseObject.prototype.isProtoFile = function () {
+	return false;
+}
+
+KuZBaseObject.prototype.isCssFile = function () {
+	return false;
+}
+
+KuZBaseObject.prototype.isJsFile = function () {
+	return false;
+}
+
+KuZBaseObject.prototype.isResFile = function () {
 	return false;
 }
 

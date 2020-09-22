@@ -59,7 +59,7 @@ KuzFlagManager.prototype.setupFlagArray = function () {
 KuzFlagManager.prototype.setupFlagsObject = function () {
 	this.simpleFlags = {};
 	for (let flag of this.flags) {
-		this.simpleFlags[flag.name] = flag.IsSet();
+		this.simpleFlags[flag.name] = flag.isSet();
 	}
 }
 
@@ -73,7 +73,7 @@ KuzFlagManager.prototype.setupCounters = function () {
 	};
 
 	for (let flag of this.flags) {
-		if (flag.IsSet()) {
+		if (flag.isSet()) {
 			this.counter.total++;
 			if (flag.independent) {
 				this.counter.independent++;

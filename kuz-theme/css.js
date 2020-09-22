@@ -10,7 +10,7 @@ const ProtoFile = require("./protofile").ProtoFile;
 ThemeCSS.prototype = new ProtoFile("css");
 ThemeCSS.prototype.typeName = "CSS";
 
-ThemeCSS.prototype.IsCssFile = function () {
+ThemeCSS.prototype.isCssFile = function () {
 	return true;
 }
 

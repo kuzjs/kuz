@@ -25,7 +25,7 @@ function KuzFlag (flagObject) {
 	this.params = [];
 }
 
-KuzFlag.prototype.IsSet = function () {
+KuzFlag.prototype.isSet = function () {
 	return (this.count > 0) ? true : false;
 }
 
@@ -68,8 +68,8 @@ KuzFlag.prototype.getAttributes = function () {
 	if (this.getDisk() != "") {
 		attributes.push(this.getDisk());
 	}
-	attributes.push(this.Status());
-	attributes.push(this.Type());
+	attributes.push(this.getStatus());
+	attributes.push(this.getType());
 	return attributes.join(" | ");
 }
 
@@ -106,11 +106,11 @@ KuzFlag.prototype.getFileName = function () {
 }
 
 KuzFlag.prototype.getFilePath = function () {
-	return fsutils.JoinPath(helpDocDirectory, this.FileName());
+	return fsutils.JoinPath(helpDocDirectory, this.getFileName());
 }
 
 KuzFlag.prototype.getDoc = function () {
-	return fs.readFileSync(this.FilePath(), "utf8");
+	return fs.readFileSync(this.getFilePath(), "utf8");
 }
 
 KuzFlag.prototype.printDoc = function () {

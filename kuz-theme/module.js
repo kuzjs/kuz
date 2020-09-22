@@ -6,14 +6,14 @@ const fsutils = require("../kuz-fs");
 
 function ThemeModule (theme, data) {
 	this.setupThemeElement(theme, data);
-	this.Setup();
+	this.setupModule();
 }
 
 const ThemeElement = require("./element").ThemeElement;
 ThemeModule.prototype = new ThemeElement("modules");
 ThemeModule.prototype.typeName = "Module";
 
-ThemeModule.prototype.Setup = function () {
+ThemeModule.prototype.setupModule = function () {
 	if (!fs.existsSync(this.InputFilePath())) {
 		this.theme.site.Error("Module not found: " + this.InputFilePath());
 		return;

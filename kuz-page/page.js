@@ -60,23 +60,23 @@ KuzPage.prototype.ok = function () {
 
 
 
-KuzPage.prototype.IsPage = function () {
+KuzPage.prototype.isPage = function () {
 	return (this.GetType() == "page") ? true : false;
 }
 
-KuzPage.prototype.IsAuthor = function () {
+KuzPage.prototype.isAuthor = function () {
 	return (this.GetType() == "author") ? true : false;
 }
 
-KuzPage.prototype.IsCategory = function () {
+KuzPage.prototype.isCategory = function () {
 	return (this.GetType() == "category") ? true : false;
 }
 
-KuzPage.prototype.IsCollection = function () {
+KuzPage.prototype.isCollection = function () {
 	return (this.GetType() == "collection") ? true : false;
 }
 
-KuzPage.prototype.IsTag = function () {
+KuzPage.prototype.isTag = function () {
 	return (this.GetType() == "tag") ? true : false;
 }
 
