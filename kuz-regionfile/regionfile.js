@@ -4,11 +4,11 @@ const fs = require("fs");
 
 const fsutils = require("../kuz-fs");
 
-const nssCommentStarters = [
+const regionCommentStarters = [
 	"/", "'", '"', "#"
 ];
 
-const nssSeparatorStarters = [
+const regionSeparatorStarters = [
 	"====", "----",
 	"++++", "____",
 	"....", "~~~~"
@@ -16,7 +16,7 @@ const nssSeparatorStarters = [
 
 function LineIsComment (lineText) {
 	lineText = lineText.trim();
-	for (let nssCommentStarter of nssCommentStarters) {
+	for (let nssCommentStarter of regionCommentStarters) {
 		if (lineText.startsWith(nssCommentStarter)) {
 			return true;
 		}
@@ -30,7 +30,7 @@ function LineIsImportant (lineText) {
 
 function LineIsSeparator (lineText) {
 	lineText = lineText.trim();
-	for (let nssSeparatorStarter of nssSeparatorStarters) {
+	for (let nssSeparatorStarter of regionSeparatorStarters) {
 		if (lineText.startsWith(nssSeparatorStarter)) {
 			return true;
 		}
@@ -40,22 +40,22 @@ function LineIsSeparator (lineText) {
 
 
 
-function KuZNss (filename) {
+function KuzRegionFile (filename) {
 	this.filename = filename;
 }
 
-KuZNss.prototype.IsValid = function () {
+KuzRegionFile.prototype.IsValid = function () {
 	return this.Exists();
 }
 
-KuZNss.prototype.Exists = function () {
+KuzRegionFile.prototype.Exists = function () {
 	if (fsutils.IsFile(this.filename)) {
 		return true;
 	}
 	return false;
 }
 
-KuZNss.prototype.getLinesArray = function (lineText) {
+KuzRegionFile.prototype.getLinesArray = function (lineText) {
 	let values = [];
 	if (fs.existsSync(this.filename)) {
 		let fileText = fs.readFileSync(this.filename, "utf8").replace("\r", "");
@@ -74,7 +74,7 @@ KuZNss.prototype.getLinesArray = function (lineText) {
 	return values;
 }
 
-KuZNss.prototype.getLinesByRegionIndex = function (regionIndex) {
+KuzRegionFile.prototype.getLinesByRegionIndex = function (regionIndex) {
 	let currentRegionIndex = 0;
 	let regionLines = [];
 	if (fs.existsSync(this.filename)) {
@@ -97,7 +97,7 @@ KuZNss.prototype.getLinesByRegionIndex = function (regionIndex) {
 	return regionLines;
 }
 
-KuZNss.prototype.getEvenRegionLines = function () {
+KuzRegionFile.prototype.getEvenRegionLines = function () {
 	let currentRegionIndex = 0;
 	let evenLines = [];
 	if (fs.existsSync(this.filename)) {
@@ -116,7 +116,7 @@ KuZNss.prototype.getEvenRegionLines = function () {
 	return evenLines;
 }
 
-KuZNss.prototype.getOddRegionLines = function () {
+KuzRegionFile.prototype.getOddRegionLines = function () {
 	let currentRegionIndex = 0;
 	let oddLines = [];
 	if (fs.existsSync(this.filename)) {
@@ -137,34 +137,34 @@ KuZNss.prototype.getOddRegionLines = function () {
 
 
 
-KuZNss.prototype.getMetaLines = function () {
+KuzRegionFile.prototype.getMetaLines = function () {
 	return this.getEvenRegionLines();
 }
 
-KuZNss.prototype.getContentLines = function () {
+KuzRegionFile.prototype.getContentLines = function () {
 	return this.getOddRegionLines();
 }
 
 
 
-KuZNss.prototype.getHeaderLines = function () {
+KuzRegionFile.prototype.getHeaderLines = function () {
 	return this.getLinesByRegionIndex(0);
 }
 
-KuZNss.prototype.getBodyLines = function () {
+KuzRegionFile.prototype.getBodyLines = function () {
 	return this.getLinesByRegionIndex(1);
 }
 
-KuZNss.prototype.getBodyString = function () {
+KuzRegionFile.prototype.getBodyString = function () {
 	return this.getBodyLines().join("\n");
 }
 
-KuZNss.prototype.getFooterLines = function () {
+KuzRegionFile.prototype.getFooterLines = function () {
 	return this.getLinesByRegionIndex(2);
 }
 
 module.exports = {
-	Nss: KuZNss
+	KuzRegionFile: KuzRegionFile
 };
 
 

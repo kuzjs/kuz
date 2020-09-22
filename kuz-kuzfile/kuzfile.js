@@ -6,8 +6,8 @@ function KuzFile (owner, path) {
 	this.path = path;
 	this.log = this.owner.log;
 
-	const Nss = require("../kuz-regionfile").Nss;
-	this.nss = new Nss(this.path);
+	const KuzRegionFile = require("../kuz-regionfile").KuzRegionFile;
+	this.regions = new KuzRegionFile(this.path);
 
 	const KuzMetaData = require("../kuz-metadata").KuzMetaData;
 	this.metaData = new KuzMetaData(this, this.path);
@@ -18,7 +18,7 @@ KuzFile.prototype.getMetaData = function () {
 }
 
 KuzFile.prototype.getNss = function () {
-	return this.nss;
+	return this.regions;
 }
 
 
