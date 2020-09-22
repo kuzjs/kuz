@@ -17,10 +17,10 @@ KuzMetaData.prototype.setup = function () {
 	this.properties = [];
 	this.sections = {};
 	if (this.exists()) {
-		let headerLines = this.kuz.getMetaLines();
+		let metaLines = this.kuz.getMetaLines();
 
 		const KuzSections = require("../kuz-sections").KuzSections;
-		let kuzSections = new KuzSections(headerLines);
+		let kuzSections = new KuzSections(metaLines);
 
 		const Property = require("./property").Property;
 		for (let section of kuzSections.sections) {
@@ -30,15 +30,17 @@ KuzMetaData.prototype.setup = function () {
 			}
 
 			for (let line of section.lines) {
-				let property = new Property(line);
+				let lineNumber = line[0];
+				let lineText = line[1];
+				let property = new Property(lineText);
 				if (property.ok()) {
 					if (this.sections[section.name][property.name] === undefined) {
 						this.sections[section.name][property.name] = property.value;
 					} else {
-						this.log.red(`Multiple definitions of: [${property.name}]`);
+						this.log.red(`Multiple definitions on L${lineNumber}: [${property.name}]`);
 					}
 				} else {
-					this.log.red(`Bad property: [${line}]`);
+					this.log.red(`Bad property on L${lineNumber}: [${lineText}]`);
 				}
 			}
 		}

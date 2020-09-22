@@ -110,7 +110,7 @@ KuzRegions.prototype.getEvenRegionLines = function () {
 				currentRegionIndex++;
 			} else if (currentRegionIndex % 2 == 0) {
 				if (LineIsImportant(currentLineText)) {
-					evenLines.push(currentLineText);
+					evenLines.push(currentLine);
 				}
 			}
 		}

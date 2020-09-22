@@ -30,7 +30,7 @@ function Section (label) {
 	this.lines = [];
 }
 
-Section.prototype.AddLine = function (sectionLine) {
+Section.prototype.addLine = function (sectionLine) {
 	this.lines.push(sectionLine);
 }
 
@@ -53,7 +53,8 @@ KuzSections.prototype.Setup = function (sectionLines) {
 	this.sections.push(currentSection);
 
 	for (let sectionLine of sectionLines) {
-		let currentLabel = GetLabel(sectionLine);
+		let sectionLineText = sectionLine[1];
+		let currentLabel = GetLabel(sectionLineText);
 		if (currentLabel.found) {
 			currentSection = this.GetSectionByName(currentLabel.name);
 			if (!currentSection) {
@@ -61,7 +62,7 @@ KuzSections.prototype.Setup = function (sectionLines) {
 				this.sections.push(currentSection);
 			}
 		} else {
-			currentSection.AddLine(sectionLine);
+			currentSection.addLine(sectionLine);
 		}
 	}
 }
