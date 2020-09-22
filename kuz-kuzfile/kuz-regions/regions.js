@@ -56,22 +56,23 @@ KuzRegions.prototype.exists = function () {
 }
 
 KuzRegions.prototype.getLinesArray = function (lineText) {
-	let values = [];
+	let linesArray = [];
 	if (fs.existsSync(this.filename)) {
 		let fileText = fs.readFileSync(this.filename, "utf8").replace("\r", "");
 		let fileLines = fileText.split("\n");
-		for (let fileLine of fileLines) {
-			let currentLine = fileLine.trimRight();
-			if (currentLine == "") {
+		for (let index=0; index<fileLines.length; index++) {
+			let lineText = fileLines[index].trimRight();
+			let lineNumber = index + 1;
+			if (lineText == "") {
 				continue;
-			} else if (LineIsComment(currentLine)) {
+			} else if (LineIsComment(lineText)) {
 				continue;
 			} else {
-				values.push(currentLine);
+				linesArray.push([lineNumber, lineText]);
 			}
 		}
 	}
-	return values;
+	return linesArray;
 }
 
 KuzRegions.prototype.getLinesByRegionIndex = function (regionIndex) {
@@ -80,13 +81,14 @@ KuzRegions.prototype.getLinesByRegionIndex = function (regionIndex) {
 	if (fs.existsSync(this.filename)) {
 		let fileLines = this.getLinesArray();
 		for (let currentLine of fileLines) {
-			if (LineIsSeparator(currentLine)) {
+			let currentLineText = currentLine[1];
+			if (LineIsSeparator(currentLineText)) {
 				currentRegionIndex++;
 			} else if (currentRegionIndex == regionIndex) {
 				if (regionIndex % 2 == 0) {
-					regionLines.push(currentLine.trimLeft());
+					regionLines.push(currentLineText.trimLeft());
 				} else {
-					regionLines.push(currentLine);
+					regionLines.push(currentLineText);
 				}
 			} else if (currentRegionIndex > regionIndex) {
 				break;
@@ -103,11 +105,12 @@ KuzRegions.prototype.getEvenRegionLines = function () {
 	if (fs.existsSync(this.filename)) {
 		let fileLines = this.getLinesArray();
 		for (let currentLine of fileLines) {
-			if (LineIsSeparator(currentLine)) {
+			let currentLineText = currentLine[1];
+			if (LineIsSeparator(currentLineText)) {
 				currentRegionIndex++;
 			} else if (currentRegionIndex % 2 == 0) {
-				if (LineIsImportant(currentLine)) {
-					evenLines.push(currentLine);
+				if (LineIsImportant(currentLineText)) {
+					evenLines.push(currentLineText);
 				}
 			}
 		}
@@ -122,11 +125,12 @@ KuzRegions.prototype.getOddRegionLines = function () {
 	if (fs.existsSync(this.filename)) {
 		let fileLines = this.getLinesArray();
 		for (let currentLine of fileLines) {
-			if (LineIsSeparator(currentLine)) {
+			let currentLineText = currentLine[1];
+			if (LineIsSeparator(currentLineText)) {
 				currentRegionIndex++;
 			} else if (currentRegionIndex % 2 == 1) {
-				if (LineIsImportant(currentLine)) {
-					oddLines.push(currentLine);
+				if (LineIsImportant(currentLineText)) {
+					oddLines.push(currentLineText);
 				}
 			}
 		}
