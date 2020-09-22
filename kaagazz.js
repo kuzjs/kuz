@@ -15,12 +15,7 @@ function KaagazzApp () {
 	this.log = new KuzLogger("KaagazzApp");
 	//this.log.TurnOnDisk();
 
-	const KuzJson = require("./kuz-json").KuzJson;
-	this.meta = new KuzJson(kaagazzJsonPath);
-	this.flagsJson = new KuzJson(flagsJsonPath);
-	this.blackadder = new KuzJson(blackadderJsonPath);
-	this.ipsum = new KuzJson(loremIpsumJsonPath);
-
+	this.setupJsons();
 	this.log.setName(this.getTitle());
 
 	this.setupBenchMark();
@@ -69,10 +64,20 @@ KaagazzApp.prototype.ok = function () {
 	return true;
 }
 
+KaagazzApp.prototype.setupJsons = function () {
+	const KuzJson = require("./kuz-json").KuzJson;
+	this.meta = new KuzJson(kaagazzJsonPath);
+	this.flagsJson = new KuzJson(flagsJsonPath);
+	this.blackadder = new KuzJson(blackadderJsonPath);
+	this.ipsum = new KuzJson(loremIpsumJsonPath);
+}
+
 KaagazzApp.prototype.setupBenchMark = function () {
 	const KuzBenchMark = require("./kuz-benchmark").KuzBenchMark;
 	this.benchMark = new KuzBenchMark("KaagazzApp.BenchMark()");
 	this.pageSetupActon = this.benchMark.getNewAction("Page setup");
+	this.themeSetupActon = this.benchMark.getNewAction("Theme setup");
+	this.layoutSetupActon = this.benchMark.getNewAction("Layout setup");
 	this.pageRenderActon = this.benchMark.getNewAction("Page render");
 }
 

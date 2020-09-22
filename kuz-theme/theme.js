@@ -13,7 +13,9 @@ function Theme (themeName, site) {
 	this.themeName = themeName;
 	this.site = site;
 	this.log = this.site.log.getChild("theme/" + this.themeName);
-	this.setupPaths();
+	this.getApp().themeSetupActon.resetClock();
+	this.setupTheme();
+	this.getApp().themeSetupActon.record();
 }
 
 const KuZBaseObject = require("../kuz-baseobject").KuZBaseObject;
@@ -48,7 +50,7 @@ Theme.prototype.JsonFilePath = function () {
 	return fsutils.JoinPath(this.InputDirectory(), this.JsonFileName());
 }
 
-Theme.prototype.setupPaths = function () {
+Theme.prototype.setupTheme = function () {
 	if (!fsutils.IsDirectory(this.InputDirectory())) {
 		this.log.red("Theme NOT Found: " + this.InputDirectory());
 		return;
