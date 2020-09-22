@@ -30,40 +30,6 @@ function KaagazzApp () {
 	}
 }
 
-KaagazzApp.prototype.getProps = function () {
-	return this.meta.json;
-}
-
-KaagazzApp.prototype.ok = function () {
-	if (!this.meta.ok()) {
-		return false;
-	}
-
-	if (!this.flagsJson.ok()) {
-		return false;
-	}
-
-	if (!this.blackadder.ok()) {
-		return false;
-	}
-
-	if (!this.ipsum.ok()) {
-		return false;
-	}
-
-	if (!this.checkForModule("pug")) {
-		this.log.red("Module NOT found: pug");
-		return false;
-	}
-
-	if (!this.checkForModule("express")) {
-		this.log.red("Module NOT found: express");
-		return false;
-	}
-
-	return true;
-}
-
 KaagazzApp.prototype.setupBenchMark = function () {
 	const KuzBenchMark = require("./kuz-benchmark").KuzBenchMark;
 	this.benchMark = new KuzBenchMark("KaagazzApp.BenchMark()");
@@ -177,7 +143,37 @@ KaagazzApp.prototype.setupOperands = function () {
 	}
 }
 
-KaagazzApp.prototype.IsApp = function () {
+KaagazzApp.prototype.ok = function () {
+	if (!this.meta.ok()) {
+		return false;
+	}
+
+	if (!this.flagsJson.ok()) {
+		return false;
+	}
+
+	if (!this.blackadder.ok()) {
+		return false;
+	}
+
+	if (!this.ipsum.ok()) {
+		return false;
+	}
+
+	if (!this.checkForModule("pug")) {
+		this.log.red("Module NOT found: pug");
+		return false;
+	}
+
+	if (!this.checkForModule("express")) {
+		this.log.red("Module NOT found: express");
+		return false;
+	}
+
+	return true;
+}
+
+KaagazzApp.prototype.isApp = function () {
 	return true;
 }
 
@@ -189,8 +185,12 @@ KaagazzApp.prototype.getIpsum = function () {
 	return this.ipsum.json["lorem-ipsum"];
 }
 
-KaagazzApp.prototype.GetSiteJsonPath = function () {
+KaagazzApp.prototype.getSiteJsonPath = function () {
 	return this.meta.json.filenames.siteJson;
+}
+
+KaagazzApp.prototype.getProps = function () {
+	return this.meta.json;
 }
 
 KaagazzApp.prototype.getTitle = function () {
