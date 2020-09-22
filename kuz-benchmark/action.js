@@ -20,6 +20,22 @@ KuzAction.prototype.record = function () {
 	this.last_time = new_time;
 }
 
+KuzAction.prototype.getName = function () {
+	return this.name;
+}
+
+KuzAction.prototype.getCount = function () {
+	return this.durations.length;
+}
+
+KuzAction.prototype.getTotalTime = function () {
+	let totalTime = 0;
+	for (let duration of this.durations) {
+		totalTime += duration;
+	}
+	return totalTime;
+}
+
 
 
 module.exports = {

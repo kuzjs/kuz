@@ -22,6 +22,10 @@ function KaagazzApp () {
 	this.ipsum = new KuzJson(loremIpsumJsonPath);
 
 	this.log.setName(this.getTitle());
+
+	const KuzBenchMark = require("./kuz-benchmark").KuzBenchMark;
+	this.benchMark = new KuzBenchMark("KaagazzApp.BenchMark()");
+
 	this.setupFlags();
 
 	if (this.ok()) {
@@ -259,27 +263,32 @@ KaagazzApp.prototype.showVersion = function () {
 	table.print();
 }
 
-KaagazzApp.prototype.benchMark = function () {
+KaagazzApp.prototype.testBenchMark = function () {
 	const KuzStopWatch = require("./kuz-stopwatch").KuzStopWatch;
 	const sw = new KuzStopWatch("KaagazzApp.BenchMark()");
+
+	const action = this.benchMark.getNewAction("Renders");
 
 	let rendered = 0;
 	for (let index=0; index<20; index++) {
 		for (let x of this.site.getRenderables()) {
 			x.forcedUpdate();
 			rendered++;
+			action.record();
 		}
 	}
 
 	let duration = sw.getTimePassed();
 	this.log.red(`Rendered: ${rendered} pages in ${duration}ms.`);
+
+	this.benchMark.print();
 }
 
 KaagazzApp.prototype.nietzsche = function () {
 	this.log.green("Kaagazz Nietzschean Experiment.");
 
-	this.site.pages[0].metaData.printPropertyTable();
-	//this.benchMark();
+	//this.site.pages[0].metaData.printPropertyTable();
+	this.testBenchMark();
 
 	for (let x of this.operands) {
 		this.log.green(x.CodeAndName());
