@@ -6,8 +6,8 @@ function KuzFile (owner, path) {
 	this.path = path;
 	this.log = this.owner.log;
 
-	const KuzRegionFile = require("./regionfile").KuzRegionFile;
-	this.regions = new KuzRegionFile(this.path);
+	const KuzRegions = require("./regions").KuzRegions;
+	this.regions = new KuzRegions(this.path);
 
 	const KuzMetaData = require("../kuz-metadata").KuzMetaData;
 	this.metaData = new KuzMetaData(this, this.path);
