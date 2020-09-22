@@ -6,6 +6,10 @@ function KuzBenchMark (name) {
 	this.actions = [];
 }
 
+KuzBenchMark.prototype.getName = function () {
+	return this.name;
+}
+
 KuzBenchMark.prototype.getNewAction = function (name) {
 	const KuzAction = require("./action").KuzAction;
 	let action = new KuzAction(this, name);
@@ -14,9 +18,11 @@ KuzBenchMark.prototype.getNewAction = function (name) {
 }
 
 KuzBenchMark.prototype.print = function () {
+	let table = this.actions[0].getTable();
 	for (let action of this.actions) {
-		console.log(`${action.getName()}: ${action.getCount()} times in ${action.getTotalTime()}ms.`);
+		table.add(action);
 	}
+	table.print();
 }
 
 
