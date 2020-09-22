@@ -1,6 +1,6 @@
 // element.js
 
-const common = require("../base/common");
+const common = require("../kuz-common");
 const defaultText = common.defaultText;
 
 

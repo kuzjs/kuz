@@ -2,7 +2,7 @@
 
 const fsutils = require("../kuz-fs");
 
-const common = require("../base/common");
+const common = require("../kuz-common");
 const defaultText = common.defaultText;
 
 const layoutsDirectory = "layouts";

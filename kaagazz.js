@@ -1,7 +1,7 @@
 // kaagazz.js
 
 const fsutils = require("./kuz-fs");
-const jsonDirectory = require("./base/common").jsonDirectory;
+const jsonDirectory = require("./kuz-common").jsonDirectory;
 
 const kaagazzJsonPath = fsutils.JoinPath(jsonDirectory, "kaagazz.json");
 const flagsJsonPath = fsutils.JoinPath(jsonDirectory, "flags.json");
