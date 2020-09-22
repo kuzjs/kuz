@@ -77,7 +77,7 @@ KaagazzApp.prototype.setupFlags = function () {
 	this.numberOfFlags = this.flagman.getCounter();
 
 	if (this.simpleFlags.debug) {
-		this.log.TurnOnDebug();
+		this.log.turnDebugOn();
 	}
 }
 

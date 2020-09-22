@@ -131,9 +131,9 @@ KuzLogger.prototype.getIndex = function () {
 	return this.index;
 }
 
-KuzLogger.prototype.IncrementIndex = function () {
+KuzLogger.prototype.upTheIndex = function () {
 	if (this.parent) {
-		return this.parent.IncrementIndex();
+		return this.parent.upTheIndex();
 	} else {
 		return this.index++;
 	}
@@ -141,13 +141,13 @@ KuzLogger.prototype.IncrementIndex = function () {
 
 
 
-KuzLogger.prototype.TurnOffColor = function () {
+KuzLogger.prototype.turnColorOff = function () {
 	if (!this.locked) {
 		this.color = false;
 	}
 }
 
-KuzLogger.prototype.TurnOnColor = function () {
+KuzLogger.prototype.turnColorOn = function () {
 	if (!this.locked) {
 		this.color = true;
 	}
@@ -155,26 +155,26 @@ KuzLogger.prototype.TurnOnColor = function () {
 
 
 
-KuzLogger.prototype.ColorIsOn = function () {
+KuzLogger.prototype.colorIsOn = function () {
 	if (this.parent) {
-		return this.parent.ColorIsOn();
+		return this.parent.colorIsOn();
 	}
 	return this.color;
 }
 
-KuzLogger.prototype.ColorIsOff = function () {
-	return !this.DebugIsOn();
+KuzLogger.prototype.colorIsOff = function () {
+	return !this.colorIsOn();
 }
 
 
 
-KuzLogger.prototype.TurnOffDebug = function () {
+KuzLogger.prototype.turnDebugOff = function () {
 	if (!this.locked) {
 		this.debug = false;
 	}
 }
 
-KuzLogger.prototype.TurnOnDebug = function () {
+KuzLogger.prototype.turnDebugOn = function () {
 	if (!this.locked) {
 		this.debug = true;
 	}
@@ -182,38 +182,38 @@ KuzLogger.prototype.TurnOnDebug = function () {
 
 
 
-KuzLogger.prototype.DebugIsOn = function () {
+KuzLogger.prototype.debugIsOn = function () {
 	if (this.parent) {
-		return this.parent.DebugIsOn();
+		return this.parent.debugIsOn();
 	}
 	return this.debug;
 }
 
-KuzLogger.prototype.DebugIsOff = function () {
-	return !this.DebugIsOn();
+KuzLogger.prototype.debugIsOff = function () {
+	return !this.debugIsOn();
 }
 
 
 
-KuzLogger.prototype.TurnOffDisk = function () {
+KuzLogger.prototype.turnDiskOff = function () {
 	this.disk = false;
 }
 
-KuzLogger.prototype.TurnOnDisk = function () {
+KuzLogger.prototype.turnDiskOn = function () {
 	this.disk = true;
 }
 
 
 
-KuzLogger.prototype.DiskIsOn = function () {
+KuzLogger.prototype.diskIsOn = function () {
 	if (this.parent) {
-		return this.parent.DiskIsOn();
+		return this.parent.diskIsOn();
 	}
 	return this.disk;
 }
 
-KuzLogger.prototype.DiskIsOff = function () {
-	return !this.DiskIsOn();
+KuzLogger.prototype.diskIsOff = function () {
+	return !this.diskIsOn();
 }
 
 
@@ -269,7 +269,7 @@ KuzLogger.prototype.logInternal = function (keyword, prefix, message, c1, c2, c3
 	c2 = c2 ? c2 : c1;
 	c3 = c3 ? c3 : c2;
 
-	this.IncrementIndex();
+	this.upTheIndex();
 	let index = (this.getIndex() + "").padStart(3);
 
 	let dataString = `${GetDateString()}`;
@@ -282,12 +282,12 @@ KuzLogger.prototype.logInternal = function (keyword, prefix, message, c1, c2, c3
 
 	let name = this.name;
 	let messageNoColor = null;
-	if (this.DiskIsOn()) {
+	if (this.diskIsOn()) {
 		messageNoColor = this.getFullMessage(keyword, index, timeStampPrefix, name, prefix, message, duration);
 		fs.appendFileSync(this.getPath(), messageNoColor);
 	}
 
-	if (this.ColorIsOn()) {
+	if (this.colorIsOn()) {
 		dataString = `${colors.FgYellow}${dataString}${colors.Reset}`;
 		timeString = `${colors.FgCyan}${timeString}${colors.Reset}`;
 		timeStampPrefix = `on ${dataString} at ${timeString}`;
@@ -310,7 +310,7 @@ KuzLogger.prototype.justLogIt = function (prefix, message) {
 }
 
 KuzLogger.prototype.mundane = function (prefix, message) {
-	if (this.DebugIsOn()) {
+	if (this.debugIsOn()) {
 		this.logInternal(" .... ", prefix, message, colors.FgGreen);
 	}
 }
