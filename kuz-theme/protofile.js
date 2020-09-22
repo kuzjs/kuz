@@ -22,7 +22,7 @@ ProtoFile.prototype.setupProto = function (theme, data) {
 	this.setupThemeElement(theme, data);
 }
 
-ProtoFile.prototype.OutputDirectoryPath = function () {
+ProtoFile.prototype.getOutputDirectoryPath = function () {
 	return fsutils.JoinPath(this.theme.OutputDirectory(), this.dirName);
 }
 
@@ -44,7 +44,7 @@ ProtoFile.prototype.update = function () {
 
 ProtoFile.prototype.forcedUpdate = function () {
 	let contents = fs.readFileSync(this.InputFilePath());
-	fsutils.CreateDirectory(this.OutputDirectoryPath());
+	fsutils.CreateDirectory(this.getOutputDirectoryPath());
 	fs.writeFileSync(this.OutputFilePath(), contents);
 	this.log.green("Updated: " + this.OutputFilePath());
 }

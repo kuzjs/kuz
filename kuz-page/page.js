@@ -111,7 +111,7 @@ KuzPage.prototype.HasInputDirectory = function () {
 	return this.hasInputDirectory;
 }
 
-KuzPage.prototype.InputDirectoryPath = function () {
+KuzPage.prototype.getInputDirectoryPath = function () {
 	let path;
 	if (this.HasInputDirectory()) {
 		path = fsutils.JoinPath(this.site.getInputDirectory(), this.configDirpath, this.entry);
@@ -133,11 +133,11 @@ KuzPage.prototype.getInputFileName = function () {
 	}
 }
 
-KuzPage.prototype.OutputDirectoryPath = function () {
-	return fsutils.JoinPath(this.site.getOutputDirectory(), this.OutputDirectoryPartialPath());
+KuzPage.prototype.getOutputDirectoryPath = function () {
+	return fsutils.JoinPath(this.site.getOutputDirectory(), this.getOutputDirectoryPartialPath());
 }
 
-KuzPage.prototype.OutputDirectoryPartialPath = function () {
+KuzPage.prototype.getOutputDirectoryPartialPath = function () {
 	if (this.isRoot || !this.HasPrettyURL()) {
 		return this.configDirpath;
 	} else {
@@ -167,7 +167,7 @@ KuzPage.prototype.getContentHtml = function () {
 	return this.getArticle().getContentHtml();
 }
 
-KuzPage.prototype.OutputFileMTime = function () {
+KuzPage.prototype.getOutputFileMTime = function () {
 	if (fsutils.IsFile(this.OutputFilePath())) {
 		return fs.statSync(this.OutputFilePath()).mtimeMs;
 	}
@@ -175,7 +175,7 @@ KuzPage.prototype.OutputFileMTime = function () {
 }
 
 KuzPage.prototype.OutputFileExists = function () {
-	let mTime = this.OutputFileMTime();
+	let mTime = this.getOutputFileMTime();
 	if (mTime == 0) {
 		return false;
 	} else {
@@ -184,7 +184,7 @@ KuzPage.prototype.OutputFileExists = function () {
 }
 
 KuzPage.prototype.OutputFileIsOlderThanMeta = function () {
-	let outputFileMTime = this.OutputFileMTime();
+	let outputFileMTime = this.getOutputFileMTime();
 	if (outputFileMTime < this.site.meta.mtimeMs) {
 		return true;
 	} else if (outputFileMTime < this.site.app.meta.mtimeMs) {
@@ -193,16 +193,16 @@ KuzPage.prototype.OutputFileIsOlderThanMeta = function () {
 	return false;
 }
 
-KuzPage.prototype.OutputFileNesting = function () {
+KuzPage.prototype.getOutputFileNesting = function () {
 	return (this.OutputFilePath().split("/").length - 2);
 }
 
 KuzPage.prototype.getPageURL = function () {
-	return fsutils.JoinPath(this.site.getHomeURL(), this.OutputDirectoryPartialPath());
+	return fsutils.JoinPath(this.site.getHomeURL(), this.getOutputDirectoryPartialPath());
 }
 
 KuzPage.prototype.getBase = function () {
-	let outputFileNesting = this.OutputFileNesting();
+	let outputFileNesting = this.getOutputFileNesting();
 	let base = "";
 	for (let index = 0; index < outputFileNesting; index++) {
 		base += "../";
@@ -212,9 +212,9 @@ KuzPage.prototype.getBase = function () {
 
 KuzPage.prototype.getRelativeURL = function () {
 	if (this.HasPrettyURL()) {
-		return this.OutputDirectoryPartialPath();
+		return this.getOutputDirectoryPartialPath();
 	} else {
-		return fsutils.JoinPath(this.OutputDirectoryPartialPath(), this.getOutputFileName());
+		return fsutils.JoinPath(this.getOutputDirectoryPartialPath(), this.getOutputFileName());
 	}
 }
 
@@ -224,9 +224,9 @@ KuzPage.prototype.getRelativeURL = function () {
 
 KuzPage.prototype.getName = function () {
 	if (this.isRoot) {
-		return this.OutputDirectoryPartialPath() + "@root";
+		return this.getOutputDirectoryPartialPath() + "@root";
 	} else {
-		return this.OutputDirectoryPartialPath();
+		return this.getOutputDirectoryPartialPath();
 	}
 }
 
@@ -474,7 +474,7 @@ KuzPage.prototype.needsUpdate = function () {
 	}
 
 	if (this.HasInputDirectory()) {
-		if (fsutils.DirectoryHasNewerFiles(this.InputDirectoryPath(), this.OutputFilePath())) {
+		if (fsutils.DirectoryHasNewerFiles(this.getInputDirectoryPath(), this.OutputFilePath())) {
 			return true;
 		}
 	} else {
@@ -516,7 +516,7 @@ KuzPage.prototype.render = function () {
 	let layout = this.getLayout();
 	let html = layout.pug(options = this.getPageOptions());
 
-	fsutils.CreateDirectory(this.OutputDirectoryPath());
+	fsutils.CreateDirectory(this.getOutputDirectoryPath());
 	fs.writeFileSync(htmlPath, html);
 
 	this.site.app.pageRenderActon.record();

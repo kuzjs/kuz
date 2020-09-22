@@ -52,15 +52,15 @@ ThemeElement.prototype.getInputFileName = function () {
 	return this.getPath();
 }
 
-ThemeElement.prototype.InputDirectoryName = function () {
+ThemeElement.prototype.getInputDirectoryName = function () {
 	return this.theme.site.input_dirs[this.dirName];
 }
 
-ThemeElement.prototype.InputDirectoryPath = function () {
-	return this.theme.InputDirectory() + "/" + this.InputDirectoryName();
+ThemeElement.prototype.getInputDirectoryPath = function () {
+	return this.theme.InputDirectory() + "/" + this.getInputDirectoryName();
 }
 
-ThemeElement.prototype.PrintInputFilePath = function () {
+ThemeElement.prototype.printInputFilePath = function () {
 	this.log.green("Input file path: " + this.InputFilePath());
 }
 

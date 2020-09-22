@@ -198,9 +198,9 @@ KuzBaseObject.prototype.getCodeAndName = function () {
 
 KuzBaseObject.prototype.InputFilePath = function (fileName) {
 	if (fileName === undefined) {
-		return fsutils.JoinPath(this.InputDirectoryPath(), this.getInputFileName());
+		return fsutils.JoinPath(this.getInputDirectoryPath(), this.getInputFileName());
 	} else {
-		return fsutils.JoinPath(this.InputDirectoryPath(), fileName);
+		return fsutils.JoinPath(this.getInputDirectoryPath(), fileName);
 	}
 }
 
@@ -208,15 +208,15 @@ KuzBaseObject.prototype.InputFileExists = function () {
 	return fsutils.FileExists(this.InputFilePath());
 }
 
-KuzBaseObject.prototype.InputFileMTime = function () {
+KuzBaseObject.prototype.getInputFileMTime = function () {
 	fsutils.GetFileMTime(this.InputFilePath());
 }
 
 KuzBaseObject.prototype.OutputFilePath = function (fileName) {
 	if (fileName === undefined) {
-		return fsutils.JoinPath(this.OutputDirectoryPath(), this.getOutputFileName());
+		return fsutils.JoinPath(this.getOutputDirectoryPath(), this.getOutputFileName());
 	} else {
-		return fsutils.JoinPath(this.OutputDirectoryPath(), fileName);
+		return fsutils.JoinPath(this.getOutputDirectoryPath(), fileName);
 	}
 }
 
@@ -224,7 +224,7 @@ KuzBaseObject.prototype.OutputFileExists = function () {
 	return fsutils.FileExists(this.OutputFilePath());
 }
 
-KuzBaseObject.prototype.OutputFileMTime = function () {
+KuzBaseObject.prototype.getOutputFileMTime = function () {
 	fsutils.GetFileMTime(this.OutputFilePath());
 }
 
