@@ -25,6 +25,8 @@ function KaagazzApp () {
 
 	const KuzBenchMark = require("./kuz-benchmark").KuzBenchMark;
 	this.benchMark = new KuzBenchMark("KaagazzApp.BenchMark()");
+	this.pageSetupActon = this.benchMark.getNewAction("Page setup");
+	this.pageRenderActon = this.benchMark.getNewAction("Page render");
 
 	this.setupFlags();
 
@@ -264,22 +266,13 @@ KaagazzApp.prototype.showVersion = function () {
 }
 
 KaagazzApp.prototype.testBenchMark = function () {
-	const KuzStopWatch = require("./kuz-stopwatch").KuzStopWatch;
-	const sw = new KuzStopWatch("KaagazzApp.BenchMark()");
-
-	const action = this.benchMark.getNewAction("Renders");
-
 	let rendered = 0;
 	for (let index=0; index<20; index++) {
 		for (let x of this.site.getRenderables()) {
 			x.forcedUpdate();
 			rendered++;
-			action.record();
 		}
 	}
-
-	let duration = sw.getTimePassed();
-	this.log.red(`Rendered: ${rendered} pages in ${duration}ms.`);
 
 	this.benchMark.print();
 }

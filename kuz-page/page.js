@@ -8,7 +8,9 @@ const fsutils = require("../kuz-fs");
 
 function KuzPage (site, konfig, entry, isRoot = false) {
 	this.isRoot = isRoot;
+	site.app.pageSetupActon.resetClock();
 	this.setupPage(site, konfig, entry);
+	site.app.pageSetupActon.record();
 }
 
 
@@ -507,6 +509,7 @@ KuzPage.prototype.forcedUpdate = function () {
 }
 
 KuzPage.prototype.render = function () {
+	this.site.app.pageRenderActon.resetClock();
 	let t1 = Date.now();
 
 	let htmlPath = this.OutputFilePath();
@@ -516,6 +519,7 @@ KuzPage.prototype.render = function () {
 	fsutils.CreateDirectory(this.OutputDirectoryPath());
 	fs.writeFileSync(htmlPath, html);
 
+	this.site.app.pageRenderActon.record();
 	let t2 = Date.now();
 	this.totalRenderTime += (t2-t1);
 	this.totalRenders++;
