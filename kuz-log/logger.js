@@ -90,6 +90,7 @@ function GetLogFilePath () {
 function KuzLogger (name) {
 	this.name = name ? name : "Anonymous";
 	this.color = true;
+	this.silent = false;
 	this.debug = false;
 	this.disk = false;
 
@@ -164,6 +165,33 @@ KuzLogger.prototype.colorIsOn = function () {
 
 KuzLogger.prototype.colorIsOff = function () {
 	return !this.colorIsOn();
+}
+
+
+
+KuzLogger.prototype.turnSilentModeOff = function () {
+	if (!this.locked) {
+		this.silent = false;
+	}
+}
+
+KuzLogger.prototype.turnSilentModeOn = function () {
+	if (!this.locked) {
+		this.silent = true;
+	}
+}
+
+
+
+KuzLogger.prototype.silentModeIsOn = function () {
+	if (this.parent) {
+		return this.parent.silentModeIsOn();
+	}
+	return this.silent;
+}
+
+KuzLogger.prototype.silentModeIsOff = function () {
+	return !this.silentModeIsOn();
 }
 
 
@@ -282,24 +310,28 @@ KuzLogger.prototype.logInternal = function (keyword, prefix, message, c1, c2, c3
 
 	let name = this.name;
 	let messageNoColor = null;
-	if (this.diskIsOn()) {
+	if (this.diskIsOn() || this.colorIsOff()) {
 		messageNoColor = this.getFullMessage(keyword, index, timeStampPrefix, name, prefix, message, duration);
-		fs.appendFileSync(this.getPath(), messageNoColor);
+		if (this.diskIsOn()) {
+			fs.appendFileSync(this.getPath(), messageNoColor);
+		}
 	}
 
-	if (this.colorIsOn()) {
-		dataString = `${colors.FgYellow}${dataString}${colors.Reset}`;
-		timeString = `${colors.FgCyan}${timeString}${colors.Reset}`;
-		timeStampPrefix = `on ${dataString} at ${timeString}`;
+	if (this.silentModeIsOff()) {
+		if (this.colorIsOn()) {
+			dataString = `${colors.FgYellow}${dataString}${colors.Reset}`;
+			timeString = `${colors.FgCyan}${timeString}${colors.Reset}`;
+			timeStampPrefix = `on ${dataString} at ${timeString}`;
 
-		keyword = `${c1}${keyword}${colors.Reset}`;
-		name = `${c2}${name}${colors.Reset}`;
-		message = message ? `${c3}${message}${colors.Reset}` : message;
+			keyword = `${c1}${keyword}${colors.Reset}`;
+			name = `${c2}${name}${colors.Reset}`;
+			message = message ? `${c3}${message}${colors.Reset}` : message;
 
-		let messageString = this.getFullMessage(keyword, index, timeStampPrefix, name, prefix, message, duration);
-		process.stdout.write(messageString);
-	} else {
-		process.stdout.write(messageNoColor);
+			let messageString = this.getFullMessage(keyword, index, timeStampPrefix, name, prefix, message, duration);
+			process.stdout.write(messageString);
+		} else {
+			process.stdout.write(messageNoColor);
+		}
 	}
 }
 
