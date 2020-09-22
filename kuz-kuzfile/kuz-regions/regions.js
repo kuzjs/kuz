@@ -45,10 +45,10 @@ function KuzRegions (filename) {
 }
 
 KuzRegions.prototype.IsValid = function () {
-	return this.Exists();
+	return this.exists();
 }
 
-KuzRegions.prototype.Exists = function () {
+KuzRegions.prototype.exists = function () {
 	if (fsutils.IsFile(this.filename)) {
 		return true;
 	}

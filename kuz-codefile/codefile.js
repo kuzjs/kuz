@@ -21,12 +21,12 @@ KuzCodeFile.prototype.exists = function () {
 }
 
 KuzCodeFile.prototype.isValid = function () {
-	return this.Exists();
+	return this.exists();
 }
 
 KuzCodeFile.prototype.getLinesXtoY = function (x, y) {
 	let linesObject = {};
-	if (this.Exists()) {
+	if (this.exists()) {
 		let text = fs.readFileSync(this.path, "utf8").replace("\r", "");
 		let linesArray = text.split("\n");
 
