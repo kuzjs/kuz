@@ -190,8 +190,8 @@ KuZBaseObject.prototype.isResFile = function () {
 
 
 
-KuZBaseObject.prototype.CodeAndName = function () {
-	return this.getCodeName() + ": " + this.getName();
+KuZBaseObject.prototype.getCodeAndName = function () {
+	return `(${this.getCodeName()}) ${this.getName()}`;
 }
 
 
@@ -252,32 +252,32 @@ KuZBaseObject.prototype.updatable = function () {
 }
 
 KuZBaseObject.prototype.update = function () {
-	this.log.green("KuZBaseObject Update(): " + this.CodeAndName());
+	this.log.green("KuZBaseObject Update(): " + this.getCodeAndName());
 	return this;
 }
 
 KuZBaseObject.prototype.forcedUpdate = function () {
-	this.log.green("KuZBaseObject ForcedUpdate(): " + this.CodeAndName());
+	this.log.green("KuZBaseObject ForcedUpdate(): " + this.getCodeAndName());
 	return this;
 }
 
 KuZBaseObject.prototype.deleteOutput = function () {
-	this.log.green("KuZBaseObject deleteOutput(): " + this.CodeAndName());
+	this.log.green("KuZBaseObject deleteOutput(): " + this.getCodeAndName());
 	return this;
 }
 
 KuZBaseObject.prototype.deleteExtras = function () {
-	this.log.green("KuZBaseObject deleteExtras(): " + this.CodeAndName());
+	this.log.green("KuZBaseObject deleteExtras(): " + this.getCodeAndName());
 	return this;
 }
 
 KuZBaseObject.prototype.verify = function () {
-	this.log.green("KuZBaseObject verify(): " + this.CodeAndName());
+	this.log.green("KuZBaseObject verify(): " + this.getCodeAndName());
 	return this;
 }
 
 KuZBaseObject.prototype.watch = function () {
-	this.log.green("KuZBaseObject watch(): " + this.CodeAndName());
+	this.log.green("KuZBaseObject watch(): " + this.getCodeAndName());
 	return this;
 }
 

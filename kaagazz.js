@@ -301,7 +301,7 @@ KaagazzApp.prototype.nietzsche = function () {
 	this.testBenchMark();
 
 	for (let x of this.operands) {
-		this.log.green(x.CodeAndName());
+		this.log.green(x.getCodeAndName());
 	}
 }
 
