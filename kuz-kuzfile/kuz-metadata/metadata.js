@@ -17,8 +17,7 @@ KuzMetaData.prototype.setup = function () {
 	this.properties = [];
 	this.sections = {};
 	if (this.exists()) {
-		let metaNss = this.kuz.getNss();
-		let headerLines = metaNss.getMetaLines();
+		let headerLines = this.kuz.getMetaLines();
 
 		const KuzSections = require("../kuz-sections").KuzSections;
 		let kuzSections = new KuzSections(headerLines);

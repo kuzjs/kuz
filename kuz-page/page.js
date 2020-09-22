@@ -40,7 +40,6 @@ KuzPage.prototype.setupPage = function (site, konfig, entry) {
 		this.kuzFile = new KuzFile(this, this.InputFilePath());
 
 		this.metaData = this.kuzFile.getMetaData();
-		this.inputNss = this.kuzFile.getNss();
 	}
 }
 
@@ -153,7 +152,7 @@ KuzPage.prototype.OutputFileName = function () {
 }
 
 KuzPage.prototype.getContentString = function () {
-	return this.inputNss.getBodyString();
+	return this.kuzFile.getBodyString();
 }
 
 KuzPage.prototype.getArticle = function () {

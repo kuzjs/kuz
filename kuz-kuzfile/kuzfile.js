@@ -17,12 +17,20 @@ KuzFile.prototype.getMetaData = function () {
 	return this.metaData;
 }
 
-KuzFile.prototype.getNss = function () {
+KuzFile.prototype.getRegions = function () {
 	return this.regions;
+}
+
+KuzFile.prototype.getMetaLines = function () {
+	return this.regions.getMetaLines();
 }
 
 KuzFile.prototype.getContentLines = function () {
 	return this.regions.getContentLines();
+}
+
+KuzFile.prototype.getBodyString = function () {
+	return this.regions.getBodyString();
 }
 
 

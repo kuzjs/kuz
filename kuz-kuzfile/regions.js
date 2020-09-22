@@ -1,4 +1,4 @@
-// nss.js
+// regions.js
 
 const fs = require("fs");
 
@@ -16,8 +16,8 @@ const regionSeparatorStarters = [
 
 function LineIsComment (lineText) {
 	lineText = lineText.trim();
-	for (let nssCommentStarter of regionCommentStarters) {
-		if (lineText.startsWith(nssCommentStarter)) {
+	for (let regionCommentStarter of regionCommentStarters) {
+		if (lineText.startsWith(regionCommentStarter)) {
 			return true;
 		}
 	}
@@ -30,8 +30,8 @@ function LineIsImportant (lineText) {
 
 function LineIsSeparator (lineText) {
 	lineText = lineText.trim();
-	for (let nssSeparatorStarter of regionSeparatorStarters) {
-		if (lineText.startsWith(nssSeparatorStarter)) {
+	for (let regionSeparatorStarter of regionSeparatorStarters) {
+		if (lineText.startsWith(regionSeparatorStarter)) {
 			return true;
 		}
 	}
