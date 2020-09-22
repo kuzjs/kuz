@@ -63,7 +63,7 @@ KuzRegions.prototype.getLinesArray = function (lineText) {
 		for (let index=0; index<fileLines.length; index++) {
 			let lineText = fileLines[index].trimRight();
 			let lineNumber = index + 1;
-			if (lineText == "") {
+			if (lineText === "") {
 				continue;
 			} else if (LineIsComment(lineText)) {
 				continue;
@@ -84,8 +84,8 @@ KuzRegions.prototype.getLinesByRegionIndex = function (regionIndex) {
 			let currentLineText = currentLine[1];
 			if (LineIsSeparator(currentLineText)) {
 				currentRegionIndex++;
-			} else if (currentRegionIndex == regionIndex) {
-				if (regionIndex % 2 == 0) {
+			} else if (currentRegionIndex === regionIndex) {
+				if (regionIndex % 2 === 0) {
 					regionLines.push(currentLineText.trimLeft());
 				} else {
 					regionLines.push(currentLineText);
@@ -108,7 +108,7 @@ KuzRegions.prototype.getEvenRegionLines = function () {
 			let currentLineText = currentLine[1];
 			if (LineIsSeparator(currentLineText)) {
 				currentRegionIndex++;
-			} else if (currentRegionIndex % 2 == 0) {
+			} else if (currentRegionIndex % 2 === 0) {
 				if (LineIsImportant(currentLineText)) {
 					evenLines.push(currentLine);
 				}
@@ -128,7 +128,7 @@ KuzRegions.prototype.getOddRegionLines = function () {
 			let currentLineText = currentLine[1];
 			if (LineIsSeparator(currentLineText)) {
 				currentRegionIndex++;
-			} else if (currentRegionIndex % 2 == 1) {
+			} else if (currentRegionIndex % 2 === 1) {
 				if (LineIsImportant(currentLineText)) {
 					oddLines.push(currentLine);
 				}

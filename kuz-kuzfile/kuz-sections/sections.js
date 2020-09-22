@@ -81,7 +81,7 @@ KuzSections.prototype.SectionsObject = function () {
 
 KuzSections.prototype.GetSectionByName = function (name) {
 	for (let section of this.sections) {
-		if (section.name == name) {
+		if (section.name === name) {
 			return section;
 		}
 	}

@@ -82,7 +82,7 @@ KaagazzApp.prototype.setupOperands = function () {
 
 	for (let arg of this.args) {
 		for (let somethimg of everything) {
-			if (somethimg.getCodeName() == arg) {
+			if (somethimg.getCodeName() === arg) {
 				this.operands.push(somethimg);
 				break;
 			}
@@ -306,7 +306,7 @@ KaagazzApp.prototype.nietzsche = function () {
 }
 
 KaagazzApp.prototype.listStuff = function (flags) {
-	if (this.operands.length == 0) {
+	if (this.operands.length === 0) {
 		this.log.red("Zero operands to list.");
 	} else {
 		let table = this.operands[0].getTable();
@@ -375,7 +375,7 @@ KaagazzApp.prototype.flagsAreOK = function () {
 		return false;
 	}
 
-	if (this.numberOfFlags.modifier > 0 && this.numberOfFlags.major == 0) {
+	if (this.numberOfFlags.modifier > 0 && this.numberOfFlags.major === 0) {
 		this.log.red("Modifiers specified without a major flag.");
 		return false;
 	}
@@ -384,7 +384,7 @@ KaagazzApp.prototype.flagsAreOK = function () {
 }
 
 KaagazzApp.prototype.run = function () {
-	if (this.site == null) {
+	if (this.site === null) {
 		this.log.badNews("Site not initialized.");
 		return;
 	}

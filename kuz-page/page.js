@@ -63,23 +63,23 @@ KuzPage.prototype.ok = function () {
 
 
 KuzPage.prototype.isPage = function () {
-	return (this.GetType() == "page") ? true : false;
+	return (this.GetType() === "page") ? true : false;
 }
 
 KuzPage.prototype.isAuthor = function () {
-	return (this.GetType() == "author") ? true : false;
+	return (this.GetType() === "author") ? true : false;
 }
 
 KuzPage.prototype.isCategory = function () {
-	return (this.GetType() == "category") ? true : false;
+	return (this.GetType() === "category") ? true : false;
 }
 
 KuzPage.prototype.isCollection = function () {
-	return (this.GetType() == "collection") ? true : false;
+	return (this.GetType() === "collection") ? true : false;
 }
 
 KuzPage.prototype.isTag = function () {
-	return (this.GetType() == "tag") ? true : false;
+	return (this.GetType() === "tag") ? true : false;
 }
 
 
@@ -176,7 +176,7 @@ KuzPage.prototype.getOutputFileMTime = function () {
 
 KuzPage.prototype.outputFileExists = function () {
 	let mTime = this.getOutputFileMTime();
-	if (mTime == 0) {
+	if (mTime === 0) {
 		return false;
 	} else {
 		return true;
@@ -393,13 +393,13 @@ KuzPage.prototype.getLayout = function () {
 }
 
 KuzPage.prototype.getPages = function () {
-	if (this.GetType() == "author") {
+	if (this.GetType() === "author") {
 		return this.site.getPagesByAuthor(this);
-	} else if (this.GetType() == "category") {
+	} else if (this.GetType() === "category") {
 		return this.site.getPagesInCategory(this);
-	} else if (this.GetType() == "tag") {
+	} else if (this.GetType() === "tag") {
 		return this.site.getPagesWithTag(this);
-	} else if (this.GetType() == "collection") {
+	} else if (this.GetType() === "collection") {
 		return this.site.getPages();
 	}
 	return this.site.pages;

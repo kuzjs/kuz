@@ -31,7 +31,7 @@ KuzFlagManager.prototype.setupFlagArray = function () {
 		if (argument.startsWith("--")) {
 			let flagName = argument.slice(2).toLowerCase();
 			for (let currentFlag of this.flags) {
-				if (currentFlag.name == flagName) {
+				if (currentFlag.name === flagName) {
 					currentFlag.count++;
 					lastFlag = currentFlag;
 				}
@@ -40,7 +40,7 @@ KuzFlagManager.prototype.setupFlagArray = function () {
 			for (let j=1; j<argument.length; j++) {
 				let letter = argument[j];
 				for (let currentFlag of this.flags) {
-					if (currentFlag.code == letter) {
+					if (currentFlag.code === letter) {
 						currentFlag.count++;
 						lastFlag = currentFlag;
 					}

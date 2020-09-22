@@ -57,7 +57,7 @@ function JoinPath () {
 		for (let argument of arguments) {
 			let arg = TrimSlashes(argument.trim());
 			if (arg != undefined && arg.length != 0) {
-				if (path == "") {
+				if (path === "") {
 					path = arg;
 				} else {
 					path = path + "/" + arg;
@@ -150,7 +150,7 @@ function DeleteAllButIndexHtml (dirpath) {
 		if (IsDirectory(filepath)) {
 			DeleteDirectory(filepath);
 		} else {
-			if (file == "index.html") {
+			if (file === "index.html") {
 			} else {
 				fs.unlinkSync(filepath);
 			}

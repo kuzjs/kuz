@@ -93,7 +93,7 @@ KuzFlag.prototype.getParams = function () {
 
 KuzFlag.prototype.getParamsString = function () {
 	if (this.hasParams()) {
-		if (this.params.length == 0) {
+		if (this.params.length === 0) {
 			return "[]"
 		}
 		return "[" + this.params + "]";

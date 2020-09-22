@@ -38,7 +38,7 @@ ThemeLayout.prototype.forcedUpdate = function () {
 }
 
 ThemeLayout.prototype.needsUpdate = function () {
-	if (this.mtimeMs == fs.statSync(this.getInputFilePath()).mtimeMs) {
+	if (this.mtimeMs === fs.statSync(this.getInputFilePath()).mtimeMs) {
 		return false;
 	}
 	return true;

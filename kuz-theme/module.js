@@ -33,7 +33,7 @@ ThemeModule.prototype.forcedUpdate = function () {
 }
 
 ThemeModule.prototype.needsUpdate = function () {
-	if (this.mtimeMs == fs.statSync(this.getInputFilePath()).mtimeMs) {
+	if (this.mtimeMs === fs.statSync(this.getInputFilePath()).mtimeMs) {
 		return false;
 	}
 	return true;

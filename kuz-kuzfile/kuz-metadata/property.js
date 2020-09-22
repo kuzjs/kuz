@@ -104,7 +104,7 @@ Property.prototype.ok = function () {
 	if (this.badInput) {
 		return false;
 	}
-	if (this.getName().length == 0) {
+	if (this.getName().length === 0) {
 		return false;
 	}
 	return true;
@@ -148,7 +148,7 @@ Property.prototype.IsOff = Property.prototype.IsFalse = function () {
 }
 
 Property.prototype.getBooleanValue = function () {
-	return (this.value == "false") ? false : true;
+	return (this.value === "false") ? false : true;
 }
 
 Property.prototype.getIntegerValue = function () {

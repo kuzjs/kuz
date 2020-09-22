@@ -138,7 +138,7 @@ Theme.prototype.defaultLayout = function () {
 
 Theme.prototype.getLayout = function (layoutName) {
 	for (let layout of this.layouts) {
-		if (layoutName == layout.getName()) {
+		if (layoutName === layout.getName()) {
 			return layout;
 		}
 	}

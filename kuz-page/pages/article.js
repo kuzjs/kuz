@@ -31,7 +31,7 @@ Article.prototype.IsArticle = function () {
 
 Article.prototype.Section = function (sectionName) {
 	for (let key in this.sections) {
-		if (key == sectionName) {
+		if (key === sectionName) {
 			return this.sections[key];
 		}
 	}

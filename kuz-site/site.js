@@ -64,7 +64,7 @@ KuzSite.prototype.setupThemes = function () {
 	let themeNames = this.meta.json.themes;
 	if (themeNames === undefined) {
 		this.log.red("Themes param not specified.");
-	} else if (themeNames.length == 0) {
+	} else if (themeNames.length === 0) {
 		this.log.red("Themes param is empty.");
 	} else {
 		const Theme = require("../kuz-theme").Theme;
@@ -78,7 +78,7 @@ KuzSite.prototype.setupThemes = function () {
 		}
 	}
 
-	if (this.themes.length == 0) {
+	if (this.themes.length === 0) {
 		this.log.red("App has no themes.");
 	}
 }
@@ -132,7 +132,7 @@ KuzSite.prototype.GetDataFileContents = function (filename) {
 
 KuzSite.prototype.getThemeFromName = function (themeName) {
 	for (let theme of this.site.themes) {
-		if (theme.themeName == themeName) {
+		if (theme.themeName === themeName) {
 			return theme;
 		}
 	}
@@ -153,7 +153,7 @@ KuzSite.prototype.printDirectories = function () {
 KuzSite.prototype.getAuthors = function () {
 	let authors = [];
 	for (let page of this.pages) {
-		if (page.GetType() == "author") {
+		if (page.GetType() === "author") {
 			authors.push(page);
 		}
 	}
@@ -168,7 +168,7 @@ KuzSite.prototype.getDefaultAuthor = function () {
 KuzSite.prototype.getCategories = function () {
 	let categories = [];
 	for (let page of this.pages) {
-		if (page.GetType() == "category") {
+		if (page.GetType() === "category") {
 			categories.push(page);
 		}
 	}
@@ -183,7 +183,7 @@ KuzSite.prototype.getDefaultCategory = function () {
 KuzSite.prototype.getTags = function () {
 	let tags = [];
 	for (let page of this.pages) {
-		if (page.GetType() == "tag") {
+		if (page.GetType() === "tag") {
 			tags.push(page);
 		}
 	}
@@ -193,7 +193,7 @@ KuzSite.prototype.getTags = function () {
 KuzSite.prototype.getPages = function () {
 	let pages = [];
 	for (let page of this.pages) {
-		if (page.GetType() == "page") {
+		if (page.GetType() === "page") {
 			pages.push(page);
 		}
 	}
@@ -203,7 +203,7 @@ KuzSite.prototype.getPages = function () {
 KuzSite.prototype.getCollections = function () {
 	let collections = [];
 	for (let page of this.pages) {
-		if (page.GetType() == "collection") {
+		if (page.GetType() === "collection") {
 			collections.push(page);
 		}
 	}
@@ -282,7 +282,7 @@ KuzSite.prototype.getPagesByAuthor = function (author) {
 	for (let page of this.pages) {
 		let pageAuthor = page.getPropertyCascaded("author");
 		if (pageAuthor.found) {
-			if (pageAuthor.value == author.entry) {
+			if (pageAuthor.value === author.entry) {
 				pages.push(page);
 			}
 		}
@@ -295,7 +295,7 @@ KuzSite.prototype.getPagesInCategory = function (category) {
 	for (let page of this.pages) {
 		let pageCategory = page.getPropertyCascaded("category");
 		if (pageCategory.found) {
-			if (pageCategory.value == category.entry) {
+			if (pageCategory.value === category.entry) {
 				pages.push(page);
 			}
 		}
@@ -315,7 +315,7 @@ KuzSite.prototype.getPagesWithTag = function (tag) {
 
 KuzSite.prototype.getAuthorFromName = function (authorName) {
 	for (let author of this.getAuthors) {
-		if (author.name == authorName) {
+		if (author.name === authorName) {
 			return author;
 		}
 	}
@@ -324,7 +324,7 @@ KuzSite.prototype.getAuthorFromName = function (authorName) {
 
 KuzSite.prototype.getCategoryFromName = function (categoryName) {
 	for (let category of this.getCategories()) {
-		if (category.entry == categoryName) {
+		if (category.entry === categoryName) {
 			return category;
 		}
 	}
@@ -333,7 +333,7 @@ KuzSite.prototype.getCategoryFromName = function (categoryName) {
 
 KuzSite.prototype.getTagFromName = function (tagName) {
 	for (let tag of this.getTags()) {
-		if (tag.entry == tagName) {
+		if (tag.entry === tagName) {
 			return tag;
 		}
 	}
@@ -352,7 +352,7 @@ KuzSite.prototype.getTagsFromNameArray = function (tagNameArray) {
 }
 
 KuzSite.prototype.printArrayAsTable = function (arr) {
-	if (arr.length == 0) {
+	if (arr.length === 0) {
 		this.log.red("No elements in array.");
 		return;
 	}

@@ -23,7 +23,7 @@ function Section (article, headerText) {
 }
 
 Section.prototype.AddLine = function (contentLine) {
-	if (this.content.length == 0) {
+	if (this.content.length === 0) {
 		this.content = contentLine;
 	} else {
 		this.content += "\n" + contentLine;
