@@ -160,8 +160,8 @@ Property.prototype.getStringValue = function () {
 }
 
 Property.prototype.getTable = function () {
-	const KZTable = require("../kuz-table/table").KZTable;
-	let table = new KZTable();
+	const KuZTable = require("../kuz-table/table").KuZTable;
+	let table = new KuZTable();
 	table.addColumn("Property");
 	table.addColumn("Value");
 	return table;

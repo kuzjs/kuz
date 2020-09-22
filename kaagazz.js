@@ -247,8 +247,8 @@ KaagazzApp.prototype.showMajorFlags = function () {
 }
 
 KaagazzApp.prototype.showVersion = function () {
-	const KZTable = require("./kuz-table").KZTable;
-	let table = new KZTable();
+	const KuZTable = require("./kuz-table").KuZTable;
+	let table = new KuZTable();
 	table.addColumn("Key");
 	table.addColumn("Value");
 

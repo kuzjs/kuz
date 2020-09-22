@@ -2,7 +2,7 @@
 
 const fs = require("fs");
 
-const KZTable = require("../kuz-table/table").KZTable;
+const KuZTable = require("../kuz-table/table").KuZTable;
 
 const fsutils = require("../kuz-fs");
 const helpDocDirectory = require("../kuz-common").helpDocDirectory;
@@ -130,7 +130,7 @@ KuzFlag.prototype.getRow = function () {
 }
 
 KuzFlag.prototype.getTable = function () {
-	let table = new KZTable();
+	let table = new KuZTable();
 	table.HideIndex().HideHeader();
 	table.addColumn("Code");
 	table.addColumn("Name");
