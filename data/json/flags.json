@@ -106,8 +106,7 @@
 		{
 			"code": "K",
 			"name": "kurses",
-			"description": "Use Kurses interface.",
-			"modifier": true
+			"description": "Use Kurses interface."
 		},
 		{
 			"code": "l",

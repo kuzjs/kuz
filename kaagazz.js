@@ -292,6 +292,10 @@ KaagazzApp.prototype.showVersion = function () {
 
 
 
+KaagazzApp.prototype.kursesStuff = function () {
+	this.log.green("I kurse you.");
+}
+
 KaagazzApp.prototype.benchMarkStuff = function () {
 	let rendered = 0;
 	for (let index=0; index<20; index++) {
@@ -441,6 +445,8 @@ KaagazzApp.prototype.run = function () {
 		this.watchStuff();
 	} else if (flags.nietzsche) {
 		this.nietzsche();
+	} else if (flags.kurses) {
+		this.kursesStuff();
 	} else {
 		//
 	}
