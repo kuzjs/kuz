@@ -13,7 +13,16 @@ function getReadableTime (big_nano) {
 	const us_string = (microseconds + "").padStart(4);
 	const ns_string = (nanoseconds + "").padStart(4);
 
-	return `${s_string} ${ms_string} ${us_string} ${ns_string}`;
+	const bigzero = BigInt(0);
+	if (seconds === bigzero && milliseconds === bigzero && microseconds === bigzero) {
+		return `${ns_string}`;
+	} else if (seconds === bigzero && milliseconds === bigzero) {
+		return `${us_string} ${ns_string}`;
+	} else if (seconds === bigzero) {
+		return `${ms_string} ${us_string} ${ns_string}`;
+	} else {
+		return `${s_string} ${ms_string} ${us_string} ${ns_string}`;
+	}
 }
 
 
