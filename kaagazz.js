@@ -297,6 +297,7 @@ KaagazzApp.prototype.testBenchMark = function () {
 		}
 	}
 
+	this.benchMark.recordMilestone("KaagazzApp.testBenchMark() ends.");
 	this.benchMark.print();
 }
 
