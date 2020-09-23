@@ -470,8 +470,6 @@ const kuz = new KaagazzApp();
 
 
 
-module.exports = {
-	kuz: kuz
-};
+module.exports = kuz;
 
 
