@@ -1,7 +1,7 @@
 
 
 
-function GetDateString (separator = ".") {
+function getDateString (separator = ".") {
 	let now = new Date();
 
 	let date = (now.getDate() + "").padStart(2, "0");
@@ -11,7 +11,7 @@ function GetDateString (separator = ".") {
 	return `${date}${separator}${month}${separator}${year}`;
 }
 
-function GetTimeString (separator = ":", septwo = "|") {
+function getTimeString (separator = ":", septwo = "|") {
 	let now = new Date();
 
 	let hours = (now.getHours() + "").padStart(2, "0");
@@ -24,23 +24,23 @@ function GetTimeString (separator = ":", septwo = "|") {
 
 
 
-function GetLogFileName () {
-	let date = GetDateString("_");
-	let time = GetTimeString("_");
+function getLogFileName () {
+	let date = getDateString("_");
+	let time = getTimeString("_");
 
 	return `log_on_${date}_at_${time}.txt`;
 }
 
-function GetLogFilePath () {
-	return "logs/" + GetLogFileName();
+function getLogFilePath () {
+	return "logs/" + getLogFileName();
 }
 
 
 
 module.exports = {
-	GetDateString: GetDateString,
-	GetTimeString: GetTimeString,
-	GetLogFilePath: GetLogFilePath
+	getDateString: getDateString,
+	getTimeString: getTimeString,
+	getLogFilePath: getLogFilePath
 };
 
 

@@ -63,7 +63,7 @@ function KuzLogger (name) {
 	this.locked = false;
 	this.children = [];
 
-	this.path = utils.GetLogFilePath();
+	this.path = utils.getLogFilePath();
 	this.index = 0;
 
 	this.createdTime = Date.now();
@@ -265,8 +265,8 @@ KuzLogger.prototype.logInternal = function (keyword, prefix, message, c1, c2, c3
 	this.upTheIndex();
 	let index = (this.getIndex() + "").padStart(3);
 
-	let dataString = `${utils.GetDateString()}`;
-	let timeString = `${utils.GetTimeString()}`;
+	let dataString = `${utils.getDateString()}`;
+	let timeString = `${utils.getTimeString()}`;
 	let timeStampPrefix = `on ${dataString} at ${timeString}`;
 
 	let newLogTime = Date.now();
