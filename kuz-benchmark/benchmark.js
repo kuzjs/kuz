@@ -1,3 +1,5 @@
+// benchmark.js
+const utils = require("./utils");
 
 
 
@@ -15,6 +17,10 @@ KuzBenchMark.prototype.getTimePassed = function () {
 	return (process.hrtime.bigint() - this.init_time);
 }
 
+KuzBenchMark.prototype.getTimePassedReadable = function () {
+	return utils.getReadableTime(this.getTimePassed());
+}
+
 KuzBenchMark.prototype.getNewAction = function (name) {
 	const KuzAction = require("./action").KuzAction;
 	let action = new KuzAction(this, name);
@@ -28,7 +34,7 @@ KuzBenchMark.prototype.print = function () {
 		table.add(action);
 	}
 	table.addSeparatorRow();
-	table.addRow(["Total", "", "", this.getTimePassed(), ""]);
+	table.addRow(["Total", "", "", this.getTimePassedReadable(), ""]);
 	table.print();
 }
 
