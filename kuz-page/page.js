@@ -31,7 +31,7 @@ KuzPage.prototype.setupPage = function (site, konfig, entry) {
 
 	this.log = this.site.log.getChild(this.getInputFilePath());
 
-	this.totalRenderTime = 0;
+	this.totalRenderTime = BigInt(0);
 	this.totalRenders = 0;
 
 	this.tags = [];
@@ -504,7 +504,7 @@ KuzPage.prototype.forcedUpdate = function () {
 
 KuzPage.prototype.render = function () {
 	this.site.app.pageRenderActon.resetClock();
-	let t1 = Date.now();
+	let t1 = process.hrtime.bigint();
 
 	let htmlPath = this.getOutputFilePath();
 	let layout = this.getLayout();
@@ -514,20 +514,20 @@ KuzPage.prototype.render = function () {
 	fs.writeFileSync(htmlPath, html);
 
 	this.site.app.pageRenderActon.record();
-	let t2 = Date.now();
+	let t2 = process.hrtime.bigint();
 	this.totalRenderTime += (t2-t1);
 	this.totalRenders++;
 }
 
-KuzPage.prototype.averageRenderTime = function () {
+KuzPage.prototype.averageRenderTimeUS = function () {
 	if (this.totalRenders) {
-		return this.totalRenderTime / this.totalRenders;
+		return this.totalRenderTime / BigInt(this.totalRenders * 1000);
 	}
-	return 0;
+	return BigInt(0);
 }
 
 KuzPage.prototype.averageRenderTimeString = function () {
-	return this.averageRenderTime().toPrecision(4) + "ms";
+	return this.averageRenderTimeUS() + "us";
 }
 
 KuzPage.prototype.RenderLog = function () {
