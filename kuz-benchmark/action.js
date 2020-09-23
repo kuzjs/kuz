@@ -49,7 +49,7 @@ KuzAction.prototype.getTable = function () {
 	table.addColumn("Action");
 	table.addColumn("Count");
 	table.addColumn("Total Time");
-	table.addColumn("Avg Time");
+	table.addColumn("S   Ms   Us   Ns");
 	return table;
 }
 

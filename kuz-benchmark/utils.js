@@ -8,7 +8,12 @@ function getReadableTime (big_nano) {
 	const microseconds = (big_nano / BigInt(1e3)) % BigInt(1000);
 	const nanoseconds = big_nano % BigInt(1000);
 
-	return `${seconds}s ${milliseconds}ms ${microseconds}us ${nanoseconds}ns`;
+	const s_string = (seconds + "").padStart(4);
+	const ms_string = (milliseconds + "").padStart(4);
+	const us_string = (microseconds + "").padStart(4);
+	const ns_string = (nanoseconds + "").padStart(4);
+
+	return `${s_string} ${ms_string} ${us_string} ${ns_string}`;
 }
 
 
