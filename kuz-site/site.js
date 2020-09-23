@@ -32,29 +32,6 @@ KuzSite.prototype.setup = function () {
 	this.app.benchMark.recordMilestone("Pages setup complete.");
 }
 
-KuzSite.prototype.addKonfig = function (konfig) {
-	konfig.setIndex(this.konfigs.length);
-	this.konfigs.push(konfig);
-}
-
-KuzSite.prototype.getHomeURL = function () {
-	return fsutils.TrimSlashes(this.meta.json.meta.SITE_URL);
-}
-
-KuzSite.prototype.getProps = function () {
-	return this.meta.json;
-}
-
-KuzSite.prototype.isSite = function () {
-	return true;
-}
-
-KuzSite.prototype.error = function (errorMessage) {
-	this.error = true;
-	this.errorMessage = errorMessage;
-	this.log.red(this.errorMessage);
-}
-
 KuzSite.prototype.setupPages = function () {
 	const utils = require("./utils");
 	this.pages = utils.getPages(this);
@@ -84,6 +61,33 @@ KuzSite.prototype.setupThemes = function () {
 		this.log.red("App has no themes.");
 	}
 }
+
+
+
+KuzSite.prototype.addKonfig = function (konfig) {
+	konfig.setIndex(this.konfigs.length);
+	this.konfigs.push(konfig);
+}
+
+KuzSite.prototype.getHomeURL = function () {
+	return fsutils.TrimSlashes(this.meta.json.meta.SITE_URL);
+}
+
+KuzSite.prototype.getProps = function () {
+	return this.meta.json;
+}
+
+KuzSite.prototype.isSite = function () {
+	return true;
+}
+
+KuzSite.prototype.error = function (errorMessage) {
+	this.error = true;
+	this.errorMessage = errorMessage;
+	this.log.red(this.errorMessage);
+}
+
+
 
 KuzSite.prototype.getNestedValueFromCascade = function (parent, child) {
 	let retVal = this.meta.getNestedValueFromName(parent, child);
@@ -128,20 +132,6 @@ KuzSite.prototype.getDataFileContents = function (filename) {
 		this.log.badNews("File Not Found: " + filepath);
 		return "";
 	}
-}
-
-KuzSite.prototype.getThemeFromName = function (themeName) {
-	for (let theme of this.site.themes) {
-		if (theme.themeName === themeName) {
-			return theme;
-		}
-	}
-
-	return null;
-}
-
-KuzSite.prototype.getDefaultTheme = function () {
-	return this.themes[0];
 }
 
 
@@ -230,6 +220,10 @@ KuzSite.prototype.getThemes = function () {
 	return this.themes;
 }
 
+KuzSite.prototype.getDefaultTheme = function () {
+	return this.themes[0];
+}
+
 KuzSite.prototype.getLayouts = function () {
 	let layouts = [];
 	for (let theme of this.themes) {
@@ -246,7 +240,7 @@ KuzSite.prototype.getModules = function () {
 	return modules;
 }
 
-KuzSite.prototype.getCSSArray = function () {
+KuzSite.prototype.getCssArray = function () {
 	let cssArray = [];
 	for (let theme of this.themes) {
 		cssArray = cssArray.concat(theme.cssArray);
@@ -274,11 +268,13 @@ KuzSite.prototype.getEveryThing = function () {
 	let everyThing = this.getRenderables();
 	everyThing = everyThing.concat(this.getLayouts());
 	everyThing = everyThing.concat(this.getModules());
-	everyThing = everyThing.concat(this.getCSSArray());
+	everyThing = everyThing.concat(this.getCssArray());
 	everyThing = everyThing.concat(this.getJsArray());
 	everyThing = everyThing.concat(this.getResources());
 	return everyThing;
 }
+
+
 
 KuzSite.prototype.getPagesByAuthor = function (author) {
 	let pages = [];
@@ -315,6 +311,8 @@ KuzSite.prototype.getPagesWithTag = function (tag) {
 	}
 	return pages;
 }
+
+
 
 KuzSite.prototype.getAuthorFromName = function (authorName) {
 	for (let author of this.getAuthors) {
@@ -354,6 +352,18 @@ KuzSite.prototype.getTagsFromNameArray = function (tagNameArray) {
 	return tags;
 }
 
+KuzSite.prototype.getThemeFromName = function (themeName) {
+	for (let theme of this.site.themes) {
+		if (theme.themeName === themeName) {
+			return theme;
+		}
+	}
+
+	return null;
+}
+
+
+
 KuzSite.prototype.printArrayAsTable = function (arr) {
 	if (arr.length === 0) {
 		this.log.red("No elements in array.");
@@ -367,6 +377,8 @@ KuzSite.prototype.printArrayAsTable = function (arr) {
 	table.print();
 }
 
+
+
 KuzSite.prototype.forcedUpdateArray = function (arr) {
 	for (let elem of arr) {
 		elem.forcedUpdate();
@@ -378,6 +390,8 @@ KuzSite.prototype.updateArray = function (arr) {
 		elem.update();
 	}
 }
+
+
 
 module.exports = {
 	KuzSite: KuzSite
