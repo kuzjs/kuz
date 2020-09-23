@@ -124,7 +124,7 @@ KuzSite.prototype.getSpecialDirectory = function () {
 
 
 
-KuzSite.prototype.GetDataFileContents = function (filename) {
+KuzSite.prototype.getDataFileContents = function (filename) {
 	let filepath = fsutils.JoinPath(this.getDataInputDirectory(), filename);
 	if (fsutils.IsFile(filepath)) {
 		return fs.readFileSync(filepath, "utf8");
@@ -148,11 +148,14 @@ KuzSite.prototype.getDefaultTheme = function () {
 	return this.themes[0];
 }
 
+
+
 KuzSite.prototype.printDirectories = function () {
 	this.log.SomeNews("  Input: " + this.getInputDirectory());
 	this.log.SomeNews(" Output: " + this.getOutputDirectory());
-	this.log.SomeNews("Special: " + this.getSpecialDirectory());
 }
+
+
 
 KuzSite.prototype.getAuthors = function () {
 	let authors = [];
