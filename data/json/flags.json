@@ -99,14 +99,14 @@
 		},
 		{
 			"code": "k",
-			"name": "collections",
-			"description": "Collections only modifier.",
+			"name": "konfig",
+			"description": "KuzKonfig only modifier.",
 			"modifier": true
 		},
 		{
 			"code": "K",
-			"name": "konfig",
-			"description": "KuzKonfig only modifier.",
+			"name": "kurses",
+			"description": "Use Kurses interface.",
 			"modifier": true
 		},
 		{
