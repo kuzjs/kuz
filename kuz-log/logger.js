@@ -1,6 +1,7 @@
 // logger.js
 
 const fs = require("fs");
+const utils = require("./utils");
 
 
 
@@ -51,42 +52,6 @@ const colors = {
 
 
 
-function GetDateString (separator = ".") {
-	let now = new Date();
-
-	let date = (now.getDate() + "").padStart(2, "0");
-	let month = (now.getMonth() + 1 + "").padStart(2, "0");
-	let year = (now.getFullYear() + "").padStart(4, "0");
-
-	return `${date}${separator}${month}${separator}${year}`;
-}
-
-function GetTimeString (separator = ":", septwo = "|") {
-	let now = new Date();
-
-	let hours = (now.getHours() + "").padStart(2, "0");
-	let minutes = (now.getMinutes() + "").padStart(2, "0");
-	let seconds = (now.getSeconds() + "").padStart(2, "0");
-	let milliseconds = (now.getMilliseconds() + "ms").padStart(5, "0");
-
-	return `${hours}${separator}${minutes}${separator}${seconds}${septwo}${milliseconds}`;
-}
-
-
-
-function GetLogFileName () {
-	let date = GetDateString("_");
-	let time = GetTimeString("_");
-
-	return `log_on_${date}_at_${time}.txt`;
-}
-
-function GetLogFilePath () {
-	return "logs/" + GetLogFileName();
-}
-
-
-
 function KuzLogger (name) {
 	this.name = name ? name : "Anonymous";
 	this.color = true;
@@ -98,7 +63,7 @@ function KuzLogger (name) {
 	this.locked = false;
 	this.children = [];
 
-	this.path = GetLogFilePath();
+	this.path = utils.GetLogFilePath();
 	this.index = 0;
 
 	this.createdTime = Date.now();
@@ -300,8 +265,8 @@ KuzLogger.prototype.logInternal = function (keyword, prefix, message, c1, c2, c3
 	this.upTheIndex();
 	let index = (this.getIndex() + "").padStart(3);
 
-	let dataString = `${GetDateString()}`;
-	let timeString = `${GetTimeString()}`;
+	let dataString = `${utils.GetDateString()}`;
+	let timeString = `${utils.GetTimeString()}`;
 	let timeStampPrefix = `on ${dataString} at ${timeString}`;
 
 	let newLogTime = Date.now();
