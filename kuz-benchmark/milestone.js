@@ -21,12 +21,19 @@ KuzMilestone.prototype.getTimePassedReadable = function () {
 	return utils.getReadableTime(this.getTimePassed());
 }
 
+KuzMilestone.prototype.getTable = function () {
+	const KuZTable = require("../kuz-table").KuZTable;
+	let table = new KuZTable();
+	table.addColumn("BenchMark");
+	table.addColumn("Milestone");
+	table.addColumn("S   Ms   Us   Ns");
+	return table;
+}
+
 KuzMilestone.prototype.getRow = function () {
 	return [
 		this.benchMark.getName(),
 		this.getName(),
-		1,
-		this.getTimePassedReadable(),
 		this.getTimePassedReadable()
 	];
 }
