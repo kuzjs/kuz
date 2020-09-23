@@ -16,20 +16,26 @@ function KaagazzApp () {
 	//this.log.TurnOnDisk();
 
 	this.setupBenchMark();
+	this.benchMark.recordMilestone("BenchMark initialized.");
 	this.setupJsons();
+	this.benchMark.recordMilestone("JSON setup complete.");
 	this.log.setName(this.getTitle());
 
 	this.setupFlags();
+	this.benchMark.recordMilestone("Flags setup complete.");
 
 	if (this.ok()) {
 		const siteSetupAction = this.benchMark.getNewAction("Site setup");
 		const KuzSite = require("./kuz-site").KuzSite;
 		this.site = new KuzSite(this);
+		this.benchMark.recordMilestone("Site setup complete.");
 		siteSetupAction.record();
 		this.setupOperands();
 	} else {
 		this.site = null;
 	}
+
+	this.benchMark.recordMilestone("KaagazzApp setup complete.");
 }
 
 KaagazzApp.prototype.setupBenchMark = function () {

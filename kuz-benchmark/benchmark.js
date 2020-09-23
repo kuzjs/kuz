@@ -1,16 +1,22 @@
 // benchmark.js
 const utils = require("./utils");
+const KuzMilestone = require("./milestone").KuzMilestone;
 
 
 
 function KuzBenchMark (name) {
 	this.name = name;
 	this.actions = [];
+	this.milestones = [];
 	this.init_time = process.hrtime.bigint();
 }
 
 KuzBenchMark.prototype.getName = function () {
 	return this.name;
+}
+
+KuzBenchMark.prototype.getTimeInit = function () {
+	return this.init_time;
 }
 
 KuzBenchMark.prototype.getTimePassed = function () {
@@ -28,11 +34,21 @@ KuzBenchMark.prototype.getNewAction = function (name) {
 	return action;
 }
 
+KuzBenchMark.prototype.recordMilestone = function (name) {
+	const newMilestone = new KuzMilestone(this, name);
+	this.milestones.push(newMilestone);
+}
+
 KuzBenchMark.prototype.print = function () {
 	let table = this.actions[0].getTable();
 	for (let action of this.actions) {
 		table.add(action);
 	}
+
+	for (let milestone of this.milestones) {
+		table.add(milestone);
+	}
+
 	table.addSeparatorRow();
 	table.addRow(["Total", "", "", this.getTimePassedReadable(), ""]);
 	table.print();
