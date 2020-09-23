@@ -41,12 +41,12 @@ Section.prototype.NumberOfLines = function () {
 
 
 function KuzSections (sectionLines) {
-	this.Setup(sectionLines);
+	this.setup(sectionLines);
 }
 
 
 
-KuzSections.prototype.Setup = function (sectionLines) {
+KuzSections.prototype.setup = function (sectionLines) {
 	this.sections = [];
 	let mainLabel = GetLabel("[main]");
 	let currentSection = new Section(mainLabel);

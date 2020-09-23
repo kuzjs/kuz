@@ -45,11 +45,11 @@ KuzPage.prototype.setupPage = function (site, konfig, entry) {
 	}
 }
 
-KuzPage.prototype.Setup = function () {
+KuzPage.prototype.setup = function () {
 	//
 }
 
-KuzPage.prototype.Reset = function () {
+KuzPage.prototype.reset = function () {
 	//
 }
 
@@ -496,8 +496,8 @@ KuzPage.prototype.build = function () {
 
 KuzPage.prototype.update = function () {
 	if (this.needsUpdate()) {
-		this.Reset();
-		this.Setup();
+		this.reset();
+		this.setup();
 		this.render();
 		this.log.greenYellow(`Updated in ${this.averageRenderTimeString()}:`, this.getOutputFilePath());
 	}

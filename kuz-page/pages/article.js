@@ -4,10 +4,10 @@ const pug = require("pug");
 const Section = require("./section").Section;
 
 function Article(page, content) {
-	this.Setup(page, content);
+	this.setup(page, content);
 }
 
-Article.prototype.Setup = function (page, content) {
+Article.prototype.setup = function (page, content) {
 	this.page = page;
 	this.contentLines = content.split("\n");
 	this.sections = {};
