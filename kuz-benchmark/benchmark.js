@@ -47,8 +47,7 @@ KuzBenchMark.prototype.printMilestones = function () {
 	table.print();
 }
 
-KuzBenchMark.prototype.print = function () {
-	this.printMilestones();
+KuzBenchMark.prototype.printActions = function () {
 	let table = this.actions[0].getTable();
 
 	for (let action of this.actions) {
@@ -58,6 +57,11 @@ KuzBenchMark.prototype.print = function () {
 	table.addSeparatorRow();
 	table.addRow(["Total", "", "", this.getTimePassedReadable(), ""]);
 	table.print();
+}
+
+KuzBenchMark.prototype.print = function () {
+	this.printMilestones();
+	this.printActions();
 }
 
 
