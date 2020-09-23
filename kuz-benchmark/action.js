@@ -4,17 +4,17 @@
 function KuzAction (benchMark, name) {
 	this.benchMark = benchMark;
 	this.name = name;
-	this.init_time = Date.now();
+	this.init_time = process.hrtime.bigint();
 	this.last_time = this.init_time;
 	this.durations = [];
 }
 
 KuzAction.prototype.resetClock = function () {
-	this.last_time = Date.now();
+	this.last_time = process.hrtime.bigint();
 }
 
 KuzAction.prototype.record = function () {
-	let new_time = Date.now();
+	let new_time = process.hrtime.bigint();
 	let duration = new_time - this.last_time;
 	this.durations.push(duration);
 	this.last_time = new_time;
@@ -29,15 +29,15 @@ KuzAction.prototype.getCount = function () {
 }
 
 KuzAction.prototype.getTotalTime = function () {
-	let totalTime = 0;
+	let totalTime = BigInt(0);
 	for (let duration of this.durations) {
 		totalTime += duration;
 	}
-	return totalTime;
+	return totalTime / BigInt(1000);
 }
 
 KuzAction.prototype.getAverageTime = function () {
-	return this.getTotalTime() / this.getCount();
+	return this.getTotalTime() / BigInt(this.getCount());
 }
 
 KuzAction.prototype.getTable = function () {
