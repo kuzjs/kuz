@@ -146,10 +146,6 @@ KuzBaseObject.prototype.isCategory = function () {
 	return false;
 }
 
-KuzBaseObject.prototype.isCollection = function () {
-	return false;
-}
-
 KuzBaseObject.prototype.isTag = function () {
 	return false;
 }

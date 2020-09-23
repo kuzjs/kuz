@@ -193,22 +193,11 @@ KuzSite.prototype.getPages = function () {
 	return pages;
 }
 
-KuzSite.prototype.getCollections = function () {
-	let collections = [];
-	for (let page of this.pages) {
-		if (page.GetType() === "collection") {
-			collections.push(page);
-		}
-	}
-	return collections;
-}
-
 KuzSite.prototype.getEntities = function () {
 	let entities = [];
 	entities = entities.concat(this.getAuthors());
 	entities = entities.concat(this.getCategories());
 	entities = entities.concat(this.getTags());
-	entities = entities.concat(this.getCollections());
 	return entities;
 }
 

@@ -74,10 +74,6 @@ KuzPage.prototype.isCategory = function () {
 	return (this.GetType() === "category") ? true : false;
 }
 
-KuzPage.prototype.isCollection = function () {
-	return (this.GetType() === "collection") ? true : false;
-}
-
 KuzPage.prototype.isTag = function () {
 	return (this.GetType() === "tag") ? true : false;
 }
@@ -399,8 +395,6 @@ KuzPage.prototype.getPages = function () {
 		return this.site.getPagesInCategory(this);
 	} else if (this.GetType() === "tag") {
 		return this.site.getPagesWithTag(this);
-	} else if (this.GetType() === "collection") {
-		return this.site.getPages();
 	}
 	return this.site.pages;
 }
