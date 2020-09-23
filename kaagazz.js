@@ -11,9 +11,12 @@ const loremIpsumJsonPath = fsutils.JoinPath(jsonDirectory, "lorem-ipsum.json");
 
 
 function KaagazzApp () {
-	this.setupLog();
 	this.setupBenchMark();
 	this.benchMark.recordMilestone("BenchMark initialized.");
+
+	this.setupLog();
+	this.benchMark.recordMilestone("Log setup complete.");
+
 	this.setupJsons();
 	this.benchMark.recordMilestone("JSON setup complete.");
 	this.log.setName(this.getTitle());
