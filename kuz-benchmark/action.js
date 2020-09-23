@@ -1,6 +1,29 @@
 
 
 
+function getReadableTime (big_nano) {
+	const ten_k = BigInt(10000);
+
+	if (big_nano < ten_k) {
+		return big_nano + "ns";
+	}
+
+	const big_micro = big_nano / BigInt(1000);
+	if (big_micro < ten_k) {
+		return big_micro + "us";
+	}
+
+	const big_milli = big_micro / BigInt(1000);
+	if (big_milli < ten_k) {
+		return big_milli + "ms";
+	}
+
+	const big_seconds = big_milli / BigInt(1000);
+	return big_seconds + "s";
+}
+
+
+
 function KuzAction (benchMark, name) {
 	this.benchMark = benchMark;
 	this.name = name;
@@ -33,7 +56,7 @@ KuzAction.prototype.getTotalTime = function () {
 	for (let duration of this.durations) {
 		totalTime += duration;
 	}
-	return totalTime / BigInt(1000);
+	return totalTime;
 }
 
 KuzAction.prototype.getAverageTime = function () {
@@ -56,8 +79,8 @@ KuzAction.prototype.getRow = function () {
 		this.benchMark.getName(),
 		this.getName(),
 		this.getCount(),
-		this.getTotalTime(),
-		this.getAverageTime()
+		getReadableTime(this.getTotalTime()),
+		getReadableTime(this.getAverageTime())
 	];
 }
 
