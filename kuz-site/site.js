@@ -94,12 +94,24 @@ KuzSite.prototype.getNestedValueFromCascade = function (parent, child) {
 	}
 }
 
-KuzSite.prototype.getOutputDirectoryFromJson = function (dirName) {
-	return this.getNestedValueFromCascade("output", dirName);
-}
+
 
 KuzSite.prototype.getInputDirectory = function () {
 	return this.input_dirs.pages;
+}
+
+KuzSite.prototype.getThemesInputDirectory = function () {
+	return this.input_dirs.themes;
+}
+
+KuzSite.prototype.getDataDirectory = function () {
+	return this.input_dirs.data;
+}
+
+
+
+KuzSite.prototype.getOutputDirectoryFromJson = function (dirName) {
+	return this.getNestedValueFromCascade("output", dirName);
 }
 
 KuzSite.prototype.getOutputDirectory = function () {
@@ -110,13 +122,7 @@ KuzSite.prototype.getSpecialDirectory = function () {
 	return this.getOutputDirectoryFromJson("special");
 }
 
-KuzSite.prototype.getThemesInputDirectory = function () {
-	return this.input_dirs.themes;
-}
 
-KuzSite.prototype.getDataDirectory = function () {
-	return this.input_dirs.data;
-}
 
 KuzSite.prototype.GetDataFileContents = function (filename) {
 	let filepath = fsutils.JoinPath(this.getDataDirectory(), filename);
