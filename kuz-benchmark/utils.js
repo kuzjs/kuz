@@ -3,24 +3,12 @@
 
 
 function getReadableTime (big_nano) {
-	const ten_k = BigInt(10000);
+	const seconds = (big_nano / BigInt(1e9));
+	const milliseconds = (big_nano / BigInt(1e6)) % BigInt(1000);
+	const microseconds = (big_nano / BigInt(1e3)) % BigInt(1000);
+	const nanoseconds = big_nano % BigInt(1000);
 
-	if (big_nano < ten_k) {
-		return big_nano + "ns";
-	}
-
-	const big_micro = big_nano / BigInt(1000);
-	if (big_micro < ten_k) {
-		return big_micro + "us";
-	}
-
-	const big_milli = big_micro / BigInt(1000);
-	if (big_milli < ten_k) {
-		return big_milli + "ms";
-	}
-
-	const big_seconds = big_milli / BigInt(1000);
-	return big_seconds + "s";
+	return `${seconds}s ${milliseconds}ms ${microseconds}us ${nanoseconds}ns`;
 }
 
 
