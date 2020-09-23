@@ -104,7 +104,7 @@ KuzSite.prototype.getThemesInputDirectory = function () {
 	return this.input_dirs.themes;
 }
 
-KuzSite.prototype.getDataDirectory = function () {
+KuzSite.prototype.getDataInputDirectory = function () {
 	return this.input_dirs.data;
 }
 
@@ -125,7 +125,7 @@ KuzSite.prototype.getSpecialDirectory = function () {
 
 
 KuzSite.prototype.GetDataFileContents = function (filename) {
-	let filepath = fsutils.JoinPath(this.getDataDirectory(), filename);
+	let filepath = fsutils.JoinPath(this.getDataInputDirectory(), filename);
 	if (fsutils.IsFile(filepath)) {
 		return fs.readFileSync(filepath, "utf8");
 	} else {
