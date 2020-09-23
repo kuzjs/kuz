@@ -11,10 +11,7 @@ const loremIpsumJsonPath = fsutils.JoinPath(jsonDirectory, "lorem-ipsum.json");
 
 
 function KaagazzApp () {
-	const KuzLogger = require("./kuz-log").KuzLogger;
-	this.log = new KuzLogger("KaagazzApp");
-	//this.log.TurnOnDisk();
-
+	this.setupLog();
 	this.setupBenchMark();
 	this.benchMark.recordMilestone("BenchMark initialized.");
 	this.setupJsons();
@@ -39,6 +36,12 @@ function KaagazzApp () {
 }
 
 
+
+KaagazzApp.prototype.setupLog = function () {
+	const KuzLogger = require("./kuz-log").KuzLogger;
+	this.log = new KuzLogger("KaagazzApp");
+	//this.log.TurnOnDisk();
+}
 
 KaagazzApp.prototype.setupBenchMark = function () {
 	const KuzBenchMark = require("./kuz-benchmark").KuzBenchMark;
