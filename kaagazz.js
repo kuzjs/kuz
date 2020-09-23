@@ -290,7 +290,9 @@ KaagazzApp.prototype.showVersion = function () {
 	table.print();
 }
 
-KaagazzApp.prototype.testBenchMark = function () {
+
+
+KaagazzApp.prototype.benchMarkStuff = function () {
 	let rendered = 0;
 	for (let index=0; index<20; index++) {
 		for (let x of this.site.getRenderables()) {
@@ -299,7 +301,7 @@ KaagazzApp.prototype.testBenchMark = function () {
 		}
 	}
 
-	this.benchMark.recordMilestone("KaagazzApp.testBenchMark() ends.");
+	this.benchMark.recordMilestone("KaagazzApp.benchMarkStuff() ends.");
 	this.benchMark.print();
 }
 
@@ -307,12 +309,14 @@ KaagazzApp.prototype.nietzsche = function () {
 	this.log.green("Kaagazz Nietzschean Experiment.");
 
 	//this.site.pages[0].metaData.printPropertyTable();
-	this.testBenchMark();
+	this.benchMarkStuff();
 
 	for (let x of this.operands) {
 		this.log.green(x.getCodeAndName());
 	}
 }
+
+
 
 KaagazzApp.prototype.listStuff = function (flags) {
 	if (this.operands.length === 0) {
