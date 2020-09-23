@@ -84,7 +84,7 @@ KuzPage.prototype.isTag = function () {
 
 
 
-KuzPage.prototype.IsHidden = function () {
+KuzPage.prototype.isHidden = function () {
 	let prop = this.getPropertyCascaded("hidden");
 	if (prop.found) {
 		return prop.value;
@@ -92,8 +92,8 @@ KuzPage.prototype.IsHidden = function () {
 	return false;
 }
 
-KuzPage.prototype.IsVisible = function () {
-	return !this.IsHidden();
+KuzPage.prototype.isVisible = function () {
+	return !this.isHidden();
 }
 
 
