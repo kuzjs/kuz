@@ -41,12 +41,15 @@ KuzBenchMark.prototype.recordMilestone = function (name) {
 
 KuzBenchMark.prototype.print = function () {
 	let table = this.actions[0].getTable();
-	for (let action of this.actions) {
-		table.add(action);
-	}
 
 	for (let milestone of this.milestones) {
 		table.add(milestone);
+	}
+
+	table.addSeparatorRow();
+
+	for (let action of this.actions) {
+		table.add(action);
 	}
 
 	table.addSeparatorRow();
