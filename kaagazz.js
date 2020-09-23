@@ -466,12 +466,12 @@ KaagazzApp.prototype.run = function () {
 
 
 
-const kaagazz = new KaagazzApp();
+const kuz = new KaagazzApp();
 
 
 
 module.exports = {
-	kaagazz: kaagazz
+	kuz: kuz
 };
 
 
