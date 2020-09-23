@@ -382,7 +382,7 @@ KuzLogger.prototype.red = function (prefix, message) {
 }
 
 KuzLogger.prototype.yellow = function (prefix, message) {
-	if (this.DebugIsOn()) {
+	if (this.debugIsOn()) {
 		this.logInternal("  .... ", prefix, message, colors.FgYellow);
 	}
 }
@@ -398,7 +398,7 @@ KuzLogger.prototype.badNews = function (message) {
 }
 
 KuzLogger.prototype.someNews = function (message) {
-	if (this.DebugIsOn()) {
+	if (this.debugIsOn()) {
 		this.logInternal(" SOME ", message, colors.FgYellow);
 	}
 }
