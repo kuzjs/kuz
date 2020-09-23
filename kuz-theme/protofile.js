@@ -27,7 +27,7 @@ ProtoFile.prototype.getOutputDirectoryPath = function () {
 }
 
 ProtoFile.prototype.getOutputFileName = function () {
-	return this.Path();
+	return this.getPath();
 }
 
 ProtoFile.prototype.toString = function () {
