@@ -110,16 +110,12 @@ KuzSite.prototype.getDataInputDirectory = function () {
 
 
 
-KuzSite.prototype.getOutputDirectoryFromJson = function (dirName) {
-	return this.getNestedValueFromCascade("output", dirName);
-}
-
 KuzSite.prototype.getOutputDirectory = function () {
-	return this.getOutputDirectoryFromJson("root");
+	return this.output_dirs.root;
 }
 
 KuzSite.prototype.getSpecialDirectory = function () {
-	return this.getOutputDirectoryFromJson("special");
+	return this.output_dirs.special;
 }
 
 
