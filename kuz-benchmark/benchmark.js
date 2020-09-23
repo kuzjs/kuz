@@ -37,6 +37,7 @@ KuzBenchMark.prototype.getNewAction = function (name) {
 KuzBenchMark.prototype.recordMilestone = function (name) {
 	const newMilestone = new KuzMilestone(this, name);
 	this.milestones.push(newMilestone);
+	return this;
 }
 
 KuzBenchMark.prototype.printMilestones = function () {
@@ -45,6 +46,7 @@ KuzBenchMark.prototype.printMilestones = function () {
 		table.add(milestone);
 	}
 	table.print();
+	return this;
 }
 
 KuzBenchMark.prototype.printActions = function () {
@@ -57,11 +59,12 @@ KuzBenchMark.prototype.printActions = function () {
 	table.addSeparatorRow();
 	table.addRow(["Total", "", "", this.getTimePassedReadable(), ""]);
 	table.print();
+	return this;
 }
 
 KuzBenchMark.prototype.print = function () {
-	this.printMilestones();
-	this.printActions();
+	this.printMilestones().printActions();
+	return this;
 }
 
 
