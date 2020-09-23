@@ -36,7 +36,7 @@ KuzPage.prototype.setupPage = function (site, konfig, entry) {
 
 	this.tags = [];
 
-	if (this.inputFileExists()) {
+	if (this.doesInputFileExist()) {
 
 		const KuzFile = require("../kuz-kuzfile").KuzFile;
 		this.kuzFile = new KuzFile(this, this.getInputFilePath());
@@ -170,7 +170,7 @@ KuzPage.prototype.getOutputFileMTime = function () {
 	return 0;
 }
 
-KuzPage.prototype.outputFileExists = function () {
+KuzPage.prototype.doesOutputFileExist = function () {
 	let mTime = this.getOutputFileMTime();
 	if (mTime === 0) {
 		return false;
@@ -481,7 +481,7 @@ KuzPage.prototype.needsUpdate = function () {
 }
 
 KuzPage.prototype.build = function () {
-	if (!this.outputFileExists()) {
+	if (!this.doesOutputFileExist()) {
 		this.render();
 		this.log.greenYellow(`Built in ${this.averageRenderTimeString()}:`, this.getOutputFilePath());
 	}

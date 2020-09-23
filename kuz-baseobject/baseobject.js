@@ -200,7 +200,7 @@ KuzBaseObject.prototype.getInputFilePath = function (fileName) {
 	}
 }
 
-KuzBaseObject.prototype.inputFileExists = function () {
+KuzBaseObject.prototype.doesInputFileExist = function () {
 	return fsutils.FileExists(this.getInputFilePath());
 }
 
@@ -216,7 +216,7 @@ KuzBaseObject.prototype.getOutputFilePath = function (fileName) {
 	}
 }
 
-KuzBaseObject.prototype.outputFileExists = function () {
+KuzBaseObject.prototype.doesOutputFileExist = function () {
 	return fsutils.FileExists(this.getOutputFilePath());
 }
 
@@ -227,14 +227,14 @@ KuzBaseObject.prototype.getOutputFileMTime = function () {
 
 
 KuzBaseObject.prototype.buildable = function () {
-	if (!this.outputFileExists()) {
+	if (!this.doesOutputFileExist()) {
 		this.log.green("Can be built.", this.getCodeName());
 	}
 	return this;
 }
 
 KuzBaseObject.prototype.build = function () {
-	if (!this.outputFileExists()) {
+	if (!this.doesOutputFileExist()) {
 		this.update();
 	}
 	return this;
