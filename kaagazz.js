@@ -293,7 +293,9 @@ KaagazzApp.prototype.showVersion = function () {
 
 
 KaagazzApp.prototype.kursesStuff = function () {
-	this.log.green("I kurse you.");
+	const KursesInstance = require("./kuz-kurses").KursesInstance;
+	const kurse = new KursesInstance(this.getTitle());
+	kurse.run();
 }
 
 KaagazzApp.prototype.benchMarkStuff = function () {
