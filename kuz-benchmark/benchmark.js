@@ -4,7 +4,7 @@
 function KuzBenchMark (name) {
 	this.name = name;
 	this.actions = [];
-	this.init_time = Date.now();
+	this.init_time = process.hrtime.bigint();
 }
 
 KuzBenchMark.prototype.getName = function () {
@@ -12,7 +12,7 @@ KuzBenchMark.prototype.getName = function () {
 }
 
 KuzBenchMark.prototype.getTimePassed = function () {
-	return (Date.now() - this.init_time);
+	return (process.hrtime.bigint() - this.init_time);
 }
 
 KuzBenchMark.prototype.getNewAction = function (name) {
