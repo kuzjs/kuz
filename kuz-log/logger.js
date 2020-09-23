@@ -5,23 +5,6 @@ const utils = require("./utils");
 
 
 
-const months = [
-	"January", "February", "March",
-	"April", "May", "June",
-	"July", "August", "September",
-	"October", "November", "December"
-];
-
-const days = [
-	"Sunday",
-	"Monday",
-	"Tuesday",
-	"Wednesday",
-	"Thursday",
-	"Friday",
-	"Saturday"
-];
-
 const colors = {
 	Reset: "\x1b[0m",
 	Bright: "\x1b[1m",
