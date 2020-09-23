@@ -94,16 +94,12 @@ KuzSite.prototype.getNestedValueFromCascade = function (parent, child) {
 	}
 }
 
-KuzSite.prototype.getInputDirectoryFromJson = function (dirName) {
-	return this.app.meta.json.input[dirName];
-}
-
 KuzSite.prototype.getOutputDirectoryFromJson = function (dirName) {
 	return this.getNestedValueFromCascade("output", dirName);
 }
 
 KuzSite.prototype.getInputDirectory = function () {
-	return this.getInputDirectoryFromJson("pages");
+	return this.input_dirs.pages;
 }
 
 KuzSite.prototype.getOutputDirectory = function () {
@@ -115,11 +111,11 @@ KuzSite.prototype.getSpecialDirectory = function () {
 }
 
 KuzSite.prototype.getThemesInputDirectory = function () {
-	return this.getInputDirectoryFromJson("themes");
+	return this.input_dirs.themes;
 }
 
 KuzSite.prototype.getDataDirectory = function () {
-	return this.getInputDirectoryFromJson("data");
+	return this.input_dirs.data;
 }
 
 KuzSite.prototype.GetDataFileContents = function (filename) {
