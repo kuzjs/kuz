@@ -117,10 +117,6 @@ KaagazzApp.prototype.setupOperands = function () {
 			if (flags.tags) {
 				this.operands = this.operands.concat(this.site.getTags());
 			}
-
-			if (flags.collections) {
-				this.operands = this.operands.concat(this.site.getCollections());
-			}
 		}
 	}
 
