@@ -372,6 +372,10 @@ KaagazzApp.prototype.forcedUpdateStuff = function () {
 	}
 }
 
+KaagazzApp.prototype.serveStuff = function () {
+	this.log.green("Serving on X.X.X.X:X ...");
+}
+
 KaagazzApp.prototype.watchStuff = function () {
 	for (let thing of this.operands) {
 		thing.watch();
@@ -444,7 +448,7 @@ KaagazzApp.prototype.run = function () {
 	} else if (flags.forced) {
 		this.forcedUpdateStuff();
 	} else if (flags.serve) {
-		//
+		this.serveStuff();
 	} else if (flags.updatable) {
 		this.updatableStuff();
 	} else if (flags.update) {
@@ -460,7 +464,10 @@ KaagazzApp.prototype.run = function () {
 	}
 }
 
+
+
 const kaagazz = new KaagazzApp();
+
 
 
 module.exports = {
