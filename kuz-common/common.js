@@ -4,7 +4,7 @@ const fsutils = require("../kuz-fs");
 
 
 
-const dataDirectory = "kzapp/data/";
+const dataDirectory = "kuz/data/";
 
 const helpDocDirectory = fsutils.JoinPath(dataDirectory, "help");
 const jsonDirectory = fsutils.JoinPath(dataDirectory, "json");
