@@ -3,8 +3,8 @@ const utils = require("./utils");
 
 
 
-function KuzAction (benchMark, name) {
-	this.benchMark = benchMark;
+function KuzAction (benchmark, name) {
+	this.benchmark = benchmark;
 	this.name = name;
 	this.init_time = process.hrtime.bigint();
 	this.last_time = this.init_time;
@@ -45,7 +45,7 @@ KuzAction.prototype.getAverageTime = function () {
 KuzAction.prototype.getTable = function () {
 	const KuZTable = require("../kuz-table").KuZTable;
 	let table = new KuZTable();
-	table.addColumn("BenchMark");
+	table.addColumn("Benchmark");
 	table.addColumn("Action");
 	table.addColumn("Count");
 	table.addColumn("Total Time");
@@ -55,7 +55,7 @@ KuzAction.prototype.getTable = function () {
 
 KuzAction.prototype.getRow = function () {
 	return [
-		this.benchMark.getName(),
+		this.benchmark.getName(),
 		this.getName(),
 		this.getCount(),
 		utils.getReadableTime(this.getTotalTime()),

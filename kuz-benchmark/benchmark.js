@@ -4,43 +4,43 @@ const KuzMilestone = require("./milestone").KuzMilestone;
 
 
 
-function KuzBenchMark (name) {
+function KuzBenchmark (name) {
 	this.name = name;
 	this.actions = [];
 	this.milestones = [];
 	this.init_time = process.hrtime.bigint();
 }
 
-KuzBenchMark.prototype.getName = function () {
+KuzBenchmark.prototype.getName = function () {
 	return this.name;
 }
 
-KuzBenchMark.prototype.getTimeInit = function () {
+KuzBenchmark.prototype.getTimeInit = function () {
 	return this.init_time;
 }
 
-KuzBenchMark.prototype.getTimePassed = function () {
+KuzBenchmark.prototype.getTimePassed = function () {
 	return (process.hrtime.bigint() - this.init_time);
 }
 
-KuzBenchMark.prototype.getTimePassedReadable = function () {
+KuzBenchmark.prototype.getTimePassedReadable = function () {
 	return utils.getReadableTime(this.getTimePassed());
 }
 
-KuzBenchMark.prototype.getNewAction = function (name) {
+KuzBenchmark.prototype.getNewAction = function (name) {
 	const KuzAction = require("./action").KuzAction;
 	let action = new KuzAction(this, name);
 	this.actions.push(action);
 	return action;
 }
 
-KuzBenchMark.prototype.recordMilestone = function (name) {
+KuzBenchmark.prototype.recordMilestone = function (name) {
 	const newMilestone = new KuzMilestone(this, name);
 	this.milestones.push(newMilestone);
 	return this;
 }
 
-KuzBenchMark.prototype.printMilestones = function () {
+KuzBenchmark.prototype.printMilestones = function () {
 	let table = this.milestones[0].getTable();
 	for (let milestone of this.milestones) {
 		table.add(milestone);
@@ -49,7 +49,7 @@ KuzBenchMark.prototype.printMilestones = function () {
 	return this;
 }
 
-KuzBenchMark.prototype.printActions = function () {
+KuzBenchmark.prototype.printActions = function () {
 	let table = this.actions[0].getTable();
 
 	for (let action of this.actions) {
@@ -62,7 +62,7 @@ KuzBenchMark.prototype.printActions = function () {
 	return this;
 }
 
-KuzBenchMark.prototype.print = function () {
+KuzBenchmark.prototype.print = function () {
 	this.printMilestones().printActions();
 	return this;
 }
@@ -70,7 +70,7 @@ KuzBenchMark.prototype.print = function () {
 
 
 module.exports = {
-	KuzBenchMark: KuzBenchMark
+	KuzBenchmark: KuzBenchmark
 };
 
 

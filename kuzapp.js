@@ -11,31 +11,31 @@ const loremIpsumJsonPath = fsutils.JoinPath(jsonDirectory, "lorem-ipsum.json");
 
 
 function KuzApp () {
-	this.setupBenchMark();
-	this.benchMark.recordMilestone("BenchMark initialized.");
+	this.setupBenchmark();
+	this.benchmark.recordMilestone("Benchmark initialized.");
 
 	this.setupLog();
-	this.benchMark.recordMilestone("Log setup complete.");
+	this.benchmark.recordMilestone("Log setup complete.");
 
 	this.setupJsons();
-	this.benchMark.recordMilestone("JSON setup complete.");
+	this.benchmark.recordMilestone("JSON setup complete.");
 	this.log.setName(this.getTitle());
 
 	this.setupFlags();
-	this.benchMark.recordMilestone("Flags setup complete.");
+	this.benchmark.recordMilestone("Flags setup complete.");
 
 	if (this.ok()) {
-		const siteSetupAction = this.benchMark.getNewAction("Site setup");
+		const siteSetupAction = this.benchmark.getNewAction("Site setup");
 		const KuzSite = require("./kuz-site").KuzSite;
 		this.site = new KuzSite(this);
-		this.benchMark.recordMilestone("Site setup complete.");
+		this.benchmark.recordMilestone("Site setup complete.");
 		siteSetupAction.record();
 		this.setupOperands();
 	} else {
 		this.site = null;
 	}
 
-	this.benchMark.recordMilestone("KuzApp setup complete.");
+	this.benchmark.recordMilestone("KuzApp setup complete.");
 }
 
 
@@ -46,14 +46,14 @@ KuzApp.prototype.setupLog = function () {
 	//this.log.TurnOnDisk();
 }
 
-KuzApp.prototype.setupBenchMark = function () {
-	const KuzBenchMark = require("./kuz-benchmark").KuzBenchMark;
-	this.benchMark = new KuzBenchMark("Kuz BenchMark");
-	this.jsonParseActon = this.benchMark.getNewAction("JSON parsing");
-	this.pageSetupActon = this.benchMark.getNewAction("Page setup");
-	this.themeSetupActon = this.benchMark.getNewAction("Theme setup");
-	this.layoutSetupActon = this.benchMark.getNewAction("Layout setup");
-	this.pageRenderActon = this.benchMark.getNewAction("Page render");
+KuzApp.prototype.setupBenchmark = function () {
+	const KuzBenchmark = require("./kuz-benchmark").KuzBenchmark;
+	this.benchmark = new KuzBenchmark("Kuz Benchmark");
+	this.jsonParseActon = this.benchmark.getNewAction("JSON parsing");
+	this.pageSetupActon = this.benchmark.getNewAction("Page setup");
+	this.themeSetupActon = this.benchmark.getNewAction("Theme setup");
+	this.layoutSetupActon = this.benchmark.getNewAction("Layout setup");
+	this.pageRenderActon = this.benchmark.getNewAction("Page render");
 }
 
 KuzApp.prototype.setupJsons = function () {
@@ -303,7 +303,7 @@ KuzApp.prototype.kursesStuff = function () {
 	kurse.run();
 }
 
-KuzApp.prototype.benchMarkStuff = function () {
+KuzApp.prototype.benchmarkStuff = function () {
 	let rendered = 0;
 	for (let index=0; index<20; index++) {
 		for (let x of this.site.getRenderables()) {
@@ -312,15 +312,15 @@ KuzApp.prototype.benchMarkStuff = function () {
 		}
 	}
 
-	this.benchMark.recordMilestone("KuzApp.benchMarkStuff() ends.");
-	this.benchMark.print();
+	this.benchmark.recordMilestone("KuzApp.benchmarkStuff() ends.");
+	this.benchmark.print();
 }
 
 KuzApp.prototype.nietzsche = function () {
 	this.log.green("Kaagazz Nietzschean Experiment.");
 
 	//this.site.pages[0].metaData.printPropertyTable();
-	this.benchMarkStuff();
+	this.benchmarkStuff();
 
 	for (let x of this.operands) {
 		this.log.green(x.getCodeAndName());

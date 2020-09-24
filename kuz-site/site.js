@@ -27,9 +27,9 @@ KuzSite.prototype.setup = function () {
 
 	this.konfigs = [];
 	this.setupThemes();
-	this.app.benchMark.recordMilestone("Themes setup complete.");
+	this.app.benchmark.recordMilestone("Themes setup complete.");
 	this.setupPages();
-	this.app.benchMark.recordMilestone("Pages setup complete.");
+	this.app.benchmark.recordMilestone("Pages setup complete.");
 }
 
 KuzSite.prototype.setupPages = function () {
