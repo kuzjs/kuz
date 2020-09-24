@@ -308,17 +308,17 @@ KuzLogger.prototype.yellow = function (prefix, message) {
 
 
 
-KuzLogger.prototype.goodNews = function (message) {
-	this.logInternal(" GOOD ", message, colors.FgGreen);
+KuzLogger.prototype.goodNews = function (prefix, message) {
+	this.logInternal(" GOOD ", prefix, message, colors.FgGreen);
 }
 
-KuzLogger.prototype.badNews = function (message) {
-	this.logInternal("  BAD ", message, colors.FgRed);
+KuzLogger.prototype.badNews = function (prefix, message) {
+	this.logInternal("  BAD ", prefix, message, colors.FgRed);
 }
 
-KuzLogger.prototype.someNews = function (message) {
+KuzLogger.prototype.someNews = function (prefix, message) {
 	if (this.debugIsOn()) {
-		this.logInternal(" SOME ", message, colors.FgYellow);
+		this.logInternal(" SOME ", prefix, message, colors.FgYellow);
 	}
 }
 
