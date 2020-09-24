@@ -2,7 +2,7 @@
 
 const fs = require("fs");
 const utils = require("./utils");
-const colors = require("./colors").colors;
+const colors = require("./colors");
 
 
 

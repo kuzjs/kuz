@@ -32,8 +32,6 @@ const colors = {
 
 
 
-module.exports = {
-	colors: colors
-};
+module.exports = colors;
 
 
