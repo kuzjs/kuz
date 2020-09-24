@@ -4,7 +4,6 @@ const fsutils = require("./kuz-fs");
 const jsonDirectory = require("./kuz-common").jsonDirectory;
 
 const kaagazzJsonPath = fsutils.JoinPath(jsonDirectory, "kaagazz.json");
-const blackadderJsonPath = fsutils.JoinPath(jsonDirectory, "blackadder.json");
 
 
 
@@ -61,7 +60,7 @@ KuzApp.prototype.setupJsons = function () {
 	this.jsonParseActon.record();
 	this.flagsJson = require("./data/json/flags.json");
 	this.jsonParseActon.record();
-	this.blackadder = new KuzJson(blackadderJsonPath);
+	this.blackadder = require("./data/json/blackadder.json");
 	this.jsonParseActon.record();
 	this.ipsum = require("./data/json/ipsum.json");
 	this.jsonParseActon.record();
@@ -173,7 +172,7 @@ KuzApp.prototype.isApp = function () {
 }
 
 KuzApp.prototype.getBlackadder = function () {
-	return this.blackadder.json["quotes"];
+	return this.blackadder["quotes"];
 }
 
 KuzApp.prototype.getIpsum = function () {
