@@ -1,7 +1,5 @@
 // configfile.js
 
-
-
 const fsutils = require("../kuz-fs");
 
 

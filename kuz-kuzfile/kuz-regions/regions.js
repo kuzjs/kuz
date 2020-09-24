@@ -14,6 +14,8 @@ const regionSeparatorStarters = [
 	"....", "~~~~"
 ];
 
+
+
 function LineIsComment (lineText) {
 	lineText = lineText.trim();
 	for (let regionCommentStarter of regionCommentStarters) {

@@ -3,6 +3,8 @@
 const pug = require("pug");
 const Section = require("./section").Section;
 
+
+
 function Article(page, content) {
 	this.setup(page, content);
 }

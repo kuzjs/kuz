@@ -2,9 +2,9 @@
 
 const fs = require('fs');
 
-
-
 let numberOfKuzJsons = 0;
+
+
 
 function KuzJson (filepath) {
 	this.filepath = filepath;

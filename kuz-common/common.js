@@ -2,10 +2,7 @@
 
 const fsutils = require("../kuz-fs");
 
-
-
 const dataDirectory = "kuz/data/";
-
 const helpDocDirectory = fsutils.JoinPath(dataDirectory, "help");
 
 const defaultText = {

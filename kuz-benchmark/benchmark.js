@@ -1,4 +1,5 @@
 // benchmark.js
+
 const utils = require("./utils");
 const KuzMilestone = require("./milestone");
 

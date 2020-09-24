@@ -4,6 +4,8 @@ const fs = require("fs");
 
 const KuzPage = require("../kuz-page");
 
+
+
 function setupNextPrevious (arr) {
 	for (let index=0; index<arr.length; index++) {
 		arr[index].index = index;

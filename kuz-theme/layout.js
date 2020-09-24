@@ -5,6 +5,8 @@ const pug = require("pug");
 
 const fsutils = require("../kuz-fs");
 
+
+
 function ThemeLayout (theme, data) {
 	this.setupThemeElement(theme, data);
 	this.getApp().layoutSetupActon.resetClock();

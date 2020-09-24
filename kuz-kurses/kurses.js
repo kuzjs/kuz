@@ -1,4 +1,5 @@
 // kurses.js
+
 const KursesWindow = require("./window").KursesWindow;
 
 
