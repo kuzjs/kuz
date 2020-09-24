@@ -1,4 +1,9 @@
 
+0.1.3 / 24-09-2020
+====================
+	* Corrected internal JSON paths
+
+
 0.1.2 / 24-09-2020
 ====================
 	* Added pug and express as dependencies
