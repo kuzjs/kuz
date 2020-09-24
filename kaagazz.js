@@ -10,7 +10,7 @@ const loremIpsumJsonPath = fsutils.JoinPath(jsonDirectory, "lorem-ipsum.json");
 
 
 
-function KaagazzApp () {
+function KuzApp () {
 	this.setupBenchMark();
 	this.benchMark.recordMilestone("BenchMark initialized.");
 
@@ -35,18 +35,18 @@ function KaagazzApp () {
 		this.site = null;
 	}
 
-	this.benchMark.recordMilestone("KaagazzApp setup complete.");
+	this.benchMark.recordMilestone("KuzApp setup complete.");
 }
 
 
 
-KaagazzApp.prototype.setupLog = function () {
+KuzApp.prototype.setupLog = function () {
 	const KuzLogger = require("./kuz-log").KuzLogger;
-	this.log = new KuzLogger("KaagazzApp");
+	this.log = new KuzLogger("KuzApp");
 	//this.log.TurnOnDisk();
 }
 
-KaagazzApp.prototype.setupBenchMark = function () {
+KuzApp.prototype.setupBenchMark = function () {
 	const KuzBenchMark = require("./kuz-benchmark").KuzBenchMark;
 	this.benchMark = new KuzBenchMark("Kuz BenchMark");
 	this.jsonParseActon = this.benchMark.getNewAction("JSON parsing");
@@ -56,7 +56,7 @@ KaagazzApp.prototype.setupBenchMark = function () {
 	this.pageRenderActon = this.benchMark.getNewAction("Page render");
 }
 
-KaagazzApp.prototype.setupJsons = function () {
+KuzApp.prototype.setupJsons = function () {
 	const KuzJson = require("./kuz-json").KuzJson;
 	this.jsonParseActon.resetClock();
 	this.meta = new KuzJson(kaagazzJsonPath);
@@ -70,7 +70,7 @@ KaagazzApp.prototype.setupJsons = function () {
 	this.jsonParseActon.record();
 }
 
-KaagazzApp.prototype.setupFlags = function () {
+KuzApp.prototype.setupFlags = function () {
 	const KuzFlagManager = require("./kuz-flag").KuzFlagManager;
 	this.flagman = new KuzFlagManager(this.flagsJson.json.flags);
 
@@ -84,7 +84,7 @@ KaagazzApp.prototype.setupFlags = function () {
 	}
 }
 
-KaagazzApp.prototype.setupOperands = function () {
+KuzApp.prototype.setupOperands = function () {
 	this.operands = [];
 	let flags = this.simpleFlags;
 
@@ -155,7 +155,7 @@ KaagazzApp.prototype.setupOperands = function () {
 	}
 }
 
-KaagazzApp.prototype.ok = function () {
+KuzApp.prototype.ok = function () {
 	if (!this.meta.ok()) {
 		return false;
 	}
@@ -187,45 +187,45 @@ KaagazzApp.prototype.ok = function () {
 
 
 
-KaagazzApp.prototype.isApp = function () {
+KuzApp.prototype.isApp = function () {
 	return true;
 }
 
-KaagazzApp.prototype.getBlackadder = function () {
+KuzApp.prototype.getBlackadder = function () {
 	return this.blackadder.json["quotes"];
 }
 
-KaagazzApp.prototype.getIpsum = function () {
+KuzApp.prototype.getIpsum = function () {
 	return this.ipsum.json["lorem-ipsum"];
 }
 
-KaagazzApp.prototype.getSiteJsonPath = function () {
+KuzApp.prototype.getSiteJsonPath = function () {
 	return this.meta.json.filenames.siteJson;
 }
 
-KaagazzApp.prototype.getProps = function () {
+KuzApp.prototype.getProps = function () {
 	return this.meta.json;
 }
 
-KaagazzApp.prototype.getTitle = function () {
+KuzApp.prototype.getTitle = function () {
 	return this.meta.json.meta.title;
 }
 
-KaagazzApp.prototype.getDescription = function () {
+KuzApp.prototype.getDescription = function () {
 	return this.meta.json.meta.description;
 }
 
-KaagazzApp.prototype.getVersion = function () {
+KuzApp.prototype.getVersion = function () {
 	return this.meta.json.meta.version;
 }
 
-KaagazzApp.prototype.toString = function () {
+KuzApp.prototype.toString = function () {
 	return this.getTitle();
 }
 
 
 
-KaagazzApp.prototype.showSomeHelp = function () {
+KuzApp.prototype.showSomeHelp = function () {
 	let table = this.flags[0].getTable();
 
 	for (let flag of this.flags) {
@@ -237,7 +237,7 @@ KaagazzApp.prototype.showSomeHelp = function () {
 	table.print();
 }
 
-KaagazzApp.prototype.showFullHelp = function () {
+KuzApp.prototype.showFullHelp = function () {
 	let table = this.flags[0].getTable();
 
 	for (let flag of this.flags) {
@@ -247,7 +247,7 @@ KaagazzApp.prototype.showFullHelp = function () {
 	table.print();
 }
 
-KaagazzApp.prototype.showIndependentFlags = function () {
+KuzApp.prototype.showIndependentFlags = function () {
 	let table = this.flags[0].getTable();
 
 	for (let flag of this.flags) {
@@ -259,7 +259,7 @@ KaagazzApp.prototype.showIndependentFlags = function () {
 	table.print();
 }
 
-KaagazzApp.prototype.showModifierFlags = function () {
+KuzApp.prototype.showModifierFlags = function () {
 	let table = this.flags[0].getTable();
 
 	for (let flag of this.flags) {
@@ -271,7 +271,7 @@ KaagazzApp.prototype.showModifierFlags = function () {
 	table.print();
 }
 
-KaagazzApp.prototype.showMajorFlags = function () {
+KuzApp.prototype.showMajorFlags = function () {
 	let table = this.flags[0].getTable();
 
 	for (let flag of this.flags) {
@@ -283,7 +283,7 @@ KaagazzApp.prototype.showMajorFlags = function () {
 	table.print();
 }
 
-KaagazzApp.prototype.showVersion = function () {
+KuzApp.prototype.showVersion = function () {
 	const KuZTable = require("./kuz-table").KuZTable;
 	let table = new KuZTable();
 	table.addColumn("Key");
@@ -298,13 +298,13 @@ KaagazzApp.prototype.showVersion = function () {
 
 
 
-KaagazzApp.prototype.kursesStuff = function () {
+KuzApp.prototype.kursesStuff = function () {
 	const KursesInstance = require("./kuz-kurses").KursesInstance;
 	const kurse = new KursesInstance(this.getTitle());
 	kurse.run();
 }
 
-KaagazzApp.prototype.benchMarkStuff = function () {
+KuzApp.prototype.benchMarkStuff = function () {
 	let rendered = 0;
 	for (let index=0; index<20; index++) {
 		for (let x of this.site.getRenderables()) {
@@ -313,11 +313,11 @@ KaagazzApp.prototype.benchMarkStuff = function () {
 		}
 	}
 
-	this.benchMark.recordMilestone("KaagazzApp.benchMarkStuff() ends.");
+	this.benchMark.recordMilestone("KuzApp.benchMarkStuff() ends.");
 	this.benchMark.print();
 }
 
-KaagazzApp.prototype.nietzsche = function () {
+KuzApp.prototype.nietzsche = function () {
 	this.log.green("Kaagazz Nietzschean Experiment.");
 
 	//this.site.pages[0].metaData.printPropertyTable();
@@ -330,7 +330,7 @@ KaagazzApp.prototype.nietzsche = function () {
 
 
 
-KaagazzApp.prototype.listStuff = function (flags) {
+KuzApp.prototype.listStuff = function (flags) {
 	if (this.operands.length === 0) {
 		this.log.red("Zero operands to list.");
 	} else {
@@ -342,41 +342,41 @@ KaagazzApp.prototype.listStuff = function (flags) {
 	}
 }
 
-KaagazzApp.prototype.buildableStuff = function () {
+KuzApp.prototype.buildableStuff = function () {
 	for (let thing of this.operands) {
 		thing.buildable();
 	}
 }
 
-KaagazzApp.prototype.buildStuff = function () {
+KuzApp.prototype.buildStuff = function () {
 	for (let thing of this.operands) {
 		thing.build();
 	}
 }
 
-KaagazzApp.prototype.updatableStuff = function () {
+KuzApp.prototype.updatableStuff = function () {
 	for (let thing of this.operands) {
 		thing.updatable();
 	}
 }
 
-KaagazzApp.prototype.updateStuff = function () {
+KuzApp.prototype.updateStuff = function () {
 	for (let thing of this.operands) {
 		thing.update();
 	}
 }
 
-KaagazzApp.prototype.forcedUpdateStuff = function () {
+KuzApp.prototype.forcedUpdateStuff = function () {
 	for (let thing of this.operands) {
 		thing.forcedUpdate();
 	}
 }
 
-KaagazzApp.prototype.serveStuff = function () {
+KuzApp.prototype.serveStuff = function () {
 	this.log.green("Serving on X.X.X.X:X ...");
 }
 
-KaagazzApp.prototype.watchStuff = function () {
+KuzApp.prototype.watchStuff = function () {
 	for (let thing of this.operands) {
 		thing.watch();
 	}
@@ -384,7 +384,7 @@ KaagazzApp.prototype.watchStuff = function () {
 
 
 
-KaagazzApp.prototype.checkForModule = function (moduleName) {
+KuzApp.prototype.checkForModule = function (moduleName) {
 	try {
 		const mod = require(moduleName);
 		return true;
@@ -393,7 +393,7 @@ KaagazzApp.prototype.checkForModule = function (moduleName) {
 	}
 }
 
-KaagazzApp.prototype.flagsAreOK = function () {
+KuzApp.prototype.flagsAreOK = function () {
 	if (this.numberOfFlags.touchmenot > 0) {
 		if (this.numberOfFlags.total > 1) {
 			this.log.red("Touch-me-not flags cannot be combined.");
@@ -416,7 +416,7 @@ KaagazzApp.prototype.flagsAreOK = function () {
 
 
 
-KaagazzApp.prototype.run = function () {
+KuzApp.prototype.run = function () {
 	if (this.site === null) {
 		this.log.badNews("Site not initialized.");
 		return;
@@ -466,6 +466,6 @@ KaagazzApp.prototype.run = function () {
 
 
 
-module.exports = KaagazzApp;
+module.exports = KuzApp;
 
 
