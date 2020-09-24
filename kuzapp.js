@@ -67,7 +67,6 @@ KuzApp.prototype.setupJsons = function () {
 	this.jsonParseActon.record();
 	this.ipsum = new KuzJson(loremIpsumJsonPath);
 	this.jsonParseActon.record();
-	this.jsonParseActon.record();
 }
 
 KuzApp.prototype.setupFlags = function () {
