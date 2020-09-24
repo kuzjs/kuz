@@ -5,7 +5,6 @@ const jsonDirectory = require("./kuz-common").jsonDirectory;
 
 const kaagazzJsonPath = fsutils.JoinPath(jsonDirectory, "kaagazz.json");
 const blackadderJsonPath = fsutils.JoinPath(jsonDirectory, "blackadder.json");
-const loremIpsumJsonPath = fsutils.JoinPath(jsonDirectory, "lorem-ipsum.json");
 
 
 
@@ -64,7 +63,7 @@ KuzApp.prototype.setupJsons = function () {
 	this.jsonParseActon.record();
 	this.blackadder = new KuzJson(blackadderJsonPath);
 	this.jsonParseActon.record();
-	this.ipsum = new KuzJson(loremIpsumJsonPath);
+	this.ipsum = require("./data/json/lorem-ipsum.json");
 	this.jsonParseActon.record();
 }
 
@@ -178,7 +177,7 @@ KuzApp.prototype.getBlackadder = function () {
 }
 
 KuzApp.prototype.getIpsum = function () {
-	return this.ipsum.json["lorem-ipsum"];
+	return this.ipsum["lorem-ipsum"];
 }
 
 KuzApp.prototype.getSiteJsonPath = function () {
