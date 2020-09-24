@@ -554,6 +554,7 @@ KuzPage.prototype.getTable = function () {
 	table.addColumn("Theme");
 	table.addColumn("Type");
 	table.addColumn("Layout");
+	table.addColumn("Pages");
 	//table.addColumn("URL");
 	table.addColumn("In");
 	table.addColumn("Out");
@@ -569,6 +570,7 @@ KuzPage.prototype.getRow = function () {
 		this.getTheme().getName(),
 		this.GetType(),
 		this.getLayout().getName(),
+		this.getPagesCount(),
 		//this.PageURL(),
 		this.getInputFilePath(),
 		this.getOutputFilePath()
