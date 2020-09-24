@@ -549,9 +549,9 @@ KuzPage.prototype.getTable = function () {
 	let table = new KuzTable();
 	table.addColumn("Codename");
 	//table.addColumn("Name");
-	table.addColumn("Conf");
+	table.addColumn("Konf");
 	//table.addColumn("Title");
-	//table.addColumn("Theme");
+	table.addColumn("Theme");
 	table.addColumn("Type");
 	table.addColumn("Layout");
 	//table.addColumn("URL");
@@ -566,7 +566,7 @@ KuzPage.prototype.getRow = function () {
 		//this.Name(),
 		this.konfig.getCodeName(),
 		//this.Title(),
-		//this.Theme().Name(),
+		this.getTheme().getName(),
 		this.GetType(),
 		this.getLayout().getName(),
 		//this.PageURL(),
