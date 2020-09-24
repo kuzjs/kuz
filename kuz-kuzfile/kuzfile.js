@@ -36,6 +36,21 @@ KuzFile.prototype.cacheIsOff = function () {
 
 
 
+KuzFile.prototype.getJsons = function () {
+	if (this.cacheIsOn()) {
+		if (this.jsons === undefined) {
+			this.jsons = this.metaData.getJsons()
+			return this.jsons;
+		} else {
+			return this.jsons;
+		}
+	} else {
+		return this.metaData.getJsons();
+	}
+}
+
+
+
 KuzFile.prototype.getMetaData = function () {
 	return this.metaData;
 }
