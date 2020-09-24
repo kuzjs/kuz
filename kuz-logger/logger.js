@@ -324,8 +324,6 @@ KuzLogger.prototype.someNews = function (message) {
 
 
 
-module.exports = {
-	KuzLogger: KuzLogger
-};
+module.exports = KuzLogger;
 
 
