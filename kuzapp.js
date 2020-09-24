@@ -173,7 +173,7 @@ KuzApp.prototype.getBlackadder = function () {
 }
 
 KuzApp.prototype.getIpsum = function () {
-	return this.ipsumJson["lorem-ipsum"];
+	return this.ipsumJson["ipsum"];
 }
 
 KuzApp.prototype.getSiteJsonPath = function () {
