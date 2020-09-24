@@ -7,7 +7,6 @@ const fsutils = require("../kuz-fs");
 const dataDirectory = "kuz/data/";
 
 const helpDocDirectory = fsutils.JoinPath(dataDirectory, "help");
-const jsonDirectory = fsutils.JoinPath(dataDirectory, "json");
 
 const defaultText = {
 	description: "---",
@@ -21,7 +20,6 @@ const defaultText = {
 module.exports = {
 	defaultText: defaultText,
 	helpDocDirectory: helpDocDirectory,
-	jsonDirectory: jsonDirectory,
 	zzz: false
 };
 
