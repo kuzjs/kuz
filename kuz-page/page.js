@@ -394,7 +394,7 @@ KuzPage.prototype.getPages = function () {
 	} else if (this.GetType() === "tag") {
 		return this.site.getPagesWithTag(this);
 	}
-	return this.site.pages;
+	return [];
 }
 
 
