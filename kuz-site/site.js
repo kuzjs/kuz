@@ -13,9 +13,9 @@ function KuzSite (kaagazz) {
 }
 
 KuzSite.prototype.setup = function () {
-	this.filenames = this.app.meta.json.filenames;
-	this.input_dirs = this.app.meta.json.input;
-	this.output_dirs = this.app.meta.json.output;
+	this.filenames = this.app.meta.filenames;
+	this.input_dirs = this.app.meta.input;
+	this.output_dirs = this.app.meta.output;
 
 	this.error = false;
 	this.errorMessage = null;
@@ -85,17 +85,6 @@ KuzSite.prototype.error = function (errorMessage) {
 	this.error = true;
 	this.errorMessage = errorMessage;
 	this.log.red(this.errorMessage);
-}
-
-
-
-KuzSite.prototype.getNestedValueFromCascade = function (parent, child) {
-	let retVal = this.meta.getNestedValueFromName(parent, child);
-	if (retVal.found) {
-		return retVal.value;
-	} else {
-		return this.app.meta.getNestedValueFromName(parent, child).value;
-	}
 }
 
 

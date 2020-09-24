@@ -1,9 +1,6 @@
 // kaagazz.js
 
 const fsutils = require("./kuz-fs");
-const jsonDirectory = require("./kuz-common").jsonDirectory;
-
-const kaagazzJsonPath = fsutils.JoinPath(jsonDirectory, "kaagazz.json");
 
 
 
@@ -56,7 +53,7 @@ KuzApp.prototype.setupBenchmark = function () {
 KuzApp.prototype.setupJsons = function () {
 	const KuzJson = require("./kuz-json");
 	this.jsonParseActon.resetClock();
-	this.meta = new KuzJson(kaagazzJsonPath);
+	this.meta = require("./data/json/kaagazz.json");
 	this.jsonParseActon.record();
 	this.flagsJson = require("./data/json/flags.json");
 	this.jsonParseActon.record();
@@ -180,23 +177,23 @@ KuzApp.prototype.getIpsum = function () {
 }
 
 KuzApp.prototype.getSiteJsonPath = function () {
-	return this.meta.json.filenames.siteJson;
+	return this.meta.filenames.siteJson;
 }
 
 KuzApp.prototype.getProps = function () {
-	return this.meta.json;
+	return this.meta;
 }
 
 KuzApp.prototype.getTitle = function () {
-	return this.meta.json.meta.title;
+	return this.meta.meta.title;
 }
 
 KuzApp.prototype.getDescription = function () {
-	return this.meta.json.meta.description;
+	return this.meta.meta.description;
 }
 
 KuzApp.prototype.getVersion = function () {
-	return this.meta.json.meta.version;
+	return this.meta.meta.version;
 }
 
 KuzApp.prototype.toString = function () {
@@ -269,7 +266,7 @@ KuzApp.prototype.showVersion = function () {
 	table.addColumn("Key");
 	table.addColumn("Value");
 
-	let meta = this.meta.json.meta;
+	let meta = this.meta.meta;
 	table.addRow(["Title", this.getTitle()]);
 	table.addRow(["Version", this.getVersion()]);
 	table.addRow(["Description", this.getDescription()]);
