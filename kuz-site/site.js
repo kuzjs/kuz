@@ -375,8 +375,6 @@ KuzSite.prototype.updateArray = function (arr) {
 
 
 
-module.exports = {
-	KuzSite: KuzSite
-};
+module.exports = KuzSite;
 
 

@@ -72,7 +72,7 @@ KuzApp.prototype.setupFlags = function () {
 }
 
 KuzApp.prototype.setupSite = function () {
-	const KuzSite = require("./kuz-site").KuzSite;
+	const KuzSite = require("./kuz-site");
 	this.site = new KuzSite(this);
 }
 
