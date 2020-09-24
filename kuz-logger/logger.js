@@ -309,16 +309,16 @@ KuzLogger.prototype.yellow = function (prefix, message) {
 
 
 KuzLogger.prototype.goodNews = function (prefix, message) {
-	this.logInternal(" GOOD ", prefix, message, colors.FgGreen);
+	this.logInternal("  GOOD ", prefix, message, colors.FgGreen);
 }
 
 KuzLogger.prototype.badNews = function (prefix, message) {
-	this.logInternal("  BAD ", prefix, message, colors.FgRed);
+	this.logInternal("  BAD  ", prefix, message, colors.FgRed);
 }
 
 KuzLogger.prototype.someNews = function (prefix, message) {
 	if (this.debugIsOn()) {
-		this.logInternal(" SOME ", prefix, message, colors.FgYellow);
+		this.logInternal("  SOME ", prefix, message, colors.FgYellow);
 	}
 }
 
