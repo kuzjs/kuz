@@ -18,11 +18,8 @@ function KuzApp () {
 	this.benchmark.recordMilestone("KuzApp.setupFlags() complete.");
 
 	if (this.ok()) {
-		const siteSetupAction = this.benchmark.getNewAction("Site setup");
-		const KuzSite = require("./kuz-site").KuzSite;
-		this.site = new KuzSite(this);
-		this.benchmark.recordMilestone("new KuzSite() complete.");
-		siteSetupAction.record();
+		this.setupSite();
+		this.benchmark.recordMilestone("KuzApp.setupSite() complete.");
 		this.setupOperands();
 	} else {
 		this.site = null;
@@ -74,6 +71,13 @@ KuzApp.prototype.setupFlags = function () {
 	if (this.simpleFlags.debug) {
 		this.log.turnDebugOn();
 	}
+}
+
+KuzApp.prototype.setupSite = function () {
+	const siteSetupAction = this.benchmark.getNewAction("Site setup");
+	const KuzSite = require("./kuz-site").KuzSite;
+	this.site = new KuzSite(this);
+	siteSetupAction.record();
 }
 
 KuzApp.prototype.setupOperands = function () {
