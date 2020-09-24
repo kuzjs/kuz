@@ -11,6 +11,12 @@
     "url": "git+https://github.com/kuzjs/kuz.git"
   },
   "author": "Ankur Seth",
+  "keywords": [
+    "jekyll",
+    "hugo",
+    "wordpress",
+    "pug"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/kuzjs/kuz/issues"
