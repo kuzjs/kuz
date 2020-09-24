@@ -4,7 +4,6 @@ const fsutils = require("./kuz-fs");
 const jsonDirectory = require("./kuz-common").jsonDirectory;
 
 const kaagazzJsonPath = fsutils.JoinPath(jsonDirectory, "kaagazz.json");
-const flagsJsonPath = fsutils.JoinPath(jsonDirectory, "flags.json");
 const blackadderJsonPath = fsutils.JoinPath(jsonDirectory, "blackadder.json");
 const loremIpsumJsonPath = fsutils.JoinPath(jsonDirectory, "lorem-ipsum.json");
 
@@ -61,7 +60,7 @@ KuzApp.prototype.setupJsons = function () {
 	this.jsonParseActon.resetClock();
 	this.meta = new KuzJson(kaagazzJsonPath);
 	this.jsonParseActon.record();
-	this.flagsJson = new KuzJson(flagsJsonPath);
+	this.flagsJson = require("./data/json/flags.json");
 	this.jsonParseActon.record();
 	this.blackadder = new KuzJson(blackadderJsonPath);
 	this.jsonParseActon.record();
@@ -71,7 +70,7 @@ KuzApp.prototype.setupJsons = function () {
 
 KuzApp.prototype.setupFlags = function () {
 	const KuzFlagManager = require("./kuz-flagmanager");
-	this.flagman = new KuzFlagManager(this.flagsJson.json.flags);
+	this.flagman = new KuzFlagManager(this.flagsJson.flags);
 
 	this.flags = this.flagman.getFlags();
 	this.simpleFlags = this.flagman.getSimpleFlags();
