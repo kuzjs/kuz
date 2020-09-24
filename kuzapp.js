@@ -17,14 +17,11 @@ function KuzApp () {
 	this.setupFlags();
 	this.benchmark.recordMilestone("KuzApp.setupFlags() complete.");
 
-	if (this.ok()) {
-		this.setupSite();
-		this.benchmark.recordMilestone("KuzApp.setupSite() complete.");
-		this.setupOperands();
-		this.benchmark.recordMilestone("KuzApp.setupOperands() complete.");
-	} else {
-		this.site = null;
-	}
+	this.setupSite();
+	this.benchmark.recordMilestone("KuzApp.setupSite() complete.");
+
+	this.setupOperands();
+	this.benchmark.recordMilestone("KuzApp.setupOperands() complete.");
 
 	this.benchmark.recordMilestone("new KuzApp() complete.");
 }
@@ -158,6 +155,21 @@ KuzApp.prototype.ok = function () {
 
 	if (!this.checkForModule("express")) {
 		this.log.red("Module NOT found: express");
+		return false;
+	}
+
+	if (this.site === null) {
+		this.log.badNews("Site not initialized.");
+		return false;
+	}
+
+	if (!this.site.ok()) {
+		this.log.badNews("Site not OK.");
+		return false;
+	}
+
+	if (!this.flagsAreOK()) {
+		this.log.badNews("Flags are not OK.");
 		return false;
 	}
 
@@ -396,13 +408,7 @@ KuzApp.prototype.flagsAreOK = function () {
 
 
 KuzApp.prototype.run = function () {
-	if (this.site === null) {
-		this.log.badNews("Site not initialized.");
-		return;
-	}
-
-	if (!this.flagsAreOK()) {
-		this.log.badNews("Flags are not OK.");
+	if (!this.ok()) {
 		return;
 	}
 

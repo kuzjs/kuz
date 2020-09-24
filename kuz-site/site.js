@@ -62,6 +62,10 @@ KuzSite.prototype.setupThemes = function () {
 	}
 }
 
+KuzSite.prototype.ok = function () {
+	return true;
+}
+
 
 
 KuzSite.prototype.addKonfig = function (konfig) {
