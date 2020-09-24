@@ -23,8 +23,6 @@ KuzStopwatch.prototype.getTimePassed = function () {
 
 
 
-module.exports = {
-	KuzStopwatch: KuzStopwatch
-};
+module.exports = KuzStopwatch;
 
 
