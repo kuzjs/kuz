@@ -466,10 +466,6 @@ KaagazzApp.prototype.run = function () {
 
 
 
-const kuz = new KaagazzApp();
-
-
-
-module.exports = kuz;
+module.exports = KaagazzApp;
 
 
