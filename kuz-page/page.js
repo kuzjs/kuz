@@ -183,8 +183,6 @@ KuzPage.prototype.outputFileIsOlderThanMeta = function () {
 	let outputFileMTime = this.getOutputFileMTime();
 	if (outputFileMTime < this.site.meta.mtimeMs) {
 		return true;
-	} else if (outputFileMTime < this.site.app.meta.mtimeMs) {
-		return true;
 	}
 	return false;
 }
