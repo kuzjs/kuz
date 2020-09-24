@@ -138,8 +138,8 @@ KuzKonfig.prototype.getStringValue = function (propertyName) {
 }
 
 KuzKonfig.prototype.getTable = function () {
-	const KuZTable = require("../kuz-table/table").KuZTable;
-	let table = new KuZTable();
+	const KuzTable = require("../kuz-table/table").KuzTable;
+	let table = new KuzTable();
 	table.addColumn("CodeName");
 	table.addColumn("Path");
 	table.addColumn("Parent");

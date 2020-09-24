@@ -547,8 +547,8 @@ KuzPage.prototype.GetType = function () {
 }
 
 KuzPage.prototype.getTable = function () {
-	const KuZTable = require("../kuz-table/table").KuZTable;
-	let table = new KuZTable();
+	const KuzTable = require("../kuz-table/table").KuzTable;
+	let table = new KuzTable();
 	table.addColumn("Codename");
 	//table.addColumn("Name");
 	table.addColumn("Conf");

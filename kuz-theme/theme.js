@@ -185,8 +185,8 @@ KuzTheme.prototype.getPages = function () {
 }
 
 KuzTheme.prototype.getTable = function () {
-	const KuZTable = require("../kuz-table/table").KuZTable;
-	let table = new KuZTable();
+	const KuzTable = require("../kuz-table/table").KuzTable;
+	let table = new KuzTable();
 	table.addColumn("Name");
 	table.addColumn("Title");
 	table.addColumn("Ver");

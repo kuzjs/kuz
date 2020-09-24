@@ -22,8 +22,8 @@ KuzMilestone.prototype.getTimePassedReadable = function () {
 }
 
 KuzMilestone.prototype.getTable = function () {
-	const KuZTable = require("../kuz-table").KuZTable;
-	let table = new KuZTable();
+	const KuzTable = require("../kuz-table").KuzTable;
+	let table = new KuzTable();
 	table.addColumn("Benchmark");
 	table.addColumn("Milestone");
 	table.addColumn("S   Ms   Us   Ns");

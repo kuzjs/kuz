@@ -43,8 +43,8 @@ KuzAction.prototype.getAverageTime = function () {
 }
 
 KuzAction.prototype.getTable = function () {
-	const KuZTable = require("../kuz-table").KuZTable;
-	let table = new KuZTable();
+	const KuzTable = require("../kuz-table").KuzTable;
+	let table = new KuzTable();
 	table.addColumn("Benchmark");
 	table.addColumn("Action");
 	table.addColumn("Count");
