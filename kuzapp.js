@@ -158,11 +158,6 @@ KuzApp.prototype.ok = function () {
 		return false;
 	}
 
-	if (this.site === null) {
-		this.log.badNews("Site not initialized.");
-		return false;
-	}
-
 	if (!this.site.ok()) {
 		this.log.badNews("Site not OK.");
 		return false;
