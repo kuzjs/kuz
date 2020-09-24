@@ -65,8 +65,6 @@ KuzAction.prototype.getRow = function () {
 
 
 
-module.exports = {
-	KuzAction: KuzAction
-};
+module.exports = KuzAction;
 
 

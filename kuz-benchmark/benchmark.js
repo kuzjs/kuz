@@ -1,6 +1,6 @@
 // benchmark.js
 const utils = require("./utils");
-const KuzMilestone = require("./milestone").KuzMilestone;
+const KuzMilestone = require("./milestone");
 
 
 
@@ -28,7 +28,7 @@ KuzBenchmark.prototype.getTimePassedReadable = function () {
 }
 
 KuzBenchmark.prototype.getNewAction = function (name) {
-	const KuzAction = require("./action").KuzAction;
+	const KuzAction = require("./action");
 	let action = new KuzAction(this, name);
 	this.actions.push(action);
 	return action;

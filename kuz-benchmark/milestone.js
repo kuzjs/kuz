@@ -40,8 +40,6 @@ KuzMilestone.prototype.getRow = function () {
 
 
 
-module.exports = {
-	KuzMilestone: KuzMilestone
-};
+module.exports = KuzMilestone;
 
 
