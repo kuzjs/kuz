@@ -1,4 +1,8 @@
 
+0.1.4 / (next)
+====================
+	* Formatted the code
+
 0.1.3 / 24-09-2020
 ====================
 	* Corrected internal JSON paths
