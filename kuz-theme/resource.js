@@ -16,8 +16,6 @@ ThemeResource.prototype.isResFile = function () {
 
 
 
-module.exports = {
-	ThemeResource: ThemeResource
-};
+module.exports = ThemeResource;
 
 

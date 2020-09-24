@@ -90,27 +90,27 @@ KuzTheme.prototype.setupElements = function (dataArray, ElementClass) {
 }
 
 KuzTheme.prototype.setupLayouts = function () {
-	const ThemeLayout = require("./layout").ThemeLayout;
+	const ThemeLayout = require("./layout");
 	this.layouts = this.setupElements(this.meta.json.layouts, ThemeLayout);
 }
 
 KuzTheme.prototype.setupModules = function () {
-	const ThemeModule = require("./module").ThemeModule;
+	const ThemeModule = require("./module");
 	this.modules = this.setupElements(this.meta.json.modules, ThemeModule);
 }
 
 KuzTheme.prototype.setupCSS = function () {
-	const ThemeCSS = require("./css").ThemeCSS;
+	const ThemeCSS = require("./css");
 	this.cssArray = this.setupElements(this.meta.json.css, ThemeCSS);
 }
 
 KuzTheme.prototype.setupJS = function () {
-	const ThemeJS = require("./js").ThemeJS;
+	const ThemeJS = require("./js");
 	this.jsArray = this.setupElements(this.meta.json.js, ThemeJS);
 }
 
 KuzTheme.prototype.setupResources = function () {
-	const ThemeResource = require("./resource").ThemeResource;
+	const ThemeResource = require("./resource");
 	this.resourceArray = this.setupElements(this.meta.json.resources, ThemeResource);
 }
 

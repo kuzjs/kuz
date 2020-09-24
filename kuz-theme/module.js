@@ -51,8 +51,6 @@ ThemeModule.prototype.updatable = function () {
 
 
 
-module.exports = {
-	ThemeModule: ThemeModule
-};
+module.exports = ThemeModule;
 
 

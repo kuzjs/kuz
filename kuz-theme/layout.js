@@ -56,8 +56,6 @@ ThemeLayout.prototype.updatable = function () {
 
 
 
-module.exports = {
-	ThemeLayout: ThemeLayout
-};
+module.exports = ThemeLayout;
 
 

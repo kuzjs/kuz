@@ -16,8 +16,6 @@ ThemeCSS.prototype.isCssFile = function () {
 
 
 
-module.exports = {
-	ThemeCSS: ThemeCSS
-};
+module.exports = ThemeCSS;
 
 

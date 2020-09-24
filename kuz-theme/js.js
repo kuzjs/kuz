@@ -16,8 +16,6 @@ ThemeJS.prototype.isJsFile = function () {
 
 
 
-module.exports = {
-	ThemeJS: ThemeJS
-};
+module.exports = ThemeJS;
 
 
