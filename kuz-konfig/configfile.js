@@ -30,7 +30,7 @@ function KuzKonfig (site, dirpath, entity=false) {
 	this.index = 0;
 
 	if (this.exists()) {
-		const KuzFile = require("../kuz-kuzfile").KuzFile;
+		const KuzFile = require("../kuz-kuzfile");
 		this.kuzFile = new KuzFile(this, this.path);
 
 		this.metaData = this.kuzFile.getMetaData();

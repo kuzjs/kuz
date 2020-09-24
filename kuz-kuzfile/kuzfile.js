@@ -73,8 +73,6 @@ KuzFile.prototype.getBodyString = function () {
 
 
 
-module.exports = {
-	KuzFile: KuzFile
-};
+module.exports = KuzFile;
 
 
