@@ -18,7 +18,7 @@ ThemeLayout.prototype.typeName = "Layout";
 
 ThemeLayout.prototype.setupLayout = function () {
 	if (!fs.existsSync(this.getInputFilePath())) {
-		this.theme.site.error("Layout not found: " + this.getInputFilePath());
+		this.theme.site.causeError("Layout not found: " + this.getInputFilePath());
 		return;
 	}
 	this.forcedUpdate();

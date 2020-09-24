@@ -89,7 +89,7 @@ KuzSite.prototype.isSite = function () {
 	return true;
 }
 
-KuzSite.prototype.error = function (errorMessage) {
+KuzSite.prototype.causeError = function (errorMessage) {
 	this.error = true;
 	this.errorMessage = errorMessage;
 	this.log.red(this.errorMessage);
