@@ -53,13 +53,13 @@ KuzApp.prototype.setupBenchmark = function () {
 KuzApp.prototype.setupJsons = function () {
 	const KuzJson = require("./kuz-json");
 	this.jsonParseActon.resetClock();
-	this.meta = require("./data/json/kaagazz.json");
+	this.kaagazzJson = require("./data/json/kaagazz.json");
 	this.jsonParseActon.record();
 	this.flagsJson = require("./data/json/flags.json");
 	this.jsonParseActon.record();
-	this.blackadder = require("./data/json/blackadder.json");
+	this.blackadderJson = require("./data/json/blackadder.json");
 	this.jsonParseActon.record();
-	this.ipsum = require("./data/json/ipsum.json");
+	this.ipsumJson = require("./data/json/ipsum.json");
 	this.jsonParseActon.record();
 }
 
@@ -169,31 +169,31 @@ KuzApp.prototype.isApp = function () {
 }
 
 KuzApp.prototype.getBlackadder = function () {
-	return this.blackadder["quotes"];
+	return this.blackadderJson["quotes"];
 }
 
 KuzApp.prototype.getIpsum = function () {
-	return this.ipsum["lorem-ipsum"];
+	return this.ipsumJson["lorem-ipsum"];
 }
 
 KuzApp.prototype.getSiteJsonPath = function () {
-	return this.meta.filenames.siteJson;
+	return this.kaagazzJson.filenames.siteJson;
 }
 
 KuzApp.prototype.getProps = function () {
-	return this.meta;
+	return this.kaagazzJson;
 }
 
 KuzApp.prototype.getTitle = function () {
-	return this.meta.meta.title;
+	return this.kaagazzJson.meta.title;
 }
 
 KuzApp.prototype.getDescription = function () {
-	return this.meta.meta.description;
+	return this.kaagazzJson.meta.description;
 }
 
 KuzApp.prototype.getVersion = function () {
-	return this.meta.meta.version;
+	return this.kaagazzJson.meta.version;
 }
 
 KuzApp.prototype.toString = function () {
@@ -266,7 +266,7 @@ KuzApp.prototype.showVersion = function () {
 	table.addColumn("Key");
 	table.addColumn("Value");
 
-	let meta = this.meta.meta;
+	let meta = this.kaagazzJson.meta;
 	table.addRow(["Title", this.getTitle()]);
 	table.addRow(["Version", this.getVersion()]);
 	table.addRow(["Description", this.getDescription()]);

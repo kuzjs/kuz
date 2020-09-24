@@ -13,9 +13,9 @@ function KuzSite (kaagazz) {
 }
 
 KuzSite.prototype.setup = function () {
-	this.filenames = this.app.meta.filenames;
-	this.input_dirs = this.app.meta.input;
-	this.output_dirs = this.app.meta.output;
+	this.filenames = this.app.kaagazzJson.filenames;
+	this.input_dirs = this.app.kaagazzJson.input;
+	this.output_dirs = this.app.kaagazzJson.output;
 
 	this.error = false;
 	this.errorMessage = null;
