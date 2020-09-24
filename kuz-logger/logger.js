@@ -204,15 +204,15 @@ KuzLogger.prototype.getChild = function (name) {
 
 
 
-KuzLogger.prototype.getFullMessage = function (keyword, index, timeStampPrefix, name, prefix, message, duration) {
-	if (message) {
-		return `[ ${keyword} ] ${index}. ${timeStampPrefix} (${name}) ${prefix} [${message}] ${duration}ms\n`;
+KuzLogger.prototype.getFullMessage = function (keyword, index, timeStampPrefix, name, message, postscript, duration) {
+	if (postscript) {
+		return `[ ${keyword} ] ${index}. ${timeStampPrefix} (${name}) ${message} [${postscript}] ${duration}ms\n`;
 	} else {
-		return `[ ${keyword} ] ${index}. ${timeStampPrefix} (${name}) ${prefix} ${duration}ms\n`;
+		return `[ ${keyword} ] ${index}. ${timeStampPrefix} (${name}) ${message} ${duration}ms\n`;
 	}
 }
 
-KuzLogger.prototype.logInternal = function (keyword, prefix, message, c1, c2, c3) {
+KuzLogger.prototype.logInternal = function (keyword, message, postscript, c1, c2, c3) {
 	c2 = c2 ? c2 : c1;
 	c3 = c3 ? c3 : c2;
 
@@ -230,7 +230,7 @@ KuzLogger.prototype.logInternal = function (keyword, prefix, message, c1, c2, c3
 	let name = this.name;
 	let messageNoColor = null;
 	if (this.diskIsOn() || this.colorIsOff()) {
-		messageNoColor = this.getFullMessage(keyword, index, timeStampPrefix, name, prefix, message, duration);
+		messageNoColor = this.getFullMessage(keyword, index, timeStampPrefix, name, message, postscript, duration);
 		if (this.diskIsOn()) {
 			fs.appendFileSync(this.getPath(), messageNoColor);
 		}
@@ -244,9 +244,9 @@ KuzLogger.prototype.logInternal = function (keyword, prefix, message, c1, c2, c3
 
 			keyword = `${c1}${keyword}${colors.Reset}`;
 			name = `${c2}${name}${colors.Reset}`;
-			message = message ? `${c3}${message}${colors.Reset}` : message;
+			postscript = postscript ? `${c3}${postscript}${colors.Reset}` : postscript;
 
-			let messageString = this.getFullMessage(keyword, index, timeStampPrefix, name, prefix, message, duration);
+			let messageString = this.getFullMessage(keyword, index, timeStampPrefix, name, message, postscript, duration);
 			process.stdout.write(messageString);
 		} else {
 			process.stdout.write(messageNoColor);
@@ -256,69 +256,69 @@ KuzLogger.prototype.logInternal = function (keyword, prefix, message, c1, c2, c3
 
 
 
-KuzLogger.prototype.justLogIt = function (prefix, message) {
-	this.logInternal("  JUST ", prefix, message, colors.FgMagenta);
+KuzLogger.prototype.justLogIt = function (message, postscript) {
+	this.logInternal("  JUST ", message, postscript, colors.FgMagenta);
 }
 
-KuzLogger.prototype.mundane = function (prefix, message) {
+KuzLogger.prototype.mundane = function (message, postscript) {
 	if (this.debugIsOn()) {
-		this.logInternal("  .... ", prefix, message, colors.FgGreen);
+		this.logInternal("  .... ", message, postscript, colors.FgGreen);
 	}
 }
 
-KuzLogger.prototype.asExpected = function (prefix, message) {
-	this.logInternal("  EXP  ", prefix, message, colors.FgGreen);
+KuzLogger.prototype.asExpected = function (message, postscript) {
+	this.logInternal("  EXP  ", message, postscript, colors.FgGreen);
 }
 
-KuzLogger.prototype.unexpected = function (prefix, message) {
-	this.logInternal(" UNEXP ", prefix, message, colors.FgRed);
+KuzLogger.prototype.unexpected = function (message, postscript) {
+	this.logInternal(" UNEXP ", message, postscript, colors.FgRed);
 }
 
-KuzLogger.prototype.notFound = function (prefix, message) {
-	this.logInternal(" !FOUND", prefix, message, colors.FgRed);
+KuzLogger.prototype.notFound = function (message, postscript) {
+	this.logInternal(" !FOUND", message, postscript, colors.FgRed);
 }
 
-KuzLogger.prototype.makeSuggestion = function (prefix, message) {
-	this.logInternal("  SUG  ", prefix, message, colors.FgYellow);
+KuzLogger.prototype.makeSuggestion = function (message, postscript) {
+	this.logInternal("  SUG  ", message, postscript, colors.FgYellow);
 }
 
-KuzLogger.prototype.warn = function (prefix, message) {
-	this.logInternal("WARNING", prefix, message, colors.FgYellow);
+KuzLogger.prototype.warn = function (message, postscript) {
+	this.logInternal("WARNING", message, postscript, colors.FgYellow);
 }
 
 
 
-KuzLogger.prototype.green = function (prefix, message) {
-	this.logInternal("   OK  ", prefix, message, colors.FgGreen);
+KuzLogger.prototype.green = function (message, postscript) {
+	this.logInternal("   OK  ", message, postscript, colors.FgGreen);
 }
 
-KuzLogger.prototype.greenYellow = function (prefix, message) {
-	this.logInternal("   OK  ", prefix, message, colors.FgGreen, colors.FgGreen, colors.FgYellow);
+KuzLogger.prototype.greenYellow = function (message, postscript) {
+	this.logInternal("   OK  ", message, postscript, colors.FgGreen, colors.FgGreen, colors.FgYellow);
 }
 
-KuzLogger.prototype.red = function (prefix, message) {
-	this.logInternal(" ERROR ", prefix, message, colors.FgRed);
+KuzLogger.prototype.red = function (message, postscript) {
+	this.logInternal(" ERROR ", message, postscript, colors.FgRed);
 }
 
-KuzLogger.prototype.yellow = function (prefix, message) {
+KuzLogger.prototype.yellow = function (message, postscript) {
 	if (this.debugIsOn()) {
-		this.logInternal("  .... ", prefix, message, colors.FgYellow);
+		this.logInternal("  .... ", message, postscript, colors.FgYellow);
 	}
 }
 
 
 
-KuzLogger.prototype.goodNews = function (prefix, message) {
-	this.logInternal("  GOOD ", prefix, message, colors.FgGreen);
+KuzLogger.prototype.goodNews = function (message, postscript) {
+	this.logInternal("  GOOD ", message, postscript, colors.FgGreen);
 }
 
-KuzLogger.prototype.badNews = function (prefix, message) {
-	this.logInternal("  BAD  ", prefix, message, colors.FgRed);
+KuzLogger.prototype.badNews = function (message, postscript) {
+	this.logInternal("  BAD  ", message, postscript, colors.FgRed);
 }
 
-KuzLogger.prototype.someNews = function (prefix, message) {
+KuzLogger.prototype.someNews = function (message, postscript) {
 	if (this.debugIsOn()) {
-		this.logInternal("  SOME ", prefix, message, colors.FgYellow);
+		this.logInternal("  SOME ", message, postscript, colors.FgYellow);
 	}
 }
 
