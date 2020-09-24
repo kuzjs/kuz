@@ -21,6 +21,7 @@ function KuzApp () {
 		this.setupSite();
 		this.benchmark.recordMilestone("KuzApp.setupSite() complete.");
 		this.setupOperands();
+		this.benchmark.recordMilestone("KuzApp.setupOperands() complete.");
 	} else {
 		this.site = null;
 	}
