@@ -63,7 +63,7 @@ KuzApp.prototype.setupJsons = function () {
 	this.jsonParseActon.record();
 	this.blackadder = new KuzJson(blackadderJsonPath);
 	this.jsonParseActon.record();
-	this.ipsum = require("./data/json/lorem-ipsum.json");
+	this.ipsum = require("./data/json/ipsum.json");
 	this.jsonParseActon.record();
 }
 
