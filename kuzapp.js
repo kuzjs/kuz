@@ -368,6 +368,10 @@ KuzApp.prototype.watchStuff = function () {
 	}
 }
 
+KuzApp.prototype.defaultStuff = function () {
+	this.watchStuff();
+}
+
 
 
 KuzApp.prototype.checkForModule = function (moduleName) {
@@ -440,7 +444,7 @@ KuzApp.prototype.run = function () {
 	} else if (flags.kurses) {
 		this.kursesStuff();
 	} else {
-		//
+		this.defaultStuff();
 	}
 }
 
