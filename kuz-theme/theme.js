@@ -214,8 +214,6 @@ KuzTheme.prototype.getRow = function () {
 	];
 }
 
-module.exports = {
-	KuzTheme: KuzTheme
-};
+module.exports = KuzTheme;
 
 
