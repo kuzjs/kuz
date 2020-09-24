@@ -1,4 +1,9 @@
 
+0.1.2 / 24-09-2020
+====================
+	* Added pug and express as dependencies
+
+
 0.1.1 / 24-09-2020
 ====================
 	* Corrected benchmark titles
