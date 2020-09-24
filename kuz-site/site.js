@@ -46,9 +46,9 @@ KuzSite.prototype.setupThemes = function () {
 	} else if (themeNames.length === 0) {
 		this.log.red("Themes param is empty.");
 	} else {
-		const Theme = require("../kuz-theme").Theme;
+		const KuzTheme = require("../kuz-theme").KuzTheme;
 		for (let themeName of themeNames) {
-			let theme = new Theme(themeName, this);
+			let theme = new KuzTheme(themeName, this);
 			if (theme.ok()) {
 				this.themes.push(theme);
 			} else {

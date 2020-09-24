@@ -9,7 +9,7 @@ const layoutsDirectory = "layouts";
 
 
 
-function Theme (themeName, site) {
+function KuzTheme (themeName, site) {
 	this.themeName = themeName;
 	this.site = site;
 	this.log = this.site.log.getChild("theme/" + this.themeName);
@@ -19,38 +19,38 @@ function Theme (themeName, site) {
 }
 
 const KuzBaseObject = require("../kuz-baseobject");
-Theme.prototype = new KuzBaseObject();
-Theme.prototype.typeName = "Theme";
+KuzTheme.prototype = new KuzBaseObject();
+KuzTheme.prototype.typeName = "Theme";
 
-Theme.prototype.getName = function () {
+KuzTheme.prototype.getName = function () {
 	return this.themeName;
 }
 
-Theme.prototype.getThemesInputDirectory = function () {
+KuzTheme.prototype.getThemesInputDirectory = function () {
 	return this.site.getThemesInputDirectory();
 }
 
-Theme.prototype.getThemesOutputDirectory = function () {
+KuzTheme.prototype.getThemesOutputDirectory = function () {
 	return fsutils.JoinPath("docs/x/dist/themes");
 }
 
-Theme.prototype.InputDirectory = function () {
+KuzTheme.prototype.InputDirectory = function () {
 	return fsutils.JoinPath(this.getThemesInputDirectory(), this.getName());
 }
 
-Theme.prototype.OutputDirectory = function () {
+KuzTheme.prototype.OutputDirectory = function () {
 	return fsutils.JoinPath(this.getThemesOutputDirectory(), this.getName());
 }
 
-Theme.prototype.getJsonFileName = function () {
+KuzTheme.prototype.getJsonFileName = function () {
 	return "theme.json";
 }
 
-Theme.prototype.getJsonFilePath = function () {
+KuzTheme.prototype.getJsonFilePath = function () {
 	return fsutils.JoinPath(this.InputDirectory(), this.getJsonFileName());
 }
 
-Theme.prototype.setupTheme = function () {
+KuzTheme.prototype.setupTheme = function () {
 	if (!fsutils.IsDirectory(this.InputDirectory())) {
 		this.log.red("Theme NOT Found: " + this.InputDirectory());
 		return;
@@ -75,7 +75,7 @@ Theme.prototype.setupTheme = function () {
 	this.is_valid = true;
 }
 
-Theme.prototype.setupElements = function (dataArray, ElementClass) {
+KuzTheme.prototype.setupElements = function (dataArray, ElementClass) {
 	let elements = [];
 	if (dataArray) {
 		for (let data of dataArray) {
@@ -89,32 +89,32 @@ Theme.prototype.setupElements = function (dataArray, ElementClass) {
 	return elements;
 }
 
-Theme.prototype.setupLayouts = function () {
+KuzTheme.prototype.setupLayouts = function () {
 	const ThemeLayout = require("./layout").ThemeLayout;
 	this.layouts = this.setupElements(this.meta.json.layouts, ThemeLayout);
 }
 
-Theme.prototype.setupModules = function () {
+KuzTheme.prototype.setupModules = function () {
 	const ThemeModule = require("./module").ThemeModule;
 	this.modules = this.setupElements(this.meta.json.modules, ThemeModule);
 }
 
-Theme.prototype.setupCSS = function () {
+KuzTheme.prototype.setupCSS = function () {
 	const ThemeCSS = require("./css").ThemeCSS;
 	this.cssArray = this.setupElements(this.meta.json.css, ThemeCSS);
 }
 
-Theme.prototype.setupJS = function () {
+KuzTheme.prototype.setupJS = function () {
 	const ThemeJS = require("./js").ThemeJS;
 	this.jsArray = this.setupElements(this.meta.json.js, ThemeJS);
 }
 
-Theme.prototype.setupResources = function () {
+KuzTheme.prototype.setupResources = function () {
 	const ThemeResource = require("./resource").ThemeResource;
 	this.resourceArray = this.setupElements(this.meta.json.resources, ThemeResource);
 }
 
-Theme.prototype.setupNextPrevious = function () {
+KuzTheme.prototype.setupNextPrevious = function () {
 	const setupNextPrevious = require("../kuz-site/utils").setupNextPrevious;
 	setupNextPrevious(this.layouts);
 	setupNextPrevious(this.modules);
@@ -123,11 +123,11 @@ Theme.prototype.setupNextPrevious = function () {
 	setupNextPrevious(this.resourceArray);
 }
 
-Theme.prototype.getProps = function () {
+KuzTheme.prototype.getProps = function () {
 	return this.meta.json;
 }
 
-Theme.prototype.defaultLayout = function () {
+KuzTheme.prototype.defaultLayout = function () {
 	for (let layout of this.layouts) {
 		if (layout.default) {
 			return layout;
@@ -136,7 +136,7 @@ Theme.prototype.defaultLayout = function () {
 	return this.layouts[0];
 }
 
-Theme.prototype.getLayout = function (layoutName) {
+KuzTheme.prototype.getLayout = function (layoutName) {
 	for (let layout of this.layouts) {
 		if (layoutName === layout.getName()) {
 			return layout;
@@ -145,46 +145,46 @@ Theme.prototype.getLayout = function (layoutName) {
 	return null;
 }
 
-Theme.prototype.ok = function () {
+KuzTheme.prototype.ok = function () {
 	if (this.is_valid === undefined) {
 		return false;
 	}
 	return this.is_valid;
 }
 
-Theme.prototype.getName = function () {
+KuzTheme.prototype.getName = function () {
 	return this.themeName;
 }
 
-Theme.prototype.getTitle = function () {
+KuzTheme.prototype.getTitle = function () {
 	return this.metaObject.title ? this.metaObject.title : defaultText.title;
 }
 
-Theme.prototype.getVersion = function () {
+KuzTheme.prototype.getVersion = function () {
 	return this.metaObject.version ? this.metaObject.version : "0.0";
 }
 
-Theme.prototype.getDescription = function () {
+KuzTheme.prototype.getDescription = function () {
 	return this.metaObject.description ? this.metaObject.description : defaultText.description;
 }
 
-Theme.prototype.getDocumentation = function () {
+KuzTheme.prototype.getDocumentation = function () {
 	return this.metaObject.documentation ? this.metaObject.documentation : defaultText.documentation;
 }
 
-Theme.prototype.getLayoutCount = function () {
+KuzTheme.prototype.getLayoutCount = function () {
 	return this.layouts.length;
 }
 
-Theme.prototype.toString = function () {
+KuzTheme.prototype.toString = function () {
 	return this.getName() + " (" + this.LayoutCount() + " layouts) [v" + this.Version() + "]";
 }
 
-Theme.prototype.getPages = function () {
+KuzTheme.prototype.getPages = function () {
 	return [];
 }
 
-Theme.prototype.getTable = function () {
+KuzTheme.prototype.getTable = function () {
 	const KuZTable = require("../kuz-table/table").KuZTable;
 	let table = new KuZTable();
 	table.addColumn("Name");
@@ -199,7 +199,7 @@ Theme.prototype.getTable = function () {
 	return table;
 }
 
-Theme.prototype.getRow = function () {
+KuzTheme.prototype.getRow = function () {
 	let meta = this.meta.json.meta;
 	return [
 		this.getName(),
@@ -215,7 +215,7 @@ Theme.prototype.getRow = function () {
 }
 
 module.exports = {
-	Theme: Theme
+	KuzTheme: KuzTheme
 };
 
 
