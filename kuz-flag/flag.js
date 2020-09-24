@@ -143,8 +143,6 @@ KuzFlag.prototype.getRow = function () {
 
 
 
-module.exports = {
-	KuzFlag: KuzFlag
-};
+module.exports = KuzFlag;
 
 

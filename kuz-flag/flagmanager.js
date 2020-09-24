@@ -1,6 +1,6 @@
 // flagmanager.js
 
-const KuzFlag = require("./flag").KuzFlag;
+const KuzFlag = require("./flag");
 
 
 
