@@ -23,6 +23,10 @@ KuzSite.prototype.setup = function () {
 
 	const KuzJson = require("../kuz-json");
 	this.meta = new KuzJson(this.siteJsonPath);
+	if (!this.meta.ok()) {
+		return;
+	}
+
 	this.log.setName(this.getHomeURL());
 
 	this.konfigs = [];
