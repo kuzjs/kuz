@@ -577,8 +577,6 @@ KuzPage.prototype.getRow = function () {
 	];
 }
 
-module.exports = {
-	KuzPage: KuzPage
-};
+module.exports = KuzPage;
 
 
