@@ -13,7 +13,7 @@ function setupNextPrevious (arr) {
 }
 
 function getPages (site, dirpath, parentKonfig) {
-	const KuzKonfig = require("../kuz-konfig").KuzKonfig;
+	const KuzKonfig = require("../kuz-konfig");
 	let konfig = new KuzKonfig(site, dirpath);
 	if (konfig.doesNotExist()) {
 		site.error("Config file NOT found: " + configPath);

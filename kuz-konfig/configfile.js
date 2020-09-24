@@ -162,8 +162,6 @@ KuzKonfig.prototype.getRow = function () {
 	];
 }
 
-module.exports = {
-	KuzKonfig: KuzKonfig
-};
+module.exports = KuzKonfig;
 
 
