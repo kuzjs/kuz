@@ -26,10 +26,10 @@ KuzSite.prototype.setup = function () {
 	this.log.setName(this.getHomeURL());
 
 	this.konfigs = [];
-	this.setupThemes();
-	this.app.benchmark.recordMilestone("KuzSite.setupThemes() complete.");
 	this.setupPages();
 	this.app.benchmark.recordMilestone("KuzSite.setupPages() complete.");
+	this.setupThemes();
+	this.app.benchmark.recordMilestone("KuzSite.setupThemes() complete.");
 }
 
 KuzSite.prototype.setupPages = function () {
