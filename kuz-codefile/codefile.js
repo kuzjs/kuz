@@ -54,8 +54,6 @@ KuzCodeFile.prototype.getNLinesFromX = function (x, n) {
 
 
 
-module.exports = {
-	KuzCodeFile: KuzCodeFile
-};
+module.exports = KuzCodeFile;
 
 
