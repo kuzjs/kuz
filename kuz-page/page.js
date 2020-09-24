@@ -15,7 +15,7 @@ function KuzPage (site, konfig, entry, isRoot = false) {
 
 
 
-const KuzBaseObject = require("../kuz-baseobject").KuzBaseObject;
+const KuzBaseObject = require("../kuz-baseobject");
 KuzPage.prototype = new KuzBaseObject();
 KuzPage.prototype.typeName = "page";
 KuzPage.prototype.typeNamePlural = "pages";

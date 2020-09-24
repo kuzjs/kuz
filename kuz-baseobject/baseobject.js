@@ -279,8 +279,6 @@ KuzBaseObject.prototype.watch = function () {
 
 
 
-module.exports = {
-	KuzBaseObject: KuzBaseObject
-};
+module.exports = KuzBaseObject;
 
 

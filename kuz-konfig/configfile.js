@@ -40,7 +40,7 @@ function KuzKonfig (site, dirpath, entity=false) {
 	}
 }
 
-const KuzBaseObject = require("../kuz-baseobject").KuzBaseObject;
+const KuzBaseObject = require("../kuz-baseobject");
 KuzKonfig.prototype = new KuzBaseObject();
 KuzKonfig.prototype.codeLetter = "g";
 
