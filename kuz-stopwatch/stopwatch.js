@@ -1,22 +1,22 @@
 
 
 
-function KuzStopWatch (name) {
+function KuzStopwatch (name) {
 	this.name = name;
 	this.init_time = Date.now();
 	this.records = [this.init_time];
 }
 
-KuzStopWatch.prototype.record = function () {
+KuzStopwatch.prototype.record = function () {
 	let new_time = Date.now();
 	this.records.push(new_time);
 }
 
-KuzStopWatch.prototype.getRecords = function () {
+KuzStopwatch.prototype.getRecords = function () {
 	return this.records;
 }
 
-KuzStopWatch.prototype.getTimePassed = function () {
+KuzStopwatch.prototype.getTimePassed = function () {
 	let current_time = Date.now();
 	return (current_time - this.init_time);
 }
@@ -24,7 +24,7 @@ KuzStopWatch.prototype.getTimePassed = function () {
 
 
 module.exports = {
-	KuzStopWatch: KuzStopWatch
+	KuzStopwatch: KuzStopwatch
 };
 
 
