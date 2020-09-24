@@ -1,8 +1,12 @@
 {
   "name": "kuz",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "KuzJS static site generator",
   "main": "index.js",
+  "dependencies": {
+    "pug": "^3.0.0",
+    "express": "^4.0.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
