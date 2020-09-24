@@ -41,7 +41,7 @@ function KuzApp () {
 
 
 KuzApp.prototype.setupLog = function () {
-	const KuzLogger = require("./kuz-log").KuzLogger;
+	const KuzLogger = require("./kuz-logger").KuzLogger;
 	this.log = new KuzLogger("KuzApp");
 	//this.log.TurnOnDisk();
 }
