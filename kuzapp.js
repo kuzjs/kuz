@@ -12,30 +12,30 @@ const loremIpsumJsonPath = fsutils.JoinPath(jsonDirectory, "lorem-ipsum.json");
 
 function KuzApp () {
 	this.setupBenchmark();
-	this.benchmark.recordMilestone("Benchmark initialized.");
+	this.benchmark.recordMilestone("KuzApp.setupBenchmark() complete.");
 
 	this.setupLog();
-	this.benchmark.recordMilestone("Log setup complete.");
+	this.benchmark.recordMilestone("KuzApp.setupLog() complete.");
 
 	this.setupJsons();
-	this.benchmark.recordMilestone("JSON setup complete.");
+	this.benchmark.recordMilestone("KuzApp.setupJsons() complete.");
 	this.log.setName(this.getTitle());
 
 	this.setupFlags();
-	this.benchmark.recordMilestone("Flags setup complete.");
+	this.benchmark.recordMilestone("KuzApp.setupFlags() complete.");
 
 	if (this.ok()) {
 		const siteSetupAction = this.benchmark.getNewAction("Site setup");
 		const KuzSite = require("./kuz-site").KuzSite;
 		this.site = new KuzSite(this);
-		this.benchmark.recordMilestone("Site setup complete.");
+		this.benchmark.recordMilestone("new KuzSite() complete.");
 		siteSetupAction.record();
 		this.setupOperands();
 	} else {
 		this.site = null;
 	}
 
-	this.benchmark.recordMilestone("KuzApp setup complete.");
+	this.benchmark.recordMilestone("new KuzApp() complete.");
 }
 
 
