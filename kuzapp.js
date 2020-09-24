@@ -70,7 +70,7 @@ KuzApp.prototype.setupJsons = function () {
 }
 
 KuzApp.prototype.setupFlags = function () {
-	const KuzFlagManager = require("./kuz-flag").KuzFlagManager;
+	const KuzFlagManager = require("./kuz-flagmanager");
 	this.flagman = new KuzFlagManager(this.flagsJson.json.flags);
 
 	this.flags = this.flagman.getFlags();

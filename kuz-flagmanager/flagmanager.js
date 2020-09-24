@@ -106,8 +106,6 @@ KuzFlagManager.prototype.getArgs = function () {
 
 
 
-module.exports = {
-	KuzFlagManager: KuzFlagManager
-};
+module.exports = KuzFlagManager;
 
 
