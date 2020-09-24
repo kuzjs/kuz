@@ -47,7 +47,7 @@ KuzApp.prototype.setupLog = function () {
 }
 
 KuzApp.prototype.setupBenchmark = function () {
-	const KuzBenchmark = require("./kuz-benchmark").KuzBenchmark;
+	const KuzBenchmark = require("./kuz-benchmark");
 	this.benchmark = new KuzBenchmark("Kuz Benchmark");
 	this.jsonParseActon = this.benchmark.getNewAction("JSON parsing");
 	this.pageSetupActon = this.benchmark.getNewAction("Page setup");

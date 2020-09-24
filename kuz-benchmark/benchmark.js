@@ -69,8 +69,6 @@ KuzBenchmark.prototype.print = function () {
 
 
 
-module.exports = {
-	KuzBenchmark: KuzBenchmark
-};
+module.exports = KuzBenchmark;
 
 
