@@ -9,7 +9,7 @@ function ThemeModule (theme, data) {
 	this.setupModule();
 }
 
-const ThemeElement = require("./element").ThemeElement;
+const ThemeElement = require("./element");
 ThemeModule.prototype = new ThemeElement("modules");
 ThemeModule.prototype.typeName = "Module";
 

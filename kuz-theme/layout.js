@@ -12,7 +12,7 @@ function ThemeLayout (theme, data) {
 	this.getApp().layoutSetupActon.record();
 }
 
-const ThemeElement = require("./element").ThemeElement;
+const ThemeElement = require("./element");
 ThemeLayout.prototype = new ThemeElement("layouts");
 ThemeLayout.prototype.typeName = "Layout";
 

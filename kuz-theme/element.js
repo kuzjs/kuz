@@ -89,8 +89,6 @@ ThemeElement.prototype.getRow = function () {
 
 
 
-module.exports = {
-	ThemeElement: ThemeElement
-};
+module.exports = ThemeElement;
 
 

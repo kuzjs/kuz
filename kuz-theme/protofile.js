@@ -10,7 +10,7 @@ function ProtoFile (dirName) {
 	this.dirName = dirName;
 }
 
-const ThemeElement = require("./element").ThemeElement;
+const ThemeElement = require("./element");
 ProtoFile.prototype = new ThemeElement();
 ProtoFile.prototype.typeName = "ProtoFile";
 
