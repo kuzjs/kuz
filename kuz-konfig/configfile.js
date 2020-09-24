@@ -6,22 +6,18 @@ const fsutils = require("../kuz-fs");
 
 
 
-function KuzKonfig (site, dirpath, entity=false) {
+function KuzKonfig (site, dirpath) {
 	this.site = site;
 	this.dirpath = dirpath;
 	this.pages = [];
 
-	if (entity) {
-		this.configDirpath = dirpath;
+	if (this.dirpath === undefined) {
+		this.configDirpath = site.getInputDirectory();
 	} else {
-		if (this.dirpath === undefined) {
-			this.configDirpath = site.getInputDirectory();
-		} else {
-			this.configDirpath = site.getInputDirectory() + "/" + dirpath;
-		}
+		this.configDirpath = site.getInputDirectory() + "/" + this.dirpath;
 	}
-	this.path = fsutils.JoinPath(this.configDirpath, this.site.filenames.konfig);
 
+	this.path = fsutils.JoinPath(this.configDirpath, this.site.filenames.konfig);
 	this.log = this.site.log.getChild(this.path);
 
 	this.root = null;
