@@ -8,12 +8,11 @@ function KuzApp () {
 	this.setupBenchmark();
 	this.benchmark.recordMilestone("KuzApp.setupBenchmark() complete.");
 
-	this.setupLog();
-	this.benchmark.recordMilestone("KuzApp.setupLog() complete.");
-
 	this.setupJsons();
 	this.benchmark.recordMilestone("KuzApp.setupJsons() complete.");
-	this.log.setName(this.getTitle());
+
+	this.setupLog();
+	this.benchmark.recordMilestone("KuzApp.setupLog() complete.");
 
 	this.setupFlags();
 	this.benchmark.recordMilestone("KuzApp.setupFlags() complete.");
@@ -33,12 +32,6 @@ function KuzApp () {
 }
 
 
-
-KuzApp.prototype.setupLog = function () {
-	const KuzLogger = require("./kuz-logger");
-	this.log = new KuzLogger("KuzApp");
-	//this.log.TurnOnDisk();
-}
 
 KuzApp.prototype.setupBenchmark = function () {
 	const KuzBenchmark = require("./kuz-benchmark");
@@ -61,6 +54,12 @@ KuzApp.prototype.setupJsons = function () {
 	this.jsonParseActon.record();
 	this.ipsumJson = require("./data/json/ipsum.json");
 	this.jsonParseActon.record();
+}
+
+KuzApp.prototype.setupLog = function () {
+	const KuzLogger = require("./kuz-logger");
+	this.log = new KuzLogger(this.getTitle());
+	//this.log.TurnOnDisk();
 }
 
 KuzApp.prototype.setupFlags = function () {
