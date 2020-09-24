@@ -236,8 +236,6 @@ KuzTable.prototype.print = function () {
 
 
 
-module.exports = {
-	KuzTable: KuzTable
-};
+module.exports = KuzTable;
 
 

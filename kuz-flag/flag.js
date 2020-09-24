@@ -2,8 +2,6 @@
 
 const fs = require("fs");
 
-const KuzTable = require("../kuz-table/table").KuzTable;
-
 const fsutils = require("../kuz-fs");
 const helpDocDirectory = require("../kuz-common").helpDocDirectory;
 
@@ -118,6 +116,7 @@ KuzFlag.prototype.printDoc = function () {
 }
 
 KuzFlag.prototype.getTable = function () {
+	const KuzTable = require("../kuz-table");
 	let table = new KuzTable();
 	table.hideIndex().hideHeader();
 	table.addColumn("Code");

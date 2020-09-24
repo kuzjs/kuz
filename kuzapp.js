@@ -283,7 +283,7 @@ KuzApp.prototype.showMajorFlags = function () {
 }
 
 KuzApp.prototype.showVersion = function () {
-	const KuzTable = require("./kuz-table").KuzTable;
+	const KuzTable = require("./kuz-table");
 	let table = new KuzTable();
 	table.addColumn("Key");
 	table.addColumn("Value");
