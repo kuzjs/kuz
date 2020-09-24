@@ -155,22 +155,6 @@ KuzApp.prototype.setupOperands = function () {
 }
 
 KuzApp.prototype.ok = function () {
-	if (!this.meta.ok()) {
-		return false;
-	}
-
-	if (!this.flagsJson.ok()) {
-		return false;
-	}
-
-	if (!this.blackadder.ok()) {
-		return false;
-	}
-
-	if (!this.ipsum.ok()) {
-		return false;
-	}
-
 	if (!this.checkForModule("pug")) {
 		this.log.red("Module NOT found: pug");
 		return false;
