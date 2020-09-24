@@ -75,10 +75,8 @@ KuzApp.prototype.setupFlags = function () {
 }
 
 KuzApp.prototype.setupSite = function () {
-	const siteSetupAction = this.benchmark.getNewAction("Site setup");
 	const KuzSite = require("./kuz-site").KuzSite;
 	this.site = new KuzSite(this);
-	siteSetupAction.record();
 }
 
 KuzApp.prototype.setupOperands = function () {
