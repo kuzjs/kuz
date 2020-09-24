@@ -61,7 +61,7 @@ KuzTheme.prototype.setupTheme = function () {
 		return;
 	}
 
-	const KuzJson = require("../kuz-json").KuzJson;
+	const KuzJson = require("../kuz-json");
 	this.meta = new KuzJson(this.getJsonFilePath());
 	this.metaObject = this.meta.json.meta;
 

@@ -97,8 +97,6 @@ KuzJson.prototype.getBackgroundFromName = function (name) {
 
 
 
-module.exports = {
-	KuzJson: KuzJson
-};
+module.exports = KuzJson;
 
 

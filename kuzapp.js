@@ -57,7 +57,7 @@ KuzApp.prototype.setupBenchmark = function () {
 }
 
 KuzApp.prototype.setupJsons = function () {
-	const KuzJson = require("./kuz-json").KuzJson;
+	const KuzJson = require("./kuz-json");
 	this.jsonParseActon.resetClock();
 	this.meta = new KuzJson(kaagazzJsonPath);
 	this.jsonParseActon.record();
