@@ -67,6 +67,9 @@ KuzSite.prototype.setupThemes = function () {
 }
 
 KuzSite.prototype.ok = function () {
+	if (!this.meta.ok()) {
+		return false;
+	}
 	return true;
 }
 
