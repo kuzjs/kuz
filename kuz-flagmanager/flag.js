@@ -112,7 +112,6 @@ KuzFlag.prototype.printDoc = function () {
 KuzFlag.prototype.getTable = function () {
 	const KuzTable = require("../kuz-table");
 	let table = new KuzTable();
-	table.hideIndex().hideHeader();
 	table.addColumn("Code");
 	table.addColumn("Name");
 	table.addColumn("Description");
