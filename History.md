@@ -1,6 +1,7 @@
 
 0.1.6 / (next)
 ====================
+	* Implemented --benchmark
 	* Implemented --watch
 
 0.1.5 / 25-09-2020
