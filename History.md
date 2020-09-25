@@ -1,7 +1,9 @@
 
-0.1.4 / (next)
+0.1.4 / 25-09-2020
 ====================
 	* Formatted the code
+	* Removed getRenderables() and getEntities()
+	* Added new flags (disklog, suggestions, warnings)
 
 0.1.3 / 24-09-2020
 ====================
