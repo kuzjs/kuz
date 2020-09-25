@@ -213,23 +213,13 @@ KuzApp.prototype.toString = function () {
 
 
 
-KuzApp.prototype.showSomeHelp = function () {
+KuzApp.prototype.showHelp = function () {
 	let table = this.flags[0].getTable();
 
 	for (let flag of this.flags) {
 		if (!flag.modifier) {
 			table.add(flag);
 		}
-	}
-
-	table.print();
-}
-
-KuzApp.prototype.showFullHelp = function () {
-	let table = this.flags[0].getTable();
-
-	for (let flag of this.flags) {
-		table.add(flag);
 	}
 
 	table.print();
@@ -380,9 +370,7 @@ KuzApp.prototype.run = function () {
 	let flags = this.simpleFlags;
 
 	if (flags.help) {
-		this.showSomeHelp();
-	} else if (flags.helpfull) {
-		this.showFullHelp();
+		this.showHelp();
 	} else if (flags.version) {
 		this.showVersion();
 	} else if (flags.buildable) {

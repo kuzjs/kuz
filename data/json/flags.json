@@ -66,12 +66,6 @@
 			"params": true
 		},
 		{
-			"code": "H",
-			"name": "helpfull",
-			"description": "Show full help.",
-			"params": true
-		},
-		{
 			"code": "i",
 			"name": "install",
 			"description": "Install themes."
