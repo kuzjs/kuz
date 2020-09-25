@@ -44,6 +44,12 @@
 			"independent": true
 		},
 		{
+			"code": "D",
+			"name": "disk-log",
+			"description": "Log to disk.",
+			"independent": true
+		},
+		{
 			"code": "E",
 			"name": "everything",
 			"description": "Everything modifier.",
@@ -169,6 +175,12 @@
 		},
 		{
 			"code": "s",
+			"name": "suggestions",
+			"description": "Show suggestions.",
+			"independent": true
+		},
+		{
+			"code": "S",
 			"name": "serve",
 			"description": "Run a live server.",
 			"touchmenot": true
@@ -212,6 +224,12 @@
 		},
 		{
 			"code": "w",
+			"name": "warnings",
+			"description": "Show warnings.",
+			"independent": true
+		},
+		{
+			"code": "W",
 			"disk": true,
 			"name": "watch",
 			"description": "Watch the site.",
