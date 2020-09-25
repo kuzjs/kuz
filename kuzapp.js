@@ -109,20 +109,17 @@ KuzApp.prototype.setupOperands = function () {
 		if (flags.pages) {
 			this.operands = this.operands.concat(this.site.getPages());
 		}
-		if (flags.entities) {
-			this.operands = this.operands.concat(this.site.getEntities());
-		} else {
-			if (flags.authors) {
-				this.operands = this.operands.concat(this.site.getAuthors());
-			}
 
-			if (flags.categories) {
-				this.operands = this.operands.concat(this.site.getCategories());
-			}
+		if (flags.authors) {
+			this.operands = this.operands.concat(this.site.getAuthors());
+		}
 
-			if (flags.tags) {
-				this.operands = this.operands.concat(this.site.getTags());
-			}
+		if (flags.categories) {
+			this.operands = this.operands.concat(this.site.getCategories());
+		}
+
+		if (flags.tags) {
+			this.operands = this.operands.concat(this.site.getTags());
 		}
 	}
 

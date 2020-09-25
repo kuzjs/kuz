@@ -190,14 +190,6 @@ KuzSite.prototype.getPages = function () {
 	return pages;
 }
 
-KuzSite.prototype.getEntities = function () {
-	let entities = [];
-	entities = entities.concat(this.getAuthors());
-	entities = entities.concat(this.getCategories());
-	entities = entities.concat(this.getTags());
-	return entities;
-}
-
 KuzSite.prototype.getRenderables = function () {
 	return this.pages;
 }
