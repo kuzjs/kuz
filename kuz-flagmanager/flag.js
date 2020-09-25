@@ -15,7 +15,7 @@ function KuzFlag (flagObject) {
 	this.major = (flagObject.major === undefined) ? false : flagObject.major;
 	this.modifier = (flagObject.modifier === undefined) ? false : flagObject.modifier;
 	this.touchmenot = (flagObject.touchmenot === undefined) ? false : flagObject.touchmenot;
-	this.independent = !this.major && !this.modifier && !this.touchmenot;
+	this.independent = (flagObject.independent === undefined) ? false : flagObject.independent;
 
 	this.has_params = (flagObject.params === undefined) ? false : flagObject.params;
 	this.count = 0;
@@ -51,6 +51,8 @@ KuzFlag.prototype.getType = function () {
 		return "Major";
 	} else if (this.modifier) {
 		return "Modifier";
+	} else if (this.touchmenot) {
+		return "Touch-me-not";
 	} else {
 		return "Independent";
 	}
