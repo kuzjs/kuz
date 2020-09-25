@@ -17,12 +17,6 @@ function KuzApp () {
 	this.setupFlags();
 	this.benchmark.recordMilestone("KuzApp.setupFlags() complete.");
 
-	this.setupSite();
-	this.benchmark.recordMilestone("KuzApp.setupSite() complete.");
-
-	this.setupOperands();
-	this.benchmark.recordMilestone("KuzApp.setupOperands() complete.");
-
 	this.benchmark.recordMilestone("new KuzApp() complete.");
 }
 
@@ -358,17 +352,26 @@ KuzApp.prototype.flagsAreOK = function () {
 
 
 KuzApp.prototype.run = function () {
-	if (!this.ok()) {
-		return;
-	}
-
 	let flags = this.simpleFlags;
 
 	if (flags.help) {
 		this.showHelp();
+		return;
 	} else if (flags.version) {
 		this.showVersion();
-	} else if (flags.buildable) {
+		return;
+	}
+
+	this.setupSite();
+	this.benchmark.recordMilestone("KuzApp.setupSite() complete.");
+
+	this.setupOperands();
+	this.benchmark.recordMilestone("KuzApp.setupOperands() complete.");
+	if (!this.ok()) {
+		return;
+	}
+
+	if (flags.buildable) {
 		this.buildableStuff();
 	} else if (flags.build) {
 		this.buildStuff();
