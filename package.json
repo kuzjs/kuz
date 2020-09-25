@@ -14,7 +14,10 @@
     "type": "git",
     "url": "git+https://github.com/kuzjs/kuz.git"
   },
-  "author": "Ankur Seth",
+  "author": {
+    "name": "Ankur Seth",
+    "email": "madhumeya@gmail.com"
+  },
   "keywords": [
     "jekyll",
     "hugo",
@@ -25,5 +28,5 @@
   "bugs": {
     "url": "https://github.com/kuzjs/kuz/issues"
   },
-  "homepage": "https://github.com/kuzjs/kuz#readme"
+  "homepage": "https://github.com/kuzjs/kuz"
 }
