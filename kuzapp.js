@@ -235,42 +235,6 @@ KuzApp.prototype.showFullHelp = function () {
 	table.print();
 }
 
-KuzApp.prototype.showIndependentFlags = function () {
-	let table = this.flags[0].getTable();
-
-	for (let flag of this.flags) {
-		if (!flag.modifier && !flag.major) {
-			table.add(flag);
-		}
-	}
-
-	table.print();
-}
-
-KuzApp.prototype.showModifierFlags = function () {
-	let table = this.flags[0].getTable();
-
-	for (let flag of this.flags) {
-		if (flag.modifier) {
-			table.add(flag);
-		}
-	}
-
-	table.print();
-}
-
-KuzApp.prototype.showMajorFlags = function () {
-	let table = this.flags[0].getTable();
-
-	for (let flag of this.flags) {
-		if (flag.major) {
-			table.add(flag);
-		}
-	}
-
-	table.print();
-}
-
 KuzApp.prototype.showVersion = function () {
 	const KuzTable = require("./kuz-table");
 	let table = new KuzTable();
@@ -419,10 +383,6 @@ KuzApp.prototype.run = function () {
 		this.showSomeHelp();
 	} else if (flags.helpfull) {
 		this.showFullHelp();
-	} else if (flags.independent) {
-		this.showIndependentFlags();
-	} else if (flags.modifier) {
-		this.showModifierFlags();
 	} else if (flags.version) {
 		this.showVersion();
 	} else if (flags.buildable) {
