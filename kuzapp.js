@@ -252,6 +252,14 @@ KuzApp.prototype.kursesStuff = function () {
 }
 
 KuzApp.prototype.benchmarkStuff = function () {
+	this.benchmark.print();
+}
+
+KuzApp.prototype.nietzsche = function () {
+	this.log.green("Kaagazz Nietzschean Experiment.");
+
+	//this.site.pages[0].metaData.printPropertyTable();
+
 	let rendered = 0;
 	for (let index=0; index<20; index++) {
 		for (let x of this.site.getPages()) {
@@ -260,19 +268,8 @@ KuzApp.prototype.benchmarkStuff = function () {
 		}
 	}
 
-	this.benchmark.recordMilestone("KuzApp.benchmarkStuff() ends.");
+	this.benchmark.recordMilestone("KuzApp.nietzsche() ends.");
 	this.benchmark.print();
-}
-
-KuzApp.prototype.nietzsche = function () {
-	this.log.green("Kaagazz Nietzschean Experiment.");
-
-	//this.site.pages[0].metaData.printPropertyTable();
-	this.benchmarkStuff();
-
-	for (let x of this.operands) {
-		this.log.green(x.getCodeAndName());
-	}
 }
 
 
