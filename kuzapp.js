@@ -67,6 +67,14 @@ KuzApp.prototype.setupFlags = function () {
 	if (this.simpleFlags.disklog) {
 		this.log.turnDiskOn();
 	}
+
+	if (this.simpleFlags.suggestions) {
+		this.log.turnSuggestionsOn();
+	}
+
+	if (this.simpleFlags.warnings) {
+		this.log.turnWarningsOn();
+	}
 }
 
 KuzApp.prototype.setupSite = function () {

@@ -13,6 +13,9 @@ function KuzLogger (name) {
 	this.debug = false;
 	this.disk = false;
 
+	this.suggestions = false;
+	this.warnings = false;
+
 	this.parent = null;
 	this.locked = false;
 	this.children = [];
@@ -165,6 +168,52 @@ KuzLogger.prototype.diskIsOff = function () {
 
 
 
+KuzLogger.prototype.turnSuggestionsOff = function () {
+	this.suggestions = false;
+}
+
+KuzLogger.prototype.turnSuggestionsOn = function () {
+	this.suggestions = true;
+}
+
+
+
+KuzLogger.prototype.suggestionsAreOn = function () {
+	if (this.parent) {
+		return this.parent.suggestionsAreOn();
+	}
+	return this.suggestions;
+}
+
+KuzLogger.prototype.suggestionsAreOff = function () {
+	return !this.suggestionsAreOn();
+}
+
+
+
+KuzLogger.prototype.turnWarningsOff = function () {
+	this.warnings = false;
+}
+
+KuzLogger.prototype.turnWarningsOn = function () {
+	this.warnings = true;
+}
+
+
+
+KuzLogger.prototype.warningsAreOn = function () {
+	if (this.parent) {
+		return this.parent.warningsAreOn();
+	}
+	return this.warnings;
+}
+
+KuzLogger.prototype.warningsAreOff = function () {
+	return !this.warningsAreOn();
+}
+
+
+
 KuzLogger.prototype.setPath = function (path) {
 	if (path != undefined) {
 		this.path = path;
@@ -281,11 +330,15 @@ KuzLogger.prototype.notFound = function (message, postscript) {
 
 
 KuzLogger.prototype.suggest = function (message, postscript) {
-	this.logInternal("  SUG  ", message, postscript, colors.FgYellow);
+	if (this.suggestionsAreOn()) {
+		this.logInternal("  SUG  ", message, postscript, colors.FgYellow);
+	}
 }
 
 KuzLogger.prototype.warn = function (message, postscript) {
-	this.logInternal("WARNING", message, postscript, colors.FgYellow);
+	if (this.warningsAreOn()) {
+		this.logInternal("WARNING", message, postscript, colors.FgYellow);
+	}
 }
 
 
