@@ -40,7 +40,8 @@
 		{
 			"code": "d",
 			"name": "debug",
-			"description": "Show debug messages."
+			"description": "Show debug messages.",
+			"independent": true
 		},
 		{
 			"code": "E",
@@ -51,10 +52,12 @@
 		{
 			"code": "f",
 			"name": "flags",
-			"description": "List all flags"
+			"description": "List all flags",
+			"independent": true
 		},
 		{
 			"code": "F",
+			"disk": true,
 			"name": "forced",
 			"description": "Forced-update things.",
 			"major": true
@@ -63,12 +66,14 @@
 			"code": "h",
 			"name": "help",
 			"description": "Show some help.",
-			"params": true
+			"params": true,
+			"touchmenot": true
 		},
 		{
 			"code": "i",
 			"name": "install",
-			"description": "Install themes."
+			"description": "Install themes.",
+			"touchmenot": true
 		},
 		{
 			"code": "j",
@@ -91,7 +96,8 @@
 		{
 			"code": "K",
 			"name": "kurses",
-			"description": "Use Kurses interface."
+			"description": "Use Kurses interface.",
+			"touchmenot": true
 		},
 		{
 			"code": "l",
@@ -108,24 +114,27 @@
 		{
 			"code": "M",
 			"name": "modules",
-			"description": "Modules files only modifier."
+			"description": "Modules files only modifier.",
+			"modifier": true
 		},
 		{
 			"code": "n",
 			"name": "new",
-			"description": "New site."
+			"description": "New site.",
+			"touchmenot": true
 		},
 		{
 			"code": "N",
 			"name": "nietzsche",
 			"description": "Nietzsche.",
-			"major": true
+			"touchmenot": true
 		},
 		{
 			"code": "o",
 			"name": "output",
 			"description": "Output to dir.",
-			"params": true
+			"params": true,
+			"independent": true
 		},
 		{
 			"code": "p",
@@ -137,12 +146,14 @@
 			"code": "q",
 			"name": "search",
 			"description": "Search for a page.",
-			"params": true
+			"params": true,
+			"touchmenot": true
 		},
 		{
 			"code": "Q",
 			"name": "quote",
-			"description": "Display a quote."
+			"description": "Display a quote.",
+			"touchmenot": true
 		},
 		{
 			"code": "r",
@@ -159,7 +170,8 @@
 		{
 			"code": "s",
 			"name": "serve",
-			"description": "Run a live server."
+			"description": "Run a live server.",
+			"touchmenot": true
 		},
 		{
 			"code": "t",
