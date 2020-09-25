@@ -40,6 +40,9 @@ KuzAction.prototype.getTotalTime = function () {
 }
 
 KuzAction.prototype.getAverageTime = function () {
+	if (this.getCount() === 0) {
+		return BigInt(0);
+	}
 	return this.getTotalTime() / BigInt(this.getCount());
 }
 
