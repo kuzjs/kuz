@@ -1,5 +1,5 @@
 
-0.1.5 / (next)
+0.1.5 / 25-09-2020
 ====================
 	* Now --help and --version work without setting up site
 	* Implemented --suggestions and --warnings
