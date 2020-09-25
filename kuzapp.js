@@ -214,15 +214,7 @@ KuzApp.prototype.toString = function () {
 
 
 KuzApp.prototype.showHelp = function () {
-	let table = this.flags[0].getTable();
-
-	for (let flag of this.flags) {
-		if (!flag.modifier) {
-			table.add(flag);
-		}
-	}
-
-	table.print();
+	this.flagman.print();
 }
 
 KuzApp.prototype.showVersion = function () {

@@ -106,6 +106,41 @@ KuzFlagManager.prototype.getArgs = function () {
 
 
 
+KuzFlagManager.prototype.print = function () {
+	const table = this.flags[0].getTable();
+
+	for (let flag of this.flags) {
+		if (flag.touchmenot) {
+			table.add(flag);
+		}
+	}
+
+	table.addSeparatorRow();
+	for (let flag of this.flags) {
+		if (flag.independent) {
+			table.add(flag);
+		}
+	}
+
+	table.addSeparatorRow();
+	for (let flag of this.flags) {
+		if (flag.major) {
+			table.add(flag);
+		}
+	}
+
+	table.addSeparatorRow();
+	for (let flag of this.flags) {
+		if (flag.modifier) {
+			table.add(flag);
+		}
+	}
+
+	table.print();
+}
+
+
+
 module.exports = KuzFlagManager;
 
 
