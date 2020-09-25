@@ -7,12 +7,6 @@
 			"modifier": true
 		},
 		{
-			"code": "A",
-			"name": "all",
-			"description": "All pages modifier.",
-			"modifier": true
-		},
-		{
 			"code": "b",
 			"name": "buildable",
 			"description": "Show buildable things.",
@@ -144,8 +138,14 @@
 		},
 		{
 			"code": "p",
+			"name": "posts",
+			"description": "Posts only modifier.",
+			"modifier": true
+		},
+		{
+			"code": "P",
 			"name": "pages",
-			"description": "Pages only modifier.",
+			"description": "All pages modifier.",
 			"modifier": true
 		},
 		{
