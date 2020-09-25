@@ -112,6 +112,12 @@
 			"modifier": true
 		},
 		{
+			"code": "m",
+			"name": "benchmark",
+			"description": "Benchmark stuff.",
+			"independent": true
+		},
+		{
 			"code": "M",
 			"name": "modules",
 			"description": "Modules files only modifier.",
