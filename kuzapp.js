@@ -413,6 +413,10 @@ KuzApp.prototype.run = function () {
 	} else {
 		this.defaultStuff();
 	}
+
+	if (flags.benchmark) {
+		this.benchmarkStuff();
+	}
 }
 
 
