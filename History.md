@@ -2,6 +2,7 @@
 0.1.5 / (next)
 ====================
 	* Now --help and --version work without setting up site
+	* Implemented --suggestions and --warnings
 
 0.1.4 / 25-09-2020
 ====================
