@@ -20,8 +20,10 @@ function KuzApp () {
 	this.setupSite();
 	this.benchmark.recordMilestone("KuzApp.setupSite() complete.");
 
-	this.setupOperands();
-	this.benchmark.recordMilestone("KuzApp.setupOperands() complete.");
+	if (this.ok()) {
+		this.setupOperands();
+		this.benchmark.recordMilestone("KuzApp.setupOperands() complete.");
+	}
 
 	this.benchmark.recordMilestone("new KuzApp() complete.");
 }
