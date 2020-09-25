@@ -235,6 +235,14 @@ KuzApp.prototype.showVersion = function () {
 	table.print();
 }
 
+KuzApp.prototype.createNewSite = function () {
+	this.log.greenYellow("Lets create a new site.");
+}
+
+KuzApp.prototype.quoteStuff = function () {
+	this.log.greenYellow("Example quote.");
+}
+
 
 
 KuzApp.prototype.kursesStuff = function () {
@@ -367,6 +375,12 @@ KuzApp.prototype.run = function () {
 		return;
 	} else if (flags.version) {
 		this.showVersion();
+		return;
+	} else if (flags.new) {
+		this.createNewSite();
+		return;
+	} else if (flags.quote) {
+		this.quoteStuff();
 		return;
 	}
 
