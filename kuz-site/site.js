@@ -180,7 +180,7 @@ KuzSite.prototype.getTags = function () {
 	return tags;
 }
 
-KuzSite.prototype.getPages = function () {
+KuzSite.prototype.getPosts = function () {
 	let pages = [];
 	for (let page of this.pages) {
 		if (page.GetType() === "page") {
@@ -190,7 +190,7 @@ KuzSite.prototype.getPages = function () {
 	return pages;
 }
 
-KuzSite.prototype.getRenderables = function () {
+KuzSite.prototype.getPages = function () {
 	return this.pages;
 }
 
@@ -243,7 +243,7 @@ KuzSite.prototype.getResources = function () {
 }
 
 KuzSite.prototype.getEveryThing = function () {
-	let everyThing = this.getRenderables();
+	let everyThing = this.getPages();
 	everyThing = everyThing.concat(this.getLayouts());
 	everyThing = everyThing.concat(this.getModules());
 	everyThing = everyThing.concat(this.getCssArray());

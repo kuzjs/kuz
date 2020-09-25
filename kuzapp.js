@@ -103,11 +103,11 @@ KuzApp.prototype.setupOperands = function () {
 		}
 	}
 
-	if (flags.all) {
-		this.operands = this.operands.concat(this.site.getRenderables());
+	if (flags.pages) {
+		this.operands = this.operands.concat(this.site.getPages());
 	} else {
-		if (flags.pages) {
-			this.operands = this.operands.concat(this.site.getPages());
+		if (flags.posts) {
+			this.operands = this.operands.concat(this.site.getPosts());
 		}
 
 		if (flags.authors) {
@@ -244,7 +244,7 @@ KuzApp.prototype.kursesStuff = function () {
 KuzApp.prototype.benchmarkStuff = function () {
 	let rendered = 0;
 	for (let index=0; index<20; index++) {
-		for (let x of this.site.getRenderables()) {
+		for (let x of this.site.getPages()) {
 			x.forcedUpdate();
 			rendered++;
 		}
