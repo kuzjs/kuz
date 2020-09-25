@@ -12,7 +12,6 @@ function KuzFlag (flagObject) {
 	this.name = flagObject.name;
 	this.description = flagObject.description;
 	this.disk = (flagObject.disk === undefined) ? false : flagObject.disk;
-	this.implemented = (flagObject.implemented === undefined) ? false : flagObject.implemented;
 	this.major = (flagObject.major === undefined) ? false : flagObject.major;
 	this.modifier = (flagObject.modifier === undefined) ? false : flagObject.modifier;
 	this.touchmenot = (flagObject.touchmenot === undefined) ? false : flagObject.touchmenot;
@@ -47,10 +46,6 @@ KuzFlag.prototype.getDisk = function () {
 	return (this.disk) ? "Disk" : "";
 }
 
-KuzFlag.prototype.getStatus = function () {
-	return (this.implemented) ? "Working" : "Dev";
-}
-
 KuzFlag.prototype.getType = function () {
 	if (this.major) {
 		return "Major";
@@ -66,7 +61,6 @@ KuzFlag.prototype.getAttributes = function () {
 	if (this.getDisk() != "") {
 		attributes.push(this.getDisk());
 	}
-	attributes.push(this.getStatus());
 	attributes.push(this.getType());
 	return attributes.join(" | ");
 }
