@@ -278,7 +278,9 @@ KuzLogger.prototype.notFound = function (message, postscript) {
 	this.logInternal(" !FOUND", message, postscript, colors.FgRed);
 }
 
-KuzLogger.prototype.makeSuggestion = function (message, postscript) {
+
+
+KuzLogger.prototype.suggest = function (message, postscript) {
 	this.logInternal("  SUG  ", message, postscript, colors.FgYellow);
 }
 
