@@ -1,4 +1,8 @@
 
+0.1.6 / (next)
+====================
+	* Implemented --watch
+
 0.1.5 / 25-09-2020
 ====================
 	* Now --help and --version work without setting up site
