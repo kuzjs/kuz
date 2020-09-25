@@ -9,7 +9,7 @@
 		{
 			"code": "A",
 			"name": "all",
-			"description": "All renderables modifier.",
+			"description": "All pages modifier.",
 			"modifier": true
 		},
 		{
@@ -40,14 +40,7 @@
 		{
 			"code": "d",
 			"name": "debug",
-			"description": "Show debug messages.",
-			"implemented": true
-		},
-		{
-			"code": "e",
-			"name": "entities",
-			"description": "Entities only modifier.",
-			"modifier": true
+			"description": "Show debug messages."
 		},
 		{
 			"code": "E",
@@ -57,6 +50,11 @@
 		},
 		{
 			"code": "f",
+			"name": "flags",
+			"description": "List all flags"
+		},
+		{
+			"code": "F",
 			"name": "forced",
 			"description": "Forced-update things.",
 			"major": true
@@ -65,25 +63,18 @@
 			"code": "h",
 			"name": "help",
 			"description": "Show some help.",
-			"implemented": true,
 			"params": true
 		},
 		{
 			"code": "H",
 			"name": "helpfull",
 			"description": "Show full help.",
-			"implemented": true,
 			"params": true
 		},
 		{
 			"code": "i",
 			"name": "install",
 			"description": "Install themes."
-		},
-		{
-			"code": "I",
-			"name": "independent",
-			"description": "List independent flags."
 		},
 		{
 			"code": "j",
@@ -112,7 +103,6 @@
 			"code": "l",
 			"name": "list",
 			"description": "List things.",
-			"implemented": true,
 			"major": true
 		},
 		{
@@ -120,11 +110,6 @@
 			"name": "layouts",
 			"description": "Layout files only modifier.",
 			"modifier": true
-		},
-		{
-			"code": "m",
-			"name": "modifier",
-			"description": "List modifier flags."
 		},
 		{
 			"code": "M",
@@ -143,6 +128,12 @@
 			"major": true
 		},
 		{
+			"code": "o",
+			"name": "output",
+			"description": "Output to dir.",
+			"params": true
+		},
+		{
 			"code": "p",
 			"name": "pages",
 			"description": "Pages only modifier.",
@@ -152,7 +143,6 @@
 			"code": "q",
 			"name": "search",
 			"description": "Search for a page.",
-			"major": true,
 			"params": true
 		},
 		{
@@ -175,8 +165,7 @@
 		{
 			"code": "s",
 			"name": "serve",
-			"description": "Run a live server.",
-			"implemented": true
+			"description": "Run a live server."
 		},
 		{
 			"code": "t",
@@ -194,7 +183,6 @@
 			"code": "u",
 			"name": "updatable",
 			"description": "Show updatable things.",
-			"implemented": true,
 			"major": true
 		},
 		{
@@ -202,14 +190,12 @@
 			"disk": true,
 			"name": "update",
 			"description": "Update things now.",
-			"implemented": true,
 			"major": true
 		},
 		{
 			"code": "v",
 			"name": "version",
 			"description": "Show version.",
-			"implemented": true,
 			"touchmenot": true
 		},
 		{
@@ -220,9 +206,9 @@
 		},
 		{
 			"code": "w",
+			"disk": true,
 			"name": "watch",
 			"description": "Watch the site.",
-			"implemented": true,
 			"major": true
 		},
 		{
