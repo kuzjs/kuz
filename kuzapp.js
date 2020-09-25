@@ -71,6 +71,10 @@ KuzApp.prototype.setupFlags = function () {
 	if (this.simpleFlags.debug) {
 		this.log.turnDebugOn();
 	}
+
+	if (this.simpleFlags.disklog) {
+		this.log.turnDiskOn();
+	}
 }
 
 KuzApp.prototype.setupSite = function () {

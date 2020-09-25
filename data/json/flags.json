@@ -45,7 +45,7 @@
 		},
 		{
 			"code": "D",
-			"name": "disk-log",
+			"name": "disklog",
 			"description": "Log to disk.",
 			"independent": true
 		},
