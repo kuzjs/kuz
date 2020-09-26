@@ -13,20 +13,17 @@ function KuzMetaData (kuz) {
 
 KuzMetaData.prototype.setup = function () {
 	this.sections = {};
-	if (this.exists()) {
-		let metaLines = this.kuz.getMetaLines();
 
-		const KuzSections = require("../kuz-sections");
-		let kuzSections = new KuzSections(metaLines);
+	let metaLines = this.kuz.getMetaLines();
 
-		const KuzMetaSection = require("./metasection");
-		for (let section of kuzSections.sections) {
-			if (this.sections[section.name] === undefined) {
-				this.sections[section.name] = new KuzMetaSection(this.kuz, section);
-			}
+	const KuzSections = require("../kuz-sections");
+	let kuzSections = new KuzSections(metaLines);
+
+	const KuzMetaSection = require("./metasection");
+	for (let section of kuzSections.sections) {
+		if (this.sections[section.name] === undefined) {
+			this.sections[section.name] = new KuzMetaSection(this.kuz, section);
 		}
-	} else {
-		//
 	}
 }
 
