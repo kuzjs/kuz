@@ -64,11 +64,11 @@ function getAppropriateValue (value) {
 	}
 }
 
-function Property (textLine) {
+function KuzProperty (textLine) {
 	this.setup(textLine);
 }
 
-Property.prototype = {
+KuzProperty.prototype = {
 	get name () {
 		return this.nameX;
 	},
@@ -77,7 +77,7 @@ Property.prototype = {
 	}
 };
 
-Property.prototype.setup = function (textLine) {
+KuzProperty.prototype.setup = function (textLine) {
 	textLine = textLine.trim();
 	let separatorIndex = textLine.length;
 	let colonIndex = textLine.indexOf(":");
@@ -100,7 +100,7 @@ Property.prototype.setup = function (textLine) {
 	}
 }
 
-Property.prototype.ok = function () {
+KuzProperty.prototype.ok = function () {
 	if (this.badInput) {
 		return false;
 	}
@@ -110,15 +110,15 @@ Property.prototype.ok = function () {
 	return true;
 }
 
-Property.prototype.getName = function () {
+KuzProperty.prototype.getName = function () {
 	return this.name;
 }
 
-Property.prototype.getValue = function () {
+KuzProperty.prototype.getValue = function () {
 	return this.value;
 }
 
-Property.prototype.getValueString = function () {
+KuzProperty.prototype.getValueString = function () {
 	if (this.value.__proto__ === Array.prototype) {
 		return "[" + this.value.join("|") + "]";
 	} else if (this.value.__proto__ === Object.prototype) {
@@ -139,27 +139,27 @@ Property.prototype.getValueString = function () {
 	return this.value;
 }
 
-Property.prototype.IsOn = Property.prototype.IsTrue = function () {
+KuzProperty.prototype.IsOn = KuzProperty.prototype.IsTrue = function () {
 	return (this.value === true) ? true : false;
 }
 
-Property.prototype.IsOff = Property.prototype.IsFalse = function () {
+KuzProperty.prototype.IsOff = KuzProperty.prototype.IsFalse = function () {
 	return (this.value === false) ? false : true;
 }
 
-Property.prototype.getBooleanValue = function () {
+KuzProperty.prototype.getBooleanValue = function () {
 	return (this.value === "false") ? false : true;
 }
 
-Property.prototype.getIntegerValue = function () {
+KuzProperty.prototype.getIntegerValue = function () {
 	return 0;
 }
 
-Property.prototype.getStringValue = function () {
+KuzProperty.prototype.getStringValue = function () {
 	return this.value;
 }
 
-Property.prototype.getTable = function () {
+KuzProperty.prototype.getTable = function () {
 	const KuzTable = require("../kuz-table");
 	let table = new KuzTable();
 	table.addColumn("Property");
@@ -167,10 +167,10 @@ Property.prototype.getTable = function () {
 	return table;
 }
 
-Property.prototype.getRow = function () {
+KuzProperty.prototype.getRow = function () {
 	return [this.Name(), this.getValueString()];
 }
 
-module.exports = Property;
+module.exports = KuzProperty;
 
 

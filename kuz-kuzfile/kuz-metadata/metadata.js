@@ -22,7 +22,7 @@ KuzMetaData.prototype.setup = function () {
 		const KuzSections = require("../kuz-sections");
 		let kuzSections = new KuzSections(metaLines);
 
-		const Property = require("./property");
+		const KuzProperty = require("./property");
 		for (let section of kuzSections.sections) {
 			if (this.sections[section.name] === undefined) {
 				this.sections[section.name] = {};
@@ -32,7 +32,7 @@ KuzMetaData.prototype.setup = function () {
 			for (let line of section.lines) {
 				let lineNumber = line[0];
 				let lineText = line[1];
-				let property = new Property(lineText);
+				let property = new KuzProperty(lineText);
 				if (property.ok()) {
 					if (this.sections[section.name][property.name] === undefined) {
 						this.sections[section.name][property.name] = property.value;
