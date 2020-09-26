@@ -14,7 +14,13 @@ function KuzContent (kuz, path) {
 KuzContent.prototype.setup = function () {
 	this.sections = {};
 	if (this.exists()) {
-		//
+		let contentLines = this.kuz.getContentLines();
+
+		const KuzSections = require("../kuz-sections");
+		let kuzSections = new KuzSections(contentLines);
+		for (let section of kuzSections.sections) {
+			this.log.green("Section found: " + section.name);
+		}
 	}
 }
 
