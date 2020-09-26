@@ -171,8 +171,6 @@ Property.prototype.getRow = function () {
 	return [this.Name(), this.getValueString()];
 }
 
-module.exports = {
-	Property: Property
-};
+module.exports = Property;
 
 
