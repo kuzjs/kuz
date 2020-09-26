@@ -1,4 +1,13 @@
 
+0.2.0 / (future)
+====================
+	* Implemented --serve
+	* Removed article and section from KuzPage
+	* Implemented metaData.getJsons()
+
+0.1.9 / (future)
+====================
+
 0.1.8 / (next)
 ====================
 	* Now root entries are enclosed in parenthesis
