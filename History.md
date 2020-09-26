@@ -5,10 +5,10 @@
 	* Removed article and section from KuzPage
 	* Implemented metaData.getJsons()
 
-0.1.9 / (future)
+0.1.9 / (next)
 ====================
 
-0.1.8 / (next)
+0.1.8 / 26-09-2020
 ====================
 	* Now root entries are enclosed in parenthesis
 	* Added basic KuzContent class
