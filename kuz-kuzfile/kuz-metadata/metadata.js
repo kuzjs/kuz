@@ -4,8 +4,6 @@
 
 const fsutils = require("../../kuz-fs");
 
-const separators = [];
-
 function KuzMetaData (kuz, path) {
 	this.kuz = kuz;
 	this.path = path;

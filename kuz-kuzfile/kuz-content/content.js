@@ -2,6 +2,8 @@
 
 
 
+const fsutils = require("../../kuz-fs");
+
 function KuzContent (kuz, path) {
 	this.kuz = kuz;
 	this.path = path;
@@ -11,6 +13,16 @@ function KuzContent (kuz, path) {
 
 KuzContent.prototype.setup = function () {
 	this.sections = {};
+	if (this.exists()) {
+		//
+	}
+}
+
+KuzContent.prototype.exists = function () {
+	if (fsutils.IsFile(this.path)) {
+		return true;
+	}
+	return false;
 }
 
 
