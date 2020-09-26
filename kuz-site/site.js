@@ -146,7 +146,7 @@ KuzSite.prototype.printDirectories = function () {
 KuzSite.prototype.getAuthors = function () {
 	let authors = [];
 	for (let page of this.pages) {
-		if (page.GetType() === "author") {
+		if (page.getType() === "author") {
 			authors.push(page);
 		}
 	}
@@ -161,7 +161,7 @@ KuzSite.prototype.getDefaultAuthor = function () {
 KuzSite.prototype.getCategories = function () {
 	let categories = [];
 	for (let page of this.pages) {
-		if (page.GetType() === "category") {
+		if (page.getType() === "category") {
 			categories.push(page);
 		}
 	}
@@ -176,7 +176,7 @@ KuzSite.prototype.getDefaultCategory = function () {
 KuzSite.prototype.getTags = function () {
 	let tags = [];
 	for (let page of this.pages) {
-		if (page.GetType() === "tag") {
+		if (page.getType() === "tag") {
 			tags.push(page);
 		}
 	}
@@ -186,7 +186,7 @@ KuzSite.prototype.getTags = function () {
 KuzSite.prototype.getPosts = function () {
 	let pages = [];
 	for (let page of this.pages) {
-		if (page.GetType() === "page") {
+		if (page.getType() === "page") {
 			pages.push(page);
 		}
 	}

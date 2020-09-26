@@ -63,19 +63,19 @@ KuzPage.prototype.ok = function () {
 
 
 KuzPage.prototype.isPage = function () {
-	return (this.GetType() === "page") ? true : false;
+	return (this.getType() === "page") ? true : false;
 }
 
 KuzPage.prototype.isAuthor = function () {
-	return (this.GetType() === "author") ? true : false;
+	return (this.getType() === "author") ? true : false;
 }
 
 KuzPage.prototype.isCategory = function () {
-	return (this.GetType() === "category") ? true : false;
+	return (this.getType() === "category") ? true : false;
 }
 
 KuzPage.prototype.isTag = function () {
-	return (this.GetType() === "tag") ? true : false;
+	return (this.getType() === "tag") ? true : false;
 }
 
 
@@ -371,7 +371,7 @@ KuzPage.prototype.getLayoutName = function () {
 	if (layout.found) {
 		return layout.value;
 	}
-	return this.GetType();
+	return this.getType();
 }
 
 KuzPage.prototype.getLayout = function () {
@@ -387,11 +387,11 @@ KuzPage.prototype.getLayout = function () {
 }
 
 KuzPage.prototype.getPages = function () {
-	if (this.GetType() === "author") {
+	if (this.getType() === "author") {
 		return this.site.getPagesByAuthor(this);
-	} else if (this.GetType() === "category") {
+	} else if (this.getType() === "category") {
 		return this.site.getPagesInCategory(this);
-	} else if (this.GetType() === "tag") {
+	} else if (this.getType() === "tag") {
 		return this.site.getPagesWithTag(this);
 	}
 	return [];
@@ -449,7 +449,7 @@ KuzPage.prototype.getPageOptionsFN = function () {
 }
 
 KuzPage.prototype.toString = function () {
-	return this.typeName + ": (" + this.Name() +") [" + this.getOutputFilePath() + "]";
+	return this.getType() + ": (" + this.getName() +") [" + this.getOutputFilePath() + "]";
 }
 
 
@@ -536,7 +536,7 @@ KuzPage.prototype.RenderLog = function () {
 
 
 
-KuzPage.prototype.GetType = function () {
+KuzPage.prototype.getType = function () {
 	let type = this.getPropertyCascaded("type");
 	if (type.found) {
 		return type.value;
@@ -568,7 +568,7 @@ KuzPage.prototype.getRow = function () {
 		this.konfig.getCodeName(),
 		//this.Title(),
 		this.getTheme().getName(),
-		this.GetType(),
+		this.getType(),
 		this.getLayout().getName(),
 		this.getPagesCount(),
 		//this.PageURL(),
