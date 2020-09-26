@@ -19,7 +19,17 @@ KuzContent.prototype.setup = function () {
 		const KuzSections = require("../kuz-sections");
 		let kuzSections = new KuzSections(contentLines);
 		for (let section of kuzSections.sections) {
-			//this.log.green("Section found: " + section.name);
+			if (this.sections[section.name] === undefined) {
+				this.sections[section.name] = {};
+				this.sections[section.name].mods = section.mods;
+				this.sections[section.name].content = "";
+			}
+
+			for (let line of section.lines) {
+				let lineNumber = line[0];
+				let lineText = line[1];
+				this.sections[section.name].content += lineText + "\n";
+			}
 		}
 	}
 }
