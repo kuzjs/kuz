@@ -1,9 +1,15 @@
 
-0.2.0 / (future)
+0.2.2 / (future)
 ====================
 	* Implemented --serve
-	* Removed article and section from KuzPage
+
+0.2.1 / (future)
+====================
 	* Implemented metaData.getJsons()
+
+0.2.0 / (future)
+====================
+	* Removed article and section from KuzPage
 
 0.1.9 / 26-09-2020
 ====================
