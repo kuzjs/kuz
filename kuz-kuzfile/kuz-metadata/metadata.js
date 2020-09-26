@@ -14,7 +14,6 @@ function KuzMetaData (kuz, path) {
 }
 
 KuzMetaData.prototype.setup = function () {
-	this.properties = [];
 	this.sections = {};
 	if (this.exists()) {
 		let metaLines = this.kuz.getMetaLines();
@@ -116,10 +115,6 @@ KuzMetaData.prototype.getValue = function (propertyName) {
 			value: this.sections.main[propertyName]
 		};
 	}
-}
-
-KuzMetaData.prototype.numberOfProperties = function () {
-	return this.properties.length;
 }
 
 KuzMetaData.prototype.printPropertyTable = function () {
