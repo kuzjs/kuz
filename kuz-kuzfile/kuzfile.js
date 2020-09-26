@@ -13,6 +13,9 @@ function KuzFile (owner, path) {
 
 	const KuzMetaData = require("./kuz-metadata");
 	this.metaData = new KuzMetaData(this, this.path);
+
+	const KuzContent = require("./kuz-content");
+	this.content = new KuzContent(this, this.path);
 }
 
 
