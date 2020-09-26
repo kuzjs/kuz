@@ -5,6 +5,7 @@
 function KuzContentSection (kuz, section) {
 	this.kuz = kuz;
 	this.name = section.name;
+	this.heading = section.heading;
 	this.mods = section.mods;
 	this.content = "";
 	this.setup(section.lines);
