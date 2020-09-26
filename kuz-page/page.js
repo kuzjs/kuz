@@ -394,9 +394,8 @@ KuzPage.prototype.getKuz = function () {
 		site: this.site,
 
 		props: this.getProps(),
-		cprops: this.konfig.getProps(),
+		kprops: this.konfig.getProps(),
 		sprops: this.site.getProps(),
-		kprops: this.site.app.getProps(),
 		tprops: this.getTheme().getProps(),
 		lprops: this.getLayout().getProps(),
 
