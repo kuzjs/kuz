@@ -86,7 +86,7 @@ KuzKonfig.prototype.getEntriesObject = function () {
 	for (let line of lines) {
 		let lineNumber = line[0];
 		let lineText = line[1].trim();
-		if (lineText.startsWith("[") && lineText.endsWith("]")) {
+		if (lineText.startsWith("(") && lineText.endsWith(")")) {
 			if (entries.root) {
 				this.log.red(`Multiple roots specified on L${lineNumber}: ${lineText}`);
 			} else {
