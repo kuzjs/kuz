@@ -1,5 +1,5 @@
 
-0.1.7 / (next)
+0.1.7 / 26-09-2020
 ====================
 	* Corrected listStuff() for zero operands
 	* Single function exports to files inside kuz-kuzfile
