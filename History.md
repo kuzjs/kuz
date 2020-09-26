@@ -10,6 +10,7 @@
 	* Added kuzFile to site
 	* Added class: KuzMetaSection
 	* Now KuzContent does not cache sections
+	* Added empty class KuzBox
 
 0.2.0 / 26-09-2020
 ====================
