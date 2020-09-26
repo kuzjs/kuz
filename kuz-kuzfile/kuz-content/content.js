@@ -6,20 +6,11 @@ const fsutils = require("../../kuz-fs");
 
 function KuzContent (kuz) {
 	this.kuz = kuz;
-	this.path = this.kuz.path;
-	this.log = this.kuz.log;
 	this.setup();
 }
 
 KuzContent.prototype.setup = function () {
 	//
-}
-
-KuzContent.prototype.exists = function () {
-	if (fsutils.IsFile(this.path)) {
-		return true;
-	}
-	return false;
 }
 
 KuzContent.prototype.getSections = function () {
