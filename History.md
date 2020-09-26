@@ -2,6 +2,7 @@
 0.1.7 / (next)
 ====================
 	* Corrected listStuff() for zero operands
+	* Single function exports to files inside kuz-kuzfile
 
 0.1.6 / 26-09-2020
 ====================
