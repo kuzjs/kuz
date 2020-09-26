@@ -275,8 +275,8 @@ KuzApp.prototype.nietzsche = function () {
 
 
 KuzApp.prototype.listStuff = function (flags) {
-	const operands = this.operands.length > 0	? this.operands : this.site.getPages();
-	let table = this.operands[0].getTable();
+	const operands = this.operands.length > 0 ? this.operands : this.site.getPages();
+	let table = operands[0].getTable();
 	for (let operand of operands) {
 		table.add(operand);
 	}
@@ -284,28 +284,28 @@ KuzApp.prototype.listStuff = function (flags) {
 }
 
 KuzApp.prototype.buildableStuff = function () {
-	const operands = this.operands.length > 0	? this.operands : this.site.getPages();
+	const operands = this.operands.length > 0 ? this.operands : this.site.getPages();
 	for (let thing of operands) {
 		thing.buildable();
 	}
 }
 
 KuzApp.prototype.buildStuff = function () {
-	const operands = this.operands.length > 0	? this.operands : this.site.getPages();
+	const operands = this.operands.length > 0 ? this.operands : this.site.getPages();
 	for (let thing of operands) {
 		thing.build();
 	}
 }
 
 KuzApp.prototype.updatableStuff = function () {
-	const operands = this.operands.length > 0	? this.operands : this.site.getPages();
+	const operands = this.operands.length > 0 ? this.operands : this.site.getPages();
 	for (let thing of operands) {
 		thing.updatable();
 	}
 }
 
 KuzApp.prototype.updateStuff = function () {
-	const operands = this.operands.length > 0	? this.operands : this.site.getPages();
+	const operands = this.operands.length > 0 ? this.operands : this.site.getPages();
 	for (let thing of operands) {
 		thing.update();
 	}
@@ -322,7 +322,7 @@ KuzApp.prototype.serveStuff = function () {
 }
 
 KuzApp.prototype.watchStuff = function () {
-	const operands = this.operands.length > 0	? this.operands : this.site.getPages();
+	const operands = this.operands.length > 0 ? this.operands : this.site.getPages();
 	setInterval(function () {
 		for (let operand of operands) {
 			operand.update();
