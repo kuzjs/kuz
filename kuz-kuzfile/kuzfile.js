@@ -20,6 +20,16 @@ function KuzFile (owner, path) {
 
 
 
+KuzFile.prototype.getMetaSections = function () {
+	return this.metaData.getSections();
+}
+
+KuzFile.prototype.getContentSections = function () {
+	return this.content.getSections();
+}
+
+
+
 KuzFile.prototype.turnCacheOn = function () {
 	this.cache = true;
 	return this;

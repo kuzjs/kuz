@@ -12,7 +12,18 @@ function KuzContent (kuz) {
 }
 
 KuzContent.prototype.setup = function () {
-	this.sections = {};
+	//
+}
+
+KuzContent.prototype.exists = function () {
+	if (fsutils.IsFile(this.path)) {
+		return true;
+	}
+	return false;
+}
+
+KuzContent.prototype.getSections = function () {
+	let sections = {};
 	if (this.exists()) {
 		let contentLines = this.kuz.getContentLines();
 
@@ -22,18 +33,13 @@ KuzContent.prototype.setup = function () {
 		const KuzContentSection = require("./contentsection")
 
 		for (let section of kuzSections.sections) {
-			if (this.sections[section.name] === undefined) {
-				this.sections[section.name] = new KuzContentSection(this.kuz, section);
+			if (sections[section.name] === undefined) {
+				sections[section.name] = new KuzContentSection(this.kuz, section);
 			}
 		}
 	}
-}
 
-KuzContent.prototype.exists = function () {
-	if (fsutils.IsFile(this.path)) {
-		return true;
-	}
-	return false;
+	return sections;
 }
 
 
