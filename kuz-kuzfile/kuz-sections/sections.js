@@ -4,8 +4,11 @@
 
 function GetLabel (sectionLine) {
 	let trimmedLine = sectionLine.trim();
-	if (trimmedLine.startsWith("[") && trimmedLine.endsWith("]")) {
-		let fullLabel = trimmedLine.slice(1, -1);
+	if (trimmedLine.startsWith("[") && trimmedLine.includes("]")) {
+		let parts = trimmedLine.split("]");
+		let fullLabel = parts[0].slice(1).trim();
+		let heading = parts[1].trim();
+
 		let labelParts = fullLabel.split("|");
 		let mods = [];
 		for (let labelPart of labelParts.slice(1)) {
@@ -13,6 +16,7 @@ function GetLabel (sectionLine) {
 		}
 		return {
 			found: true,
+			heading: heading,
 			name: labelParts[0].trim(),
 			mods: mods
 		};
@@ -28,6 +32,7 @@ function GetLabel (sectionLine) {
 function Section (label) {
 	this.name = label.name;
 	this.mods = label.mods;
+	this.heading = label.heading;
 	this.lines = [];
 }
 
