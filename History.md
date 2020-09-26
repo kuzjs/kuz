@@ -5,7 +5,7 @@
 	* Removed article and section from KuzPage
 	* Implemented metaData.getJsons()
 
-0.1.9 / (next)
+0.1.9 / 26-09-2020
 ====================
 	* Added sections to KuzContent
 	* Added class KuzContentSection
