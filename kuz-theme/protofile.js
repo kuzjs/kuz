@@ -55,8 +55,6 @@ ProtoFile.prototype.log = function () {
 
 
 
-module.exports = {
-	ProtoFile: ProtoFile
-};
+module.exports = ProtoFile;
 
 

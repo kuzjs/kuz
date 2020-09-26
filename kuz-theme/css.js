@@ -6,7 +6,7 @@ function ThemeCSS (theme, data) {
 	this.setupProto(theme, data);
 }
 
-const ProtoFile = require("./protofile").ProtoFile;
+const ProtoFile = require("./protofile");
 ThemeCSS.prototype = new ProtoFile("css");
 ThemeCSS.prototype.typeName = "CSS";
 

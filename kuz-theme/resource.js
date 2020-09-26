@@ -6,7 +6,7 @@ function ThemeResource (theme, data) {
 	this.setupProto(theme, data);
 }
 
-const ProtoFile = require("./protofile").ProtoFile;
+const ProtoFile = require("./protofile");
 ThemeResource.prototype = new ProtoFile("resources");
 ThemeResource.prototype.typeName = "Resource";
 
