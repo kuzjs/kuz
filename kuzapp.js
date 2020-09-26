@@ -322,7 +322,7 @@ KuzApp.prototype.serveStuff = function () {
 
 KuzApp.prototype.watchStuff = function () {
 	for (let thing of this.operands) {
-		thing.watch();
+		this.log.green(thing);
 	}
 }
 
