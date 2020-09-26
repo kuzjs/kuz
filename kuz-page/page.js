@@ -153,16 +153,6 @@ KuzPage.prototype.getContentString = function () {
 	return this.kuzFile.getBodyString();
 }
 
-KuzPage.prototype.getArticle = function () {
-	const Article = require("./pages/article").Article;
-	let article = new Article(this, this.getContentString());
-	return article;
-}
-
-KuzPage.prototype.getContentHtml = function () {
-	return this.getArticle().getContentHtml();
-}
-
 KuzPage.prototype.getOutputFileMTime = function () {
 	if (fsutils.IsFile(this.getOutputFilePath())) {
 		return fs.statSync(this.getOutputFilePath()).mtimeMs;
