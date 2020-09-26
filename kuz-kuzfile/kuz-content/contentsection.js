@@ -2,7 +2,8 @@
 
 
 
-function KuzContentSection (section) {
+function KuzContentSection (kuz, section) {
+	this.kuz = kuz;
 	this.name = section.name;
 	this.mods = section.mods;
 	this.content = "";

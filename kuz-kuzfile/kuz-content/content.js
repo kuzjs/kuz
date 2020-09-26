@@ -23,7 +23,7 @@ KuzContent.prototype.setup = function () {
 
 		for (let section of kuzSections.sections) {
 			if (this.sections[section.name] === undefined) {
-				this.sections[section.name] = new KuzContentSection(section);
+				this.sections[section.name] = new KuzContentSection(this.kuz, section);
 			}
 		}
 	}
