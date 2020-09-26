@@ -6,6 +6,7 @@
 0.2.1 / (future)
 ====================
 	* Implemented metaData.getJsons()
+	* Now using packageJson for --version
 
 0.2.0 / 26-09-2020
 ====================
