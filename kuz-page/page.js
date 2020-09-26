@@ -418,6 +418,10 @@ KuzPage.prototype.getKuz = function () {
 		tprops: this.getTheme().getProps(),
 		lprops: this.getLayout().getProps(),
 
+		metaSections: this.kuzFile.metaData.sections,
+		content: this.kuzFile.content.sections.main,
+		contentSections: this.kuzFile.content.sections,
+
 		code: this.metaData.getCodeFiles(),
 		json: this.metaData.getJsons(),
 		kuz: this.metaData.getKuzs(),
