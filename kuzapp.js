@@ -321,8 +321,9 @@ KuzApp.prototype.serveStuff = function () {
 }
 
 KuzApp.prototype.watchStuff = function () {
-	for (let thing of this.operands) {
-		this.log.green(thing);
+	let operands = this.operands.length > 0	? this.operands : this.site.getPages();
+	for (let operand of operands) {
+		this.log.green(operand);
 	}
 }
 
