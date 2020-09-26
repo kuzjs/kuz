@@ -35,7 +35,7 @@ Section.prototype.addLine = function (sectionLine) {
 	this.lines.push(sectionLine);
 }
 
-Section.prototype.NumberOfLines = function () {
+Section.prototype.getNumberOfLines = function () {
 	return this.lines.length;
 }
 
@@ -57,7 +57,7 @@ KuzSections.prototype.setup = function (sectionLines) {
 		let sectionLineText = sectionLine[1];
 		let currentLabel = GetLabel(sectionLineText);
 		if (currentLabel.found) {
-			currentSection = this.GetSectionByName(currentLabel.name);
+			currentSection = this.getSectionByName(currentLabel.name);
 			if (!currentSection) {
 				currentSection = new Section(currentLabel);
 				this.sections.push(currentSection);
@@ -72,7 +72,7 @@ KuzSections.prototype.ok = function () {
 	return true;
 }
 
-KuzSections.prototype.SectionsObject = function () {
+KuzSections.prototype.getSectionsObject = function () {
 	let sections = {};
 	for (let section of this.sections) {
 		sections[section.name] = section;
@@ -80,7 +80,7 @@ KuzSections.prototype.SectionsObject = function () {
 	return sections;
 }
 
-KuzSections.prototype.GetSectionByName = function (name) {
+KuzSections.prototype.getSectionByName = function (name) {
 	for (let section of this.sections) {
 		if (section.name === name) {
 			return section;
