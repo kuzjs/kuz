@@ -246,7 +246,7 @@ KuzApp.prototype.quoteStuff = function () {
 
 
 KuzApp.prototype.kursesStuff = function () {
-	const KursesInstance = require("./kuz-kurses").KursesInstance;
+	const KursesInstance = require("./kuz-kurses");
 	const kurse = new KursesInstance(this.getTitle());
 	kurse.run();
 }

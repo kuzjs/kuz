@@ -19,8 +19,6 @@ KursesWindow.prototype.getTitle = function () {
 
 
 
-module.exports = {
-	KursesWindow: KursesWindow
-};
+module.exports = KursesWindow;
 
 

@@ -1,6 +1,6 @@
 // kurses.js
 
-const KursesWindow = require("./window").KursesWindow;
+const KursesWindow = require("./window");
 
 
 
@@ -29,8 +29,6 @@ KursesInstance.prototype.run = function () {
 
 
 
-module.exports = {
-	KursesInstance: KursesInstance
-};
+module.exports = KursesInstance;
 
 
