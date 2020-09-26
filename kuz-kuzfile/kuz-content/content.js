@@ -23,19 +23,17 @@ KuzContent.prototype.exists = function () {
 }
 
 KuzContent.prototype.getSections = function () {
-	let sections = {};
-	if (this.exists()) {
-		let contentLines = this.kuz.getContentLines();
+	const contentLines = this.kuz.getContentLines();
 
-		const KuzSections = require("../kuz-sections");
-		let kuzSections = new KuzSections(contentLines);
+	const KuzSections = require("../kuz-sections");
+	const kuzSections = new KuzSections(contentLines);
 
-		const KuzContentSection = require("./contentsection")
+	const KuzContentSection = require("./contentsection")
 
-		for (let section of kuzSections.sections) {
-			if (sections[section.name] === undefined) {
-				sections[section.name] = new KuzContentSection(this.kuz, section);
-			}
+	const sections = {};
+	for (let section of kuzSections.sections) {
+		if (sections[section.name] === undefined) {
+			sections[section.name] = new KuzContentSection(this.kuz, section);
 		}
 	}
 
