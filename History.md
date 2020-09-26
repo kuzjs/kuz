@@ -1,4 +1,9 @@
 
+0.1.8 / (next)
+====================
+	* Now root entries are enclosed in parenthesis
+	* Added basic KuzContent class
+
 0.1.7 / 26-09-2020
 ====================
 	* Corrected listStuff() for zero operands
