@@ -1,4 +1,8 @@
 
+0.1.7 / (next)
+====================
+	* Corrected listStuff() for zero operands
+
 0.1.6 / 26-09-2020
 ====================
 	* Implemented --benchmark
