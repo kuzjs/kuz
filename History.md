@@ -8,6 +8,7 @@
 	* Implemented metaData.getJsons()
 	* Now using packageJson for --version
 	* Added kuzFile to site
+	* Added class: KuzMetaSection
 
 0.2.0 / 26-09-2020
 ====================
