@@ -322,9 +322,12 @@ KuzApp.prototype.serveStuff = function () {
 
 KuzApp.prototype.watchStuff = function () {
 	let operands = this.operands.length > 0	? this.operands : this.site.getPages();
-	for (let operand of operands) {
-		this.log.green(operand);
-	}
+	let log = this.log;
+	setInterval(function () {
+		for (let operand of operands) {
+			operand.update();
+		}
+	}, 1000);
 }
 
 KuzApp.prototype.defaultStuff = function () {
