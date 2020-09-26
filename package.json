@@ -1,6 +1,6 @@
 {
   "name": "kuz",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "KuzJS static site generator",
   "main": "index.js",
   "dependencies": {
