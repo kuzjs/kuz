@@ -206,12 +206,16 @@ KuzApp.prototype.getTitle = function () {
 	return this.kaagazzJson.meta.title;
 }
 
+KuzApp.prototype.getName = function () {
+	return this.packageJson.name;
+}
+
 KuzApp.prototype.getDescription = function () {
-	return this.kaagazzJson.meta.description;
+	return this.packageJson.description;
 }
 
 KuzApp.prototype.getVersion = function () {
-	return this.kaagazzJson.meta.version;
+	return this.packageJson.version;
 }
 
 KuzApp.prototype.toString = function () {
@@ -231,7 +235,7 @@ KuzApp.prototype.showVersion = function () {
 	table.addColumn("Value");
 
 	let meta = this.kaagazzJson.meta;
-	table.addRow(["Title", this.getTitle()]);
+	table.addRow(["Name", this.getName()]);
 	table.addRow(["Version", this.getVersion()]);
 	table.addRow(["Description", this.getDescription()]);
 	table.print();
