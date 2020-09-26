@@ -4,9 +4,9 @@
 
 const fsutils = require("../../kuz-fs");
 
-function KuzMetaData (kuz, path) {
+function KuzMetaData (kuz) {
 	this.kuz = kuz;
-	this.path = path;
+	this.path = this.kuz.path;
 	this.log = this.kuz.log;
 	this.setup();
 }

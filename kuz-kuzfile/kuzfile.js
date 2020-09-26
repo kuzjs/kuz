@@ -12,10 +12,10 @@ function KuzFile (owner, path) {
 	this.regions = new KuzRegions(this.path);
 
 	const KuzMetaData = require("./kuz-metadata");
-	this.metaData = new KuzMetaData(this, this.path);
+	this.metaData = new KuzMetaData(this);
 
 	const KuzContent = require("./kuz-content");
-	this.content = new KuzContent(this, this.path);
+	this.content = new KuzContent(this);
 }
 
 
