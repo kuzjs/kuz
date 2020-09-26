@@ -91,8 +91,6 @@ KuzSections.prototype.GetSectionByName = function (name) {
 
 
 
-module.exports = {
-	KuzSections: KuzSections
-};
+module.exports = KuzSections;
 
 

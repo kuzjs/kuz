@@ -19,7 +19,7 @@ KuzMetaData.prototype.setup = function () {
 	if (this.exists()) {
 		let metaLines = this.kuz.getMetaLines();
 
-		const KuzSections = require("../kuz-sections").KuzSections;
+		const KuzSections = require("../kuz-sections");
 		let kuzSections = new KuzSections(metaLines);
 
 		const Property = require("./property").Property;
