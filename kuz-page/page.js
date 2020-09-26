@@ -402,12 +402,8 @@ KuzPage.prototype.getPages = function () {
 
 
 KuzPage.prototype.getKuz = function () {
-	let article = this.getArticle();
-	let sections = article ? article.sections : null;
 	return {
 		page: this,
-		article: article,
-		sections: sections,
 		app: this.site.app,
 		site: this.site,
 
