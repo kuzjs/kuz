@@ -8,6 +8,8 @@
 0.1.9 / (next)
 ====================
 	* Added sections to KuzContent
+	* Added class KuzContentSection
+	* Added metaSections and contentSections to page.getKuz()
 
 0.1.8 / 26-09-2020
 ====================
