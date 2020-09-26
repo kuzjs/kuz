@@ -7,7 +7,7 @@
 ====================
 	* Implemented metaData.getJsons()
 
-0.2.0 / (future)
+0.2.0 / 26-09-2020
 ====================
 	* Removed article and section from KuzPage
 
