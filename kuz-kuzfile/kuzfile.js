@@ -40,6 +40,10 @@ KuzFile.prototype.cacheIsOff = function () {
 
 
 
+KuzFile.prototype.getCodeFiles = function () {
+	return [];
+}
+
 KuzFile.prototype.getJsons = function () {
 	if (this.cacheIsOn()) {
 		if (this.jsons === undefined) {

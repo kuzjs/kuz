@@ -37,7 +37,6 @@ KuzPage.prototype.setupPage = function (site, konfig, entry) {
 	this.tags = [];
 
 	if (this.doesInputFileExist()) {
-
 		const KuzFile = require("../kuz-kuzfile");
 		this.kuzFile = new KuzFile(this, this.getInputFilePath());
 
@@ -408,10 +407,16 @@ KuzPage.prototype.getKuz = function () {
 		mainContent: this.kuzFile.content.sections.main,
 		contentSections: this.kuzFile.content.sections,
 
-		code: this.metaData.getCodeFiles(),
-		json: this.metaData.getJsons(),
+		code: this.kuzFile.getCodeFiles(),
+		json: this.kuzFile.getJsons(),
 		kuz: this.metaData.getKuzs(),
 		reqs: this.metaData.getReqs(),
+
+		kcode: this.konfig.kuzFile.getCodeFiles(),
+		kjson: this.konfig.kuzFile.getJsons(),
+
+		scode: this.site.kuzFile.getCodeFiles(),
+		sjson: this.site.kuzFile.getJsons(),
 
 		ipsum: this.getApp().getIpsum(),
 		kuzz: {

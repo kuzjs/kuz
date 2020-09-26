@@ -21,6 +21,9 @@ KuzSite.prototype.setup = function () {
 	this.errorMessage = null;
 	this.siteJsonPath = this.app.getSiteJsonPath();
 
+	const KuzFile = require("../kuz-kuzfile");
+	this.kuzFile = new KuzFile(this, "site.kuz");
+
 	const KuzJson = require("../kuz-json");
 	this.meta = new KuzJson(this.siteJsonPath);
 	if (!this.meta.ok()) {
