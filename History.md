@@ -2,10 +2,10 @@
 0.2.2 / (future)
 ====================
 	* Implemented --serve
-
-0.2.1 / (future)
-====================
 	* Implemented metaData.getJsons()
+
+0.2.1 / 26-09-2020
+====================
 	* Now using packageJson for --version
 	* Added kuzFile to site
 	* Added class: KuzMetaSection
