@@ -169,8 +169,6 @@ KuzRegions.prototype.getFooterLines = function () {
 	return this.getLinesByRegionIndex(2);
 }
 
-module.exports = {
-	KuzRegions: KuzRegions
-};
+module.exports = KuzRegions;
 
 
