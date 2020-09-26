@@ -75,10 +75,6 @@ KuzFile.prototype.getContentLines = function () {
 	return this.regions.getContentLines();
 }
 
-KuzFile.prototype.getBodyString = function () {
-	return this.regions.getBodyString();
-}
-
 
 
 module.exports = KuzFile;

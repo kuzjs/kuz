@@ -148,10 +148,6 @@ KuzPage.prototype.getOutputFileName = function () {
 	}
 }
 
-KuzPage.prototype.getContentString = function () {
-	return this.kuzFile.getBodyString();
-}
-
 KuzPage.prototype.getOutputFileMTime = function () {
 	if (fsutils.IsFile(this.getOutputFilePath())) {
 		return fs.statSync(this.getOutputFilePath()).mtimeMs;
