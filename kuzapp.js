@@ -321,8 +321,7 @@ KuzApp.prototype.serveStuff = function () {
 }
 
 KuzApp.prototype.watchStuff = function () {
-	let operands = this.operands.length > 0	? this.operands : this.site.getPages();
-	let log = this.log;
+	const operands = this.operands.length > 0	? this.operands : this.site.getPages();
 	setInterval(function () {
 		for (let operand of operands) {
 			operand.update();
