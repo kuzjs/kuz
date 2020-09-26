@@ -19,26 +19,10 @@ KuzMetaData.prototype.setup = function () {
 		const KuzSections = require("../kuz-sections");
 		let kuzSections = new KuzSections(metaLines);
 
-		const KuzProperty = require("./property");
+		const KuzMetaSection = require("./metasection");
 		for (let section of kuzSections.sections) {
 			if (this.sections[section.name] === undefined) {
-				this.sections[section.name] = {};
-				this.sections[section.name].mods = section.mods;
-			}
-
-			for (let line of section.lines) {
-				let lineNumber = line[0];
-				let lineText = line[1];
-				let property = new KuzProperty(lineText);
-				if (property.ok()) {
-					if (this.sections[section.name][property.name] === undefined) {
-						this.sections[section.name][property.name] = property.value;
-					} else {
-						this.log.red(`Multiple definitions on L${lineNumber}: [${property.name}]`);
-					}
-				} else {
-					this.log.red(`Bad property on L${lineNumber}: [${lineText}]`);
-				}
+				this.sections[section.name] = new KuzMetaSection(this.kuz, section);
 			}
 		}
 	} else {
@@ -50,7 +34,7 @@ KuzMetaData.prototype.setup = function () {
 
 KuzMetaData.prototype.getProps = function () {
 	if (this.sections.main) {
-		return this.sections.main;
+		return this.sections.main.props;
 	}
 	return {};
 }
@@ -103,14 +87,14 @@ KuzMetaData.prototype.exists = function () {
 }
 
 KuzMetaData.prototype.getValue = function (propertyName) {
-	if (this.sections.main[propertyName] === undefined) {
+	if (this.sections.main.props[propertyName] === undefined) {
 		return {
 			found: false
 		};
 	} else {
 		return {
 			found: true,
-			value: this.sections.main[propertyName]
+			value: this.sections.main.props[propertyName]
 		};
 	}
 }
