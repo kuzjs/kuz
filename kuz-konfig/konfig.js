@@ -1,4 +1,4 @@
-// configfile.js
+// konfig.js
 
 const fsutils = require("../kuz-fs");
 
