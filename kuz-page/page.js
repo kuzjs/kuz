@@ -403,11 +403,8 @@ KuzPage.prototype.getKuz = function () {
 		content: this.kuzFile.getContentSections(),
 
 		props: this.getProps(),
-		codes: this.kuzFile.getCodeFiles(),
-		jsons: this.kuzFile.getJsons(),
-		kuzs: this.kuzFile.getKuzs(),
-		reqs: this.kuzFile.getReqs(),
 
+		p: this.kuzFile.getCachedItems(),
 		k: this.konfig.kuzFile.getCachedItems(),
 		s: this.site.kuzFile.getCachedItems(),
 

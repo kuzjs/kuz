@@ -19,6 +19,7 @@
   * Added method KuzFile.ok()
   * Now checking if ok() before passing code / kuz to page
   * Added KuzFile.getCachedItems()
+  * Now passing `p`
 
 
 0.2.6 / 27-09-2020
