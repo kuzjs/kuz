@@ -234,7 +234,7 @@ KuzPage.prototype.setKonfig = function (konfig) {
 }
 
 KuzPage.prototype.getProps = function () {
-	return this.metaData.getProps();
+	return this.kuzFile.getProps();
 }
 
 KuzPage.prototype.getAuthor = function () {
@@ -277,8 +277,8 @@ KuzPage.prototype.getTags = function () {
 
 
 KuzPage.prototype.getProperty = function (propertyName) {
-	if (this.metaData) {
-		return this.metaData.getValue(propertyName);
+	if (this.kuzFile) {
+		return this.kuzFile.getProperty(propertyName);
 	}
 	return {
 		found: false
@@ -291,8 +291,8 @@ KuzPage.prototype.getPropertyCascaded = function (propertyName) {
 		return property;
 	}
 
-	if (this.konfig && this.konfig.metaData) {
-		return this.konfig.metaData.getValue(propertyName);
+	if (this.konfig && this.konfig.kuzFile) {
+		return this.konfig.kuzFile.getProperty(propertyName);
 	}
 
 	return {
@@ -403,8 +403,8 @@ KuzPage.prototype.getKuz = function () {
 
 		code: this.kuzFile.getCodeFiles(),
 		json: this.kuzFile.getJsons(),
-		kuz: this.metaData.getKuzs(),
-		reqs: this.metaData.getReqs(),
+		kuz: this.kuzFile.getKuzs(),
+		reqs: this.kuzFile.getReqs(),
 
 		kcode: this.konfig.kuzFile.getCodeFiles(),
 		kjson: this.konfig.kuzFile.getJsons(),

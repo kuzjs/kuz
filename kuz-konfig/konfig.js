@@ -28,7 +28,7 @@ function KuzKonfig (site, dirpath) {
 		this.kuzFile = new KuzFile(this, this.path);
 
 		this.metaData = this.kuzFile.getMetaData();
-		this.props = this.metaData.getProps();
+		this.props = this.kuzFile.getProps();
 	} else {
 		this.log.badNews("KuzKonfig not found: " + this.path);
 	}

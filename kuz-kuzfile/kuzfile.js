@@ -13,6 +13,7 @@ function KuzFile (owner, path) {
 
 	const KuzMetaData = require("./kuz-metadata");
 	this.metaData = new KuzMetaData(this);
+	this.metaSections = this.metaData.getSections();
 
 	const KuzContent = require("./kuz-content");
 	this.content = new KuzContent(this);
@@ -50,11 +51,31 @@ KuzFile.prototype.cacheIsOff = function () {
 
 
 
+KuzFile.prototype.getProps = function () {
+	return this.metaSections.main.props;
+}
+
+KuzFile.prototype.getProperty = function (propertyName) {
+	if (this.metaSections.main.props[propertyName] === undefined) {
+		return {
+			found: false
+		};
+	} else {
+		return {
+			found: true,
+			value: this.metaSections.main.props[propertyName]
+		};
+	}
+}
+
+
+
 KuzFile.prototype.getCodeFiles = function () {
 	return [];
 }
 
 KuzFile.prototype.getJsons = function () {
+	return [];
 	if (this.cacheIsOn()) {
 		if (this.jsons === undefined) {
 			this.jsons = this.metaData.getJsons()
@@ -65,6 +86,14 @@ KuzFile.prototype.getJsons = function () {
 	} else {
 		return this.metaData.getJsons();
 	}
+}
+
+KuzFile.prototype.getKuzs = function () {
+	return [];
+}
+
+KuzFile.prototype.getReqs = function () {
+	return [];
 }
 
 
