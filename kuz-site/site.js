@@ -23,6 +23,7 @@ KuzSite.prototype.setup = function () {
 
 	const KuzFile = require("../kuz-kuzfile");
 	this.kuzFile = new KuzFile(this, "site.kuz");
+	this.kuzFile.turnCacheOn();
 
 	const KuzJson = require("../kuz-json");
 	this.meta = new KuzJson(this.siteJsonPath);

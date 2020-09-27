@@ -10,6 +10,7 @@ function KuzFile (owner, path) {
 	this.path = path;
 	this.log = this.owner.log;
 	this.cache = false;
+	this.cached = {};
 
 	const KuzRegions = require("./kuz-regions");
 	this.regions = new KuzRegions(this.path);
@@ -84,12 +85,15 @@ KuzFile.prototype.getCodeFiles = function () {
 }
 
 KuzFile.prototype.getJsons = function () {
+	if (this.cacheIsOn() && this.cached.jsons) {
+		return this.cached.jsons;
+	}
+
 	let jsons = {};
 	if (this.metaSections.json) {
 		for (let jsonName in this.metaSections.json.props) {
 			let jsonPath = this.metaSections.json.props[jsonName];
 			let jsonFullPath = this.getFilePath(jsonPath);
-			console.log(jsonFullPath);
 			try {
 				let json = JSON.parse(fs.readFileSync(jsonFullPath));
 				jsons[jsonName] = json;
@@ -97,6 +101,10 @@ KuzFile.prototype.getJsons = function () {
 				//
 			}
 		}
+	}
+
+	if (this.cacheIsOn()) {
+		this.cached.jsons = jsons;
 	}
 	return jsons;
 }
