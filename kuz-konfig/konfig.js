@@ -25,6 +25,7 @@ function KuzKonfig (site, dirpath) {
 
 	const KuzFile = require("../kuz-kuzfile");
 	this.kuzFile = new KuzFile(this, this.path);
+	this.kuzFile.turnCacheOn();
 }
 
 const KuzBaseObject = require("../kuz-baseobject");

@@ -22,8 +22,6 @@ function getPages (site, dirpath, parentKonfig) {
 		return [];
 	}
 
-	konfig.kuzFile.turnCacheOn();
-
 	let root = null;
 	if (parentKonfig) {
 		parentKonfig.addChild(konfig);
