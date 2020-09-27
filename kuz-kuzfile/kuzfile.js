@@ -84,7 +84,26 @@ KuzFile.prototype.getFilePath = function (fileName) {
 
 
 KuzFile.prototype.getCodeFiles = function () {
-	return [];
+	if (this.cacheIsOn() && this.cache.codes) {
+		return this.cache.codes;
+	}
+
+	let codes = {};
+	if (this.metaSections.code) {
+		const KuzCodeFile = require("../kuz-codefile")
+		for (let codeName in this.metaSections.code.props) {
+			let codePath = this.metaSections.code.props[codeName];
+			let codeFullPath = this.getFilePath(codePath);
+			let code = new KuzCodeFile(this, codeFullPath);
+			console.log(codeFullPath);
+			codes[codeName] = code;
+		}
+	}
+
+	if (this.cacheIsOn()) {
+		this.cache.codes = codes;
+	}
+	return codes;
 }
 
 KuzFile.prototype.getJsons = function () {
