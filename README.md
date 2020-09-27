@@ -1,6 +1,6 @@
 
-## Kaagazz JS App
+## kuz
 
-This directory should be cloned in you site root directory.
+This repository contains the code for all of kuz.
 
 
