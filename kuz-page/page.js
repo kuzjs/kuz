@@ -402,10 +402,12 @@ KuzPage.prototype.getKuz = function () {
 
 		kprops: this.konfig.getProps(),
 		kcodes: this.konfig.kuzFile.getCodeFiles(),
+		kkuzs: this.konfig.kuzFile.getKuzs(),
 		kjsons: this.konfig.kuzFile.getJsons(),
 
 		sprops: this.site.getProps(),
 		scodes: this.site.kuzFile.getCodeFiles(),
+		skuzs: this.site.kuzFile.getKuzs(),
 		sjsons: this.site.kuzFile.getJsons(),
 
 		ipsum: this.getApp().getIpsum(),

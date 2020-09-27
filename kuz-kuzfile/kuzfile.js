@@ -113,7 +113,24 @@ KuzFile.prototype.getJsons = function () {
 }
 
 KuzFile.prototype.getKuzs = function () {
-	return [];
+	if (this.cacheIsOn() && this.cache.kuzs) {
+		return this.cache.kuzs;
+	}
+
+	let kuzs = {};
+	if (this.metaSections.kuz) {
+		for (let kuzName in this.metaSections.kuz.props) {
+			let kuzPath = this.metaSections.kuz.props[kuzName];
+			let kuzFullPath = this.getFilePath(kuzPath);
+			let kuz = new KuzFile(this, kuzFullPath);
+			kuzs[kuzName] = kuz;
+		}
+	}
+
+	if (this.cacheIsOn()) {
+		this.cache.kuzs = kuzs;
+	}
+	return kuzs;
 }
 
 KuzFile.prototype.getReqs = function () {
