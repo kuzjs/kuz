@@ -39,7 +39,7 @@
 	* Implemented metaData.getCodeFiles()
 
 
-0.2.2 / (future)
+0.2.2 / 27-09-2020
 ====================
 	* Simplified options passed to page
 	* Corrected func names in fsutils
