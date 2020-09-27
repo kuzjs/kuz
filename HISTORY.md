@@ -21,12 +21,12 @@
 
 0.2.6 / (future)
 ====================
-	* Nothing yet
+	* Implemented --serve
 
 
 0.2.5 / (future)
 ====================
-	* Implemented --serve
+	* Implemented metaData.getJsons()
 
 
 0.2.4 / (future)
@@ -41,8 +41,8 @@
 
 0.2.2 / (future)
 ====================
-	* Implemented metaData.getJsons()
 	* Simplified options passed to page
+	* Corrected func names in fsutils
 
 
 0.2.1 / 26-09-2020
