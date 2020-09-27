@@ -14,7 +14,7 @@ function KuzCodeFile (kuz, path) {
 }
 
 KuzCodeFile.prototype.exists = function () {
-	if (fsutils.IsFile(this.path)) {
+	if (fsutils.isFile(this.path)) {
 		return true;
 	}
 	return false;

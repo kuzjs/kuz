@@ -51,12 +51,12 @@ KuzTheme.prototype.getJsonFilePath = function () {
 }
 
 KuzTheme.prototype.setupTheme = function () {
-	if (!fsutils.IsDirectory(this.InputDirectory())) {
+	if (!fsutils.isDirectory(this.InputDirectory())) {
 		this.log.red("Theme NOT Found: " + this.InputDirectory());
 		return;
 	}
 
-	if (!fsutils.IsFile(this.getJsonFilePath())) {
+	if (!fsutils.isFile(this.getJsonFilePath())) {
 		this.log.red("Theme JSON NOT Found: " + this.getJsonFilePath());
 		return;
 	}

@@ -129,7 +129,7 @@ KuzSite.prototype.getSpecialDirectory = function () {
 
 KuzSite.prototype.getDataFileContents = function (filename) {
 	let filepath = fsutils.JoinPath(this.getDataInputDirectory(), filename);
-	if (fsutils.IsFile(filepath)) {
+	if (fsutils.isFile(filepath)) {
 		return fs.readFileSync(filepath, "utf8");
 	} else {
 		this.log.badNews("File Not Found: " + filepath);

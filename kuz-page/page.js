@@ -49,7 +49,7 @@ KuzPage.prototype.reset = function () {
 }
 
 KuzPage.prototype.ok = function () {
-	if (fsutils.IsFile(this.getInputFilePath())) {
+	if (fsutils.isFile(this.getInputFilePath())) {
 		return true;
 	}
 	return false;
@@ -94,7 +94,7 @@ KuzPage.prototype.isVisible = function () {
 KuzPage.prototype.HasInputDirectory = function () {
 	if (this.hasInputDirectory === undefined) {
 		let inputDirectoryPath = fsutils.JoinPath(this.site.getInputDirectory(), this.configDirpath, this.entry);
-		if (fsutils.IsDirectory(inputDirectoryPath)) {
+		if (fsutils.isDirectory(inputDirectoryPath)) {
 			this.hasInputDirectory = true;
 		}
 		this.hasInputDirectory = false;
@@ -145,7 +145,7 @@ KuzPage.prototype.getOutputFileName = function () {
 }
 
 KuzPage.prototype.getOutputFileMTime = function () {
-	if (fsutils.IsFile(this.getOutputFilePath())) {
+	if (fsutils.isFile(this.getOutputFilePath())) {
 		return fs.statSync(this.getOutputFilePath()).mtimeMs;
 	}
 	return 0;

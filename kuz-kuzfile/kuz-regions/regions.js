@@ -51,7 +51,7 @@ KuzRegions.prototype.ok = function () {
 }
 
 KuzRegions.prototype.exists = function () {
-	if (fsutils.IsFile(this.filename)) {
+	if (fsutils.isFile(this.filename)) {
 		return true;
 	}
 	return false;

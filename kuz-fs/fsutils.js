@@ -69,29 +69,29 @@ function JoinPath () {
 	return path;
 }
 
-function IsFileOrDirectory (filepath) {
+function isFileOrDirectory (filepath) {
 	if (fs.existsSync(filepath)) {
 		return true;
 	}
 	return false;
 }
 
-function IsDirectory (dirpath) {
-	if (IsFileOrDirectory(dirpath) && fs.lstatSync(dirpath).isDirectory()) {
+function isDirectory (dirpath) {
+	if (isFileOrDirectory(dirpath) && fs.lstatSync(dirpath).isDirectory()) {
 		return true;
 	}
 	return false;
 }
 
-function IsFile (filepath) {
-	if (IsFileOrDirectory(filepath) && fs.lstatSync(filepath).isFile()) {
+function isFile (filepath) {
+	if (isFileOrDirectory(filepath) && fs.lstatSync(filepath).isFile()) {
 		return true;
 	}
 	return false;
 }
 
 function IsNewerThan (f1, f2) {
-	if (IsFile(f1) && IsFile(f2)) {
+	if (isFile(f1) && isFile(f2)) {
 		if (fs.statSync(f1).mtimeMs > fs.statSync(f2).mtimeMs) {
 			return true;
 		} else {
@@ -104,11 +104,11 @@ function IsNewerThan (f1, f2) {
 
 function DirectoryHasNewerFiles (dirpath, filepath) {
 	let directoryHasNewerFiles = false;
-	if (IsFile(filepath)) {
-		if (IsDirectory(dirpath)) {
+	if (isFile(filepath)) {
+		if (isDirectory(dirpath)) {
 			fs.readdirSync(dirpath).forEach(file => {
 				let newfilepath = dirpath + "/" + file;
-				if (IsFile(newfilepath)) {
+				if (isFile(newfilepath)) {
 					if (fs.statSync(newfilepath).mtimeMs > fs.statSync(filepath).mtimeMs) {
 						directoryHasNewerFiles = true;
 						return;
@@ -131,7 +131,7 @@ function DirectoryHasNewerFiles (dirpath, filepath) {
 }
 
 function DeleteDirectory (dirpath) {
-	if (IsDirectory(dirpath)) {
+	if (isDirectory(dirpath)) {
 		fs.readdirSync(dirpath).forEach((file, index) => {
 			const filepath = dirpath + "/" + file;
 			if (fs.lstatSync(filepath).isDirectory()) {
@@ -147,7 +147,7 @@ function DeleteDirectory (dirpath) {
 function DeleteAllButIndexHtml (dirpath) {
 	fs.readdirSync(dirpath).forEach((file, index) => {
 		let filepath = dirpath + "/" + file;
-		if (IsDirectory(filepath)) {
+		if (isDirectory(filepath)) {
 			DeleteDirectory(filepath);
 		} else {
 			if (file === "index.html") {
@@ -167,9 +167,9 @@ module.exports = {
 	FileDoesNotExist: FileDoesNotExist,
 	getFileMTime: getFileMTime,
 	JoinPath: JoinPath,
-	IsFileOrDirectory: IsFileOrDirectory,
-	IsDirectory: IsDirectory,
-	IsFile: IsFile,
+	isFileOrDirectory: isFileOrDirectory,
+	isDirectory: isDirectory,
+	isFile: isFile,
 	IsNewerThan: IsNewerThan,
 	DirectoryHasNewerFiles: DirectoryHasNewerFiles,
 	DeleteDirectory: DeleteDirectory,
