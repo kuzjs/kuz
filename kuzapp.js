@@ -86,9 +86,6 @@ KuzApp.prototype.setupSite = function () {
 
 KuzApp.prototype.setupOperands = function () {
 	this.operands = [];
-	if (!this.ok()) {
-		return;
-	}
 
 	let flags = this.simpleFlags;
 
@@ -394,9 +391,10 @@ KuzApp.prototype.run = function () {
 	this.setupSite();
 	this.benchmark.recordMilestone("KuzApp.setupSite() complete.");
 
-	this.setupOperands();
-	this.benchmark.recordMilestone("KuzApp.setupOperands() complete.");
-	if (!this.ok()) {
+	if (this.ok()) {
+		this.setupOperands();
+		this.benchmark.recordMilestone("KuzApp.setupOperands() complete.");
+	} else {
 		return;
 	}
 
