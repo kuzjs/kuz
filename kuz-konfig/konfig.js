@@ -31,6 +31,8 @@ const KuzBaseObject = require("../kuz-baseobject");
 KuzKonfig.prototype = new KuzBaseObject();
 KuzKonfig.prototype.codeLetter = "g";
 
+
+
 KuzKonfig.prototype.setParent = function (configFileParentObject) {
 	if (configFileParentObject) {
 		this.parent = configFileParentObject;
@@ -47,6 +49,8 @@ KuzKonfig.prototype.addPage = function (page) {
 	this.pages.push(page);
 }
 
+
+
 KuzKonfig.prototype.getDirPath = function () {
 	return this.configDirpath;
 }
@@ -59,6 +63,8 @@ KuzKonfig.prototype.getPath = function () {
 	return this.path;
 }
 
+
+
 KuzKonfig.prototype.exists = function () {
 	if (fsutils.IsFile(this.path)) {
 		return true;
@@ -69,6 +75,8 @@ KuzKonfig.prototype.exists = function () {
 KuzKonfig.prototype.doesNotExist = function () {
 	return !this.exists();
 }
+
+
 
 KuzKonfig.prototype.getEntriesObject = function () {
 	let lines = this.kuzFile.getContentLines();
@@ -92,17 +100,21 @@ KuzKonfig.prototype.getEntriesObject = function () {
 	return entries;
 }
 
+
+
 KuzKonfig.prototype.getPages = function () {
 	return this.pages;
 }
 
-KuzKonfig.prototype.numberOfPages = function () {
+KuzKonfig.prototype.getNumberOfPages = function () {
 	return this.pages.length;
 }
 
-KuzKonfig.prototype.numberOfChildren = function () {
+KuzKonfig.prototype.getNumberOfChildren = function () {
 	return this.children.length;
 }
+
+
 
 KuzKonfig.prototype.parentString = function () {
 	if (this.parent) {
@@ -119,6 +131,8 @@ KuzKonfig.prototype.rootString = function () {
 		return "";
 	}
 }
+
+
 
 KuzKonfig.prototype.getTable = function () {
 	const KuzTable = require("../kuz-table");
@@ -139,11 +153,13 @@ KuzKonfig.prototype.getRow = function () {
 		this.path,
 		this.parentString(),
 		this.rootString(),
-		this.numberOfChildren(),
-		this.numberOfPages(),
+		this.getNumberOfChildren(),
+		this.getNumberOfPages(),
 		this.kuzFile.numberOfProperties()
 	];
 }
+
+
 
 module.exports = KuzKonfig;
 
