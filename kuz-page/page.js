@@ -39,8 +39,6 @@ KuzPage.prototype.setupPage = function (site, konfig, entry) {
 	if (this.doesInputFileExist()) {
 		const KuzFile = require("../kuz-kuzfile");
 		this.kuzFile = new KuzFile(this, this.getInputFilePath());
-
-		this.metaData = this.kuzFile.getMetaData();
 	}
 }
 

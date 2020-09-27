@@ -26,8 +26,6 @@ function KuzKonfig (site, dirpath) {
 	if (this.exists()) {
 		const KuzFile = require("../kuz-kuzfile");
 		this.kuzFile = new KuzFile(this, this.path);
-
-		this.metaData = this.kuzFile.getMetaData();
 		this.props = this.kuzFile.getProps();
 	} else {
 		this.log.badNews("KuzKonfig not found: " + this.path);
@@ -127,10 +125,6 @@ KuzKonfig.prototype.rootString = function () {
 	}
 }
 
-KuzKonfig.prototype.getStringValue = function (propertyName) {
-	return this.metaData.getValue(propertyName);
-}
-
 KuzKonfig.prototype.getTable = function () {
 	const KuzTable = require("../kuz-table");
 	let table = new KuzTable();
@@ -152,7 +146,7 @@ KuzKonfig.prototype.getRow = function () {
 		this.rootString(),
 		this.numberOfChildren(),
 		this.numberOfPages(),
-		this.metaData.numberOfProperties()
+		this.kuzFile.numberOfProperties()
 	];
 }
 

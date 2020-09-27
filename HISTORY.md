@@ -37,6 +37,9 @@
 0.2.3 / (future)
 ====================
 	* Implemented metaData.getCodeFiles()
+	* Moved KuzMetaData methods to KuzFile
+	* Removed unused methods
+	* Now KuzPage and KuzKonfig do not deal with KuzMetaData directly
 
 
 0.2.2 / 27-09-2020

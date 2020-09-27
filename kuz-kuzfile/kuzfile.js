@@ -76,16 +76,6 @@ KuzFile.prototype.getCodeFiles = function () {
 
 KuzFile.prototype.getJsons = function () {
 	return [];
-	if (this.cacheIsOn()) {
-		if (this.jsons === undefined) {
-			this.jsons = this.metaData.getJsons()
-			return this.jsons;
-		} else {
-			return this.jsons;
-		}
-	} else {
-		return this.metaData.getJsons();
-	}
 }
 
 KuzFile.prototype.getKuzs = function () {
@@ -98,20 +88,18 @@ KuzFile.prototype.getReqs = function () {
 
 
 
-KuzFile.prototype.getMetaData = function () {
-	return this.metaData;
-}
-
-KuzFile.prototype.getRegions = function () {
-	return this.regions;
-}
-
 KuzFile.prototype.getMetaLines = function () {
 	return this.regions.getMetaLines();
 }
 
 KuzFile.prototype.getContentLines = function () {
 	return this.regions.getContentLines();
+}
+
+
+
+KuzFile.prototype.numberOfProperties = function () {
+	return 0;
 }
 
 
