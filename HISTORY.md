@@ -28,6 +28,7 @@
 ====================
 	* Implemented metaData.getKuzs()
 	* Implemented metaData.getCodeFiles()
+	* Now not watching by default
 
 
 0.2.4 / 27-09-2020

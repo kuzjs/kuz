@@ -337,7 +337,7 @@ KuzApp.prototype.watchStuff = function () {
 }
 
 KuzApp.prototype.defaultStuff = function () {
-	this.watchStuff();
+	//this.watchStuff();
 }
 
 
