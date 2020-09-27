@@ -32,14 +32,15 @@
 0.2.4 / (future)
 ====================
 	* Implemented metaData.getKuzs()
-
-
-0.2.3 / (future)
-====================
 	* Implemented metaData.getCodeFiles()
+
+
+0.2.3 / 27-09-2020
+====================
 	* Moved KuzMetaData methods to KuzFile
 	* Removed unused methods
 	* Now KuzPage and KuzKonfig do not deal with KuzMetaData directly
+	* Corrected more func names in fsutils
 
 
 0.2.2 / 27-09-2020
