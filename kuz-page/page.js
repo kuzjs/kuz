@@ -408,21 +408,8 @@ KuzPage.prototype.getKuz = function () {
 		kuzs: this.kuzFile.getKuzs(),
 		reqs: this.kuzFile.getReqs(),
 
-		k: {
-			props: this.konfig.getProps(),
-			codes: this.konfig.kuzFile.getCodeFiles(),
-			jsons: this.konfig.kuzFile.getJsons(),
-			kuzs: this.konfig.kuzFile.getKuzs(),
-			reqs: this.konfig.kuzFile.getReqs(),
-		},
-
-		s: {
-			props: this.site.getProps(),
-			codes: this.site.kuzFile.getCodeFiles(),
-			jsons: this.site.kuzFile.getJsons(),
-			kuzs: this.site.kuzFile.getKuzs(),
-			reqs: this.site.kuzFile.getReqs(),
-		},
+		k: this.konfig.kuzFile.getCachedItems(),
+		s: this.site.kuzFile.getCachedItems(),
 
 		l: {
 			props: this.getLayout().getProps(),
