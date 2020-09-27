@@ -114,7 +114,9 @@ KuzFile.prototype.getCodeFiles = function () {
 			let codePath = this.metaSections.code.props[codeName];
 			let codeFullPath = this.getFilePath(codePath);
 			let code = new KuzCodeFile(this, codeFullPath);
-			codes[codeName] = code;
+			if (code.ok()) {
+				codes[codeName] = code;
+			}
 		}
 	}
 
@@ -160,7 +162,9 @@ KuzFile.prototype.getKuzs = function () {
 			let kuzPath = this.metaSections.kuz.props[kuzName];
 			let kuzFullPath = this.getFilePath(kuzPath);
 			let kuz = new KuzFile(this, kuzFullPath);
-			kuzs[kuzName] = kuz;
+			if (kuz.ok()) {
+				kuzs[kuzName] = kuz;
+			}
 		}
 	}
 

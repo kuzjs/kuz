@@ -20,9 +20,14 @@ KuzCodeFile.prototype.exists = function () {
 	return false;
 }
 
-KuzCodeFile.prototype.isValid = function () {
-	return this.exists();
+KuzCodeFile.prototype.ok = function () {
+	if (!this.exists()) {
+		return false;
+	}
+	return true;
 }
+
+
 
 KuzCodeFile.prototype.getLinesXtoY = function (x, y) {
 	let linesObject = {};

@@ -17,6 +17,7 @@
 0.2.7 / (future)
 ====================
   * Added method KuzFile.ok()
+  * Now checking if ok() before passing code / kuz to page
 
 
 0.2.6 / 27-09-2020
