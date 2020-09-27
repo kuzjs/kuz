@@ -26,7 +26,6 @@ function KuzKonfig (site, dirpath) {
 	if (this.exists()) {
 		const KuzFile = require("../kuz-kuzfile");
 		this.kuzFile = new KuzFile(this, this.path);
-		this.props = this.kuzFile.getProps();
 	} else {
 		this.log.badNews("KuzKonfig not found: " + this.path);
 	}
@@ -57,7 +56,7 @@ KuzKonfig.prototype.getDirPath = function () {
 }
 
 KuzKonfig.prototype.getProps = function () {
-	return this.props;
+	return this.kuzFile.getProps();
 }
 
 KuzKonfig.prototype.getPath = function () {
