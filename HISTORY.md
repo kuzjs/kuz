@@ -14,7 +14,7 @@
   * Nothing yet
 
 
-0.2.7 / (future)
+0.2.7 / 27-09-2020
 ====================
   * Added method KuzFile.ok()
   * Now checking if ok() before passing code / kuz to page
