@@ -89,7 +89,7 @@ KuzSite.prototype.getHomeURL = function () {
 }
 
 KuzSite.prototype.getProps = function () {
-	return this.meta.json;
+	return this.kuzFile.getProps();
 }
 
 KuzSite.prototype.isSite = function () {

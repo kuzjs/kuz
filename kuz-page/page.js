@@ -389,8 +389,6 @@ KuzPage.prototype.getKuz = function () {
 		site: this.site,
 
 		props: this.getProps(),
-		kprops: this.konfig.getProps(),
-		sprops: this.site.getProps(),
 		tprops: this.getTheme().getProps(),
 		lprops: this.getLayout().getProps(),
 
@@ -402,9 +400,11 @@ KuzPage.prototype.getKuz = function () {
 		kuzs: this.kuzFile.getKuzs(),
 		reqs: this.kuzFile.getReqs(),
 
+		kprops: this.konfig.getProps(),
 		kcodes: this.konfig.kuzFile.getCodeFiles(),
 		kjsons: this.konfig.kuzFile.getJsons(),
 
+		sprops: this.site.getProps(),
 		scodes: this.site.kuzFile.getCodeFiles(),
 		sjsons: this.site.kuzFile.getJsons(),
 
