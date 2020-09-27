@@ -102,6 +102,18 @@ KuzFile.prototype.getFilePath = function (fileName) {
 
 
 
+KuzFile.prototype.getCachedItems = function () {
+	return {
+		props: this.getProps(),
+		codes: this.getCodeFiles(),
+		jsons: this.getJsons(),
+		kuzs: this.getKuzs(),
+		reqs: this.getReqs()
+	};
+}
+
+
+
 KuzFile.prototype.getCodeFiles = function () {
 	if (this.cacheIsOn() && this.cache.codes) {
 		return this.cache.codes;
