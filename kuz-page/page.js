@@ -397,20 +397,29 @@ KuzPage.prototype.getKuz = function () {
 		kuzs: this.kuzFile.getKuzs(),
 		reqs: this.kuzFile.getReqs(),
 
-		tprops: this.getTheme().getProps(),
-		lprops: this.getLayout().getProps(),
+		t: {
+			props: this.getTheme().getProps(),
+		},
 
-		kprops: this.konfig.getProps(),
-		kcodes: this.konfig.kuzFile.getCodeFiles(),
-		kjsons: this.konfig.kuzFile.getJsons(),
-		kkuzs: this.konfig.kuzFile.getKuzs(),
-		kreqs: this.konfig.kuzFile.getReqs(),
+		l: {
+			props: this.getLayout().getProps(),
+		},
 
-		sprops: this.site.getProps(),
-		scodes: this.site.kuzFile.getCodeFiles(),
-		sjsons: this.site.kuzFile.getJsons(),
-		skuzs: this.site.kuzFile.getKuzs(),
-		sreqs: this.site.kuzFile.getReqs(),
+		k: {
+			props: this.konfig.getProps(),
+			codes: this.konfig.kuzFile.getCodeFiles(),
+			jsons: this.konfig.kuzFile.getJsons(),
+			kuzs: this.konfig.kuzFile.getKuzs(),
+			reqs: this.konfig.kuzFile.getReqs(),
+		},
+
+		s: {
+			props: this.site.getProps(),
+			codes: this.site.kuzFile.getCodeFiles(),
+			jsons: this.site.kuzFile.getJsons(),
+			kuzs: this.site.kuzFile.getKuzs(),
+			reqs: this.site.kuzFile.getReqs(),
+		},
 
 		ipsum: this.getApp().getIpsum(),
 		kuzz: {

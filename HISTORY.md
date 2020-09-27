@@ -21,7 +21,7 @@
 
 0.2.6 / (future)
 ====================
-	* Nothing yet
+	* Now passing `k` and `s` objects
 
 
 0.2.5 / 27-09-2020
