@@ -26,14 +26,15 @@
 
 0.2.5 / (future)
 ====================
-	* Implemented metaData.getJsons()
-
-
-0.2.4 / (future)
-====================
-	* Implemented KuzFile.getFilePath()
 	* Implemented metaData.getKuzs()
 	* Implemented metaData.getCodeFiles()
+
+
+0.2.4 / 27-09-2020
+====================
+	* Implemented KuzFile.getFilePath()
+	* Implemented metaData.getJsons()
+	* Done away with site.json
 
 
 0.2.3 / 27-09-2020
