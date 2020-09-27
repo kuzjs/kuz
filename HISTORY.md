@@ -1,7 +1,7 @@
 
 0.3.0 / (future)
 ====================
-	* Nothing yet
+	* Implemented --serve
 
 
 0.2.9 / (future)
@@ -21,7 +21,7 @@
 
 0.2.6 / (future)
 ====================
-	* Implemented --serve
+	* Nothing yet
 
 
 0.2.5 / (future)
