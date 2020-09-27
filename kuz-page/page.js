@@ -36,10 +36,8 @@ KuzPage.prototype.setupPage = function (site, konfig, entry) {
 
 	this.tags = [];
 
-	if (this.doesInputFileExist()) {
-		const KuzFile = require("../kuz-kuzfile");
-		this.kuzFile = new KuzFile(this, this.getInputFilePath());
-	}
+	const KuzFile = require("../kuz-kuzfile");
+	this.kuzFile = new KuzFile(this, this.getInputFilePath());
 }
 
 KuzPage.prototype.setup = function () {

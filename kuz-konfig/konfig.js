@@ -23,12 +23,8 @@ function KuzKonfig (site, dirpath) {
 	this.children = [];
 	this.index = 0;
 
-	if (this.exists()) {
-		const KuzFile = require("../kuz-kuzfile");
-		this.kuzFile = new KuzFile(this, this.path);
-	} else {
-		this.log.badNews("KuzKonfig not found: " + this.path);
-	}
+	const KuzFile = require("../kuz-kuzfile");
+	this.kuzFile = new KuzFile(this, this.path);
 }
 
 const KuzBaseObject = require("../kuz-baseobject");
