@@ -385,8 +385,8 @@ KuzPage.prototype.getPages = function () {
 KuzPage.prototype.getKuz = function () {
 	return {
 		page: this,
-		app: this.site.app,
-		site: this.site,
+		site: this.getSite(),
+		app: this.getApp(),
 
 		meta: this.kuzFile.getMetaSections(),
 		content: this.kuzFile.getContentSections(),
@@ -396,14 +396,6 @@ KuzPage.prototype.getKuz = function () {
 		jsons: this.kuzFile.getJsons(),
 		kuzs: this.kuzFile.getKuzs(),
 		reqs: this.kuzFile.getReqs(),
-
-		t: {
-			props: this.getTheme().getProps(),
-		},
-
-		l: {
-			props: this.getLayout().getProps(),
-		},
 
 		k: {
 			props: this.konfig.getProps(),
@@ -419,6 +411,14 @@ KuzPage.prototype.getKuz = function () {
 			jsons: this.site.kuzFile.getJsons(),
 			kuzs: this.site.kuzFile.getKuzs(),
 			reqs: this.site.kuzFile.getReqs(),
+		},
+
+		l: {
+			props: this.getLayout().getProps(),
+		},
+
+		t: {
+			props: this.getTheme().getProps(),
 		},
 
 		ipsum: this.getApp().getIpsum(),
