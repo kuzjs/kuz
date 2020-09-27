@@ -95,7 +95,6 @@ KuzFile.prototype.getCodeFiles = function () {
 			let codePath = this.metaSections.code.props[codeName];
 			let codeFullPath = this.getFilePath(codePath);
 			let code = new KuzCodeFile(this, codeFullPath);
-			console.log(codeFullPath);
 			codes[codeName] = code;
 		}
 	}

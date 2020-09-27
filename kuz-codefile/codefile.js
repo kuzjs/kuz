@@ -52,6 +52,15 @@ KuzCodeFile.prototype.getNLinesFromX = function (x, n) {
 	return this.GetLinesXtoY(x, x+n-1);
 }
 
+KuzCodeFile.prototype.getContent = function () {
+	if (this.exists()) {
+		let text = fs.readFileSync(this.path, "utf8").replace("\r", "");
+		return text;
+	} else {
+		return "";
+	}
+}
+
 
 
 module.exports = KuzCodeFile;
