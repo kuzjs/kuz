@@ -25,12 +25,6 @@ KuzSite.prototype.setup = function () {
 	this.kuzFile = new KuzFile(this, "site.kuz");
 	this.kuzFile.turnCacheOn();
 
-	const KuzJson = require("../kuz-json");
-	this.meta = new KuzJson(this.siteJsonPath);
-	if (!this.meta.ok()) {
-		return;
-	}
-
 	this.log.setName(this.getHomeURL());
 
 	this.konfigs = [];
@@ -48,7 +42,7 @@ KuzSite.prototype.setupPages = function () {
 KuzSite.prototype.setupThemes = function () {
 	this.themes = [];
 
-	let themeNames = this.meta.json.themes;
+	let themeNames = this.kuzFile.getProps().themes;
 	if (themeNames === undefined) {
 		this.log.red("Themes param not specified.");
 	} else if (themeNames.length === 0) {
@@ -71,9 +65,6 @@ KuzSite.prototype.setupThemes = function () {
 }
 
 KuzSite.prototype.ok = function () {
-	if (!this.meta.ok()) {
-		return false;
-	}
 	return true;
 }
 
@@ -85,7 +76,7 @@ KuzSite.prototype.addKonfig = function (konfig) {
 }
 
 KuzSite.prototype.getHomeURL = function () {
-	return fsutils.trimSlashes(this.meta.json.meta.SITE_URL);
+	return fsutils.trimSlashes(this.kuzFile.getProps().SITE_URL);
 }
 
 KuzSite.prototype.getProps = function () {
