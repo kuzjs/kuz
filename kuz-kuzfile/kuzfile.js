@@ -1,5 +1,6 @@
 // kuzfile.js
 
+const fs = require("fs");
 const path = require("path");
 
 
@@ -83,7 +84,21 @@ KuzFile.prototype.getCodeFiles = function () {
 }
 
 KuzFile.prototype.getJsons = function () {
-	return [];
+	let jsons = {};
+	if (this.metaSections.json) {
+		for (let jsonName in this.metaSections.json.props) {
+			let jsonPath = this.metaSections.json.props[jsonName];
+			let jsonFullPath = this.getFilePath(jsonPath);
+			console.log(jsonFullPath);
+			try {
+				let json = JSON.parse(fs.readFileSync(jsonFullPath));
+				jsons[jsonName] = json;
+			} catch {
+				//
+			}
+		}
+	}
+	return jsons;
 }
 
 KuzFile.prototype.getKuzs = function () {
