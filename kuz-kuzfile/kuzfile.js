@@ -11,7 +11,10 @@ function KuzFile (owner, path) {
 	this.log = this.owner.log;
 	this.cache = false;
 	this.cached = {};
+	this.setup();
+}
 
+KuzFile.prototype.setup = function () {
 	const KuzRegions = require("./kuz-regions");
 	this.regions = new KuzRegions(this.path);
 
