@@ -1,6 +1,6 @@
 // theme.js
 
-const fsutils = require("../kuz-fs");
+const fsutils = require("../kuz-fsutils");
 
 const common = require("../kuz-common");
 const defaultText = common.defaultText;

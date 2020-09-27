@@ -1,6 +1,6 @@
 // baseobject.js
 
-const fsutils = require("../kuz-fs");
+const fsutils = require("../kuz-fsutils");
 const fs = require("fs");
 
 

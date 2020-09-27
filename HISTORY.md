@@ -29,6 +29,7 @@
 	* Implemented metaData.getKuzs()
 	* Implemented metaData.getCodeFiles()
 	* Now not watching by default
+	* Renamed kuz-fs to kuz-fsutils
 
 
 0.2.4 / 27-09-2020

@@ -3,7 +3,7 @@
 const fs = require("fs");
 const pug = require("pug");
 
-const fsutils = require("../kuz-fs");
+const fsutils = require("../kuz-fsutils");
 
 
 

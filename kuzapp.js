@@ -1,6 +1,6 @@
 // kaagazz.js
 
-const fsutils = require("./kuz-fs");
+const fsutils = require("./kuz-fsutils");
 
 
 

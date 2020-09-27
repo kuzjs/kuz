@@ -2,7 +2,7 @@
 
 const fs = require("fs");
 
-const fsutils = require("../kuz-fs");
+const fsutils = require("../kuz-fsutils");
 const helpDocDirectory = require("../kuz-common").helpDocDirectory;
 
 

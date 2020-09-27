@@ -2,7 +2,7 @@
 
 
 
-const fsutils = require("../../kuz-fs");
+const fsutils = require("../../kuz-fsutils");
 
 function KuzContent (kuz) {
 	this.kuz = kuz;
