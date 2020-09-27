@@ -19,10 +19,12 @@
     "email": "madhumeya@gmail.com"
   },
   "keywords": [
-    "jekyll",
+    "blog",
     "hugo",
-    "wordpress",
-    "pug"
+    "jekyll",
+    "pug",
+    "website",
+    "wordpress"
   ],
   "license": "MIT",
   "bugs": {
