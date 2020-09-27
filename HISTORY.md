@@ -26,22 +26,21 @@
 
 0.2.5 / (future)
 ====================
-	* Nothing yet
+	* Implemented --serve
 
 
 0.2.4 / (future)
 ====================
-	* Nothing yet
+	* Implemented metaData.getKuzs()
 
 
 0.2.3 / (future)
 ====================
-	* Nothing yet
+	* Implemented metaData.getCodeFiles()
 
 
 0.2.2 / (future)
 ====================
-	* Implemented --serve
 	* Implemented metaData.getJsons()
 
 
