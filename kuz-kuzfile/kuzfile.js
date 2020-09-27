@@ -9,8 +9,8 @@ function KuzFile (owner, path) {
 	this.owner = owner;
 	this.path = path;
 	this.log = this.owner.log;
-	this.cache = false;
-	this.cached = {};
+	this.hasCache = false;
+	this.cache = {};
 	this.setup();
 }
 
@@ -39,17 +39,17 @@ KuzFile.prototype.getContentSections = function () {
 
 
 KuzFile.prototype.turnCacheOn = function () {
-	this.cache = true;
+	this.hasCache = true;
 	return this;
 }
 
 KuzFile.prototype.turnCacheOff = function () {
-	this.cache = false;
+	this.hasCache = false;
 	return this;
 }
 
 KuzFile.prototype.cacheIsOn = function () {
-	return this.cache;
+	return this.hasCache;
 }
 
 KuzFile.prototype.cacheIsOff = function () {
@@ -88,8 +88,8 @@ KuzFile.prototype.getCodeFiles = function () {
 }
 
 KuzFile.prototype.getJsons = function () {
-	if (this.cacheIsOn() && this.cached.jsons) {
-		return this.cached.jsons;
+	if (this.cacheIsOn() && this.cache.jsons) {
+		return this.cache.jsons;
 	}
 
 	let jsons = {};
@@ -107,7 +107,7 @@ KuzFile.prototype.getJsons = function () {
 	}
 
 	if (this.cacheIsOn()) {
-		this.cached.jsons = jsons;
+		this.cache.jsons = jsons;
 	}
 	return jsons;
 }
