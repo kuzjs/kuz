@@ -42,6 +42,7 @@
 0.2.2 / (future)
 ====================
 	* Implemented metaData.getJsons()
+	* Simplified options passed to page
 
 
 0.2.1 / 26-09-2020

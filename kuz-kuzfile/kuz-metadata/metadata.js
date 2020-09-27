@@ -29,6 +29,12 @@ KuzMetaData.prototype.setup = function () {
 
 
 
+KuzMetaData.prototype.getSections = function () {
+	return this.sections;
+}
+
+
+
 KuzMetaData.prototype.getProps = function () {
 	if (this.sections.main) {
 		return this.sections.main.props;

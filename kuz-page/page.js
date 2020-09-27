@@ -387,7 +387,6 @@ KuzPage.prototype.getPages = function () {
 
 
 KuzPage.prototype.getKuz = function () {
-	const contentSections = this.kuzFile.getContentSections();
 	return {
 		page: this,
 		app: this.site.app,
@@ -399,9 +398,8 @@ KuzPage.prototype.getKuz = function () {
 		tprops: this.getTheme().getProps(),
 		lprops: this.getLayout().getProps(),
 
-		metaSections: this.kuzFile.metaData.sections,
-		mainContent: contentSections.main,
-		contentSections: contentSections,
+		meta: this.kuzFile.getMetaSections(),
+		content: this.kuzFile.getContentSections(),
 
 		code: this.kuzFile.getCodeFiles(),
 		json: this.kuzFile.getJsons(),
