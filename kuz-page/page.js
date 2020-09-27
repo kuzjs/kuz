@@ -381,12 +381,14 @@ KuzPage.prototype.getPages = function () {
 
 
 
-
 KuzPage.prototype.getKuz = function () {
 	return {
 		page: this,
 		site: this.getSite(),
 		app: this.getApp(),
+
+		layout: this.getLayout(),
+		theme: this.getTheme(),
 
 		meta: this.kuzFile.getMetaSections(),
 		content: this.kuzFile.getContentSections(),

@@ -22,6 +22,7 @@
 0.2.6 / (future)
 ====================
 	* Now passing `k` and `s` objects
+	* Now passing `layout` and `theme`
 
 
 0.2.5 / 27-09-2020
