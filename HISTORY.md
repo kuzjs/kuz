@@ -16,7 +16,7 @@
 
 0.2.7 / (future)
 ====================
-	* Nothing yet
+	* Added method KuzFile.ok()
 
 
 0.2.6 / 27-09-2020

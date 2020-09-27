@@ -3,6 +3,8 @@
 const fs = require("fs");
 const path = require("path");
 
+const fsutils = require("../kuz-fsutils");
+
 
 
 function KuzFile (owner, path) {
@@ -11,7 +13,10 @@ function KuzFile (owner, path) {
 	this.log = this.owner.log;
 	this.hasCache = false;
 	this.cache = {};
-	this.setup();
+
+	if (this.exists()) {
+		this.setup();
+	}
 }
 
 KuzFile.prototype.setup = function () {
@@ -24,6 +29,20 @@ KuzFile.prototype.setup = function () {
 
 	const KuzContent = require("./kuz-content");
 	this.content = new KuzContent(this);
+}
+
+KuzFile.prototype.exists = function () {
+	if (fsutils.isFile(this.path)) {
+		return true;
+	}
+	return false;
+}
+
+KuzFile.prototype.ok = function () {
+	if (!this.exists()) {
+		return false;
+	}
+	return true;
 }
 
 

@@ -23,6 +23,9 @@ KuzSite.prototype.setup = function () {
 
 	const KuzFile = require("../kuz-kuzfile");
 	this.kuzFile = new KuzFile(this, "site.kuz");
+	if (!this.kuzFile.ok()) {
+		return;
+	}
 	this.kuzFile.turnCacheOn();
 
 	this.log.setName(this.getHomeURL());
@@ -65,6 +68,9 @@ KuzSite.prototype.setupThemes = function () {
 }
 
 KuzSite.prototype.ok = function () {
+	if (!this.kuzFile.ok()) {
+		return false;
+	}
 	return true;
 }
 
