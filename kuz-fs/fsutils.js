@@ -130,12 +130,12 @@ function DirectoryHasNewerFiles (dirpath, filepath) {
 	}
 }
 
-function DeleteDirectory (dirpath) {
+function deleteDirectory (dirpath) {
 	if (isDirectory(dirpath)) {
 		fs.readdirSync(dirpath).forEach((file, index) => {
 			const filepath = dirpath + "/" + file;
 			if (fs.lstatSync(filepath).isDirectory()) {
-				DeleteDirectory(filepath);
+				deleteDirectory(filepath);
 			} else {
 				fs.unlinkSync(filepath);
 			}
@@ -144,11 +144,11 @@ function DeleteDirectory (dirpath) {
 	}
 }
 
-function DeleteAllButIndexHtml (dirpath) {
+function deleteAllButIndexHtml (dirpath) {
 	fs.readdirSync(dirpath).forEach((file, index) => {
 		let filepath = dirpath + "/" + file;
 		if (isDirectory(filepath)) {
-			DeleteDirectory(filepath);
+			deleteDirectory(filepath);
 		} else {
 			if (file === "index.html") {
 			} else {
@@ -172,8 +172,8 @@ module.exports = {
 	isFile: isFile,
 	IsNewerThan: IsNewerThan,
 	DirectoryHasNewerFiles: DirectoryHasNewerFiles,
-	DeleteDirectory: DeleteDirectory,
-	DeleteAllButIndexHtml: DeleteAllButIndexHtml
+	deleteDirectory: deleteDirectory,
+	deleteAllButIndexHtml: deleteAllButIndexHtml
 };
 
 
