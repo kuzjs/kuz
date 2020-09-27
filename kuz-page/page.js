@@ -397,16 +397,16 @@ KuzPage.prototype.getKuz = function () {
 		meta: this.kuzFile.getMetaSections(),
 		content: this.kuzFile.getContentSections(),
 
-		code: this.kuzFile.getCodeFiles(),
-		json: this.kuzFile.getJsons(),
-		kuz: this.kuzFile.getKuzs(),
+		codes: this.kuzFile.getCodeFiles(),
+		jsons: this.kuzFile.getJsons(),
+		kuzs: this.kuzFile.getKuzs(),
 		reqs: this.kuzFile.getReqs(),
 
-		kcode: this.konfig.kuzFile.getCodeFiles(),
-		kjson: this.konfig.kuzFile.getJsons(),
+		kcodes: this.konfig.kuzFile.getCodeFiles(),
+		kjsons: this.konfig.kuzFile.getJsons(),
 
-		scode: this.site.kuzFile.getCodeFiles(),
-		sjson: this.site.kuzFile.getJsons(),
+		scodes: this.site.kuzFile.getCodeFiles(),
+		sjsons: this.site.kuzFile.getJsons(),
 
 		ipsum: this.getApp().getIpsum(),
 		kuzz: {
