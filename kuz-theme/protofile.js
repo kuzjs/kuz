@@ -44,7 +44,7 @@ ProtoFile.prototype.update = function () {
 
 ProtoFile.prototype.forcedUpdate = function () {
 	let contents = fs.readFileSync(this.getInputFilePath());
-	fsutils.CreateDirectory(this.getOutputDirectoryPath());
+	fsutils.createDirectory(this.getOutputDirectoryPath());
 	fs.writeFileSync(this.getOutputFilePath(), contents);
 	this.log.green("Updated: " + this.getOutputFilePath());
 }

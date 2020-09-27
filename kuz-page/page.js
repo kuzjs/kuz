@@ -497,7 +497,7 @@ KuzPage.prototype.render = function () {
 	let layout = this.getLayout();
 	let html = layout.pug(options = this.getPageOptions());
 
-	fsutils.CreateDirectory(this.getOutputDirectoryPath());
+	fsutils.createDirectory(this.getOutputDirectoryPath());
 	fs.writeFileSync(htmlPath, html);
 
 	this.site.app.pageRenderActon.record();

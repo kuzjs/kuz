@@ -84,7 +84,7 @@ KuzSite.prototype.addKonfig = function (konfig) {
 }
 
 KuzSite.prototype.getHomeURL = function () {
-	return fsutils.TrimSlashes(this.meta.json.meta.SITE_URL);
+	return fsutils.trimSlashes(this.meta.json.meta.SITE_URL);
 }
 
 KuzSite.prototype.getProps = function () {

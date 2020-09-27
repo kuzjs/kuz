@@ -205,7 +205,7 @@ KuzBaseObject.prototype.doesInputFileExist = function () {
 }
 
 KuzBaseObject.prototype.getInputFileMTime = function () {
-	fsutils.GetFileMTime(this.getInputFilePath());
+	fsutils.getFileMTime(this.getInputFilePath());
 }
 
 KuzBaseObject.prototype.getOutputFilePath = function (fileName) {
@@ -221,7 +221,7 @@ KuzBaseObject.prototype.doesOutputFileExist = function () {
 }
 
 KuzBaseObject.prototype.getOutputFileMTime = function () {
-	fsutils.GetFileMTime(this.getOutputFilePath());
+	fsutils.getFileMTime(this.getOutputFilePath());
 }
 
 

@@ -4,7 +4,7 @@ const fs = require('fs');
 
 
 
-function TrimSlashes (text) {
+function trimSlashes (text) {
 	let firstNonSlash = 0;
 	let lastNonSlash = text.length - 1;
 
@@ -35,7 +35,7 @@ function FileDoesNotExist (path) {
 	return !FileExists(path);
 }
 
-function CreateDirectory (path) {
+function createDirectory (path) {
 	if (!fs.existsSync(path)) {
 		fs.mkdirSync(path, {
 			recursive: true
@@ -43,7 +43,7 @@ function CreateDirectory (path) {
 	}
 }
 
-function GetFileMTime (path) {
+function getFileMTime (path) {
 	if (fs.existsSync(path)) {
 		return fs.statSync(path).mtimeMs;
 	}
@@ -55,7 +55,7 @@ function JoinPath () {
 
 	if (arguments.length > 0) {
 		for (let argument of arguments) {
-			let arg = TrimSlashes(argument.trim());
+			let arg = trimSlashes(argument.trim());
 			if (arg != undefined && arg.length != 0) {
 				if (path === "") {
 					path = arg;
@@ -161,11 +161,11 @@ function DeleteAllButIndexHtml (dirpath) {
 
 
 module.exports = {
-	TrimSlashes: TrimSlashes,
-	CreateDirectory: CreateDirectory,
+	trimSlashes: trimSlashes,
+	createDirectory: createDirectory,
 	FileExists: FileExists,
 	FileDoesNotExist: FileDoesNotExist,
-	GetFileMTime: GetFileMTime,
+	getFileMTime: getFileMTime,
 	JoinPath: JoinPath,
 	IsFileOrDirectory: IsFileOrDirectory,
 	IsDirectory: IsDirectory,
