@@ -19,12 +19,13 @@
 	* Nothing yet
 
 
-0.2.6 / (future)
+0.2.6 / 27-09-2020
 ====================
 	* Now passing `k` and `s` objects
 	* Now passing `layout` and `theme`
 	* Added new keywords
 	* Added `KuzCodeFile.getContent()`
+	* Added more empty getters to KuzFile
 
 
 0.2.5 / 27-09-2020

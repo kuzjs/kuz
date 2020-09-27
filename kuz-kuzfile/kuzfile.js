@@ -157,6 +157,36 @@ KuzFile.prototype.getReqs = function () {
 
 
 
+KuzFile.prototype.getCsss = function () {
+	return [];
+}
+
+KuzFile.prototype.getJss = function () {
+	return [];
+}
+
+
+
+KuzFile.prototype.getCsvs = function () {
+	return [];
+}
+
+KuzFile.prototype.getTables = function () {
+	return [];
+}
+
+
+
+KuzFile.prototype.getTomls = function () {
+	return [];
+}
+
+KuzFile.prototype.getYamls = function () {
+	return [];
+}
+
+
+
 KuzFile.prototype.getMetaLines = function () {
 	return this.regions.getMetaLines();
 }
