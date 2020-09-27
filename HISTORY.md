@@ -24,7 +24,7 @@
 	* Nothing yet
 
 
-0.2.5 / (future)
+0.2.5 / 27-09-2020
 ====================
 	* Implemented metaData.getKuzs()
 	* Implemented metaData.getCodeFiles()
