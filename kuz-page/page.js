@@ -388,27 +388,29 @@ KuzPage.prototype.getKuz = function () {
 		app: this.site.app,
 		site: this.site,
 
-		props: this.getProps(),
-		tprops: this.getTheme().getProps(),
-		lprops: this.getLayout().getProps(),
-
 		meta: this.kuzFile.getMetaSections(),
 		content: this.kuzFile.getContentSections(),
 
+		props: this.getProps(),
 		codes: this.kuzFile.getCodeFiles(),
 		jsons: this.kuzFile.getJsons(),
 		kuzs: this.kuzFile.getKuzs(),
 		reqs: this.kuzFile.getReqs(),
 
+		tprops: this.getTheme().getProps(),
+		lprops: this.getLayout().getProps(),
+
 		kprops: this.konfig.getProps(),
 		kcodes: this.konfig.kuzFile.getCodeFiles(),
-		kkuzs: this.konfig.kuzFile.getKuzs(),
 		kjsons: this.konfig.kuzFile.getJsons(),
+		kkuzs: this.konfig.kuzFile.getKuzs(),
+		kreqs: this.konfig.kuzFile.getReqs(),
 
 		sprops: this.site.getProps(),
 		scodes: this.site.kuzFile.getCodeFiles(),
-		skuzs: this.site.kuzFile.getKuzs(),
 		sjsons: this.site.kuzFile.getJsons(),
+		skuzs: this.site.kuzFile.getKuzs(),
+		sreqs: this.site.kuzFile.getReqs(),
 
 		ipsum: this.getApp().getIpsum(),
 		kuzz: {
