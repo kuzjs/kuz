@@ -378,6 +378,15 @@ KuzPage.prototype.getPages = function () {
 	return [];
 }
 
+KuzPage.prototype.getPagesCount = function () {
+	return this.getPages().length;
+}
+
+KuzPage.prototype.toString = function () {
+	return this.getType() + ": (" + this.getName() +") [" + this.getOutputFilePath() + "]";
+}
+
+
 
 
 
@@ -430,10 +439,6 @@ KuzPage.prototype.getKuz = function () {
 	};
 }
 
-KuzPage.prototype.getPagesCount = function () {
-	return this.getPages().length;
-}
-
 KuzPage.prototype.getPageOptions = function () {
 	return {
 		page: this,
@@ -446,10 +451,6 @@ KuzPage.prototype.getPageOptionsFN = function () {
 	let options = this.getPageOptions();
 	options.filename = this.site.getThemesInputDirectory() + "/x.pug";
 	return options;
-}
-
-KuzPage.prototype.toString = function () {
-	return this.getType() + ": (" + this.getName() +") [" + this.getOutputFilePath() + "]";
 }
 
 
