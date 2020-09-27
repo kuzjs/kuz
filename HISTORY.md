@@ -31,6 +31,7 @@
 
 0.2.4 / (future)
 ====================
+	* Implemented KuzFile.getFilePath()
 	* Implemented metaData.getKuzs()
 	* Implemented metaData.getCodeFiles()
 

@@ -1,5 +1,7 @@
 // kuzfile.js
 
+const path = require("path");
+
 
 
 function KuzFile (owner, path) {
@@ -66,6 +68,12 @@ KuzFile.prototype.getProperty = function (propertyName) {
 			value: this.metaSections.main.props[propertyName]
 		};
 	}
+}
+
+
+
+KuzFile.prototype.getFilePath = function (fileName) {
+	return path.join(path.dirname(this.path), fileName);
 }
 
 
