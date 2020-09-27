@@ -105,10 +105,22 @@ KuzFile.prototype.getFilePath = function (fileName) {
 KuzFile.prototype.getCachedItems = function () {
 	return {
 		props: this.getProps(),
+
 		codes: this.getCodeFiles(),
 		jsons: this.getJsons(),
 		kuzs: this.getKuzs(),
-		reqs: this.getReqs()
+		reqs: this.getReqs(),
+
+		csss: this.getCsss(),
+		jss: this.getJss(),
+
+		csvs: this.getCsvs(),
+		tables: this.getTables(),
+
+		tomls: this.getTomls(),
+		yamls: this.getYamls(),
+
+		zzz: false
 	};
 }
 
