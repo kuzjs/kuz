@@ -11,7 +11,7 @@
 
 0.2.8 / (future)
 ====================
-  * Nothing yet
+  * Corrected KuzPage.HasInputDirectory() to work for introverted pages
 
 
 0.2.7 / 27-09-2020

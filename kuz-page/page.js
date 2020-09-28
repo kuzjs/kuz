@@ -7,9 +7,12 @@ const fsutils = require("../kuz-fsutils");
 
 
 function KuzPage (site, konfig, entry, isRoot = false) {
+	this.setSite(site);
+	this.log = this.site.log.getChild(entry);
 	this.isRoot = isRoot;
+
 	site.app.pageSetupActon.resetClock();
-	this.setupPage(site, konfig, entry);
+	this.setupPage(konfig, entry);
 	site.app.pageSetupActon.record();
 }
 
@@ -23,13 +26,12 @@ KuzPage.prototype.codeLetter = "p";
 
 
 
-KuzPage.prototype.setupPage = function (site, konfig, entry) {
-	this.setSite(site);
+KuzPage.prototype.setupPage = function (konfig, entry) {
 	this.setKonfig(konfig);
 	this.entry = entry.trim();
 	this.configDirpath = (konfig.dirpath === undefined) ? "" : konfig.dirpath;
 
-	this.log = this.site.log.getChild(this.getInputFilePath());
+	this.log.setName(this.getInputFilePath());
 
 	this.totalRenderTime = BigInt(0);
 	this.totalRenders = 0;
@@ -96,8 +98,9 @@ KuzPage.prototype.HasInputDirectory = function () {
 		let inputDirectoryPath = fsutils.JoinPath(this.site.getInputDirectory(), this.configDirpath, this.entry);
 		if (fsutils.isDirectory(inputDirectoryPath)) {
 			this.hasInputDirectory = true;
+		} else {
+			this.hasInputDirectory = false;
 		}
-		this.hasInputDirectory = false;
 	}
 	return this.hasInputDirectory;
 }
