@@ -7,6 +7,7 @@
 0.2.9 / (future)
 ====================
   * Compile layouts only when required
+  * Updated default PageType to post
 
 
 0.2.8 / 28-09-2020

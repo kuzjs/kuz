@@ -529,7 +529,7 @@ KuzPage.prototype.getType = function () {
 	if (type.found) {
 		return type.value;
 	}
-	return "page";
+	return "post";
 }
 
 KuzPage.prototype.getTable = function () {
