@@ -1,4 +1,5 @@
 
+
 0.3.0 / (future)
 ====================
   * Implemented --serve
@@ -78,45 +79,45 @@
 
 0.2.0 / 26-09-2020
 ====================
-  * Removed article and section from KuzPage
+  * Removed `Article` and `Section` from `KuzPage`
 
 
 0.1.9 / 26-09-2020
 ====================
-  * Added sections to KuzContent
-  * Added class KuzContentSection
-  * Added metaSections and contentSections to page.getKuz()
+  * Added sections to `KuzContent`
+  * Added class `KuzContentSection`
+  * Added `metaSections` and `contentSections` to `page.getKuz()`
 
 
 0.1.8 / 26-09-2020
 ====================
   * Now root entries are enclosed in parenthesis
-  * Added basic KuzContent class
+  * Added basic `KuzContent` class
 
 
 0.1.7 / 26-09-2020
 ====================
-  * Corrected listStuff() for zero operands
-  * Single function exports to files inside kuz-kuzfile
+  * Corrected `listStuff()` for zero operands
+  * Single function exports to files inside `kuz-kuzfile`
 
 
 0.1.6 / 26-09-2020
 ====================
-  * Implemented --benchmark
-  * Implemented --watch
+  * Implemented `--benchmark`
+  * Implemented `--watch`
 
 
 0.1.5 / 25-09-2020
 ====================
-  * Now --help and --version work without setting up site
-  * Implemented --suggestions and --warnings
+  * Now `--help` and `--version` work without setting up site
+  * Implemented `--suggestions` and `--warnings`
 
 
 0.1.4 / 25-09-2020
 ====================
   * Formatted the code
-  * Removed getRenderables() and getEntities()
-  * Added new flags (disklog, suggestions, warnings)
+  * Removed `getRenderables()` and `getEntities()`
+  * Added new flags (`disklog`, `suggestions`, `warnings`)
 
 
 0.1.3 / 24-09-2020
@@ -126,7 +127,7 @@
 
 0.1.2 / 24-09-2020
 ====================
-  * Added pug and express as dependencies
+  * Added `pug` and `express` as dependencies
 
 
 0.1.1 / 24-09-2020
