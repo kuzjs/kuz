@@ -24,6 +24,7 @@ KuzSite.prototype.setup = function () {
 	const KuzFile = require("../kuz-kuzfile");
 	this.kuzFile = new KuzFile(this, "site.kuz");
 	if (!this.kuzFile.ok()) {
+		this.kuzFile.log.red("Site not found", "site.kuz");
 		return;
 	}
 	this.kuzFile.turnCacheOn();
