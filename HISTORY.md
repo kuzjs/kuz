@@ -1,13 +1,18 @@
 
 
-0.3.0 / (future)
+X.X.X / (goals)
 ====================
   * Implemented --serve
+  * Compile layouts only when required
+
+
+0.3.0 / (future)
+====================
+  * Nothing yet
 
 
 0.2.9 / (future)
 ====================
-  * Compile layouts only when required
   * Updated default PageType to `post`
   * Added method `isPost()`
   * Added method `ThemeLayout.getCompiledPug()`
