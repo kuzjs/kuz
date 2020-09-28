@@ -285,6 +285,7 @@ KuzFile.prototype.printContentSectionsTable = function () {
 	table.addColumn("Name");
 	table.addColumn("Mods");
 	table.addColumn("Heading");
+	table.addColumn("Lines");
 
 	let sectionIndex = 0;
 	for (let sectionName in contentSections) {
@@ -292,7 +293,8 @@ KuzFile.prototype.printContentSectionsTable = function () {
 		table.addRow([
 			section.getName(),
 			section.getMods(),
-			section.getHeading()
+			section.getHeading(),
+			section.getNumberOfLines()
 		]);
 		sectionIndex++;
 	}

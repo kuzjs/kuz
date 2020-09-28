@@ -10,12 +10,14 @@ function KuzContentSection (kuz, section) {
 	this.heading = section.heading;
 	this.mods = section.mods;
 	this.content = "";
+	this.numberOfLines = 0;
 	this.setup(section.lines);
 }
 
 KuzContentSection.prototype.setup = function (sectionLines) {
 	for (let sectionLine of sectionLines) {
 		this.content += sectionLine[1] + "\n";
+		this.numberOfLines++;
 	}
 }
 
@@ -29,6 +31,10 @@ KuzContentSection.prototype.getHeading = function () {
 
 KuzContentSection.prototype.getMods = function () {
 	return this.mods;
+}
+
+KuzContentSection.prototype.getNumberOfLines = function () {
+	return this.numberOfLines;
 }
 
 KuzContentSection.prototype.getHtml = function () {
