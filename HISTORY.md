@@ -6,7 +6,7 @@
 
 0.2.9 / (future)
 ====================
-  * Nothing yet
+  * Compile layouts only when required
 
 
 0.2.8 / (future)
