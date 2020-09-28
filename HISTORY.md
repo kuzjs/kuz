@@ -12,6 +12,7 @@
   * Added method `isPost()`
   * Added method `ThemeLayout.getCompiledPug()`
   * Removed `KuzPage.getPageOptionsFN()`
+  * Implemented `--print-kuz-meta`
 
 
 0.2.8 / 28-09-2020

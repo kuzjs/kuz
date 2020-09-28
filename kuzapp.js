@@ -335,6 +335,14 @@ KuzApp.prototype.defaultStuff = function () {
 
 
 
+KuzApp.prototype.printKuzMeta = function () {
+	const operands = this.operands.length > 0 ? this.operands : this.site.getPages();
+	const operand = operands[0];
+	operand.kuzFile.printMeta();
+}
+
+
+
 KuzApp.prototype.checkForModule = function (moduleName) {
 	try {
 		const mod = require(moduleName);
@@ -414,6 +422,8 @@ KuzApp.prototype.run = function () {
 		this.nietzsche();
 	} else if (flags.kurses) {
 		this.kursesStuff();
+	} else if (flags["print-kuz-meta"]) {
+		this.printKuzMeta();
 	} else {
 		this.defaultStuff();
 	}

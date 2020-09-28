@@ -250,6 +250,24 @@ KuzFile.prototype.numberOfProperties = function () {
 
 
 
+KuzFile.prototype.printMeta = function () {
+	const KuzTable = require("../kuz-table");
+	let table = new KuzTable();
+	table.addColumn("Section");
+	table.addColumn("Name");
+	table.addColumn("Value");
+
+	for (let sectionName in this.metaSections) {
+		let section = this.metaSections[sectionName];
+		for (let propName in section.props) {
+			table.addRow([sectionName, propName, section.props[propName]]);
+		}
+	}
+	table.print()
+}
+
+
+
 module.exports = KuzFile;
 
 
