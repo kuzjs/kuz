@@ -253,6 +253,13 @@
 			"name": "delete",
 			"description": "Delete things now.",
 			"major": true
+		},
+
+		{
+			"code": "",
+			"name": "print-kuz-meta",
+			"description": "Print KuzFile meta for one page.",
+			"major": true
 		}
 	]
 }
