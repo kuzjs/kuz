@@ -338,7 +338,7 @@ KuzApp.prototype.defaultStuff = function () {
 KuzApp.prototype.printKuzMeta = function () {
 	const operands = this.operands.length > 0 ? this.operands : this.site.getPages();
 	const operand = operands[0];
-	operand.kuzFile.printMeta();
+	operand.kuzFile.printMetaSectionsTable();
 }
 
 
