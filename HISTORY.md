@@ -11,7 +11,7 @@ X.X.X / (goals)
   * Nothing yet
 
 
-0.2.9 / (future)
+0.2.9 / 28-09-2020
 ====================
   * Updated default PageType to `post`
   * Added method `isPost()`
