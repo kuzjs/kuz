@@ -498,7 +498,8 @@ KuzPage.prototype.render = function () {
 
 	let htmlPath = this.getOutputFilePath();
 	let layout = this.getLayout();
-	let html = layout.pug(options = this.getPageOptions());
+	let pugLayout = layout.getCompiledPug();
+	let html = pugLayout(options = this.getPageOptions());
 
 	fsutils.createDirectory(this.getOutputDirectoryPath());
 	fs.writeFileSync(htmlPath, html);

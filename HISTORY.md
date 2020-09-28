@@ -9,6 +9,7 @@
   * Compile layouts only when required
   * Updated default PageType to `post`
   * Added method `isPost()`
+  * Added method `ThemeLayout.getCompiledPug()`
 
 
 0.2.8 / 28-09-2020

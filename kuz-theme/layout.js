@@ -33,6 +33,14 @@ ThemeLayout.prototype.ok = function () {
 	return this.okay;
 }
 
+ThemeLayout.prototype.getCompiledPug = function () {
+	if (this.pug === undefined) {
+		this.pug = pug.compileFile(this.getInputFilePath());
+		this.mtimeMs = fs.statSync(this.getInputFilePath()).mtimeMs;
+	}
+	return this.pug;
+}
+
 ThemeLayout.prototype.forcedUpdate = function () {
 	this.pug = pug.compileFile(this.getInputFilePath());
 	this.mtimeMs = fs.statSync(this.getInputFilePath()).mtimeMs;
