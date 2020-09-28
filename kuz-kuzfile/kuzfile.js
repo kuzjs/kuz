@@ -278,7 +278,25 @@ KuzFile.prototype.printMetaSectionsTable = function () {
 }
 
 KuzFile.prototype.printContentSectionsTable = function () {
-	//
+	const contentSections = this.getContentSections();
+
+	const KuzTable = require("../kuz-table");
+	let table = new KuzTable();
+	table.addColumn("Name");
+	table.addColumn("Mods");
+	table.addColumn("Heading");
+
+	let sectionIndex = 0;
+	for (let sectionName in contentSections) {
+		let section = contentSections[sectionName];
+		table.addRow([
+			section.getName(),
+			section.getMods(),
+			section.getHeading()
+		]);
+		sectionIndex++;
+	}
+	table.print()
 }
 
 

@@ -13,6 +13,7 @@
   * Added method `ThemeLayout.getCompiledPug()`
   * Removed `KuzPage.getPageOptionsFN()`
   * Implemented `--print-kuz-meta`
+  * Implemented `--print-kuz-content`
 
 
 0.2.8 / 28-09-2020
