@@ -41,32 +41,32 @@
 
 0.2.4 / 27-09-2020
 ====================
-  * Implemented KuzFile.getFilePath()
-  * Implemented metaData.getJsons()
-  * Done away with site.json
+  * Implemented `KuzFile.getFilePath()`
+  * Implemented `metaData.getJsons()`
+  * Done away with `site.json`
 
 
 0.2.3 / 27-09-2020
 ====================
-  * Moved KuzMetaData methods to KuzFile
+  * Moved `KuzMetaData` methods to `KuzFile`
   * Removed unused methods
-  * Now KuzPage and KuzKonfig do not deal with KuzMetaData directly
-  * Corrected more func names in fsutils
+  * Now `KuzPage` and `KuzKonfig` do not deal with `KuzMetaData` directly
+  * Corrected more func names in `fsutils`
 
 
 0.2.2 / 27-09-2020
 ====================
   * Simplified options passed to page
-  * Corrected func names in fsutils
+  * Corrected func names in `fsutils`
 
 
 0.2.1 / 26-09-2020
 ====================
-  * Now using packageJson for --version
-  * Added kuzFile to site
-  * Added class: KuzMetaSection
-  * Now KuzContent does not cache sections
-  * Added empty class KuzBox
+  * Now using `packageJson` for `--version`
+  * Added `kuzFile` to `site`
+  * Added class: `KuzMetaSection`
+  * Now `KuzContent` does not cache sections
+  * Added empty class `KuzBox`
 
 
 0.2.0 / 26-09-2020
