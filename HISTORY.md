@@ -9,7 +9,7 @@
   * Compile layouts only when required
 
 
-0.2.8 / (future)
+0.2.8 / 28-09-2020
 ====================
   * Corrected KuzPage.HasInputDirectory() to work for introverted pages
   * Now printing a message on bad entries
