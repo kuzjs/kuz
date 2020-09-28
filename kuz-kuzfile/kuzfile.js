@@ -257,11 +257,22 @@ KuzFile.prototype.printMeta = function () {
 	table.addColumn("Name");
 	table.addColumn("Value");
 
+	let sectionIndex = 0;
 	for (let sectionName in this.metaSections) {
-		let section = this.metaSections[sectionName];
-		for (let propName in section.props) {
-			table.addRow([sectionName, propName, section.props[propName]]);
+		if (sectionIndex > 0) {
+			table.addSeparatorRow();
 		}
+		let section = this.metaSections[sectionName];
+		let propIndex = 0;
+		for (let propName in section.props) {
+			if (propIndex === 0) {
+				table.addRow([sectionName, propName, section.props[propName]]);
+			} else {
+				table.addRow(["", propName, section.props[propName]]);
+			}
+			propIndex++;
+		}
+		sectionIndex++;
 	}
 	table.print()
 }
