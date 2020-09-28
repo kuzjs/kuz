@@ -260,6 +260,12 @@
 			"name": "print-kuz-meta",
 			"description": "Print KuzFile meta for one page.",
 			"major": true
+		},
+		{
+			"code": "",
+			"name": "print-kuz-content",
+			"description": "Print KuzFile content for one page.",
+			"major": true
 		}
 	]
 }
