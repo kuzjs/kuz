@@ -12,6 +12,7 @@
 0.2.8 / (future)
 ====================
   * Corrected KuzPage.HasInputDirectory() to work for introverted pages
+  * Now printing a message on bad entries
 
 
 0.2.7 / 27-09-2020

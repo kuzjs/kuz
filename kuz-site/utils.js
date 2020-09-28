@@ -56,6 +56,8 @@ function getPages (site, dirpath, parentKonfig) {
 			if (page.ok()) {
 				konfig.addPage(page);
 				pages.push(page);
+			} else {
+				konfig.log.red("Could not add page", page.getInputFilePath());
 			}
 		}
 	}
