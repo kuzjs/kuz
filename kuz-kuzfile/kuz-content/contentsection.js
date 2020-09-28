@@ -32,7 +32,7 @@ KuzContentSection.prototype.getMods = function () {
 }
 
 KuzContentSection.prototype.getHtml = function () {
-	return pug.render(this.content, options=this.kuz.owner.getPageOptionsFN());
+	return pug.render(this.content, options=this.kuz.owner.getPageOptions());
 }
 
 

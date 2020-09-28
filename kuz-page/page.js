@@ -434,14 +434,9 @@ KuzPage.prototype.getPageOptions = function () {
 	return {
 		page: this,
 		kuz: this.getKuz(),
-		blackadder: this.getApp().getBlackadder()
+		blackadder: this.getApp().getBlackadder(),
+		filename: this.site.getThemesInputDirectory() + "/x.pug"
 	};
-}
-
-KuzPage.prototype.getPageOptionsFN = function () {
-	let options = this.getPageOptions();
-	options.filename = this.site.getThemesInputDirectory() + "/x.pug";
-	return options;
 }
 
 
