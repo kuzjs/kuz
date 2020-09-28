@@ -32,7 +32,7 @@
 
 	"filenames": {
 		"konfig": "konfig.kuz",
-		"siteJson": "site.json",
+		"site": "site.kuz",
 		"zzz": false
 	}
 }
