@@ -17,13 +17,15 @@ KuzSite.prototype.setup = function () {
 	this.input_dirs = this.app.kaagazzJson.input;
 	this.output_dirs = this.app.kaagazzJson.output;
 
+	this.log.setName(this.filenames.site);
+
 	this.error = false;
 	this.errorMessage = null;
 
 	const KuzFile = require("../kuz-kuzfile");
-	this.kuzFile = new KuzFile(this, "site.kuz");
+	this.kuzFile = new KuzFile(this, this.filenames.site);
 	if (!this.kuzFile.ok()) {
-		this.kuzFile.log.red("Site not found", "site.kuz");
+		this.log.red("Site not found");
 		return;
 	}
 	this.kuzFile.turnCacheOn();
