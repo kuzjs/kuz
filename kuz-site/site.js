@@ -19,7 +19,6 @@ KuzSite.prototype.setup = function () {
 
 	this.error = false;
 	this.errorMessage = null;
-	this.siteJsonPath = this.app.getSiteJsonPath();
 
 	const KuzFile = require("../kuz-kuzfile");
 	this.kuzFile = new KuzFile(this, "site.kuz");

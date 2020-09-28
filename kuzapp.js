@@ -191,10 +191,6 @@ KuzApp.prototype.getIpsum = function () {
 	return this.ipsumJson["ipsum"];
 }
 
-KuzApp.prototype.getSiteJsonPath = function () {
-	return this.kaagazzJson.filenames.siteJson;
-}
-
 KuzApp.prototype.getProps = function () {
 	return this.kaagazzJson;
 }

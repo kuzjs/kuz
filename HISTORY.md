@@ -14,6 +14,7 @@
   * Corrected KuzPage.HasInputDirectory() to work for introverted pages
   * Now printing a message on bad entries
   * Now printing a message on site.kuz not found
+  * Removed unused `KuzApp.getSiteJsonPath()`
 
 
 0.2.7 / 27-09-2020
