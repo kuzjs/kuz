@@ -342,7 +342,9 @@ KuzApp.prototype.printKuzMeta = function () {
 }
 
 KuzApp.prototype.printKuzContent = function () {
-	//
+	const operands = this.operands.length > 0 ? this.operands : this.site.getPages();
+	const operand = operands[0];
+	operand.kuzFile.printContentSectionsTable();
 }
 
 

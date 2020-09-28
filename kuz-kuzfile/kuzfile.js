@@ -277,6 +277,10 @@ KuzFile.prototype.printMetaSectionsTable = function () {
 	table.print()
 }
 
+KuzFile.prototype.printContentSectionsTable = function () {
+	//
+}
+
 
 
 module.exports = KuzFile;
