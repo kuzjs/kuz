@@ -60,7 +60,11 @@ KuzPage.prototype.ok = function () {
 
 
 KuzPage.prototype.isPage = function () {
-	return (this.getType() === "page") ? true : false;
+	return true;
+}
+
+KuzPage.prototype.isPost = function () {
+	return (this.getType() === "post") ? true : false;
 }
 
 KuzPage.prototype.isAuthor = function () {

@@ -7,12 +7,13 @@
 0.2.9 / (future)
 ====================
   * Compile layouts only when required
-  * Updated default PageType to post
+  * Updated default PageType to `post`
+  * Added method `isPost()`
 
 
 0.2.8 / 28-09-2020
 ====================
-  * Corrected KuzPage.HasInputDirectory() to work for introverted pages
+  * Corrected `KuzPage.HasInputDirectory()` to work for introverted pages
   * Now printing a message on bad entries
   * Now printing a message on site.kuz not found
   * Removed unused `KuzApp.getSiteJsonPath()`

@@ -189,7 +189,7 @@ KuzSite.prototype.getTags = function () {
 KuzSite.prototype.getPosts = function () {
 	let pages = [];
 	for (let page of this.pages) {
-		if (page.getType() === "page") {
+		if (page.getType() === "post") {
 			pages.push(page);
 		}
 	}

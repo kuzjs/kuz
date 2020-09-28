@@ -150,6 +150,10 @@ KuzBaseObject.prototype.isTag = function () {
 	return false;
 }
 
+KuzBaseObject.prototype.isPost = function () {
+	return false;
+}
+
 KuzBaseObject.prototype.isPage = function () {
 	return false;
 }
