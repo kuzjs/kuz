@@ -17,7 +17,7 @@ X.X.X / (goals)
   * Nothing yet
 
 
-0.3.0 / (future)
+0.3.0 / 29-09-2020
 ====================
   * Implemented `--print-page-details`
 
