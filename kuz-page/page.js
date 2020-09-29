@@ -542,15 +542,19 @@ KuzPage.prototype.printDetails = function () {
 
 	table.addRow(["Title", this.getTitle()]);
 	table.addRow(["Description", this.getDescription()]);
+	table.addSeparatorRow();
 
 	table.addRow(["Input", this.getInputFilePath()]);
 	table.addRow(["Output", this.getOutputFilePath()]);
+	table.addSeparatorRow();
 
 	table.addRow(["PrettyURL", this.HasPrettyURL()]);
 	table.addRow(["RelativeBase", this.HasRelativeBase()]);
+	table.addSeparatorRow();
 
 	table.addRow(["Layout", options.kuz.layout.getName()]);
 	table.addRow(["Theme", options.kuz.theme.getName()]);
+	table.addSeparatorRow();
 
 	table.addRow(["URL", this.getPageURL()]);
 	table.print();
