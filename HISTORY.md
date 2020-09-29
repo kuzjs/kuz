@@ -7,6 +7,7 @@ X.X.X / (goals)
   * Make `KuzTable` index work with `addSeparatorRow()`
   * Basic markdown support
   * try/catch render errors
+  * Pass options object only to sections that have the options modifier
 
 
 0.3.2 / (future)
