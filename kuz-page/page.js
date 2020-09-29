@@ -532,6 +532,10 @@ KuzPage.prototype.getType = function () {
 	return "post";
 }
 
+KuzPage.prototype.printDetails = function () {
+	//
+}
+
 KuzPage.prototype.getTable = function () {
 	const KuzTable = require("../kuz-table");
 	let table = new KuzTable();

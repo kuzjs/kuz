@@ -348,7 +348,9 @@ KuzApp.prototype.printKuzContent = function () {
 }
 
 KuzApp.prototype.printPageDetails = function () {
-	this.log.greenYellow("KuzApp.printPageDetails()");
+	const operands = this.operands.length > 0 ? this.operands : this.site.getPages();
+	const operand = operands[0];
+	operand.printDetails();
 }
 
 
