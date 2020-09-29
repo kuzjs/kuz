@@ -533,6 +533,8 @@ KuzPage.prototype.getType = function () {
 }
 
 KuzPage.prototype.printDetails = function () {
+	const options = this.getPageOptions();
+
 	const KuzTable = require("../kuz-table");
 	let table = new KuzTable();
 	table.addColumn("Name");
@@ -540,6 +542,8 @@ KuzPage.prototype.printDetails = function () {
 
 	table.addRow(["Title", this.getTitle()]);
 	table.addRow(["Description", this.getDescription()]);
+	table.addRow(["Layout", options.kuz.layout.getName()]);
+	table.addRow(["Theme", options.kuz.theme.getName()]);
 	table.addRow(["URL", this.getPageURL()]);
 	table.print();
 }
