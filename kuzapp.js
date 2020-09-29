@@ -347,6 +347,10 @@ KuzApp.prototype.printKuzContent = function () {
 	operand.kuzFile.printContentSectionsTable();
 }
 
+KuzApp.prototype.printPageDetails = function () {
+	this.log.greenYellow("KuzApp.printPageDetails()");
+}
+
 
 
 KuzApp.prototype.checkForModule = function (moduleName) {
@@ -432,6 +436,8 @@ KuzApp.prototype.run = function () {
 		this.printKuzMeta();
 	} else if (flags["print-kuz-content"]) {
 		this.printKuzContent();
+	} else if (flags["print-page-details"]) {
+		this.printPageDetails();
 	} else {
 		this.defaultStuff();
 	}
