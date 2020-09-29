@@ -2,11 +2,12 @@
 
 X.X.X / (goals)
 ====================
-  * Implemented --serve
+  * Implemented `--serve`
   * Compile layouts only when required
+  * Make `KuzTable` index work with `addSeparatorRow()`
 
 
-0.3.1 / (future)
+0.3.2 / (future)
 ====================
   * Nothing yet
 
