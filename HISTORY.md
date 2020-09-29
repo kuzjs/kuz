@@ -5,6 +5,8 @@ X.X.X / (goals)
   * Implemented `--serve`
   * Compile layouts only when required
   * Make `KuzTable` index work with `addSeparatorRow()`
+  * Basic markdown support
+  * try/catch render errors
 
 
 0.3.2 / (future)
