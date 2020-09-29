@@ -266,6 +266,13 @@
 			"name": "print-kuz-content",
 			"description": "Print KuzFile content for one page.",
 			"major": true
+		},
+
+		{
+			"code": "",
+			"name": "print-page-details",
+			"description": "Print details for one page.",
+			"major": true
 		}
 	]
 }

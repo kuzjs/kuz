@@ -6,9 +6,19 @@ X.X.X / (goals)
   * Compile layouts only when required
 
 
-0.3.0 / (future)
+0.3.1 / (future)
 ====================
   * Nothing yet
+
+
+0.3.1 / (future)
+====================
+  * Nothing yet
+
+
+0.3.0 / (future)
+====================
+  * Implemented `--print-page-details`
 
 
 0.2.9 / 28-09-2020
