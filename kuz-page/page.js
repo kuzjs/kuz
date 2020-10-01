@@ -221,7 +221,7 @@ KuzPage.prototype.getTitle = function () {
 	if (property.found) {
 		return property.value;
 	}
-	return "Not Found";
+	return this.getEntry();
 }
 
 KuzPage.prototype.getDescription = function () {

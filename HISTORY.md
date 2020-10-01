@@ -17,7 +17,7 @@ X.X.X / (goals)
 
 0.3.1 / (future)
 ====================
-  * Nothing yet
+  * Now using page.entry as default title
 
 
 0.3.0 / 29-09-2020
