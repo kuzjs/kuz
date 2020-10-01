@@ -212,6 +212,10 @@ KuzPage.prototype.getName = function () {
 	}
 }
 
+KuzPage.prototype.getEntry = function () {
+	return this.entry;
+}
+
 KuzPage.prototype.getTitle = function () {
 	let property = this.getProperty("title");
 	if (property.found) {
