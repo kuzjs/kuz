@@ -183,6 +183,10 @@ KuzPage.prototype.getPageURL = function () {
 	return fsutils.JoinPath(this.site.getHomeURL(), this.getOutputDirectoryPartialPath());
 }
 
+KuzPage.prototype.getPageSourceURL = function () {
+	return this.site.getProps().SITE_REPO + "/blob/master/" + this.getInputFilePath();
+}
+
 KuzPage.prototype.getBase = function () {
 	let outputFileNesting = this.getOutputFileNesting();
 	let base = "";
@@ -560,6 +564,7 @@ KuzPage.prototype.printDetails = function () {
 	table.addRow(["Theme", options.kuz.theme.getName()]);
 	table.addSeparatorRow();
 
+	table.addRow(["Source", this.getPageSourceURL()]);
 	table.addRow(["URL", this.getPageURL()]);
 	table.print();
 }

@@ -18,6 +18,7 @@ X.X.X / (goals)
 0.3.1 / (future)
 ====================
   * Now using page.entry as default title
+  * Added method KuzPage.getPageSourceURL()
 
 
 0.3.0 / 29-09-2020
