@@ -299,7 +299,7 @@ KuzSite.prototype.getPagesWithTag = function (tag) {
 
 
 KuzSite.prototype.getAuthorFromName = function (authorName) {
-	for (let author of this.getAuthors) {
+	for (let author of this.getAuthors()) {
 		if (author.name === authorName) {
 			return author;
 		}

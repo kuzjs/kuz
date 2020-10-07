@@ -557,6 +557,7 @@ KuzPage.prototype.printDetails = function () {
 	table.addRow(["Description", this.getDescription()]);
 	table.addSeparatorRow();
 
+	table.addRow(["Author", this.getAuthor().getEntry()]);
 	table.addRow(["Category", this.getCategory().getEntry()]);
 	table.addRow(["Tags", this.getTagNames()]);
 	table.addSeparatorRow();
