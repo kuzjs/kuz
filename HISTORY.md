@@ -19,6 +19,7 @@ X.X.X / (goals)
 ====================
   * Now using page.entry as default title
   * Added method KuzPage.getPageSourceURL()
+  * Renamed `page.getProperty()` -> `page.getOwnProperty()`
 
 
 0.3.0 / 29-09-2020

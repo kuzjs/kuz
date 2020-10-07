@@ -221,7 +221,7 @@ KuzPage.prototype.getEntry = function () {
 }
 
 KuzPage.prototype.getTitle = function () {
-	let property = this.getProperty("title");
+	let property = this.getOwnProperty("title");
 	if (property.found) {
 		return property.value;
 	}
@@ -229,7 +229,7 @@ KuzPage.prototype.getTitle = function () {
 }
 
 KuzPage.prototype.getDescription = function () {
-	let property = this.getProperty("description");
+	let property = this.getOwnProperty("description");
 	if (property.found) {
 		return property.value;
 	}
@@ -271,7 +271,7 @@ KuzPage.prototype.getCategory = function () {
 }
 
 KuzPage.prototype.getTagNames = function () {
-	let tagsArray = this.getProperty("tags");
+	let tagsArray = this.getOwnProperty("tags");
 	if (tagsArray.found) {
 		return tagsArray.value;
 	}
@@ -287,7 +287,7 @@ KuzPage.prototype.getTags = function () {
 
 
 
-KuzPage.prototype.getProperty = function (propertyName) {
+KuzPage.prototype.getOwnProperty = function (propertyName) {
 	if (this.kuzFile) {
 		return this.kuzFile.getProperty(propertyName);
 	}
@@ -297,7 +297,7 @@ KuzPage.prototype.getProperty = function (propertyName) {
 }
 
 KuzPage.prototype.getPropertyCascaded = function (propertyName) {
-	let property = this.getProperty(propertyName);
+	let property = this.getOwnProperty(propertyName);
 	if (property.found) {
 		return property;
 	}
