@@ -302,13 +302,7 @@ KuzPage.prototype.getPropertyCascaded = function (propertyName) {
 		return property;
 	}
 
-	if (this.konfig && this.konfig.kuzFile) {
-		return this.konfig.kuzFile.getProperty(propertyName);
-	}
-
-	return {
-		found: false
-	};
+	return this.konfig.kuzFile.getProperty(propertyName);
 }
 
 KuzPage.prototype.getBooleanValueCascaded = function (name) {
