@@ -546,6 +546,10 @@ KuzPage.prototype.printDetails = function () {
 	table.addRow(["Description", this.getDescription()]);
 	table.addSeparatorRow();
 
+	table.addRow(["Category", this.getCategory().getEntry()]);
+	table.addRow(["Tags", this.getTagNames()]);
+	table.addSeparatorRow();
+
 	table.addRow(["Input", this.getInputFilePath()]);
 	table.addRow(["Output", this.getOutputFilePath()]);
 	table.addSeparatorRow();
