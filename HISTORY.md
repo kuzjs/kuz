@@ -15,12 +15,13 @@ X.X.X / (goals)
   * Nothing yet
 
 
-0.3.1 / (future)
+0.3.1 / 07-10-2020
 ====================
   * Now using page.entry as default title
   * Added method KuzPage.getPageSourceURL()
   * Renamed `page.getProperty()` -> `page.getOwnProperty()`
   * Now page.getPropertyCascaded() goes all the way down to the root konfig
+  * Added more fields to `--print-page-details`
 
 
 0.3.0 / 29-09-2020
