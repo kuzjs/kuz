@@ -321,10 +321,16 @@ KuzApp.prototype.serveStuff = function () {
 }
 
 KuzApp.prototype.watchStuff = function () {
+	const app = this;
 	const operands = this.operands.length > 0 ? this.operands : this.site.getPages();
 	setInterval(function () {
 		for (let operand of operands) {
-			operand.update();
+			try {
+				operand.update();
+			} catch (e) {
+				app.log.red("Exception occured when rendering: " + operand.getInputFilePath());
+				app.log.red(e);
+			}
 		}
 	}, 1000);
 }

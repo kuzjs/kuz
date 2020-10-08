@@ -6,7 +6,6 @@ X.X.X / (goals)
   * Compile layouts only when required
   * Make `KuzTable` index work with `addSeparatorRow()`
   * Basic markdown support
-  * try/catch render errors
   * Pass options object only to sections that have the options modifier
   * Ability to specify in/out dirs in site.kuz
   * Make theme css/js/res file urls available in layouts
@@ -16,7 +15,7 @@ X.X.X / (goals)
 
 0.3.2 / (future)
 ====================
-  * Nothing yet
+  * Now watchStuff catches render errors
 
 
 0.3.1 / 07-10-2020
