@@ -13,7 +13,12 @@ X.X.X / (goals)
   * Extensions on top of kuz
 
 
-0.3.2 / (future)
+0.3.3 / (future)
+====================
+  * Nothing yet
+
+
+0.3.2 / 11-10-2020
 ====================
   * Now watchStuff catches render errors
   * Now page.getPropertyCascaded() cascades down to site.kuzFile
