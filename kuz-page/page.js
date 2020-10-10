@@ -311,9 +311,7 @@ KuzPage.prototype.getPropertyCascaded = function (propertyName) {
 		konfig = konfig.parent;
 	}
 
-	return {
-		found: false
-	};
+	return this.site.kuzFile.getProperty(propertyName);
 }
 
 KuzPage.prototype.getBooleanValueCascaded = function (name) {

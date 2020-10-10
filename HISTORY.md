@@ -16,6 +16,7 @@ X.X.X / (goals)
 0.3.2 / (future)
 ====================
   * Now watchStuff catches render errors
+  * Now page.getPropertyCascaded() cascades down to site.kuzFile
 
 
 0.3.1 / 07-10-2020
